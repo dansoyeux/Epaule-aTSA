@@ -1,0 +1,435 @@
+// Definitions of muscles in the right lower extremity
+
+// Mark de Zee
+
+// Sartorius, gracilis added to "hamstrings" biarticular 
+// muscles 26-6-02. GMax split into three, tensor fasciae
+// latae added 5-9-02 
+// Mark Thompson
+
+// -------------------------------------------------------
+// This is an interface reference to make sure that the 
+// include file MusDrawSettings.any always can be left 
+// unchanged and not affected by different directory 
+// levels.
+// -------------------------------------------------------
+
+AnyFolder &Ref = .MusDrawRef;
+
+#if BM_FOOT_MODEL == _FOOT_MODEL_DEFAULT_
+AnyMuscleViaPoint Soleus = {
+  AnyMuscleModel &MusMdl = ..MusPar.SoleusPar;
+  AnyRefNode &Org = ..Seg.Shank.SoleusNode;
+  AnyRefNode &Ins = ..Seg.Foot.SoleusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint Gastrocnemius = {
+  AnyMuscleModel &MusMdl = ..MusPar.GastrocnemiusPar;
+  AnyRefNode &Org = ..Seg.Thigh.GastrocnemiusNode;
+  AnyRefNode &Via = ..Seg.Shank.GastrocnemiusViaNode;
+  AnyRefNode &Ins = ..Seg.Foot.GastrocnemiusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint FlexorDigitorumLongus = {
+  AnyMuscleModel &MusMdl = ..MusPar.FlexorDigitorumLongusPar;
+  AnyRefNode &Org = ..Seg.Shank.FlexorDigitorumLongusNode;
+  AnyRefNode &Via = ..Seg.Foot.FlexorDigitorumLongusViaNode;
+  AnyRefNode &Ins = ..Seg.Foot.FlexorDigitorumLongusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any" 
+  };
+};
+
+AnyMuscleViaPoint FlexorHallucisLongus = {
+  AnyMuscleModel &MusMdl = ..MusPar.FlexorHallucisLongusPar;
+  AnyRefNode &Org = ..Seg.Shank.FlexorHallucisLongusNode;
+  AnyRefNode &Via = ..Seg.Foot.FlexorHallucisLongusViaNode;
+  AnyRefNode &Ins = ..Seg.Foot.FlexorHallucisLongusNode;
+  AnyDrawMuscle DrwMus = { #include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint TibialisPosterior = {
+  AnyMuscleModel &MusMdl = ..MusPar.TibialisPosteriorPar;
+  AnyRefNode &Org = ..Seg.Shank.TibialisPosteriorNode;
+  AnyRefNode &Via = ..Seg.Foot.TibialisPosteriorViaNode;
+  AnyRefNode &Ins = ..Seg.Foot.TibialisPosteriorNode;
+  AnyDrawMuscle DrwMus = { #include "../drawSettings/MusDrawSettings.any"};
+  
+};
+
+AnyMuscleViaPoint PeroneusBrevis = {
+  AnyMuscleModel &MusMdl = ..MusPar.PeroneusBrevisPar;
+  AnyRefNode &Org = ..Seg.Shank.PeroneusBrevisNode;
+  AnyRefNode &Via = ..Seg.Foot.PeroneusBrevisViaNode;
+  AnyRefNode &Ins = ..Seg.Foot.PeroneusBrevisNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint TibialisAnterior = {
+  AnyMuscleModel &MusMdl = ..MusPar.TibialisAnteriorPar;
+  AnyRefNode &Org = ..Seg.Shank.TibialisAnteriorNode;
+  AnyRefNode &Via = ..Seg.Foot.TibialisAnteriorViaNode;
+  AnyRefNode &Ins = ..Seg.Foot.TibialisAnteriorNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint ExtensorDigitorumLongus = {
+  AnyMuscleModel &MusMdl = ..MusPar.ExtensorDigitorumLongusPar;
+  AnyRefNode &Org = ..Seg.Shank.ExtensorDigitorumLongusNode;
+  AnyRefNode &Via = ..Seg.Foot.ExtensorDigitorumViaNode;
+  AnyRefNode &Ins = ..Seg.Foot.ExtensorDigitorumLongusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint ExtensorHallucisLongus = {
+  AnyMuscleModel &MusMdl = ..MusPar.ExtensorHallucisLongusPar;
+  AnyRefNode &Org = ..Seg.Shank.ExtensorHallucisLongusNode;
+  AnyRefNode &Via = ..Seg.Foot.ExtensorHallucisViaNode;
+  AnyRefNode &Ins = ..Seg.Foot.ExtensorHallucisLongusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+#endif
+
+// Start Quadriceps
+AnyMuscleViaPoint VastusLateralis = {
+  AnyMuscleModel &MusMdl = ..MusPar.VastusLateralisPar;
+  AnyRefNode &Org = ..Seg.Thigh.VastusLateralisNode;
+  AnyRefNode &Via1 = ..Seg.Thigh.QuadricepsViaNode1;
+  AnyRefNode &Via2 = ..Seg.Thigh.QuadricepsViaNode2;
+  AnyRefNode &Ins = ..Seg.Shank.QuadricepsNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"};
+};
+
+AnyMuscleViaPoint VastusMedialis = {
+  AnyMuscleModel &MusMdl = ..MusPar.VastusMedialisPar;
+  AnyRefNode &Org = ..Seg.Thigh.VastusMedialisNode;
+  AnyRefNode &Via1 = ..Seg.Thigh.QuadricepsViaNode1;
+  AnyRefNode &Via2 = ..Seg.Thigh.QuadricepsViaNode2;
+  AnyRefNode &Ins = ..Seg.Shank.QuadricepsNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint VastusIntermedius = {
+  AnyMuscleModel &MusMdl = ..MusPar.VastusIntermediusPar;
+  AnyRefNode &Org = ..Seg.Thigh.VastusIntermediusNode;
+  AnyRefNode &Via1 = ..Seg.Thigh.QuadricepsViaNode1;
+  AnyRefNode &Via2 = ..Seg.Thigh.QuadricepsViaNode2;
+  AnyRefNode &Ins = ..Seg.Shank.QuadricepsNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint RectusFemoris = {
+  AnyMuscleModel &MusMdl = ..MusPar.RectusFemorisPar;
+  AnyRefNode &Org = ..HipNodeRef.RectusFemorisNode;
+  AnyRefNode &Via1 = ..Seg.Thigh.QuadricepsViaNode1;
+  AnyRefNode &Via2 = ..Seg.Thigh.QuadricepsViaNode2;
+  AnyRefNode &Ins = ..Seg.Shank.QuadricepsNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+// End Quadriceps.
+
+//// Start of Hamstrings
+
+AnyMuscleViaPoint Semitendinosus = {
+  AnyMuscleModel &MusMdl = ..MusPar.SemitendinosusPar;
+  AnyRefNode &Org = ..HipNodeRef.SemitendinosusNode;
+  AnyRefNode &Via = ..Seg.Shank.SemitendinosusViaNode;
+  AnyRefNode &Ins = ..Seg.Shank.SemitendinosusNode;
+  AnyDrawMuscle DrwMus = {
+  #include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint Semimembranosus = {
+  AnyMuscleModel &MusMdl = ..MusPar.SemimembranosusPar;
+  AnyRefNode &Org = ..HipNodeRef.SemimembranosusNode;
+  AnyRefNode &Via = ..Seg.Shank.SemimembranosusViaNode;
+  AnyRefNode &Ins = ..Seg.Shank.SemimembranosusNode;
+  AnyDrawMuscle DrwMus = {
+    #include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint BicepsFemorisCaputLongum = {
+  AnyMuscleModel &MusMdl = ..MusPar.BicepsFemorisCaputLongumPar;
+  AnyRefNode &Org = ..HipNodeRef.BicepsFemorisCaputLongumNode;
+  AnyRefNode &Via = ..Seg.Shank.BicepsFemorisCaputLongumViaNode;
+  AnyRefNode &Ins = ..Seg.Shank.BicepsFemorisCaputLongumNode;
+  AnyDrawMuscle DrwMus = {
+    #include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint BicepsFemorisCaputBreve = {
+  AnyMuscleModel &MusMdl = ..MusPar.BicepsFemorisCaputBrevePar;
+  AnyRefNode &Org = ..Seg.Thigh.BicepsFemorisCaputBreveNode;
+  AnyRefNode &Via = ..Seg.Shank.BicepsFemorisCaputBreveViaNode;
+  AnyRefNode &Ins = ..Seg.Shank.BicepsFemorisCaputBreveNode;
+  AnyDrawMuscle DrwMus = {
+    #include "../drawSettings/MusDrawSettings.any"
+  };
+};
+//
+AnyMuscleViaPoint Sartorius = {
+  AnyMuscleModel &MusMdl = ..MusPar.SartoriusPar;
+  AnyRefNode &Org = ..HipNodeRef.SartoriusNode;
+  AnyRefNode &Via1 = ..Seg.Thigh.SartoriusViaNode1;
+  AnyRefNode &Via2 = ..Seg.Shank.SartoriusViaNode2;
+  AnyRefNode &Via3 = ..Seg.Shank.SartoriusViaNode3;
+  AnyRefNode &Ins = ..Seg.Shank.SartoriusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"};
+};
+
+AnyMuscleViaPoint Gracilis = {
+  AnyMuscleModel &MusMdl = ..MusPar.GracilisPar;
+  AnyRefNode &Org = ..HipNodeRef.GracilisNode;
+  AnyRefNode &Via = ..Seg.Shank.GracilisViaNode;
+  AnyRefNode &Via1 = ..Seg.Shank.GracilisViaNode1;
+  AnyRefNode &Ins = ..Seg.Shank.GracilisNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+// End of Hamstrings
+
+
+// Start hip muscles
+AnyMuscleShortestPath Iliopsoas = {
+  AnyMuscleModel &MusMdl = ..MusPar.IliopsoasPar;
+  AnyRefNode &Org = ..HipNodeRef.IliopsoasNode;
+  //AnyRefNode &Via1 = ..HipNodeRef.IliopsoasViaNode1;
+  AnyRefNode &Ins = ..Seg.Thigh.IliopsoasNode;
+  AnyDrawMuscle DrwMus = {        #include "../drawSettings/MusDrawSettings.any"  };
+  SPLine.StringMesh = 50;
+  AnySurfCylinder &Surf1 =..HipNodeRef.pecent_ossis_pubis.cyl;
+  SPLine.InitWrapPosVectors = {    {0.04,0.03,0.0*..Sign}, {0.1,..Sign*0.0,0.0}  };
+  SPLine.RelTol = 0.00000001;
+};
+
+ /*
+AnyMuscleViaPoint Iliopsoas = {
+  AnyMuscleModel &MusMdl = ..MusPar.IliopsoasPar;
+  AnyRefNode &Org = ..HipNodeRef.IliopsoasNode;
+  AnyRefNode &Via1 = ..HipNodeRef.IliopsoasViaNode1;
+  AnyRefNode &Ins = ..Seg.Thigh.IliopsoasNode;
+  AnyDrawMuscle DrwMus = {
+    #include "../drawSettings/MusDrawSettings.any"
+  };
+};*/
+
+AnyMuscleViaPoint GluteusMinimus1 = {
+  AnyMuscleModel &MusMdl = ..MusPar.GluteusMinimus1Par;
+  AnyRefNode &Org = ..HipNodeRef.GluteusMinimus1Node;
+  AnyRefNode &Ins = ..Seg.Thigh.GluteusMinimusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint GluteusMinimus2 = {
+  AnyMuscleModel &MusMdl = ..MusPar.GluteusMinimus2Par;
+  AnyRefNode &Org = ..HipNodeRef.GluteusMinimus2Node;
+  AnyRefNode &Ins = ..Seg.Thigh.GluteusMinimusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint GluteusMinimus3 = {
+  AnyMuscleModel &MusMdl = ..MusPar.GluteusMinimus3Par;
+  AnyRefNode &Org = ..HipNodeRef.GluteusMinimus3Node;
+  AnyRefNode &Ins = ..Seg.Thigh.GluteusMinimusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint GluteusMedius1 = {
+  AnyMuscleModel &MusMdl = ..MusPar.GluteusMedius1Par;
+  AnyRefNode &Org = ..HipNodeRef.GluteusMedius1Node;
+  AnyRefNode &Ins = ..Seg.Thigh.GluteusMediusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint GluteusMedius2 = {
+  AnyMuscleModel &MusMdl = ..MusPar.GluteusMedius2Par;
+  AnyRefNode &Org = ..HipNodeRef.GluteusMedius2Node;
+  AnyRefNode &Ins = ..Seg.Thigh.GluteusMediusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint GluteusMedius3 = {
+  AnyMuscleModel &MusMdl = ..MusPar.GluteusMedius3Par;
+  AnyRefNode &Org = ..HipNodeRef.GluteusMedius3Node;
+  AnyRefNode &Ins = ..Seg.Thigh.GluteusMediusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint GluteusMaximus1 = {
+  AnyMuscleModel &MusMdl = ..MusPar.GluteusMaximus1Par;
+  AnyRefNode &Org = ..HipNodeRef.GluteusMaximus1Node;
+  AnyRefNode &Via1 = ..HipNodeRef.GluteusMaximus1ViaNode1;
+  AnyRefNode &Via2 = ..Seg.Thigh.GluteusMaximus1ViaNode2;
+  AnyRefNode &Ins = ..Seg.Shank.GluteusMaximus1Node;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"};
+};
+
+AnyMuscleViaPoint GluteusMaximus2 = {
+  AnyMuscleModel &MusMdl = ..MusPar.GluteusMaximus2Par;
+  AnyRefNode &Org = ..HipNodeRef.GluteusMaximus2Node;
+  AnyRefNode &Via1 = ..HipNodeRef.GluteusMaximus2ViaNode1;
+  AnyRefNode &Via2 = ..HipNodeRef.GluteusMaximus2ViaNode2;
+  AnyRefNode &Via3 = ..Seg.Thigh.GluteusMaximus2ViaNode3;
+  AnyRefNode &Ins = ..Seg.Shank.GluteusMaximus2Node;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"  };
+};
+
+AnyMuscleViaPoint GluteusMaximus3 = {
+  AnyMuscleModel &MusMdl = ..MusPar.GluteusMaximus3Par;
+  AnyRefNode &Org = ..HipNodeRef.GluteusMaximus3Node;
+  AnyRefNode &Via1 = ..HipNodeRef.GluteusMaximus3ViaNode1;
+  AnyRefNode &Ins = ..Seg.Thigh.GluteusMaximus3Node;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"  };
+};
+
+AnyMuscleViaPoint TensorFasciaeLatae = {
+  AnyMuscleModel &MusMdl = ..MusPar.TensorFasciaeLataePar;
+  AnyRefNode &Org = ..HipNodeRef.TensorFasciaeLataeNode;
+  AnyRefNode &Via2 = ..Seg.Thigh.TensorFasciaeLataeViaNode2;
+  AnyRefNode &Ins = ..Seg.Shank.TensorFasciaeLataeNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint Piriformis = {
+  AnyMuscleModel &MusMdl = ..MusPar.PiriformisPar;
+  AnyRefNode &Org = ..HipNodeRef.PiriformisNode;
+  AnyRefNode &Via = ..HipNodeRef.PiriformisViaNode;
+  AnyRefNode &Ins = ..Seg.Thigh.PiriformisNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint AdductorLongus = {
+  AnyMuscleModel &MusMdl = ..MusPar.AdductorLongusPar;
+  AnyRefNode &Org = ..HipNodeRef.AdductorLongusNode;
+  AnyRefNode &Ins = ..Seg.Thigh.AdductorLongusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint AdductorMagnus1 = {
+  AnyMuscleModel &MusMdl = ..MusPar.AdductorMagnus1Par;
+  AnyRefNode &Org = ..HipNodeRef.AdductorMagnusNode;
+  AnyRefNode &Ins = ..Seg.Thigh.AdductorMagnus1Node;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint AdductorMagnus2 = {
+  AnyMuscleModel &MusMdl = ..MusPar.AdductorMagnus2Par;
+  AnyRefNode &Org = ..HipNodeRef.AdductorMagnusNode;
+  AnyRefNode &Ins = ..Seg.Thigh.AdductorMagnus2Node;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+AnyMuscleViaPoint AdductorMagnus3 = {
+  AnyMuscleModel &MusMdl = ..MusPar.AdductorMagnus3Par;
+  AnyRefNode &Org = ..HipNodeRef.AdductorMagnusNode;
+  AnyRefNode &Ins = ..Seg.Thigh.AdductorMagnus3Node;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+
+
+
+
+AnyMuscleViaPoint QuadratusFemoris = {
+  AnyMuscleModel &MusMdl = ..MusPar.QuadratusFemorisPar;
+  AnyRefNode &Org = ..HipNodeRef.QuadratusFemorisNode;
+  AnyRefNode &Ins = ..Seg.Thigh.QuadratusFemorisNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+};
+AnyMuscleViaPoint AbductorBrevis = {
+  AnyMuscleModel &MusMdl = ..MusPar.AbductorBrevisPar;
+  AnyRefNode &Org = ..HipNodeRef.AbductorBrevisNode;
+  AnyRefNode &Ins = ..Seg.Thigh.AbductorBrevisNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+  };
+  
+};
+
+
+AnyMuscleViaPoint ObturatoriusInternus  = {
+  AnyMuscleModel &MusMdl = ..MusPar.ObturatoriusInternusPar;
+  
+  AnyRefNode &Org = ..HipNodeRef.ObturatoriusInternusNode;
+  AnyRefNode &Via =..HipNodeRef.ObturatoriusInternusViaNode; 
+  AnyRefNode &Ins = ..Seg.Thigh.ObturatoriusInternusNode;
+  AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"};
+ 
+
+};
+  
+  AnyMuscleViaPoint ObturatoriusExternus  = {
+    AnyMuscleModel &MusMdl = ..MusPar.ObturatoriusExternusPar;
+    AnyRefNode &Org = ..HipNodeRef.ObturatoriusExternusNode;
+    AnyRefNode &Ins = ..Seg.Thigh.ObturatoriusExternusNode;
+    AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+    };
+    
+  
+};
+
+AnyMuscleViaPoint Pictineus  = {
+    AnyMuscleModel &MusMdl = ..MusPar.PictineusPar;
+    AnyRefNode &Org = ..HipNodeRef.PictineusNode;
+    AnyRefNode &Ins = ..Seg.Thigh.PectineusNode ;
+    AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+    };
+};
+
+AnyMuscleViaPoint GemmelusInferior  = {
+    AnyMuscleModel &MusMdl = ..MusPar.GemellusInferiorPar;
+    AnyRefNode &Org = ..HipNodeRef.GemellusInferiorNode;
+    AnyRefNode &Ins = ..Seg.Thigh.GemellusInferiorNode ;
+    AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+    };
+};
+
+AnyMuscleViaPoint GemmelusSuperior  = {
+    AnyMuscleModel &MusMdl = ..MusPar.GemellusSuperiorPar;
+    AnyRefNode &Org = ..HipNodeRef.GemellusSuperiorNode;
+    AnyRefNode &Ins = ..Seg.Thigh.GemellusSuperiorNode ;
+    AnyDrawMuscle DrwMus = {#include "../drawSettings/MusDrawSettings.any"
+    };
+};
+
+
+AnyMuscle &PsoasMajor_PMT12I_TM = .TrunkMuscles.PsoasMajor.PMT12I_TM;//< Psoas muscles are created by the Trunk model
+AnyMuscle &PsoasMajor_PML1I_TM = .TrunkMuscles.PsoasMajor.PML1I_TM;//< Psoas muscles are created by the Trunk model
+AnyMuscle &PsoasMajor_PML1T_TM = .TrunkMuscles.PsoasMajor.PML1T_TM;//< Psoas muscles are created by the Trunk model
+AnyMuscle &PsoasMajor_PML2I_TM= .TrunkMuscles.PsoasMajor.PML2I_TM;//< Psoas muscles are created by the Trunk model
+AnyMuscle &PsoasMajor_PML2T_TM = .TrunkMuscles.PsoasMajor.PML2T_TM;//< Psoas muscles are created by the Trunk model
+AnyMuscle &PsoasMajor_PML3I_TM = .TrunkMuscles.PsoasMajor.PML3I_TM;//< Psoas muscles are created by the Trunk model
+AnyMuscle &PsoasMajor_PML3T_TM = .TrunkMuscles.PsoasMajor.PML3T_TM;//< Psoas muscles are created by the Trunk model
+AnyMuscle &PsoasMajor_PML4I_TM = .TrunkMuscles.PsoasMajor.PML4I_TM;//< Psoas muscles are created by the Trunk model
+AnyMuscle &PsoasMajor_PML4T_TM = .TrunkMuscles.PsoasMajor.PML4I_TM;//< Psoas muscles are created by the Trunk model
+AnyMuscle &PsoasMajor_PML5_TM = .TrunkMuscles.PsoasMajor.PML5_TM;//< Psoas muscles are created by the Trunk model
+AnyMuscle &PsoasMajor_PML5T_TM = .TrunkMuscles.PsoasMajor.PML5T_TM;//< Psoas muscles are created by the Trunk model
+
+
+
+

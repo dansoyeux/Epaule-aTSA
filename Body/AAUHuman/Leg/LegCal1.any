@@ -1,0 +1,75 @@
+//This is the calibration1 file it will calibrate all muscle in the legf
+//the subsequent calibration 2 and 3 will overwrite some of the values
+//obtained in this study
+
+AnyFolder LegCal1 ={
+  AnyComponentDefinition obj = {};  
+  
+  AnyFolder &Pelvis = ...BodyModel.Trunk.SegmentsLumbar.PelvisSeg; //This is a reference to the folder which holds the human part of the model
+  AnyFolder &LegSegSide = .SideHumanFolderRef.Leg.Seg; //This is a reference to the folder which holds the human part of the model
+  
+  // Segments needed for the Psoas Major muscles
+  AnyFolder& SegmentsLumbar =...BodyModel.Trunk.SegmentsLumbar;
+  AnyFolder &Thorax = ...BodyModel.Trunk.SegmentsThorax.ThoraxSeg;
+    
+  
+  AnyFolder &JointsSideCal = .SideHumanFolderRef.Leg.Jnt;
+  AnyFolder &TrunkJoints = ...BodyModel.Trunk.JointsLumbar;
+
+  AnyFolder &MusCalSide =  .SideHumanFolderRef.Leg.Mus;
+
+  
+  AnyFolder &MusParCalSide =  .SideHumanFolderRef.Leg.MusPar;
+  
+  
+  
+  AnyFixedRefFrame ground = {
+    AnyRefNode node = { 
+      ARel=..Pelvis.Axes0;
+      sRel=..Pelvis.r0;
+    };
+  };
+  
+  AnyKinEq ThoraxFix = 
+  {
+    AnyKinMeasure& PelvisThoraxExtension = ....BodyModel.Interface.Trunk.PelvisThoraxExtension;
+    AnyKinMeasure& PelvisThoraxLateralBending = ....BodyModel.Interface.Trunk.PelvisThoraxLateralBending;
+    AnyKinMeasure& PelvisThoraxRotation = ....BodyModel.Interface.Trunk.PelvisThoraxRotation;
+  };
+  
+  AnyKinEq PelvisFix = {
+    AnyKinLinear Lin = {
+      AnyRefFrame &ground = ..ground.node;
+      AnyRefFrame &Pelvis = .....BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    };
+    AnyKinRotational Rot = {
+      Type = RotAxesAngles;
+      AnyRefFrame &ground = ..ground.node;
+      AnyRefFrame &Pelvis = .....BodyModel.Trunk.SegmentsLumbar.PelvisSeg;
+    };
+  };
+  
+  #if BM_FOOT_MODEL == _FOOT_MODEL_DEFAULT_
+  AnyKinEqSimpleDriver JntDOFDriverSide = {
+    AnyKinMeasure& Joint = ..SideHumanFolderRef.Leg.JntDOF;
+    DriverPos = {1.57, 0.0, 0, 0, 0, 0};
+    DriverVel = {0.0,0.0,0,0,0,0};
+    Reaction.Type = {Off,Off,Off,Off,Off,Off};
+  };
+  #endif
+  
+};
+
+
+
+// The study: Operations to be performed on the model
+AnyBodyCalibrationStudy LegCalibrationStudy1 = {
+  AnyFolder &ref=.LegCal1; 
+  nStep = 1;
+  InitialConditions.SolverType = KinSolDeterminate;
+  Kinematics.SolverType = KinSolDeterminate;
+  InitialConditions.SmallStepAssumptionOnOff = Off;
+  Kinematics.SmallStepAssumptionOnOff = Off;
+};
+
+  
