@@ -1,0 +1,70 @@
+// This file creates a BodyModel folder in Main.HumanModel which doesn't have 
+// muscles. 
+
+
+Main.HumanModel = {
+  AnyFolder BodyModelWithoutMuscles = {
+    
+    AnyFolder& SelectedOutput= Main.HumanModel.BodyModel.SelectedOutput;
+    
+    AnyFolder Trunk = {
+      AnyFolder &SegmentsLumbar = Main.HumanModel.BodyModel.Trunk.SegmentsLumbar;
+      AnyFolder &SegmentsThorax = Main.HumanModel.BodyModel.Trunk.SegmentsThorax ;
+      AnyFolder &SegmentsCervicalSpine = Main.HumanModel.BodyModel.Trunk.SegmentsCervicalSpine ;
+      AnyFolder &JointsLumbar = Main.HumanModel.BodyModel.Trunk.JointsLumbar;
+      AnyFolder &JointsCervicalSpine = Main.HumanModel.BodyModel.Trunk.JointsCervicalSpine;
+    };
+    
+    AnyFolder Right = {
+      #if BM_ARM_RIGHT
+      AnyFolder ShoulderArm = {
+        AnyFolder &Seg = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg;
+        AnyFolder &Jnt = Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt;
+        #if BM_ARM_DELTOID_WRAPPING == _DELTOID_WRAPPING_RAKE_
+        AnyFolder &rake = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.ArtificialRake;
+        #else
+        AnyFolder &DeltoidWrappingPosteriorRef = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.DeltoidWrappingPosterior;
+        AnyFolder &DeltoidWrappingLateralRef = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.DeltoidWrappingLateral;
+        AnyFolder &DeltoidWrappingAnteriorRef = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.DeltoidWrappingAnterior;
+        #endif
+      };
+      #endif
+      #if BM_LEG_RIGHT
+      AnyFolder Leg = {
+        AnyFolder &Seg = Main.HumanModel.BodyModel.Right.Leg.Seg;
+        AnyFolder &Jnt = Main.HumanModel.BodyModel.Right.Leg.Jnt;
+      };
+      #endif
+    };
+    AnyFolder Left = {
+      #if BM_ARM_LEFT
+      AnyFolder ShoulderArm = {
+        AnyFolder &Seg = Main.HumanModel.BodyModel.Left.ShoulderArm.Seg;
+        AnyFolder &Jnt = Main.HumanModel.BodyModel.Left.ShoulderArm.Jnt;
+        #if BM_ARM_DELTOID_WRAPPING == _DELTOID_WRAPPING_RAKE_
+        AnyFolder &rake = Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.ArtificialRake;
+        #else
+        AnyFolder &DeltoidWrappingPosteriorRef = Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.DeltoidWrappingPosterior;
+        AnyFolder &DeltoidWrappingLateralRef = Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.DeltoidWrappingLateral;
+        AnyFolder &DeltoidWrappingAnteriorRef = Main.HumanModel.BodyModel.Left.ShoulderArm.Mus.DeltoidWrappingAnterior;
+        #endif
+      };
+      #endif
+      #if BM_LEG_LEFT
+      AnyFolder Leg = {
+        AnyFolder &Seg = Main.HumanModel.BodyModel.Left.Leg.Seg;
+        AnyFolder &Jnt = Main.HumanModel.BodyModel.Left.Leg.Jnt;
+      };
+      #endif
+    };
+    
+    AnyFolder& MannequinValuesFromModel = Main.HumanModel.BodyModel.MannequinValuesFromModel;
+    AnyFolder &Interface = Main.HumanModel.BodyModel.Interface;
+    AnyFolder& IndividualMasses= Main.HumanModel.BodyModel.IndividualMasses;
+    AnyFolder& ScalingRef = .Scaling;
+    AnyVar TotalBodyMass = Main.HumanModel.BodyModel.TotalBodyMass;
+    
+  };
+  
+};
+
