@@ -1,0 +1,69 @@
+AnyFolder BuckleSupport={
+  AnyVar Strength =500;
+  AnyVar StrengthPull =5; 
+  
+  AnyFolder Disc1 ={
+    AnyRefNode &StartNode=..Disc1.Disc.DiscSeg.node0;//SupportNode ;
+    AnyRefFrame &EndNode=..Slider1.Seg;
+     AnyVar ScaleFactor =0;
+    //The terms push and pull are determined wrt. the coordinate system of the StartNode!
+    //StrenghtOfReactionsLin = {XPush,XPull,YPush,YPull,ZPush,ZPull}
+    AnyVector StrengthOfReactionsLin = {.Strength,.StrengthPull,0,0,0,0}; //List of strengths for the linear muscles
+    AnyFolder &DrawRef=Main.DrawSettings;
+    #include "<ANYBODY_PATH_MODELUTILS>/Reactions/XPush.any"          
+    #include "<ANYBODY_PATH_MODELUTILS>/Reactions/XPull.any"          
+  };
+  
+  AnyFolder Disc2 ={
+    AnyRefNode &StartNode=..Disc2.Disc.DiscSeg.node0;//SupportNode ;
+    AnyRefFrame &EndNode=..Slider2.Seg;
+    AnyVar ScaleFactor =0;
+    //The terms push and pull are determined wrt. the coordinate system of the StartNode!
+    //StrenghtOfReactionsLin = {XPush,XPull,YPush,YPull,ZPush,ZPull}
+    AnyVector StrengthOfReactionsLin = {.Strength,.StrengthPull,0,0,0,0}; //List of strengths for the linear muscles
+    AnyFolder &DrawRef=Main.DrawSettings;
+    #include "<ANYBODY_PATH_MODELUTILS>/Reactions/XPush.any"          
+    #include "<ANYBODY_PATH_MODELUTILS>/Reactions/XPull.any"          
+  };
+  
+  AnyFolder Disc3 ={
+    AnyRefNode &StartNode=..Disc3.Disc.DiscSeg.node0;//SupportNode ;
+    AnyRefFrame &EndNode=..Slider3.Seg;
+    AnyVar ScaleFactor =0;
+    //The terms push and pull are determined wrt. the coordinate system of the StartNode!
+    //StrenghtOfReactionsLin = {XPush,XPull,YPush,YPull,ZPush,ZPull}
+    AnyVector StrengthOfReactionsLin = {.Strength,.StrengthPull,0,0,0,0}; //List of strengths for the linear muscles
+    AnyFolder &DrawRef=Main.DrawSettings;
+    #include "<ANYBODY_PATH_MODELUTILS>/Reactions/XPush.any"          
+    #include "<ANYBODY_PATH_MODELUTILS>/Reactions/XPull.any"          
+    
+  };
+  
+  AnyFolder Disc4 ={
+    AnyRefNode &StartNode=..Disc4.Disc.DiscSeg.node0;//SupportNode ;
+    AnyRefFrame &EndNode=..Slider4.Seg;  
+     AnyVar ScaleFactor =0;
+    //The terms push and pull are determined wrt. the coordinate system of the StartNode!
+    //StrenghtOfReactionsLin = {XPush,XPull,YPush,YPull,ZPush,ZPull}
+    AnyVector StrengthOfReactionsLin = {.Strength,.StrengthPull,0,0,0,0}; //List of strengths for the linear muscles
+    AnyFolder &DrawRef=Main.DrawSettings;
+    #include "<ANYBODY_PATH_MODELUTILS>/Reactions/XPush.any"          
+    #include "<ANYBODY_PATH_MODELUTILS>/Reactions/XPull.any"          
+  };
+  
+  AnyFolder Disc5 ={
+    AnyRefNode &StartNode=..Disc5.Disc.DiscSeg.node0;//SupportNode ;
+    AnyRefFrame &EndNode=..Slider5.Seg;
+   AnyVar ScaleFactor =0;
+    //The terms push and pull are determined wrt. the coordinate system of the StartNode!
+    //StrenghtOfReactionsLin = {XPush,XPull,YPush,YPull,ZPush,ZPull}
+    AnyVector StrengthOfReactionsLin = {.Strength,.StrengthPull,0,0,0,0}; //List of strengths for the linear muscles
+    AnyFolder &DrawRef=Main.DrawSettings;
+    #include "<ANYBODY_PATH_MODELUTILS>/Reactions/XPush.any"          
+    #include "<ANYBODY_PATH_MODELUTILS>/Reactions/XPull.any"          
+  };
+   
+};
+
+
+
