@@ -1,0 +1,29 @@
+//This is file is used to apply an artificial muscle to 
+//a particular dof in a measure
+//The file is intended to be used for diagnostic of the model
+//when problems with recruitment occours
+
+AnyFolder Muscle={
+  
+  AnyKinMeasureOrg MeasureOrg={
+    AnyKinMeasure& Ref=...DOF;
+    MeasureOrganizer ={..dof};
+  };
+ 
+  AnyGeneralMuscle PosMuscle={
+    AnyMuscleModel MusMdl={    F0 =...Strength[0];  };
+    AnyKinMeasure& ref=.MeasureOrg;
+    ForceDirection = 1;
+    EXCLUDE_MUSCLE_METABOLISM
+         
+  };
+  
+  AnyGeneralMuscle NegMuscle={
+   AnyMuscleModel MusMdl={    F0 =...Strength[1];  };
+    AnyKinMeasure& ref=.MeasureOrg;
+    ForceDirection = -1;
+    EXCLUDE_MUSCLE_METABOLISM
+     
+  };
+  
+};
