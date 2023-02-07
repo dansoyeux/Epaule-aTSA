@@ -1,0 +1,49 @@
+/* INPUTVARIABLES.ANY
+Variables and parameters to modify at each simulation.
+*/
+
+AnyFolder InputVariables = {
+
+  /* -- FILES/FOLDERS NAMES --
+  m_ResultFile :   Name for results file (saved as .txt or .h5)
+  m_ResultFolder : Name for folder results. !!Must be created on computer before!!
+  m_ResultPath :   Complete path to the "NameFolder" folder
+  WARNING:    Be sure that the m_ResultFolder variable refers to an existing folder on your computer !!
+  ----------------------------- */
+  #define m_ResultFile "Results_17_07_2015_version_neutre"
+  #define m_ResultFolder "Ceraver\"
+  #define m_ResultPath "../Results"
+  
+  /* -------- IMPLANTS -------- 
+  NAMES AND POSITIONS: Managed in an axternal file: 
+      - To create based on the #include "InputImplantJoint_ImplantName.any" template
+      - To place in the "Input" Folder
+  ----------------------------- */
+  //#include "InputImplantJoint_CeraverT351.any" 
+  #define INPUTPOS "CeraverT351_version_neutre"
+  
+ 
+  /* ----- SPECIFIC PATIENT ----- 
+    0 AnyBody Model
+    1 Ct-scans scale 
+    2 External landmarks scale:
+        - Create and fill custom file based on the "Mesures_PatientName.any" file ; Rename it with a custom PatientName
+        - Replace the "MEASURE" variable by your custom PatientName. 
+  ----------------------------- */
+  #define scale 0
+  // To replace by the same name as filename ("Scaling/Mesures_PatientName.any")  
+  #if scale == 2
+    #define SUBJECT "PatientName" 
+  #endif
+  
+  
+  
+  //camera differentes supprimees
+  /* --------- CAMERA --------- 
+    Camera == 1 : Activate auto save by camera
+    Vue == 1 : Global view, 45deg scapula
+    Vue == 2 : Fixed view, face to glenoid
+  ----------------------------- */
+//  #define Camera 0
+  #define Vue 2
+};
