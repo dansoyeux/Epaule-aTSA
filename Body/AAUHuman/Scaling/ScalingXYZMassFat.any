@@ -116,7 +116,7 @@ defined in a special file that contains segmental scaling vectors.
         };
         
       };
-      
+            
       AnyFolder Scapula = {
         
         AnyFloat LengthScale = ....Anthropometrics.SegmentScaleFactors.Right.Scapula.LengthScale;

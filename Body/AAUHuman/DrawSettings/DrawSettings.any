@@ -18,12 +18,9 @@ AnyVec3 AnyBodyGrey = {153/256,153/256,153/256};    //AnyBody standard grey
   AnyFolder Muscle ={ 
         
     AnyVec3 RGB = .Colors.AnyBodyRed;
-//    #if Camera==1 | Vue ==2
-    #if Vue ==2
-    AnyVar Opacity =0.0;
-    #else
+
     AnyVar Opacity =1.0;
-    #endif
+
     AnySwitch DrawScaleOnOff =Off;
     AnyVar Bulging =0.0;
     AnyVar ColorScale =1.0;
@@ -53,11 +50,8 @@ AnyVec3 AnyBodyGrey = {153/256,153/256,153/256};    //AnyBody standard grey
 
   
     AnyFolder BonesOpacity ={
-    #if Vue==2
-    AnyVar GlobalCoef = 0;
-    #else
+
     AnyVar GlobalCoef = 1;
-    #endif
     
     AnyVar Skull = 1*GlobalCoef;
     AnyVar Thorax = 1*GlobalCoef;

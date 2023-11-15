@@ -5,20 +5,20 @@
 
 
 DEFAULT_PARAMETER_FOLDER ThoraxScapulaMultiPointContactSettings(
-    NPARAM = 2,
-    PARAM_1 = Base, PARAM_1_TYPE = AnyVar,
-    PARAM_2 = Exponent, PARAM_2_TYPE = AnyVar
+NPARAM = 2,
+PARAM_1 = Base, PARAM_1_TYPE = AnyVar,
+PARAM_2 = Exponent, PARAM_2_TYPE = AnyVar
 ) = {
-    Default = {
-      Base = 1;
-      // This is an insanely large number, but the fomula behind 
-      // applies log(Exponent)
-      #if (ANYBODY_V1 > 7)|(ANYBODY_V1 == 7 & ANYBODY_V2 >= 3)
-      Exponent = 2.718281^(200);
-      #else
-      Exponent = 4^120;
-      #endif
-    };
+  Default = {
+    Base = 1;
+    // This is an insanely large number, but the fomula behind 
+    // applies log(Exponent)
+    #if (ANYBODY_V1 > 7)|(ANYBODY_V1 == 7 & ANYBODY_V2 >= 3)
+    Exponent = 2.718281^(200);
+    #else
+    Exponent = 4^120;
+    #endif
+  };
 };
 #endif
 
@@ -50,7 +50,6 @@ AnySphericalJoint AcromioClavicularJoint = {
     Axis2 = z;
     Axis3 = x;
   };
-
 };
 
 
@@ -69,7 +68,7 @@ AnySphericalJoint GlenoHumeralJoint = {
     Axis2 = z;
     Axis3 = y;
   };
-
+  
 };
 
 //This file includes the glenohumeral reactions created by a number of pushing muscles
@@ -90,33 +89,33 @@ AnyRevoluteJoint HumeroUlnarJoint = {
 /// This binds one DOF between humerus and Radius. Since AnyBody
 /// does not have a 5 DOF joint type we implement in manually here.
 AnyFolder HumeroRadialJoint = {
-   AnyKinLinear Linear = {
-     AnyRefNode &RadiusPs = ...Seg.Radius.PointHumeralRadialJoint;
-     AnyRefNode &UlnaPs = ...Seg.Humerus.fe; 
-     Ref = 0;
-   };
-   AnyKinEq Constraints = {
-     AnyKinMeasure& Linear  = .Linear;
-     MeasureOrganizer = {0};
-     // Reactions are implemented explicitly below
-     Reaction.Type = {Off};
-   };
-
+  AnyKinLinear Linear = {
+    AnyRefNode &RadiusPs = ...Seg.Radius.PointHumeralRadialJoint;
+    AnyRefNode &UlnaPs = ...Seg.Humerus.fe; 
+    Ref = 0;
+  };
+  AnyKinEq Constraints = {
+    AnyKinMeasure& Linear  = .Linear;
+    MeasureOrganizer = {0};
+    // Reactions are implemented explicitly below
+    Reaction.Type = {Off};
+  };
+  
   // Since the previous implementation implemented reaction forces   
   // between some explicit points 'ps2Reac' we do the same here. 
-   AnyReacForce ReacForce = 
-   {
-     AnyKinMeasureOrg RadiusHumerus = {
-       MeasureOrganizer = {0};
-       AnyKinLinear Lin = 
-       {
-         Ref = 0;
-         AnyRefFrame &Radius = .....Seg.Radius.PS2Reac;
-         AnyRefFrame &Humerus = .....Seg.Humerus.fe;
-       };
-     };
-   };
-
+  AnyReacForce ReacForce = 
+  {
+    AnyKinMeasureOrg RadiusHumerus = {
+      MeasureOrganizer = {0};
+      AnyKinLinear Lin = 
+      {
+        Ref = 0;
+        AnyRefFrame &Radius = .....Seg.Radius.PS2Reac;
+        AnyRefFrame &Humerus = .....Seg.Humerus.fe;
+      };
+    };
+  };
+  
 };
 
 
@@ -149,7 +148,7 @@ AnyTransSphericalJoint ProximalRadioUlnarJoint = {
       };
     };
   };
-
+  
 };
 
 
@@ -159,9 +158,9 @@ AnyTransSphericalJoint ProximalRadioUlnarJoint = {
 
 
 AnyTransSphericalJoint DistalRadioUlnarJoint = {
-    AnyRefNode &UlnaPs = ..Seg.Ulna.ps2_usRot;
-    AnyRefNode &RadiusPs = ..Seg.Radius.PS;
-    Axis = y;
+  AnyRefNode &UlnaPs = ..Seg.Ulna.ps2_usRot;
+  AnyRefNode &RadiusPs = ..Seg.Radius.PS;
+  Axis = y;
 }; 
 
 
@@ -196,9 +195,9 @@ AnyKinPointSurface ScapulaAIThoraxMeasure = {
   
   //RefFrames = ObjSearch("..Trunk.SegmentsThorax.ThoraxSeg.Right.RibNodes.*","AnyRefFrame"); 
   AnyFolder &surf3 =..Seg.Scapula.Ellipsoid_ai.ellipsoid;
- 
+  
   NormedMeasureOnOff = On;
-
+  
   
 };
 
@@ -235,10 +234,10 @@ AnyKinEqSimpleDriver ScapulaAIThoraxNodeDriver = {
 
 
 
-  AnyReacForce ScapulaAIThorax_ContactReaction = {
-    Type = NonNegative;
-    AnyKinMeasure &ref=.ScapulaAIThoraxNodeDriver.Measure1 ;
-  };
+AnyReacForce ScapulaAIThorax_ContactReaction = {
+  Type = NonNegative;
+  AnyKinMeasure &ref=.ScapulaAIThoraxNodeDriver.Measure1 ;
+};
 
 
 
@@ -263,7 +262,7 @@ AnyMuscleViaPoint ConoidLigamentReaction = {
   AnyMuscleModel &ref = .ReactionMuscle; 
   AnyDrawMuscle drwlig = {RGB={0,0,1};MaxStress = 75000000.000000;};
   EXCLUDE_MUSCLE_METABOLISM
-   
+  
 };
 //Artificial muscle will produce reaction in the ligament
 AnyMuscleViaPoint TrapezoidLigamentReaction = {
@@ -272,7 +271,7 @@ AnyMuscleViaPoint TrapezoidLigamentReaction = {
   AnyMuscleModel &ref = .ReactionMuscle; 
   AnyDrawMuscle drwlig = {RGB={0,0,1};MaxStress = 75000000.000000;};
   EXCLUDE_MUSCLE_METABOLISM
-   
+  
 };
 
 
@@ -283,12 +282,12 @@ AnyKinPointSurface ScapulaTSThoraxMeasure =
 {
   Base =.ThoraxScapulaMultiPointContactSettings.Base;
   Exponent=.ThoraxScapulaMultiPointContactSettings.Exponent;
- 
+  
   #include "ThoraxScapulaContactPoints.any"
-    
+  
   AnyFolder &surf3 =..Seg.Scapula.Ellipsoid_ts.ellipsoid;
   NormedMeasureOnOff = On;
- 
+  
 };
 
 
@@ -320,16 +319,16 @@ AnyFolder &scapula  =.Seg.Scapula;
 
 scapula ={
   AnyRefNode ControlNode0_ai = {sRel= .ai.sRel+...Seg.Scapula.Scale({-0.02,...Sign*0.01,0.01}); 
-//    AnyDrawNode drw ={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
+    //    AnyDrawNode drw ={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
   };
   AnyRefNode ControlNode1_ai = {sRel= .ControlNode0_ai.sRel+...Seg.Scapula.Scale({0.07,...Sign*0.01,0});
-//    AnyDrawNode drw ={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
+    //    AnyDrawNode drw ={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
   };
   AnyRefNode ControlNode2_ai = {sRel= .ControlNode0_ai.sRel+...Seg.Scapula.Scale({0.0,...Sign*(0.07+0.01),0}); 
-//    AnyDrawNode drw={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
+    //    AnyDrawNode drw={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
   };
   AnyRefNode ControlNode3_ai = {sRel= .ControlNode0_ai.sRel+...Seg.Scapula.Scale({0,...Sign*0.01,0.015});
-//    AnyDrawNode drw={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
+    //    AnyDrawNode drw={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
   };
   
   AnyRefNode Ellipsoid_ai ={ 
@@ -342,21 +341,21 @@ scapula ={
       Radius ={r1,r2,r3};
       // Radius={0.085,0.06,0.015};
       // Radius={0.07,0.06,0.015};
-    //  AnyDrawParamSurf drw ={};
+      //  AnyDrawParamSurf drw ={};
     };
   };
   
   AnyRefNode ControlNode0_ts = {sRel= .ts.sRel+...Seg.Scapula.Scale({-0.02,...Sign*(0.01),0.00});
-//    AnyDrawNode drw ={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
+    //    AnyDrawNode drw ={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
   };
   AnyRefNode ControlNode1_ts = {sRel= ...Seg.Scapula.Scale({-0.094471940+0.005, ...Sign*(-0.034+0.01), 0.01015005});
-//    AnyDrawNode drw ={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
-};
+    //    AnyDrawNode drw ={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
+  };
   AnyRefNode ControlNode2_ts = {sRel= ...Seg.Scapula.Scale({-0.1319359, ...Sign*(-0.0667+0.01), 0.008610081}); 
-//    AnyDrawNode drw={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
-};
+    //    AnyDrawNode drw={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
+  };
   AnyRefNode ControlNode3_ts = {sRel= .ControlNode0_ts.sRel+...Seg.Scapula.Scale({0,...Sign*(0.01),0.015}); 
-//    AnyDrawNode drw={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
+    //    AnyDrawNode drw={RGB={1,0,0};ScaleXYZ={1,1,1}*0.005;};
   };
   
   
@@ -369,9 +368,9 @@ scapula ={
       AnyVar r1 = vnorm(..ControlNode0_ts.sRel-..ControlNode1_ts.sRel);
       AnyVar r2 = vnorm(..ControlNode0_ts.sRel-..ControlNode2_ts.sRel);
       AnyVar r3 = vnorm(..ControlNode0_ts.sRel-..ControlNode3_ts.sRel);
-   
+      
       Radius ={r1,r2,r3};
-//      AnyDrawParamSurf drw ={};
+      //      AnyDrawParamSurf drw ={};
     };
   };  
 };
@@ -384,10 +383,10 @@ scapula ={
 
 //measure needs to always exist 
 AnyKinPointSurface  ScapulaTSThoraxMeasure = {
-    AnyRefFrame &r1 = ..Seg.Scapula.ScapulaSlidingTS;
-    AnySurface &s1 = ..ShoulderRef.ScapulaEllipsoidOrigin.Elipse;
-    NormedMeasureOnOff = Off;
-  };
+  AnyRefFrame &r1 = ..Seg.Scapula.ScapulaSlidingTS;
+  AnySurface &s1 = ..ShoulderRef.ScapulaEllipsoidOrigin.Elipse;
+  NormedMeasureOnOff = Off;
+};
 
 #endif
 
@@ -408,7 +407,7 @@ AnyKinEq SternoClavicularRotationRhythm  =
     Coef = {{1,-1}};
     OutDim = 1;
   };
-
+  
   // Use a template to create the weight function, so
   // the weight values can be overridden by the user. 
   Template_AnyFunConst Weights (NUMBER_OF_ELEMENTS=..nDim) = {};
@@ -416,18 +415,18 @@ AnyKinEq SternoClavicularRotationRhythm  =
   #if (BM_ARM_SHOULDER_RHYTHM == _RHYTHM_SOFT_) | (BM_ARM_CLAVICULA_ROTATION_RHYTHM == _RHYTHM_SOFT_)
   CType= repmat(nDim,Soft);
   #endif
-
+  
 };
 #endif
 
 
 
- #include "ScapulaConoideumDriver.any"
-  
+#include "ScapulaConoideumDriver.any"
+
 
 #if BM_ARM_SHOULDER_RHYTHM
 
-  #include "ShoulderRhythm.any"
+#include "ShoulderRhythm.any"
 
 #endif
 
@@ -442,3 +441,4 @@ AnyKinMeasureOrg PS = {
   AnyKinRotational &Jnt = .ProximalRadioUlnarJoint.Orientation;
   MeasureOrganizer = {0};
 };
+

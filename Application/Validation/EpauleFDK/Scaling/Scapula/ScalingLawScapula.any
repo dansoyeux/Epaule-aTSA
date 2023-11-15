@@ -1,0 +1,63 @@
+AnyFolder MyScalingLaw = {
+  
+  #include "ScapulaSourcePoints.any"
+  #include "ScapulaTargetPoints.any"
+  
+  AnyFunTransform3DLin2 AffineTransform = {
+    Points0 = .PointsAffine0;
+//    Points0 = ..TSeg2ScaleFrame(.PointsAffine0);
+    
+    
+    Points1 = .PointsAffine1;
+    Mode = VTK_LANDMARK_AFFINE;
+  };
+  
+  AnyFunTransform3DRBF RBFTransform = {
+    PreTransforms = {&.AffineTransform};
+    
+    PolynomDegree = 1;
+    RBFDef = {
+            Type = RBF_Triharmonic;
+//                  Type = RBF_MultiQuadratic ;
+      
+//      Type = RBF_ThinPlate; 
+      Param = 1;
+    };
+    
+    Points0 = .PointsRBF0;
+//        Points0 = ..TSeg2ScaleFrame(.PointsRBF0);
+    
+    
+    PointNames = .PointsName0;
+    Points1 = .PointsRBF1;
+    
+    BoundingBox = {
+      Type = BB_Cartesian;
+      ScaleXYZ = {2, 2, 2};
+      DivisionFactorXYZ = 1*{1, 1, 1};
+    };
+    BoundingBoxOnOff = On;
+  };
+  
+  AnyFunTransform3DLin2 ReversedTransform = {
+    Points0 = .AffineTransform.Points1;
+    Points1 = .AffineTransform.Points0;
+    Mode = VTK_LANDMARK_RIGIDBODY;
+  };
+  
+  AnyFunTransform3DIdentity MyTransform =
+  {
+    PreTransforms = {&.RBFTransform};
+  };
+  
+  
+  
+};  // MyScalingLaw
+
+
+
+
+
+
+
+

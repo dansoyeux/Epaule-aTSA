@@ -1,0 +1,37 @@
+
+// Configure the body model
+
+// Settings for arms
+#define BM_ARM_LEFT OFF
+#define BM_ARM_SHOULDER_RHYTHM ON
+#define BM_ARM_MUSCLES_RIGHT CONST_MUSCLES_3E_HILL
+
+
+// Settings for legs
+#define BM_LEG_LEFT OFF
+#define BM_LEG_RIGHT OFF
+
+// Settings for trunk
+#define BM_TRUNK_MUSCLES OFF
+
+// Settings for mannequin
+#define BM_MANNEQUIN_DRIVER_GLENOHUMERAL_ABDUCTION_RIGHT OFF
+#define BM_MANNEQUIN_DRIVER_GLENOHUMERAL_FLEXION_RIGHT OFF
+
+
+//Drawsettings path
+#path BM_DRAWSETTINGS_FILE "<ANYBODY_PATH_MAINFILEDIR>\Model\DrawSettings.any"
+
+
+
+
+//  #if AcromionScaling==2
+  
+//#endif
+
+
+
+
+//Scaling Model based on the Anthropometrics XYZ template with an added acromion to scale it
+//#path BM_SCALING_ANTHRO_FILE "MyBodyModel.any"
+//#define BM_SCALING _SCALING_USERDEFINED_

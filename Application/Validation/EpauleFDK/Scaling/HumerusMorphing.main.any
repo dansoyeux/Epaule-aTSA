@@ -1,0 +1,144 @@
+// Todo: Write a small description of your model here
+
+Main = {
+  
+  // The actual body model goes in this folder
+  AnyFolder MyModel = {
+    
+    // Global Reference Frame
+    AnyFixedRefFrame GlobalRef = {
+      // Todo: Add points for grounding of the model here
+      
+      
+      
+      
+    };
+    
+    
+ 
+    #include "Humerus/ScalingLawHumerus.any"
+    
+    AnySeg SourceHumerus = {
+      Mass = 0; Jii = {0, 0, 0};
+      
+      AnyRefNode AnatomicalFrame = {
+        AnyDrawRefFrame drw = {
+          Visible = On;
+          RGB = {256,256,0}/256; 
+        };
+      };
+      
+      AnyRefNode AnatomicalFrameTransformed = {
+        sRel = ..MyScalingLaw.Transform({0.0,0.0,0.0});
+        AnyDrawRefFrame drw = {
+          Visible = On;
+          RGB = {0,0,1};
+          
+        };
+      };      
+
+
+      
+      
+      
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+      
+      AnyDrawSurf Surface = 
+      {
+        FileName = "Humerus/SourceHumerus.stl";
+        RGB = {256,256,0}/256;
+      }; 
+      
+      AnyDrawSurf AffineTransform = 
+      {
+        Visible = Off;
+        FileName = "Humerus/SourceHumerus.stl";
+        RGB = {1,0,0};
+        AnyFunTransform3D &ref = ..MyScalingLaw.AffineTransform;
+        //AnyFunTransform3D &ref = ..MyScalingLaw.Transform_Low;
+      };      
+      
+      AnyDrawSurf RBFTransform = 
+      {
+        Visible = On;
+        FileName = "Humerus/SourceHumerus.stl";
+        RGB = {0,0,1};
+        AnyFunTransform3D &ref = ..MyScalingLaw.RBFTransform;
+      };
+            
+      
+      AnyDrawSurf MyTransform = 
+      {
+        Visible = On;
+        FileName = "Humerus/SourceHumerus.stl";
+        RGB = {1,0,1};
+        AnyFunTransform3D &ref = ..MyScalingLaw.Transform;
+      };
+      
+      
+ 
+      
+      //-----------------------------------------------------------------
+      //GRID
+      #include "grid.any"
+      AnyDrawPointCloud a = 
+      {
+        RGB = {1, 1, 0};
+        Points = .DrawGrid.Grid;
+      };
+      
+      
+      
+//      AnyDrawPointCloud c = 
+//      {
+//        RGB = {0, 0, 1};
+//        Points = ..MyScalingLaw.RBFTransform(.DrawGrid.Grid);
+//      };      
+      
+      
+
+
+      
+
+      
+      
+    };  
+  };
+
+
+  
+  // The study: Operations to be performed on the model
+  AnyBodyStudy MyStudy = {
+    AnyFolder &Model = .MyModel;
+    Gravity = {0.0, -9.81, 0.0};
+    
+      AnyOperationMacro SaveSTL_ScapulaGlobal ={
+      MacroStr= {
+        "classoperation Main.MyModel.SourceScapula.MyTransform" 
+        + strquote("Export surface") 
+        + "--file=" + strquote("ScapulaTransformed.stl")
+        + "--scale=" + strquote("1000")
+        + "--reference=" 
+        + strquote("local")
+      };
+
+    };  
+
+    
+    
+  };//Study
+  
+  
+  
+
+  };//Main
+

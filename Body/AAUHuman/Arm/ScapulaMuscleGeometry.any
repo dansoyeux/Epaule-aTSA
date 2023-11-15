@@ -1,4 +1,6 @@
 // Nodes for muscle attachments bml etc. data from VU sub2
+
+
 AnyFolder &Scapula =.Seg.Scapula;
 
 Scapula = {
@@ -197,7 +199,7 @@ Scapula = {
       Radius=vnorm(.sRel-.P3);
       Length= vnorm(.sRel-.P2);
       CapRatio=1.0;
-      //AnyDrawParamSurf drw={RGB={1,1,0};};
+//      AnyDrawParamSurf drw={RGB={1,1,0};};
     };
     
   }; 

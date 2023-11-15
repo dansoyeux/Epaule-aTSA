@@ -31,17 +31,17 @@ AnyFolder GHReactions={
     
     AnyRefNode    GHReactionCenterNode = {
       sRel=.Scale({  -0.001,-0.048,-0.030}*.Mirror);
-      //AnyDrawRefFrame drw={ScaleXYZ={0.05,0.05,0.05};};
+//      AnyDrawRefFrame drw={ScaleXYZ={0.05,0.05,0.05};};
     };
     
     AnyRefNode    EdgeNode1 = {
       sRel=.Scale({  0.001,-0.050863,-0.013}*.Mirror);
-      //AnyDrawRefFrame drw={ScaleXYZ={0.05,0.05,0.05};};
+//      AnyDrawRefFrame drw={ScaleXYZ={0.05,0.05,0.05};};
     };
     
     AnyRefNode    EdgeNode2 = {
       sRel=.Scale({  0.001,-0.035,-0.03}*.Mirror);
-      //AnyDrawRefFrame drw={ScaleXYZ={0.05,0.05,0.05};};
+//      AnyDrawRefFrame drw={ScaleXYZ={0.05,0.05,0.05};};
     };
     
     // this node is located at the center of glenohumeral cavitas and orientated in accrodance to the 
@@ -162,6 +162,8 @@ AnyFolder GHReactions={
     AnyDrawPLine line ={RGB=..LineRGB; Thickness=..LineThickness;};
   };
   
+  
+
   AnyVar Strength =5000;
   
   AnyMuscleModel MuscleMdl={F0=.Strength;};
@@ -287,7 +289,7 @@ AnyFolder GHReactions={
     AnyVec3 FTotalGlobal=F1+F2+F3+F4+F5+F6+F7+F8;
     
     AnyVec3 FTotalLocal = FTotalGlobal*...Seg.Scapula.gh.Axes;
-
+    
     
     
     //    

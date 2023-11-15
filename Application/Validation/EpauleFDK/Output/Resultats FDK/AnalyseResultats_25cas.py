@@ -892,110 +892,13 @@ Muscles
 
 # %% force des muscles projetées
 
-# # force totale
-# for muscle_name in list_muscle_variation:
-#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Force à l'origine", subplot={"dimension": [1, 3], "number": 1}, subplot_title="AP", composante_y=["Total_AP"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13], grid_x_step=15, xlim=[0, 120], same_lim=True)
-#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Force à l'origine", subplot={"dimension": [1, 3], "number": 2}, subplot_title="IS", composante_y=["Total_IS"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13], grid_x_step=15, xlim=[0, 120], same_lim=True)
-#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Force à l'origine", subplot={"dimension": [1, 3], "number": 3}, subplot_title="ML", composante_y=["Total_ML"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13], grid_x_step=15, xlim=[0, 120], same_lim=True)
+for muscle_name in list_muscle_variation:
+    # force muscle projetée origine
+    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 1}, subplot_title="AP origine", composante_y=["Total_AP"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
+    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 2}, subplot_title="IS origine", composante_y=["Total_IS"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
+    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 3}, subplot_title="ML origine", composante_y=["Total_ML"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
 
-# %% test placement annotation graph_annotation
-
-
-# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, figure_title="Déplacement absolu de la tête humérale (GHLin ISB)", variable="GHLin ISB", cases_on=CaseNames_3, composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13], annotation_offset=[3, -2.1], annotation_reference_offset=[0, 7])
-# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, figure_title="Déplacement absolu de la tête humérale (GHLin ISB)", variable="GHLin ISB", cases_on=CaseNames_3, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], annotation_offset=[0.8, -2.1], annotation_reference_offset=[0, 7])
-
-# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13], annotation_offset=[0.8, -2.1])
-# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13])
-
-# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, figure_title="Déplacement absolu de la tête humérale (GHLin ISB)", variable="GHLin ISB", cases_on=["middle-normal"], composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13], annotation_offset=[3, -2.1], annotation_reference_offset=[0, 7])
-
-
-
-
-# images pour documentation
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", "Détection du maximum", composante_y=["Total"], graph_annotation_on=True, cases_on=xLongCases_3, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 135], grid_x_step=15)
-
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", "Détection du max peak", composante_y=["Total"], graph_annotation_on=True, cases_on=xLongCases_3, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 135], grid_x_step=15, annotation_mode="max_peak")
-
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", "Détection dernière valeure d'une autre variable que celle en abscisse", composante_y=["Total"], graph_annotation_on=True, cases_on=xLongCases_3, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 135], grid_x_step=15, annotation_mode="last", annotation_variable="COP", annotation_composante="IS")
-
-
-# unsuperpose
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", "Placement par défaut", composante_y=["Total"], graph_annotation_on=True, cases_on=xLongCases_5, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 120], grid_x_step=15, annotation_mode="max_peak")
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", "Changement d'annotation de référence à celle avec y minimal", composante_y=["Total"], graph_annotation_on=True, cases_on=xLongCases_5, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 120], grid_x_step=15, annotation_mode="max_peak", annotation_reference_mode="min_y")
-
-
-
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", "Augmentation du décalage de la référence", composante_y=["Total"], graph_annotation_on=True, cases_on=xLongCases_5, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 120], grid_x_step=15, annotation_mode="max_peak", annotation_reference_offset=[6, 12])
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", "Changement du décalage entre les annotations", composante_y=["Total"], graph_annotation_on=True, cases_on=xLongCases_5, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 120], grid_x_step=15, annotation_mode="max_peak", annotation_offset=[-2, 5])
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", "Changement du décalage entre les annotations", composante_y=["Total"], graph_annotation_on=True, cases_on=xLongCases_5, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 120], grid_x_step=15, annotation_mode="max_peak", annotation_offset=[-2, 5])
-
-
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", "Augmentation du décalage de la référence", composante_y=["Total"], cases_on=xDownCases_5, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 120], grid_x_step=15)
-
-# %% test new muscle graph functions
-
-
-# comp = {"FDK": Results_GlenoidLocalAxis_MR_Polynomial, "B&S": Results_BallAndSocket}
-# """test graph2"""
-# """
-# old function
-# """
-# # # Sans compare
-# # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "Elevation", "Augmentation du décalage de la référence", composante_y=["Total"], graph_annotation_on=True, cases_on=xLongCases_5, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 120], grid_x_step=15, annotation_reference_offset=[6, 12])
-
-# # # avec compare
-# # graph(comp, "Abduction", "Elevation", "Augmentation du décalage de la référence", composante_y=["Total"], graph_annotation_on=True, cases_on=["middle-normal"], compare=True, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 120], grid_x_step=15, annotation_reference_offset=[6, 12])
-
-# """
-# new function
-# """
-# # # Sans compare
-# # graph2(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "Elevation", "Augmentation du décalage de la référence", composante_y=["Total"], graph_annotation_on=True, cases_on=xLongCases_5, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 120], grid_x_step=15, annotation_reference_offset=[6, 12])
-
-# # # avec compare
-# # graph2(comp, "Abduction", "Elevation", "Augmentation du décalage de la référence", composante_y=["Total"], graph_annotation_on=True, cases_on=["middle-normal"], compare=True, ylim=[25, 35], grid_y_step=2.5, xlim=[15, 120], grid_x_step=15, annotation_reference_offset=[6, 12])
-
-# """test COP_graph2"""
-# comp2 = {"FDK": Results_GlenoidLocalAxis_MR_Polynomial, "longRange": Results_GlenoidLocalAxis_MR_Polynomial_180deg}
-
-# # COP_graph(comp2, COP_contour, cases_on=["middle-normal"], compare=True, composantes=["ML", "IS"])
-# # COP_graph2(comp2, COP_contour, cases_on=["middle-normal"], compare=True, composantes=["ML", "IS"])
-
-# # COP_graph(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, cases_on="all", compare=False, composantes=["ML", "IS"])
-# # COP_graph2(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, cases_on="all", compare=False, composantes=["ML", "IS"])
-
-# """test muscle_graph2"""
-# # # sans compare
-# # muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, "Deltoideus lateral", "Abduction", "Fm", "figure_title", cases_on="all")
-# # muscle_graph2(Results_GlenoidLocalAxis_MR_Polynomial, "Deltoideus lateral", "Abduction", "Fm", "figure_title", cases_on="all")
-
-# # avec compare
-# muscle_graph(comp, "Deltoideus lateral", "Abduction", "Ft", "figure_title", cases_on=["middle-normal"], compare=True)
-# muscle_graph2(comp, "Deltoideus lateral", "Abduction", "Ft", "figure_title", cases_on=["middle-normal"], compare=True)
-
-
-
-# %% test des check existence des variables
-
-# encore erreur quand on a erreur en y
-# graph(Results_GlenoidLocalAxis_MR_Polynomial["middle-normal"], "Abduction", "Elevation")
-
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", cases_on=["middle-normal"], composante_y=["Total", "ML"], legend_position="center left")
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", cases_on=["middle-norma;"], composante_y=["Total", "A"], legend_position="center left")
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", cases_on=["middle-normal"], composante_y=["Total", "Ma"], legend_position="center left")
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", cases_on=["middle-norma;"], composante_y=["Total", "ML"], legend_position="center left")
-
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", cases_on=["middle-normal", "middle-xlong"], composante_y=["ML"], legend_position="center left")
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", cases_on=["middle-norma;", "middle-xlong"], composante_y=["A"], legend_position="center left")
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", cases_on=["middle-normal", "middle-xlong"], composante_y=["A"], legend_position="center left")
-# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "COP", cases_on=["middle-norma;", "middle-xlong"], composante_y=["ML"], legend_position="center left")
-
-
-# COP_graph(comp2, COP_contour, cases_on=["middle-normall"], compare=True, composantes=["AP", "IS"])
-
-
-# %% test new musclegraph
-
-# muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, "Deltoideus lateral", "Abduction", "Ft")
-
+    # force muscle projetée insertion
+    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 4}, subplot_title="AP insertion", composante_y=["Total_AP"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
+    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 5}, subplot_title="IS insertion", composante_y=["Total_IS"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
+    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 6}, subplot_title="ML insertion", composante_y=["Total_ML"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13], grid_x_step=15, xlim=[15, 120], same_lim=True)
