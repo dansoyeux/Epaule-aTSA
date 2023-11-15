@@ -93,6 +93,21 @@ MuscleVariableDictionary = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Force Musculaire à l'insertion du muscle [N]", "select_matrix_line": 1,
                                             "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                                             "combine_muscle_part_operations": ["total", "mean"]},
+                            "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Bras de levier du muscle [mm]",
+                                              "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
+                            }
+
+MuscleVariableDictionary_NoMomentArm = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Force musculaire [Newton]"},
+                                       "Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Force musculaire totale [Newton]"},
+                                       "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Activité Musculaire [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
+
+                                "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Force Musculaire à l'origine du muscle [N]", "select_matrix_line": 0,
+                                         "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                         "combine_muscle_part_operations": ["total", "mean"]},
+
+                            "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Force Musculaire à l'insertion du muscle [N]", "select_matrix_line": 1,
+                                            "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                            "combine_muscle_part_operations": ["total", "mean"]},
                             # "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Bras de levier du muscle [mm]",
                             #                  "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
                             }
@@ -169,7 +184,7 @@ BallAndSocket_ConstantsDictionary = {"AnybodyFileOutPath": "Main.Study.FileOut",
 
 FDK_Variables = define_variables_to_load(FDK_VariableDictionary, MuscleDictionary, MuscleVariableDictionary, FDK_ConstantsDictionary)
 
-FDK_Variables_NoConst = define_variables_to_load(FDK_VariableDictionary, MuscleDictionary, MuscleVariableDictionary)
+FDK_Variables_NoMomentArm = define_variables_to_load(FDK_VariableDictionary, MuscleDictionary, MuscleVariableDictionary_NoMomentArm)
 
 FDK_Variables_MyDeltoideusWrapping = define_variables_to_load(FDK_VariableDictionary, MuscleDictionary_MyDeltoideusWrapping, MuscleVariableDictionary, FDK_ConstantsDictionary)
 
@@ -229,17 +244,17 @@ CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCase
 
 SaveDataDir = r"../SaveData/Variation_CSA"
 # SaveDataDir_Macro = r"../SaveData/Macro_Results"
-date = "06-10-"
 description = "-GlenoidAxisTilt"
 
 # Chemin d'accès au dossier dans lequel les fichiers doivent être sauvegardés
 SaveSimulationsDirectory = "Saved Simulations"
 
 
-# Pour tests
-Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
+# # Pour tests
+# date = "06-10-"
+# Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
 
-aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables)
+# aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
 
 """
 Results and polynomial recruitment
@@ -247,18 +262,34 @@ Without new wrapping with xshorts
 with 25 cases
 """
 
+# date = "06-10-"
 # Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in CaseNames_5]
 
-# Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(SaveDataDir, Files, CaseNames_5, FDK_Variables)
+# Results_GlenoidLocalAxis_MR_Polynomial_delt_post_scaling = load_simulation_cases(SaveDataDir, Files, CaseNames_5, FDK_Variables_NoMomentArm)
+
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_delt_post_scaling, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_delt_post_scaling")
+
+"""
+Abduction 25 cas
+sans scaling du deltoide postérieur
+"""
+# no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
+# date = "30-10-"
+# Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
+# Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
 
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
+
 
 
 """
 Results and polynomial recruitment
 Without new wrapping with xshorts
 normal cases with 180 abduction
+
+WITHOUT MOMENT ARM
 """
 Macros_results_dir = r"../SaveData/Macro_Results"
 Macros_results_dir2 = r"../SaveData/Macro_80step_180deg"
@@ -290,7 +321,7 @@ Failed_180 = [51, 50, 50, 49, 48,
 
 # # Avec premier contact avec acromion
 # Files = [date + CaseName + description + "-MR_Polynomial-180deg" for CaseName in CaseNames_5]
-# Results_GlenoidLocalAxis_MR_Polynomial_180deg = load_simulation_cases(Macros_results_dir2, Files, CaseNames_5, FDK_Variables, Failed=Failed_180)
+# Results_GlenoidLocalAxis_MR_Polynomial_180deg = load_simulation_cases(Macros_results_dir2, Files, CaseNames_5, FDK_Variables_NoMomentArm, Failed=Failed_180)
 
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_180deg, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg")
@@ -298,31 +329,22 @@ Failed_180 = [51, 50, 50, 49, 48,
 """
 En ne prenant pas en compte conflit avec acromion
 """
-# Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange = load_simulation_cases(Macros_results_dir2, Files, CaseNames_5, FDK_Variables, Failed=Failed_180_Simulation)
+# Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange = load_simulation_cases(Macros_results_dir2, Files, CaseNames_5, FDK_Variables_NoMomentArm, Failed=Failed_180_Simulation)
 
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange")
 
-
-"""
-sans scaling du deltoide postérieur
-"""
-# no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
-# Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
-# Results_GlenoidLocalAxis_MR_Polynomial_no_delt_post_scaling = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_no_delt_post_scaling, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_delt_post_scaling")
-
 """
 Élévation
 """
+
 # Elevation_dir = "../SaveData/No_delt_post_scaling_Elevation"
 # Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling-Elevation" for CaseName in CaseNames_5]
-# Results_GlenoidLocalAxis_MR_Polynomial_no_delt_post_scaling_Elevation = load_simulation_cases(Elevation_dir, Files, CaseNames_5, FDK_Variables)
+
+# Results_GlenoidLocalAxis_MR_Polynomial_Elevation = load_simulation_cases(Elevation_dir, Files, CaseNames_5, FDK_Variables_NoMomentArm)
 
 # # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_no_delt_post_scaling_Elevation, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_delt_post_scaling_Elevation")
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation")
 
 
 # %% autres tests

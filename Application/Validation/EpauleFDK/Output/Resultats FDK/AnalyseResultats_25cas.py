@@ -266,9 +266,9 @@ Results_GlenoidLocalAxis_MR_Polynomial_180deg = load_results_from_file(SaveSimul
 
 Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange")
 
-Results_GlenoidLocalAxis_MR_Polynomial_no_delt_post_scaling = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_delt_post_scaling")
+Results_GlenoidLocalAxis_MR_Polynomial_delt_post_scaling = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_delt_post_scaling")
 
-Results_GlenoidLocalAxis_MR_Polynomial_no_delt_post_scaling_Elevation = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_delt_post_scaling_Elevation")
+Results_GlenoidLocalAxis_MR_Polynomial_delt_post_scaling_Elevation = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation")
 
 
 # Results_GlenoidLocalAxis_MR_Polynomial_NewWrapping = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_NewWrapping")
@@ -884,7 +884,7 @@ Muscles
 #     PremadeGraphs.muscle_graph_from_list(comp_full_range, Muscles_Aux, [3, 3], "Abduction", "Activity", f"{Case} : Muscles auxiliaires : Activation maximale des muscles", cases_on=[Case], compare=True, composante_y=["Max"], figsize=[24, 16])
 #     PremadeGraphs.muscle_graph_from_list(comp_full_range, Muscles_Extra, [2, 3], "Abduction", "Activity", f"{Case} : Muscles extras : Activation maximale des muscles", cases_on=[Case], compare=True, composante_y=["Max"], figsize=[24, 16])
 
-# %% comp no delt post scaling
+
 # %% Elevation plan scapula
 
 # # Par variables tilt et acromion
@@ -892,13 +892,14 @@ Muscles
 
 # %% force des muscles projetées
 
-for muscle_name in list_muscle_variation:
-    # force muscle projetée origine
-    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 1}, subplot_title="AP origine", composante_y=["Total_AP"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
-    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 2}, subplot_title="IS origine", composante_y=["Total_IS"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
-    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 3}, subplot_title="ML origine", composante_y=["Total_ML"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
+# for muscle_name in list_muscle_variation:
+#     # force muscle projetée origine
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 1}, subplot_title="AP origine", composante_y=["Total_AP"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 2}, subplot_title="IS origine", composante_y=["Total_IS"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 3}, subplot_title="ML origine", composante_y=["Total_ML"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
 
-    # force muscle projetée insertion
-    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 4}, subplot_title="AP insertion", composante_y=["Total_AP"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
-    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 5}, subplot_title="IS insertion", composante_y=["Total_IS"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
-    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 6}, subplot_title="ML insertion", composante_y=["Total_ML"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13], grid_x_step=15, xlim=[15, 120], same_lim=True)
+#     # force muscle projetée insertion
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 4}, subplot_title="AP insertion", composante_y=["Total_AP"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 5}, subplot_title="IS insertion", composante_y=["Total_IS"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 6}, subplot_title="ML insertion", composante_y=["Total_ML"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13], grid_x_step=15, xlim=[15, 120], same_lim=True)
+
