@@ -1,0 +1,94 @@
+AnyFolder EvaluateMomentArms = {
+  
+  AnyFolder &Mus=Main.HumanModel.BodyModel.Right.ShoulderArm.Mus;
+ 
+  // Formule pour calculer la vitesse du driver, 
+  // Me pas referencer le driver directement sinon lors du load ferait division par 0
+  // Mettre la meme formule que celle mise dans la vitesse angulaire du driver d'abduction dans AngularVelocity
+  
+  //AnyVar AngularVelocity = (120/4)/180*pi;
+  
+  //Vitesses du driver fourier avec 70 steps
+  AnyVector FourierAngularVelocity = {1.46888E-18,
+    0.001091833,
+    0.002181402,
+    0.00326645,
+    0.004344728,
+    0.005414001,
+    0.006472053,
+    0.00751669,
+    0.008545748,
+    0.009557093,
+    0.01054863,
+    0.011518303,
+    0.012464103,
+    0.013384069,
+    0.014276294,
+    0.01513893,
+    0.015970188,
+    0.016768345,
+    0.017531748,
+    0.018258813,
+    0.018948034,
+    0.019597982,
+    0.02020731,
+    0.020774756,
+    0.021299143,
+    0.021779384,
+    0.022214484,
+    0.022603541,
+    0.022945749,
+    0.023240398,
+    0.023486878,
+    0.023684678,
+    0.023833387,
+    0.023932699,
+    0.023982406,
+    0.023982406,
+    0.023932699,
+    0.023833387,
+    0.023684678,
+    0.023486878,
+    0.023240398,
+    0.022945749,
+    0.022603541,
+    0.022214484,
+    0.021779384,
+    0.021299143,
+    0.020774756,
+    0.02020731,
+    0.019597982,
+    0.018948034,
+    0.018258813,
+    0.017531748,
+    0.016768345,
+    0.015970188,
+    0.01513893,
+    0.014276294,
+    0.013384069,
+    0.012464103,
+    0.011518303,
+    0.01054863,
+    0.009557093,
+    0.008545748,
+    0.00751669,
+    0.006472053,
+    0.005414001,
+    0.004344728,
+    0.00326645,
+    0.002181402,
+    0.001091833,
+    1.46888E-18
+  };  
+  
+  
+  AnyVar AngularVelocity = FourierAngularVelocity[Main.Study.iStep]; 
+
+  #define _CODE_MACRO_(name) \
+  // Creation de la variable MomentArm dans le dossier du muscle
+  Mus.name = {AnyVar MomentArm = -1 * LmtDot/..AngularVelocity;}; \
+  // Creation d'un dossier qui stocke aussi les MomentArm de chaque muscle
+  AnyVar name = -1 * Mus.name.LmtDot/AngularVelocity;
+  #include  "ArmMuscleList.any"
+
+};

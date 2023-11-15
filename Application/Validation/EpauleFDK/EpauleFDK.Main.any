@@ -1,26 +1,60 @@
 #include "../libdef.any"
 
 // Find a detailed description of the model here
+
+//TO MODIFY
 #include "Model/Description.any"
+
 
 Main = {
   
   
   
-  // Input Parameters. To modify at each simulation
+  //File to change before each simulation 
   #include "Input/InputVariables.any"
   
-  // Values and files to parameter the model.
-  #include "Model/LoadValues.any"
-  #include "Model/LoadFiles.any"
+  //Definition of the CSA variation cases (glenoid rotation and acromion length)
+  #include "Model/CSAVariation.any"
   
-
-  // Function to modify the humerus head and glen to display implants
+  #if BallAndSocket == 0
+  
+  //Changes the deltoideus definition to add new wrapping cylinders
+  #if NewDeltoidWrappingOn == 1
+  #include "Model/MyDeltoidDefinition.any"
+  #include "Model/MyDeltoidWrapping.any"
+  #endif
+  
+  
+  //Places a glenoid and a humeral implant
+  #include "Model/Implants.any"
+  
+  // Creates a modified version of the GHReaction forces of the AMMR
+  // Changes the force to pull to have the same effect
+//  #if GHReactionsOn==1
+//  
+//  // Nodes are around a circle
+//  #if GHReactionsShape == Circle 
+//  #include "Model/MyGHReactions-Circle.any"
+//  #endif
+//  
+//  // Nodes are on the edges of the glenoid
+//  #if GHReactionsShape == Edge 
+//  #include "Model/MyGHReactions-Edge.any"
+//  #endif
+//  
+//  #endif // #if GHReactionsOn
+  
+  #endif // #if BallAndSocket
+  
+  
+//  #include "<ANYBODY_PATH_MODELUTILS>\Operations\RunAppSequence.any"
+  
+  #include "Model/BodyModelSettings.any"
   
   
   
-  #include "<ANYBODY_PATH_MODELUTILS>\Operations\RunAppSequence.any"
-  #include "Model/BMSettings.any"
+  //Morphes the scapula to make the acromion longer
+  #include "Scaling/ScalingCustom.any"
   
   #include "<ANYBODY_PATH_BODY>/HumanModel.any"    
   
@@ -30,37 +64,146 @@ Main = {
     BodyModel.Right.ShoulderArm.Seg.Humerus.gh = {
       AnyRefNode Bergmann = {
         ARel = RotMat(90*pi/180,y);
-//        AnyDrawRefFrame drwref = {
-//          RGB = {1,0,0};
-//          ScaleXYZ = {1,1,1}/5;
-//        };
+        AnyDrawRefFrame drwref = {
+          Visible = Off;
+          RGB = {0,1,0};
+          ScaleXYZ = {1,1,1}/15;
+        };
       };
     };
   };
-    
-
-
+  
+  
+  
   AnyFolder Model = {
     
     AnyFolder &BodyModel=.HumanModel.BodyModel;
+    AnyFolder &MannequinDrivers = .HumanModel.DefaultMannequinDrivers;
+    
     
     // Definition of the model environment
     #include "Model/Environment.any"
     
     AnyFolder ModelEnvironmentConnection = {
       #include "Model/JointsAndDrivers.any"
+      // Additional reactions which are required to run the inverse dynamics analysis with the pelvis-ground interface used
+      #include "Model\Reactions.any"
+      
     };
   };
   
+  
+  // Shortcuts
+  AnyFolder &Jnt = Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt;
+  AnyFolder &Seg = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg;
+  AnyFolder &Mus = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus;
+ 
+  
   AnyBodyStudy Study = {
+    
+    // Shortcuts
     AnyFolder &Model = .Model;
+    AnyFolder &Jnt = Model.BodyModel.Right.ShoulderArm.Jnt;
+    AnyFolder &Seg = Model.BodyModel.Right.ShoulderArm.Seg;
+    AnyFolder &Mus = Model.BodyModel.Right.ShoulderArm.Mus;
     
-   
+    // Evaluates the arm muscles moment arms   
+    #include "Model/EvaluateAbductionMomentArm.any"
     
-    tEnd = 8.0; // 5;
+    // Script to save the muscle calibration into an .anyset file
+    // And load it at the beginning of a simulation instead of running it each time
+    // There is one file saved for each CSA cases
+    #include "Model/CachedMuscleCalibration.any"
+    
+    //Operation to run
+    #include "Output/RunEpauleFDK.any"
+    
+    
+    //Replaces the GlenoHumeral BallAndSocket joint with a 5 DOF FDK driven joint
+    #include "Model/GHJointExchange.any"
+    
+    #if BallAndSocket == 0    
+    //Adds contact between the shoulder implants
+    #include "Model/ContactForces.any"
+    
+    
+    InverseDynamics.ForceDepKinOnOff=On;
+    InverseDynamics.ForceDepKin.MaxIteration=50;
+    
+    AnyOutputFun ForceDepKinError = {
+      Val = Main.Study.InverseDynamics.ForceDepKinError;
+    };
+    #endif
+    
+
+    
+  
+    
+    
+    #if BallAndSocket == 1
+    // Output variables collecting the GH forces in the pertinent coordinate frame
+    AnyVec3 GHReactionInHumerus = -(Model.BodyModel.Right.ShoulderArm.Seg.Humerus.gh.Bergmann.Axes'
+    *Model.BodyModel.Right.ShoulderArm.Jnt.GHReactions.ResultanForce.FTotalGlobal')';
+    #endif
+    
     Gravity = {0.01, -9.81, 0.01};
-    nStep = 30; //19;
-//    MuscleEliminationTol = 1e-6;
+    
+    // Lauranne   
+    tEnd = DesignVar(120.0); // 5;
+    
+    //   Small abduction (15 deg --> 15.5)
+    #if SmallAbductionOn == 1
+    nStep = 1;
+    
+    // Full abduction (15 deg --> 120deg)
+    #else
+    // For testing
+    nStep = DesignVar(70);
+    // Lauranne
+//                nStep = 60;
+
+    #endif
+    
+    
+////    Type de recrutement musculaire
+    InverseDynamics.Criterion.Type= MuscleRecruitmentType;
+    
+    //    Mesure of abduction angle (GH angle mesure is xzy)
+    AnyVar rot = Main.HumanModel.BodyModel.Interface.Right.GlenohumeralAbduction.Pos[0]; // Total Abduction angle [rad]
+    AnyVar rotD= rot*180/pi; // Total Abduction angle [deg]
+
+    
+
+    
+    
+    // Creares the output file name
+    // Check that file does not exist, otherwise makes a sequenced file (i.e. NameFile_#filenumber.txt)
+    #include "Output/Output_CheckName.any"
+    AnyString OutputFileName = get_filename({ANYBODY_PATH_OUTPUT + m_ResultFolder + m_ResultFile},{"txt"});
+    
+    
+    #if AnyOutputFileOn == 1
+    //Create output file results only when doing the full movement and with the implants
+    #if BallAndSocket ==0
+    #include "Output/Output_File_FDK.any"
+    #else
+    #include "Output/Output_File_BallAndSocket.any"
+    #endif
+    #endif
+    
+    //    MuscleEliminationTol = 1e-6;
   }; // End of study
   
 }; //Main
+
+
+
+
+
+
+
+
+
+
+
+

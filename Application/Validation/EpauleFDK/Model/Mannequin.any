@@ -26,10 +26,12 @@ AnyFolder Mannequin = {
       //Arm 
       AnyVar SternoClavicularProtraction=-23;   //This value is not used for initial position
       AnyVar SternoClavicularElevation=11.5;    //This value is not used for initial position
+                  
+      AnyVar GlenohumeralFlexion = 0; 
+      AnyVar GlenohumeralAbduction = 15; //1 
       
-      AnyVar GlenohumeralFlexion =0; 
-      AnyVar GlenohumeralAbduction = 1; 
-      AnyVar GlenohumeralExternalRotation = 0; 
+      AnyVar GlenohumeralExternalRotation = HumExternalRotation;
+      
       
       AnyVar ElbowFlexion = 1; 
       AnyVar ElbowPronation = 20.0;
@@ -49,31 +51,30 @@ AnyFolder Mannequin = {
     };
     
     AnyFolder Left = {
-      //all values are set to be equal to the right side values 
-      //feel free to change this!
+      //Arm 
+      AnyVar SternoClavicularProtraction=-23;   //This value is not used for initial position
+      AnyVar SternoClavicularElevation=11.5;    //This value is not used for initial position
+                  
+      AnyVar GlenohumeralFlexion = 0; 
+      AnyVar GlenohumeralAbduction = 15; //1 
       
-      //Arm
-      AnyVar SternoClavicularProtraction=.Right.SternoClavicularProtraction;
-      AnyVar SternoClavicularElevation=.Right.SternoClavicularElevation;
-      
-      AnyVar GlenohumeralFlexion = .Right.GlenohumeralFlexion ; 
-      AnyVar GlenohumeralAbduction =.Right.GlenohumeralAbduction ;
-      AnyVar GlenohumeralExternalRotation =.Right.GlenohumeralExternalRotation ;
-
-      AnyVar ElbowFlexion = .Right.ElbowFlexion; 
-      AnyVar ElbowPronation = .Right.ElbowPronation;       
-      AnyVar WristFlexion =.Right.WristFlexion;
-      AnyVar WristAbduction =.Right.WristAbduction;
+      AnyVar GlenohumeralExternalRotation = HumExternalRotation;
       
       
+      AnyVar ElbowFlexion = 1; 
+      AnyVar ElbowPronation = 20.0;
       
-      //Leg     
-      AnyVar HipFlexion =.Right.HipFlexion;  
-      AnyVar HipAbduction =.Right.HipAbduction;
-      AnyVar HipExternalRotation = .Right.HipExternalRotation;
-      AnyVar KneeFlexion = .Right.KneeFlexion;       
-      AnyVar AnklePlantarFlexion = .Right.AnklePlantarFlexion ;
-      AnyVar SubTalarEversion =.Right.SubTalarEversion; 
+      AnyVar WristFlexion =0;
+      AnyVar WristAbduction =0;
+      
+      AnyVar HipFlexion = 0.0; 
+      AnyVar HipAbduction = 50.0; 
+      AnyVar HipExternalRotation = 0.0;
+      
+      AnyVar KneeFlexion = 30.0; 
+      
+      AnyVar AnklePlantarFlexion =0.0; 
+      AnyVar SubTalarEversion =0.0; 
       
       
     };
@@ -81,8 +82,8 @@ AnyFolder Mannequin = {
   
   
   
-AnyFolder PostureVel={  
-      //This controls the position of the pelvi wrt. to the global reference frame
+  AnyFolder PostureVel={  
+    //This controls the position of the pelvi wrt. to the global reference frame
     AnyVar PelvisPosX=0;
     AnyVar PelvisPosY=0;
     AnyVar PelvisPosZ=0;
@@ -108,7 +109,7 @@ AnyFolder PostureVel={
       AnyVar SternoClavicularElevation=0;    //This value is not used for initial position
       
       AnyVar GlenohumeralFlexion =0; 
-      AnyVar GlenohumeralAbduction = 45/Main.Study.tEnd;
+      AnyVar GlenohumeralAbduction = 0;
       AnyVar GlenohumeralExternalRotation = 0; 
       
       AnyVar ElbowFlexion = 0.0;
@@ -129,31 +130,31 @@ AnyFolder PostureVel={
     };
     
     AnyFolder Left = {
-      //all values are set to be equal to the right side values 
-      //feel free to change this!
+      //Arm 
+      AnyVar SternoClavicularProtraction=0;   //This value is not used for initial position
+      AnyVar SternoClavicularElevation=0;    //This value is not used for initial position
       
-      //Arm
-      AnyVar SternoClavicularProtraction=.Right.SternoClavicularProtraction;
-      AnyVar SternoClavicularElevation=.Right.SternoClavicularElevation;
+      AnyVar GlenohumeralFlexion =0; 
+      AnyVar GlenohumeralAbduction = 0;
+      AnyVar GlenohumeralExternalRotation = 0; 
       
-      AnyVar GlenohumeralFlexion = .Right.GlenohumeralFlexion ; 
-      AnyVar GlenohumeralAbduction =.Right.GlenohumeralAbduction ;
-      AnyVar GlenohumeralExternalRotation =.Right.GlenohumeralExternalRotation ;
-
-      AnyVar ElbowFlexion = .Right.ElbowFlexion; 
-      AnyVar ElbowPronation = .Right.ElbowPronation;       
-      AnyVar WristFlexion =.Right.WristFlexion;
-      AnyVar WristAbduction =.Right.WristAbduction;
+      AnyVar ElbowFlexion = 0.0;
+      AnyVar ElbowPronation = 0.0;
       
-      //Leg     
-      AnyVar HipFlexion =.Right.HipFlexion;  
-      AnyVar HipAbduction =.Right.HipAbduction;
-      AnyVar HipExternalRotation = .Right.HipExternalRotation;
-      AnyVar KneeFlexion = .Right.KneeFlexion;       
-      AnyVar AnklePlantarFlexion = .Right.AnklePlantarFlexion ;
-      AnyVar SubTalarEversion =.Right.SubTalarEversion; 
+      AnyVar WristFlexion =0;
+      AnyVar WristAbduction =0;
+      
+      AnyVar HipFlexion = 0.0; 
+      AnyVar HipAbduction = 0.0; 
+      AnyVar HipExternalRotation = 0.0;
+      
+      AnyVar KneeFlexion = 0.0; 
+      
+      AnyVar AnklePlantarFlexion =0.0; 
+      AnyVar SubTalarEversion =0.0; 
     };
   };
 };
+
 
 

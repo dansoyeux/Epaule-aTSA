@@ -1,0 +1,144 @@
+ 
+//    // Shortcuts
+//    AnyFolder &Jnt = Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt;
+//    AnyFolder &Seg = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg;
+//    AnyFolder &Mus = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus;
+
+
+
+// Save in a *.txt file
+AnyOutputFile FileOut = {
+  FileName = .OutputFileName + ".txt";
+  
+  NumberFormat.Digits = 6;
+  
+  // Header
+  Header = {
+    TitleSectionOnOff = On;
+    ConstSectionOnOff = On;
+    VarSectionOnOff = On;
+    ColumnNamesOnOff = On;  //swicth the column names on/off
+    LinePrefix = "";
+    ShortenNamesOnOff = Off;
+    
+  };     
+  //-----------------SIMULATIONS PARAMETERS----------------------------
+  // Input Values 
+  AnyVar nStep = Main.Study.nStep;
+  AnyVar tEnd = Main.Study.tEnd;
+  
+  // Movement type
+  
+  #if ArmMovement == Abduction
+  AnyString Movement = "Abduction";
+  #endif
+  
+  #if ArmMovement == Elevation
+  AnyString Movement = "Elevation";
+  
+  #endif
+  
+  // Muscle recruitment type
+  AnyEnumMuscleRecruitmentType MuscleRecruitment = Main.Study.InverseDynamics.Criterion.Type;
+  AnyFloat AuxLinearTerm_Weight = Main.Study.InverseDynamics.Criterion.AuxLinearTerm.Weight;
+  
+  
+  //Muscle wrapping
+  #if NewDeltoidWrappingOn == 1
+  AnyFloat LateralWrapping_RadiusX = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.My_DeltoidWrappingLateral.RadiusX;
+  AnyFloat LateralWrapping_Radius = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.My_DeltoidWrappingLateral.Radius;
+  AnyFloat LateralWrapping_RadiusHeight = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.My_DeltoidWrappingLateral.RadiusHeight;
+  
+  AnyFloat PosteriorWrapping_RadiusX = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.My_DeltoidWrappingPosterior.RadiusX;
+  AnyFloat PosteriorWrapping_Radius = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.My_DeltoidWrappingPosterior.Radius;
+  AnyFloat PosteriorWrapping_RadiusHeight = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.My_DeltoidWrappingPosterior.RadiusHeight;
+  
+  
+  
+  #if WrappingSurfaceType == 1
+  AnyString WrappingSurfaceShape = "Cylinder";
+  #endif
+  #if WrappingSurfaceType == 2
+  AnyString WrappingSurfaceShape = "Ellipsoid";
+  #endif
+  #endif
+  
+  
+  
+  // GHReaction activation
+  #if GHReactionsOn == 1
+  AnySwitch GHReactions = On;
+  AnyVar EdgeMuscleStrength = Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.MyGHReactions.Strength;
+  #else
+  AnySwitch GHReactions = Off;
+  #endif
+  
+  // CSA case 
+  AnyString Case = CSA_Case;
+  
+  // Manequin initial values
+  AnyVar GlenohumeralFlexion = Main.HumanModel.Mannequin.Posture.Right.GlenohumeralFlexion;
+  AnyVar GlenohumeralAbduction = Main.HumanModel.Mannequin.Posture.Right.GlenohumeralAbduction;
+  AnyVar GlenohumeralExternalRotation = Main.HumanModel.Mannequin.Posture.Right.GlenohumeralExternalRotation;
+  
+  
+  
+  
+  //----------------SIMULATION MEASUREMENTS--------------
+  
+  // KINEMATIC
+  AnyVar rotD= Main.Study.rotD; // Total abduction angle (deg)
+  
+  #if ArmMovement == Elevation
+  AnyVar rotDAbd = Main.Study.rotDAbd;
+  
+  #endif
+  
+  AnyVar vel = Main.HumanModel.BodyModel.Interface.Right.GlenohumeralAbduction.Vel[0]; // Angular velocity
+  
+  // Humeral head Cordinate System (CS)
+  AnyFloat pos = .Jnt.GHLin.Pos;     // Humeral head CS position vs glenoid CS (gh)
+  AnyFloat angles = .Jnt.GHRot.Pos;  // Humeral head CS rotation vs glenoid CS (gh)
+  
+  // Scapula CS
+  AnyFloat Scap_R = .Seg.Scapula.Axes; // Rotation Scapula vs global
+  AnyFloat Scap_P = .Seg.Scapula.r;    // Position Scapula vs global
+  
+  // gh CS
+  AnyFloat Gh_R = .Seg.Scapula.gh.Axes; // Rotation gh vs global
+  AnyFloat Gh_P= .Seg.Scapula.gh.r;     // Position gh vs global
+  
+  //    #if BallAndSocket==1
+  //      AnyFloat ContactForce = .Jnt.GHReactions.ResultanForce.FTotalLocalGhProth;
+  //    #endif
+  // Muscles activities and forces
+  AnyVar MaxMuscleAct = Main.Study.MaxMuscleActivity;
+  
+  
+  #if GHReactionsOn == 0
+  Search = {"Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_*.Ft","Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_*.CorrectedActivity"
+    ,"Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_*.Ft", "Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_*.CorrectedActivity"
+    ,"Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_*.Ft","Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_*.CorrectedActivity"
+    ,"Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus*.Ft", "Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus*.CorrectedActivity"};
+  #endif
+  
+  // Adds the general muscles and the position of the EdgeNodes if the GHReactions are activated
+  #if GHReactionsOn == 1
+  Search = {"Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_*.Ft","Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_*.CorrectedActivity"
+    ,"Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_*.Ft", "Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_*.CorrectedActivity"
+    ,"Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_*.Ft","Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_*.CorrectedActivity"
+    ,"Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus*.Ft", "Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus*.CorrectedActivity"
+    ,"Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.MyGHReactions.EdgeMuscle*.Ft","Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.MyGHReactions.EdgeMuscle*.CorrectedActivity"
+    ,"Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GlenImplantPos.GHReactionCenterNode.CavityEdgeNode*.r"
+  };
+  #endif
+  
+  
+  
+};
+
+
+
+
+
+

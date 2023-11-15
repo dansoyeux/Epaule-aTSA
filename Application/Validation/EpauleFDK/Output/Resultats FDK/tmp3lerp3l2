@@ -1,0 +1,754 @@
+import Anybody_LoadOutput.Tools as LoadOutputTools
+import Anybody_Graph.GraphFunctions as Graph
+
+from Anybody_Graph import PremadeGraphs
+
+# %% Setup des couleurs et légendes
+
+SimulationsLineStyleDictionary = {
+    # Glen xdown
+    "xdown-xshort": {"color": "lightblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "xdown-normal": {"color": "cornflowerblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "xdown-xlong": {"color": "midnightblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+
+    # Glen down
+    "down-xshort": {"color": "violet", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2.5},
+    "down-short": {"color": "magenta", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "down-normal": {"color": "mediumorchid", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "down-long": {"color": "blueviolet", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "down-xlong": {"color": "purple", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2.5},
+
+    # glen normal
+    "middle-xshort": {"color": "lime", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "middle-short": {"color": "greenyellow", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2.5},
+    "middle-normal": {"color": "mediumseagreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "middle-long": {"color": "darkolivegreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "middle-xlong": {"color": "darkgreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+
+    # Glen up
+    "up-xshort": {"color": "yellow", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
+    "up-short": {"color": "gold", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "up-normal": {"color": "orange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "up-long": {"color": "salmon", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "up-xlong": {"color": "orangered", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+
+    # Glen xup
+    "xup-xshort": {"color": "pink", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "xup-short": {"color": "deeppink", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "xup-normal": {"color": "red", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "xup-long": {"color": "indianred", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "xup-xlong": {"color": "darkred", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+
+    # Type gh joint
+    "FDK": {"color": "tab:blue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "FDK Full Range": {"color": "tab:red", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "Ball And Socket": {"color": "black", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+
+    "Résultats": {"color": "darkorange"},
+
+    # data de validation
+    "Lauranne": {"color": 'hotpink'},
+    "Marta": {"color": 'darkturquoise'},
+    "Dal Maso supérieur": {"color": "black", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
+    "Dal Maso inférieur": {"color": "grey", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
+    "Bergmann": {"color": "black"},
+    "Wickham": {"color": "darkorange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3}
+}
+
+
+SimulationDescriptionDictionary = [
+    # Nom des cas de simulation
+
+
+    "xdown-xshort", "CSA = 12° : Glene très basse      -  Acromion très court",
+    "xdown-short", "CSA = 16° : Glene très basse      -  Acromion court",
+    "xdown-normal", "CSA = 20° : Glene très basse      -  Acromion normal",
+    "xdown-long", "CSA = 25° : Glene très basse      -  Acromion long",
+    "xdown-xlong", "CSA = 30° : Glene très basse      -  Acromion très long",
+
+    "down-xshort", "CSA = 16° : Glene basse             -  Acromion très court",
+    "down-short", "CSA = 20° : Glene basse             -  Acromion court",
+    "down-normal", "CSA = 25° : Glene basse             -  Acromion normal",
+    "down-long", "CSA = 30° : Glene basse             -  Acromion long",
+    "down-xlong", "CSA = 35° : Glene basse             -  Acromion très long",
+
+    "middle-xshort", "CSA = 20° : Glene normale         -  Acromion très court",
+    "middle-short", "CSA = 25° : Glene normale         -  Acromion court",
+    "middle-normal", "CSA = 30° : Glene normale         -  Acromion normal",
+    "middle-long", "CSA = 35° : Glene normale         -  Acromion long",
+    "middle-xlong", "CSA = 40° : Glene normale         -  Acromion très long",
+
+    "up-xshort", "CSA = 25° : Glene haute             -  Acromion très court",
+    "up-short", "CSA = 30° : Glene haute             -  Acromion court",
+    "up-normal", "CSA = 35° : Glene haute             -  Acromion normal",
+    "up-long", "CSA = 40° : Glene haute             -  Acromion long",
+    "up-xlong", "CSA = 45° : Glene haute             -  Acromion très long",
+
+    "xup-xshort", "CSA = 30° : Glene très haute      -  Acromion très court",
+    "xup-short", "CSA = 35° : Glene très haute      -  Acromion court",
+    "xup-normal", "CSA = 40° : Glene très haute      -  Acromion normal",
+    "xup-long", "CSA = 45° : Glene très haute      -  Acromion long",
+    "xup-xlong", "CSA = 50° : Glene très haute      -  Acromion très long",
+
+    # Nom des composantes
+    "AP", "Axe antéropostérieur (Antérieur = +)",
+    "IS", "Axe inférosupérieur (Supérieur = +)",
+    "ML", "Axe médiolatéral (Latéral = +)",
+
+    # Nom des datas de validation
+    "Wickham", "Wickham et al. 2010, n=24",
+    "Bergmann", "Bergmann et al. 2007"
+
+
+]
+
+# Fonctions pour définir les légendes et styles des graphiques en fonction des noms des simulations dans les dictionnaires
+Graph.define_simulations_line_style(SimulationsLineStyleDictionary)
+Graph.define_simulation_description(SimulationDescriptionDictionary)
+
+# Fonction pour définir le contour qui sera dessiné par la fonction COP_graph
+COP_contour = Graph.define_COP_contour("GleneContour", "pp")
+
+
+# %% Nom des cas de simulation
+
+OldCaseNames = ["middle-normal", "middle-long",
+                "up-normal", "up-short",
+                "down-long"]
+
+# Tilt acromion
+xUpCases_3 = ["xup-xshort", "xup-normal", "xup-xlong"]
+UpCases_3 = ["up-xshort", "up-normal", "up-xlong"]
+MiddleCases_3 = ["middle-xshort", "middle-normal", "middle-xlong"]
+DownCases_3 = ["down-xshort", "down-normal", "down-xlong"]
+xDownCases_3 = ["xdown-xshort", "xdown-normal", "xdown-xlong"]
+
+# Longueur d'acromion
+xShortCases_3 = ["xdown-xshort", "middle-xshort", "xup-xshort"]
+ShortCases_3 = ["xdown-short", "middle-short", "xup-short"]
+NormalCases_3 = ["xdown-normal", "middle-normal", "xup-normal"]
+LongCases_3 = ["xdown-long", "middle-long", "xup-long"]
+xLongCases_3 = ["xdown-xlong", "middle-xlong", "xup-xlong"]
+
+CaseNames_3 = [*xDownCases_3, *MiddleCases_3, *xUpCases_3]
+UpDownCases_3 = [*xUpCases_3, *xDownCases_3]
+
+# 9 CSA différents
+CSA_12_Cases = ["xdown-xshort"]
+CSA_16_Cases = ["xdown-short", "down-xshort"]
+CSA_20_Cases = ["xdown-normal", "down-short", "middle-xshort"]
+CSA_25_Cases = ["xdown-long", "down-normal", "middle-short", "up-xshort"]
+CSA_30_Cases = ["xdown-xlong", "down-long", "middle-normal", "up-short", "xup-xshort"]
+CSA_35_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
+CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
+CSA_45_Cases = ["up-xlong", "xup-long"]
+CSA_50_Cases = ["xup-xlong"]
+
+# More cases
+xDownCases_5 = ["xdown-xshort", "xdown-short", "xdown-normal", "xdown-long", "xdown-xlong"]
+DownCases_5 = ["down-xshort", "down-short", "down-normal", "down-long", "down-xlong"]
+MiddleCases_5 = ["middle-xshort", "middle-short", "middle-normal", "middle-long", "middle-xlong"]
+UpCases_5 = ["up-xshort", "up-short", "up-normal", "up-long", "up-xlong"]
+xUpCases_5 = ["xup-xshort", "xup-short", "xup-normal", "xup-long", "xup-xlong"]
+
+xShortCases_5 = ["xdown-xshort", "down-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
+ShortCases_5 = ["xdown-short", "down-short", "middle-short", "up-short", "xup-short"]
+NormalCases_5 = ["xdown-normal", "down-normal", "middle-normal", "up-normal", "xup-normal"]
+LongCases_5 = ["xdown-long", "down-long", "middle-long", "up-long", "xup-long"]
+xLongCases_5 = ["xdown-xlong", "down-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
+
+CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
+
+CompWickham_CasesNames_3 = [*CaseNames_3, "Wickham", "Ball And Socket"]
+
+# %% Catégories de simulation
+
+# With xdown, middle, xup
+CasesVariables_3 = {"Tilt": {"Glene très basse": xDownCases_3, "Glène normale": MiddleCases_3, "Glène très haute": xUpCases_3},
+                    "Acromion": {"Acromion très court": xShortCases_3, "Acromion normal": NormalCases_3, "Acromion très long": xLongCases_3}}
+# With xdown, middle, xup
+CasesVariables_5 = {"Tilt": {"Glene très basse": xDownCases_5, "Glene basse": DownCases_5, "Glène normale": MiddleCases_5, "Glène haute": UpCases_5, "Glène très haute": xUpCases_5},
+                    "Acromion": {"Acromion très court": xShortCases_5, "Acromion court": ShortCases_5, "Acromion normal": NormalCases_5, "Acromion long": LongCases_5, "Acromion très long": xLongCases_5}}
+
+# Tilt
+CasesVariables_Tilt_5_Acromion_3 = {"Tilt": {"Glene très basse": xDownCases_3, "Glene basse": DownCases_3, "Glène normale": MiddleCases_3, "Glène haute": UpCases_3, "Glène très haute": xUpCases_3}}
+CasesVariables_Tilt_5_Acromion_5 = {"Tilt": {"Glene très basse": xDownCases_5, "Glene basse": DownCases_5, "Glène normale": MiddleCases_5, "Glène haute": UpCases_5, "Glène très haute": xUpCases_5}}
+
+CasesVariables_Tilt_3_Acromion_3 = {"Tilt": {"Glene très basse": xDownCases_3, "Glène normale": MiddleCases_3, "Glène très haute": xUpCases_3}}
+CasesVariables_Tilt_3_Acromion_5 = {"Tilt": {"Glene très basse": xDownCases_5, "Glène normale": MiddleCases_5, "Glène très haute": xUpCases_5}}
+
+# Acromion
+CasesVariables_Acromion_5_Tilt_3 = {"Acromion": {"Acromion très court": xShortCases_3, "Acromion court": ShortCases_3, "Acromion normal": NormalCases_3, "Acromion long": LongCases_3, "Acromion très long": xLongCases_3}}
+CasesVariables_Acromion_5_Tilt_5 = {"Acromion": {"Acromion très court": xShortCases_5, "Acromion court": ShortCases_5, "Acromion normal": NormalCases_5, "Acromion long": LongCases_5, "Acromion très long": xLongCases_5}}
+
+CasesVariables_Acromion_3_Tilt_3 = {"Acromion": {"Acromion très court": xShortCases_3, "Acromion normal": NormalCases_3, "Acromion très long": xLongCases_3}}
+CasesVariables_Acromion_3_Tilt_5 = {"Acromion": {"Acromion très court": xShortCases_5, "Acromion normal": NormalCases_5, "Acromion très long": xLongCases_5}}
+
+# CSA
+CasesVariables_CSA_9 = {"CSA Faible": {"CSA = 12°": CSA_12_Cases, "CSA = 16°": CSA_16_Cases, "CSA = 20°": CSA_20_Cases},
+                        "CSA Moyen": {"CSA = 25°": CSA_25_Cases, "CSA = 30°": CSA_30_Cases, "CSA = 35°": CSA_35_Cases},
+                        "CSA Élevé": {"CSA = 40°": CSA_40_Cases, "CSA = 45°": CSA_45_Cases, "CSA = 50°": CSA_50_Cases}}
+
+# Les 6 qui sont dans la range de CSA
+CasesVariables_CSA_6 = {"CSA Moyen": {"CSA = 20°": CSA_20_Cases, "CSA = 25°": CSA_25_Cases, "CSA = 30°": CSA_30_Cases},
+                        "CSA Élevé": {"CSA = 35°": CSA_35_Cases, "CSA = 40°": CSA_40_Cases, "CSA = 45°": CSA_45_Cases}
+                        }
+"""
+Avec Bergmann
+"""
+
+# With xdown, middle, xup
+CasesVariables_3_Bergmann = {"Tilt": {"Glene très basse": [*xDownCases_3, "Bergmann"], "Glène normale": [*MiddleCases_3, "Bergmann"], "Glène très haute": [*xUpCases_3, "Bergmann"]},
+                             "Acromion": {"Acromion très court": [*xShortCases_3, "Bergmann"], "Acromion normal": [*NormalCases_3, "Bergmann"], "Acromion très long": [*xLongCases_3, "Bergmann"]}}
+# With xdown, middle, xup
+CasesVariables_5_Bergmann = {"Tilt": {"Glene très basse": [*xDownCases_5, "Bergmann"], "Glene basse": [*DownCases_5, "Bergmann"], "Glène normale": [*MiddleCases_5, "Bergmann"], "Glène haute": [*UpCases_5, "Bergmann"], "Glène très haute": [*xUpCases_5, "Bergmann"]},
+                             "Acromion": {"Acromion très court": [*xShortCases_5, "Bergmann"], "Acromion court": [*ShortCases_5, "Bergmann"], "Acromion normal": [*NormalCases_5, "Bergmann"], "Acromion long": [*LongCases_5, "Bergmann"], "Acromion très long": [*xLongCases_5, "Bergmann"]}}
+# With xdown, middle, xup
+CasesVariables_3_Wickham = {"Tilt": {"Glene très basse": [*xDownCases_3, "Wickham"], "Glène normale": [*MiddleCases_3, "Wickham"], "Glène très haute": [*xUpCases_3, "Wickham"]},
+                            "Acromion": {"Acromion très court": [*xShortCases_3, "Wickham"], "Acromion normal": [*NormalCases_3, "Wickham"], "Acromion très long": [*xLongCases_3, "Wickham"]}}
+# With xdown, middle, xup
+CasesVariables_5_Wickham = {"Tilt": {"Glene très basse": [*xDownCases_5, "Wickham"], "Glene basse": [*DownCases_5, "Wickham"], "Glène normale": [*MiddleCases_5, "Wickham"], "Glène haute": [*UpCases_5, "Wickham"], "Glène très haute": [*xUpCases_5, "Wickham"]},
+                            "Acromion": {"Acromion très court": [*xShortCases_5, "Wickham"], "Acromion court": [*ShortCases_5, "Wickham"], "Acromion normal": [*NormalCases_5, "Wickham"], "Acromion long": [*LongCases_5, "Wickham"], "Acromion très long": [*xLongCases_5, "Wickham"]}}
+
+
+# %%                                                Chargement des résultats FDK
+
+# Chemin d'accès au dossier dans lequel les fichiers ont été sauvegardés
+SaveSimulationsDirectory = "Saved Simulations"
+
+Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types")
+
+Results_GlenoidLocalAxis_MR_Polynomial = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
+
+Results_GlenoidLocalAxis_MR_Polynomial_180deg = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg")
+
+Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange")
+
+# Results_GlenoidLocalAxis_MR_Polynomial_NewWrapping = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_NewWrapping")
+
+# Results_GlenoidLocalAxis_NewWrapping_NewAMMR = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_NewWrapping_NewAMMR")
+
+# Results_GlenoidLocalAxis_NewWrapping_FullRange = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_NewWrapping_FullRange")
+
+# Results_GlenoidLocalAxis_NewWrapping_NoghProth = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_NewWrapping_NoghProth")
+
+# %%                                                Chargement des résultats BallAndSocket
+Results_BallAndSocket = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_BallAndSocket")
+
+Results_BallAndSocket_FullRange = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_BallAndSocket_FullRange")
+
+# études de muscle recruitment ball and socket
+Results_BallAndSocket_Muscle_Recruitment = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_BallAndSocket_MuscleRecruitmentStudy")
+
+# Results_BallAndSocket_NewAMMR = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_BallAndSocket_NewAMMR")
+
+# Results_BallAndSocket_FullRange = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "Results_BallAndSocket_FullRange")
+
+# %%                                                Chargement autres résultats pour validation
+
+# dataBergmann
+dataBergmann = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "dataBergmann")
+
+# dataWickham abduction
+dataWickham = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "dataWickham_abduction")
+# FDK avec data de validation de Wickham
+dataWickham_abduction = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "dataWickham_abduction")
+dataWickham_adduction = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "dataWickham_adduction")
+dataWickham_abduction_FullRange = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "dataWickham_abduction_FullRange")
+
+# data Dal Maso
+data_Dal_Maso_sup = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "data_Dal_Maso_sup")
+data_Dal_Maso_inf = LoadOutputTools.LoadVariableFromFile(SaveSimulationsDirectory, "data_Dal_Maso_inf")
+
+data_Dal_Maso = {"Dal Maso supérieur": data_Dal_Maso_sup, "Dal Maso inférieur": data_Dal_Maso_inf}
+
+
+# %% Chargement autres variables
+# Chargement des dictionnaires de variable
+SaveVariablesDirectory = "Saved VariablesDictionary"
+FDK_Variables = LoadOutputTools.LoadVariableFromFile(SaveVariablesDirectory, "FDK_Variables")
+
+
+# FDK Polynomial avec Ball And Socket
+Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket = Results_GlenoidLocalAxis_MR_Polynomial.copy()
+Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket["Ball And Socket"] = Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"]
+
+# %% Dictionnaire comparaison Dal Maso
+
+CompDalMaso_Results_GlenoidLocalAxis_MR_Polynomial = {key: Results_GlenoidLocalAxis_MR_Polynomial[key].copy() for key in CaseNames_3}
+CompDalMaso_Results_GlenoidLocalAxis_MR_Polynomial["Dal Maso supérieur"] = data_Dal_Maso_sup
+CompDalMaso_Results_GlenoidLocalAxis_MR_Polynomial["Dal Maso inférieur"] = data_Dal_Maso_inf
+
+# %%                                                Dictionaires comparaison wickham
+
+# Comparaison FDK polynomial recruitment
+CompWickham_Results_GlenoidLocalAxis_MR_Polynomial = Results_GlenoidLocalAxis_MR_Polynomial.copy()
+CompWickham_Results_GlenoidLocalAxis_MR_Polynomial["Wickham"] = dataWickham_abduction
+CompWickham_Results_GlenoidLocalAxis_MR_Polynomial["Ball And Socket"] = Results_BallAndSocket["middle-normal"]
+
+
+# Comparaison avec Recruitment types Wickham
+CompWickham_Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types = Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types.copy()
+CompWickham_Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types["Wickham"] = dataWickham_abduction
+CompWickham_Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types["Ball And Socket"] = Results_BallAndSocket["middle-normal"]
+
+
+# Comparaison avec Ball And Socket et Wickham
+CompWickham_Results_BallAndSocket = Results_BallAndSocket.copy()
+CompWickham_Results_BallAndSocket["Wickham"] = dataWickham_abduction
+
+# Comparaison avec Ball And Socket muscle recruitment et Wickham
+CompWickham_Results_BallAndSocket_Muscle_Recruitment = Results_BallAndSocket_Muscle_Recruitment.copy()
+CompWickham_Results_BallAndSocket_Muscle_Recruitment["Wickham"] = dataWickham_abduction
+
+"""
+Comparaison avec Bergmann
+"""
+# Comparaison FDK polynomial recruitment
+CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial = Results_GlenoidLocalAxis_MR_Polynomial.copy()
+CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial["Bergmann"] = dataBergmann
+CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial["Ball And Socket"] = Results_BallAndSocket["middle-normal"]
+
+
+# %% Liste des catégories de muscles
+
+# 9 muscles --> graphique 3x3
+Muscles_Main = ["Deltoideus anterior",
+                "Deltoideus lateral",
+                "Deltoideus posterior",
+                "Lower trapezius",
+                "Middle trapezius",
+                "Upper trapezius",
+                "Rhomboideus",
+                "Supraspinatus",
+                "Serratus anterior"
+                ]
+
+# 9 muscles --> graphique 3x3
+# {"Nom_Muscle": composante_y}
+Muscles_Aux = ["Pectoralis major clavicular",
+               "Pectoralis major sternal",
+               "Pectoralis minor",
+               "Subscapularis",
+               "Teres major",
+               "Teres minor",
+               "Infraspinatus",
+               "Biceps brachii long head",
+               "Biceps brachii short head",
+               ]
+
+# 6 muscles --> graphique 2x3
+Muscles_Extra = ["Sternocleidomastoid sternum",
+                 "Sternocleidomastoid clavicular",
+                 "Latissimus dorsi",
+                 "Levator scapulae",
+                 "Coracobrachialis",
+                 "Triceps long head",
+                 ]
+
+
+# Muscles qui varient
+Muscles_Variation = ["Deltoideus anterior",
+                     "Deltoideus lateral",
+                     "Deltoideus posterior",
+                     "Triceps long head"
+                     ]
+
+# Muscles for comparison with Wickham et al. data
+# 3x3
+Muscle_Comp_Main = ["Deltoideus anterior",
+                    "Deltoideus lateral",
+                    "Deltoideus posterior",
+                    "Lower trapezius",
+                    "Middle trapezius",
+                    "Upper trapezius",
+                    "Rhomboideus",
+                    "Supraspinatus",
+                    "Serratus anterior"
+                    ]
+
+# 2x3
+Muscle_Comp_Aux = ["Pectoralis major",
+                   "Pectoralis minor",
+                   "Upper Subscapularis",
+                   "Downward Subscapularis",
+                   "Infraspinatus",
+                   "Latissimus dorsi"
+                   ]
+
+
+# Muscles qui varient
+Muscles_Comp_Variation = ["Deltoideus anterior",
+                          "Deltoideus lateral",
+                          "Deltoideus posterior"
+                          ]
+
+AllMuscles_List = list(FDK_Variables["Muscles"].keys())
+
+Muscles_actifs = ["Deltoideus anterior",
+                  "Deltoideus lateral",
+                  "Deltoideus posterior",
+                  "Lower trapezius",
+                  "Middle trapezius",
+                  "Upper trapezius",
+                  "Rhomboideus",
+                  "Supraspinatus",
+                  "Serratus anterior",
+                  "Subscapularis",
+                  "Infraspinatus",
+                  "Triceps long head"
+                  ]
+
+Muscles_inactifs = ["Pectoralis major clavicular",
+                    "Pectoralis major sternal",
+                    "Pectoralis minor",
+                    "Teres major",
+                    "Teres minor",
+                    "Biceps brachii long head",
+                    "Biceps brachii short head",
+                    "Sternocleidomastoid sternum",
+                    "Sternocleidomastoid clavicular",
+                    "Latissimus dorsi",
+                    "Levator scapulae",
+                    "Coracobrachialis",
+                    ]
+
+Muscles_Comp_actifs = ["Deltoideus anterior",
+                       "Deltoideus lateral",
+                       "Deltoideus posterior",
+                       "Lower trapezius",
+                       "Middle trapezius",
+                       "Upper trapezius",
+                       "Rhomboideus",
+                       "Supraspinatus",
+                       "Serratus anterior",
+                       "Downward Subscapularis",
+                       "Upper Subscapularis",
+                       "Infraspinatus"
+                       ]
+
+# %%                                                GRAPH CODE TEMPLATES
+
+"""Toutes les composantes_y et total activés"""
+# Graph.Graph(DATA, "Abduction", "NOM_VARIABLE_Y", "TITRE", composante_y=["x", "y", "z", "Total"])
+
+
+"""Composantes_y de GHLin"""
+# Graph.Graph(DATA, "Abduction", "GHLin", "TITRE", composante_y=["AP", "IS", "ML", "Total"])
+
+"""
+Tout les graphiques (pas de comparaison)
+"""
+# # force et COP 2x2
+# Graph.COP_graph(DATA, "Résultats", COP_contour, cases_on="all", subplot={"dimension": [1, 2], "number": 1}, subplot_title="Position du centre de pression", draw_peak_annotation_on=False, draw_COP_points_on=False)
+# Graph.Graph(DATA, "Abduction", "ForceContact", "Résultats", cases_on="all", subplot={"dimension": [1, 2], "number": 2}, subplot_title="Forces de contact entre les implants")
+
+# # COP
+# Graph.COP_graph(DATA, "Position du centre de pression", COP_contour, cases_on=MiddleCases, subplot={"dimension": [1, 3], "number": 1, "figsize": [15, 6]}, subplot_title="Glene normale")
+# Graph.COP_graph(DATA, "Position du centre de pression", COP_contour, cases_on=UpCases, subplot={"dimension": [1, 3], "number": 2}, subplot_title="Glene haute")
+# Graph.COP_graph(DATA, "Position du centre de pression", COP_contour, cases_on=DownCases, subplot={"dimension": [1, 3], "number": 3}, subplot_title="Glene basse", LegendPosition='center left')
+
+# forces 1x1
+# Graph.Graph(DATA, "Abduction", "ForceContact", "Forces de contact entre les implants", cases_on="all")
+
+
+# %% COP
+
+# # # Par variables tilt et acromion
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Position du centre de pression", CasesVariables_5, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Position du centre de pression", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Position du centre de pression", CasesVariables_3, Variable="COP", Composantes=["AP", "IS"], LegendPosition="center left", figsize=[14, 13])
+
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Position du centre de pression", {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, Variable="COP", Composantes=["AP", "IS"], LegendPosition="center left", figsize=[14, 13])
+
+# # Tilt
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Position du centre de pression", CasesVariables_Tilt_5_Acromion_5, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 6])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Position du centre de pression", CasesVariables_Tilt_5_Acromion_3, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 6])
+
+# # Acromion
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Position du centre de pression", CasesVariables_Acromion_5_Tilt_5, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 6])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Position du centre de pression", CasesVariables_Acromion_5_Tilt_3, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 6])
+
+# # # CSA
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Position du centre de pression", CasesVariables_CSA_9, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[14, 14])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Position du centre de pression", CasesVariables_CSA_6, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[14, 13])
+
+# %% GHLin
+"""
+Translation dans repère implant, orientation implant
+GHLin
+"""
+# # Par variables tilt et acromion
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement absolu de la tête humérale (GHLin)", CasesVariables_5, Variable="GHLin", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement absolu de la tête humérale (GHLin)", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, Variable="GHLin", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+
+# # CSA
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement absolu de la tête humérale (GHLin)", CasesVariables_CSA_6, Variable="GHLin", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 18])
+
+# # Par variables tilt et acromion
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement absolu de la tête humérale (GHLin)", CasesVariables_5, Variable="GHLin", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement absolu de la tête humérale (GHLin)", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, Variable="GHLin", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+
+# # CSA
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement absolu de la tête humérale (GHLin)", CasesVariables_CSA_6, Variable="GHLin", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[14, 18])
+
+"""
+Translation dans repère implant, orientation implant
+GHLin ISB
+"""
+# # Par variables tilt et acromion
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement absolu de la tête humérale (GHLin ISB)", CasesVariables_5, Variable="GHLin ISB", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], multiplier_offset_between_annotations=[0.8, -2.1], multiplier_reference_annotation_offset=[0, 7])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement absolu de la tête humérale (GHLin ISB)", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, Variable="GHLin ISB", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], multiplier_offset_between_annotations=[1.1, -2.1], multiplier_reference_annotation_offset=[0, 7])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement absolu de la tête humérale (GHLin ISB)", {**CasesVariables_Tilt_3_Acromion_3, **CasesVariables_Acromion_3_Tilt_3}, Variable="GHLin ISB", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], multiplier_offset_between_annotations=[1.1, -2.1], multiplier_reference_annotation_offset=[0, 7])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement absolu de la tête humérale (GHLin ISB)", {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, Variable="GHLin ISB", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], multiplier_offset_between_annotations=[1.1, -2.1], multiplier_reference_annotation_offset=[0, 7])
+
+# # CSA
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement absolu de la tête humérale (GHLin ISB)", CasesVariables_CSA_6, Variable="GHLin ISB", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], multiplier_offset_between_annotations=[1.1, -2.1], multiplier_reference_annotation_offset=[0, 7])
+
+# # Sans contour
+# # Par variables tilt et acromion
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement absolu de la tête humérale (GHLin ISB)", CasesVariables_5, Variable="GHLin ISB", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], multiplier_offset_between_annotations=[1.8, -2.1], multiplier_reference_annotation_offset=[0, 5], update_x_axis_limits=True)
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement absolu de la tête humérale (GHLin ISB)", {**CasesVariables_Tilt_3_Acromion_3, **CasesVariables_Acromion_3_Tilt_3}, Variable="GHLin ISB", Composantes=["AP", "IS"], LegendPosition="center left", figsize=[24, 13], multiplier_offset_between_annotations=[4, -2.1], multiplier_reference_annotation_offset=[0, 5], update_x_axis_limits=True)
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement absolu de la tête humérale (GHLin ISB)", CasesVariables_3, Variable="GHLin ISB", Composantes=["AP", "IS"], LegendPosition="center left", figsize=[20, 16], multiplier_offset_between_annotations=[4, -2.1], multiplier_reference_annotation_offset=[0, 5], update_x_axis_limits=True)
+
+# # CSA
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement absolu de la tête humérale (GHLin ISB)", CasesVariables_CSA_6, Variable="GHLin ISB", Composantes=["AP", "IS"], LegendPosition="center left", figsize=[20, 14], multiplier_offset_between_annotations=[1.8, -2.1], multiplier_reference_annotation_offset=[0, 7], update_x_axis_limits=True)
+
+"""
+Translation dans repère implant, orientation implant
+GHLin ISB Relative
+"""
+# # Par variables tilt et acromion
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement relatif de la tête humérale (GHLin ISB Relative)", CasesVariables_5, Variable="GHLin ISB Relative", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], multiplier_offset_between_annotations=[0.8, -2.1], multiplier_reference_annotation_offset=[0, 7])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement relatif de la tête humérale (GHLin ISB Relative)", {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, Variable="GHLin ISB Relative", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], multiplier_offset_between_annotations=[1.1, -2.1], multiplier_reference_annotation_offset=[0, 7])
+
+# # CSA
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement relatif de la tête humérale (GHLin ISB Relative)", CasesVariables_CSA_6, Variable="GHLin ISB Relative", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 14], multiplier_offset_between_annotations=[1.1, -2.1], multiplier_reference_annotation_offset=[0, 7])
+
+# # Sans contour
+# # Par variables tilt et acromion
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement relatif de la tête humérale (GHLin ISB Relative)", CasesVariables_5, Variable="GHLin ISB Relative", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], multiplier_offset_between_annotations=[1.8, -2.1], multiplier_reference_annotation_offset=[0, 5], update_x_axis_limits=True)
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement relatif de la tête humérale (GHLin ISB Relative)", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, Variable="GHLin ISB Relative", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], multiplier_offset_between_annotations=[4, -2.1], multiplier_reference_annotation_offset=[0, 5], update_x_axis_limits=True)
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement relatif de la tête humérale (GHLin ISB Relative)", {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, Variable="GHLin ISB Relative", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], multiplier_offset_between_annotations=[4, -2.1], multiplier_reference_annotation_offset=[0, 5], update_x_axis_limits=True)
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement relatif de la tête humérale (GHLin ISB Relative)", CasesVariables_3, Variable="GHLin ISB Relative", Composantes=["AP", "IS"], LegendPosition="center left", figsize=[20, 16], multiplier_offset_between_annotations=[4, -2.1], multiplier_reference_annotation_offset=[0, 5], update_x_axis_limits=True)
+
+# # CSA
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement absolu de la tête humérale (GHLin ISB Relative)", CasesVariables_CSA_6, Variable="GHLin ISB Relative", Composantes=["AP", "IS"], LegendPosition="center left", figsize=[20, 14], multiplier_offset_between_annotations=[1.8, -2.1], multiplier_reference_annotation_offset=[0, 7], update_x_axis_limits=True)
+
+"""
+Translation dans repère implant, orientation implant
+GHLinRelative
+"""
+# # Par variables tilt et acromion
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement relatif de la tête humérale (GHLin Relative)", CasesVariables_5, Variable="GHLin Relative", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement relatif de la tête humérale (GHLin Relative)", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, Variable="GHLin Relative", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+
+# # CSA
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, COP_contour, "Déplacement relatif de la tête humérale (GHLin Relative)", CasesVariables_CSA_6, Variable="GHLin Relative", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+
+# # Par variables tilt et acromion
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement relatif de la tête humérale (GHLin Relative)", CasesVariables_5, Variable="GHLin Relative", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement relatif de la tête humérale (GHLin Relative)", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, Variable="GHLin Relative", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+
+# # CSA
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement relatif de la tête humérale (GHLin Relative)", CasesVariables_CSA_6, Variable="GHLin Relative", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[14, 18])
+
+
+"""
+Translation absolue
+"""
+# # Par variables tilt et acromion
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement de la tête humérale", CasesVariables_5, Variable="Translation", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement de la tête humérale", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, Variable="Translation", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+
+# # CSA
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, None, "Déplacement de la tête humérale", CasesVariables_CSA_9, Variable="Translation", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[14, 18])
+
+"""
+Comparaison translations
+
+COMPARER AVEC TRANSLATION GHPROTH_ISB
+"""
+# Graph.Graph(CompDalMaso_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "Translation", "Déplacement absolu de la tête humérale", composante_y=["AP"], subplot_title="Déplacement Antéropostérieur", cases_on="all", subplot={"dimension": [1, 3], "number": 1})
+# Graph.Graph(CompDalMaso_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "Translation", "Déplacement absolu de la tête humérale", composante_y=["IS"], subplot_title="Déplacement Inférosupérieur", cases_on="all", subplot={"dimension": [1, 3], "number": 2})
+# Graph.Graph(CompDalMaso_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "Translation", "Déplacement absolu de la tête humérale", composante_y=["ML"], subplot_title="Déplacement Médiolatéral", cases_on="all", subplot={"dimension": [1, 3], "number": 3})
+
+# %% Forces
+"""
+Forces
+"""
+# # forces par variable
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact", "Abduction", "ForceContact", CasesVariables_5, LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact", "Abduction", "ForceContact", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact", "Abduction", "ForceContact", CasesVariables_3, LegendPosition="center left", figsize=[14, 13])
+
+# # CSA
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact", "Abduction", "ForceContact", CasesVariables_CSA_9, LegendPosition="center left", figsize=[14, 18])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact", "Abduction", "ForceContact", CasesVariables_CSA_6, LegendPosition="center left", figsize=[14, 13])
+
+# # Forces par variables par composantes
+# # 5x3
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact AP", "Abduction", "ForceContact", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, composante_y=["AP"], LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact IS", "Abduction", "ForceContact", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, composante_y=["IS"], LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact ML", "Abduction", "ForceContact", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, composante_y=["ML"], LegendPosition="center left", figsize=[24, 13])
+
+# # Forces par variables par composantes
+# # 3x5
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact AP", "Abduction", "ForceContact", {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, composante_y=["AP"], LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact IS", "Abduction", "ForceContact", {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, composante_y=["IS"], LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact ML", "Abduction", "ForceContact", {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, composante_y=["ML"], LegendPosition="center left", figsize=[24, 13])
+
+# # Forces par variables par composantes
+# # 3x3
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact AP", "Abduction", "ForceContact", CasesVariables_3, composante_y=["AP"], LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact IS", "Abduction", "ForceContact", CasesVariables_3, composante_y=["IS"], LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact ML", "Abduction", "ForceContact", CasesVariables_3, composante_y=["ML"], LegendPosition="center left", figsize=[24, 13])
+
+# # Forces par variables par composantes
+# # 5x5
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact AP", "Abduction", "ForceContact", CasesVariables_5, composante_y=["AP"], LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact IS", "Abduction", "ForceContact", CasesVariables_5, composante_y=["IS"], LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact ML", "Abduction", "ForceContact", CasesVariables_5, composante_y=["ML"], LegendPosition="center left", figsize=[24, 13])
+
+# # CSA par composantes
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact AP", "Abduction", "ForceContact", CasesVariables_CSA_6, composante_y=["AP"], LegendPosition="center left", figsize=[14, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact IS", "Abduction", "ForceContact", CasesVariables_CSA_6, composante_y=["IS"], LegendPosition="center left", figsize=[14, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact ML", "Abduction", "ForceContact", CasesVariables_CSA_6, composante_y=["ML"], LegendPosition="center left", figsize=[14, 13])
+
+
+# # Comparaison avec Bergmann
+# PremadeGraphs.graph_by_variable(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact", "Abduction", "ForceContact", CasesVariables_3_Bergmann, LegendPosition="center left", figsize=[14, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, "Forces de contact", "Elevation", "ForceContact", CasesVariables_3, LegendPosition="center left", figsize=[14, 13])
+
+
+# Graph.Graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=[*CaseNames_3, "Bergmann"], subplot={"dimension": [1, 2], "number": 1, "figsize": [15, 8]}, subplot_title="Angle d'abduction")
+# Graph.Graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Elevation", "ForceContact", "Force de contact", cases_on=CaseNames_3, subplot={"dimension": [1, 2], "number": 2}, subplot_title="Angle d'élévation")
+
+# Graph.Graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=CaseNames_3, subplot={"dimension": [1, 3], "number": 1, "figsize": [15, 8]}, subplot_title="Médiolatéral", composante_y=["ML"])
+# Graph.Graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=CaseNames_3, subplot={"dimension": [1, 3], "number": 2, "figsize": [15, 8]}, subplot_title="Inférosupérieur", composante_y=["IS"])
+# Graph.Graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=CaseNames_3, subplot={"dimension": [1, 3], "number": 3, "figsize": [15, 8]}, subplot_title="Antéropostérieur", composante_y=["AP"])
+
+# %% Muscles
+"""
+Muscles
+"""
+# # Activité 9 cas
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Main, [3, 3], "Abduction", "Activity", "Muscles principaux : Activation maximale des muscles", cases_on=[*CaseNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[24, 14], draw_peak_annotation_on=True, peak_annotation_mode="max")
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Aux, [3, 3], "Abduction", "Activity", "Muscles auxiliaires : Activation maximale des muscles", cases_on=[*CaseNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[24, 14])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Extra, [2, 3], "Abduction", "Activity", "Muscles extras : Activation maximale des muscles", cases_on=[*CaseNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[16, 14])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_actifs, [4, 3], "Abduction", "Activity", "Activation maximale des muscles", cases_on=[*CaseNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[24, 20])
+
+# # Activité 25 cas
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Main, [3, 3], "Abduction", "Activity", "Muscles principaux : Activation maximale des muscles", cases_on=CaseNames_5, composante_y=["Max"])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Aux, [3, 3], "Abduction", "Activity", "Muscles auxiliaires : Activation maximale des muscles", cases_on=CaseNames_5, composante_y=["Max"])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Extra, [2, 3], "Abduction", "Activity", "Muscles extras : Activation maximale des muscles", cases_on=CaseNames_5, composante_y=["Max"])
+
+
+# # Fm
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Main, [3, 3], "Abduction", "Fm", "Muscles principaux : Forces musculaires", cases_on=CaseNames_3)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Aux, [3, 3], "Abduction", "Fm", "Muscles auxiliaires : Forces musculaires", cases_on=CaseNames_3)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Extra, [2, 3], "Abduction", "Fm", "Muscles extras : Forces musculaires", cases_on=CaseNames_3)
+
+
+# # Activité rassemblé par variables sans les parties des muscles
+# PremadeGraphs.muscle_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Variation, "Abduction", "Activity", CasesVariables_3, LegendPosition="center left", figsize=[14, 13], composante_y=["Max"], MusclePartOn=False)
+
+# # Fm rassemblé par variables sans les parties des muscles
+# PremadeGraphs.muscle_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Variation, "Abduction", "Fm", CasesVariables_3, LegendPosition="center left", figsize=[14, 13], MusclePartOn=False)
+
+# # Activité rassemblé par variables avec les parties des muscles (9 cas)
+# PremadeGraphs.muscle_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Variation, "Abduction", "Activity", CasesVariables_3, LegendPosition="center left", figsize=[14, 13], composante_y=["Max"], MusclePartOn=True)
+
+# # Activité rassemblé par variables avec les parties des muscles (25 cas)
+# PremadeGraphs.muscle_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Variation, "Abduction", "Activity", CasesVariables_5, LegendPosition="center left", figsize=[14, 13], composante_y=["Max"], MusclePartOn=True)
+
+# # CSA par variables
+# PremadeGraphs.muscle_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Variation, "Abduction", "Activity", CasesVariables_CSA_9, LegendPosition="center left", figsize=[14, 14], composante_y=["Max"], MusclePartOn=False)
+# PremadeGraphs.muscle_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Variation, "Abduction", "Activity", CasesVariables_CSA_6, LegendPosition="center left", figsize=[14, 13], composante_y=["Max"], MusclePartOn=False)
+
+
+# # Muscles par parties individuelles
+# # 25 cas
+# PremadeGraphs.graph_all_muscle_fibers(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, AllMuscles_List, "Abduction", "Activity", composante_y=["Max"], cases_on="all")
+# # 9 cas
+# PremadeGraphs.graph_all_muscle_fibers(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, AllMuscles_List, "Abduction", "Activity", composante_y=["Max"], cases_on=CaseNames_3)
+
+# # Comparaison avec la littérature
+# PremadeGraphs.muscle_graph_from_list(CompWickham_Results_GlenoidLocalAxis_MR_Polynomial, Muscle_Comp_Main, [3, 3], "Abduction", "Activity", "Recrutement Polynomial : Activation maximale des muscles", cases_on=CompWickham_CasesNames_3, composante_y=["Max"], figsize=[24, 16])
+# PremadeGraphs.muscle_graph_from_list(CompWickham_Results_GlenoidLocalAxis_MR_Polynomial, Muscle_Comp_Aux, [2, 3], "Abduction", "Activity", "Recrutement Polynomial : Activation maximale des muscles", cases_on=CompWickham_CasesNames_3, composante_y=["Max"], figsize=[24, 16])
+# PremadeGraphs.muscle_graph_from_list(CompWickham_Results_GlenoidLocalAxis_MR_Polynomial, Muscles_Comp_actifs, [4, 3], "Abduction", "Activity", "Recrutement Polynomial : Activation maximale des muscles", cases_on=[*CompWickham_CasesNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[24, 20], LegendPosition="center left")
+
+
+# Comparaison avec Wicham par variables
+# PremadeGraphs.muscle_graph_by_variable(CompWickham_Results_GlenoidLocalAxis_MR_Polynomial, Muscles_Comp_Variation, "Abduction", "Activity", CasesVariables_3_Wickham, composante_y=["Max"], MusclePartOn=False, figsize=[16, 10])
+
+# # Muscles qui varient
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Variation, [2, 2], "Abduction", "Activity", "Activation influencés par le CSA", cases_on=[*CaseNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[14, 14])
+
+# %% Analyse 180° abduction avec conflit acromion pris en compte
+
+# # forces par variable
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg, "Forces de contact", "Abduction", "ForceContact", CasesVariables_5, LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg, "Forces de contact AP", "Abduction", "ForceContact", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, composante_y=["AP"], LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg, "Forces de contact IS", "Abduction", "ForceContact", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, composante_y=["IS"], LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg, "Forces de contact ML", "Abduction", "ForceContact", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, composante_y=["ML"], LegendPosition="center left", figsize=[24, 13])
+
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg, COP_contour, "Position du centre de pression", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], peak_annotation_mode="min", unsuperpose_annotation_mode="min_y", multiplier_reference_annotation_offset=[-2.5, -1], multiplier_offset_between_annotations=[-0.4, 2.1])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg, COP_contour, "Position du centre de pression", CasesVariables_5, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], peak_annotation_mode="min", unsuperpose_annotation_mode="min_y", multiplier_reference_annotation_offset=[-2.5, -1], multiplier_offset_between_annotations=[-0.4, 2.1])
+
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg, "ForceTolError", "Abduction", "ForceTolError", CasesVariables_5, LegendPosition="center left", figsize=[24, 13])
+
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg, COP_contour, "Position du centre de pression", CasesVariables_5, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13])
+
+# comp = {"120": Results_GlenoidLocalAxis_MR_Polynomial, "180": Results_GlenoidLocalAxis_MR_Polynomial_180deg}
+
+# list_case = ["middle-normal", "xup-normal", "xdown-normal"]
+# Graph.COP_graph(comp, "COP abduction à 180°", COP_contour, cases_on=[list_case[0]], compare=True, subplot={"dimension": [1, 3], "number": 1}, LegendPosition="lower center", figsize=[24, 13], Composantes=["AP", "IS"])
+# Graph.COP_graph(comp, "COP abduction à 180°", COP_contour, cases_on=[list_case[1]], compare=True, subplot={"dimension": [1, 3], "number": 2}, LegendPosition="lower center", figsize=[24, 13], Composantes=["AP", "IS"])
+# Graph.COP_graph(comp, "COP abduction à 180°", COP_contour, cases_on=[list_case[2]], compare=True, subplot={"dimension": [1, 3], "number": 3}, LegendPosition="lower center", figsize=[24, 13], Composantes=["AP", "IS"])
+
+# Graph.Graph(comp, "Abduction", "ForceContact", "Forces de contact abduction à 180°", compare=True, cases_on=[list_case[0]], subplot={"dimension": [1, 3], "number": 1}, LegendPosition="lower center", figsize=[24, 13])
+# Graph.Graph(comp, "Abduction", "ForceContact", "Forces de contact abduction à 180°", compare=True, cases_on=[list_case[1]], subplot={"dimension": [1, 3], "number": 2}, LegendPosition="lower center", figsize=[24, 13])
+# Graph.Graph(comp, "Abduction", "ForceContact", "Forces de contact abduction à 180°", compare=True, cases_on=[list_case[2]], subplot={"dimension": [1, 3], "number": 3}, LegendPosition="lower center", figsize=[24, 13])
+
+
+# Graph.Graph(Results_GlenoidLocalAxis_MR_Polynomial_180deg, "Temps", "Abduction", "Forces de contact abduction à 180°", cases_on="all", LegendPosition="lower center", label="120°")
+# Graph.Graph(Results_GlenoidLocalAxis_MR_Polynomial, "Temps", "Abduction", "Forces de contact abduction à 180°", cases_on="all", LegendPosition="lower center", label="180°", add_graph=True)
+
+# %% Analyse 180° abduction full range
+
+# # forces par variable
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, "Forces de contact", "Abduction", "ForceContact", CasesVariables_5, LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, "Forces de contact AP", "Abduction", "ForceContact", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, composante_y=["AP"], LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, "Forces de contact IS", "Abduction", "ForceContact", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, composante_y=["IS"], LegendPosition="center left", figsize=[24, 13])
+# PremadeGraphs.graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, "Forces de contact ML", "Abduction", "ForceContact", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, composante_y=["ML"], LegendPosition="center left", figsize=[24, 13])
+
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, COP_contour, "Position du centre de pression", {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], peak_annotation_mode="min", unsuperpose_annotation_mode="min_y", multiplier_reference_annotation_offset=[-2.5, -1], multiplier_offset_between_annotations=[-0.4, 2.1])
+# PremadeGraphs.COP_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, COP_contour, "Position du centre de pression", CasesVariables_5, Variable="COP", Composantes=["AP", "IS"], LegendPosition="lower center", figsize=[24, 13], peak_annotation_mode="min", unsuperpose_annotation_mode="min_y", multiplier_reference_annotation_offset=[-2.5, -1], multiplier_offset_between_annotations=[-0.4, 2.1])
+
+"""
+Muscles
+"""
+
+# # Activité 9 cas
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, Muscles_Main, [3, 3], "Abduction", "Activity", "Muscles principaux : Activation maximale des muscles", cases_on=CaseNames_3, composante_y=["Max"], figsize=[24, 16])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, Muscles_Aux, [3, 3], "Abduction", "Activity", "Muscles auxiliaires : Activation maximale des muscles", cases_on=CaseNames_3, composante_y=["Max"], figsize=[24, 16])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, Muscles_Extra, [2, 3], "Abduction", "Activity", "Muscles extras : Activation maximale des muscles", cases_on=CaseNames_3, composante_y=["Max"], figsize=[24, 16])
+
+# %% Ball And Socket full range
+
+# # Activité 9 cas
+# PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket_FullRange, Muscles_Main, [3, 3], "Abduction", "Activity", "Muscles principaux : Activation maximale des muscles", cases_on="all", composante_y=["Max"], figsize=[24, 16])
+# PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket_FullRange, Muscles_Aux, [3, 3], "Abduction", "Activity", "Muscles auxiliaires : Activation maximale des muscles", cases_on="all", composante_y=["Max"], figsize=[24, 16])
+# PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket_FullRange, Muscles_Extra, [2, 3], "Abduction", "Activity", "Muscles extras : Activation maximale des muscles", cases_on="all", composante_y=["Max"], figsize=[24, 16])
+
+# comp_full_range = {"FDK": Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, "Ball And Socket": Results_BallAndSocket_FullRange}
+
+# for Case in MiddleCases_5:
+#     # Activité 9 cas
+#     PremadeGraphs.muscle_graph_from_list(comp_full_range, Muscles_Main, [3, 3], "Abduction", "Activity", f"{Case} : Muscles principaux : Activation maximale des muscles", cases_on=[Case], compare=True, composante_y=["Max"], figsize=[24, 16])
+#     PremadeGraphs.muscle_graph_from_list(comp_full_range, Muscles_Aux, [3, 3], "Abduction", "Activity", f"{Case} : Muscles auxiliaires : Activation maximale des muscles", cases_on=[Case], compare=True, composante_y=["Max"], figsize=[24, 16])
+#     PremadeGraphs.muscle_graph_from_list(comp_full_range, Muscles_Extra, [2, 3], "Abduction", "Activity", f"{Case} : Muscles extras : Activation maximale des muscles", cases_on=[Case], compare=True, composante_y=["Max"], figsize=[24, 16])

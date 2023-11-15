@@ -1,0 +1,23 @@
+// Fonction pour verif si le fichier existe (langage Python)
+AnyFunEx get_filename =
+{
+  AnyString Return = "";  
+  //AnyVar Return = 0.0;
+  AnyFunExMonoPy name = 
+  {
+
+    ModuleFile = "filename.py";
+    
+    AnyString Return = {""};
+    ArgList = 
+    {
+      // AnyString Basepath = {""};
+      AnyString Basename = {""};
+      AnyString ext = {""};
+    };
+  };
+};
+
+
+
+

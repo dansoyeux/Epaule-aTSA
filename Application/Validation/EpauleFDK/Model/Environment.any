@@ -1,10 +1,12 @@
-
 AnyFolder EnvironmentModel = {
     
-  AnyFixedRefFrame GlobalRef = {
+  AnyFixedRefFrame GlobalRef = {    
     Origin ={0,0,0}; 
     #include "DrawCoorSystem.any"    
-  };//GlobalRef
-    
 
+ 
+  };//GlobalRef
+  
+  
+  
 };

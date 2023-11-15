@@ -1,49 +1,254 @@
-/* INPUTVARIABLES.ANY
-Variables and parameters to modify at each simulation.
-*/
-
 AnyFolder InputVariables = {
-
-  /* -- FILES/FOLDERS NAMES --
-  m_ResultFile :   Name for results file (saved as .txt or .h5)
-  m_ResultFolder : Name for folder results. !!Must be created on computer before!!
-  m_ResultPath :   Complete path to the "NameFolder" folder
-  WARNING:    Be sure that the m_ResultFolder variable refers to an existing folder on your computer !!
-  ----------------------------- */
-  #define m_ResultFile "Results_17_07_2015_version_neutre"
-  #define m_ResultFolder "Ceraver\"
-  #define m_ResultPath "../Results"
   
-  /* -------- IMPLANTS -------- 
-  NAMES AND POSITIONS: Managed in an axternal file: 
-      - To create based on the #include "InputImplantJoint_ImplantName.any" template
-      - To place in the "Input" Folder
-  ----------------------------- */
-  //#include "InputImplantJoint_CeraverT351.any" 
-  #define INPUTPOS "CeraverT351_version_neutre"
   
- 
-  /* ----- SPECIFIC PATIENT ----- 
-    0 AnyBody Model
-    1 Ct-scans scale 
-    2 External landmarks scale:
-        - Create and fill custom file based on the "Mesures_PatientName.any" file ; Rename it with a custom PatientName
-        - Replace the "MEASURE" variable by your custom PatientName. 
-  ----------------------------- */
-  #define scale 0
-  // To replace by the same name as filename ("Scaling/Mesures_PatientName.any")  
-  #if scale == 2
-    #define SUBJECT "PatientName" 
+  // Activates or not FDK (0 FDK activated)
+  #ifndef BallAndSocket
+  #define BallAndSocket 0
   #endif
   
   
+  /* -------------------------------- MUSCLE RECRUITMENT TYPE -----------------------------------*/
+  /*
+  MR_MinMaxStrict (overload sometimes with FDK)
+  MR_MinMaxAux (NE MARCHE PAS DANS CE CAS :/)
+  MR_Linear
+  MR_Quadratic
+  MR_QuadraticAux (simulation faites avec ce critere)
+  MR_Polynomial (Default, power = 3)
+  */
+
+   #ifndef MuscleRecruitmentType
+   #define MuscleRecruitmentType MR_Polynomial
+   #endif
+   #if MuscleRecruitmentType == MR_MinMaxAux
+   Main.Study.InverseDynamics.Criterion.AuxLinearTerm.Weight = 0.1;
+   #endif
   
-  //camera differentes supprimees
-  /* --------- CAMERA --------- 
-    Camera == 1 : Activate auto save by camera
-    Vue == 1 : Global view, 45deg scapula
-    Vue == 2 : Fixed view, face to glenoid
-  ----------------------------- */
-//  #define Camera 0
-  #define Vue 2
-};
+  /* ----------------------------------GHREACTIONS PARAMETERS-------------------------------------
+  Controls the activation of the general muscles created by GHReactions.any that create a force to avoid
+  the humeral head going out of the glenoid
+  1 : Reactions activated
+  0 : Reactions deactivated
+  */
+  #define GHReactionsOn 0
+  
+  // Controls the shape of the nodes on the glenoid (Circle or Edge)
+  #define GHReactionsShape Edge // On the edge
+  //    #define GHReactionsShape Circle // Around a circle
+  
+  // GeneralMuscles Strength factor (Strength = 5000 x StrengthFactor)
+  #define StrengthFactor 1.0
+  
+  
+  
+  /* --------------------------------------FDK PARAMETERS----------------------------------------
+  CustomFDKOn : Off : laisse le modele de Lauranne
+  CustomFDKOn : On : Met un modele FDK different
+  CustomFDKOn : CustomForce : modifie la force directement dans ContactForces.any
+  */  
+  
+  #ifndef CustomFDKOn
+//  #define CustomFDKOn CustomForce
+//      #define CustomFDKOn Off
+      #define CustomFDKOn On
+  #endif
+  
+  /*--------------------------------------FDK ALGORITHM SETTINGS---------------------------------*/
+  //  Main.Study.InverseDynamics.ForceDepKin.ForceTol = 1;
+  //  Main.Study.InverseDynamics.ForceDepKin.UseAdaptiveForceTolOnOff = On;
+  
+  /*--------------------------------------------------------------------------------------------*/
+  
+  
+  //  /* NOT IMPLEMENTED YET
+  //  0 : to use when calibration results were already saved
+  //  1 : puts the glenoid in the right position to allow saving calibration results for each case
+  //  */
+  //  #define SaveCalibration 1
+  
+  
+
+  
+  /* GlenoidTiltAxis : defines which anteroposterior axis is used to rotate the glenoid implant
+  Global : Body anteroposterior axis
+  Scapula : Scapula anteroposterior axis
+  Glenoid : Glenoid anteroposterior axis
+  */
+  
+//      #define GlenoidTiltAxis Global
+//      #define GlenoidTiltAxis Scapula  
+  #define GlenoidTiltAxis Glenoid
+  
+  
+  /* Correction of the angle so that both implant are face to face like Lauranne's old model (DeltaAngle = 7deg))
+  -21 deg : corrected for tilt middle and neutral
+  -16 deg : corrected for tilt up Scapula
+  -20 deg : corrected for tilt up Glenoid
+  -25 deg : corrected for tilt down Scapula
+  -25 deg : old value used without correction (before 11-07-2023) 
+  */
+  
+  
+  /* Correction of the angle so that both implant are EXACTLY face to face
+  -10 deg : corrected for tilt up Scapula
+  -14 deg : corrected for tilt down scapula
+  -25 deg : old value used without correction  (before 11-07-2023) 
+  */
+  
+  #define HumExternalRotation -21
+
+  
+  
+  /* Correction de la position de l'implant humerus pour qu'il soit vraiment au bord 
+  */
+  #define CorrectHumImplantPos 1
+  
+  
+  
+  /* ACTIVATION DU BRAS GAUCHE OU NON
+  */
+  #define LeftArmOn 0
+  
+   /* ---------------------------------- MOVEMENT PARAMETERS -------------------------------------*/
+  
+  /* Type of arm movement
+  Abduction : Elevation of the shoulder in the frontal plant
+  Elevation : Elevation of the shoulder in the scapular plane
+  */
+  
+  //  #define ArmMovement Elevation
+ 
+  #ifndef ArmMovement 
+  #define ArmMovement Abduction
+//  #define ArmMovement Elevation
+  #endif
+  /*
+  2 : Custom one (15-170deg)
+  1 : To make a small abdutction to help ajusting the glene position on the first step of inverse analysis 
+  0 : abduction from 15deg to 120deg 
+  */
+  #ifndef SmallAbductionOn
+  #define SmallAbductionOn 0
+  #endif
+  
+  #ifndef AnyOutputFileOn
+  #define AnyOutputFileOn 1
+  #endif
+  
+  /* -----------------------------------------CSA VARIATION CASES--------------------------------
+  Case middle-short  : CSA = 20 DEG : TILT 2.229 DEG UPWARD       AND  ACROMION SHORTEN  (-12.13mm)
+  CASE middle-normal : CSA = 30 DEG : TILT 2.229  DEG UPWARD      AND  ACROMION NORMAL  
+  CASE middle-long   : CSA = 40 DEG : TILT 2.229  DEG UPWARD      AND  ACROMION EXTENDED (+16.95mm)
+
+  CASE up-short      : CSA = 30 DEG : TILT 11.435 DEG UPWARD      AND  ACROMION SHORTEN  (-12.13mm)  
+  CASE up-normal     : CSA = 40 DEG : TILT 11.435 DEG UPWARD      AND  ACROMION NORMAL  
+  CASE up-long       : CSA = 50 DEG : TILT 11.435 DEG UPWARD      AND  ACROMION EXTENDED (+16.95mm)
+
+
+  CASE down-short   : CSA = 12 DEG : TILT -7.587 DEG DOWNWARD    AND  ACROMION SHORTEN  (-12.13mm)
+  CASE down-normal   : CSA = 20 DEG : TILT -7.587 DEG DOWNWARD    AND  ACROMION NORMAL
+  CASE down-long     : CSA = 30 DEG : TILT -7.587 DEG DOWNWARD    AND  ACROMION EXTENDED (+16.95mm)
+  */
+  
+  
+  /* -------------------------------------------CSA_Tilt selection------------------------------------*/
+  #ifndef CSA_Tilt
+  #define CSA_Tilt "middle"
+  #endif
+  /*
+  xdown
+  down 
+  middle
+  up
+  xup
+  
+  neutral
+  */
+  
+  /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
+  
+  #ifndef CSA_Acromion_Length
+  #define CSA_Acromion_Length "normal"
+  #endif
+  /*
+  xshort
+  short
+  normal
+  long
+  xlong
+  */
+    
+  #define CSA_Case CSA_Tilt + "-" + CSA_Acromion_Length
+  
+  /* ---------------------------------- NEW DELTOID WRAPPING ON-------------------------------------*/
+
+  // only actiates the new muscle wrapping for short acromion 
+//  #if CSA_Acromion_Length == "xshort" & BallAndSocket == 0
+//  #define NewDeltoidWrappingOn 1
+//  #else 
+//  #define NewDeltoidWrappingOn 0
+//  #endif
+  
+//   Decommenter si charge "short" sans new wrapping
+    #define NewDeltoidWrappingOn 0
+
+  
+  // 1 : Cylinder
+  // 2 : Ellipsoid
+  #define WrappingSurfaceType 2
+  
+  
+  
+  /* ------------------------- SAVE AND LOAD RESULT FILES/FOLDERS NAMES -------------------------
+  Names of files to load or save in the Output folder
+  m_ResultFile :   Name for results file (saved as .txt or .h5)
+  m_LoadFile : Name for the result file to load (.h5)
+  m_ResultFolder : Name for folder results. !!Must be created on computer before!!
+  WARNING:    Be sure that the m_ResultFolder variable refers to an existing folder on your computer !!
+  */
+  
+  
+  // Name of the .h5 data to save (with the SaveResultsh5 operation)
+
+  #if BallAndSocket == 0 
+  
+  #ifndef m_ResultFile
+  #define m_ResultFile "26-10-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial" + "-no-delt-post-scaling"
+  #endif
+  
+  #else
+  #ifndef m_ResultFile
+  #define m_ResultFile "26-10-BallAndSocket-" + CSA_Acromion_Length + "-MR_Polynomial"
+
+  #endif
+  
+  #endif // if BallAndSocket == 0
+  
+  #ifndef m_ResultFolder
+  #define m_ResultFolder "SaveData/Variation_CSA/"
+  #endif
+  
+  // Name of the anydata.h5 data to load (with the LoadAndReplay operation)
+  // Name has to be without the anydata.h5 extension
+  // LoadAndReplay : Operation to load and replay a previous anydata.h5 result file
+//  #define m_LoadFile "08-09-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial"
+  #define m_LoadFile "06-10-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial"
+
+  
+//    #define m_LoadFile "08-09-" + CSA_Case + 
+  
+
+//  #define m_LoadFile "Results-05-09-case1-GlenoidAxisTilt-EnFace-MyMyscleWrapping-Ellipsoid"
+
+
+
+  #define m_LoadFolder "SaveData/Variation_CSA/"
+//  #define m_LoadFolder "SaveData/Macro_Results/"
+//  #define m_LoadFolder "SaveData/Macro_80step_180deg/"
+  
+  
+  // File containing the FDK parameters for the stabilization force  
+  #include "FDKParameters.any"
+  
+
+}; // InputVariables

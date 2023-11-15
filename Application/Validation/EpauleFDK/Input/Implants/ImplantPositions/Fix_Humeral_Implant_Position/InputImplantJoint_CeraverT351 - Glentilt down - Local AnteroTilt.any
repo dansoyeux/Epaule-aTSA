@@ -1,0 +1,121 @@
+/* -------- IMPLANTS -------- 
+Names and positions of humeral head and glenoid components
+GH joint position (depends on the chosen implants !)
+
+Parameters to set implants and joint parameters:
+- Implants names
+- Implants positions (!!Must be calculated outside AnyBody!!)
+- Humeral head (HH) implant position: transform matrix HH_CoordinateSystem to HumerusBoneGeometryNode
+- Glenoid implant position: transform matrix Glenoid_CoordinateSystem to GlenImplantPos
+- Glenoid center position to position gh joint node (ghProth) (calculated by fitting a sphere on the glenoid implant surface)
+
+In this configuration, the glenoid implant has been rotated 2.98 deg downward (2.5 in 3d slicer) to achieve a 30deg CSA with an acromion scaling of 16.9mm
+Rotated around an axis passing through the center of the glenoid and parallel to the GLENOID IMPLANT anteroposterior axis
+----------------------------- */
+AnyFolder &InputVar1=Main.InputVariables;
+
+InputVar1={
+  AnyFolder ImplantParameters = {
+    
+    // FILENAMES
+    // Be sure that STL Models are in the folder "..\Body\STLModels\ImplantModels"
+    // If in subfolder, specify subfolder names
+    AnyFolder ImplantNames = {
+      AnyString HumerusName = "TeteCeraver_51";
+      AnyString GlenoidName = "GleneCeraver_T3";
+    };
+    
+    // HUMERAL IMPLANT POSITION/ORIENTATION
+    // From HumerusBoneGeometryNode to the humeral head component Coordinate System (on 3d model)
+    AnyFolder HumPosition = {
+      
+      //without offset
+      
+      AnyVec3 Position = 0.001*{-9.9088 , 3.8738 , 0.293217};
+      AnyMat33 Rotation = {
+        {-0.198568 , -0.586 , -0.785604},
+        {-0.171743 , -0.768359 , 0.616546},
+        {-0.964922 , 0.257348 , 0.051929}
+        
+      };
+      
+      
+      //original code with offset
+      //      AnyVec3 Position = 0.001*{ -8.951911, 13.202171, -9.126247};
+      //      AnyMat33 Rotation = {
+      //        {-0.342238,	-0.540331,	-0.76871},
+      //        {-0.171743,	-0.768359,	0.616546},
+      //        {-0.923784,	0.343026,	0.170163}
+      //      };
+    };
+    
+    // GLENOID IMPLANT POSITION/ORIENTATION
+    // From Scapula to glenoid component Coordinate System (on 3d model)
+    AnyFolder GlenPosition = {
+      AnyVar GleneImplantTiltAngle = -2.98;
+      AnyString RotationAxis = "Glenoid implant Anteroposterior Axis";
+      
+      
+      AnyVec3 Position = 0.001*{-25.869767 , -37.790034 , -26.093783};
+      AnyMat33 Rotation = {
+        {-0.193467 , 0.164211 , 0.967267},
+        {-0.226877 , 0.951683 , -0.206944},
+        {-0.954514 , -0.259487 , -0.146864}
+        
+      };
+      
+      
+      
+      
+      // GLENOID IMPLANT CENTER (CALCULATED BY FITTING A SPHERE ON THE GLENOID SURFACE)
+      // In glenoid coordinate system
+      AnyVec3 Center_Local =  0.001*{0.57144762, 0.08990567, 56.42942525};
+      
+      // In scapula coordinate system with the neutral rotation
+      AnyVec3 Center_Neutral = 0.001*{28.812351 , -48.17918 , -35.305958};
+      
+      //New Center after glene implant rotation in scapula coordinate system
+      AnyVec3 Center_Absolute = 0.001*{28.616855 , -49.51165 , -34.949621};
+      
+    };
+    
+  };
+  
+  // GH JOINT POSITION
+  // To adjust to have small contact between humeral head and glenoid components after the "InitialCondition" step
+  
+  AnyFolder JointPosition = {
+    
+    
+    // For GH ExternalRotation = -25deg
+    #if HumExternalRotation == -25
+    AnyVar px = -.002 + 0.0005;     //AP : Anterieur = +   
+    AnyVar py = 0.003 - 0.004 ;     //IS : Superieur = +  
+    AnyVar pz = 0.001 - 0.0046;     //ML : Lateral = +
+    #endif
+    
+    // To have same position than Lauranne    
+    #if HumExternalRotation == -21
+    AnyVar px = -.002 + 0.001;     //AP : Anterieur = +   
+    AnyVar py = 0.003 - 0.000 ;     //IS : Superieur = +  
+    AnyVar pz = 0.001 - 0.0028;     //ML : Lateral = +
+    #endif
+    
+  };
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

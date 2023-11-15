@@ -1,0 +1,332 @@
+
+/* ---------------------------- FORCE-DEPENDENT KINEMATICS PARAMETERS ----------------------------
+Forces in the IGHL ligament
+Non-linear model [Bigliani, 1992]:
+F = k0 + k1*eps + k2*eps^2 + k4*eps^4
+*/
+
+AnyFolder FDK ={ 
+  
+  //     Active le modele FDK de Lauranne
+  #if CustomFDKOn == Off  
+  //    From Lauranne's code   
+  AnyFloat k0 = 10.75;   
+  AnyFloat k1 = -7.787;  
+  AnyFloat k2 = 4.391;
+  AnyFloat k3 = 0 ;
+  AnyFloat k4 = -0.08637 ; 
+  AnyFloat kz = 0;   //ML (Lat=+). NB: ML managed by contact between prosthetic components
+  
+  #endif // #if CustomFDKOn == Off  
+  
+  
+  //  Custom FDK parameters for all cases 
+  #if CustomFDKOn == On
+  
+  //    From Lauranne's code   
+  AnyFloat k0 = -{-9,-4};   
+  AnyFloat k1 = -7.787;  
+  AnyFloat k2 = 4.391;
+  AnyFloat k3 = 0 ;
+  AnyFloat k4 = -0.08637 ; 
+  AnyFloat kz = 0;   //ML (Lat=+). NB: ML managed by contact between prosthetic components
+  
+  //    Values : [Bigliani, 1992] equation calculated 4th order equation [Debski and al., 1999]
+  //          AnyFloat k0 = 5.62;   
+  //          AnyFloat k1 = -1.68;  
+  //          AnyFloat k2 = -1.12;
+  //          AnyFloat k3 = 0.9 ;
+  //          AnyFloat k4 = -0.05 ; 
+  //          AnyFloat kz = 0;   //ML (Lat=+). NB: ML managed by contact between prosthetic components
+  
+  #endif // #if CustomFDKOn == On
+  
+  
+  // Custom force
+  #if CustomFDKOn == CustomForce
+  
+  // Avec correction de la position de l'implant humeral
+  #if CorrectHumImplantPos==1
+  
+  
+/*-------------------------------- XDOWN --------------------------------*/
+  // Case "xdown-xshort"
+  #if CSA_Case == "xdown-xshort"
+  #if NewDeltoidWrappingOn == 0
+  AnyFloat k0 = -{-13,18.5};
+  #endif
+  
+  #if NewDeltoidWrappingOn == 1
+  AnyFloat k0 = -{-9,8};
+  #endif
+  #endif // xdown-xshort
+
+   // Case "xdown-normal"
+  #if CSA_Case == "xdown-short"
+  AnyFloat k0 = -{-9,10};
+  #endif
+  
+  // Case "xdown-normal"
+  #if CSA_Case == "xdown-normal"
+  AnyFloat k0 = -{-4,0};
+  #endif
+
+    // Case "xdown-xlong"
+  #if CSA_Case == "xdown-long"
+  AnyFloat k0 = -{2,-9.5};
+  #endif
+  
+
+  // Case "xdown-xlong"
+  #if CSA_Case == "xdown-xlong"
+  AnyFloat k0 = -{7,-16.5};
+  #endif
+  
+/*-------------------------------- DOWN --------------------------------*/
+  
+  // Case "down-xshort"
+  #if CSA_Case == "down-xshort"
+  #if NewDeltoidWrappingOn == 0
+  AnyFloat k0 = -{-17,19.5};
+  #endif
+  
+  #if NewDeltoidWrappingOn == 1
+  AnyFloat k0 = -{-10,3};
+  #endif  
+  
+  #endif // down xshort
+  
+
+  // Case "down-short"
+  #if CSA_Case == "down-short"
+  AnyFloat k0 = -{-12,9};
+  #endif
+  
+  
+  // Case "down-normal"
+  #if CSA_Case == "down-normal"
+  AnyFloat k0 = -{-1,-4};
+  #endif
+
+  // Case "down-long"
+  #if CSA_Case == "down-long"
+  AnyFloat k0 = -{1,-15};
+  #endif
+  
+    // Case "down-xlong"
+  #if CSA_Case == "down-xlong"
+  AnyFloat k0 = -{7,-22};
+  #endif
+  
+/*-------------------------------- MIDDLE --------------------------------*/
+ 
+  // Case "middle-xshort"
+  #if CSA_Case == "middle-xshort"
+  #if NewDeltoidWrappingOn == 0
+  AnyFloat k0 = -{-23,28};
+  #endif
+  
+  //  (-14, -1) pour wrapping avec ghProth
+  #if NewDeltoidWrappingOn == 1
+  AnyFloat k0 = -{-14,-1};
+  #endif 
+  
+  #endif // middle-xshort
+
+
+  // Case "middle-short"
+  #if CSA_Case == "middle-short"
+  AnyFloat k0 = -{-18,16};
+  #endif
+  
+  
+  // Case "middle-normal"
+  #if CSA_Case == "middle-normal"
+  AnyFloat k0 = -{-9,-4};
+  #endif
+  
+  
+  
+  
+  // Case "middle-long"
+  #if CSA_Case == "middle-long"
+  AnyFloat k0 = -{0,-20};
+  #endif 
+  
+  
+  
+  // Case "middle-xlong"
+  #if CSA_Case == "middle-xlong"
+  AnyFloat k0 = -{6,-27.5};
+  #endif 
+
+/*-------------------------------- UP --------------------------------*/
+
+  // Case "up-xshort" 
+  #if CSA_Case == "up-xshort"
+  
+  #if NewDeltoidWrappingOn == 0
+  AnyFloat k0 = -{-27,34};
+  #endif
+  
+  #if NewDeltoidWrappingOn == 1
+  AnyFloat k0 = -{-15,-3};
+  #endif
+  
+  #endif // "up-xshort"
+  
+  // Case "up-short"
+  #if CSA_Case == "up-short"
+  AnyFloat k0 = -{-23.5,22};
+  #endif
+
+  
+  // Case "up-normal"
+  #if CSA_Case == "up-normal"
+  AnyFloat k0 = -{-15,1};
+  #endif
+
+  // Case "up-long"
+  #if CSA_Case == "up-long"
+  AnyFloat k0 = -{-1.5,-25};
+  #endif
+
+  // Case "up-xlong"
+  #if CSA_Case == "up-xlong"
+  AnyFloat k0 = -{7,-33};
+  #endif
+
+/*-------------------------------- XUP --------------------------------*/
+
+  // Case "xup-xshort"
+  #if CSA_Case == "xup-xshort"
+  
+  #if NewDeltoidWrappingOn == 0
+  AnyFloat k0 = -{-28,34.5};
+  #endif
+  
+  #if NewDeltoidWrappingOn == 1
+  // Case "up-short" deltoid wrapping
+  AnyFloat k0 = -{-22,2};
+  #endif
+  #endif // CSA_Case == "xup-xshort"
+
+  
+  
+  // Case "xup-short"
+  #if CSA_Case == "xup-short"
+  AnyFloat k0 = -{-26,23};
+  #endif
+  
+  
+  // Case "xup-normal"
+  #if CSA_Case == "xup-normal"
+  AnyFloat k0 = -{-22,4};
+  #endif
+
+  // Case "xup-long"
+  #if CSA_Case == "xup-long"
+  AnyFloat k0 = -{-5,-27};
+  #endif 
+  
+  // Case "xup-xlong"
+  #if CSA_Case == "xup-xlong"
+  AnyFloat k0 = -{7,-38};
+  #endif 
+  
+
+/*-------------------------------- NEUTRAL --------------------------------*/
+
+
+  // Case "neutral-normal"
+  #if CSA_Case == "neutral-normal"
+  AnyFloat k0 = -{-10.75,-10.75};
+  #endif
+    
+  
+  #endif //    #if CorrectHumImplantPos==1
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  // Sans correction de la position de l'implant humeral
+  #if CorrectHumImplantPos==0
+  
+  
+  //   Case 0
+  #if CSA_Case == "neutral-normal"
+  AnyFloat k0 = -{-10.75,-10.75};
+  #endif
+  
+  // Case "middle-normal"
+  #if CSA_Case == "middle-normal"
+  // k0 centrer le COP
+  AnyFloat k0 = -{-8,-13};
+  #endif
+  
+  // Case "normal-long"
+  
+  #if CSA_Case == "normal-xlong"
+  AnyFloat k0 = -{7,-35};
+  #endif 
+  
+  
+  // Case "up-normal"
+  #if CSA_Case == "xup-normal"
+  // Centrer le COP
+  AnyFloat k0 = -{-20,-3};
+  // FitMarta
+  // AnyFloat k0 = -{-25,20};
+  #endif
+  
+  // Case "down-long"
+  #if CSA_Case == "xdown-xlong"
+  AnyFloat k0 = -{7,-26};
+  #endif
+  
+  
+  // Case 5
+  #if CSA_Case == "xup-xshort"
+  
+  #if NewDeltoidWrappingOn == 0
+  AnyFloat k0 = -{-30,34};
+  #else
+  // Case 5 deltoid wrapping
+  AnyFloat k0 = -{-23,8};
+  #endif
+  #endif
+  
+  #endif //    #if CorrectHumImplantPos==0
+  
+  
+  AnyFloat k1 = -1.68;  
+  AnyFloat k2 = 1.12;
+  AnyFloat k3 = 0.9;
+  AnyFloat k4 = -0.05; 
+  AnyFloat kz = 0;   //ML (Lat=+). NB: ML managed by contact between prosthetic components
+  
+  
+  
+  // Mettre une force nulle
+  //    AnyFloat k0 = 0;
+  //    AnyFloat k1 = 0;  
+  //    AnyFloat k2 = 0;
+  //    AnyFloat k3 = 0 ;
+  //    AnyFloat k4 = 0 ; 
+  //    AnyFloat kz = 0;   //ML (Lat=+). NB: ML managed by contact between prosthetic components
+  
+  
+  
+  #endif // #if CustomFDKOn == CustomForce
+  
+  
+  AnyFolder Contact ={AnyVar kd =1e10;};
+  
+}; // FDK
+
