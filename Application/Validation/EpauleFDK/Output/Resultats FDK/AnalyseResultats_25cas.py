@@ -9,9 +9,9 @@ from Anybody_Package.Anybody_Graph.GraphFunctions import define_simulations_line
 from Anybody_Package.Anybody_Graph.GraphFunctions import define_simulation_description
 from Anybody_Package.Anybody_Graph.GraphFunctions import define_COP_contour
 
-from Anybody_Package.Anybody_Graph.GraphFunctions import check_result_dictionary_data_structure
-
 from Anybody_Package.Anybody_Graph import PremadeGraphs
+
+from Anybody_Package.Anybody_LoadOutput.LoadLiterature import load_literature_data
 
 import matplotlib
 
@@ -928,7 +928,7 @@ par catégories
 
 # %% test comparaison littérature
 
-Results_literature = load_results_from_file(SaveSimulationsDirectory, "Results_literature")
+# Results_literature = load_results_from_file(SaveSimulationsDirectory, "Results_literature")
 
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial, Muscles_Comp_actifs, [4, 3], "Abduction", "Activity", "Muscles principaux : Activation maximale des muscles", cases_on=CaseNames_3, composante_y=["Max"], figsize=[24, 14])
 # PremadeGraphs.muscle_graph_from_list(Results_literature["Activity"], Muscles_Comp_actifs, [4, 3], "Abduction", "Activity", "Muscles principaux : Activation maximale des muscles", cases_on="all", composante_y=["Max"], figsize=[24, 14], grid_x_step=15, xlim=[15, 120], same_lim=True, add_graph=True)
@@ -944,12 +944,12 @@ Results_literature = load_results_from_file(SaveSimulationsDirectory, "Results_l
 # graph(Results_literature["ForceContact"], "Abduction", "ForceContact", "Force de contact", cases_on="all", subplot={"dimension": [1, 3], "number": 3}, subplot_title="Antéropostérieur", composante_y=["AP"], xlim=[0, 120], grid_x_step=15, ylim=[0, 300], add_graph=True)
 
 
-# Translation
-graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "GHLin ISB", "Translation", cases_on=CaseNames_3, subplot={"dimension": [1, 3], "number": 1}, subplot_title="Médiolatéral", composante_y=["ML"])
-graph(Results_literature["Translation"], "Abduction", "Translation", "Translation", cases_on="all", subplot={"dimension": [1, 3], "number": 1}, subplot_title="Médiolatéral", composante_y=["ML"], xlim=[15, 120], grid_x_step=15, add_graph=True)
+# # Translation
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "GHLin ISB", "Translation", cases_on=CaseNames_3, subplot={"dimension": [1, 3], "number": 1}, subplot_title="Médiolatéral", composante_y=["ML"])
+# graph(Results_literature["Translation"], "Abduction", "Translation", "Translation", cases_on="all", subplot={"dimension": [1, 3], "number": 1}, subplot_title="Médiolatéral", composante_y=["ML"], xlim=[15, 120], grid_x_step=15, add_graph=True)
 
-graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "GHLin ISB", "Translation", cases_on=CaseNames_3, subplot={"dimension": [1, 3], "number": 2}, subplot_title="Inférosupérieur", composante_y=["IS"])
-graph(Results_literature["Translation"], "Abduction", "Translation", "Translation", cases_on="all", subplot={"dimension": [1, 3], "number": 2}, subplot_title="Inférosupérieur", composante_y=["IS"], xlim=[15, 120], grid_x_step=15, add_graph=True)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "GHLin ISB", "Translation", cases_on=CaseNames_3, subplot={"dimension": [1, 3], "number": 2}, subplot_title="Inférosupérieur", composante_y=["IS"])
+# graph(Results_literature["Translation"], "Abduction", "Translation", "Translation", cases_on="all", subplot={"dimension": [1, 3], "number": 2}, subplot_title="Inférosupérieur", composante_y=["IS"], xlim=[15, 120], grid_x_step=15, add_graph=True)
 
-graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "GHLin ISB", "Translation", cases_on=CaseNames_3, subplot={"dimension": [1, 3], "number": 3}, subplot_title="Antéropostérieur", composante_y=["AP"])
-graph(Results_literature["Translation"], "Abduction", "Translation", "Translation", cases_on="all", subplot={"dimension": [1, 3], "number": 3}, subplot_title="Antéropostérieur", composante_y=["AP"], xlim=[15, 120], grid_x_step=15, add_graph=True, same_lim=True)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "GHLin ISB", "Translation", cases_on=CaseNames_3, subplot={"dimension": [1, 3], "number": 3}, subplot_title="Antéropostérieur", composante_y=["AP"])
+# graph(Results_literature["Translation"], "Abduction", "Translation", "Translation", cases_on="all", subplot={"dimension": [1, 3], "number": 3}, subplot_title="Antéropostérieur", composante_y=["AP"], xlim=[15, 120], grid_x_step=15, add_graph=True, same_lim=True)
