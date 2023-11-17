@@ -2,9 +2,11 @@
 
 Main = {
   
-  
+  AnyFolder AcromionScaling = {
       AnyVar AcromionOffset  = 0.015;
-  
+    };
+    
+    
   // The actual body model goes in this folder
   AnyFolder MyModel = {
     
@@ -163,8 +165,8 @@ Main = {
       
 //      AnyDrawPointCloud c = 
 //      {
-//        RGB = {0, 0, 1};
-//        Points = ..MyScalingLaw.RBFTransform(.DrawGrid.Grid);
+//        RGB = {0, 1, 0};
+//        Points = .DrawGrid.Grid_Gauche;
 //      };      
       
       

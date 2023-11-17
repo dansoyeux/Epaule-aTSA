@@ -238,11 +238,11 @@ description = "-GlenoidAxisTilt"
 # Chemin d'accès au dossier dans lequel les fichiers doivent être sauvegardés
 SaveSimulationsDirectory = "Saved Simulations"
 
-# Pour tests
-date = "06-10-"
-Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
+# # Pour tests
+# date = "06-10-"
+# Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
 
-aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
+# aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
 
 """
 Abduction 25 cas

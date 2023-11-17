@@ -9,7 +9,12 @@ Main =
   
   #define acj_On 1
 //  #define AcromionOffset 0.015
-  #define AcromionOffset 0.0
+
+AnyFolder AcromionScaling = {
+
+AnyVar AcromionOffset = 0.0;
+};
+
   
 //  #if AcromionOffset != 0.0
   #include "../ScalingCustom.any"
