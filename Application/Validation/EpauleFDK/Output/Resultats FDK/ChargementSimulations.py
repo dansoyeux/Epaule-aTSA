@@ -87,7 +87,7 @@ MuscleVariableDictionary = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             "Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Force musculaire totale [Newton]"},
                             "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Activité Musculaire [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
-                            "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Force Musculaire à l'origine du muscle [N]", "select_muscle_RefFrame_output": "origin",
+                            "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Force Musculaire à l'origine du muscle [N]", "select_matrix_line": 0,
                                          "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                                          "combine_muscle_part_operations": ["total", "mean"]},
 
@@ -113,8 +113,7 @@ MuscleVariableDictionary_NoMomentArm = {"Fm": {"MuscleFolderPath": "Output.Mus",
                                                         "combine_muscle_part_operations": ["total", "mean"]
                                                         },
 
-                                        # "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Bras de levier du muscle [mm]",
-                                        #                  "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
+
                                         }
 
 # Variables
@@ -125,21 +124,6 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                           "Temps": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Temps [s]"},
 
                           # "ContactArea": {"VariablePath": "Output.Jnt.ProtheseContact.ContactArea", "VariableDescription": "Surface de contact [cm^2]", "MultiplyFactor": 10000},
-                          # "GHLin Absolute": {"VariablePath": "Output.Jnt.GHLin_Absolute.Pos", "VariableDescription": "Déplacement Linéaire de l'humérus [mm]", "MultiplyFactor": 1000,
-                          #                    "SequenceComposantes": ["ML", "IS", "AP"], "Composantes_Inverse_Direction": [False, False, True]},
-
-                          # "GHLin Absolute Amplitude": {"VariablePath": "Output.Jnt.GHLin_Absolute.Pos", "VariableDescription": "Déplacement Linéaire de l'humérus [mm]", "MultiplyFactor": 1000,
-                          #                              "SequenceComposantes": ["ML", "IS", "AP"], "Composantes_Inverse_Direction": [False, False, True], "offset": [0, 0, 0]},
-
-
-                          # "Eps": {"VariablePath": "Output.Jnt.SpringForce.Eps", "VariableDescription": "Déplacement relatif de l'humérus  [mm]", "MultiplyFactor": 1000,
-                          #         "SequenceComposantes": ["AP", "IS", "ML"]},
-
-                          # "GHLin": {"VariablePath": "Output.Jnt.GHLin.Pos", "VariableDescription": "Déplacement Linéaire de l'humérus par rapport au centre de l'implant [mm]",
-                          #           "MultiplyFactor": 1000, "SequenceComposantes": ["AP", "IS", "ML"]},
-
-                          # "GHLin Relative": {"VariablePath": "Output.Jnt.GHLin.Pos", "VariableDescription": "Déplacement Linéaire de l'humérus par rapport au centre de l'implant [mm]",
-                          #                    "MultiplyFactor": 1000, "SequenceComposantes": ["AP", "IS", "ML"], "offset": [0, 0, 0]},
 
                           "GHLin ISB": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Déplacement Linéaire (ISB) de l'humérus par rapport au centre de l'implant [mm]", "MultiplyFactor": 1000,
                                         "SequenceComposantes": ["AP", "IS", "ML"], "Composantes_Inverse_Direction": [False, False, True]},
@@ -254,12 +238,11 @@ description = "-GlenoidAxisTilt"
 # Chemin d'accès au dossier dans lequel les fichiers doivent être sauvegardés
 SaveSimulationsDirectory = "Saved Simulations"
 
+# Pour tests
+date = "06-10-"
+Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
 
-# # Pour tests
-# date = "06-10-"
-# Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
-
-# aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
+aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
 
 """
 Abduction 25 cas
