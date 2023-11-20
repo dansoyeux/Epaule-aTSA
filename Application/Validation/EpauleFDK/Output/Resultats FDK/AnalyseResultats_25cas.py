@@ -12,6 +12,7 @@ from Anybody_Package.Anybody_Graph.GraphFunctions import define_COP_contour
 from Anybody_Package.Anybody_Graph import PremadeGraphs
 
 from Anybody_Package.Anybody_LoadOutput.LoadLiterature import load_literature_data
+from Anybody_Package.Anybody_LoadOutput.LoadOutput import combine_simulation_cases
 
 import matplotlib
 
@@ -198,6 +199,9 @@ CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCase
 
 CompWickham_CasesNames_3 = [*CaseNames_3, "Wickham", "Ball And Socket"]
 
+CaseNames_3_BallAndSocket = [*CaseNames_3, "Ball And Socket"]
+CaseNames_5_BallAndSocket = [*CaseNames_5, "Ball And Socket"]
+
 # %% Catégories de simulation
 
 # With xdown, middle, xup
@@ -293,24 +297,6 @@ Results_BallAndSocket_Muscle_Recruitment = load_results_from_file(SaveSimulation
 
 # Results_BallAndSocket_FullRange = load_results_from_file(SaveSimulationsDirectory, "Results_BallAndSocket_FullRange")
 
-# %%                                                Chargement autres résultats pour validation
-
-# dataBergmann_2007
-dataBergmann_2007 = load_results_from_file(SaveSimulationsDirectory, "dataBergmann_2007")
-
-# dataWickham abduction
-dataWickham = load_results_from_file(SaveSimulationsDirectory, "dataWickham_abduction")
-# FDK avec data de validation de Wickham
-dataWickham_abduction = load_results_from_file(SaveSimulationsDirectory, "dataWickham_abduction")
-dataWickham_adduction = load_results_from_file(SaveSimulationsDirectory, "dataWickham_adduction")
-dataWickham_abduction_FullRange = load_results_from_file(SaveSimulationsDirectory, "dataWickham_abduction_FullRange")
-
-# data Dal Maso
-data_Dal_Maso_sup = load_results_from_file(SaveSimulationsDirectory, "data_Dal_Maso_sup")
-data_Dal_Maso_inf = load_results_from_file(SaveSimulationsDirectory, "data_Dal_Maso_inf")
-
-data_Dal_Maso = {"Dal Maso supérieur": data_Dal_Maso_sup, "Dal Maso inférieur": data_Dal_Maso_inf}
-
 
 # %% Chargement autres variables
 # Chargement des dictionnaires de variable
@@ -322,42 +308,21 @@ FDK_Variables = load_results_from_file(SaveVariablesDirectory, "FDK_Variables")
 Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket = Results_GlenoidLocalAxis_MR_Polynomial.copy()
 Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket["Ball And Socket"] = Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"]
 
-# %% Dictionnaire comparaison Dal Maso
+# %% Moyenne des résultats par CSA
 
-CompDalMaso_Results_GlenoidLocalAxis_MR_Polynomial = {key: Results_GlenoidLocalAxis_MR_Polynomial[key].copy() for key in CaseNames_3}
-CompDalMaso_Results_GlenoidLocalAxis_MR_Polynomial["Dal Maso supérieur"] = data_Dal_Maso_sup
-CompDalMaso_Results_GlenoidLocalAxis_MR_Polynomial["Dal Maso inférieur"] = data_Dal_Maso_inf
+# result_dictionary = {key: result_dictionary[key] for key in CaseNames_3}
+combine_cases = {"CSA=12°": CSA_12_Cases,
+                 "CSA=16°": CSA_16_Cases,
+                 "CSA=20°": CSA_20_Cases,
+                 "CSA=25°": CSA_25_Cases,
+                 "CSA=30°": CSA_30_Cases,
+                 "CSA=35°": CSA_35_Cases,
+                 "CSA=40°": CSA_40_Cases,
+                 "CSA=45°": CSA_45_Cases,
+                 "CSA=50°": CSA_50_Cases
+                 }
 
-# %%                                                Dictionaires comparaison wickham
-
-# Comparaison FDK polynomial recruitment
-CompWickham_Results_GlenoidLocalAxis_MR_Polynomial = Results_GlenoidLocalAxis_MR_Polynomial.copy()
-CompWickham_Results_GlenoidLocalAxis_MR_Polynomial["Wickham"] = dataWickham_abduction
-CompWickham_Results_GlenoidLocalAxis_MR_Polynomial["Ball And Socket"] = Results_BallAndSocket["middle-normal"]
-
-
-# Comparaison avec Recruitment types Wickham
-CompWickham_Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types = Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types.copy()
-CompWickham_Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types["Wickham"] = dataWickham_abduction
-CompWickham_Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types["Ball And Socket"] = Results_BallAndSocket["middle-normal"]
-
-
-# Comparaison avec Ball And Socket et Wickham
-CompWickham_Results_BallAndSocket = Results_BallAndSocket.copy()
-CompWickham_Results_BallAndSocket["Wickham"] = dataWickham_abduction
-
-# Comparaison avec Ball And Socket muscle recruitment et Wickham
-CompWickham_Results_BallAndSocket_Muscle_Recruitment = Results_BallAndSocket_Muscle_Recruitment.copy()
-CompWickham_Results_BallAndSocket_Muscle_Recruitment["Wickham"] = dataWickham_abduction
-
-"""
-Comparaison avec Bergmann
-"""
-# Comparaison FDK polynomial recruitment
-CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial = Results_GlenoidLocalAxis_MR_Polynomial.copy()
-CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial["Bergmann_2007"] = dataBergmann_2007
-CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial["Ball And Socket"] = Results_BallAndSocket["middle-normal"]
-
+Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial, combine_cases, "mean")
 
 # %% Liste des catégories de muscles
 
@@ -664,15 +629,15 @@ Forces
 # %% Muscles Activity
 
 # # Activité 9 cas
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Main, [3, 3], "Abduction", "Activity", "Muscles principaux : Activation maximale des muscles", cases_on=[*CaseNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[24, 14], grid_x_step=15, xlim=[0, 120], same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Aux, [3, 3], "Abduction", "Activity", "Muscles auxiliaires : Activation maximale des muscles", cases_on=[*CaseNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[24, 14], grid_x_step=15, xlim=[0, 120], same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Extra, [2, 3], "Abduction", "Activity", "Muscles extras : Activation maximale des muscles", cases_on=[*CaseNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[16, 14], grid_x_step=15, xlim=[0, 120], same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_actifs, [4, 3], "Abduction", "Activity", "Activation maximale des muscles", cases_on=[*CaseNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[24, 20], grid_x_step=15, xlim=[0, 120], same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Main, [3, 3], "Abduction", "Activity", "Muscles principaux : Activation maximale des muscles", cases_on=CaseNames_3_BallAndSocket, composante_y=["Max"], figsize=[24, 14], grid_x_step=15, xlim=[0, 120], same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Aux, [3, 3], "Abduction", "Activity", "Muscles auxiliaires : Activation maximale des muscles", cases_on=CaseNames_3_BallAndSocket, composante_y=["Max"], figsize=[24, 14], grid_x_step=15, xlim=[0, 120], same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Extra, [2, 3], "Abduction", "Activity", "Muscles extras : Activation maximale des muscles", cases_on=CaseNames_3_BallAndSocket, composante_y=["Max"], figsize=[16, 14], grid_x_step=15, xlim=[0, 120], same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_actifs, [4, 3], "Abduction", "Activity", "Activation maximale des muscles", cases_on=CaseNames_3_BallAndSocket, composante_y=["Max"], figsize=[24, 20], grid_x_step=15, xlim=[0, 120], same_lim=True)
 
 # # sans same_lim
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Main, [3, 3], "Abduction", "Activity", "Muscles principaux : Activation maximale des muscles", cases_on=[*CaseNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[24, 14], grid_x_step=15, xlim=[0, 120], same_lim=False)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Aux, [3, 3], "Abduction", "Activity", "Muscles auxiliaires : Activation maximale des muscles", cases_on=[*CaseNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[24, 14], grid_x_step=15, xlim=[0, 120], same_lim=False)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Extra, [2, 3], "Abduction", "Activity", "Muscles extras : Activation maximale des muscles", cases_on=[*CaseNames_3, "Ball And Socket"], composante_y=["Max"], figsize=[16, 14], grid_x_step=15, xlim=[0, 120], same_lim=False)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Main, [3, 3], "Abduction", "Activity", "Muscles principaux : Activation maximale des muscles", cases_on=CaseNames_3_BallAndSocket, composante_y=["Max"], figsize=[24, 14], grid_x_step=15, xlim=[0, 120], same_lim=False)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Aux, [3, 3], "Abduction", "Activity", "Muscles auxiliaires : Activation maximale des muscles", cases_on=CaseNames_3_BallAndSocket, composante_y=["Max"], figsize=[24, 14], grid_x_step=15, xlim=[0, 120], same_lim=False)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, Muscles_Extra, [2, 3], "Abduction", "Activity", "Muscles extras : Activation maximale des muscles", cases_on=CaseNames_3_BallAndSocket, composante_y=["Max"], figsize=[16, 14], grid_x_step=15, xlim=[0, 120], same_lim=False)
 
 
 # # Activité 25 cas
@@ -709,12 +674,12 @@ Forces
 # PremadeGraphs.muscle_graph_by_variable(CompWickham_Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3_Wickham, Muscles_Comp_Variation, "Abduction", "Activity", composante_y_muscle_combined=["Max"], muscle_part_on=False, figsize=[16, 10], same_lim=True)
 
 # # Muscles qui varient
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation, [3, 2], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[14, 14], same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation, [3, 2], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[14, 14])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation, [3, 2], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14], same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation, [3, 2], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14])
 
 # # Muscles qui varient2
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation_faible, [3, 3], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[14, 14], same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation_faible, [3, 3], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[14, 14])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation_faible, [3, 3], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14], same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation_faible, [3, 3], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14])
 
 # %% Muscles Ft
 
@@ -722,15 +687,15 @@ Forces
 Par catégories
 """
 # # Ft 9 cas
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Force musculaire : Muscles actifs (Ft > 10N)", cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[0, 120], ylim=[0, 200], legend_position="center left", grid_x_step=15)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[0, 120], ylim=[0, 20], legend_position="center left", grid_x_step=15)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Force musculaire : Muscles inactifs (Ft < 5N)", cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[16, 14], xlim=[0, 120], ylim=[0, 20], legend_position="center left", grid_x_step=15)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Force musculaire : Muscles actifs (Ft > 10N)", cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[0, 120], ylim=[0, 200], legend_position="center left", grid_x_step=15)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[0, 120], ylim=[0, 20], legend_position="center left", grid_x_step=15)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Force musculaire : Muscles inactifs (Ft < 5N)", cases_on=CaseNames_3_BallAndSocket, figsize=[16, 14], xlim=[0, 120], ylim=[0, 20], legend_position="center left", grid_x_step=15)
 
 # # sans same_lim
 # # Ft 9 cas
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Force musculaire : Muscles actifs (Ft > 10N)", cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Force musculaire : Muscles inactifs (Ft < 5N)", cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[16, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Force musculaire : Muscles actifs (Ft > 10N)", cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Force musculaire : Muscles inactifs (Ft < 5N)", cases_on=CaseNames_3_BallAndSocket, figsize=[16, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
 
 # # Ft 25 cas
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Force musculaire : Muscles actifs (Ft > 10N)", cases_on=[*CaseNames_5, "Ball And Socket"], figsize=[24, 14], xlim=[0, 120], ylim=[0, 200], legend_position="center left", grid_x_step=15)
@@ -741,12 +706,12 @@ Par catégories
 Muscles qui varient
 """
 # # Muscles qui varient
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation, [3, 2], "Abduction", "Ft", "Activation influencés par le CSA", cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[14, 14], grid_x_step=15, xlim=[0, 120], same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation, [3, 2], "Abduction", "Ft", "Activation influencés par le CSA", cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[14, 14], grid_x_step=15, xlim=[0, 120])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation, [3, 2], "Abduction", "Ft", "Activation influencés par le CSA", cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14], grid_x_step=15, xlim=[0, 120], same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation, [3, 2], "Abduction", "Ft", "Activation influencés par le CSA", cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14], grid_x_step=15, xlim=[0, 120])
 
 # # Muscles qui varient faiblement
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation, [3, 2], "Abduction", "Ft", "Activation influencés par le CSA", cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[14, 14], grid_x_step=15, xlim=[0, 120], same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation_faible, [3, 3], "Abduction", "Ft", "Activation influencés par le CSA", cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[14, 14], grid_x_step=15, xlim=[0, 120])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation, [3, 2], "Abduction", "Ft", "Activation influencés par le CSA", cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14], grid_x_step=15, xlim=[0, 120], same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation_faible, [3, 3], "Abduction", "Ft", "Activation influencés par le CSA", cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14], grid_x_step=15, xlim=[0, 120])
 
 
 """
@@ -872,48 +837,48 @@ Muscles
 """Catégories de muscles"""
 # # insertion
 # composante = "Total_AP"
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles actifs (Ft > 10N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles peu actifs (10 N > Ft > 5N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles actifs (Ft > 10N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles peu actifs (10 N > Ft > 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
 
 # composante = "Total_IS"
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles actifs (Ft > 10N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles peu actifs (10 N > Ft > 5N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles actifs (Ft > 10N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles peu actifs (10 N > Ft > 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
 
 # composante = "Total_ML"
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles actifs (Ft > 10N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles peu actifs (10 N > Ft > 5N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles actifs (Ft > 10N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles peu actifs (10 N > Ft > 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F insertion", f"Force projetée insertion {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
 
 # # origine
 # composante = "Total_AP"
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles actifs (Ft > 10N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles peu actifs (10 N > Ft > 5N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles actifs (Ft > 10N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles peu actifs (10 N > Ft > 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
 
 # composante = "Total_IS"
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles actifs (Ft > 10N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles peu actifs (10 N > Ft > 5N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles actifs (Ft > 10N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles peu actifs (10 N > Ft > 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
 
 # composante = "Total_ML"
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles actifs (Ft > 10N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles peu actifs (10 N > Ft > 5N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=[*CaseNames_3, "Ball And Socket"], figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_actifs, [4, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles actifs (Ft > 10N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_peu_actif, [1, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles peu actifs (10 N > Ft > 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
 
 
-"""Muscles qui varient"""
-# for muscle_name in list_muscle_variation:
+"""Projections par muscle avec ball and socket"""
+# for muscle_name in AllMuscles_List:
 #     # force muscle projetée origine
-#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 1}, subplot_title="AP origine", composante_y=["Total_AP"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
-#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 2}, subplot_title="IS origine", composante_y=["Total_IS"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
-#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 3}, subplot_title="ML origine", composante_y=["Total_ML"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 1}, subplot_title="AP origine", composante_y=["Total_AP"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 2}, subplot_title="IS origine", composante_y=["Total_IS"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 3}, subplot_title="ML origine", composante_y=["Total_ML"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
 
 #     # force muscle projetée insertion
-#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 4}, subplot_title="AP insertion", composante_y=["Total_AP"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
-#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 5}, subplot_title="IS insertion", composante_y=["Total_IS"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
-#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 6}, subplot_title="ML insertion", composante_y=["Total_ML"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13], grid_x_step=15, xlim=[15, 120], same_lim=True)
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 4}, subplot_title="AP insertion", composante_y=["Total_AP"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 5}, subplot_title="IS insertion", composante_y=["Total_IS"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 6}, subplot_title="ML insertion", composante_y=["Total_ML"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13], grid_x_step=15, xlim=[15, 120], same_lim=True)
 
 """
 Muscles qui varient par variable et par composante
@@ -927,6 +892,13 @@ Muscles qui varient par variable et par composante
 # PremadeGraphs.muscle_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, list_muscle_variation, "Abduction", "F insertion", composante_y_muscle_combined=["Total_ML"], legend_position="center left", figsize=[14, 13], muscle_part_on=False, grid_x_step=15, xlim=[0, 120], same_lim=True)
 # PremadeGraphs.muscle_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, list_muscle_variation, "Abduction", "F insertion", composante_y_muscle_combined=["Total_AP"], legend_position="center left", figsize=[14, 13], muscle_part_on=False, grid_x_step=15, xlim=[0, 120], same_lim=True)
 # PremadeGraphs.muscle_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, list_muscle_variation, "Abduction", "F insertion", composante_y_muscle_combined=["Total_IS"], legend_position="center left", figsize=[14, 13], muscle_part_on=False, grid_x_step=15, xlim=[0, 120], same_lim=True)
+
+# test direction
+for muscle_name in ["Deltoideus lateral"]:
+    # force muscle projetée origine
+    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin direction", f"{muscle_name} : Forces projetées dans le repère scapula", muscle_part_on=[1], subplot={"dimension": [1, 3], "number": 1}, subplot_title="AP origine", composante_y=["AP"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
+    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin direction", f"{muscle_name} : Forces projetées dans le repère scapula", muscle_part_on=[1], subplot={"dimension": [1, 3], "number": 2}, subplot_title="IS origine", composante_y=["IS"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
+    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin direction", f"{muscle_name} : Forces projetées dans le repère scapula", muscle_part_on=[1], subplot={"dimension": [1, 3], "number": 3}, subplot_title="ML origine", composante_y=["ML"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13], same_lim=True)
 
 
 # %% Moment arm
