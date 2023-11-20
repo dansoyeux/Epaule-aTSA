@@ -4,6 +4,7 @@ Main = {
   
   AnyFolder AcromionScaling = {
       AnyVar AcromionOffset  = 0.015;
+      
     };
     
     
@@ -34,6 +35,27 @@ Main = {
           RGB = {256,256,0}/256; 
         };
       };
+      
+      AnyRefNode Triceps_LH_1_Transformed = {
+                sRel = ..MyScalingLaw.MyTransform({-0.002101, -0.05239, -0.012904});
+//        sRel = ..MyScalingLaw.AffineTransform({0.023398, -0.050863, -0.034381});
+        AnyDrawRefFrame drw = {
+          RGB = {0,0,1};
+          Visible = On;
+        };
+      };
+
+      AnyRefNode Triceps_LH_1 = {
+                sRel = {-0.002101, -0.05239, -0.012904};
+//        sRel = ..MyScalingLaw.AffineTransform({0.023398, -0.050863, -0.034381});
+        AnyDrawRefFrame drw = {
+          RGB = {1,0,0};
+          Visible = On;
+        };
+      };
+      
+      
+      
       
       AnyRefNode AnatomicalFrameTransformed = {
         sRel = ..MyScalingLaw.RBFTransform({0.0,0.0,0.0});

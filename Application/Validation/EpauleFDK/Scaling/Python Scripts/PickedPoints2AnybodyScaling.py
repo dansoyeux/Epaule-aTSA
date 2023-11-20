@@ -126,7 +126,8 @@ def PickedPoint2AnyMatrix(dataPath=str, MatrixName=str, ArrayName=str, NamesOn=b
         mat = np.append(AddPoint["Coordinates"], mat, axis=0)
         Names = AddPoint["PointNames"] + Names
 
-    if Offset is not None:
+    # without an offset
+    if Offset is None:
         string = Mat2AnyMatrix(MatrixName, mat, Names)
     else:
         string = Mat2AnyMatrix(MatrixName, mat, Names, Offset)
