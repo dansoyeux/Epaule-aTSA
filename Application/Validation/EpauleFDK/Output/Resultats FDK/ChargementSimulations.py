@@ -9,6 +9,7 @@ from Anybody_Package.Anybody_LoadOutput.LoadOutput import create_compared_simula
 from Anybody_Package.Anybody_LoadOutput.Tools import save_results_to_file
 
 from Anybody_Package.Anybody_LoadOutput.LoadLiterature import load_literature_data
+from Anybody_Package.Anybody_LoadOutput.LoadOutput import combine_simulation_cases
 
 import numpy as np
 
