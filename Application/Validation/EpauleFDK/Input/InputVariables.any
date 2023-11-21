@@ -168,7 +168,7 @@ AnyFolder InputVariables = {
   /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
   
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "normal"
+  #define CSA_Acromion_Length "xshort"
   #endif
   /*
   xshort
@@ -232,7 +232,7 @@ AnyFolder InputVariables = {
   // Name has to be without the anydata.h5 extension
   // LoadAndReplay : Operation to load and replay a previous anydata.h5 result file
 //  #define m_LoadFile "08-09-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial"
-  #define m_LoadFile "06-10-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial"
+  #define m_LoadFile "30-10-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial" + "-no-delt-post-scaling"
 
   
 //    #define m_LoadFile "08-09-" + CSA_Case + 
@@ -242,8 +242,8 @@ AnyFolder InputVariables = {
 
 
 
-  #define m_LoadFolder "SaveData/Variation_CSA/"
-//  #define m_LoadFolder "SaveData/Macro_Results/"
+//  #define m_LoadFolder "SaveData/Variation_CSA/"
+  #define m_LoadFolder "SaveData/Macro_Results_no_delt_post_scaling/"
 //  #define m_LoadFolder "SaveData/Macro_80step_180deg/"
   
   

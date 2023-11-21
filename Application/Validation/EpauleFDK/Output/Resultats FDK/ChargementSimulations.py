@@ -18,8 +18,7 @@ import pandas as pd
 # %% Setup des variables à charger
 
 # Muscles
-MuscleDictionary = {"Triceps long head": ["Triceps_LH", "_", [1, 2]],
-                    "Deltoideus lateral": ["deltoideus_lateral", "_part_", [1, 4]],
+MuscleDictionary = {"Deltoideus lateral": ["deltoideus_lateral", "_part_", [1, 4]],
                     "Deltoideus posterior": ["deltoideus_posterior", "_part_", [1, 4]],
                     "Deltoideus anterior": ["deltoideus_anterior", "_part_", [1, 4]],
                     "Supraspinatus": ["supraspinatus", "_", [1, 6]],
@@ -28,6 +27,7 @@ MuscleDictionary = {"Triceps long head": ["Triceps_LH", "_", [1, 2]],
                     "Lower trapezius": ["trapezius_scapular", "_part_", [1, 3]],
                     "Middle trapezius": ["trapezius_scapular", "_part_", [4, 6]],
                     "Upper trapezius": ["trapezius_clavicular", "_part_", [1, 6]],
+                    "Triceps long head": ["Triceps_LH", "_", [1, 2]],
                     "Biceps brachii long head": ["biceps_brachii_caput_longum", "", []],
                     "Biceps brachii short head": ["biceps_brachii_caput_breve", "", []],
                     "Pectoralis major clavicular": ["pectoralis_major_clavicular", "_part_", [1, 5]],

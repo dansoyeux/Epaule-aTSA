@@ -473,11 +473,12 @@ list_muscles_inactifs = ["Pectoralis major clavicular",
                          "Latissimus dorsi",
                          "Coracobrachialis"
                          ]
-# 6
+# 6 (subscapulaire divisé en 2)
 list_muscle_variation = ["Deltoideus anterior",
                          "Deltoideus lateral",
                          "Deltoideus posterior",
-                         "Subscapularis",
+                         "Upper Subscapularis",
+                         "Downward Subscapularis",
                          "Triceps long head",
                          "Infraspinatus"
                          ]
@@ -750,7 +751,7 @@ Muscles par parties
 """
 # # Muscles par parties individuelles
 # # 25 cas
-# PremadeGraphs.graph_all_muscle_fibers(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, AllMuscles_List, "Abduction", "Ft", cases_on="all", grid_x_step=15, xlim=[0, 120], legend_position="center left")
+# PremadeGraphs.graph_all_muscle_fibers(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, AllMuscles_List, "Abduction", "Ft", cases_on="all", grid_x_step=15, xlim=[0, 120], legend_position="center left", same_lim=True)
 
 # # 9 cas
 # PremadeGraphs.graph_all_muscle_fibers(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, AllMuscles_List, "Abduction", "Ft", cases_on=CaseNames_3, grid_x_step=15, xlim=[0, 120], same_lim=True)
@@ -868,7 +869,7 @@ Muscles
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscles_inactifs, [3, 3], "Abduction", "F origin", f"Force projetée origine {composante} : Muscles inactifs (Ft < 5N)", composante_y=[composante], cases_on=CaseNames_3_BallAndSocket, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
 
 
-"""Projections par muscle avec ball and socket"""
+"""Tous les muscles"""
 # for muscle_name in AllMuscles_List:
 #     # force muscle projetée origine
 #     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 1}, subplot_title="AP origine", composante_y=["Total_AP"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
@@ -879,6 +880,20 @@ Muscles
 #     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 4}, subplot_title="AP insertion", composante_y=["Total_AP"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
 #     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 5}, subplot_title="IS insertion", composante_y=["Total_IS"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
 #     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 6}, subplot_title="ML insertion", composante_y=["Total_ML"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13], grid_x_step=15, xlim=[15, 120], same_lim=True)
+
+
+"""Muscles qui varient"""
+# for muscle_name in AllMuscles_List:
+#     # force muscle projetée origine
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 1}, subplot_title="AP origine", composante_y=["Total_AP"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 2}, subplot_title="IS origine", composante_y=["Total_IS"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 3}, subplot_title="ML origine", composante_y=["Total_ML"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
+
+#     # force muscle projetée insertion
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 4}, subplot_title="AP insertion", composante_y=["Total_AP"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 5}, subplot_title="IS insertion", composante_y=["Total_IS"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 3], "number": 6}, subplot_title="ML insertion", composante_y=["Total_ML"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[14, 13], grid_x_step=15, xlim=[15, 120], same_lim=True)
+
 
 """
 Muscles qui varient par variable et par composante
@@ -892,13 +907,6 @@ Muscles qui varient par variable et par composante
 # PremadeGraphs.muscle_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, list_muscle_variation, "Abduction", "F insertion", composante_y_muscle_combined=["Total_ML"], legend_position="center left", figsize=[14, 13], muscle_part_on=False, grid_x_step=15, xlim=[0, 120], same_lim=True)
 # PremadeGraphs.muscle_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, list_muscle_variation, "Abduction", "F insertion", composante_y_muscle_combined=["Total_AP"], legend_position="center left", figsize=[14, 13], muscle_part_on=False, grid_x_step=15, xlim=[0, 120], same_lim=True)
 # PremadeGraphs.muscle_graph_by_variable(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, list_muscle_variation, "Abduction", "F insertion", composante_y_muscle_combined=["Total_IS"], legend_position="center left", figsize=[14, 13], muscle_part_on=False, grid_x_step=15, xlim=[0, 120], same_lim=True)
-
-# test direction
-for muscle_name in ["Deltoideus lateral"]:
-    # force muscle projetée origine
-    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin direction", f"{muscle_name} : Forces projetées dans le repère scapula", muscle_part_on=[1], subplot={"dimension": [1, 3], "number": 1}, subplot_title="AP origine", composante_y=["AP"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
-    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin direction", f"{muscle_name} : Forces projetées dans le repère scapula", muscle_part_on=[1], subplot={"dimension": [1, 3], "number": 2}, subplot_title="IS origine", composante_y=["IS"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13])
-    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F origin direction", f"{muscle_name} : Forces projetées dans le repère scapula", muscle_part_on=[1], subplot={"dimension": [1, 3], "number": 3}, subplot_title="ML origine", composante_y=["ML"], cases_on=CaseNames_3, legend_position="center left", figsize=[14, 13], same_lim=True)
 
 
 # %% Moment arm
