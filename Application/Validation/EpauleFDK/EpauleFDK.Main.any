@@ -8,8 +8,6 @@
 
 Main = {
   
-  
-  
   //File to change before each simulation 
   #include "Input/InputVariables.any"
   
@@ -23,7 +21,6 @@ Main = {
   #include "Model/MyDeltoidDefinition.any"
   #include "Model/MyDeltoidWrapping.any"
   #endif
-  
   
   //Places a glenoid and a humeral implant
   #include "Model/Implants.any"
