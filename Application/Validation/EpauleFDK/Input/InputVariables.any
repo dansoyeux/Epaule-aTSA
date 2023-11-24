@@ -3,7 +3,7 @@ AnyFolder InputVariables = {
   
   // Activates or not FDK (0 FDK activated)
   #ifndef BallAndSocket
-  #define BallAndSocket 0
+  #define BallAndSocket 1
   #endif
   
   
@@ -132,8 +132,25 @@ AnyFolder InputVariables = {
   #endif
   
   #ifndef AnyOutputFileOn
-  #define AnyOutputFileOn 1
+  #define AnyOutputFileOn 0
   #endif
+  
+    /* ---------------------------------- NEW DELTOID WRAPPING ON-------------------------------------*/
+  /*
+  0 : normal wrapping
+  1 : wrapping surfaces linked to gh_proth
+  2 : wrapping surfaces of the deltoideus lateral are redefined 
+    : as the contour of the humeral head (like subscapularis Surface_2)
+  */
+
+    #define NewDeltoidWrappingOn 2
+
+  
+  // 1 : Cylinder
+  // 2 : Ellipsoid
+  #define WrappingSurfaceType 2
+  
+  
   
   /* -----------------------------------------CSA VARIATION CASES--------------------------------
   Case middle-short  : CSA = 20 DEG : TILT 2.229 DEG UPWARD       AND  ACROMION SHORTEN  (-12.13mm)
@@ -153,7 +170,7 @@ AnyFolder InputVariables = {
   
   /* -------------------------------------------CSA_Tilt selection------------------------------------*/
   #ifndef CSA_Tilt
-  #define CSA_Tilt "xup"
+  #define CSA_Tilt "middle"
   #endif
   /*
   xdown
@@ -168,7 +185,7 @@ AnyFolder InputVariables = {
   /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
   
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "short"
+  #define CSA_Acromion_Length "xshort"
   #endif
   /*
   xshort
@@ -180,22 +197,7 @@ AnyFolder InputVariables = {
     
   #define CSA_Case CSA_Tilt + "-" + CSA_Acromion_Length
   
-  /* ---------------------------------- NEW DELTOID WRAPPING ON-------------------------------------*/
 
-  // only actiates the new muscle wrapping for short acromion 
-//  #if CSA_Acromion_Length == "xshort" & BallAndSocket == 0
-//  #define NewDeltoidWrappingOn 1
-//  #else 
-//  #define NewDeltoidWrappingOn 0
-//  #endif
-  
-//   Decommenter si charge "short" sans new wrapping
-    #define NewDeltoidWrappingOn 0
-
-  
-  // 1 : Cylinder
-  // 2 : Ellipsoid
-  #define WrappingSurfaceType 2
   
   
   
