@@ -27,20 +27,6 @@ Main = {
   #include "Model/MyDeltoidWrapping_HumContour.any"
   #endif
   
-  
-  
-  // POUR TESTER LES SURFACES wrapping
-//  #include "Model/MyDeltoidWrapping_HumContour.any"
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   #if BallAndSocket == 0
   
   //Places a glenoid and a humeral implant

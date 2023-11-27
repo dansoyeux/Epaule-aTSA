@@ -201,9 +201,11 @@ AnyFolder FDK ={
   // Case "xup-xshort"
   #if CSA_Case == "xup-xshort"
   
+  // Force pour wrapping = ellipsoides
   #if NewDeltoidWrappingOn == 0
   AnyFloat k0 = -{-28,34.5};
   #endif
+
   
   #if NewDeltoidWrappingOn == 1
   // Case "up-short" deltoid wrapping
