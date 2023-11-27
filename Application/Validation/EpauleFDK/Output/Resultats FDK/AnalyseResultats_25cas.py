@@ -940,6 +940,7 @@ Muscles
 #     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 4], "number": 7}, subplot_title="IS insertion", composante_y=["Total_IS"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[20, 13])
 #     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, muscle_name, "Abduction", "F insertion", f"{muscle_name} : Forces projetées dans le repère scapula", subplot={"dimension": [2, 4], "number": 8}, subplot_title="ML insertion", composante_y=["Total_ML"], cases_on=CaseNames_3_BallAndSocket, legend_position="center left", figsize=[20, 13], grid_x_step=15, xlim=[15, 120], same_lim=True)
 
+
 # # middle-normal seulement insertion
 # for muscle_name in list_muscles_actifs:
 #     # force muscle projetée origine
@@ -996,19 +997,33 @@ Muscles
 
 
 """Direction de la force du deltoide latéral"""
+# muscle_name = "Deltoideus lateral"
+
+# # force muscle projetée origine
+# muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} Mean : Direction de la force projetée dans le repère scapula", subplot={"dimension": [1, 3], "number": 1}, subplot_title="AP origine", composante_y=["AP"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13])
+# muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} Mean : Direction de la force projetée dans le repère scapula", subplot={"dimension": [1, 3], "number": 2}, subplot_title="IS origine", composante_y=["IS"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13])
+# muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} Mean : Direction de la force projetée dans le repère scapula", subplot={"dimension": [1, 3], "number": 3}, subplot_title="ML origine", composante_y=["ML"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13], same_lim=True, xlim=[15, 120], grid_x_step=15, grid_y_step=0.25, ylim=[-1, 1])
+
+# # parties du muscle
+# for part_number in range(1, 4 + 1):
+#     # force muscle projetée origine
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} {part_number} : Direction de la force projetée dans le repère scapula", muscle_part_on=[part_number], subplot={"dimension": [1, 3], "number": 1}, subplot_title="AP origine", composante_y=["AP"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} {part_number} : Direction de la force projetée dans le repère scapula", muscle_part_on=[part_number], subplot={"dimension": [1, 3], "number": 2}, subplot_title="IS origine", composante_y=["IS"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13])
+#     muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} {part_number} : Direction de la force projetée dans le repère scapula", muscle_part_on=[part_number], subplot={"dimension": [1, 3], "number": 3}, subplot_title="ML origine", composante_y=["ML"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13], same_lim=True, xlim=[15, 120], grid_x_step=15, grid_y_step=0.25, ylim=[-1, 1])
+
 muscle_name = "Deltoideus lateral"
 
 # force muscle projetée origine
-muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} Mean : Direction de la force projetée dans le repère scapula", subplot={"dimension": [1, 3], "number": 1}, subplot_title="AP origine", composante_y=["AP"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13])
-muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} Mean : Direction de la force projetée dans le repère scapula", subplot={"dimension": [1, 3], "number": 2}, subplot_title="IS origine", composante_y=["IS"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13])
-muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} Mean : Direction de la force projetée dans le repère scapula", subplot={"dimension": [1, 3], "number": 3}, subplot_title="ML origine", composante_y=["ML"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13], same_lim=True, xlim=[15, 120], grid_x_step=15, grid_y_step=0.25, ylim=[-1, 1])
+muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin", f"{muscle_name} Total : Direction de la force projetée dans le repère scapula", subplot={"dimension": [1, 3], "number": 1}, subplot_title="AP origine", composante_y=["Total_AP"], cases_on=CaseNames_5, legend_position="center left", figsize=[24, 13])
+muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin", f"{muscle_name} Total : Direction de la force projetée dans le repère scapula", subplot={"dimension": [1, 3], "number": 2}, subplot_title="IS origine", composante_y=["Total_IS"], cases_on=CaseNames_5, legend_position="center left", figsize=[24, 13])
+muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin", f"{muscle_name} Total : Direction de la force projetée dans le repère scapula", subplot={"dimension": [1, 3], "number": 3}, subplot_title="ML origine", composante_y=["Total_ML"], cases_on=CaseNames_5, legend_position="center left", figsize=[24, 13], same_lim=True, xlim=[15, 120], grid_x_step=15, grid_y_step=25)
 
 # parties du muscle
 for part_number in range(1, 4 + 1):
     # force muscle projetée origine
-    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} {part_number} : Direction de la force projetée dans le repère scapula", muscle_part_on=[part_number], subplot={"dimension": [1, 3], "number": 1}, subplot_title="AP origine", composante_y=["AP"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13])
-    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} {part_number} : Direction de la force projetée dans le repère scapula", muscle_part_on=[part_number], subplot={"dimension": [1, 3], "number": 2}, subplot_title="IS origine", composante_y=["IS"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13])
-    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} {part_number} : Direction de la force projetée dans le repère scapula", muscle_part_on=[part_number], subplot={"dimension": [1, 3], "number": 3}, subplot_title="ML origine", composante_y=["ML"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13], same_lim=True, xlim=[15, 120], grid_x_step=15, grid_y_step=0.25, ylim=[-1, 1])
+    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin", f"{muscle_name} {part_number} : Direction de la force projetée dans le repère scapula", muscle_part_on=[part_number], subplot={"dimension": [1, 3], "number": 1}, subplot_title="AP origine", composante_y=["AP"], cases_on=CaseNames_5, legend_position="center left", figsize=[24, 13])
+    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin", f"{muscle_name} {part_number} : Direction de la force projetée dans le repère scapula", muscle_part_on=[part_number], subplot={"dimension": [1, 3], "number": 2}, subplot_title="IS origine", composante_y=["IS"], cases_on=CaseNames_5, legend_position="center left", figsize=[24, 13])
+    muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin", f"{muscle_name} {part_number} : Direction de la force projetée dans le repère scapula", muscle_part_on=[part_number], subplot={"dimension": [1, 3], "number": 3}, subplot_title="ML origine", composante_y=["ML"], cases_on=CaseNames_5, legend_position="center left", figsize=[24, 13], same_lim=True, xlim=[15, 120], grid_x_step=15, grid_y_step=25)
 
 
 # %% Moment arm

@@ -1,0 +1,201 @@
+// File that redefines de deltoidus lateral wrapping surface as a surface that is the contour of the humeral head (like the subscapularis Surface_2)
+
+// Defines 2 surfaces, one for the deltoideus lateral 3 and 4 fibers (exactly the surface used for subscpularis)
+// And another for 1 and 2 fibers, the same as subscapularis but offseted
+
+Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
+    
+    AnyRefNode  MyDeltoideus_Surface_4 = {
+      AnyVec3 CenterOffset = {0.005,0.005,0.00};
+      sRel = .Scale((.Data.gh_pos+CenterOffset)*.Mirror);
+      ARel = RotMat(pi/2, x);
+      
+      AnyVec3 humerus_top=.Scale(.Data.art_gh_hum_P2_pos*.Mirror);
+      AnyVec3 i_subscapularis = .I_subscapularis_1.sRel;
+      
+      // for fibers 3-4 (exactly the subscapularis surface_2 formula)
+      AnySurfCylinder cyl = {
+        
+        // formula of subscapularis cylinder
+        //      Radius = 0.99*vnorm(.sRel-.i_subscapularis);
+        //        Length = 0*Radius;
+        //      CapRatio2 = vnorm(.sRel-.humerus_top)/Radius;
+        //      CapRatio = 2.7;
+        
+        // Same values as original but stay constant     
+        Length = 0*Radius;
+        Radius = 0.03114295;
+        CapRatio = 2.7;
+        CapRatio2 = 0.7491764;
+        
+        viewSurface.Visible=On;
+        viewSurface.Opacity = 0.5;
+      };
+      
+    }; // MyDeltoideus_Surface_4
+    
+    // same than 4   
+    AnyRefNode  MyDeltoideus_Surface_3 = {
+      AnyVec3 CenterOffset = {0.005,0.005,0.00};
+      sRel = .Scale((.Data.gh_pos+CenterOffset)*.Mirror);
+      ARel = RotMat(pi/2, x);
+      
+      AnyVec3 humerus_top=.Scale(.Data.art_gh_hum_P2_pos*.Mirror);
+      AnyVec3 i_subscapularis = .I_subscapularis_1.sRel;
+      
+      // for fibers 3-4 (exactly the subscapularis surface_2 formula)
+      AnySurfCylinder cyl = {
+        
+        // formula of subscapularis cylinder
+        //      Radius = 0.99*vnorm(.sRel-.i_subscapularis);
+        //        Length = 0*Radius;
+        //      CapRatio2 = vnorm(.sRel-.humerus_top)/Radius;
+        //      CapRatio = 2.7;
+        
+        // Same values as original but stay constant     
+        Length = 0*Radius;
+        Radius = 0.03114295;
+        CapRatio = 2.7;
+        CapRatio2 = 0.7491764;
+        
+        viewSurface.Visible=Off;
+        viewSurface.Opacity = 0.2;
+      };
+      
+    }; // MyDeltoideus_Surface_3
+    
+    
+    
+    
+    // smaller radius and offseted   
+    AnyRefNode  MyDeltoideus_Surface_2 = {
+      AnyVec3 CenterOffset = {0.005,0.005,0.00} + {-0.005, 0.0, 0.009};
+      sRel = .Scale((.Data.gh_pos+CenterOffset)*.Mirror);
+      ARel = RotMat(pi/2, x);
+      
+      AnyVec3 humerus_top=.Scale(.Data.art_gh_hum_P2_pos*.Mirror);
+      AnyVec3 i_subscapularis = .I_subscapularis_1.sRel;
+      
+      // for fibers 1 and 2 (modified subscapularis surface_2 formula)   
+      AnySurfCylinder cyl = {
+        // formula of subscapularis cylinder
+        //      Radius = 0.99*vnorm(.sRel-.i_subscapularis);
+        //        Length = 0*Radius;
+        //      CapRatio2 = vnorm(.sRel-.humerus_top)/Radius;
+        //      CapRatio = 2.7;
+        
+        // Same values as original but stay constant     
+        //      Length = 0*Radius;
+        //      Radius = 0.03114295;
+        //      CapRatio = 2.7;
+        //      CapRatio2 = 0.7491764;
+        
+        // modified values
+        Length = 0*Radius;
+        Radius = 0.032;
+        CapRatio = 2.7;
+        CapRatio2 = 0.7491764;
+        
+        viewSurface.Visible=Off;
+        viewSurface.Opacity = 0.5;
+        
+      };    
+      
+      
+    }; // MyDeltoideus_Surface_2
+    
+    
+    // different offset than 2   
+    AnyRefNode  MyDeltoideus_Surface_1 = {
+      AnyVec3 CenterOffset = {0.005,0.005,0.00} + {-0.005, 0.0, 0.011};
+      sRel = .Scale((.Data.gh_pos+CenterOffset)*.Mirror);
+      ARel = RotMat(pi/2, x);
+      
+      AnyVec3 humerus_top=.Scale(.Data.art_gh_hum_P2_pos*.Mirror);
+      AnyVec3 i_subscapularis = .I_subscapularis_1.sRel;
+      
+      // for fibers 1 and 2 (modified subscapularis surface_2 formula)   
+      AnySurfCylinder cyl = {
+        // formula of subscapularis cylinder
+        //      Radius = 0.99*vnorm(.sRel-.i_subscapularis);
+        //        Length = 0*Radius;
+        //      CapRatio2 = vnorm(.sRel-.humerus_top)/Radius;
+        //      CapRatio = 2.7;
+        
+        // Same values as original but stay constant     
+        //      Length = 0*Radius;
+        //      Radius = 0.03114295;
+        //      CapRatio = 2.7;
+        //      CapRatio2 = 0.7491764;
+        
+        // modified values
+        Length = 0*Radius;
+        Radius = 0.032;
+        CapRatio = 2.7;
+        CapRatio2 = 0.7491764;
+        
+        viewSurface.Visible=On;
+        viewSurface.Opacity = 0.5;
+        
+      };    
+      
+      
+    }; // MyDeltoideus_Surface_1
+}; // Humerus
+
+
+// New definition of the 4 deltoideus muscle fibers with new wrapping surfaces
+Main.HumanModel.BodyModel.Right.ShoulderArm.Mus = {
+    
+  
+  AnyMuscleShortestPath My_deltoideus_lateral_part_1 = {
+    AnyMuscleModel &MusMdl = ..MusPar.My_deltoideus_lateral_part_1; 
+    AnyRefNode &Org = ..Seg.Scapula.O_deltoideus_lateral_part_1; 
+    
+    AnyRefNode &Ins = ..Seg.Humerus.I_deltoideus_lateral_part_1; 
+    AnyDrawMuscle DrwMus = {#include "../../../../Body/AAUHuman/DrawSettings/MusDrawSettings.any"};
+    SPLine.StringMesh = 30;
+    
+    AnyParamSurfAnalytical &Surf = ..Seg.Humerus.MyDeltoideus_Surface_1.cyl;
+    
+  }; // My_deltoideus_lateral_part_1
+  
+  AnyMuscleShortestPath My_deltoideus_lateral_part_2 = {
+    AnyMuscleModel &MusMdl = ..MusPar.My_deltoideus_lateral_part_2; 
+    AnyRefNode &Org = ..Seg.Scapula.O_deltoideus_lateral_part_2; 
+    
+    AnyRefNode &Ins = ..Seg.Humerus.I_deltoideus_lateral_part_2; 
+    AnyDrawMuscle DrwMus = {#include "../../../../Body/AAUHuman/DrawSettings/MusDrawSettings.any"};
+    SPLine.StringMesh = 30;
+    
+    AnyParamSurfAnalytical &Surf = ..Seg.Humerus.MyDeltoideus_Surface_2.cyl;
+    
+  }; // My_deltoideus_lateral_part_2
+  
+  AnyMuscleShortestPath My_deltoideus_lateral_part_3 = {
+    AnyMuscleModel &MusMdl = ..MusPar.My_deltoideus_lateral_part_3; 
+    AnyRefNode &Org = ..Seg.Scapula.O_deltoideus_lateral_part_3; 
+    
+    AnyRefNode &Ins = ..Seg.Humerus.I_deltoideus_lateral_part_3; 
+    AnyDrawMuscle DrwMus = {#include "../../../../Body/AAUHuman/DrawSettings/MusDrawSettings.any"};
+    SPLine.StringMesh = 30;
+    
+    AnyParamSurfAnalytical &Surf = ..Seg.Humerus.MyDeltoideus_Surface_3.cyl;
+    
+  }; // My_deltoideus_lateral_part_3
+  
+  AnyMuscleShortestPath My_deltoideus_lateral_part_4 = {
+    AnyMuscleModel &MusMdl = ..MusPar.My_deltoideus_lateral_part_4; 
+    AnyRefNode &Org = ..Seg.Scapula.O_deltoideus_lateral_part_4; 
+    
+    AnyRefNode &Ins = ..Seg.Humerus.I_deltoideus_lateral_part_4; 
+    AnyDrawMuscle DrwMus = {#include "../../../../Body/AAUHuman/DrawSettings/MusDrawSettings.any"};
+    SPLine.StringMesh = 30;
+    
+    AnyParamSurfAnalytical &Surf = ..Seg.Humerus.MyDeltoideus_Surface_4.cyl;
+    
+  }; // My_deltoideus_lateral_part_4
+  
+}; // Mus
+
+

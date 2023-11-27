@@ -14,13 +14,20 @@ Main = {
   //Definition of the CSA variation cases (glenoid rotation and acromion length)
   #include "Model/CSAVariation.any"
   
-  #if BallAndSocket == 0
+  
   
   //Changes the deltoideus definition to add new wrapping cylinders
   #if NewDeltoidWrappingOn == 1
   #include "Model/MyDeltoidDefinition.any"
-  #include "Model/MyDeltoidWrapping.any"
+  #include "Model/MyDeltoidWrapping_gh_Proth.any"
   #endif
+  
+  #if NewDeltoidWrappingOn == 2
+  #include "Model/MyDeltoidDefinition.any"
+  #include "Model/MyDeltoidWrapping_HumContour.any"
+  #endif
+  
+  #if BallAndSocket == 0
   
   //Places a glenoid and a humeral implant
   #include "Model/Implants.any"

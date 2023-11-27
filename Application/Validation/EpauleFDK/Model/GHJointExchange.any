@@ -9,7 +9,7 @@ ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeral
 #endif
 
 // Also excludes the deltoideus muscles that were redefined for better wrapping
-#if BallAndSocket == 0 & NewDeltoidWrappingOn == 1
+#if BallAndSocket == 0 & NewDeltoidWrappingOn != 0
 MechObjectExclude = 
 arrcat(ObjSearchRecursive("Main.HumanModel.BodyModel.SelectedOutput.Right.ShoulderArm.JointReactionForce.GlenoHumeral_*","AnyMechObject"),
 ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions","*","AnyMechObject"),
@@ -27,14 +27,24 @@ ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Mus","deltoideus
 
 
 //Excludes the glenohumeral joint aswell when FDK deactivated
-#if BallAndSocket == 1
+#if BallAndSocket == 1 & NewDeltoidWrappingOn == 0
 MechObjectExclude = 
 arrcat(
 ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")
 
 );
-#endif
+#endif // Ball And Socket == 1
 
+#if BallAndSocket == 1 & NewDeltoidWrappingOn != 0
+MechObjectExclude = 
+arrcat(
+ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")
+
+// Also excludes the deltoideus muscles that were redefined for better wrapping
+,ObjSearch("Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_*","AnyMechObject"),
+ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Mus","deltoideus_lateral_part_*.*", "AnyMechObject")
+);
+#endif // Ball And Socket == 1
 
 
 
