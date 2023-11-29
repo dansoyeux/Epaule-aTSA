@@ -701,9 +701,9 @@ Forces
 
 # # Forces par catégories par composantes
 # # 5x5
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact scapula", "Forces de contact AP", composante_y=["AP"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact scapula", "Forces de contact IS", composante_y=["IS"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact scapula", "Forces de contact ML", composante_y=["ML"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact scapula", "Forces de contact AP dans le repère de la scapula", composante_y=["AP"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact scapula", "Forces de contact IS dans le repère de la scapula", composante_y=["IS"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact scapula", "Forces de contact ML dans le repère de la scapula", composante_y=["ML"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
 
 # # force par composantes
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact scapula", "Forces de contact dans le repère de la scapula", subplot={"dimension": [1, 3], "number": 1}, cases_on=CaseNames_5, subplot_title="AP", composante_y=["AP"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
@@ -1142,17 +1142,13 @@ Muscles
 
 # %% Moment arm
 
-"""
-toutes les fibres
-"""
+"""toutes les fibres"""
 # 25 cas
 # PremadeGraphs.graph_all_muscle_fibers(Results_GlenoidLocalAxis_MR_Polynomial, AllMuscles_List, "Abduction", "MomentArm", composante_y_muscle_combined=["Mean"], cases_on="all", grid_x_step=15, xlim=[0, 120], legend_position="center left")
 # 9 cas
 # PremadeGraphs.graph_all_muscle_fibers(Results_GlenoidLocalAxis_MR_Polynomial, AllMuscles_List, "Abduction", "MomentArm", composante_y_muscle_combined=["Mean"], cases_on=CaseNames_3, grid_x_step=15, xlim=[0, 120], legend_position="center left")
 
-"""
-par catégories
-"""
+"""par catégories"""
 # # Moment arm 25 cas
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial, list_muscles_actifs, [4, 3], "Abduction", "MomentArm", "Bras de levier : Muscles actifs (Ft > 10N)", composante_y=["Mean"], cases_on=CaseNames_5, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15, same_lim=True, ylim=[-50, 50])
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial, list_muscles_peu_actif, [1, 3], "Abduction", "MomentArm", "Bras de levier : Muscles peu actifs (10 N > Ft > 5N)", composante_y=["Mean"], cases_on=CaseNames_5, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15, same_lim=True, ylim=[-50, 50])
@@ -1164,7 +1160,7 @@ par catégories
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial, list_muscles_inactifs, [3, 3], "Abduction", "MomentArm", "Bras de levier : Muscles inactifs (Ft < 5N)", composante_y=["Mean"], cases_on=CaseNames_3, figsize=[16, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15, same_lim=True, ylim=[-50, 50])
 
 """Muscles qui varient"""
-PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial, list_muscle_variation, [4, 2], "Abduction", "MomentArm", "Bras de levier : Muscles qui varient", composante_y=["Mean"], cases_on=CaseNames_5, figsize=[14, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15, same_lim=True, ylim=[-50, 50])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial, list_muscle_variation, [4, 2], "Abduction", "MomentArm", "Bras de levier : Muscles qui varient", composante_y=["Mean"], cases_on=CaseNames_5, figsize=[14, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15, same_lim=True, ylim=[-50, 50])
 
 """Par catégories"""
 # # Ft rassemblé par catégories sans les parties des muscles
