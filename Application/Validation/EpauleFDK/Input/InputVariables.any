@@ -5,7 +5,7 @@ AnyFolder InputVariables = {
   #ifndef BallAndSocket
   #define BallAndSocket 0
   #endif
-  
+   
   
   /* -------------------------------- MUSCLE RECRUITMENT TYPE -----------------------------------*/
   /*
@@ -144,31 +144,12 @@ AnyFolder InputVariables = {
   */
 
     #define NewDeltoidWrappingOn 0
-
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*------------------------------------------------
-    WARNING CYLINDER WRAPPING USED
-    */
-    
-    
-    
     
   // 1 : Cylinder
   // 2 : Ellipsoid
   #ifndef WrappingSurfaceType
-  #define WrappingSurfaceType 1
+  #define WrappingSurfaceType 2
   #endif
-  
-  
   
   
   /* -----------------------------------------CSA VARIATION CASES--------------------------------
@@ -204,7 +185,7 @@ AnyFolder InputVariables = {
   /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
   
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "normal"
+  #define CSA_Acromion_Length "long"
   #endif
   /*
   xshort

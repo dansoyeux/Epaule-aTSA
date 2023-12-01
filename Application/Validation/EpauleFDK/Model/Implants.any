@@ -18,7 +18,7 @@ Call to custom file based on template "InputPosition_ImplantName.any"
 
 
 
-/* -------- GLENOID IMPLANT--------*/
+/* -------- GLENOID IMPLANT-----------------------------------------------------*/
 Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
   
   AnyFolder &Param = Main.InputVariables.ImplantParameters;
@@ -56,131 +56,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
     
     
   }; // GlenImplantPos
-  
-  
-  
-  
-  
-  
-  
-//  
-//  // UP
-//    AnyRefNode GlenImplantPos_up = {
-//    sRel = 0.001*{-25.928136 , -45.408988 , -24.271015};
-//    ARel = {
-//      {-0.193467 , -0.149501 , 0.969649},
-//      {-0.226877 , 0.968351 , 0.104034},
-//      {-0.954514 , -0.199864 , -0.221263}
-//      
-//      };
-//
-//    
-//    // Center of the GlenImplant
-//    AnyRefNode GlenImplantCenter = {
-//      sRel = 0.001*{0,0,28.418720};
-//    };
-//    
-//    
-//    AnyDrawRefFrame drw = {
-//      Visible= Off;
-//      ScaleXYZ={1,1,1}/12;
-//      RGB = {1,0,0};
-//    }; 
-//    
-//    
-//    AnySurfSTL GleneSTL = {
-//      FileName = "../Input/Implants/ImplantModels/" + ..Param.ImplantNames.GlenoidName + ".stl";
-//      ScaleXYZ = {1,1,1}*0.001;
-//      AnyDrawSurf drw = {
-//        FileName = .FileName;
-//        RGB = {1,0.2,0}; // red
-//        
-//        ScaleXYZ = {1,1,1}*0.001;
-//      };
-//    };      
-//    
-//    
-//  }; // GlenImplantPos_up
-//  
-//    AnyRefNode ghProth_up = {
-//    sRel = 0.001*{28.664689 , -39.58081 , -37.319763};   
-//    ARel = {
-//      {-0.193467 , -0.149501 , 0.969649},
-//      {-0.226877 , 0.968351 , 0.104034},
-//      {-0.954514 , -0.199864 , -0.221263}
-//      
-//      };
-//    AnyDrawRefFrame drwref = {
-//      Visible = Off;
-//      RGB = {1,0,0};
-//      ScaleXYZ = {1,1,1}/15;
-//    }; 
-//    
-//  }; //ghProth_up
-//    
-    
-//  // DOWN
-//    AnyRefNode GlenImplantPos_down = {
-//    sRel = 0.001*{-25.364074 , -35.538966 , -26.731333};
-//    ARel = {
-//        {-0.193467 , 0.257816 , 0.946626},
-//        {-0.226877 , 0.926947 , -0.298824},
-//        {-0.954514 , -0.27258 , -0.120842}
-//        
-//      };
-//
-//    
-//    // Center of the GlenImplant
-//    AnyRefNode GlenImplantCenter = {
-//      sRel = 0.001*{0,0,28.418720};
-//    };
-//    
-//    
-//    AnyDrawRefFrame drw = {
-//      Visible= Off;
-//      ScaleXYZ={1,1,1}/12;
-//      RGB = {1,0,0};
-//    }; 
-//    
-//    
-//    AnySurfSTL GleneSTL = {
-//      FileName = "../Input/Implants/ImplantModels/" + ..Param.ImplantNames.GlenoidName + ".stl";
-//      ScaleXYZ = {1,1,1}*0.001;
-//      AnyDrawSurf drw = {
-//        FileName = .FileName;
-////        RGB = {1,0.2,0}; // red
-////        RGB = {0, 1, 0}; // green
-//        RGB = {0, 0.2, 1}; // blue
-//        
-//        ScaleXYZ = {1,1,1}*0.001;
-//      };
-//    };      
-//    
-//    
-//  }; // GlenImplantPos_down
-//  
-//    AnyRefNode ghProth_down = {
-//    sRel = 0.001*{27.966239 , -52.447563 , -34.119917};
-//    ARel = {
-//        {-0.193467 , 0.257816 , 0.946626},
-//        {-0.226877 , 0.926947 , -0.298824},
-//        {-0.954514 , -0.27258 , -0.120842}
-//        
-//      };
-//    AnyDrawRefFrame drwref = {
-//      Visible = On;
-//      RGB = {0,0,1};
-//      ScaleXYZ = {1,1,1}/15;
-//    }; 
-//    
-//  }; //ghProth_down    
-    
-    
-    
-    
-    
-  
-  
+
   
   gh = {
     
@@ -245,7 +121,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
 };//Scapula
 
 
-/* -------- HUMERAL IMPLANT--------*/
+/* -------- HUMERAL IMPLANT--------------------------------------------------------------*/
 //Enlever cet offset en appliquant cet offset aux coordonnes de base de l'implant humeral
 Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
   
@@ -267,7 +143,8 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
       ScaleXYZ = {1,1,1}/15;
       
     };
-  };
+      
+  }; //gh humerus
   
   //  Modele osseux Humerus
   AnyRefNode HumerusBoneGeometryNode={ 
@@ -300,10 +177,9 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
           Opacity = 0.5;
         };
         
-      };    
-    };
-  };
-  
+      }; // ProtHumSTL    
+    }; // HumImplantPos
+  }; // HumerusBoneGeometryNode
   
 };//Humerus
 

@@ -93,8 +93,9 @@ Main = {
       // Additional reactions which are required to run the inverse dynamics analysis with the pelvis-ground interface used
       #include "Model\Reactions.any"
       
-    };
-  };
+    }; // ModelEnvironmentConnection    
+    
+  }; // Model
   
   
   // Shortcuts

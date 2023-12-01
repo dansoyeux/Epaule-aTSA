@@ -28,7 +28,7 @@ MuscleDictionary = {"Triceps long head": ["Triceps_LH", "_", [1, 2]],
                     "Lower trapezius": ["trapezius_scapular", "_part_", [1, 3]],
                     "Middle trapezius": ["trapezius_scapular", "_part_", [4, 6]],
                     "Upper trapezius": ["trapezius_clavicular", "_part_", [1, 6]],
-                    
+
                     "Biceps brachii long head": ["biceps_brachii_caput_longum", "", []],
                     "Biceps brachii short head": ["biceps_brachii_caput_breve", "", []],
                     "Pectoralis major clavicular": ["pectoralis_major_clavicular", "_part_", [1, 5]],
@@ -101,6 +101,9 @@ MuscleVariableDictionary = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                                             "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                                             "combine_muscle_part_operations": ["total", "mean"]
                                             },
+                            "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction de la force musculaire à l'origine du muscle [N]", "select_muscle_RefFrame_output": "insertion",
+                                                      "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                                      "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
                             "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Bras de levier du muscle [mm]",
                                           "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
@@ -122,6 +125,10 @@ MuscleVariableDictionary_NoMomentArm = {"Fm": {"MuscleFolderPath": "Output.Mus",
                                         "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction de la force musculaire à l'origine du muscle [N]", "select_matrix_line": 0,
                                                                "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                                                                "combine_muscle_part_operations": ["mean"], "vect_dir": True},
+
+                                        "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction de la force musculaire à l'origine du muscle [N]", "select_muscle_RefFrame_output": "insertion",
+                                                                  "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                                                  "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
                                         }
 
@@ -251,23 +258,23 @@ description = "-GlenoidAxisTilt"
 # Chemin d'accès au dossier dans lequel les fichiers doivent être sauvegardés
 SaveSimulationsDirectory = "Saved Simulations"
 
-# Pour tests
-date = "06-10-"
-Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
+# # Pour tests
+# date = "06-10-"
+# Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
 
-aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
+# aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
 
 """
 Abduction 25 cas
 sans scaling du deltoide postérieur
 """
-# no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
-# date = "30-10-"
-# Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
-# Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
+no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
+date = "30-10-"
+Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
+Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
 
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
 
 """
 Results and polynomial recruitment

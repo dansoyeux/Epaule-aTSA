@@ -1,5 +1,6 @@
 Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = { 
   
+  
   AnyForce SpringForce = {
     //Eps code lauranne, delta_l not Force/elongation %
     AnyFloat Eps = {
@@ -16,7 +17,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
     //          (.GHLin.Pos[2]-Main.InputVariables.JointPosition.pz)/Main.InputVariables.JointPosition.pz
     //        };
     
-    
+    //Takes the GHLin coordinate system for this force (Scapula.ghProth)
     AnyKinLinear &ref = .GHLin;
     
     // non linear model
@@ -47,7 +48,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
     };
     
     #endif   
-  };
+  }; //SpringForce
   
   
   AnyForceSurfaceContact ProtheseContact = {
@@ -86,10 +87,11 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
       // Text = "F_contact";
       
       AnyRefFrame &G = Main.Model.EnvironmentModel.GlobalRef;
-    };
+    }; //drwForceContact
     
-  };
-};
+  }; //ProtheseContact
+};//Jnt
+
 
 
 
