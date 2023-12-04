@@ -1212,4 +1212,28 @@ Muscles
 """Par catégories"""
 # # Ft rassemblé par catégories sans les parties des muscles
 # PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, CasesVariables_5, list_muscle_variation, "Abduction", "MomentArm", legend_position="center left", composante_y_muscle_combined=["Mean"], figsize=[14, 13], muscle_part_on=False, grid_x_step=15, xlim=[0, 120], same_lim=True)
-# %% position de la scapula
+# %% Force sur la scapula et l'humérus
+
+"""Forces sur l'humérus"""
+# 25 cas
+graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "FTotal humerus", "Force totale sur l'humérus", composante_y=["AP"], subplot_title="AP", cases_on=CaseNames_5, legend_position="center left", subplot={"dimension": [1, 3], "number": 1})
+graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "FTotal humerus", "Force totale sur l'humérus", composante_y=["IS"], subplot_title="IS", cases_on=CaseNames_5, legend_position="center left", subplot={"dimension": [1, 3], "number": 2})
+graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "FTotal humerus", "Force totale sur l'humérus", composante_y=["ML"], subplot_title="ML", cases_on=CaseNames_5, legend_position="center left", subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15)
+
+# 9 cas
+graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "FTotal humerus", "Force totale sur l'humérus", composante_y=["AP"], subplot_title="AP", cases_on=CaseNames_3, legend_position="center left", subplot={"dimension": [1, 3], "number": 1})
+graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "FTotal humerus", "Force totale sur l'humérus", composante_y=["IS"], subplot_title="IS", cases_on=CaseNames_3, legend_position="center left", subplot={"dimension": [1, 3], "number": 2})
+graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "FTotal humerus", "Force totale sur l'humérus", composante_y=["ML"], subplot_title="ML", cases_on=CaseNames_3, legend_position="center left", subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15)
+
+"""Forces sur la scapula'"""
+# 25 cas
+graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "FTotal scapula", "Force totale sur la scapula", composante_y=["AP"], subplot_title="AP", cases_on=CaseNames_5, legend_position="center left", subplot={"dimension": [1, 3], "number": 1})
+graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "FTotal scapula", "Force totale sur la scapula", composante_y=["IS"], subplot_title="IS", cases_on=CaseNames_5, legend_position="center left", subplot={"dimension": [1, 3], "number": 2})
+graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "FTotal scapula", "Force totale sur la scapula", composante_y=["ML"], subplot_title="ML", cases_on=CaseNames_5, legend_position="center left", subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15)
+
+# 9 cas
+graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "FTotal scapula", "Force totale sur la scapula", composante_y=["AP"], subplot_title="AP", cases_on=CaseNames_3, legend_position="center left", subplot={"dimension": [1, 3], "number": 1})
+graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "FTotal scapula", "Force totale sur la scapula", composante_y=["IS"], subplot_title="IS", cases_on=CaseNames_3, legend_position="center left", subplot={"dimension": [1, 3], "number": 2})
+graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "FTotal scapula", "Force totale sur la scapula", composante_y=["ML"], subplot_title="ML", cases_on=CaseNames_3, legend_position="center left", subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15)
+
+"""Faire aussi par variables"""
