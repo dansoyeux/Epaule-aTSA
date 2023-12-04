@@ -13,6 +13,7 @@ from Anybody_Package.Anybody_Graph import PremadeGraphs
 
 from Anybody_Package.Anybody_LoadOutput.LoadLiterature import load_literature_data
 from Anybody_Package.Anybody_LoadOutput.LoadOutput import combine_simulation_cases
+from Anybody_Package.Anybody_LoadOutput.LoadOutput import sum_result_variables
 
 import numpy as np
 
@@ -509,62 +510,73 @@ list_muscle_variation_faible = ["Pectoralis major clavicular",
                                 "Coracobrachialis",
                                 ]
 
+# %% Forces totales sur la scapula et sur l'humérus
 
-"""
-METTRE DANS UNE FONCTION combine_variables
+"""sur la scapula"""
 
-ARG : muscle list, variable_muscle, variable
-
-variable_out_name
-
-
-
-détecter type de dictionnaire d'entrée (reprendre le code qui déetcte la forme dans check_dictionary_structure)
-et créer une sous-fonction qui ne fait que donner la structure des données
+"""LÉGÈRE ERREUR SUR LA SPRING FORCE CAR PAS EXACTEMENT DANS REPÈRE SCAPULA"""
+variables_to_add_scapula = {"ForceContact scapula": ["Total", "AP", "IS", "ML"],
+                            "SpringForce scapula": ["Total", "AP", "IS", "ML"]
+                            }
 
 
-"""
+muscles_to_add_scapula_origin = ["Deltoideus lateral",
+                                 "Deltoideus posterior",
+                                 "Subscapularis",
+                                 "Infraspinatus",
+                                 "Supraspinatus",
+                                 "Triceps long head",
+                                 "Biceps brachii long head",
+                                 "Biceps brachii short head",
+                                 "Teres major",
+                                 "Teres minor",
+                                 "Coracobrachialis"
+                                 ]
+
+muscles_to_add_scapula_insertion = ["Levator scapulae",
+                                    "Serratus anterior",
+                                    "Lower trapezius",
+                                    "Middle trapezius",
+                                    "Rhomboideus",
+                                    "Pectoralis minor"
+                                    ]
+
+muscle_variables_to_add_scapula = {"F insertion": {"component_sum_order": ["Total", "Total_AP", "Total_IS", "Total_ML"],
+                                                   "muscles_to_add": muscles_to_add_scapula_insertion},
+                                   "F origin": {"component_sum_order": ["Total", "Total_AP", "Total_IS", "Total_ML"],
+                                                "muscles_to_add": muscles_to_add_scapula_origin}
+                                   }
+
+Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal scapula", ["Total", "AP", "IS", "ML"], "Force totale sur la scapula [N]", variables_to_add_scapula, muscle_variables_to_add_scapula)
 
 
-# combine every muscle in a list with a variable
-for case, case_data in Results_GlenoidLocalAxis_MR_Polynomial.items():
+"""sur l'humérus"""
+"""LÉGÈRE ERREUR SUR LA SPRING FORCE CAR PAS EXACTEMENT DANS REPÈRE SCAPULA"""
+variables_to_add_humerus = {"ForceContact humerus": ["Total", "AP", "IS", "ML"],
+                            "SpringForce humerus": ["Total", "AP", "IS", "ML"]
+                            }
 
-    """
-    arguments
-    """
-    variable = "F insertion"
-    # juste les muscles qui ont force sur l'humérus
-    muscle_list = ["Deltoideus anterior",
-                   "Deltoideus lateral",
-                   "Deltoideus posterior",
-                   "Subscapularis",
-                   "Infraspinatus",
-                   "Supraspinatus",
-                   "Triceps long head",
-                   ]
 
-    # get the sequence from the sequence of the variables, not hardcoded
-    sequence_composantes_muscle = ["Total", "Total_AP", "Total_IS", "Total_ML"]
-    sequence_composantes = ["Total", "AP", "IS", "ML"]
+muscles_to_add_humerus_insertion = ["Deltoideus lateral",
+                                    "Deltoideus posterior",
+                                    "Deltoideus anterior",
+                                    "Subscapularis",
+                                    "Infraspinatus",
+                                    "Supraspinatus",
+                                    "Pectoralis major clavicular",
+                                    "Pectoralis major sternal",
+                                    "Coracobrachialis",
+                                    "Teres major",
+                                    "Teres minor",
+                                    "Latissimus dorsi",
+                                    "Triceps long head",
+                                    ]
 
-    case_data["F Total Humerus"] = {}
+muscle_variables_to_add_humerus = {"F insertion": {"component_sum_order": ["Total", "Total_AP", "Total_IS", "Total_ML"],
+                                                   "muscles_to_add": muscles_to_add_humerus_insertion}
+                                   }
 
-    case_data["F Total Humerus"] = {"SequenceComposantes": sequence_composantes_muscle,
-                                    "Description": "Force Totale sur l'humérus [N]"}
-
-    # goes through each componant to combine
-    for composante_index, composante in enumerate(sequence_composantes_muscle):
-        all_muscle_variable_data = np.zeros([70,])
-
-        # Goes through every muscle
-        for muscle_name in muscle_list:
-            # sums the variable component
-            all_muscle_variable_data += case_data["Muscles"][muscle_name][muscle_name][variable][composante]
-
-        all_muscle_variable_data += case_data["ForceContact scapula"][sequence_composantes[composante_index]]
-
-        case_data["F Total Humerus"][composante] = all_muscle_variable_data
-
+Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal humerus", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus [N]", variables_to_add_humerus, muscle_variables_to_add_humerus)
 
 # %% COP
 
@@ -583,11 +595,9 @@ for case, case_data in Results_GlenoidLocalAxis_MR_Polynomial.items():
 # # Acromion
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_Acromion_5_Tilt_5, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 6])
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_Acromion_5_Tilt_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 6])
-
 # # # CSA
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_CSA_9, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[14, 14])
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_CSA_6, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[14, 13])
-
 # %% GHLin
 """
 Translation dans repère implant, orientation implant
@@ -1191,6 +1201,7 @@ Muscles
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial, list_muscles_inactifs, [3, 3], "Abduction", "MomentArm", "Bras de levier : Muscles inactifs (Ft < 5N)", composante_y=["Mean"], cases_on=CaseNames_5, figsize=[16, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15, same_lim=True, ylim=[-50, 50])
 
 # Moment arm 9 cas
+
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial, list_muscles_actifs, [4, 3], "Abduction", "MomentArm", "Bras de levier : Muscles actifs (Ft > 10N)", composante_y=["Mean"], cases_on=CaseNames_3, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15, same_lim=True, ylim=[-50, 50])
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial, list_muscles_peu_actif, [1, 3], "Abduction", "MomentArm", "Bras de levier : Muscles peu actifs (10 N > Ft > 5N)", composante_y=["Mean"], cases_on=CaseNames_3, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15, same_lim=True, ylim=[-50, 50])
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial, list_muscles_inactifs, [3, 3], "Abduction", "MomentArm", "Bras de levier : Muscles inactifs (Ft < 5N)", composante_y=["Mean"], cases_on=CaseNames_3, figsize=[16, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15, same_lim=True, ylim=[-50, 50])
@@ -1201,3 +1212,4 @@ Muscles
 """Par catégories"""
 # # Ft rassemblé par catégories sans les parties des muscles
 # PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, CasesVariables_5, list_muscle_variation, "Abduction", "MomentArm", legend_position="center left", composante_y_muscle_combined=["Mean"], figsize=[14, 13], muscle_part_on=False, grid_x_step=15, xlim=[0, 120], same_lim=True)
+# %% position de la scapula

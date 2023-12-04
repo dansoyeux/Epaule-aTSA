@@ -150,18 +150,31 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                           "COP": {"VariablePath": "Output.FileOut.COPlocalImplant", "VariableDescription": "Position du centre de pression", "MultiplyFactor": 1000,
                                   "SequenceComposantes": ["AP", "IS", "ML"]},
 
-                          "SpringForce": {"VariablePath": "Output.Jnt.SpringForce.F", "VariableDescription": "Force de ressort [Newton]"},
-
                           # Dans le repère de l'humérus ISB (pour comparaison avec bergmann)
                           "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Force de contact dans le repère de l'humérus [Newton]",
                                            "SequenceComposantes": ["AP", "IS", "ML"]},
 
-                          # Dans le repère de la scapula ISB
-                          "ForceContact scapula": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Force de contact dans le repère de la scapula [Newton]",
+                          # Force sur la scapula Dans le repère de la scapula ISB
+                          "ForceContact scapula": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Force de contact sur la scapula dans le repère de la scapula [Newton]",
                                                    "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
 
-                          "ForceTolError": {"VariablePath": "Output.ForceDepKinError.Val", "VariableDescription": "Erreure de force FDK [Newton]"}
+                          # Force sur l'humerus Dans le repère de la scapula ISB
+                          "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Force de contact sur l'humérus dans le repère de la scapula [Newton]",
+                                                   "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True,
+                                                   "Composantes_Inverse_Direction": [True, True, True]},
 
+                          "ForceTolError": {"VariablePath": "Output.ForceDepKinError.Val", "VariableDescription": "Erreure de force FDK [Newton]"},
+
+
+                          # Légère erreur de calcul car pas exactement dans repère scapula mais repère gh_Proth
+                          "SpringForce scapula": {"VariablePath": "Output.Jnt.SpringForce.F", "VariableDescription": "Force de ressort sur la scapula [Newton]", "SequenceComposantes": ["AP", "IS", "ML"]},
+
+                          # Légère erreur de calcul car pas exactement dans repère scapula mais repère gh_Proth
+                          "SpringForce humerus": {"VariablePath": "Output.Jnt.SpringForce.F", "VariableDescription": "Force de ressort sur l'humérus [Newton]", "SequenceComposantes": ["AP", "IS", "ML"],
+                                                  "Composantes_Inverse_Direction": [True, True, True], },
+
+                          # "Scapula position": {"VariablePath": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.r", "VariableDescription": "Déplacement Linéaire de la scapula [mm]", "MultiplyFactor": 1000,
+                          #                      "SequenceComposantes": ["AP", "IS", "ML"]},
                           }
 
 
@@ -263,6 +276,7 @@ SaveSimulationsDirectory = "Saved Simulations"
 # Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
 
 # aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
+
 
 """
 Abduction 25 cas
