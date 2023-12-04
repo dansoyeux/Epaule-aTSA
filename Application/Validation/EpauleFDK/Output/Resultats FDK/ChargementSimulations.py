@@ -159,9 +159,8 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                                                    "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
 
                           # Force sur l'humerus Dans le repère de la scapula ISB
-                          "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Force de contact sur l'humérus dans le repère de la scapula [Newton]",
-                                                   "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True,
-                                                   "Composantes_Inverse_Direction": [True, True, True]},
+                          "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Force de contact sur l'humérus dans le repère de la scapula [Newton]",
+                                                   "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
 
                           "ForceTolError": {"VariablePath": "Output.ForceDepKinError.Val", "VariableDescription": "Erreure de force FDK [Newton]"},
 
