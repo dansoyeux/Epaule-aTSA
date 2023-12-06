@@ -92,8 +92,8 @@ SimulationsLineStyleDictionary = {
     # data de validation
     "Lauranne": {"color": 'hotpink'},
     "Marta": {"color": 'darkturquoise'},
-    "Dal Maso supérieur": {"color": "black", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
-    "Dal Maso inférieur": {"color": "grey", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
+    "Dal Maso supérieur": {"color": "black", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
+    "Dal Maso inférieur": {"color": "grey", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
     "Bergmann 2007": {"color": "black"},
     "Bergmann_2007": {"color": "black"},
     "Wickham": {"color": "darkorange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3}
@@ -1220,11 +1220,3 @@ Muscles
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal scapula", "Force totale sur la scapula IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal scapula", "Force totale sur la scapula ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal scapula", "Force totale sur la scapula ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
-
-# %% test
-PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial, Muscles_Main, [3, 3], "Abduction", "Activity", "Titre", composante_y=["Max"], cases_on="all")
-PremadeGraphs.muscle_graph_from_list(Results_literature["Activity"], Muscles_Main, [3, 3], "Abduction", "Activity", "Titre", composante_y=["Max"], cases_on="all", add_graph=True, legend_position="center left")
-
-muscle_graph(Results_literature["Test"], "Deltoideus lateral", "Abduction", "Activity", "Titre", composante_y=["Max"], cases_on="all", add_graph=True, legend_position="center left")
-
-graph(Results_literature["Translation"], "Abduction", "Translation", "Titre", composante_y=["IS"], cases_on="all", legend_position="center left")
