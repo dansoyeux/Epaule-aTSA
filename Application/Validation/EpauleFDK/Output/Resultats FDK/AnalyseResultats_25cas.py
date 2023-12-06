@@ -1186,6 +1186,7 @@ Muscles
 """Par catégories"""
 # # Ft rassemblé par catégories sans les parties des muscles
 # PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, CasesVariables_5, list_muscle_variation, "Abduction", "MomentArm", legend_position="center left", composante_y_muscle_combined=["Mean"], figsize=[14, 13], muscle_part_on=False, grid_x_step=15, xlim=[0, 120], same_lim=True)
+
 # %% Force sur la scapula et l'humérus
 
 """Forces sur l'humérus"""
