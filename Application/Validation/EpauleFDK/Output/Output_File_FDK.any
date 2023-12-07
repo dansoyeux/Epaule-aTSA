@@ -163,12 +163,22 @@ AnyOutputFile FileOut = {
   
   // Contact values if contact between STL implant models
   #if BallAndSocket ==0 
-  // coordinates in the humerus implant reference frame 
+  // coordinates in the humerus implant reference frame
+  // Matrix rotation on the right and not inverted to do an inverse transform
   AnyVec3 ContactForcelocalimplant=  (.Jnt.ProtheseContact.Fmaster) * Hum_R ;  
+ 
   // Converts the contact force between the implants from the global reference frame to the ISB humerus reference frame
+  // Matrix rotation on the right and not inverted to do an inverse transform
   AnyVec3 ContactForce=  (.Jnt.ProtheseContact.Fmaster) * Hum_R_ISB ;
   
   AnyFloat SpringForce = .Jnt.SpringForce.F;
+  
+  // Spring force transformed from the implant reference frame to the scapula ISB reference frame
+  // Matrix rotation on the right and not inverted to do an inverse transform
+  // Axes and ARel are matrices to go from local to global
+  // ISB.ARel * (GHProth.Arel * SpringForce) = ISB.ARel' * scapula reference frame = ISB scapula reference frame
+  AnyFloat SpringForce_Scapula_ISB = (.Jnt.SpringForce.F * .Seg.Scapula.ghProth.ARel') * .Seg.Scapula.AnatomicalFrame.ISB_Coord.ARel;
+  
   AnyFloat Epsilon = .Jnt.SpringForce.Eps;
   
   AnyVec3 COPGlobal = .Jnt.ProtheseContact.COP; // Center of Pressure Humeral head on glenoid 

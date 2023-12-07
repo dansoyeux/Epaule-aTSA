@@ -154,12 +154,12 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                           "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Force de contact dans le repère de l'humérus [Newton]",
                                            "SequenceComposantes": ["AP", "IS", "ML"]},
 
-                          # Force sur la scapula Dans le repère de la scapula ISB
-                          "ForceContact scapula": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Force de contact sur la scapula dans le repère de la scapula [Newton]",
+                          # Force sur la scapula Dans le repère de la scapula ISB (scapula = slave)
+                          "ForceContact scapula": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Force de contact sur la scapula dans le repère de la scapula [Newton]",
                                                    "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
 
-                          # Force sur l'humerus Dans le repère de la scapula ISB
-                          "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Force de contact sur l'humérus dans le repère de la scapula [Newton]",
+                          # Force sur l'humerus Dans le repère de la scapula ISB (humerus = master)
+                          "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Force de contact sur l'humérus dans le repère de la scapula [Newton]",
                                                    "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
 
                           "ForceTolError": {"VariablePath": "Output.ForceDepKinError.Val", "VariableDescription": "Erreure de force FDK [Newton]"},
@@ -270,23 +270,23 @@ description = "-GlenoidAxisTilt"
 # Chemin d'accès au dossier dans lequel les fichiers doivent être sauvegardés
 SaveSimulationsDirectory = "Saved Simulations"
 
-# Pour tests
-date = "06-10-"
-Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
+# # Pour tests
+# date = "06-10-"
+# Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
 
-aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
+# aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
 
 """
 Abduction 25 cas
 sans scaling du deltoide postérieur
 """
-# no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
-# date = "30-10-"
-# Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
-# Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
+no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
+date = "30-10-"
+Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
+Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
 
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
 
 """
 Results and polynomial recruitment

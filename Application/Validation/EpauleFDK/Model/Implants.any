@@ -35,7 +35,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
     
     
     AnyDrawRefFrame drw = {
-      Visible= Off;
+      Visible= On;
       ScaleXYZ={1,1,1}/12;
       RGB = {1,0,0};
     }; 
@@ -52,8 +52,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
         
         ScaleXYZ = {1,1,1}*0.001;
       };
-    };      
-    
+    };// GleneSTL      
     
   }; // GlenImplantPos
 
@@ -106,17 +105,6 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
 
   };
   
-  // ghProth oriented like aligned with the ISB scapula coordinate system
-  AnyRefNode ghProth_ISB_up = {
-    sRel = 0.001*{28.664689 , -39.58081 , -37.319763};    
-    ARel={{ 0, 0, 1}, { 0, 1,0}, {-1, 0,0}};
-     AnyDrawRefFrame drwref = {
-      Visible = Off;
-      RGB = {1,0,0};
-      ScaleXYZ = {1,1,1}/15;
-    }; 
-
-  };  
   
 };//Scapula
 

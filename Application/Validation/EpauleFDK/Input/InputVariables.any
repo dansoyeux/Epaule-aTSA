@@ -128,7 +128,7 @@ AnyFolder InputVariables = {
   0 : abduction from 15deg to 120deg 
   */
   #ifndef SmallAbductionOn
-  #define SmallAbductionOn 0
+  #define SmallAbductionOn 1
   #endif
   
   #ifndef AnyOutputFileOn
@@ -170,7 +170,7 @@ AnyFolder InputVariables = {
   
   /* -------------------------------------------CSA_Tilt selection------------------------------------*/
   #ifndef CSA_Tilt
-  #define CSA_Tilt "down"
+  #define CSA_Tilt "xup"
   #endif
   /*
   xdown
@@ -185,7 +185,7 @@ AnyFolder InputVariables = {
   /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
   
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "long"
+  #define CSA_Acromion_Length "xshort"
   #endif
   /*
   xshort
