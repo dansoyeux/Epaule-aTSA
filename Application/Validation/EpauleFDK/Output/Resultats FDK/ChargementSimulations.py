@@ -168,15 +168,12 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                           "ForceTolError": {"VariablePath": "Output.ForceDepKinError.Val", "VariableDescription": "Erreure de force FDK [Newton]"},
 
 
-
-
-
-                          # Légère erreur de calcul car pas exactement dans repère scapula mais repère gh_Proth
-                          "SpringForce scapula": {"VariablePath": "Output.Jnt.SpringForce.F", "VariableDescription": "Force de ressort sur la scapula [Newton]", "SequenceComposantes": ["AP", "IS", "ML"]},
-
-                          # Légère erreur de calcul car pas exactement dans repère scapula mais repère gh_Proth
-                          "SpringForce humerus": {"VariablePath": "Output.Jnt.SpringForce.F", "VariableDescription": "Force de ressort sur l'humérus [Newton]", "SequenceComposantes": ["AP", "IS", "ML"],
+                          # Dans le repère ISB de la scapula (inverser la force car appliquée dans sens inverse for some reason)
+                          "SpringForce scapula": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Force de ressort sur la scapula [Newton]", "SequenceComposantes": ["AP", "IS", "ML"],
                                                   "Composantes_Inverse_Direction": [True, True, True]},
+
+                          # Dans le repère ISB de la scapula (for some reason GHLin a premiere ref frame = scapula mais force appliquée sur humérus avec le bon signe)
+                          "SpringForce humerus": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Force de ressort sur l'humérus [Newton]", "SequenceComposantes": ["AP", "IS", "ML"]},
 
                           "Scapula position": {"VariablePath": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.r", "VariableDescription": "Déplacement Linéaire de la scapula [mm]", "MultiplyFactor": 1000,
                                                "SequenceComposantes": ["AP", "IS", "ML"]},

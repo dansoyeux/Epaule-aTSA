@@ -1281,8 +1281,9 @@ muscle_name = "Deltoideus lateral"
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "Scapula position2", "Position de la scapula", composante_y=["ML"], subplot_title="Médial ML", cases_on=CaseNames_5, legend_position="center left", subplot={"dimension": [2, 3], "number": 6})
 # %% Spring force
 
-# Forces par catégories par composantes
-# 5x5
-PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus AP dans le repère de la scapula", composante_y=["AP"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
-PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus IS dans le repère de la scapula", composante_y=["IS"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# # Forces par catégories par composantes
+# # 5x5
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus AP dans le repère de la scapula", composante_y=["AP"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus IS dans le repère de la scapula", composante_y=["IS"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus ML dans le repère de la scapula", composante_y=["ML"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
 

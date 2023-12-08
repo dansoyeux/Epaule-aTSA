@@ -35,7 +35,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
     
     
     AnyDrawRefFrame drw = {
-      Visible= On;
+      Visible= Off;
       ScaleXYZ={1,1,1}/12;
       RGB = {1,0,0};
     }; 

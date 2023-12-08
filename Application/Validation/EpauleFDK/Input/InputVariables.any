@@ -185,7 +185,7 @@ AnyFolder InputVariables = {
   /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
   
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "xlong"
+  #define CSA_Acromion_Length "long"
   #endif
   /*
   xshort
