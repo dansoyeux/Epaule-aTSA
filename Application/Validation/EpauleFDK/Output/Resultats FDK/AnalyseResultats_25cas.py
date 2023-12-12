@@ -1154,7 +1154,7 @@ Muscles
 # %% Direction des forces du deltoide
 
 """Direction des forces"""
-muscle_name = "Deltoideus lateral"
+# muscle_name = "Deltoideus lateral"
 # n_part = 4
 
 # # force muscle projetée origine
