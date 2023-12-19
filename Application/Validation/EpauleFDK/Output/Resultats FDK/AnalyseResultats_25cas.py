@@ -17,6 +17,8 @@ from Anybody_Package.Anybody_LoadOutput.LoadOutput import sum_result_variables
 
 import numpy as np
 
+import matplotlib
+
 # %% Setup des couleurs et légendes
 
 # import matplotlib
@@ -24,22 +26,24 @@ import numpy as np
 # Contrôle de la taille de la police globale
 # matplotlib.rcParams.update({'font.size': 10})
 
+
+
 # Contrôle des tailles de chaque partie partie du graphique
-# Titre des cases des subplots
-# matplotlib.rcParams.update({'axes.titlesize': 12})
+# Titre des cases des subplots (12)
+matplotlib.rcParams.update({'axes.titlesize': 18})
 
-# Titre du graphique
-# matplotlib.rcParams.update({'figure.titlesize': 12})
+# Titre du graphique (12)
+matplotlib.rcParams.update({'figure.titlesize': 18})
 
-# Nom des axes
-# matplotlib.rcParams.update({'axes.labelsize': 10})
+# Nom des axes (10)
+matplotlib.rcParams.update({'axes.labelsize': 16})
 
-# Graduations des axes
-# matplotlib.rcParams.update({'xtick.labelsize': 10})
-# matplotlib.rcParams.update({'ytick.labelsize': 10})
+# Graduations des axes (10)
+matplotlib.rcParams.update({'xtick.labelsize': 14})
+matplotlib.rcParams.update({'ytick.labelsize': 14})
 
-# Légende
-# matplotlib.rcParams.update({'legend.fontsize': 10})
+# Légende (10)
+matplotlib.rcParams.update({'legend.fontsize': 10})
 
 
 # Définition des styles des simulations dans les graphiques (couleurs, forme de ligne taille...)
@@ -1230,15 +1234,15 @@ Muscles
 
 # # Par variables
 # # 5x5
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus", "Force totale sur l'humérus AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus", "Force totale sur l'humérus IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus", "Force totale sur l'humérus ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus", "Force totale sur l'humérus AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus", "Force totale sur l'humérus IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus", "Force totale sur l'humérus ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
 
 # # Par variables
 # # 3x3
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus", "Force totale sur l'humérus AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus", "Force totale sur l'humérus IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus", "Force totale sur l'humérus ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus", "Force totale sur l'humérus AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus", "Force totale sur l'humérus IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus", "Force totale sur l'humérus ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
 
 """Forces totales sur la scapula"""
 # # 25 cas
@@ -1253,23 +1257,23 @@ Muscles
 
 # # Par variables
 # # 5x5
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal scapula", "Force totale sur la scapula AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal scapula", "Force totale sur la scapula IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal scapula", "Force totale sur la scapula ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal scapula", "Force totale sur la scapula ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal scapula", "Force totale sur la scapula AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal scapula", "Force totale sur la scapula IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal scapula", "Force totale sur la scapula ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal scapula", "Force totale sur la scapula ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
 
 """Sans force de contact ajoutée"""
 # # Par variables
 # # 5x5
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
 
 # # Par variables
 # # 3x3
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 13])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
 
 # %% Déplacement de la scapula
 
@@ -1279,11 +1283,11 @@ Muscles
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "Scapula position2", "Position de la scapula", composante_y=["AP"], subplot_title="Médial AP", cases_on=CaseNames_5, legend_position="center left", subplot={"dimension": [2, 3], "number": 4})
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "Scapula position2", "Position de la scapula", composante_y=["IS"], subplot_title="Médial IS", cases_on=CaseNames_5, legend_position="center left", subplot={"dimension": [2, 3], "number": 5})
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "Scapula position2", "Position de la scapula", composante_y=["ML"], subplot_title="Médial ML", cases_on=CaseNames_5, legend_position="center left", subplot={"dimension": [2, 3], "number": 6})
+
 # %% Spring force
 
-# # Forces par catégories par composantes
-# # 5x5
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus AP dans le repère de la scapula", composante_y=["AP"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus IS dans le repère de la scapula", composante_y=["IS"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus ML dans le repère de la scapula", composante_y=["ML"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
-
+# Forces par catégories par composantes
+# 5x5
+PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus AP dans le repère de la scapula", composante_y=["AP"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus IS dans le repère de la scapula", composante_y=["IS"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus ML dans le repère de la scapula", composante_y=["ML"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)

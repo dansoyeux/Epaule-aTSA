@@ -287,13 +287,13 @@ SaveSimulationsDirectory = "Saved Simulations"
 Abduction 25 cas
 sans scaling du deltoide postérieur
 """
-# no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
-# date = "30-10-"
-# Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
-# Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
+no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
+date = "30-10-"
+Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
+Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
 
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
 
 """
 Results and polynomial recruitment
