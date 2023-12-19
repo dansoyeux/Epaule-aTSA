@@ -16,7 +16,6 @@ from Anybody_Package.Anybody_LoadOutput.LoadOutput import combine_simulation_cas
 from Anybody_Package.Anybody_LoadOutput.LoadOutput import sum_result_variables
 
 import numpy as np
-
 import matplotlib
 
 # %% Setup des couleurs et légendes
@@ -1295,19 +1294,17 @@ Muscles
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
 
 """Sans spring force"""
-# # Par variables
-# # 5x5
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no Fcontact AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+# Par variables
+# 5x5
+PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
 
-# # Par variables
-# # 3x3
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no Fcontact AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
-
-
+# Par variables
+# 3x3
+PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce AP", composante_y=["AP"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce IS", composante_y=["IS"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
+PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce ML", composante_y=["ML"], legend_position="center left", same_lim=True, grid_x_step=15, figsize=[26, 16])
 
 
 # %% Déplacement de la scapula
