@@ -3,7 +3,7 @@ AnyFolder InputVariables = {
   
   // Activates or not FDK (0 FDK activated)
   #ifndef BallAndSocket
-  #define BallAndSocket 0
+  #define BallAndSocket 1
   #endif
    
   

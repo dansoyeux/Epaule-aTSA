@@ -9,7 +9,7 @@ AnyFolder EvaluateMomentArms = {
   //AnyVar AngularVelocity = (120/4)/180*pi;
   
   //Vitesses du driver fourier avec 70 steps
-  AnyVector FourierAngularVelocity = {1.46888E-18,
+  AnyVector FourierAngularVelocity = DesignVar({1.46888E-18,
     0.001091833,
     0.002181402,
     0.00326645,
@@ -79,7 +79,7 @@ AnyFolder EvaluateMomentArms = {
     0.002181402,
     0.001091833,
     1.46888E-18
-  };  
+  });  
   
   
   AnyVar AngularVelocity = FourierAngularVelocity[Main.Study.iStep]; 
