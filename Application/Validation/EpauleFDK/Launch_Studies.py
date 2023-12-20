@@ -31,28 +31,17 @@ num_processes = 5
 
 BallAndSocket = 0
 
+SmallAbduction = 1
+
 ArmMovement = "Abduction"
 # ArmMovement = "Elevation"
 
 startangle = 15
 
+endangle = 120
 
-
-
-
-
-"""WARNING END ANGLE = 1"""
-# endangle = 120
-endangle = 15.5
-
-
-
-
-"""WARNING NSTEP=1"""
-nstep = 1
-# nstep = 70
+nstep = 70
 MuscleRecruitmentType = "MR_Polynomial"
-
 
 # %% Paramètres FDK
 
@@ -102,9 +91,9 @@ file_date = "30-10"
 # Dossier de résultats
 m_ResultFolder = "SaveData/Macro_Results/"
 
+
 if BallAndSocket == 0 and endangle == 180 and startangle == 15:
     file_description = f'GlenoidAxisTilt-{MuscleRecruitmentType}-180deg'
-
 elif BallAndSocket == 0 and endangle == 120 and startangle == 0:
     file_description = f'GlenoidAxisTilt-{MuscleRecruitmentType}-0-120deg'
 
@@ -112,10 +101,14 @@ elif BallAndSocket == 1 and endangle == 180 and startangle == 15:
     file_description = f'BallAndSocket-{MuscleRecruitmentType}-180deg'
 elif BallAndSocket == 0 and endangle == 120 and startangle == 15:
     file_description = f'GlenoidAxisTilt-{MuscleRecruitmentType}'
-elif BallAndSocket == 0 and endangle == 15.5 and startangle == 15 and nstep == 1:
-    file_description = f'GlenoidAxisTilt-{MuscleRecruitmentType}-SmallAbduction'
+
 elif BallAndSocket == 1 and endangle == 120 and startangle == 15:
     file_description = f'BallAndSocket-{MuscleRecruitmentType}'
+
+# Small abduction
+if SmallAbduction == 1:
+    file_description = f'GlenoidAxisTilt-{MuscleRecruitmentType}-SmallAbduction'
+
 
 # NO DELTOID POSTERIOR SCALING
 file_description += "-no-delt-post-scaling"
@@ -131,86 +124,89 @@ if CustomFDKOn == "On":
 
 """Valeur doit rester de taille 70 comme sa valeur originelle et rester avec des floats"""
 
-# Pour 70 step 15-120°
-if startangle == 15 and endangle == 120 and nstep == 70:
-    FourierAngularVelocity = np.array([1.46888E-18,
-                                       0.001091833,
-                                       0.002181402,
-                                       0.00326645,
-                                       0.004344728,
-                                       0.005414001,
-                                       0.006472053,
-                                       0.00751669,
-                                       0.008545748,
-                                       0.009557093,
-                                       0.01054863,
-                                       0.011518303,
-                                       0.012464103,
-                                       0.013384069,
-                                       0.014276294,
-                                       0.01513893,
-                                       0.015970188,
-                                       0.016768345,
-                                       0.017531748,
-                                       0.018258813,
-                                       0.018948034,
-                                       0.019597982,
-                                       0.02020731,
-                                       0.020774756,
-                                       0.021299143,
-                                       0.021779384,
-                                       0.022214484,
-                                       0.022603541,
-                                       0.022945749,
-                                       0.023240398,
-                                       0.023486878,
-                                       0.023684678,
-                                       0.023833387,
-                                       0.023932699,
-                                       0.023982406,
-                                       0.023982406,
-                                       0.023932699,
-                                       0.023833387,
-                                       0.023684678,
-                                       0.023486878,
-                                       0.023240398,
-                                       0.022945749,
-                                       0.022603541,
-                                       0.022214484,
-                                       0.021779384,
-                                       0.021299143,
-                                       0.020774756,
-                                       0.02020731,
-                                       0.019597982,
-                                       0.018948034,
-                                       0.018258813,
-                                       0.017531748,
-                                       0.016768345,
-                                       0.015970188,
-                                       0.01513893,
-                                       0.014276294,
-                                       0.013384069,
-                                       0.012464103,
-                                       0.011518303,
-                                       0.01054863,
-                                       0.009557093,
-                                       0.008545748,
-                                       0.00751669,
-                                       0.006472053,
-                                       0.005414001,
-                                       0.004344728,
-                                       0.00326645,
-                                       0.002181402,
-                                       0.001091833,
-                                       1.46888E-18
-                                       ])
-# Pour small abduction
-elif startangle == 15 and endangle == 15.5 and nstep == 1:
-    FourierAngularVelocity = np.ones(70) * 1.46888E-18
+
+FourierAngularVelocity = np.array([1.46888E-18,
+                                   0.001091833,
+                                   0.002181402,
+                                   0.00326645,
+                                   0.004344728,
+                                   0.005414001,
+                                   0.006472053,
+                                   0.00751669,
+                                   0.008545748,
+                                   0.009557093,
+                                   0.01054863,
+                                   0.011518303,
+                                   0.012464103,
+                                   0.013384069,
+                                   0.014276294,
+                                   0.01513893,
+                                   0.015970188,
+                                   0.016768345,
+                                   0.017531748,
+                                   0.018258813,
+                                   0.018948034,
+                                   0.019597982,
+                                   0.02020731,
+                                   0.020774756,
+                                   0.021299143,
+                                   0.021779384,
+                                   0.022214484,
+                                   0.022603541,
+                                   0.022945749,
+                                   0.023240398,
+                                   0.023486878,
+                                   0.023684678,
+                                   0.023833387,
+                                   0.023932699,
+                                   0.023982406,
+                                   0.023982406,
+                                   0.023932699,
+                                   0.023833387,
+                                   0.023684678,
+                                   0.023486878,
+                                   0.023240398,
+                                   0.022945749,
+                                   0.022603541,
+                                   0.022214484,
+                                   0.021779384,
+                                   0.021299143,
+                                   0.020774756,
+                                   0.02020731,
+                                   0.019597982,
+                                   0.018948034,
+                                   0.018258813,
+                                   0.017531748,
+                                   0.016768345,
+                                   0.015970188,
+                                   0.01513893,
+                                   0.014276294,
+                                   0.013384069,
+                                   0.012464103,
+                                   0.011518303,
+                                   0.01054863,
+                                   0.009557093,
+                                   0.008545748,
+                                   0.00751669,
+                                   0.006472053,
+                                   0.005414001,
+                                   0.004344728,
+                                   0.00326645,
+                                   0.002181402,
+                                   0.001091833,
+                                   1.46888E-18
+                                   ])
+
 
 # %% Script lancement simulation
 
 macrolist = []
+
+if SmallAbduction == 1:
+    startangle = 15
+    endangle = 15.5
+    nstep = 1
+
 
 for tilt in tilt_list:
 
@@ -223,7 +219,7 @@ for tilt in tilt_list:
             Load('EpauleFDK.Main.any',
                  defs={'CSA_Tilt': f'"{tilt}"',
                        'AnyOutputFileOn': 1,
-                       'SmallAbductionOn': 0,
+                       'SmallAbductionOn': SmallAbduction,
                        'CustomFDKOn': f"{CustomFDKOn}",
                        'ArmMovement': f"{ArmMovement}",
                        'CSA_Acromion_Length': f'"{acromion}"',

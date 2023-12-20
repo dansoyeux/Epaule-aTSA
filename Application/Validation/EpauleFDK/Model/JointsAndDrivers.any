@@ -29,8 +29,8 @@ AnyFolder Drivers = {
   #if SmallAbductionOn == 1
 //  AnyVar startangle = 1;
 //  AnyVar endangle = 1.1;
-  AnyVar startangle = 15;
-  AnyVar endangle = 15.5;
+  AnyVar startangle = DesignVar(15);
+  AnyVar endangle = DesignVar(15.5);
   
   #endif
   

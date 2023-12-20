@@ -51,39 +51,74 @@ matplotlib.rcParams.update({'legend.fontsize': 10})
 # Type de lignes : https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html
 SimulationsLineStyleDictionary = {
     # Glen xdown
-    "xdown-xshort": {"color": "lightblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-    "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "xdown-normal": {"color": "cornflowerblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "xdown-xlong": {"color": "midnightblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    "xdown-xshort": {"color": "lightblue", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": 2},
+    "xdown-short": {"color": "deepskyblue", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": None},
+    "xdown-normal": {"color": "cornflowerblue", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": None},
+    "xdown-long": {"color": "mediumblue", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": None},
+    "xdown-xlong": {"color": "midnightblue", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": 2},
 
     # Glen down
-    "down-xshort": {"color": "violet", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2.5},
-    "down-short": {"color": "magenta", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "down-normal": {"color": "mediumorchid", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "down-long": {"color": "blueviolet", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "down-xlong": {"color": "purple", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2.5},
+    "down-xshort": {"color": "violet", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": 2.5},
+    "down-short": {"color": "magenta", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": None},
+    "down-normal": {"color": "mediumorchid", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": None},
+    "down-long": {"color": "blueviolet", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": None},
+    "down-xlong": {"color": "purple", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": 2.5},
 
     # glen normal
-    "middle-xshort": {"color": "lime", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-    "middle-short": {"color": "greenyellow", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2.5},
-    "middle-normal": {"color": "mediumseagreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-    "middle-long": {"color": "darkolivegreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-    "middle-xlong": {"color": "darkgreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+    "middle-xshort": {"color": "lime", "marker": "+", "markersize": 4, "linestyle": "-", "linewidth": None},
+    "middle-short": {"color": "greenyellow", "marker": "+", "markersize": 4, "linestyle": "-", "linewidth": 2.5},
+    "middle-normal": {"color": "mediumseagreen", "marker": "+", "markersize": 4, "linestyle": "-", "linewidth": None},
+    "middle-long": {"color": "darkolivegreen", "marker": "+", "markersize": 4, "linestyle": "-", "linewidth": None},
+    "middle-xlong": {"color": "darkgreen", "marker": "+", "markersize": 4, "linestyle": "-", "linewidth": 2},
 
     # Glen up
-    "up-xshort": {"color": "yellow", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
-    "up-short": {"color": "gold", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    "up-normal": {"color": "orange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    "up-long": {"color": "salmon", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    "up-xlong": {"color": "orangered", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "up-xshort": {"color": "yellow", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 3},
+    "up-short": {"color": "gold", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
+    "up-normal": {"color": "orange", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
+    "up-long": {"color": "salmon", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
+    "up-xlong": {"color": "orangered", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
 
     # Glen xup
-    "xup-xshort": {"color": "pink", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    "xup-short": {"color": "deeppink", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    "xup-normal": {"color": "red", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    "xup-long": {"color": "indianred", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    "xup-xlong": {"color": "darkred", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "xup-xshort": {"color": "pink", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
+    "xup-short": {"color": "deeppink", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
+    "xup-normal": {"color": "red", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
+    "xup-long": {"color": "indianred", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
+    "xup-xlong": {"color": "darkred", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
+
+    # # Glen xdown
+    # "xdown-xshort": {"color": "lightblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    # "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    # "xdown-normal": {"color": "cornflowerblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    # "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    # "xdown-xlong": {"color": "midnightblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+
+    # # Glen down
+    # "down-xshort": {"color": "violet", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2.5},
+    # "down-short": {"color": "magenta", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    # "down-normal": {"color": "mediumorchid", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    # "down-long": {"color": "blueviolet", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    # "down-xlong": {"color": "purple", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2.5},
+
+    # # glen normal
+    # "middle-xshort": {"color": "lime", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    # "middle-short": {"color": "greenyellow", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2.5},
+    # "middle-normal": {"color": "mediumseagreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    # "middle-long": {"color": "darkolivegreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    # "middle-xlong": {"color": "darkgreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+
+    # # Glen up
+    # "up-xshort": {"color": "yellow", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
+    # "up-short": {"color": "gold", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    # "up-normal": {"color": "orange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    # "up-long": {"color": "salmon", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    # "up-xlong": {"color": "orangered", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+
+    # # Glen xup
+    # "xup-xshort": {"color": "pink", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    # "xup-short": {"color": "deeppink", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    # "xup-normal": {"color": "red", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    # "xup-long": {"color": "indianred", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    # "xup-xlong": {"color": "darkred", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
 
     # Type gh joint
     "FDK": {"color": "tab:blue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
@@ -284,6 +319,8 @@ SaveSimulationsDirectory = "Saved Simulations"
 # Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types")
 
 Results_GlenoidLocalAxis_MR_Polynomial = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
+
+Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage")
 
 # Results_GlenoidLocalAxis_MR_Polynomial_180deg = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg")
 

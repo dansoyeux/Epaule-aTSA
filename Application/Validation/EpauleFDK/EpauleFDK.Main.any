@@ -158,7 +158,7 @@ Main = {
     
     //   Small abduction (15 deg --> 15.5)
     #if SmallAbductionOn == 1
-    nStep = 1;
+    nStep = DesignVar(1);
     
     // Full abduction (15 deg --> 120deg)
     #else
