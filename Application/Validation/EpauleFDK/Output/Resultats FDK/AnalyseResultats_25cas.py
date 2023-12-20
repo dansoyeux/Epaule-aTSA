@@ -26,7 +26,6 @@ import matplotlib
 # matplotlib.rcParams.update({'font.size': 10})
 
 
-
 # Contrôle des tailles de chaque partie partie du graphique
 # Titre des cases des subplots (12)
 matplotlib.rcParams.update({'axes.titlesize': 18})
@@ -51,74 +50,92 @@ matplotlib.rcParams.update({'legend.fontsize': 10})
 # Type de lignes : https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html
 SimulationsLineStyleDictionary = {
     # Glen xdown
-    "xdown-xshort": {"color": "lightblue", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": 2},
-    "xdown-short": {"color": "deepskyblue", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": None},
-    "xdown-normal": {"color": "cornflowerblue", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": None},
-    "xdown-long": {"color": "mediumblue", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": None},
-    "xdown-xlong": {"color": "midnightblue", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": 2},
+    "xdown-xshort": {"color": "lightblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "xdown-normal": {"color": "cornflowerblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "xdown-xlong": {"color": "midnightblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
 
     # Glen down
-    "down-xshort": {"color": "violet", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": 2.5},
-    "down-short": {"color": "magenta", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": None},
-    "down-normal": {"color": "mediumorchid", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": None},
-    "down-long": {"color": "blueviolet", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": None},
-    "down-xlong": {"color": "purple", "marker": "+", "markersize": 4, "linestyle": "-.", "linewidth": 2.5},
+    "down-xshort": {"color": "violet", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2.5},
+    "down-short": {"color": "magenta", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "down-normal": {"color": "mediumorchid", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "down-long": {"color": "blueviolet", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "down-xlong": {"color": "purple", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2.5},
 
     # glen normal
-    "middle-xshort": {"color": "lime", "marker": "+", "markersize": 4, "linestyle": "-", "linewidth": None},
-    "middle-short": {"color": "greenyellow", "marker": "+", "markersize": 4, "linestyle": "-", "linewidth": 2.5},
-    "middle-normal": {"color": "mediumseagreen", "marker": "+", "markersize": 4, "linestyle": "-", "linewidth": None},
-    "middle-long": {"color": "darkolivegreen", "marker": "+", "markersize": 4, "linestyle": "-", "linewidth": None},
-    "middle-xlong": {"color": "darkgreen", "marker": "+", "markersize": 4, "linestyle": "-", "linewidth": 2},
+    "middle-xshort": {"color": "lime", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "middle-short": {"color": "greenyellow", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2.5},
+    "middle-normal": {"color": "mediumseagreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "middle-long": {"color": "darkolivegreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "middle-xlong": {"color": "darkgreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
 
     # Glen up
-    "up-xshort": {"color": "yellow", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 3},
-    "up-short": {"color": "gold", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
-    "up-normal": {"color": "orange", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
-    "up-long": {"color": "salmon", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
-    "up-xlong": {"color": "orangered", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
+    "up-xshort": {"color": "yellow", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
+    "up-short": {"color": "gold", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "up-normal": {"color": "orange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "up-long": {"color": "salmon", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "up-xlong": {"color": "orangered", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
 
     # Glen xup
-    "xup-xshort": {"color": "pink", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
-    "xup-short": {"color": "deeppink", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
-    "xup-normal": {"color": "red", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
-    "xup-long": {"color": "indianred", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
-    "xup-xlong": {"color": "darkred", "marker": "+", "markersize": 4, "linestyle": "--", "linewidth": 2},
+    "xup-xshort": {"color": "pink", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "xup-short": {"color": "deeppink", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "xup-normal": {"color": "red", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "xup-long": {"color": "indianred", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "xup-xlong": {"color": "darkred", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
 
-    # # Glen xdown
-    # "xdown-xshort": {"color": "lightblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-    # "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    # "xdown-normal": {"color": "cornflowerblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    # "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    # "xdown-xlong": {"color": "midnightblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    # Type gh joint
+    "FDK": {"color": "tab:blue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "FDK Full Range": {"color": "tab:red", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "Ball And Socket": {"color": "black", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
 
-    # # Glen down
-    # "down-xshort": {"color": "violet", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2.5},
-    # "down-short": {"color": "magenta", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    # "down-normal": {"color": "mediumorchid", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    # "down-long": {"color": "blueviolet", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    # "down-xlong": {"color": "purple", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2.5},
+    "Résultats": {"color": "darkorange"},
 
-    # # glen normal
-    # "middle-xshort": {"color": "lime", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-    # "middle-short": {"color": "greenyellow", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2.5},
-    # "middle-normal": {"color": "mediumseagreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-    # "middle-long": {"color": "darkolivegreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-    # "middle-xlong": {"color": "darkgreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+    # data de validation
+    "Lauranne": {"color": 'hotpink'},
+    "Marta": {"color": 'darkturquoise'},
+    "Dal Maso supérieur": {"color": "black", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
+    "Dal Maso inférieur": {"color": "grey", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
+    "Bergmann 2007": {"color": "black"},
+    "Bergmann_2007": {"color": "black"},
+    "Wickham": {"color": "darkorange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3}
+}
 
-    # # Glen up
-    # "up-xshort": {"color": "yellow", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
-    # "up-short": {"color": "gold", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    # "up-normal": {"color": "orange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    # "up-long": {"color": "salmon", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    # "up-xlong": {"color": "orangered", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+SimulationsLineStyleDictionary_Small_abduction = {
+    # Glen xdown
+    "xdown-xshort": {"color": "lightblue", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": 2},
+    "xdown-short": {"color": "deepskyblue", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": None},
+    "xdown-normal": {"color": "cornflowerblue", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": None},
+    "xdown-long": {"color": "mediumblue", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": None},
+    "xdown-xlong": {"color": "midnightblue", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": 2},
 
-    # # Glen xup
-    # "xup-xshort": {"color": "pink", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    # "xup-short": {"color": "deeppink", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    # "xup-normal": {"color": "red", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    # "xup-long": {"color": "indianred", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    # "xup-xlong": {"color": "darkred", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    # Glen down
+    "down-xshort": {"color": "violet", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": 2.5},
+    "down-short": {"color": "magenta", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": None},
+    "down-normal": {"color": "mediumorchid", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": None},
+    "down-long": {"color": "blueviolet", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": None},
+    "down-xlong": {"color": "purple", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": 2.5},
+
+    # glen normal
+    "middle-xshort": {"color": "lime", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-", "linewidth": None},
+    "middle-short": {"color": "greenyellow", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-", "linewidth": 2.5},
+    "middle-normal": {"color": "mediumseagreen", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-", "linewidth": None},
+    "middle-long": {"color": "darkolivegreen", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-", "linewidth": None},
+    "middle-xlong": {"color": "darkgreen", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-", "linewidth": 2},
+
+    # Glen up
+    "up-xshort": {"color": "yellow", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 3},
+    "up-short": {"color": "gold", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
+    "up-normal": {"color": "orange", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
+    "up-long": {"color": "salmon", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
+    "up-xlong": {"color": "orangered", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
+
+    # Glen xup
+    "xup-xshort": {"color": "pink", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
+    "xup-short": {"color": "deeppink", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
+    "xup-normal": {"color": "red", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
+    "xup-long": {"color": "indianred", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
+    "xup-xlong": {"color": "darkred", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
 
     # Type gh joint
     "FDK": {"color": "tab:blue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
@@ -1360,3 +1377,49 @@ Muscles
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus AP dans le repère de la scapula", composante_y=["AP"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus IS dans le repère de la scapula", composante_y=["IS"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus ML dans le repère de la scapula", composante_y=["ML"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# %% Small abduction no recentrage
+
+# # Style avec des croix car nstep=1
+# define_simulations_line_style(SimulationsLineStyleDictionary_Small_abduction)
+
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus no SpringForce", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no SpringForce [N]", variables_to_add_humerus_no_springforce, muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal muscles", ["Total", "AP", "IS", "ML"], "Force totale des muscles sur l'humérus [N]", muscle_variables_to_add=muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus no Fcontact", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no Fcontact [N]", variables_to_add_humerus_no_fcontact, muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus [N]", variables_to_add_humerus, muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal scapula", ["Total", "AP", "IS", "ML"], "Force totale sur la scapula [N]", variables_to_add_scapula, muscle_variables_to_add_scapula)
+
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, COP_contour, "COP", "COP sans recentrage", composantes=["AP", "IS"], figsize=[24, 13], graph_annotation_on=False)
+
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact", "Force de contact humérus AP", composantes_y=["AP"], figsize=[24, 13], xlim=[0, 30], same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact", "Force de contact humérus IS", composantes_y=["IS"], figsize=[24, 13], xlim=[0, 30], same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact", "Force de contact humérus ML", composantes_y=["ML"], figsize=[24, 13], xlim=[0, 30], same_lim=True)
+
+"""Forces totales sur l'humérus"""
+# # Par variables
+# # 5x5
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus", "Force totale sur l'humérus AP", composante_y=["AP"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus", "Force totale sur l'humérus IS", composante_y=["IS"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus", "Force totale sur l'humérus ML", composante_y=["ML"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
+
+"""Force totale des muscles"""
+# # Par variables
+# # 5x5
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal muscles", "Force totale muscles sur l'humérus AP", composante_y=["AP"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal muscles", "Force totale muscles sur l'humérus IS", composante_y=["IS"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal muscles", "Force totale muscles sur l'humérus ML", composante_y=["ML"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
+
+"""Sans force de contact ajoutée"""
+# # Par variables
+# # 5x5
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact AP", composante_y=["AP"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact IS", composante_y=["IS"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus no Fcontact", "Force totale sur l'humérus  no Fcontact ML", composante_y=["ML"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
+
+"""Sans spring force"""
+# # Par variables
+# # 5x5
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce AP", composante_y=["AP"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce IS", composante_y=["IS"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce ML", composante_y=["ML"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
+
+# define_simulations_line_style(SimulationsLineStyleDictionary)
