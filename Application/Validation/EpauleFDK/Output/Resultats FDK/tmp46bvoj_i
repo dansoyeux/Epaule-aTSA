@@ -23,12 +23,8 @@ import matplotlib
 # Contrôle de la taille de la police globale
 # matplotlib.rcParams.update({'font.size': 10})
 
+
 # Contrôle des tailles de chaque partie partie du graphique
-# Liste des paramètres que l'on peut changer :
-# https://renenyffenegger.ch/notes/development/languages/Python/libraries/matplotlib/rcParams/list
-# Default values available here : https://matplotlib.org/stable/users/explain/customizing.html
-
-
 # Titre des cases des subplots (12)
 matplotlib.rcParams.update({'axes.titlesize': 18})
 
@@ -42,9 +38,12 @@ matplotlib.rcParams.update({'axes.labelsize': 16})
 matplotlib.rcParams.update({'xtick.labelsize': 14})
 matplotlib.rcParams.update({'ytick.labelsize': 14})
 
-# Taille des graduations (3.5)
-matplotlib.rcParams.update({'xtick.major.size': 6})
-matplotlib.rcParams.update({'ytick.major.size': 6})
+
+
+
+matplotlib.rcParams.update({'xtick.major.size': 10})
+
+
 
 # Légende (10)
 matplotlib.rcParams.update({'legend.fontsize': 10})
@@ -1395,7 +1394,7 @@ Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Resu
 Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus [N]", variables_to_add_humerus, muscle_variables_to_add_humerus)
 Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal scapula", ["Total", "AP", "IS", "ML"], "Force totale sur la scapula [N]", variables_to_add_scapula, muscle_variables_to_add_scapula)
 
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, COP_contour, "COP", "COP sans recentrage", composantes=["AP", "IS"], figsize=[24, 13], graph_annotation_on=False)
+PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, COP_contour, "COP", "COP sans recentrage", composantes=["AP", "IS"], figsize=[24, 13], graph_annotation_on=False)
 
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact", "Force de contact humérus AP", composante_y=["AP"], figsize=[24, 13], xlim=[0, 30], same_lim=True)
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact", "Force de contact humérus IS", composante_y=["IS"], figsize=[24, 13], xlim=[0, 30], same_lim=True)

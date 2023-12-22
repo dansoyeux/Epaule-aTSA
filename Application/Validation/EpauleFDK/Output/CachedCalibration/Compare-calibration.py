@@ -38,3 +38,4 @@ xup_normal = get_slack_length_from_anyset("CachedCalibrationResults-xup-normal")
 diff = middle_normal[1] - xup_normal[1]
 
 max_diff = max(diff)
+print(max_diff)

@@ -152,11 +152,12 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
     
     
     #if BallAndSocket == 0 
-    //px, py et pz definis dans InputVariables.any;
+    //Position initiale (t=0s) = px, py et pz definis dans InputVariables.any;
     DriverPos = {Main.InputVariables.JointPosition.px,Main.InputVariables.JointPosition.py,Main.InputVariables.JointPosition.pz}; 
     
     
     #endif
+    
     
     DriverVel = {0,0,0};
     
