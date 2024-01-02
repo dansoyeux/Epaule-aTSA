@@ -31,7 +31,7 @@ num_processes = 5
 
 BallAndSocket = 0
 
-SmallAbduction = 1
+SmallAbduction = 0
 
 ArmMovement = "Abduction"
 # ArmMovement = "Elevation"
@@ -43,6 +43,20 @@ endangle = 120
 nstep = 70
 MuscleRecruitmentType = "MR_Polynomial"
 
+
+# %% Caliubration parameter
+# Load the muscle calibration parameters from a file
+
+"""WARNING TRUE"""
+load_muscle_parameter_from_file = True
+"""WARNING TRUE"""
+
+CALIBRATION_PARAMETER_CHOICE = "AUTO"
+CALIBRATION_PARAMETER_CHOICE = "middle-normal"
+
+if load_muscle_parameter_from_file is False:
+    CALIBRATION_PARAMETER_CHOICE = "AUTO"
+
 # %% Paramètres FDK
 
 """
@@ -51,24 +65,8 @@ MuscleRecruitmentType = "MR_Polynomial"
   CustomFDKOn : CustomForce : Force différente selon le cas
 """
 
-
-
-
-
-
-
-
-
-
-
-
-
-"""WARNING CUSTOMFDK =ON """
-CustomFDKOn = "On"
-
-
-# CustomFDKOn = "CustomForce"
-
+# CustomFDKOn = "On"
+CustomFDKOn = "CustomForce"
 
 # %% Cas de simulation
 
@@ -109,16 +107,14 @@ elif BallAndSocket == 1 and endangle == 120 and startangle == 15:
 if SmallAbduction == 1:
     file_description = f'GlenoidAxisTilt-{MuscleRecruitmentType}-SmallAbduction'
 
-
-# NO DELTOID POSTERIOR SCALING
-file_description += "-no-delt-post-scaling"
-
 if ArmMovement == "Elevation":
     file_description += "-Elevation"
 
 if CustomFDKOn == "On":
     file_description += "-no-recentrage"
 
+if load_muscle_parameter_from_file:
+    file_description += f"-hill-parameter-{CALIBRATION_PARAMETER_CHOICE}"
 
 # %% Vitesses pour moment arm
 
@@ -226,7 +222,8 @@ for tilt in tilt_list:
                        "m_ResultFile": file_name,
                        'm_ResultFolder': f'"{m_ResultFolder}"',
                        'MuscleRecruitmentType': MuscleRecruitmentType,
-                       'BallAndSocket': BallAndSocket
+                       'BallAndSocket': BallAndSocket,
+                       'CALIBRATION_PARAMETER_CHOICE': f'"{CALIBRATION_PARAMETER_CHOICE}"'
                        },  # fin defs
                  ),  # fin Load
 
@@ -235,9 +232,14 @@ for tilt in tilt_list:
             SetValue('Main.Study.nStep', nstep),
             SetValue('Main.Study.EvaluateMomentArms.FourierAngularVelocity', FourierAngularVelocity),
 
-            OperationRun('Main.Study.RunEpauleFDK')
-
         ])
+
+        # Type of Run_EpauleFDK study
+        if load_muscle_parameter_from_file:
+            # Loads the muscle parameters from a file
+            macrolist[-1][-1] = OperationRun('Main.Study.LoadCalibration_RunEpauleFDK')
+        else:
+            macrolist[-1][-1] = OperationRun('Main.Study.RunEpauleFDK')
 
 # %% Launch study
 app = AnyPyProcess(timeout=3600 * 100, num_processes=num_processes)

@@ -1,8 +1,26 @@
 AnyFolder CachedMuscleCalibration = 
 {
   AnyFileVar SavePath = ANYBODY_PATH_OUTPUT + "\CachedCalibration";
+
   // Gives a different name depending on the CSA case used
-  AnyStringVar FileName = "CachedCalibrationResults-" + CSA_Case;
+  #ifndef CALIBRATION_PARAMETER_CHOICE
+  #define CALIBRATION_PARAMETER_CHOICE "AUTO"
+  #endif
+  
+  // Same name as default
+  #if CALIBRATION_PARAMETER_CHOICE == "AUTO"
+  #define CALIBRATION_PARAMETER_CASE CSA_Case
+  
+  // Custom name = "CachedCalibrationResults-" + CALIBRATION_PARAMETER_CHOICE
+  #else 
+  #define CALIBRATION_PARAMETER_CASE CALIBRATION_PARAMETER_CHOICE
+  #endif // CALIBRATION_PARAMETER_CHOICE == AUTO
+  
+  
+  // Gives a different name depending on the CSA case used
+  AnyStringVar FileName = "CachedCalibrationResults-" + CALIBRATION_PARAMETER_CASE;
+  
+  
   
   AnyOperationSetValue MarkMuscleParametersAsChanged = 
   {
