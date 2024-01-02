@@ -162,9 +162,6 @@ AnyFolder InputVariables = {
   OR type a custom name to use
   #define CALIBRATION_PARAMETER_CHOICE "CUSTOM_NAME" 
   The name of the file to load is "CachedCalibrationResults-CUSTOM_NAME.anyset"
-  
-  
-  
   */
   
   #ifndef CALIBRATION_PARAMETER_CHOICE

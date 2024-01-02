@@ -19,7 +19,7 @@ import numpy as np
 # sera toujours fait en 5 fois, faudrait passer à 7 pour vraiment faire différence car serait fait en 4 fois donc plus court
 
 
-#  4h10 pour 25 simulations avec 5 en parallèle
+#  4h10 pour 25 simulations avec 5 en parallèle pour petit ordi CHUM
 
 # max chum = 12 (6 cores), max chez moi 8 (4 cores)
 
@@ -71,12 +71,12 @@ CustomFDKOn = "CustomForce"
 # %% Cas de simulation
 
 # Cases to run
-tilt_list = ["xdown", "down", "middle", "up", "xup"]
-acromion_list = ["xshort", "short", "normal", "long", "xlong"]
+# tilt_list = ["xdown", "down", "middle", "up", "xup"]
+# acromion_list = ["xshort", "short", "normal", "long", "xlong"]
 
 # Cases to run
-# tilt_list = ["down", "middle", "up"]
-# acromion_list = ["short", "normal", "long"]
+tilt_list = ["down", "middle", "up"]
+acromion_list = ["short", "normal", "long"]
 
 # # Cases to run
 # tilt_list = ["down"]

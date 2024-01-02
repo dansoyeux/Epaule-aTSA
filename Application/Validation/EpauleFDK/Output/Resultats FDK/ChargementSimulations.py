@@ -154,7 +154,7 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                                   "SequenceComposantes": ["AP", "IS", "ML"]},
 
                           # Dans le repère de l'humérus ISB (pour comparaison avec bergmann)
-                          "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Force de contact dans le repère de l'humérus [Newton]",
+                          "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Force de contact sur l'humérus dans le repère de l'humérus [Newton]",
                                            "SequenceComposantes": ["AP", "IS", "ML"]},
 
                           # Force sur la scapula Dans le repère de la scapula ISB (scapula = slave)
