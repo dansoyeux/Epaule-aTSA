@@ -95,10 +95,16 @@ InputVar1={
     
     // To have same position than Lauranne    
     #if HumExternalRotation == -21
-    AnyVar px = -0.001;     //AP : Anterieur = +   
-    AnyVar py = -0.001 ;     //IS : Superieur = +  
-    AnyVar pz = -0.0013;     //ML : Lateral = +
-    #endif
+    // old
+//    AnyVar px = -0.001;     //AP : Anterieur = +   
+//    AnyVar py = -0.001 ;     //IS : Superieur = +  
+//    AnyVar pz = -0.0013;     //ML : Lateral = +
+
+    AnyVar px = -0.001362;     //AP : Anterieur = +   
+    AnyVar py = 0.000506;     //IS : Superieur = +  
+    AnyVar pz = -0.0015;     //ML : Lateral = +
+
+#endif
     
   };
 };

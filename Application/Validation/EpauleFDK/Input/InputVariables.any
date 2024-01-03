@@ -187,7 +187,7 @@ AnyFolder InputVariables = {
   
   /* -------------------------------------------CSA_Tilt selection------------------------------------*/
   #ifndef CSA_Tilt
-  #define CSA_Tilt "xup"
+  #define CSA_Tilt "xdown"
   #endif
   /*
   xdown
