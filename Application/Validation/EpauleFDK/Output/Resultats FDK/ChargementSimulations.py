@@ -144,6 +144,9 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                           "GHLin ISB": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Déplacement Linéaire (ISB) de l'humérus par rapport au centre de l'implant [mm]", "MultiplyFactor": 1000,
                                         "SequenceComposantes": ["AP", "IS", "ML"]},
 
+                          "GHLin": {"VariablePath": "Output.Jnt.GHLin.Pos", "VariableDescription": "Déplacement Linéaire de l'humérus par rapport au centre de l'implant [mm]", "MultiplyFactor": 1000,
+                                    "SequenceComposantes": ["AP", "IS", "ML"]},
+
                           "GHLin Absolute": {"VariablePath": "Output.Jnt.GHLin_Absolute.Pos", "VariableDescription": "Déplacement Linéaire (ISB) de l'humérus par rapport au centre de l'implant [mm]", "MultiplyFactor": 1000,
                                              "SequenceComposantes": ["ML", "IS", "AP"], "Composantes_Inverse_Direction": [False, False, True]},
 
@@ -267,6 +270,16 @@ xLongCases_5 = ["xdown-xlong", "down-xlong", "middle-xlong", "up-xlong", "xup-xl
 
 CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
+# Tilt acromion
+xUpCases_3 = ["xup-xshort", "xup-normal", "xup-xlong"]
+UpCases_3 = ["up-xshort", "up-normal", "up-xlong"]
+MiddleCases_3 = ["middle-xshort", "middle-normal", "middle-xlong"]
+DownCases_3 = ["down-xshort", "down-normal", "down-xlong"]
+xDownCases_3 = ["xdown-xshort", "xdown-normal", "xdown-xlong"]
+
+CaseNames_3 = [*xDownCases_3, *MiddleCases_3, *xUpCases_3]
+UpDownCases_3 = [*xUpCases_3, *xDownCases_3]
+
 
 # %%                                                Résultats FDK
 
@@ -287,13 +300,13 @@ SaveSimulationsDirectory = "Saved Simulations"
 Abduction 25 cas
 sans scaling du deltoide postérieur
 """
-# no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
-# date = "30-10-"
-# Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
-# Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
+no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
+date = "30-10-"
+Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
+Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
 
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
 
 """
 Results and polynomial recruitment
@@ -381,6 +394,17 @@ En ne prenant pas en compte conflit avec acromion
 
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage")
+
+"""Fixed Hill muscles parameters"""
+# no_delt_post_scaling_dir = r"../SaveData/Macro_Results_fixed_hill_param"
+# date = "30-10-"
+
+# Files = [date + CaseName + description + "-MR_Polynomial-hill-parameter-middle-normal" for CaseName in CaseNames_3]
+# Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_3, FDK_Variables)
+
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill")
+
 
 # %% autres tests
 # """

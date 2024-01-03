@@ -70,13 +70,13 @@ CustomFDKOn = "CustomForce"
 
 # %% Cas de simulation
 
-# Cases to run
+# 25 Cases to run
 # tilt_list = ["xdown", "down", "middle", "up", "xup"]
 # acromion_list = ["xshort", "short", "normal", "long", "xlong"]
 
-# Cases to run
-tilt_list = ["down", "middle", "up"]
-acromion_list = ["short", "normal", "long"]
+# 9 Cases to run
+tilt_list = ["xdown", "middle", "xup"]
+acromion_list = ["xshort", "normal", "xlong"]
 
 # # Cases to run
 # tilt_list = ["down"]
