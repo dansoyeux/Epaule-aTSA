@@ -47,9 +47,7 @@ MuscleRecruitmentType = "MR_Polynomial"
 # %% Caliubration parameter
 # Load the muscle calibration parameters from a file
 
-"""WARNING TRUE"""
-load_muscle_parameter_from_file = True
-"""WARNING TRUE"""
+load_muscle_parameter_from_file = False
 
 CALIBRATION_PARAMETER_CHOICE = "AUTO"
 CALIBRATION_PARAMETER_CHOICE = "middle-normal"
@@ -71,12 +69,12 @@ CustomFDKOn = "CustomForce"
 # %% Cas de simulation
 
 # 25 Cases to run
-# tilt_list = ["xdown", "down", "middle", "up", "xup"]
-# acromion_list = ["xshort", "short", "normal", "long", "xlong"]
+tilt_list = ["xdown", "down", "middle", "up", "xup"]
+acromion_list = ["xshort", "short", "normal", "long", "xlong"]
 
-# 9 Cases to run
-tilt_list = ["xdown", "middle", "xup"]
-acromion_list = ["xshort", "normal", "xlong"]
+# # 9 Cases to run
+# tilt_list = ["xdown", "middle", "xup"]
+# acromion_list = ["xshort", "normal", "xlong"]
 
 # # Cases to run
 # tilt_list = ["down"]
@@ -84,7 +82,7 @@ acromion_list = ["xshort", "normal", "xlong"]
 
 # %% Nom du fichier de sortie
 
-file_date = "30-10"
+file_date = "04-01"
 
 # Dossier de résultats
 m_ResultFolder = "SaveData/Macro_Results/"
