@@ -187,7 +187,7 @@ AnyFolder InputVariables = {
   
   /* -------------------------------------------CSA_Tilt selection------------------------------------*/
   #ifndef CSA_Tilt
-  #define CSA_Tilt "xdown"
+  #define CSA_Tilt "xup"
   #endif
   /*
   xdown
@@ -230,12 +230,12 @@ AnyFolder InputVariables = {
   #if BallAndSocket == 0 
   
   #ifndef m_ResultFile
-  #define m_ResultFile "26-10-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial" + "-no-delt-post-scaling"
+  #define m_ResultFile "04-01-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial"
   #endif
   
   #else
   #ifndef m_ResultFile
-  #define m_ResultFile "26-10-BallAndSocket-" + CSA_Acromion_Length + "-MR_Polynomial"
+  #define m_ResultFile "04-01-BallAndSocket-" + CSA_Acromion_Length + "-MR_Polynomial"
   #endif
   
   #endif // if BallAndSocket == 0

@@ -100,7 +100,7 @@ InputVar1={
 //    AnyVar py = -0.001 ;     //IS : Superieur = +  
 //    AnyVar pz = -0.0013;     //ML : Lateral = +
 
-    AnyVar px = -0.001362;     //AP : Anterieur = +   
+    AnyVar px = -0.00137;     //AP : Anterieur = +   
     AnyVar py = 0.000506;     //IS : Superieur = +  
     AnyVar pz = -0.0015;     //ML : Lateral = +
 
