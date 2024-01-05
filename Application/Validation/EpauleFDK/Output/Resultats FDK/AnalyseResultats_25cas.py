@@ -349,6 +349,8 @@ Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = load_results_from_file(Sa
 
 Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill")
 
+Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos")
+
 # Results_GlenoidLocalAxis_MR_Polynomial_180deg = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg")
 
 # Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange")
@@ -1435,31 +1437,48 @@ Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Resu
 define_simulations_line_style(SimulationsLineStyleDictionary)
 # %% Fixed Hill parameters
 
-COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="COP en fixant paramètres de Hill", cases_on="all")
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="COP en fixant paramètres de Hill", cases_on="all")
 
 
-"""
-Warning les cases sont les cas pas extrèmes
-Les changer pour avoir les résultats avec cas extrèmes
-"""
-case_names = ["down-short", "down-normal", "down-long", "middle-short", "middle-normal", "middle-long", "up-short", "up-normal", "up-long"]
+# case_names = ["down-short", "down-normal", "down-long", "middle-short", "middle-normal", "middle-long", "up-short", "up-normal", "up-long"]
 
-comp = {"Normal": Results_GlenoidLocalAxis_MR_Polynomial, "Fixed Hill parameters": Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill}
+# comp = {"Normal": Results_GlenoidLocalAxis_MR_Polynomial, "Fixed Hill parameters": Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill}
 
-# COP
-for ind, case in enumerate(CaseNames_3):
-    COP_graph(comp, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
+# # COP
+# for ind, case in enumerate(CaseNames_3):
+#     COP_graph(comp, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
 
-# Translation
-for ind, case in enumerate(CaseNames_3):
-    COP_graph(comp, COP_contour, variable="GHLin ISB", composantes=["AP", "IS"], figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
+# # Translation
+# for ind, case in enumerate(CaseNames_3):
+#     COP_graph(comp, COP_contour, variable="GHLin ISB", composantes=["AP", "IS"], figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
 
-# force de contact
-for ind, case in enumerate(CaseNames_3):
-    graph(comp, "Abduction", "ForceContact", figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
+# # force de contact
+# for ind, case in enumerate(CaseNames_3):
+#     graph(comp, "Abduction", "ForceContact", figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
 
-# Muscles
-for ind, case in enumerate(CaseNames_3):
-    PremadeGraphs.muscle_graph_from_list(comp, list_muscles_actifs, [4, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
-    PremadeGraphs.muscle_graph_from_list(comp, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
-    PremadeGraphs.muscle_graph_from_list(comp, list_muscles_inactifs, [3, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+# # Muscles
+# for ind, case in enumerate(CaseNames_3):
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_actifs, [4, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_inactifs, [3, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+# %% Better initialpos
+
+# comp = {"Normal": Results_GlenoidLocalAxis_MR_Polynomial, "Better initialpos": Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos}
+
+# # COP
+# for ind, case in enumerate(CaseNames_3):
+#     COP_graph(comp, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
+
+# # Translation
+# for ind, case in enumerate(CaseNames_3):
+#     COP_graph(comp, COP_contour, variable="GHLin ISB", composantes=["AP", "IS"], figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
+
+# # force de contact
+# for ind, case in enumerate(CaseNames_3):
+#     graph(comp, "Abduction", "ForceContact", figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
+
+# # Muscles
+# for ind, case in enumerate(CaseNames_5):
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_actifs, [4, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_inactifs, [3, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
