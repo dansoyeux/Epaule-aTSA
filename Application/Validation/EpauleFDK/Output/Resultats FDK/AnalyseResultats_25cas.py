@@ -105,7 +105,22 @@ SimulationsLineStyleDictionary = {
     "Dal Maso inférieur": {"color": "grey", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
     "Bergmann 2007": {"color": "black"},
     "Bergmann_2007": {"color": "black"},
-    "Wickham": {"color": "darkorange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3}
+    "Wickham": {"color": "darkorange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
+
+    "CSA=12°": {"color": 'violet', "linestyle": "--"},
+    "CSA=16°": {"color": 'purple', "linestyle": "--"},
+    "CSA=20°": {"color": 'lightblue', "linestyle": "--"},
+    "CSA=25°": {"color": 'midnightblue', "linestyle": "-."},
+    "CSA=30°": {"color": 'yellow', "linewidth": 3, "linestyle": "-."},
+    "CSA=35°": {"color": 'orange', "linestyle": "-."},
+    "CSA=40°": {"color": 'orangered', "linestyle": "-"},
+    "CSA=45°": {"color": 'red', "linestyle": "-"},
+    "CSA=50°": {"color": 'darkred', "linestyle": "-"}
+
+    
+    
+    
+    
 }
 
 SimulationsLineStyleDictionary_Small_abduction = {
@@ -1482,3 +1497,13 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 #     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_actifs, [4, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
 #     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
 #     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_inactifs, [3, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+# %% Moyenne par CSA
+
+# Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA
+
+COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="COP rassemblés par CSA", cases_on="all", subplot={"dimension": [1, 2], "number": 1})
+graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", figure_title="Force de contact rassemblé par CSA", cases_on="all", subplot={"dimension": [1, 2], "number": 2})
+
+PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Force musculaire : Muscles actifs (Ft > 10N)", cases_on="all", figsize=[24, 14], xlim=[0, 120], ylim=[0, 200], legend_position="center left", grid_x_step=15)
+PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", cases_on="all", figsize=[24, 14], xlim=[0, 120], ylim=[0, 20], legend_position="center left", grid_x_step=15)
+PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Force musculaire : Muscles inactifs (Ft < 5N)", cases_on="all", figsize=[16, 14], xlim=[0, 120], ylim=[0, 20], legend_position="center left", grid_x_step=15)
