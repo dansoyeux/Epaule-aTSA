@@ -153,7 +153,7 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                           "GHLin ISB Relative": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Déplacement Linéaire (ISB) de l'humérus par rapport au centre de l'implant [mm]", "MultiplyFactor": 1000,
                                                  "SequenceComposantes": ["AP", "IS", "ML"], "offset": [0, 0, 0]},
 
-                          "COP": {"VariablePath": "Output.FileOut.COPlocalImplant", "VariableDescription": "Position du centre de pression", "MultiplyFactor": 1000,
+                          "COP": {"VariablePath": "Output.FileOut.COPlocalImplant", "VariableDescription": "Position du centre de pression [mm]", "MultiplyFactor": 1000,
                                   "SequenceComposantes": ["AP", "IS", "ML"]},
 
                           # Dans le repère de l'humérus ISB (pour comparaison avec bergmann)
@@ -406,13 +406,13 @@ En ne prenant pas en compte conflit avec acromion
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill")
 
 """Better initialpos"""
-initialpos_dir = "../SaveData/Better_initialpos"
-date = "04-01-"
-Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in CaseNames_5]
-Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos = load_simulation_cases(initialpos_dir, Files, CaseNames_5, FDK_Variables)
+# initialpos_dir = "../SaveData/Better_initialpos"
+# date = "04-01-"
+# Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in CaseNames_5]
+# Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos = load_simulation_cases(initialpos_dir, Files, CaseNames_5, FDK_Variables)
 
-# Sauvegarde de la simulation en .pkl
-save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos")
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos")
 
 
 # %% autres tests

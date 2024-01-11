@@ -110,17 +110,13 @@ SimulationsLineStyleDictionary = {
     "CSA=12°": {"color": 'violet', "linestyle": "--"},
     "CSA=16°": {"color": 'purple', "linestyle": "--"},
     "CSA=20°": {"color": 'lightblue', "linestyle": "--"},
-    "CSA=25°": {"color": 'midnightblue', "linestyle": "-."},
-    "CSA=30°": {"color": 'yellow', "linewidth": 3, "linestyle": "-."},
-    "CSA=35°": {"color": 'orange', "linestyle": "-."},
-    "CSA=40°": {"color": 'orangered', "linestyle": "-"},
-    "CSA=45°": {"color": 'red', "linestyle": "-"},
-    "CSA=50°": {"color": 'darkred', "linestyle": "-"}
+    "CSA=25°": {"color": 'cornflowerblue', "linestyle": "--"},
+    "CSA=30°": {"color": 'greenyellow', "linestyle": "-"},
+    "CSA=35°": {"color": 'mediumseagreen', "linestyle": "-"},
+    "CSA=40°": {"color": 'orange', "linestyle": "-."},
+    "CSA=45°": {"color": 'red', "linestyle": "-."},
+    "CSA=50°": {"color": 'darkred', "linestyle": "-."}
 
-    
-    
-    
-    
 }
 
 SimulationsLineStyleDictionary_Small_abduction = {
@@ -216,8 +212,20 @@ SimulationDescriptionDictionary = {
 
     # Nom des datas de validation
     "Wickham": "Wickham et al. 2010, n=24",
-    "Bergmann_2007": "Bergmann et al. 2007",
-    "Bergmann 2007": "Bergmann et al. 2007"
+    "Bergmann 2007": "Bergmann et al. 2007",
+    "Bergmann 2011": "Bergmann et al. 2011",
+
+    # Description des CSA moyens
+    "CSA=12°": "CSA=12° (1 case)",
+    "CSA=16°": "CSA=16° (2 cases)",
+    "CSA=20°": "CSA=20° (3 cases)",
+    "CSA=25°": "CSA=25° (4 cases)",
+    "CSA=30°": "CSA=30° (5 cases)",
+    "CSA=35°": "CSA=35° (4 cases)",
+    "CSA=40°": "CSA=40° (3 cases)",
+    "CSA=45°": "CSA=45° (2 cases)",
+    "CSA=50°": "CSA=50° (1 case)"
+
 }
 
 # Fonctions pour définir les légendes et styles des graphiques en fonction des noms des simulations dans les dictionnaires
@@ -252,17 +260,6 @@ xLongCases_3 = ["xdown-xlong", "middle-xlong", "xup-xlong"]
 CaseNames_3 = [*xDownCases_3, *MiddleCases_3, *xUpCases_3]
 UpDownCases_3 = [*xUpCases_3, *xDownCases_3]
 
-# 9 CSA différents
-CSA_12_Cases = ["xdown-xshort"]
-CSA_16_Cases = ["xdown-short", "down-xshort"]
-CSA_20_Cases = ["xdown-normal", "down-short", "middle-xshort"]
-CSA_25_Cases = ["xdown-long", "down-normal", "middle-short", "up-xshort"]
-CSA_30_Cases = ["xdown-xlong", "down-long", "middle-normal", "up-short", "xup-xshort"]
-CSA_35_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
-CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
-CSA_45_Cases = ["up-xlong", "xup-long"]
-CSA_50_Cases = ["xup-xlong"]
-
 # More cases
 xDownCases_5 = ["xdown-xshort", "xdown-short", "xdown-normal", "xdown-long", "xdown-xlong"]
 DownCases_5 = ["down-xshort", "down-short", "down-normal", "down-long", "down-xlong"]
@@ -293,6 +290,17 @@ CompWickham_CasesNames_3 = [*CaseNames_3, "Wickham", "Ball And Socket"]
 
 CaseNames_3_BallAndSocket = [*CaseNames_3, "Ball And Socket"]
 CaseNames_5_BallAndSocket = [*CaseNames_5, "Ball And Socket"]
+
+# 9 CSA différents
+CSA_12_Cases = ["xdown-xshort"]
+CSA_16_Cases = ["xdown-short", "down-xshort"]
+CSA_20_Cases = ["xdown-normal", "down-short", "middle-xshort"]
+CSA_25_Cases = ["xdown-long", "down-normal", "middle-short", "up-xshort"]
+CSA_30_Cases = ["xdown-xlong", "down-long", "middle-normal", "up-short", "xup-xshort"]
+CSA_35_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
+CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
+CSA_45_Cases = ["up-xlong", "xup-long"]
+CSA_50_Cases = ["xup-xlong"]
 
 # %% Catégories de simulation
 
@@ -406,23 +414,6 @@ FDK_Variables = load_results_from_file(SaveVariablesDirectory, "FDK_Variables")
 # FDK Polynomial avec Ball And Socket
 Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket = Results_GlenoidLocalAxis_MR_Polynomial.copy()
 Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket["Ball And Socket"] = Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"]
-
-# %% Moyenne des résultats par CSA
-
-# result_dictionary = {key: result_dictionary[key] for key in CaseNames_3}
-combine_cases = {"CSA=12°": CSA_12_Cases,
-                 "CSA=16°": CSA_16_Cases,
-                 "CSA=20°": CSA_20_Cases,
-                 "CSA=25°": CSA_25_Cases,
-                 "CSA=30°": CSA_30_Cases,
-                 "CSA=35°": CSA_35_Cases,
-                 "CSA=40°": CSA_40_Cases,
-                 "CSA=45°": CSA_45_Cases,
-                 "CSA=50°": CSA_50_Cases
-                 }
-
-Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial, combine_cases, "mean")
-
 
 # %% Liste des catégories de muscles
 
@@ -1499,14 +1490,88 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 #     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_inactifs, [3, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
 # %% Moyenne par CSA
 
-COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="COP rassemblés par CSA", cases_on="all", subplot={"dimension": [1, 2], "number": 1})
-graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", figure_title="Force de contact rassemblé par CSA", cases_on="all", subplot={"dimension": [1, 2], "number": 2})
+# result_dictionary = {key: result_dictionary[key] for key in CaseNames_3}
+combine_cases = {"CSA=12°": CSA_12_Cases,
+                 "CSA=16°": CSA_16_Cases,
+                 "CSA=20°": CSA_20_Cases,
+                 "CSA=25°": CSA_25_Cases,
+                 "CSA=30°": CSA_30_Cases,
+                 "CSA=35°": CSA_35_Cases,
+                 "CSA=40°": CSA_40_Cases,
+                 "CSA=45°": CSA_45_Cases,
+                 "CSA=50°": CSA_50_Cases
+                 }
+
+Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial, combine_cases, "mean")
 
 
-for case in combine_cases:
-    COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, COP_contour, variable="COP", composantes=["AP", "IS"], subplot_title=f"{case} COP rassemblés par CSA", cases_on=[case], subplot={"dimension": [1, 2], "number": 1}, errorbar=True, errorevery=20)
-    graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", subplot_title=f"{case} Force de contact rassemblé par CSA", cases_on=[case], subplot={"dimension": [1, 2], "number": 2}, errorbar=True, errorevery=20)
+list_csa_short = ["CSA=25°",
+                  "CSA=30°",
+                  "CSA=35°",
+                  "CSA=40°"
+                  ]
 
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Force musculaire : Muscles actifs (Ft > 10N)", cases_on="all", figsize=[24, 14], xlim=[0, 120], ylim=[0, 200], legend_position="center left", grid_x_step=15)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", cases_on="all", figsize=[24, 14], xlim=[0, 120], ylim=[0, 20], legend_position="center left", grid_x_step=15)
-# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Force musculaire : Muscles inactifs (Ft < 5N)", cases_on="all", figsize=[16, 14], xlim=[0, 120], ylim=[0, 20], legend_position="center left", grid_x_step=15)
+list_csa_long = ["CSA=20°",
+                 "CSA=25°",
+                 "CSA=30°",
+                 "CSA=35°",
+                 "CSA=40°",
+                 "CSA=45°"
+                 ]
+
+"""Résultats"""
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="COP rassemblés par CSA", cases_on=list_csa_long, subplot={"dimension": [1, 2], "number": 1})
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", figure_title="Force de contact rassemblé par CSA", cases_on=list_csa_long, subplot={"dimension": [1, 2], "number": 2})
+
+# # ForceContact
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["Total"], figure_title="Forces de contact par CSA", subplot_title="Total", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["AP"], figure_title="Forces de contact par CSA", subplot_title="AP", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["IS"], figure_title="Forces de contact par CSA", subplot_title="IS", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["ML"], figure_title="Forces de contact par CSA", subplot_title="ML", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left", errorbar=False, errorevery=14, error_capsize=5)
+
+# # COP
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["Total"], figure_title="COP par CSA", subplot_title="Total", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["AP"], figure_title="COP par CSA", subplot_title="AP", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["IS"], figure_title="COP par CSA", subplot_title="IS", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["ML"], figure_title="COP par CSA", subplot_title="ML", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left", errorbar=False, errorevery=14, error_capsize=5)
+
+# # Muscles
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Force musculaire : Muscles actifs (Ft > 10N)", cases_on=list_csa_long, figsize=[24, 14], xlim=[0, 120], ylim=[0, 200], legend_position="center left", grid_x_step=15)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", cases_on=list_csa_long, figsize=[24, 14], xlim=[0, 120], ylim=[0, 20], legend_position="center left", grid_x_step=15)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Force musculaire : Muscles inactifs (Ft < 5N)", cases_on=list_csa_long, figsize=[16, 14], xlim=[0, 120], ylim=[0, 20], legend_position="center left", grid_x_step=15)
+
+
+"""Ecarts types"""
+# # ForceContact
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["sd_Total"], figure_title="Ecart types des forces de contact par CSA", subplot_title="Total", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["sd_AP"], figure_title="Ecart types des forces de contact par CSA", subplot_title="AP", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["sd_IS"], figure_title="Ecart types des forces de contact par CSA", subplot_title="IS", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["sd_ML"], figure_title="Ecart types des forces de contact par CSA", subplot_title="ML", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left")
+
+# # COP
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["sd_Total"], figure_title="Ecart types COP par CSA", subplot_title="Total", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["sd_AP"], figure_title="Ecart types COP par CSA", subplot_title="AP", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["sd_IS"], figure_title="Ecart types COP par CSA", subplot_title="IS", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["sd_ML"], figure_title="Ecart types COP par CSA", subplot_title="ML", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left")
+
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles actifs (Ft > 10N)", composante_y=["sd_Total"], cases_on=list_csa_long, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, grid_y_step=5, same_lim=True, ylim=[0, 30])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", composante_y=["sd_Total"], cases_on=list_csa_long, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles inactifs (Ft < 5N)", composante_y=["sd_Total"], cases_on=list_csa_long, figsize=[16, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+
+"""Valeurs avec errorbars"""
+# # ForceContact
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["Total"], figure_title="Forces de contact par CSA", subplot_title="Total", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15, errorbar=True, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["AP"], figure_title="Forces de contact par CSA", subplot_title="AP", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15, errorbar=True, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["IS"], figure_title="Forces de contact par CSA", subplot_title="IS", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15, errorbar=True, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["ML"], figure_title="Forces de contact par CSA", subplot_title="ML", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left", errorbar=True, errorevery=14, error_capsize=5)
+
+# # COP
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["Total"], figure_title="COP par CSA", subplot_title="Total", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15, errorbar=True, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["AP"], figure_title="COP par CSA", subplot_title="AP", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15, errorbar=True, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["IS"], figure_title="COP par CSA", subplot_title="IS", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15, errorbar=True, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["ML"], figure_title="COP par CSA", subplot_title="ML", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left", errorbar=True, errorevery=14, error_capsize=5)
+
+# # Muscles
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles actifs (Ft > 10N)", composante_y=["Total"], cases_on=list_csa_short, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, errorbar=True, errorevery=14, error_capsize=5)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", composante_y=["Total"], cases_on=list_csa_long, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles inactifs (Ft < 5N)", composante_y=["Total"], cases_on=list_csa_long, figsize=[16, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
