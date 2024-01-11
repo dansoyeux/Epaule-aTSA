@@ -85,8 +85,8 @@ MuscleDictionary_MyDeltoideusWrapping = {"Deltoideus lateral": ["My_deltoideus_l
                                          "Coracobrachialis": ["coracobrachialis", "_", [1, 6]]
                                          }
 
-MuscleVariableDictionary = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Force musculaire [Newton]"},
-                            "Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Force musculaire totale [Newton]"},
+MuscleVariableDictionary = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Force musculaire [N]"},
+                            "Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Force musculaire [N]"},
                             "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Activité Musculaire [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
                             "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Force Musculaire à l'origine du muscle [N]", "select_matrix_line": 0,
@@ -109,8 +109,8 @@ MuscleVariableDictionary = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                                           "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
                             }
 
-MuscleVariableDictionary_NoMomentArm = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Force musculaire [Newton]"},
-                                        "Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Force musculaire totale [Newton]"},
+MuscleVariableDictionary_NoMomentArm = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Force musculaire [N]"},
+                                        "Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Force musculaire totale [N]"},
                                         "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Activité Musculaire [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
                                         "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Force Musculaire à l'origine du muscle [N]", "select_muscle_RefFrame_output": "origin",
@@ -157,26 +157,26 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                                   "SequenceComposantes": ["AP", "IS", "ML"]},
 
                           # Dans le repère de l'humérus ISB (pour comparaison avec bergmann)
-                          "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Force de contact sur l'humérus dans le repère de l'humérus [Newton]",
+                          "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Force de contact sur l'humérus [N]",
                                            "SequenceComposantes": ["AP", "IS", "ML"]},
 
                           # Force sur la scapula Dans le repère de la scapula ISB (scapula = slave)
-                          "ForceContact scapula": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Force de contact sur la scapula dans le repère de la scapula [Newton]",
+                          "ForceContact scapula": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Force de contact sur la scapula dans le repère de la scapula [N]",
                                                    "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
 
                           # Force sur l'humerus Dans le repère de la scapula ISB (humerus = master)
-                          "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Force de contact sur l'humérus dans le repère de la scapula [Newton]",
+                          "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Force de contact sur l'humérus dans le repère de la scapula [N]",
                                                    "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
 
-                          "ForceTolError": {"VariablePath": "Output.ForceDepKinError.Val", "VariableDescription": "Erreure de force FDK [Newton]"},
+                          "ForceTolError": {"VariablePath": "Output.ForceDepKinError.Val", "VariableDescription": "Erreure de force FDK [N]"},
 
 
                           # Dans le repère ISB de la scapula (inverser la force car appliquée dans sens inverse for some reason)
-                          "SpringForce scapula": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Force de ressort sur la scapula [Newton]", "SequenceComposantes": ["AP", "IS", "ML"],
+                          "SpringForce scapula": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Force de ressort sur la scapula [N]", "SequenceComposantes": ["AP", "IS", "ML"],
                                                   "Composantes_Inverse_Direction": [True, True, True]},
 
                           # Dans le repère ISB de la scapula (for some reason GHLin a premiere ref frame = scapula mais force appliquée sur humérus avec le bon signe)
-                          "SpringForce humerus": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Force de ressort sur l'humérus [Newton]", "SequenceComposantes": ["AP", "IS", "ML"]},
+                          "SpringForce humerus": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Force de ressort sur l'humérus [N]", "SequenceComposantes": ["AP", "IS", "ML"]},
 
                           "Scapula position": {"VariablePath": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.r", "VariableDescription": "Déplacement Linéaire de la scapula [mm]", "MultiplyFactor": 1000,
                                                "SequenceComposantes": ["AP", "IS", "ML"]},
