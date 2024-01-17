@@ -63,8 +63,16 @@ if load_muscle_parameter_from_file is False:
   CustomFDKOn : CustomForce : Force différente selon le cas
 """
 
-# CustomFDKOn = "On"
-CustomFDKOn = "CustomForce"
+
+
+"""-------------------------------------WARNING ON-------------------------------------"""
+CustomFDKOn = "On"
+"""-------------------------------------WARNING ON-------------------------------------"""
+
+
+
+
+# CustomFDKOn = "CustomForce"
 
 # %% Cas de simulation
 
