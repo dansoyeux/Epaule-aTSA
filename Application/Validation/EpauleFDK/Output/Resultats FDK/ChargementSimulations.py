@@ -135,11 +135,12 @@ MuscleVariableDictionary_NoMomentArm = {"Fm": {"MuscleFolderPath": "Output.Mus",
 # Variables
 FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.InterfaceFolder.ScapulaHumerus.Elevation.Pos",
                                         "VariableDescription": "Angle d'élévation dans le plan de la scapula [°]", "MultiplyFactor": 180 / np.pi},
+
                           "Abduction": {"VariablePath": "Output.rotD", "VariableDescription": "Angle d'abduction [°]"},
 
                           "Temps": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Temps [s]"},
 
-                          # "ContactArea": {"VariablePath": "Output.Jnt.ProtheseContact.ContactArea", "VariableDescription": "Surface de contact [cm^2]", "MultiplyFactor": 10000},
+                          "ContactArea": {"VariablePath": "Output.Jnt.ProtheseContact.ContactArea", "VariableDescription": "Surface de contact [cm^2]", "MultiplyFactor": 10000},
 
                           "GHLin ISB": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Déplacement Linéaire (ISB) de l'humérus par rapport au centre de l'implant [mm]", "MultiplyFactor": 1000,
                                         "SequenceComposantes": ["AP", "IS", "ML"]},
@@ -163,6 +164,14 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                           # Force sur la scapula Dans le repère de la scapula ISB (scapula = slave)
                           "ForceContact scapula": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Force de contact sur la scapula dans le repère de la scapula [N]",
                                                    "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
+
+                          # Force sur la scapula Dans le repère de l'implant (scapula = slave)
+                          "ForceContact GlenImplant": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Force de contact sur la scapula dans le repère de l'implant [N]",
+                                                       "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True},
+
+                          # Force sur l'humérus Dans le repère de l'implant (humerus = master)
+                          "ForceContact HumImplant glene": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Force de contact sur l'humérus dans le repère de l'implant [N]",
+                                                            "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True},
 
                           # Force sur l'humerus Dans le repère de la scapula ISB (humerus = master)
                           "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Force de contact sur l'humérus dans le repère de la scapula [N]",
@@ -300,13 +309,33 @@ SaveSimulationsDirectory = "Saved Simulations"
 Abduction 25 cas
 sans scaling du deltoide postérieur
 """
-# no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
-# date = "30-10-"
-# Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
-# Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
+no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
+date = "30-10-"
+Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
+Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
+
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
+
+"""Abduction 25 cas
+Avec force de recentrage constante
+"""
+# no_recentrage_dir = "../SaveData/Macro_Results_no_recentrage"
+# date = "04-01-"
+# Files = [date + CaseName + description + "-MR_Polynomial-no-recentrage" for CaseName in CaseNames_5]
+
+# Failed_no_recentrage = [False, False, False, False, False,
+#                         False, False, False, False, False,
+#                         False, False, False, False, False,
+#                         False, False, False, False, False,
+#                         False, False, False, False, False
+#                         ]
+
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = load_simulation_cases(no_recentrage_dir, Files, CaseNames_5, FDK_Variables, Failed=Failed_no_recentrage)
+
 
 # # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage")
 
 """
 Results and polynomial recruitment

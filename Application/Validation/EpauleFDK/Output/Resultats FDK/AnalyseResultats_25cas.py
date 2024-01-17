@@ -103,8 +103,8 @@ SimulationsLineStyleDictionary = {
     "Marta": {"color": 'darkturquoise'},
     "Dal Maso supérieur": {"color": "black", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
     "Dal Maso inférieur": {"color": "grey", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
-    "Bergmann 2007": {"color": "black"},
-    "Bergmann_2007": {"color": "black"},
+    "Bergmann 2007": {"color": "black", "marker": "+", "markersize": 8, "linestyle": "-", "linewidth": 0.3},
+    "Bergmann_2007": {"color": "black", "marker": "+", "markersize": 8, "linestyle": "-", "linewidth": 0.3},
     "Wickham": {"color": "darkorange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
 
     "CSA=12°": {"color": 'violet', "linestyle": "--"},
@@ -167,8 +167,8 @@ SimulationsLineStyleDictionary_Small_abduction = {
     "Marta": {"color": 'darkturquoise'},
     "Dal Maso supérieur": {"color": "black", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
     "Dal Maso inférieur": {"color": "grey", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
-    "Bergmann 2007": {"color": "black"},
-    "Bergmann_2007": {"color": "black"},
+    "Bergmann 2007": {"color": "black", "marker": "o", "markersize": 8, "linestyle": "-", "linewidth": 0.3},
+    "Bergmann_2007": {"color": "black", "marker": "o", "markersize": 8, "linestyle": "-", "linewidth": 0.3},
     "Wickham": {"color": "darkorange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3}
 }
 
@@ -373,6 +373,8 @@ Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = load_results_from_file(Sa
 Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill")
 
 Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos")
+
+Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage")
 
 # Results_GlenoidLocalAxis_MR_Polynomial_180deg = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg")
 
@@ -791,6 +793,9 @@ GHLin Absolute
 
 
 # # Comparaison avec Bergmann 2007
+# CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial = Results_GlenoidLocalAxis_MR_Polynomial.copy()
+# CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial["Bergmann_2007"] = Results_literature["ForceContact"]["Bergmann 2007"]
+
 # PremadeGraphs.graph_by_case_categories(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3_Bergmann, "Abduction", "ForceContact", "Forces de contact", legend_position="center left", figsize=[14, 13])
 
 # graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=[*CaseNames_3, "Bergmann_2007"], subplot={"dimension": [1, 2], "number": 1}, figsize=[15, 8], subplot_title="Angle d'abduction", xlim=[0, 120], grid_x_step=15, same_lim=True)
@@ -857,6 +862,54 @@ GHLin Absolute
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact scapula", "Force de contact dans le repère de la scapula", cases_on=CaseNames_5, subplot={"dimension": [1, 4], "number": 4}, subplot_title="Médiolatéral", composante_y=["ML"], xlim=[0, 120], grid_x_step=15, grid_y_step=50, legend_position="center left")
 
 
+# %% Force de contact dans le repère de la glène
+
+"""Forces sur l'implant glenoidien"""
+# # Forces par catégories par composantes
+# # 5x5
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact Totale sur l'implant glénoidien dans le repère de la glène", composante_y=["Total"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact AP sur l'implant glénoidien dans le repère de la glène", composante_y=["AP"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact IS sur l'implant glénoidien dans le repère de la glène", composante_y=["IS"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact ML sur l'implant glénoidien dans le repère de la glène", composante_y=["ML"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# # # Forces par catégories par composantes
+# # 3x3
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact GlenImplant", "Forces de contact Totale sur l'implant glénoidien dans le repère de la glène", composante_y=["Total"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact GlenImplant", "Forces de contact AP sur l'implant glénoidien dans le repère de la glène", composante_y=["AP"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact GlenImplant", "Forces de contact IS sur l'implant glénoidien dans le repère de la glène", composante_y=["IS"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact GlenImplant", "Forces de contact ML sur l'implant glénoidien dans le repère de la glène", composante_y=["ML"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# # Graph simple
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact GlenImplant", "Force de contact sur l'implant glénoidien dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 1}, subplot_title="Total", composante_y=["Total"])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact GlenImplant", "Force de contact sur l'implant glénoidien dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 2}, subplot_title="Antéropostérieur", composante_y=["AP"])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact GlenImplant", "Force de contact sur l'implant glénoidien dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 3}, subplot_title="Inférosupérieur", composante_y=["IS"])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact GlenImplant", "Force de contact sur l'implant glénoidien dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 4}, subplot_title="Médiolatéral", composante_y=["ML"], xlim=[0, 120], grid_x_step=15, grid_y_step=50, same_lim=True)
+
+"""Forces sur l'implant huméral"""
+# # Forces par catégories par composantes
+# # 5x5
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact HumImplant glene", "Forces de contact Totale sur l'implant huméral dans le repère de la glène", composante_y=["Total"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact HumImplant glene", "Forces de contact AP sur l'implant huméral dans le repère de la glène", composante_y=["AP"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact HumImplant glene", "Forces de contact IS sur l'implant huméral dans le repère de la glène", composante_y=["IS"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact HumImplant glene", "Forces de contact ML sur l'implant huméral dans le repère de la glène", composante_y=["ML"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# # Forces par catégories par composantes
+# # 3x3
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact HumImplant glene", "Forces de contact Totale sur l'implant huméral dans le repère de la glène", composante_y=["Total"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact HumImplant glene", "Forces de contact AP sur l'implant huméral dans le repère de la glène", composante_y=["AP"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact HumImplant glene", "Forces de contact IS sur l'implant huméral dans le repère de la glène", composante_y=["IS"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact HumImplant glene", "Forces de contact ML sur l'implant huméral dans le repère de la glène", composante_y=["ML"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# # Graph simple
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact HumImplant glene", "Force de contact sur l'implant huméral dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 1}, subplot_title="Total", composante_y=["Total"])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact HumImplant glene", "Force de contact sur l'implant huméral dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 2}, subplot_title="Antéropostérieur", composante_y=["AP"])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact HumImplant glene", "Force de contact sur l'implant huméral dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 3}, subplot_title="Inférosupérieur", composante_y=["IS"])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact HumImplant glene", "Force de contact sur l'implant huméral dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 4}, subplot_title="Médiolatéral", composante_y=["ML"], xlim=[0, 120], grid_x_step=15, grid_y_step=50, same_lim=True, legend_position="center left")
+
+
+
+
+
 # %% Muscles Activity
 
 # # Activité 9 cas
@@ -913,6 +966,13 @@ GHLin Absolute
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation_faible, [3, 3], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14])
 
 # %% Muscles Ft
+# %% Contact area
+
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ContactArea", "Surface de contact entre les deux implants", legend_position="center left", figsize=[24, 13], xlim=[0, 120], same_lim=True, grid_x_step=15)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ContactArea", "Surface de contact entre les deux implants", legend_position="center left", figsize=[24, 13], xlim=[0, 120], same_lim=True, grid_x_step=15)
+
+
+
 
 """
 Par catégories
@@ -1256,6 +1316,7 @@ Muscles
 # muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F insertion direction", f"{muscle_name} Total : Direction de la force projetée sur l'insertion dans le repère scapula", subplot={"dimension": [1, 3], "number": 2}, subplot_title="IS insertion", composante_y=["IS"], cases_on=CaseNames_5, legend_position="center left", figsize=[24, 13])
 # muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F insertion direction", f"{muscle_name} Total : Direction de la force projetée sur l'insertion dans le repère scapula", subplot={"dimension": [1, 3], "number": 3}, subplot_title="ML insertion", composante_y=["ML"], cases_on=CaseNames_5, legend_position="center left", figsize=[24, 13], same_lim=True, xlim=[15, 120], grid_x_step=15, ylim=[-1, 1], grid_y_step=0.25)
 
+
 # # parties du muscle
 # for part_number in range(1, n_part + 1):
 #     # force muscle projetée origine
@@ -1589,3 +1650,13 @@ list_csa_long = ["CSA=20°",
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles actifs (Ft > 10N)", composante_y=["Total"], cases_on=list_csa_short, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, errorbar=True, errorevery=14, error_capsize=5)
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", composante_y=["Total"], cases_on=list_csa_long, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles inactifs (Ft < 5N)", composante_y=["Total"], cases_on=list_csa_long, figsize=[16, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+
+# %% Recentrage force constante
+
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact Totale sur l'implant glénoidien dans le repère de la glène", composante_y=["Total"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13])
+# %% Pénétration maximale des implants
+
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "MaxPenetration", "MaxPenetration", cases_on=CaseNames_3)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "MaxPenetration", "MaxPenetration", legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
