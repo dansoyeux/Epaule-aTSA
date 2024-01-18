@@ -101,8 +101,8 @@ SimulationsLineStyleDictionary = {
     # data de validation
     "Lauranne": {"color": 'hotpink'},
     "Marta": {"color": 'darkturquoise'},
-    "Dal Maso supérieur": {"color": "black", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
-    "Dal Maso inférieur": {"color": "grey", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
+    "Dal Maso superior": {"color": "black", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
+    "Dal Maso inferior": {"color": "grey", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
     "Bergmann 2007": {"color": "black", "marker": "+", "markersize": 8, "linestyle": "-", "linewidth": 0.3},
     "Bergmann_2007": {"color": "black", "marker": "+", "markersize": 8, "linestyle": "-", "linewidth": 0.3},
     "Wickham": {"color": "darkorange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
@@ -175,40 +175,40 @@ SimulationsLineStyleDictionary_Small_abduction = {
 
 SimulationDescriptionDictionary = {
     # Nom des cas de simulation
-    "xdown-xshort": "CSA = 12° : glene très basse      -  acromion très court",
-    "xdown-short": "CSA = 16° : glene très basse      -  acromion court",
-    "xdown-normal": "CSA = 20° : glene très basse      -  acromion normal",
-    "xdown-long": "CSA = 25° : glene très basse      -  acromion long",
-    "xdown-xlong": "CSA = 30° : glene très basse      -  acromion très long",
+    "xdown-xshort": "CSA = 12° : Large Downtilt      -  Very short acromion",
+    "xdown-short": "CSA = 16° : Large Downtilt      -  Short acromion",
+    "xdown-normal": "CSA = 20° : Large Downtilt      -  Normal acromion",
+    "xdown-long": "CSA = 25° : Large Downtilt      -   Long acromion",
+    "xdown-xlong": "CSA = 30° : Large Downtilt      -  Very long acromion",
 
-    "down-xshort": "CSA = 16° : Glene basse             -  Acromion très court",
-    "down-short": "CSA = 20° : Glene basse             -  Acromion court",
-    "down-normal": "CSA = 25° : Glene basse             -  Acromion normal",
-    "down-long": "CSA = 30° : Glene basse             -  Acromion long",
-    "down-xlong": "CSA = 35° : Glene basse             -  Acromion très long",
+    "down-xshort": "CSA = 16° : Downtilt             -  Very short acromion",
+    "down-short": "CSA = 20° : Downtilt             -  Short acromion",
+    "down-normal": "CSA = 25° : Downtilt             -  Normal acromion",
+    "down-long": "CSA = 30° : Downtilt             -   Long acromion",
+    "down-xlong": "CSA = 35° : Downtilt             -  Very long acromion",
 
-    "middle-xshort": "CSA = 20° : Glene normale         -  Acromion très court",
-    "middle-short": "CSA = 25° : Glene normale         -  Acromion court",
-    "middle-normal": "CSA = 30° : Glene normale         -  Acromion normal",
-    "middle-long": "CSA = 35° : Glene normale         -  Acromion long",
-    "middle-xlong": "CSA = 40° : Glene normale         -  Acromion très long",
+    "middle-xshort": "CSA = 20° : Glene normale         -  Very short acromion",
+    "middle-short": "CSA = 25° : Glene normale         -  Short acromion",
+    "middle-normal": "CSA = 30° : Glene normale         -  Normal acromion",
+    "middle-long": "CSA = 35° : Glene normale         -   Long acromion",
+    "middle-xlong": "CSA = 40° : Glene normale         -  Very long acromion",
 
-    "up-xshort": "CSA = 25° : Glene haute             -  Acromion très court",
-    "up-short": "CSA = 30° : Glene haute             -  Acromion court",
-    "up-normal": "CSA = 35° : Glene haute             -  Acromion normal",
-    "up-long": "CSA = 40° : Glene haute             -  Acromion long",
-    "up-xlong": "CSA = 45° : Glene haute             -  Acromion très long",
+    "up-xshort": "CSA = 25° : Glene haute             -  Very short acromion",
+    "up-short": "CSA = 30° : Glene haute             -  Short acromion",
+    "up-normal": "CSA = 35° : Glene haute             -  Normal acromion",
+    "up-long": "CSA = 40° : Glene haute             -   Long acromion",
+    "up-xlong": "CSA = 45° : Glene haute             -  Very long acromion",
 
-    "xup-xshort": "CSA = 30° : Glene très haute      -  Acromion très court",
-    "xup-short": "CSA = 35° : Glene très haute      -  Acromion court",
-    "xup-normal": "CSA = 40° : Glene très haute      -  Acromion normal",
-    "xup-long": "CSA = 45° : Glene très haute      -  Acromion long",
-    "xup-xlong": "CSA = 50° : Glene très haute      -  Acromion très long",
+    "xup-xshort": "CSA = 30° : Glene très haute      -  Very short acromion",
+    "xup-short": "CSA = 35° : Glene très haute      -  Short acromion",
+    "xup-normal": "CSA = 40° : Glene très haute      -  Normal acromion",
+    "xup-long": "CSA = 45° : Glene très haute      -   Long acromion",
+    "xup-xlong": "CSA = 50° : Glene très haute      -  Very long acromion",
 
     # Nom des composantes
-    "AP": "Axe antéropostérieur (Antérieur = +)",
-    "IS": "Axe inférosupérieur (Supérieur = +)",
-    "ML": "Axe médiolatéral (Latéral = +)",
+    "AP": "Axe antéropostérieur (Anterior = +)",
+    "IS": "Axe inférosupérieur (Superior = +)",
+    "ML": "Axe médiolatéral (Lateral = +)",
 
     # Nom des datas de validation
     "Wickham": "Wickham et al. 2010, n=24",
@@ -305,25 +305,25 @@ CSA_50_Cases = ["xup-xlong"]
 # %% Catégories de simulation
 
 # With xdown, middle, xup
-CasesVariables_3 = {"Tilt": {"Glene très basse": xDownCases_3, "Glène normale": MiddleCases_3, "Glène très haute": xUpCases_3},
-                    "Acromion": {"Acromion très court": xShortCases_3, "Acromion normal": NormalCases_3, "Acromion très long": xLongCases_3}}
+CasesVariables_3 = {"Tilt": {"Large Downtilt": xDownCases_3, "Normal tilt": MiddleCases_3, "Large Uptilt": xUpCases_3},
+                    "Acromion": {"Very short acromion": xShortCases_3, "Normal acromion": NormalCases_3, "Very long acromion": xLongCases_3}}
 # With xdown, middle, xup
-CasesVariables_5 = {"Tilt": {"Glene très basse": xDownCases_5, "Glene basse": DownCases_5, "Glène normale": MiddleCases_5, "Glène haute": UpCases_5, "Glène très haute": xUpCases_5},
-                    "Acromion": {"Acromion très court": xShortCases_5, "Acromion court": ShortCases_5, "Acromion normal": NormalCases_5, "Acromion long": LongCases_5, "Acromion très long": xLongCases_5}}
+CasesVariables_5 = {"Tilt": {"Large Downtilt": xDownCases_5, "Downtilt": DownCases_5, "Normal tilt": MiddleCases_5, "Uptilt": UpCases_5, "Large Uptilt": xUpCases_5},
+                    "Acromion": {"Very short acromion": xShortCases_5, "Short acromion": ShortCases_5, "Normal acromion": NormalCases_5, " Long acromion": LongCases_5, "Very long acromion": xLongCases_5}}
 
 # Tilt
-CasesVariables_Tilt_5_Acromion_3 = {"Tilt": {"Glene très basse": xDownCases_3, "Glene basse": DownCases_3, "Glène normale": MiddleCases_3, "Glène haute": UpCases_3, "Glène très haute": xUpCases_3}}
-CasesVariables_Tilt_5_Acromion_5 = {"Tilt": {"Glene très basse": xDownCases_5, "Glene basse": DownCases_5, "Glène normale": MiddleCases_5, "Glène haute": UpCases_5, "Glène très haute": xUpCases_5}}
+CasesVariables_Tilt_5_Acromion_3 = {"Tilt": {"Large Downtilt": xDownCases_3, "Downtilt": DownCases_3, "Normal tilt": MiddleCases_3, "Uptilt": UpCases_3, "Large Uptilt": xUpCases_3}}
+CasesVariables_Tilt_5_Acromion_5 = {"Tilt": {"Large Downtilt": xDownCases_5, "Downtilt": DownCases_5, "Normal tilt": MiddleCases_5, "Uptilt": UpCases_5, "Large Uptilt": xUpCases_5}}
 
-CasesVariables_Tilt_3_Acromion_3 = {"Tilt": {"Glene très basse": xDownCases_3, "Glène normale": MiddleCases_3, "Glène très haute": xUpCases_3}}
-CasesVariables_Tilt_3_Acromion_5 = {"Tilt": {"Glene très basse": xDownCases_5, "Glène normale": MiddleCases_5, "Glène très haute": xUpCases_5}}
+CasesVariables_Tilt_3_Acromion_3 = {"Tilt": {"Large Downtilt": xDownCases_3, "Normal tilt": MiddleCases_3, "Large Uptilt": xUpCases_3}}
+CasesVariables_Tilt_3_Acromion_5 = {"Tilt": {"Large Downtilt": xDownCases_5, "Normal tilt": MiddleCases_5, "Large Uptilt": xUpCases_5}}
 
 # Acromion
-CasesVariables_Acromion_5_Tilt_3 = {"Acromion": {"Acromion très court": xShortCases_3, "Acromion court": ShortCases_3, "Acromion normal": NormalCases_3, "Acromion long": LongCases_3, "Acromion très long": xLongCases_3}}
-CasesVariables_Acromion_5_Tilt_5 = {"Acromion": {"Acromion très court": xShortCases_5, "Acromion court": ShortCases_5, "Acromion normal": NormalCases_5, "Acromion long": LongCases_5, "Acromion très long": xLongCases_5}}
+CasesVariables_Acromion_5_Tilt_3 = {"Acromion": {"Very short acromion": xShortCases_3, "Short acromion": ShortCases_3, "Normal acromion": NormalCases_3, " Long acromion": LongCases_3, "Very long acromion": xLongCases_3}}
+CasesVariables_Acromion_5_Tilt_5 = {"Acromion": {"Very short acromion": xShortCases_5, "Short acromion": ShortCases_5, "Normal acromion": NormalCases_5, " Long acromion": LongCases_5, "Very long acromion": xLongCases_5}}
 
-CasesVariables_Acromion_3_Tilt_3 = {"Acromion": {"Acromion très court": xShortCases_3, "Acromion normal": NormalCases_3, "Acromion très long": xLongCases_3}}
-CasesVariables_Acromion_3_Tilt_5 = {"Acromion": {"Acromion très court": xShortCases_5, "Acromion normal": NormalCases_5, "Acromion très long": xLongCases_5}}
+CasesVariables_Acromion_3_Tilt_3 = {"Acromion": {"Very short acromion": xShortCases_3, "Normal acromion": NormalCases_3, "Very long acromion": xLongCases_3}}
+CasesVariables_Acromion_3_Tilt_5 = {"Acromion": {"Very short acromion": xShortCases_5, "Normal acromion": NormalCases_5, "Very long acromion": xLongCases_5}}
 
 # CSA
 CasesVariables_CSA_9 = {"CSA Faible": {"CSA = 12°": CSA_12_Cases, "CSA = 16°": CSA_16_Cases, "CSA = 20°": CSA_20_Cases},
@@ -339,24 +339,24 @@ Avec Bergmann
 """
 
 # With xdown, middle, xup
-CasesVariables_3_Bergmann = {"Tilt": {"Glene très basse": [*xDownCases_3, "Bergmann_2007"], "Glène normale": [*MiddleCases_3, "Bergmann_2007"], "Glène très haute": [*xUpCases_3, "Bergmann_2007"]},
-                             "Acromion": {"Acromion très court": [*xShortCases_3, "Bergmann_2007"], "Acromion normal": [*NormalCases_3, "Bergmann_2007"], "Acromion très long": [*xLongCases_3, "Bergmann_2007"]}}
+CasesVariables_3_Bergmann = {"Tilt": {"Large Downtilt": [*xDownCases_3, "Bergmann_2007"], "Normal tilt": [*MiddleCases_3, "Bergmann_2007"], "Large Uptilt": [*xUpCases_3, "Bergmann_2007"]},
+                             "Acromion": {"Very short acromion": [*xShortCases_3, "Bergmann_2007"], "Normal acromion": [*NormalCases_3, "Bergmann_2007"], "Very long acromion": [*xLongCases_3, "Bergmann_2007"]}}
 # With xdown, middle, xup
-CasesVariables_5_Bergmann = {"Tilt": {"Glene très basse": [*xDownCases_5, "Bergmann_2007"], "Glene basse": [*DownCases_5, "Bergmann_2007"], "Glène normale": [*MiddleCases_5, "Bergmann_2007"], "Glène haute": [*UpCases_5, "Bergmann_2007"], "Glène très haute": [*xUpCases_5, "Bergmann_2007"]},
-                             "Acromion": {"Acromion très court": [*xShortCases_5, "Bergmann_2007"], "Acromion court": [*ShortCases_5, "Bergmann_2007"], "Acromion normal": [*NormalCases_5, "Bergmann_2007"], "Acromion long": [*LongCases_5, "Bergmann_2007"], "Acromion très long": [*xLongCases_5, "Bergmann_2007"]}}
+CasesVariables_5_Bergmann = {"Tilt": {"Large Downtilt": [*xDownCases_5, "Bergmann_2007"], "Downtilt": [*DownCases_5, "Bergmann_2007"], "Normal tilt": [*MiddleCases_5, "Bergmann_2007"], "Uptilt": [*UpCases_5, "Bergmann_2007"], "Large Uptilt": [*xUpCases_5, "Bergmann_2007"]},
+                             "Acromion": {"Very short acromion": [*xShortCases_5, "Bergmann_2007"], "Short acromion": [*ShortCases_5, "Bergmann_2007"], "Normal acromion": [*NormalCases_5, "Bergmann_2007"], " Long acromion": [*LongCases_5, "Bergmann_2007"], "Very long acromion": [*xLongCases_5, "Bergmann_2007"]}}
 # With xdown, middle, xup
-CasesVariables_3_Wickham = {"Tilt": {"Glene très basse": [*xDownCases_3, "Wickham"], "Glène normale": [*MiddleCases_3, "Wickham"], "Glène très haute": [*xUpCases_3, "Wickham"]},
-                            "Acromion": {"Acromion très court": [*xShortCases_3, "Wickham"], "Acromion normal": [*NormalCases_3, "Wickham"], "Acromion très long": [*xLongCases_3, "Wickham"]}}
+CasesVariables_3_Wickham = {"Tilt": {"Large Downtilt": [*xDownCases_3, "Wickham"], "Normal tilt": [*MiddleCases_3, "Wickham"], "Large Uptilt": [*xUpCases_3, "Wickham"]},
+                            "Acromion": {"Very short acromion": [*xShortCases_3, "Wickham"], "Normal acromion": [*NormalCases_3, "Wickham"], "Very long acromion": [*xLongCases_3, "Wickham"]}}
 # With xdown, middle, xup
-CasesVariables_5_Wickham = {"Tilt": {"Glene très basse": [*xDownCases_5, "Wickham"], "Glene basse": [*DownCases_5, "Wickham"], "Glène normale": [*MiddleCases_5, "Wickham"], "Glène haute": [*UpCases_5, "Wickham"], "Glène très haute": [*xUpCases_5, "Wickham"]},
-                            "Acromion": {"Acromion très court": [*xShortCases_5, "Wickham"], "Acromion court": [*ShortCases_5, "Wickham"], "Acromion normal": [*NormalCases_5, "Wickham"], "Acromion long": [*LongCases_5, "Wickham"], "Acromion très long": [*xLongCases_5, "Wickham"]}}
+CasesVariables_5_Wickham = {"Tilt": {"Large Downtilt": [*xDownCases_5, "Wickham"], "Downtilt": [*DownCases_5, "Wickham"], "Normal tilt": [*MiddleCases_5, "Wickham"], "Uptilt": [*UpCases_5, "Wickham"], "Large Uptilt": [*xUpCases_5, "Wickham"]},
+                            "Acromion": {"Very short acromion": [*xShortCases_5, "Wickham"], "Short acromion": [*ShortCases_5, "Wickham"], "Normal acromion": [*NormalCases_5, "Wickham"], " Long acromion": [*LongCases_5, "Wickham"], "Very long acromion": [*xLongCases_5, "Wickham"]}}
 
 # With xdown, middle, xup
-CasesVariables_3_Ball_And_Socket = {"Tilt": {"Glene très basse": [*xDownCases_3, "Ball And Socket"], "Glène normale": [*MiddleCases_3, "Ball And Socket"], "Glène très haute": [*xUpCases_3, "Ball And Socket"]},
-                                    "Acromion": {"Acromion très court": [*xShortCases_3, "Ball And Socket"], "Acromion normal": [*NormalCases_3, "Ball And Socket"], "Acromion très long": [*xLongCases_3, "Ball And Socket"]}}
+CasesVariables_3_Ball_And_Socket = {"Tilt": {"Large Downtilt": [*xDownCases_3, "Ball And Socket"], "Normal tilt": [*MiddleCases_3, "Ball And Socket"], "Large Uptilt": [*xUpCases_3, "Ball And Socket"]},
+                                    "Acromion": {"Very short acromion": [*xShortCases_3, "Ball And Socket"], "Normal acromion": [*NormalCases_3, "Ball And Socket"], "Very long acromion": [*xLongCases_3, "Ball And Socket"]}}
 # With xdown, middle, xup
-CasesVariables_5_Ball_And_Socket = {"Tilt": {"Glene très basse": [*xDownCases_5, "Ball And Socket"], "Glene basse": [*DownCases_5, "Ball And Socket"], "Glène normale": [*MiddleCases_5, "Ball And Socket"], "Glène haute": [*UpCases_5, "Ball And Socket"], "Glène très haute": [*xUpCases_5, "Ball And Socket"]},
-                                    "Acromion": {"Acromion très court": [*xShortCases_5, "Ball And Socket"], "Acromion court": [*ShortCases_5, "Ball And Socket"], "Acromion normal": [*NormalCases_5, "Ball And Socket"], "Acromion long": [*LongCases_5, "Ball And Socket"], "Acromion très long": [*xLongCases_5, "Ball And Socket"]}}
+CasesVariables_5_Ball_And_Socket = {"Tilt": {"Large Downtilt": [*xDownCases_5, "Ball And Socket"], "Downtilt": [*DownCases_5, "Ball And Socket"], "Normal tilt": [*MiddleCases_5, "Ball And Socket"], "Uptilt": [*UpCases_5, "Ball And Socket"], "Large Uptilt": [*xUpCases_5, "Ball And Socket"]},
+                                    "Acromion": {"Very short acromion": [*xShortCases_5, "Ball And Socket"], "Short acromion": [*ShortCases_5, "Ball And Socket"], "Normal acromion": [*NormalCases_5, "Ball And Socket"], " Long acromion": [*LongCases_5, "Ball And Socket"], "Very long acromion": [*xLongCases_5, "Ball And Socket"]}}
 
 
 # %%                                                Chargement des résultats FDK
@@ -566,6 +566,7 @@ list_muscles_inactifs = ["Pectoralis major clavicular",
                          "Latissimus dorsi",
                          "Coracobrachialis"
                          ]
+
 # 7 (subscapulaire divisé en 2)
 list_muscle_variation = ["Deltoideus anterior",
                          "Deltoideus lateral",
@@ -687,7 +688,7 @@ Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLoc
 
 # # # CSA
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_CSA_9, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[14, 14])
-PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_CSA_6, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[14, 13])
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_CSA_6, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[14, 13])
 
 # %% GHLin
 """
@@ -908,10 +909,6 @@ GHLin Absolute
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact HumImplant glene", "Force de contact sur l'implant huméral dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 3}, subplot_title="Inférosupérieur", composante_y=["IS"])
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact HumImplant glene", "Force de contact sur l'implant huméral dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 4}, subplot_title="Médiolatéral", composante_y=["ML"], xlim=[0, 120], grid_x_step=15, grid_y_step=50, same_lim=True, legend_position="center left")
 
-
-
-
-
 # %% Muscles Activity
 
 # # Activité 9 cas
@@ -967,14 +964,12 @@ GHLin Absolute
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation_faible, [3, 3], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14], same_lim=True)
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation_faible, [3, 3], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14])
 
-# %% Muscles Ft
 # %% Contact area
 
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ContactArea", "Surface de contact entre les deux implants", legend_position="center left", figsize=[24, 13], xlim=[0, 120], same_lim=True, grid_x_step=15)
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ContactArea", "Surface de contact entre les deux implants", legend_position="center left", figsize=[24, 13], xlim=[0, 120], same_lim=True, grid_x_step=15)
 
-
-
+# %% Muscles Ft
 
 """
 Par catégories
@@ -1662,3 +1657,24 @@ list_csa_long = ["CSA=20°",
 
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "MaxPenetration", "MaxPenetration", cases_on=CaseNames_3)
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "MaxPenetration", "MaxPenetration", legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# %% test
+
+# Parameters of the graphs
+graph_parameters = {"xlim": [0, 120],
+                    "legend_position": "center left",
+                    "grid_x_step": 15,
+                    "CaseNames_5": CaseNames_5,
+                    "CaseNames_3": CaseNames_3,
+                    "CaseNames_5_BallAndSocket": CaseNames_5_BallAndSocket,
+                    "CaseNames_3_BallAndSocket": CaseNames_3_BallAndSocket,
+
+                    # Catégories de muscles
+                    "list_muscles_actifs": list_muscles_actifs,
+                    "list_muscles_peu_actif": list_muscles_peu_actif,
+                    "list_muscles_inactifs": list_muscles_inactifs
+
+                    }
+
+
+PremadeGraphs.my_muscle_graphs(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, "", "test", save_graph=True, composante_on=True, **graph_parameters)
