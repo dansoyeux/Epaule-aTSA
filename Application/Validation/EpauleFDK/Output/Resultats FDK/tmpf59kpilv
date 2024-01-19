@@ -1688,4 +1688,4 @@ graph_parameters = {"xlim": [0, 120],
 Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos_Ball_And_Socket = Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos.copy()
 Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos_Ball_And_Socket["Ball And Socket"] = Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"]
 
-PremadeGraphs.my_muscle_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos_Ball_And_Socket, "", "test", save_graph=True, composante_on=True, **graph_parameters)
+PremadeGraphs.my_muscle_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos_Ball_And_Socket, "", "test", save_graph=False, composante_on=False, **graph_parameters)
