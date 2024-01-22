@@ -89,18 +89,30 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             # "Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Muscle force [N]"},
                             # "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
+                            # Dans repère scapula
+                            # "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
+                            #              "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #              "combine_muscle_part_operations": ["total", "mean"]},
+
+                            # "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the insertion [N]", "select_muscle_RefFrame_output": "insertion",
+                            #                 "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #                 "combine_muscle_part_operations": ["total", "mean"]
+                            #                 },
+
                             "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
-                                         "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                         "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                                          "combine_muscle_part_operations": ["total", "mean"]},
+
+                            "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the insertion [N]", "select_muscle_RefFrame_output": "insertion",
+                                            "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                            "combine_muscle_part_operations": ["total", "mean"]
+                                            },
+
 
                             "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
                                                    "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                                                    "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
-                            "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the insertion [N]", "select_muscle_RefFrame_output": "insertion",
-                                            "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                            "combine_muscle_part_operations": ["total", "mean"]
-                                            },
                             "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
                                                       "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                                                       "combine_muscle_part_operations": ["mean"], "vect_dir": True},
@@ -144,6 +156,12 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                           "GHLin ISB": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Linear displacement (ISB) of the humerus [mm]", "MultiplyFactor": 1000,
                                         "SequenceComposantes": ["AP", "IS", "ML"]},
 
+                          "GHLin Absolute": {"VariablePath": "Output.Jnt.GHLin_Absolute.Pos", "VariableDescription": "Absolute Linear displacement of the humerus [mm]", "MultiplyFactor": 1000,
+                                             "SequenceComposantes": ["ML", "IS", "AP"], "Composantes_Inverse_Direction": [False, False, True]},
+
+                          "GHLin Absolute zero": {"VariablePath": "Output.Jnt.GHLin_Absolute.Pos", "VariableDescription": "Absolute Linear displacement of the humerus [mm]", "MultiplyFactor": 1000,
+                                                  "SequenceComposantes": ["ML", "IS", "AP"], "Composantes_Inverse_Direction": [False, False, True], "offset": [0, 0, 0]},
+
                           # "GHLin": {"VariablePath": "Output.Jnt.GHLin.Pos", "VariableDescription": "Linear displacement of the humerus [mm]", "MultiplyFactor": 1000,
                           #           "SequenceComposantes": ["AP", "IS", "ML"]},
 
@@ -158,7 +176,7 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                           "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Contact force on the humerus [N]",
                                            "SequenceComposantes": ["AP", "IS", "ML"]},
 
-                          # Force sur l'humérus Dans le repère de l'implant (humerus = master)
+                          # Force sur l'humérus Dans le repère de l'implant glene (humerus = master)
                           "ForceContact HumImplant glene": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Contact force on the humerus [N]",
                                                             "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True},
 
@@ -178,11 +196,20 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
 
 
                           # Dans le repère ISB de la scapula (inverser la force car appliquée dans sens inverse for some reason)
-                          "SpringForce scapula": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Spring force on the scapula [N]", "SequenceComposantes": ["AP", "IS", "ML"],
+                          "SpringForce scapula": {"VariablePath": "Output.Jnt.SpringForce.F", "VariableDescription": "Spring force on the scapula [N]", "SequenceComposantes": ["AP", "IS", "ML"],
                                                   "Composantes_Inverse_Direction": [True, True, True]},
 
                           # Dans le repère ISB de la scapula (for some reason GHLin a premiere ref frame = scapula mais force appliquée sur humérus avec le bon signe)
-                          "SpringForce humerus": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Spring force on the l'humérus [N]", "SequenceComposantes": ["AP", "IS", "ML"]},
+                          "SpringForce humerus": {"VariablePath": "Output.Jnt.SpringForce.F", "VariableDescription": "Spring force on the l'humérus [N]", "SequenceComposantes": ["AP", "IS", "ML"]},
+
+                          # Dans repère scapula
+                          # # Dans le repère ISB de la scapula (inverser la force car appliquée dans sens inverse for some reason)
+                          # "SpringForce scapula": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Spring force on the scapula [N]", "SequenceComposantes": ["AP", "IS", "ML"],
+                          #                         "Composantes_Inverse_Direction": [True, True, True]},
+
+                          # # Dans le repère ISB de la scapula (for some reason GHLin a premiere ref frame = scapula mais force appliquée sur humérus avec le bon signe)
+                          # "SpringForce humerus": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Spring force on the l'humérus [N]", "SequenceComposantes": ["AP", "IS", "ML"]},
+
 
                           }
 
