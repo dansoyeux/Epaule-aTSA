@@ -1666,6 +1666,14 @@ list_csa_long = ["CSA=20°",
 
 # %% Recentrage force constante
 
+# comp = {"Normal": Results_GlenoidLocalAxis_MR_Polynomial, "no recentrage": Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage}
+
+# for case in CaseNames_3:
+#     graph(comp, "Abduction", "ForceContact GlenImplant", f"{case} : Forces de contact Totale sur l'implant glénoidien", composante_y=["Total"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True, compare=True, cases_on=[case])
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_actifs, [3, 4], "Abduction", "Ft", f"{case}", cases_on=[case], compare=True, figsize=[24, 14])
+
+
+
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact Totale sur l'implant glénoidien dans le repère de la glène", composante_y=["Total"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact AP sur l'implant glénoidien dans le repère de la glène", composante_y=["AP"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact IS sur l'implant glénoidien dans le repère de la glène", composante_y=["IS"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
@@ -1694,6 +1702,7 @@ list_csa_long = ["CSA=20°",
 
 
 
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, figure_title="Déplacement absolu de la tête humérale (GHLin Absolute zero)", variable_x="Abduction", variable_y="GHLin Absolute zero", composante_y=["IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, same_lim=True)
 
 
 
