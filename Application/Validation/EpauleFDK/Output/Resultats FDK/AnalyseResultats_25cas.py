@@ -1729,8 +1729,6 @@ list_csa_long = ["CSA=20°",
 graph_parameters = {"xlim": [0, 120],
                     "legend_position": "center left",
                     "grid_x_step": 15,
-                    "CaseNames_5_categories_F": CaseNames_5_BallAndSocket,
-                    "CaseNames_3_categories_F": CaseNames_3_BallAndSocket,
 
                     # Catégories de muscles
                     "list_muscles_actifs": list_muscles_actifs,
@@ -1738,19 +1736,19 @@ graph_parameters = {"xlim": [0, 120],
                     "list_muscles_inactifs": list_muscles_inactifs,
 
                     # For graph by categories
-                    "CasesCategories_5_F": CasesVariables_5,
-                    "CasesCategories_3_F": CasesVariables_3,
+                    "CasesCategories_5": CasesVariables_5,
+                    "CasesCategories_3": CasesVariables_3,
+                    "CaseNames_5": CaseNames_5,
+                    "CaseNames_3": CaseNames_3,
+
+                    # Pour moment arms
                     "muscle_list_by_categories": list_muscle_variation,
 
-                    # For momentArm
-                    "CasesCategories_5_MA": CasesVariables_5,
-                    "CasesCategories_3_MA": CasesVariables_3,
-                    "CaseNames_5_categories_MA": CaseNames_5,
-                    "CaseNames_3_categories_MA": CaseNames_3
+                    # Pour COP
+                    "COP_contour": COP_contour
 
                     }
 
-# Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos_Ball_And_Socket = Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos.copy()
-# Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos_Ball_And_Socket["Ball And Socket"] = Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"]
-
-# PremadeGraphs.my_muscle_graphs(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, "", "test", save_graph=True, composante_on=True, **graph_parameters)
+"""Normal"""
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "Normal", save_graph=True, composante_on=False, **graph_parameters)
+PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
