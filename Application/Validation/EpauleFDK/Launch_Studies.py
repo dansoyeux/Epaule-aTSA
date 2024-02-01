@@ -13,6 +13,8 @@ from anypytools import AnyMacro
 
 import numpy as np
 
+import os
+
 # %% nombre de simulation en parallèle
 
 # 50 min pour 5 simulations en parallèle 15-120°
@@ -29,20 +31,31 @@ num_processes = 5
 
 # %% Paramètres mouvement et modèle
 
+"""-------------------------------------WARNING Décommenter l'évaluation des moment arms, car désactivé pour 180 deg car besoin de 80 steps-------------------------------------"""
+
+"""-------------------------------------WARNING Décommenter l'évaluation des moment arms, car désactivé pour 180 deg car besoin de 80 steps-------------------------------------"""
+
+
+
 BallAndSocket = 0
 
 SmallAbduction = 0
 
-# ArmMovement = "Abduction"
-ArmMovement = "Elevation"
+ArmMovement = "Abduction"
+# ArmMovement = "Elevation"
 
 startangle = 15
 
-endangle = 120
+"""-------------------------------------WARNING 180-------------------------------------"""
+endangle = 180
+"""-------------------------------------WARNING 180-------------------------------------"""
 
-nstep = 70
+"""-------------------------------------On ne peut pas changer le nombre de steps à un nombre différent de celui mis dans anybody sinon bug-------------------------------------"""
+# nstep = 70
+
+
+
 MuscleRecruitmentType = "MR_Polynomial"
-
 
 # %% Caliubration parameter
 # Load the muscle calibration parameters from a file
@@ -63,14 +76,9 @@ if load_muscle_parameter_from_file is False:
   CustomFDKOn : CustomForce : Force différente selon le cas
 """
 
-
-
 """-------------------------------------WARNING ON-------------------------------------"""
 CustomFDKOn = "On"
 """-------------------------------------WARNING ON-------------------------------------"""
-
-
-
 
 # CustomFDKOn = "CustomForce"
 
@@ -79,6 +87,10 @@ CustomFDKOn = "On"
 # 25 Cases to run
 tilt_list = ["xdown", "down", "middle", "up", "xup"]
 acromion_list = ["xshort", "short", "normal", "long", "xlong"]
+
+
+# Dossier de résultats
+m_ResultFolder = "SaveData/No_recentrage_180deg/"
 
 # # 9 Cases to run
 # tilt_list = ["xdown", "middle", "xup"]
@@ -92,9 +104,9 @@ acromion_list = ["xshort", "short", "normal", "long", "xlong"]
 
 file_date = "04-01"
 
-# Dossier de résultats
-m_ResultFolder = "SaveData/Macro_Results/"
+os.mkdir(f"./Output/{m_ResultFolder}")
 
+# %% Paramétrage nom fichier
 
 if BallAndSocket == 0 and endangle == 180 and startangle == 15:
     file_description = f'GlenoidAxisTilt-{MuscleRecruitmentType}-180deg'
@@ -235,7 +247,10 @@ for tilt in tilt_list:
 
             SetValue('Main.Model.ModelEnvironmentConnection.Drivers.startangle', startangle),
             SetValue('Main.Model.ModelEnvironmentConnection.Drivers.endangle', endangle),
-            SetValue('Main.Study.nStep', nstep),
+
+            # On ne peut pas changer le nombre de steps à un nombre différent de celui mis dans anybody sinon bug
+            # SetValue('Main.Study.nStep', nstep),
+
             SetValue('Main.Study.EvaluateMomentArms.FourierAngularVelocity', FourierAngularVelocity),
 
         ])

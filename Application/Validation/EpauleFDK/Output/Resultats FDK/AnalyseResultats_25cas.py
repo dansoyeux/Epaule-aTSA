@@ -1474,14 +1474,14 @@ Muscles
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus ML dans le repère de la scapula", composante_y=["ML"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
 # %% Small abduction no recentrage
 
-# Style avec des croix car nstep=1
-define_simulations_line_style(SimulationsLineStyleDictionary_Small_abduction)
+# # Style avec des croix car nstep=1
+# define_simulations_line_style(SimulationsLineStyleDictionary_Small_abduction)
 
-Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus no SpringForce", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no SpringForce [N]", variables_to_add_humerus_no_springforce, muscle_variables_to_add_humerus)
-Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal muscles", ["Total", "AP", "IS", "ML"], "Force totale des muscles sur l'humérus [N]", muscle_variables_to_add=muscle_variables_to_add_humerus)
-Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus no Fcontact", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no Fcontact [N]", variables_to_add_humerus_no_fcontact, muscle_variables_to_add_humerus)
-Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus [N]", variables_to_add_humerus, muscle_variables_to_add_humerus)
-Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal scapula", ["Total", "AP", "IS", "ML"], "Force totale sur la scapula [N]", variables_to_add_scapula, muscle_variables_to_add_scapula)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus no SpringForce", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no SpringForce [N]", variables_to_add_humerus_no_springforce, muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal muscles", ["Total", "AP", "IS", "ML"], "Force totale des muscles sur l'humérus [N]", muscle_variables_to_add=muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus no Fcontact", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no Fcontact [N]", variables_to_add_humerus_no_fcontact, muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus [N]", variables_to_add_humerus, muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal scapula", ["Total", "AP", "IS", "ML"], "Force totale sur la scapula [N]", variables_to_add_scapula, muscle_variables_to_add_scapula)
 
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, COP_contour, "COP", "COP sans recentrage", composantes=["AP", "IS"], figsize=[24, 13], graph_annotation_on=False)
 
@@ -1517,7 +1517,8 @@ Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Resu
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce IS", composante_y=["IS"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce ML", composante_y=["ML"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
 
-define_simulations_line_style(SimulationsLineStyleDictionary)
+# define_simulations_line_style(SimulationsLineStyleDictionary)
+
 # %% Fixed Hill parameters
 
 # COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="COP en fixant paramètres de Hill", cases_on="all")
@@ -1677,7 +1678,6 @@ list_csa_long = ["CSA=20°",
 #     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_actifs, [3, 4], "Abduction", "Ft", f"{case}", cases_on=[case], compare=True, figsize=[24, 14])
 
 
-
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact Totale sur l'implant glénoidien dans le repère de la glène", composante_y=["Total"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact AP sur l'implant glénoidien dans le repère de la glène", composante_y=["AP"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact IS sur l'implant glénoidien dans le repère de la glène", composante_y=["IS"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
@@ -1686,16 +1686,9 @@ list_csa_long = ["CSA=20°",
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13])
 
 
-
-
-
-
-
 # # par catégories tilt et acromion
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, None, figure_title="Déplacement absolu de la tête humérale (GHLin Absolute)", variable="GHLin Absolute", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, xlim=[-2, 5], ylim=[0, 20])
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, None, figure_title="Sans recentrage : Déplacement absolu de la tête humérale (GHLin Absolute)", variable="GHLin Absolute", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, xlim=[-2, 5], ylim=[0, 20])
-
-
 
 
 # # no recentrage
@@ -1705,14 +1698,7 @@ list_csa_long = ["CSA=20°",
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, None, figure_title="Déplacement absolu de la tête humérale (GHLin Absolute zero)", variable="GHLin Absolute zero", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, xlim=[-2, 5], ylim=[0, 20])
 
 
-
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, figure_title="Déplacement absolu de la tête humérale (GHLin Absolute zero)", variable_x="Abduction", variable_y="GHLin Absolute zero", composante_y=["IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, same_lim=True)
-
-
-
-
-
-
 
 
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, None, figure_title="Sans recentrage : Déplacement absolu de la tête humérale (GHLin Absolute)", variable="GHLin Absolute", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, same_lim=True)
@@ -1720,14 +1706,12 @@ list_csa_long = ["CSA=20°",
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, None, figure_title="Sans recentrage : Déplacement absolu de la tête humérale (GHLin Absolute zero)", variable="GHLin Absolute zero", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, same_lim=True)
 
 
-
-
 # %% Pénétration maximale des implants
 
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "MaxPenetration", "MaxPenetration", cases_on=CaseNames_3)
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "MaxPenetration", "MaxPenetration", legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
 
-# %% test
+# %% Save figures
 
 # Parameters of the graphs
 graph_parameters = {"xlim": [0, 120],
@@ -1754,5 +1738,9 @@ graph_parameters = {"xlim": [0, 120],
                     }
 
 """Normal (done)"""
-# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "Normal", save_graph=True, composante_on=False, **graph_parameters)
+PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "Normal", save_graph=True, composante_on=False, **graph_parameters)
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
+
+"""Elevation (done)"""
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Normal", save_graph=True, composante_on=False, **graph_parameters)
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
