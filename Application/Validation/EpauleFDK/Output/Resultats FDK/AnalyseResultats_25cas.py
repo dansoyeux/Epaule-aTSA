@@ -1738,9 +1738,43 @@ graph_parameters = {"xlim": [0, 120],
                     }
 
 """Normal (done)"""
-PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "Normal", save_graph=True, composante_on=False, **graph_parameters)
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "Normal", save_graph=True, composante_on=False, **graph_parameters)
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
 
 """Elevation (done)"""
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Normal", save_graph=True, composante_on=False, **graph_parameters)
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
+# %% Figures article
+
+SimulationsLineStyleDictionary_article = {
+    # Glen xdown
+    "xdown-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+    "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "xdown-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+    "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "xdown-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+
+    # Glen xdown
+    "middle-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+    "middle-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "middle-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+    "middle-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "middle-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+
+    # Glen xdown
+    "xup-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+    "xup-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "xup-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+    "xup-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "xup-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+}
+define_simulations_line_style(SimulationsLineStyleDictionary_article)
+
+
+
+COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4, subplot={"dimension": [1, 2], "number": 1})
+COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="UPtilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4, subplot={"dimension": [1, 2], "number": 2})
+
+
+
+define_simulations_line_style(SimulationsLineStyleDictionary)
