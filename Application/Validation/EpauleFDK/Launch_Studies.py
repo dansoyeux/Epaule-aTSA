@@ -33,8 +33,8 @@ BallAndSocket = 0
 
 SmallAbduction = 0
 
-ArmMovement = "Abduction"
-# ArmMovement = "Elevation"
+# ArmMovement = "Abduction"
+ArmMovement = "Elevation"
 
 startangle = 15
 
