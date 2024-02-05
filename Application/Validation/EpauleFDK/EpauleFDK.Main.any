@@ -113,29 +113,8 @@ Main = {
     AnyFolder &Mus = Model.BodyModel.Right.ShoulderArm.Mus;
     
     
-    
-    
-    
-    
-    /*-----------------------------------------------------------------------------------------
-    commente car ne fonctionne par pour 180deg car besoin de 80steps
-    */
-    
     // Evaluates the arm muscles moment arms
     #include "Model/EvaluateAbductionMomentArm.any"
-    
-    /*-----------------------------------------------------------------------------------------
-    commente car ne fonctionne par pour 180deg car besoin de 80steps
-    */    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     // Script to save the muscle calibration into an .anyset file
     // And load it at the beginning of a simulation instead of running it each time

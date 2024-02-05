@@ -173,11 +173,11 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                                   "SequenceComposantes": ["AP", "IS", "ML"]},
 
                           # Dans le repère de l'humérus ISB (pour comparaison avec bergmann)
-                          "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Contact force on the humerus [N]",
+                          "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Contact force on the humeral implant [N]",
                                            "SequenceComposantes": ["AP", "IS", "ML"]},
 
                           # Force sur l'humérus Dans le repère de l'implant glene (humerus = master)
-                          "ForceContact HumImplant glene": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Contact force on the humerus [N]",
+                          "ForceContact HumImplant glene": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Contact force on the humeral implant [N]",
                                                             "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True},
 
                           # Force sur la scapula Dans le repère de la scapula ISB (scapula = slave)
@@ -185,11 +185,11 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                                                    "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
 
                           # Force sur la scapula Dans le repère de l'implant (scapula = slave)
-                          "ForceContact GlenImplant": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Contact force on the scapula [N]",
+                          "ForceContact GlenImplant": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Contact force on the glenoid implant [N]",
                                                        "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True},
 
                           # Force sur l'humerus Dans le repère de la scapula ISB (humerus = master)
-                          "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Contact force on the humérus [N]",
+                          "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Contact force on the humeral implant [N]",
                                                    "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
 
                           "ForceTolError": {"VariablePath": "Output.ForceDepKinError.Val", "VariableDescription": "FDK force error [N]"},
@@ -317,7 +317,7 @@ description = "-GlenoidAxisTilt"
 # Chemin d'accès au dossier dans lequel les fichiers doivent être sauvegardés
 SaveSimulationsDirectory = "Saved Simulations"
 
-# # Pour tests
+"""Pour tests"""
 # date = "06-10-"
 # Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
 
@@ -342,15 +342,7 @@ Avec force de recentrage constante
 # date = "04-01-"
 # Files = [date + CaseName + description + "-MR_Polynomial-no-recentrage" for CaseName in CaseNames_5]
 
-# Failed_no_recentrage = [False, False, False, False, False,
-#                         False, False, False, False, False,
-#                         False, False, False, False, False,
-#                         False, False, False, False, False,
-#                         False, False, False, False, False
-#                         ]
-
-# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = load_simulation_cases(no_recentrage_dir, Files, CaseNames_5, FDK_Variables, Failed=Failed_no_recentrage)
-
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = load_simulation_cases(no_recentrage_dir, Files, CaseNames_5, FDK_Variables)
 
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage")
@@ -472,6 +464,20 @@ En ne prenant pas en compte conflit avec acromion
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos")
 
+"""140 deg no recentrage"""
+# long_abduction_dir = "../SaveData/No_recentrage_140deg"
+# date = "04-01-"
+
+# Failed_140 = [,,,
+#               ,,,
+#               ,,,
+#               ]
+
+# Files = [date + CaseName + description + "-MR_Polynomial-140deg-no-recentrage" for CaseName in CaseNames_3]
+# Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage = load_simulation_cases(long_abduction_dir, Files, CaseNames_3, FDK_Variables)
+
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage")
 
 # %% autres tests
 # """
