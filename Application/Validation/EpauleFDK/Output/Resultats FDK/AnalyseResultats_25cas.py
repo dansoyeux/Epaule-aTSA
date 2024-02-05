@@ -1753,39 +1753,44 @@ graph_parameters = {"xlim": [0, 120],
 
 SimulationsLineStyleDictionary_article = {
     # Glen xdown
-    "xdown-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    "xdown-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 1.5},
     "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "xdown-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+    "xdown-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
     "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "xdown-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "xdown-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
 
     # Glen xdown
-    "middle-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    "middle-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 1.5},
     "middle-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "middle-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+    "middle-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
     "middle-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "middle-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "middle-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
 
     # Glen xdown
-    "xup-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    "xup-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 1.5},
     "xup-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "xup-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+    "xup-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
     "xup-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "xup-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "xup-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
 }
 define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
-
 # Article
-# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=15, COP_first_point_mew=4, subplot={"dimension": [1, 3], "number": 1})
-# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Middle tilt", composantes=["AP", "IS"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=15, COP_first_point_mew=4, subplot={"dimension": [1, 3], "number": 2})
-# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Uptilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=15, COP_first_point_mew=4, subplot={"dimension": [1, 3], "number": 3})
+COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=True, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 1}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.5, -3])
+COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Middle tilt", composantes=["AP", "IS"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], graph_annotation_on=True, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 2}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.5, -3])
+COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Uptilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=True, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 3}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.3, -3], annotation_reference_offset=[1, 1])
 
+# grid_steps_y = [50, 25, 50, 50]
+# y_lims = {"Total": [0, 450],
+#           "AP": [-25, 100],
+#           "IS": [-150, 150],
+#           "ML": [-450, 0]
+#           }
 
-# for composante in ["Total", "AP", "IS", "ML"]:
+# for ind, composante in enumerate(["Total", "AP", "IS", "ML"]):
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Downtilt", composante_y=[composante], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 1})
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Middle tilt", composante_y=[composante], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 2})
-#     graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Uptilt", composante_y=[composante], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True)
+#     graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Uptilt", composante_y=[composante], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=y_lims[composante], grid_y_step=grid_steps_y[ind])
 
 # Abstract
 # COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4, subplot={"dimension": [1, 2], "number": 1})
@@ -1794,6 +1799,6 @@ define_simulations_line_style(SimulationsLineStyleDictionary_article)
 define_simulations_line_style(SimulationsLineStyleDictionary)
 # %% 140 deg no recentrage
 
-PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, CasesVariables_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13])
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, CasesVariables_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13])
 
-graph(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, "Abduction", "ForceTolError", cases_on="all")
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, "Abduction", "ForceTolError", cases_on="all")
