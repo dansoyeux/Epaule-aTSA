@@ -1587,7 +1587,8 @@ combine_cases = {"CSA=12°": CSA_12_Cases,
                  }
 
 Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial, combine_cases, "mean")
-
+Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, combine_cases, "mean")
+Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA = {**Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA, **Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage}
 
 list_csa_short = ["CSA=25°",
                   "CSA=30°",
@@ -1746,9 +1747,42 @@ graph_parameters = {"xlim": [0, 120],
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "Normal", save_graph=True, composante_on=False, **graph_parameters)
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
 
+"""Par CSA"""
+# Parameters of the graphs
+graph_parameters_par_CSA = {"xlim": [0, 120],
+                            "legend_position": "center left",
+                            "grid_x_step": 15,
+
+                            # Catégories de muscles
+                            "list_muscles_actifs": list_muscles_actifs,
+                            "list_muscles_peu_actif": list_muscles_peu_actif,
+                            "list_muscles_inactifs": list_muscles_inactifs,
+
+                            # For graph by categories
+                            "CasesCategories_5": CasesVariables_CSA_9,
+                            "CasesCategories_3": CasesVariables_CSA_6,
+                            "CaseNames_5": list_csa_long,
+                            "CaseNames_3": list_csa_short,
+
+                            # Pour moment arms
+                            "muscle_list_by_categories": list_muscle_variation,
+
+                            # Pour COP
+                            "COP_contour": COP_contour
+
+                            }
+
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction/No recentrage", "Par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
+
+
 """Elevation (done)"""
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Normal", save_graph=True, composante_on=False, **graph_parameters)
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
+
+
+
+
+
 # %% Figures article
 
 SimulationsLineStyleDictionary_article = {
@@ -1775,10 +1809,10 @@ SimulationsLineStyleDictionary_article = {
 }
 define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
-# Article
-COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 1}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.5, -3], COP_points_step=30)
-COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Middle tilt", composantes=["AP", "IS"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 2}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.5, -3], COP_points_step=30)
-COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Uptilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 3}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.3, -3], annotation_reference_offset=[1, 1], COP_points_step=30)
+# # Article
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 1}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.5, -3], COP_points_step=30)
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Middle tilt", composantes=["AP", "IS"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 2}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.5, -3], COP_points_step=30)
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Uptilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 3}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.3, -3], annotation_reference_offset=[1, 1], COP_points_step=30)
 
 # grid_steps_y = [50, 25, 50, 50]
 # y_lims = {"Total": [0, 450],
