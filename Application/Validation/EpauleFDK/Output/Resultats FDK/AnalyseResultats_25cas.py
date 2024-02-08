@@ -397,9 +397,6 @@ Results_GlenoidLocalAxis_MR_Polynomial_Elevation = load_results_from_file(SaveSi
 
 # Results_GlenoidLocalAxis_NewWrapping_NoghProth = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_NewWrapping_NoghProth")
 
-
-
-
 Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage")
 
 # %%                                                Chargement des résultats BallAndSocket
@@ -990,8 +987,8 @@ GHLin Absolute
 
 # %% Contact area
 
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ContactArea", "Surface de contact entre les deux implants", legend_position="center left", figsize=[24, 13], xlim=[0, 120], same_lim=True, grid_x_step=15)
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ContactArea", "Surface de contact entre les deux implants", legend_position="center left", figsize=[24, 13], xlim=[0, 120], same_lim=True, grid_x_step=15)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_5, "Abduction", "ContactArea", "Surface de contact entre les deux implants", legend_position="center left", figsize=[24, 13], xlim=[0, 120], same_lim=True, grid_x_step=15)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_3, "Abduction", "ContactArea", "Surface de contact entre les deux implants", legend_position="center left", figsize=[24, 13], xlim=[0, 120], same_lim=True, grid_x_step=15)
 
 # %% Muscles Ft
 
@@ -1779,10 +1776,6 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Normal", save_graph=True, composante_on=False, **graph_parameters)
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
 
-
-
-
-
 # %% Figures article
 
 SimulationsLineStyleDictionary_article = {
@@ -1810,21 +1803,21 @@ SimulationsLineStyleDictionary_article = {
 define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
 # # Article
-# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 1}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.5, -3], COP_points_step=30)
-# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Middle tilt", composantes=["AP", "IS"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 2}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.5, -3], COP_points_step=30)
-# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, subplot_title="Uptilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 3}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.3, -3], annotation_reference_offset=[1, 1], COP_points_step=30)
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, COP_contour, subplot_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 1}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.5, -3], COP_points_step=30)
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, COP_contour, subplot_title="Middle tilt", composantes=["AP", "IS"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 2}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.5, -3], COP_points_step=30)
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, COP_contour, subplot_title="Uptilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 3}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.3, -3], annotation_reference_offset=[1, 1], COP_points_step=30)
 
 # grid_steps_y = [50, 25, 50, 50]
-# y_lims = {"Total": [0, 450],
-#           "AP": [-25, 100],
-#           "IS": [-150, 150],
-#           "ML": [-450, 0]
+# y_lims = {"Total": [0, 500],
+#           "AP": [-50, 100],
+#           "IS": [-150, 200],
+#           "ML": [-500, 0]
 #           }
 
 # for ind, composante in enumerate(["Total", "AP", "IS", "ML"]):
-#     graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Downtilt", composante_y=[composante], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 1})
-#     graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Middle tilt", composante_y=[composante], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 2})
-#     graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Uptilt", composante_y=[composante], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=y_lims[composante], grid_y_step=grid_steps_y[ind])
+#     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Downtilt", composante_y=[composante], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 1})
+#     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Middle tilt", composante_y=[composante], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 2})
+#     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Uptilt", composante_y=[composante], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=y_lims[composante], grid_y_step=grid_steps_y[ind])
 
 SimulationsLineStyleDictionary_abstract = {
     # Glen xdown
@@ -1855,7 +1848,12 @@ define_simulations_line_style(SimulationsLineStyleDictionary_abstract)
 # COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, figure_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4)
 # COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, figure_title="Uptilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4)
 
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, COP_contour, figure_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4)
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, COP_contour, figure_title="Uptilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4)
+
+
 define_simulations_line_style(SimulationsLineStyleDictionary)
+
 # %% 140 deg no recentrage
 
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, CasesVariables_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13])
