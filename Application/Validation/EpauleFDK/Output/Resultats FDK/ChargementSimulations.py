@@ -468,16 +468,20 @@ En ne prenant pas en compte conflit avec acromion
 # long_abduction_dir = "../SaveData/No_recentrage_140deg"
 # date = "04-01-"
 
-# Failed_140 = [,,,
-#               ,,,
-#               ,,,
-#               ]
-
 # Files = [date + CaseName + description + "-MR_Polynomial-140deg-no-recentrage" for CaseName in CaseNames_3]
 # Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage = load_simulation_cases(long_abduction_dir, Files, CaseNames_3, FDK_Variables)
 
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage")
+
+"""Elevation minmax"""
+minmax_dir = "../SaveData/MinMaxStrict"
+Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-120deg-Elevation-no-recentrage" for CaseName in CaseNames_3]
+
+Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage = load_simulation_cases(minmax_dir, Files, CaseNames_3, FDK_Variables)
+
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage")
 
 # %% autres tests
 # """

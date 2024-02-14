@@ -40,8 +40,8 @@ BallAndSocket = 0
 
 SmallAbduction = 0
 
-ArmMovement = "Abduction"
-# ArmMovement = "Elevation"
+# ArmMovement = "Abduction"
+ArmMovement = "Elevation"
 
 startangle = 15
 
@@ -50,7 +50,10 @@ endangle = 120
 """-------------------------------------On ne peut pas changer le nombre de steps à un nombre différent de celui mis dans anybody sinon bug-------------------------------------"""
 nstep = 70
 
-MuscleRecruitmentType = "MR_Polynomial"
+
+"""-------------------------------------WARNING MINMAX-------------------------------------"""
+# MuscleRecruitmentType = "MR_Polynomial"
+MuscleRecruitmentType = "MR_MinMaxStrict"
 
 # %% Caliubration parameter
 # Load the muscle calibration parameters from a file
@@ -80,16 +83,16 @@ CustomFDKOn = "On"
 # %% Cas de simulation
 
 # 25 Cases to run
-tilt_list = ["xdown", "down", "middle", "up", "xup"]
-acromion_list = ["xshort", "short", "normal", "long", "xlong"]
+# tilt_list = ["xdown", "down", "middle", "up", "xup"]
+# acromion_list = ["xshort", "short", "normal", "long", "xlong"]
 
 
 # Dossier de résultats
-m_ResultFolder = "SaveData/Macro_Results/"
+m_ResultFolder = "SaveData/MinMaxStrict/"
 
 # 9 Cases to run
-# tilt_list = ["xdown", "middle", "xup"]
-# acromion_list = ["xshort", "normal", "xlong"]
+tilt_list = ["xdown", "middle", "xup"]
+acromion_list = ["xshort", "normal", "xlong"]
 
 # # Cases to run
 # tilt_list = ["down"]

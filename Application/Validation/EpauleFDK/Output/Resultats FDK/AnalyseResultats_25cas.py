@@ -380,6 +380,8 @@ Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_results_fr
 
 Results_GlenoidLocalAxis_MR_Polynomial_Elevation = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation")
 
+Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage")
+
 # Results_GlenoidLocalAxis_MR_Polynomial_180deg = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg")
 
 # Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange")
@@ -1737,14 +1739,30 @@ graph_parameters = {"xlim": [0, 120],
 
                     # Pour COP
                     "COP_contour": COP_contour
-
                     }
 
-"""Normal (done)"""
-# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "Normal", save_graph=True, composante_on=False, **graph_parameters)
-# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
+graph_parameters_3 = {"xlim": [0, 120],
+                      "legend_position": "center left",
+                      "grid_x_step": 15,
 
-"""Par CSA"""
+                      # Catégories de muscles
+                      "list_muscles_actifs": list_muscles_actifs,
+                      "list_muscles_peu_actif": list_muscles_peu_actif,
+                      "list_muscles_inactifs": list_muscles_inactifs,
+
+                      # For graph by categories
+                      "CasesCategories_5": CasesVariables_3,
+                      "CasesCategories_3": CasesVariables_3,
+                      "CaseNames_5": CaseNames_3,
+                      "CaseNames_3": CaseNames_3,
+
+                      # Pour moment arms
+                      "muscle_list_by_categories": list_muscle_variation,
+
+                      # Pour COP
+                      "COP_contour": COP_contour
+                      }
+
 # Parameters of the graphs
 graph_parameters_par_CSA = {"xlim": [0, 120],
                             "legend_position": "center left",
@@ -1766,8 +1784,13 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 
                             # Pour COP
                             "COP_contour": COP_contour
-
                             }
+"""Normal (done)"""
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "Normal", save_graph=True, composante_on=False, **graph_parameters)
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
+
+"""Par CSA"""
+
 
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction/No recentrage", "Par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
 
@@ -1775,6 +1798,9 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 """Elevation (done)"""
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Normal", save_graph=True, composante_on=False, **graph_parameters)
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
+
+
+PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "MinMax No recentrage", save_graph=True, composante_on=False, **graph_parameters_3)
 
 # %% Figures article
 
