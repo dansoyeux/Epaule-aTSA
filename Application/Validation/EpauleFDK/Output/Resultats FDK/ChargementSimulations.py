@@ -475,13 +475,13 @@ En ne prenant pas en compte conflit avec acromion
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage")
 
 """Elevation minmax"""
-minmax_dir = "../SaveData/MinMaxStrict"
-Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-120deg-Elevation-no-recentrage" for CaseName in CaseNames_3]
+# minmax_dir = "../SaveData/MinMaxStrict"
+# Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-120deg-Elevation-no-recentrage" for CaseName in CaseNames_3]
 
-Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage = load_simulation_cases(minmax_dir, Files, CaseNames_3, FDK_Variables)
+# Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage = load_simulation_cases(minmax_dir, Files, CaseNames_3, FDK_Variables)
 
-# Sauvegarde de la simulation en .pkl
-save_results_to_file(Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage")
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
 
 # %% autres tests
 # """

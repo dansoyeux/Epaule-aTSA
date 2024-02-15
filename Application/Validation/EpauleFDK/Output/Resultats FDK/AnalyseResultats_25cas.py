@@ -380,7 +380,7 @@ Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_results_fr
 
 Results_GlenoidLocalAxis_MR_Polynomial_Elevation = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation")
 
-Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage")
+Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
 
 # Results_GlenoidLocalAxis_MR_Polynomial_180deg = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg")
 
@@ -1314,7 +1314,6 @@ Muscles
 
 # %% Direction des forces du deltoide
 
-"""Direction des forces"""
 # muscle_name = "Deltoideus lateral"
 # n_part = 4
 
@@ -1346,9 +1345,15 @@ Muscles
 
 # # By category
 # # 5x5
-# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F insertion direction", composante_y_muscle_combined=["AP"], legend_position="center left", figsize=[24, 13])
-# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F insertion direction", composante_y_muscle_combined=["IS"], legend_position="center left", figsize=[24, 13])
-# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F insertion direction", composante_y_muscle_combined=["ML"], legend_position="center left", figsize=[24, 13])
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F insertion direction", composante_y_muscle_combined=["AP"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["AP"])
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F insertion direction", composante_y_muscle_combined=["IS"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["IS"])
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F insertion direction", composante_y_muscle_combined=["ML"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["ML"])
+
+# # By category
+# # 5x5
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F origin direction", composante_y_muscle_combined=["AP"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["AP"])
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F origin direction", composante_y_muscle_combined=["IS"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["IS"])
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F origin direction", composante_y_muscle_combined=["ML"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["ML"])
 
 # %% Moment arm
 
@@ -1802,7 +1807,6 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "MinMax No recentrage", save_graph=True, composante_on=False, **graph_parameters_3)
 
-
 # %% 140 deg no recentrage
 
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, CasesVariables_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13])
@@ -1810,17 +1814,18 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 # graph(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, "Abduction", "ForceTolError", cases_on="all")
 # %% Stability ratio
 
-for case in Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage:
-    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
+# # calcul instability ratio
+# for case in Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage:
+#     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
 
-    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Stability Ratio"] = {"Description": "Stability ratio", "SequenceComposantes": "Total"}
-    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Stability Ratio"]["Total"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] / abs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"])
+#     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
+#     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"]["Total"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] / abs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"])
 
 
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_3, "Abduction", "Stability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True)
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_5, "Abduction", "Stability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True, figsize=[24, 14])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_3, "Abduction", "Instability Ratio", figure_title="Instability ratio", xlim=[15, 120], same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_5, "Abduction", "Instability Ratio", figure_title="Instability ratio", xlim=[15, 120], same_lim=True, figsize=[24, 14])
 
-# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "Stability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True, figsize=[24, 14], cases_on=CaseNames_3)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "Instability  Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True, figsize=[24, 14], cases_on=CaseNames_3)
 
 # %% Figures article
 
@@ -1864,9 +1869,12 @@ define_simulations_line_style(SimulationsLineStyleDictionary_article)
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Middle tilt", composante_y=[composante], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 2})
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Uptilt", composante_y=[composante], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=y_lims[composante], grid_y_step=grid_steps_y[ind])
 
-# instability ratio
-PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_Tilt_3_Acromion_3, "Abduction", "Stability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, 3° tilt", subplot_title="Anterior-posterior", composante_y=["AP"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 1})
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, 3° tilt", subplot_title="Inferior-superior", composante_y=["IS"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 2})
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, 3° tilt", subplot_title="Medial-lateral", composante_y=["ML"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
 
+# instability ratio
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_Tilt_3_Acromion_3, "Abduction", "Instability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True)
 
 SimulationsLineStyleDictionary_abstract = {
     # Glen xdown
