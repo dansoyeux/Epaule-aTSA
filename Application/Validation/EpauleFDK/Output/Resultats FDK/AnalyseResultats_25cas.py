@@ -1800,7 +1800,27 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
 
 
-PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "MinMax No recentrage", save_graph=True, composante_on=False, **graph_parameters_3)
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "MinMax No recentrage", save_graph=True, composante_on=False, **graph_parameters_3)
+
+
+# %% 140 deg no recentrage
+
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, CasesVariables_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13])
+
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, "Abduction", "ForceTolError", cases_on="all")
+# %% Stability ratio
+
+for case in Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage:
+    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
+
+    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Stability Ratio"] = {"Description": "Stability ratio", "SequenceComposantes": "Total"}
+    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Stability Ratio"]["Total"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] / abs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"])
+
+
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_3, "Abduction", "Stability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_5, "Abduction", "Stability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True, figsize=[24, 14])
+
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "Stability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True, figsize=[24, 14], cases_on=CaseNames_3)
 
 # %% Figures article
 
@@ -1828,10 +1848,9 @@ SimulationsLineStyleDictionary_article = {
 }
 define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
-# # Article
-# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, COP_contour, subplot_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 1}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.5, -3], COP_points_step=30)
-# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, COP_contour, subplot_title="Middle tilt", composantes=["AP", "IS"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 2}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.5, -3], COP_points_step=30)
-# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, COP_contour, subplot_title="Uptilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=False, draw_COP_points_on=True, COP_first_point_size=10, COP_first_point_mew=2, subplot={"dimension": [1, 3], "number": 3}, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.3, -3], annotation_reference_offset=[1, 1], COP_points_step=30)
+# Article
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_Tilt_3_Acromion_3, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, grid_x_step=5, grid_y_step=5, xlim=[-15, 15], ylim=[-20, 20], annotation_offset=[1.3, -3], annotation_reference_offset=[1, 1], COP_points_step=30)
+
 
 # grid_steps_y = [50, 25, 50, 50]
 # y_lims = {"Total": [0, 500],
@@ -1844,6 +1863,10 @@ define_simulations_line_style(SimulationsLineStyleDictionary_article)
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Downtilt", composante_y=[composante], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 1})
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Middle tilt", composante_y=[composante], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 2})
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Uptilt", composante_y=[composante], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=y_lims[composante], grid_y_step=grid_steps_y[ind])
+
+# instability ratio
+PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_Tilt_3_Acromion_3, "Abduction", "Stability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True)
+
 
 SimulationsLineStyleDictionary_abstract = {
     # Glen xdown
@@ -1879,9 +1902,3 @@ define_simulations_line_style(SimulationsLineStyleDictionary_abstract)
 
 
 define_simulations_line_style(SimulationsLineStyleDictionary)
-
-# %% 140 deg no recentrage
-
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, CasesVariables_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13])
-
-# graph(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, "Abduction", "ForceTolError", cases_on="all")
