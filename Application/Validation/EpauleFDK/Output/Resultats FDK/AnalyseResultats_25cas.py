@@ -1314,8 +1314,8 @@ Muscles
 
 # %% Direction des forces du deltoide
 
-# muscle_name = "Deltoideus lateral"
-# n_part = 4
+muscle_name = "Deltoideus lateral"
+n_part = 4
 
 # # force muscle projetée origine
 # muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} Mean : Direction de la force projetée sur l'origine dans le repère scapula", subplot={"dimension": [1, 3], "number": 1}, subplot_title="AP origine", composante_y=["AP"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13])
@@ -1351,9 +1351,9 @@ Muscles
 
 # # By category
 # # 5x5
-# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F origin direction", composante_y_muscle_combined=["AP"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["AP"])
-# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F origin direction", composante_y_muscle_combined=["IS"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["IS"])
-# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F origin direction", composante_y_muscle_combined=["ML"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["ML"])
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_5, [muscle_name], "Abduction", "F origin direction", composante_y_muscle_combined=["AP"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["AP"], xlim=[15, 120], ylim=[-1, 1], grid_x_step=15)
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_5, [muscle_name], "Abduction", "F origin direction", composante_y_muscle_combined=["IS"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["IS"], xlim=[15, 120], ylim=[-1, 1], grid_x_step=15)
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_5, [muscle_name], "Abduction", "F origin direction", composante_y_muscle_combined=["ML"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["ML"], xlim=[15, 120], ylim=[-1, 1], grid_x_step=15)
 
 # %% Moment arm
 
@@ -1869,7 +1869,7 @@ define_simulations_line_style(SimulationsLineStyleDictionary_article)
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Middle tilt", composante_y=[composante], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 2})
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Uptilt", composante_y=[composante], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=y_lims[composante], grid_y_step=grid_steps_y[ind])
 
-# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, 3° tilt", subplot_title="Anterior-posterior", composante_y=["AP"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 1})
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, 3° tilt", subplot_title="Posterior-anterior", composante_y=["AP"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 1})
 # graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, 3° tilt", subplot_title="Inferior-superior", composante_y=["IS"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 2})
 # graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, 3° tilt", subplot_title="Medial-lateral", composante_y=["ML"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
 
@@ -1910,3 +1910,19 @@ define_simulations_line_style(SimulationsLineStyleDictionary_abstract)
 
 
 define_simulations_line_style(SimulationsLineStyleDictionary)
+
+# %% variations forces de contact
+
+# diff_force = {"Higher inclination": {"AP": [], "IS": [], "ML": [], "Abduction": Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["xup-normal"]["Abduction"]["Total"]},
+#               "Lower inclination": {"AP": [], "IS": [], "ML": [], "Abduction": Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["xup-normal"]["Abduction"]["Total"]}
+#               }
+
+# for composante in ["AP", "IS", "ML"]:
+#     diff_force["Higher inclination"][composante] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["xup-normal"]["ForceContact GlenImplant"][composante] - Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["middle-normal"]["ForceContact GlenImplant"][composante]
+#     diff_force["Lower inclination"][composante] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["xdown-normal"]["ForceContact GlenImplant"][composante] - Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["middle-normal"]["ForceContact GlenImplant"][composante]
+
+
+# composante = "ML"
+# inclination_variation = "Lower inclination"
+# a_avant_90 = np.mean(diff_force[inclination_variation][composante][0:45])
+# a_apres_90 = np.mean(diff_force[inclination_variation][composante][45:-1])
