@@ -72,7 +72,7 @@ AnyVec3 AnyBodyGrey = {153/256,153/256,153/256};    //AnyBody standard grey
     
     AnyVar RightClavicula = 1*GlobalCoef;
     AnyVar RightScapula = 1*GlobalCoef;
-    AnyVar RightHumerus = 0.3*GlobalCoef; // Right Humerus
+    AnyVar RightHumerus = 0.1*GlobalCoef; // Right Humerus
     AnyVar RightUlna = 1*GlobalCoef;
     AnyVar RightRadius = 1*GlobalCoef;
     AnyVar RightHand = 1*GlobalCoef;
