@@ -31,11 +31,6 @@ num_processes = 5
 
 # %% Paramètres mouvement et modèle
 
-"""-------------------------------------WARNING Décommenter l'évaluation des moment arms, car désactivé pour 180 deg car besoin de 80 steps-------------------------------------"""
-
-"""-------------------------------------WARNING Décommenter l'évaluation des moment arms, car désactivé pour 180 deg car besoin de 80 steps-------------------------------------"""
-
-
 BallAndSocket = 0
 
 SmallAbduction = 0
@@ -52,8 +47,8 @@ nstep = 70
 
 
 """-------------------------------------WARNING MINMAX-------------------------------------"""
-# MuscleRecruitmentType = "MR_Polynomial"
-MuscleRecruitmentType = "MR_MinMaxStrict"
+MuscleRecruitmentType = "MR_Polynomial"
+# MuscleRecruitmentType = "MR_MinMaxStrict"
 
 # %% Caliubration parameter
 # Load the muscle calibration parameters from a file
@@ -83,16 +78,16 @@ CustomFDKOn = "On"
 # %% Cas de simulation
 
 # 25 Cases to run
-# tilt_list = ["xdown", "down", "middle", "up", "xup"]
-# acromion_list = ["xshort", "short", "normal", "long", "xlong"]
+tilt_list = ["xdown", "down", "middle", "up", "xup"]
+acromion_list = ["xshort", "short", "normal", "long", "xlong"]
 
 
 # Dossier de résultats
-m_ResultFolder = "SaveData/MinMaxStrict/"
+m_ResultFolder = "SaveData/Elevation_no_recentrage/"
 
 # 9 Cases to run
-tilt_list = ["xdown", "middle", "xup"]
-acromion_list = ["xshort", "normal", "xlong"]
+# tilt_list = ["xdown", "middle", "xup"]
+# acromion_list = ["xshort", "normal", "xlong"]
 
 # # Cases to run
 # tilt_list = ["down"]
@@ -106,7 +101,7 @@ os.mkdir(f"./Output/{m_ResultFolder}")
 
 # %% Paramétrage nom fichier
 
-if BallAndSocket == 0 and not endangle == 180 and startangle == 15:
+if BallAndSocket == 0 and not endangle == 120 and startangle == 15:
     file_description = f'GlenoidAxisTilt-{MuscleRecruitmentType}-{endangle}deg'
 elif BallAndSocket == 0 and endangle == 120 and startangle == 0:
     file_description = f'GlenoidAxisTilt-{MuscleRecruitmentType}-0-120deg'

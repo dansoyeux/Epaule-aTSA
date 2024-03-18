@@ -5,6 +5,8 @@
 
 // Settings for arms
 
+#include "<ANYBODY_PATH_MODELUTILS>/Video/CameraClassTemplate.any"
+
 #if LeftArmOn == 0
 #define BM_ARM_LEFT OFF
 #endif

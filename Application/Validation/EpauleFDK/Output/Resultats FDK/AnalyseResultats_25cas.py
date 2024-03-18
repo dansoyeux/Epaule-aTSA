@@ -1881,6 +1881,16 @@ define_simulations_line_style(SimulationsLineStyleDictionary_article)
 # instability ratio
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_Tilt_3_Acromion_3, "Abduction", "Instability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True)
 
+
+
+COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, COP_contour, figure_title="Centre de pression", cases_on=MiddleCases_3, graph_annotation_on=False, composantes=["AP", "IS"], subplot={"dimension": [1, 2], "number": 1}, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2)
+COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, COP_contour, figure_title="Centre de pression", cases_on=xUpCases_3, graph_annotation_on=False, composantes=["AP", "IS"], subplot={"dimension": [1, 2], "number": 2}, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2)
+
+
+
+
+
+
 SimulationsLineStyleDictionary_abstract = {
     # Glen xdown
     "xdown-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
@@ -1930,3 +1940,4 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 # inclination_variation = "Lower inclination"
 # a_avant_90 = np.mean(diff_force[inclination_variation][composante][0:45])
 # a_apres_90 = np.mean(diff_force[inclination_variation][composante][45:-1])
+

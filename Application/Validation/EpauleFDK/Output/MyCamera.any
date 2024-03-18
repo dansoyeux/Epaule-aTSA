@@ -1,0 +1,26 @@
+ VideoLookAtCamera  MyCamera (UP_DIRECTION=y, CREATE_GIF=0) = 
+  {
+       // The point the camera focus on.
+       CameraLookAtPoint = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.r;
+       
+       // The vertical field of view in meters
+       CameraFieldOfView  = 0.5;
+       
+       // The direction in which the camera is placed. In global 
+       // coordinate with respect to the LookAtPoint. 
+       // (Can also be a time varying vector)
+       CameraDirection  = {1, 0, 0.2};
+      
+       
+       // The background color used for the video
+       BackgroundColor = {1, 1, 1};
+       
+       // Determines the speed of the video. Setting it to 
+       // nStep/(tEnd-tStart) make the video run in real time. 
+       VideoInputFrameRate  = 10;
+       
+       // The operations which should be included in the video.
+       Analysis = {
+           AnyOperation &ref = Main.Study.LoadAndReplay;
+       };
+  };

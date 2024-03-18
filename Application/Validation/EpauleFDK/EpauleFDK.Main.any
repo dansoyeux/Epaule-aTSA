@@ -14,8 +14,6 @@ Main = {
   //Definition of the CSA variation cases (glenoid rotation and acromion length)
   #include "Model/CSAVariation.any"
   
-  
-  
   //Changes the deltoideus definition to add new wrapping cylinders
   #if NewDeltoidWrappingOn == 1
   #include "Model/MyDeltoidDefinition.any"
@@ -49,9 +47,6 @@ Main = {
 //  #endif // #if GHReactionsOn
   
   #endif // #if BallAndSocket
-  
-  
-//  #include "<ANYBODY_PATH_MODELUTILS>\Operations\RunAppSequence.any"
   
   #include "Model/BodyModelSettings.any"
   
@@ -111,6 +106,9 @@ Main = {
     AnyFolder &Jnt = Model.BodyModel.Right.ShoulderArm.Jnt;
     AnyFolder &Seg = Model.BodyModel.Right.ShoulderArm.Seg;
     AnyFolder &Mus = Model.BodyModel.Right.ShoulderArm.Mus;
+    
+    // File to create a video
+    #include "Output/MyCamera.any"
     
     
     // Evaluates the arm muscles moment arms

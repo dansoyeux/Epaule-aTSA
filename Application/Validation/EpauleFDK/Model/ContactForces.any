@@ -65,7 +65,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
     };
     
     AnyDrawLine drwForceContact = {
-      p0 =  p1 - .Fslave / 20000;
+      p0 =  p1 - .Fslave / 5000;
       p1 =.COP;
       Line = {
         Style = Line3DStyleFull;
