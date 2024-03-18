@@ -1,7 +1,10 @@
- VideoLookAtCamera  MyCamera (UP_DIRECTION=y, CREATE_GIF=0) = 
+// Function that loads an h5 file, replays it and saves a video in the model folder (EpauleFDk.Main) 
+
+VideoLookAtCamera  MyCamera (UP_DIRECTION=y, CREATE_GIF=1) = 
   {
        // The point the camera focus on.
-       CameraLookAtPoint = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.r;
+//       CameraLookAtPoint = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.gh.r;
+CameraLookAtPoint = {-0.1170158, 0.4774368, 0.1765395};
        
        // The vertical field of view in meters
        CameraFieldOfView  = 0.5;
@@ -23,4 +26,7 @@
        Analysis = {
            AnyOperation &ref = Main.Study.LoadAndReplay;
        };
+       
+       // Start at 1 to skip the first frame before the InitialCondicions (where muscles wrapping not initialized)
+       VideoStartFrame = 10;
   };
