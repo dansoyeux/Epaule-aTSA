@@ -33,7 +33,7 @@ Main = {
   // Creates a modified version of the GHReaction forces of the AMMR
   // Changes the force to pull to have the same effect
 //  #if GHReactionsOn==1
-//  
+
 //  // Nodes are around a circle
 //  #if GHReactionsShape == Circle 
 //  #include "Model/MyGHReactions-Circle.any"
@@ -85,6 +85,7 @@ Main = {
     
     AnyFolder ModelEnvironmentConnection = {
       #include "Model/JointsAndDrivers.any"
+      
       // Additional reactions which are required to run the inverse dynamics analysis with the pelvis-ground interface used
       #include "Model\Reactions.any"
       

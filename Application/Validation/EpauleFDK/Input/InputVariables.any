@@ -40,7 +40,6 @@ AnyFolder InputVariables = {
   #define StrengthFactor 1.0
   
   
-  
   /* --------------------------------------FDK PARAMETERS----------------------------------------
   CustomFDKOn : Off : laisse le modele de Lauranne
   CustomFDKOn : On : Met un modele FDK different
