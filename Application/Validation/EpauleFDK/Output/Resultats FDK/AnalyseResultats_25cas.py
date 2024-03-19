@@ -1961,4 +1961,3 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 # inclination_variation = "Lower inclination"
 # a_avant_90 = np.mean(diff_force[inclination_variation][composante][0:45])
 # a_apres_90 = np.mean(diff_force[inclination_variation][composante][45:-1])
-

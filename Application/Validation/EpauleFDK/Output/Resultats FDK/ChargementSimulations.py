@@ -87,7 +87,7 @@ MuscleDictionary_MyDeltoideusWrapping = {"Deltoideus lateral": ["My_deltoideus_l
 
 MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Muscle force [N]"},
                             # "Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Muscle force [N]"},
-                            # "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
+                            "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
                             # Dans repère scapula
                             # "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
@@ -99,23 +99,23 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             #                 "combine_muscle_part_operations": ["total", "mean"]
                             #                 },
 
-                            "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
-                                         "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                         "combine_muscle_part_operations": ["total", "mean"]},
+                            # "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
+                            #               "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #               "combine_muscle_part_operations": ["total", "mean"]},
 
-                            "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the insertion [N]", "select_muscle_RefFrame_output": "insertion",
-                                            "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                            "combine_muscle_part_operations": ["total", "mean"]
-                                            },
+                            # "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the insertion [N]", "select_muscle_RefFrame_output": "insertion",
+                            #                 "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #                 "combine_muscle_part_operations": ["total", "mean"]
+                            #                 },
 
 
-                            "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
-                                                   "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                   "combine_muscle_part_operations": ["mean"], "vect_dir": True},
+                            # "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
+                            #                         "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #                         "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
-                            "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
-                                                      "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                      "combine_muscle_part_operations": ["mean"], "vect_dir": True},
+                            # "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
+                            #                           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #                           "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
                             "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Lever arm [mm]",
                                           "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
@@ -125,21 +125,21 @@ MuscleVariableDictionary_NoMomentArm = {"Ft": {"MuscleFolderPath": "Output.Mus",
                                         # "Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Muscle force [N]"},
                                         # "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
-                                        "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
-                                                     "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                     "combine_muscle_part_operations": ["total", "mean"]},
+                                        # "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
+                                        #              "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                        #              "combine_muscle_part_operations": ["total", "mean"]},
 
-                                        "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
-                                                               "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                               "combine_muscle_part_operations": ["mean"], "vect_dir": True},
+                                        # "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
+                                        #                        "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                        #                        "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
-                                        "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the insertion [N]", "select_muscle_RefFrame_output": "insertion",
-                                                        "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                        "combine_muscle_part_operations": ["total", "mean"]
-                                                        },
-                                        "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
-                                                                  "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                                  "combine_muscle_part_operations": ["mean"], "vect_dir": True}
+                                        # "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the insertion [N]", "select_muscle_RefFrame_output": "insertion",
+                                        #                 "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                        #                 "combine_muscle_part_operations": ["total", "mean"]
+                                        #                 },
+                                        # "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
+                                        #                           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                        #                           "combine_muscle_part_operations": ["mean"], "vect_dir": True}
 
                                         }
 
@@ -435,6 +435,16 @@ En ne prenant pas en compte conflit avec acromion
 
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+
+"""Elevation no recentrage minmaxstrict"""
+
+# Elevation_minmax_dir = "../SaveData/Elevation_no_recentrage_MinMaxStrict"
+# Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-Elevation-no-recentrage" for CaseName in CaseNames_5]
+
+# Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage = load_simulation_cases(Elevation_minmax_dir, Files, CaseNames_5, FDK_Variables)
+
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
 
 """No recentrage small abduction"""
 # no_delt_post_scaling_dir = r"../SaveData/SmallAbduction_no_recentrage"
