@@ -47,8 +47,8 @@ nstep = 70
 
 
 """-------------------------------------WARNING MINMAX-------------------------------------"""
-# MuscleRecruitmentType = "MR_Polynomial"
-MuscleRecruitmentType = "MR_MinMaxStrict"
+MuscleRecruitmentType = "MR_Polynomial"
+# MuscleRecruitmentType = "MR_MinMaxStrict"
 
 # %% Caliubration parameter
 # Load the muscle calibration parameters from a file
@@ -78,12 +78,14 @@ CustomFDKOn = "On"
 # %% Cas de simulation
 
 # 25 Cases to run
-tilt_list = ["xdown", "down", "middle", "up", "xup"]
+# tilt_list = ["xdown", "down", "middle", "up", "xup"]
 acromion_list = ["xshort", "short", "normal", "long", "xlong"]
 
+"""-------------------------------------WARNING NEUTRAL ONLY-------------------------------------"""
+tilt_list = ["neutral"]
 
 # Dossier de résultats
-m_ResultFolder = "SaveData/Elevation_no_recentrage_MinMaxStrict/"
+m_ResultFolder = "SaveData/Elevation_no_recentrage_Neutral/"
 
 # 9 Cases to run
 # tilt_list = ["xdown", "middle", "xup"]
