@@ -186,16 +186,17 @@ AnyFolder InputVariables = {
   
   /* -------------------------------------------CSA_Tilt selection------------------------------------*/
   #ifndef CSA_Tilt
-  #define CSA_Tilt "middle"
+  #define CSA_Tilt "neutral"
   #endif
   /*
   xdown
   down 
+  neutral
   middle
   up
   xup
-  
-  neutral
+   
+  original
   */
   
   /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/

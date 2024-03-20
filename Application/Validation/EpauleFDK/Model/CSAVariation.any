@@ -22,10 +22,15 @@
 
 #if BallAndSocket == 0
 
-#if CSA_Tilt == "neutral"
+#if CSA_Tilt == "original"
 #define INPUTPOS "CeraverT351"
 
 #else
+
+// 0deg tilt
+#if CSA_Tilt == "original"
+#define INPUTPOS "CeraverT351 - Glentilt neutral - Local AnteroTilt"
+#endif
 
 // Global anteroposterior axis
 #if GlenoidTiltAxis==Global
