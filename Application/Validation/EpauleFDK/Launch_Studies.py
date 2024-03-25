@@ -46,7 +46,6 @@ endangle = 120
 nstep = 70
 
 
-"""-------------------------------------WARNING MINMAX-------------------------------------"""
 MuscleRecruitmentType = "MR_Polynomial"
 # MuscleRecruitmentType = "MR_MinMaxStrict"
 

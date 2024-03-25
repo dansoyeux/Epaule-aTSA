@@ -118,8 +118,8 @@ AnyFolder InputVariables = {
   //  #define ArmMovement Elevation
  
   #ifndef ArmMovement 
-  #define ArmMovement Abduction
-//  #define ArmMovement Elevation
+//  #define ArmMovement Abduction
+  #define ArmMovement Elevation
   #endif
   /*
   2 : Custom one (15-170deg)

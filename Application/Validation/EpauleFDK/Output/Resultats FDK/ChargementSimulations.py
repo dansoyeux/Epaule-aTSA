@@ -279,7 +279,8 @@ NormalCases_5 = ["xdown-normal", "down-normal", "neutral-normal", "middle-normal
 LongCases_5 = ["xdown-long", "down-long", "neutral-long", "middle-long", "up-long", "xup-long"]
 xLongCases_5 = ["xdown-xlong", "down-xlong", "neutral-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
 
-CaseNames_5 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
+CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
+CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
 # Tilt acromion
 xUpCases_3 = ["xup-xshort", "xup-normal", "xup-xlong"]
@@ -414,9 +415,9 @@ En ne prenant pas en compte conflit avec acromion
 """
 
 # Elevation_dir = "../SaveData/Elevation_no_recentrage"
-# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_5]
+# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
 
-# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_5, FDK_Variables)
+# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
 
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")

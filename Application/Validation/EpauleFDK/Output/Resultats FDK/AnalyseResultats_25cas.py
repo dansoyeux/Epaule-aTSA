@@ -77,6 +77,13 @@ SimulationsLineStyleDictionary = {
     "middle-long": {"color": "darkolivegreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
     "middle-xlong": {"color": "darkgreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
 
+    # glen neutral
+    "neutral-xshort": {"color": "lightgray", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": None},
+    "neutral-short": {"color": "lightgray", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2.5},
+    "neutral-normal": {"color": "grey", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "neutral-long": {"color": "black", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "neutral-xlong": {"color": "black", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+
     # Glen up
     "up-xshort": {"color": "yellow", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
     "up-short": {"color": "gold", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
@@ -261,26 +268,41 @@ NormalCases_3 = ["xdown-normal", "middle-normal", "xup-normal"]
 LongCases_3 = ["xdown-long", "middle-long", "xup-long"]
 xLongCases_3 = ["xdown-xlong", "middle-xlong", "xup-xlong"]
 
+# Longueur d'acromion
+xShortCases_36 = ["xdown-xshort", "neutral-xshort", "up-xshort"]
+ShortCases_36 = ["xdown-short", "neutral-short", "up-short"]
+NormalCases_36 = ["xdown-normal", "neutral-normal", "up-normal"]
+LongCases_36 = ["xdown-long", "neutral-long", "up-long"]
+xLongCases_36 = ["xdown-xlong", "neutral-xlong", "up-xlong"]
+
 CaseNames_3 = [*xDownCases_3, *MiddleCases_3, *xUpCases_3]
+CaseNames_36 = [*xDownCases_3, *NeutralCases_3, *UpCases_3]
 UpDownCases_3 = [*xUpCases_3, *xDownCases_3]
 
 # More cases
 xDownCases_5 = ["xdown-xshort", "xdown-short", "xdown-normal", "xdown-long", "xdown-xlong"]
 DownCases_5 = ["down-xshort", "down-short", "down-normal", "down-long", "down-xlong"]
 MiddleCases_5 = ["middle-xshort", "middle-short", "middle-normal", "middle-long", "middle-xlong"]
+NeutralCases_5 = ["neutral-xshort", "neutral-short", "neutral-normal", "neutral-long", "neutral-xlong"]
 UpCases_5 = ["up-xshort", "up-short", "up-normal", "up-long", "up-xlong"]
 xUpCases_5 = ["xup-xshort", "xup-short", "xup-normal", "xup-long", "xup-xlong"]
 
-xShortCases_5 = ["xdown-xshort", "down-xshort", "neutral-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
-ShortCases_5 = ["xdown-short", "down-short", "neutral-short", "middle-short", "up-short", "xup-short"]
-NormalCases_5 = ["xdown-normal", "down-normal", "neutral-normal", "middle-normal", "up-normal", "xup-normal"]
-LongCases_5 = ["xdown-long", "down-long", "neutral-long", "middle-long", "up-long", "xup-long"]
-xLongCases_5 = ["xdown-xlong", "down-xlong", "neutral-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
+xShortCases_5 = ["xdown-xshort", "down-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
+ShortCases_5 = ["xdown-short", "down-short", "middle-short", "up-short", "xup-short"]
+NormalCases_5 = ["xdown-normal", "down-normal", "middle-normal", "up-normal", "xup-normal"]
+LongCases_5 = ["xdown-long", "down-long", "middle-long", "up-long", "xup-long"]
+xLongCases_5 = ["xdown-xlong", "down-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
+
+xShortCases_6 = ["xdown-xshort", "down-xshort", "neutral-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
+ShortCases_6 = ["xdown-short", "down-short", "neutral-short", "middle-short", "up-short", "xup-short"]
+NormalCases_6 = ["xdown-normal", "down-normal", "neutral-normal", "middle-normal", "up-normal", "xup-normal"]
+LongCases_6 = ["xdown-long", "down-long", "neutral-long", "middle-long", "up-long", "xup-long"]
+xLongCases_6 = ["xdown-xlong", "down-xlong", "neutral-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
 
 CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
+CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
 CaseNames_5_Tilt_3_Acromion = [*xDownCases_3, *DownCases_3, *MiddleCases_3, *UpCases_3, *xUpCases_3]
-
 
 tilt_names_3 = ["xdown", "middle", "xup"]
 tilt_names_5 = ["xdown", "down", "up", "xup"]
@@ -311,9 +333,17 @@ CSA_50_Cases = ["xup-xlong"]
 # With xdown, middle, xup
 CasesVariables_3 = {"Tilt": {"Large Downtilt": xDownCases_3, "Normal tilt": MiddleCases_3, "Large Uptilt": xUpCases_3},
                     "Acromion": {"Very short acromion": xShortCases_3, "Normal acromion": NormalCases_3, "Very long acromion": xLongCases_3}}
+
+CasesVariables_36 = {"Tilt": {"Large Downtilt": xDownCases_3, "Neutral tilt": NeutralCases_3, "Uptilt": UpCases_3},
+                     "Acromion": {"Very short acromion": xShortCases_36, "Normal acromion": NormalCases_36, "Very long acromion": xLongCases_36}}
+
 # With xdown, middle, xup
 CasesVariables_5 = {"Tilt": {"Large Downtilt": xDownCases_5, "Downtilt": DownCases_5, "Normal tilt": MiddleCases_5, "Uptilt": UpCases_5, "Large Uptilt": xUpCases_5},
                     "Acromion": {"Very short acromion": xShortCases_5, "Short acromion": ShortCases_5, "Normal acromion": NormalCases_5, " Long acromion": LongCases_5, "Very long acromion": xLongCases_5}}
+
+# With xdown, middle, xup
+CasesVariables_6 = {"Tilt": {"Large Downtilt": xDownCases_5, "Downtilt": DownCases_5, "Neutral tilt": NeutralCases_5, "Normal tilt": MiddleCases_5, "Uptilt": UpCases_5, "Large Uptilt": xUpCases_5},
+                    "Acromion": {"Very short acromion": xShortCases_6, "Short acromion": ShortCases_6, "Normal acromion": NormalCases_6, " Long acromion": LongCases_6, "Very long acromion": xLongCases_6}}
 
 # Tilt
 CasesVariables_Tilt_5_Acromion_3 = {"Tilt": {"Large Downtilt": xDownCases_3, "Downtilt": DownCases_3, "Normal tilt": MiddleCases_3, "Uptilt": UpCases_3, "Large Uptilt": xUpCases_3}}
@@ -361,7 +391,6 @@ CasesVariables_3_Ball_And_Socket = {"Tilt": {"Large Downtilt": [*xDownCases_3, "
 # With xdown, middle, xup
 CasesVariables_5_Ball_And_Socket = {"Tilt": {"Large Downtilt": [*xDownCases_5, "Ball And Socket"], "Downtilt": [*DownCases_5, "Ball And Socket"], "Normal tilt": [*MiddleCases_5, "Ball And Socket"], "Uptilt": [*UpCases_5, "Ball And Socket"], "Large Uptilt": [*xUpCases_5, "Ball And Socket"]},
                                     "Acromion": {"Very short acromion": [*xShortCases_5, "Ball And Socket"], "Short acromion": [*ShortCases_5, "Ball And Socket"], "Normal acromion": [*NormalCases_5, "Ball And Socket"], " Long acromion": [*LongCases_5, "Ball And Socket"], "Very long acromion": [*xLongCases_5, "Ball And Socket"]}}
-
 
 # %%                                                Chargement des résultats FDK
 
@@ -672,11 +701,11 @@ variables_to_add_humerus_no_fcontact = {"SpringForce humerus": ["Total", "AP", "
 Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal humerus no Fcontact", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no Fcontact (glene) [N]", variables_to_add_humerus_no_fcontact, muscle_variables_to_add_humerus)
 
 """Force totale muscles"""
-Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal muscles", ["Total", "AP", "IS", "ML"], "Force totale des muscles sur l'humérus (glene) [N]", muscle_variables_to_add=muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal muscles", ["Total", "AP", "IS", "ML"], "Force totale des muscles sur l'humérus (glene) [N]", muscle_variables_to_add=muscle_variables_to_add_humerus)
 
 """Sans springforce"""
-variables_to_add_humerus_no_springforce = {"ForceContact humerus": ["Total", "AP", "IS", "ML"]}
-Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal humerus no SpringForce", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no SpringForce (glene) [N]", variables_to_add_humerus_no_springforce, muscle_variables_to_add_humerus)
+# variables_to_add_humerus_no_springforce = {"ForceContact humerus": ["Total", "AP", "IS", "ML"]}
+# Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal humerus no SpringForce", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no SpringForce (glene) [N]", variables_to_add_humerus_no_springforce, muscle_variables_to_add_humerus)
 
 # %% COP
 
@@ -1582,21 +1611,21 @@ n_part = 4
 
 # %% Moyenne par CSA
 
-# result_dictionary = {key: result_dictionary[key] for key in CaseNames_3}
-combine_cases = {"CSA=12°": CSA_12_Cases,
-                 "CSA=16°": CSA_16_Cases,
-                 "CSA=20°": CSA_20_Cases,
-                 "CSA=25°": CSA_25_Cases,
-                 "CSA=30°": CSA_30_Cases,
-                 "CSA=35°": CSA_35_Cases,
-                 "CSA=40°": CSA_40_Cases,
-                 "CSA=45°": CSA_45_Cases,
-                 "CSA=50°": CSA_50_Cases
-                 }
+# # result_dictionary = {key: result_dictionary[key] for key in CaseNames_3}
+# combine_cases = {"CSA=12°": CSA_12_Cases,
+#                  "CSA=16°": CSA_16_Cases,
+#                  "CSA=20°": CSA_20_Cases,
+#                  "CSA=25°": CSA_25_Cases,
+#                  "CSA=30°": CSA_30_Cases,
+#                  "CSA=35°": CSA_35_Cases,
+#                  "CSA=40°": CSA_40_Cases,
+#                  "CSA=45°": CSA_45_Cases,
+#                  "CSA=50°": CSA_50_Cases
+#                  }
 
-Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial, combine_cases, "mean")
-Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, combine_cases, "mean")
-Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA = {**Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA, **Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage}
+# Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial, combine_cases, "mean")
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, combine_cases, "mean")
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA = {**Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA, **Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage}
 
 list_csa_short = ["CSA=25°",
                   "CSA=30°",
@@ -1605,12 +1634,12 @@ list_csa_short = ["CSA=25°",
                   ]
 
 list_csa_long = ["CSA=20°",
-                 "CSA=25°",
-                 "CSA=30°",
-                 "CSA=35°",
-                 "CSA=40°",
-                 "CSA=45°"
-                 ]
+                  "CSA=25°",
+                  "CSA=30°",
+                  "CSA=35°",
+                  "CSA=40°",
+                  "CSA=45°"
+                  ]
 
 """Résultats"""
 # graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", figure_title="Force de contact rassemblé par CSA", cases_on=list_csa_long, subplot={"dimension": [1, 2], "number": 1}, subplot_title="Force de contact")
@@ -1772,6 +1801,29 @@ graph_parameters_3 = {"xlim": [0, 120],
                       "COP_contour": COP_contour
                       }
 
+# With neutral
+graph_parameters_6 = {"xlim": [0, 120],
+                      "legend_position": "center left",
+                      "grid_x_step": 15,
+
+                      # Catégories de muscles
+                      "list_muscles_actifs": list_muscles_actifs,
+                      "list_muscles_peu_actif": list_muscles_peu_actif,
+                      "list_muscles_inactifs": list_muscles_inactifs,
+
+                      # For graph by categories
+                      "CasesCategories_5": CasesVariables_6,
+                      "CasesCategories_3": CasesVariables_36,
+                      "CaseNames_5": CaseNames_6,
+                      "CaseNames_3": CaseNames_36,
+
+                      # Pour moment arms
+                      "muscle_list_by_categories": list_muscle_variation,
+
+                      # Pour COP
+                      "COP_contour": COP_contour
+                      }
+
 # Parameters of the graphs
 graph_parameters_par_CSA = {"xlim": [0, 120],
                             "legend_position": "center left",
@@ -1805,11 +1857,14 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 
 
 """Elevation (done)"""
+# Recentrage
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Normal", save_graph=True, composante_on=False, **graph_parameters)
+
+# No recentrage
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
 
-
-# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_MinMaxStrics_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "MinMax No recentrage", save_graph=True, composante_on=False, **graph_parameters_3)
+# Avec neutral
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage with neutral", save_graph=True, composante_on=False, **graph_parameters_6)
 
 # %% 140 deg no recentrage
 
@@ -1819,7 +1874,7 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 # %% Stability ratio
 
 # calcul instability ratio
-for case in Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage:
+for case in CaseNames_6:
     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Compression"] = -1 * Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
 
@@ -1867,7 +1922,7 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
                                }}
 
 # Article
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center")
+PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center")
 
 grid_steps_y = [50, 25, 50, 50]
 y_lims = {"Total": [0, 500],
@@ -1958,15 +2013,15 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 
 # %% variations forces de contact
 
-# diff_force = {"Higher inclination": {"AP": [], "IS": [], "ML": [], "Abduction": Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["xup-normal"]["Abduction"]["Total"]},
-#               "Lower inclination": {"AP": [], "IS": [], "ML": [], "Abduction": Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["xup-normal"]["Abduction"]["Total"]}
+# diff_force = {"Higher inclination": {"AP": [], "IS": [], "ML": [], "Abduction": Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["up-normal"]["Abduction"]["Total"]},
+#               "Lower inclination": {"AP": [], "IS": [], "ML": [], "Abduction": Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["up-normal"]["Abduction"]["Total"]}
 #               }
 
 # for composante in ["AP", "IS", "ML"]:
-#     diff_force["Higher inclination"][composante] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["xup-normal"]["ForceContact GlenImplant"][composante] - Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["middle-normal"]["ForceContact GlenImplant"][composante]
-#     diff_force["Lower inclination"][composante] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["xdown-normal"]["ForceContact GlenImplant"][composante] - Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["middle-normal"]["ForceContact GlenImplant"][composante]
+#     diff_force["Higher inclination"][composante] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["up-normal"]["ForceContact GlenImplant"][composante] - Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["neutral-normal"]["ForceContact GlenImplant"][composante]
+#     diff_force["Lower inclination"][composante] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["xdown-normal"]["ForceContact GlenImplant"][composante] - Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["neutral-normal"]["ForceContact GlenImplant"][composante]
 
-# composante = "ML"
+# composante = "IS"
 # inclination_variation = "Lower inclination"
 # a_avant_90 = np.mean(diff_force[inclination_variation][composante][0:45])
 # a_apres_90 = np.mean(diff_force[inclination_variation][composante][45:-1])
