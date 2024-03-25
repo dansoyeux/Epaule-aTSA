@@ -24,7 +24,7 @@ AnyFolder FDK ={
   #if CustomFDKOn == On
   
   //    From Lauranne's code   
-  AnyFloat k0 = -{-9,-4};   
+  AnyFloat k0 = -{-7,-5};   
   AnyFloat k1 = -7.787;  
   AnyFloat k2 = 4.391;
   AnyFloat k3 = 0 ;

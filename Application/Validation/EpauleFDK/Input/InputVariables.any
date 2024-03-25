@@ -47,9 +47,9 @@ AnyFolder InputVariables = {
   */  
   
   #ifndef CustomFDKOn
-  #define CustomFDKOn CustomForce
+//  #define CustomFDKOn CustomForce
 //      #define CustomFDKOn Off
-//      #define CustomFDKOn On
+      #define CustomFDKOn On
   #endif
   
   /*--------------------------------------FDK ALGORITHM SETTINGS---------------------------------*/
@@ -127,7 +127,7 @@ AnyFolder InputVariables = {
   0 : abduction from 15deg to 120deg 
   */
   #ifndef SmallAbductionOn
-  #define SmallAbductionOn 0
+  #define SmallAbductionOn 1
   #endif
   
   #ifndef AnyOutputFileOn
