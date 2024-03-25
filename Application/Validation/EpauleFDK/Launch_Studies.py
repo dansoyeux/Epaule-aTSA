@@ -26,7 +26,7 @@ import os
 # max chum = 12 (6 cores), max chez moi 8 (4 cores)
 
 # 5 = pas de bruit au chum + encore utilisable pour autre chose
-num_processes = 5
+num_processes = 6
 
 
 # %% Paramètres mouvement et modèle
@@ -77,15 +77,14 @@ CustomFDKOn = "On"
 
 # %% Cas de simulation
 
-# 25 Cases to run
-# tilt_list = ["xdown", "down", "middle", "up", "xup"]
+# 30 Cases to run
+tilt_list = ["xdown", "down", "neutral", "middle", "up", "xup"]
 acromion_list = ["xshort", "short", "normal", "long", "xlong"]
 
 """-------------------------------------WARNING NEUTRAL ONLY-------------------------------------"""
-tilt_list = ["neutral"]
 
 # Dossier de résultats
-m_ResultFolder = "SaveData/Elevation_no_recentrage_Neutral/"
+m_ResultFolder = "SaveData/Elevation_no_recentrage/"
 
 # 9 Cases to run
 # tilt_list = ["xdown", "middle", "xup"]

@@ -250,23 +250,6 @@ BallAndSocket_Variables = define_variables_to_load(BallAndSocket_VariableDiction
 
 # %% Nom des cas de simulation
 
-OldCaseNames = ["middle-normal", "middle-long",
-                "up-normal", "up-short",
-                "down-long"]
-
-# Tilt acromion
-xUpCases = ["xup-xshort", "xup-normal"]
-MiddleCases = ["middle-xshort", "middle-normal", "middle-xlong"]
-DownCases = ["xdown-normal", "xdown-xlong"]
-
-# Longueur d'acromion
-ShortCases = ["middle-xshort", "xup-xshort"]
-NormalCases = ["middle-normal", "xup-normal", "xdown-normal"]
-LongCases = ["xmiddle-xlong", "xdown-xlong"]
-
-CaseNames = [*MiddleCases, *xUpCases, *DownCases]
-UpDownCases = [*xUpCases, *DownCases]
-
 CSA_20_Cases = ["middle-xshort", "xdown-normal"]
 CSA_30_Cases = ["middle-normal", "xup-xshort", "xdown-xlong"]
 CSA_40_Cases = ["middle-xlong", "xup-normal"]
@@ -285,22 +268,24 @@ CSA_50_Cases = ["xup-xlong"]
 # More cases
 xDownCases_5 = ["xdown-xshort", "xdown-short", "xdown-normal", "xdown-long", "xdown-xlong"]
 DownCases_5 = ["down-xshort", "down-short", "down-normal", "down-long", "down-xlong"]
+NeutralCases_5 = ["neutral-xshort", "neutral-short", "neutral-normal", "neutral-long", "neutral-xlong"]
 MiddleCases_5 = ["middle-xshort", "middle-short", "middle-normal", "middle-long", "middle-xlong"]
 UpCases_5 = ["up-xshort", "up-short", "up-normal", "up-long", "up-xlong"]
 xUpCases_5 = ["xup-xshort", "xup-short", "xup-normal", "xup-long", "xup-xlong"]
 
-xShortCases_5 = ["xdown-xshort", "down-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
-ShortCases_5 = ["xdown-short", "down-short", "middle-short", "up-short", "xup-short"]
-NormalCases_5 = ["xdown-normal", "down-normal", "middle-normal", "up-normal", "xup-normal"]
-LongCases_5 = ["xdown-long", "down-long", "middle-long", "up-long", "xup-long"]
-xLongCases_5 = ["xdown-xlong", "down-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
+xShortCases_5 = ["xdown-xshort", "down-xshort", "neutral-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
+ShortCases_5 = ["xdown-short", "down-short", "neutral-short", "middle-short", "up-short", "xup-short"]
+NormalCases_5 = ["xdown-normal", "down-normal", "neutral-normal", "middle-normal", "up-normal", "xup-normal"]
+LongCases_5 = ["xdown-long", "down-long", "neutral-long", "middle-long", "up-long", "xup-long"]
+xLongCases_5 = ["xdown-xlong", "down-xlong", "neutral-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
 
-CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
+CaseNames_5 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
 # Tilt acromion
 xUpCases_3 = ["xup-xshort", "xup-normal", "xup-xlong"]
 UpCases_3 = ["up-xshort", "up-normal", "up-xlong"]
 MiddleCases_3 = ["middle-xshort", "middle-normal", "middle-xlong"]
+NeutralCases_3 = ["neutral-xshort", "neutral-normal", "neutral-xlong"]
 DownCases_3 = ["down-xshort", "down-normal", "down-xlong"]
 xDownCases_3 = ["xdown-xshort", "xdown-normal", "xdown-xlong"]
 

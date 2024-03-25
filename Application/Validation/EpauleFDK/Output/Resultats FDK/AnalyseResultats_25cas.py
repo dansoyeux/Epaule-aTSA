@@ -193,6 +193,12 @@ SimulationDescriptionDictionary = {
     "middle-long": "CSA = 35° : Normal tilt         -   Long acromion",
     "middle-xlong": "CSA = 40° : Normal tilt         -  Very long acromion",
 
+    "neutral-xshort": "CSA = 20° : Neutral tilt         -  Very short acromion",
+    "neutral-short": "CSA = 25° : Neutral tilt         -  Short acromion",
+    "neutral-normal": "CSA = 30° : Neutral tilt         -  Normal acromion",
+    "neutral-long": "CSA = 35° : Neutral tilt         -   Long acromion",
+    "neutral-xlong": "CSA = 40° : Neutral tilt         -  Very long acromion",
+
     "up-xshort": "CSA = 25° : Uptilt             -  Very short acromion",
     "up-short": "CSA = 30° : Uptilt             -  Short acromion",
     "up-normal": "CSA = 35° : Uptilt             -  Normal acromion",
@@ -238,14 +244,12 @@ COP_contour = define_COP_contour("GleneContour", "pp")
 
 # %% Nom des cas de simulation
 
-OldCaseNames = ["middle-normal", "middle-long",
-                "up-normal", "up-short",
-                "down-long"]
 
 # Tilt acromion
 xUpCases_3 = ["xup-xshort", "xup-normal", "xup-xlong"]
 UpCases_3 = ["up-xshort", "up-normal", "up-xlong"]
 MiddleCases_3 = ["middle-xshort", "middle-normal", "middle-xlong"]
+NeutralCases_3 = ["neutral-xshort", "neutral-normal", "neutral-xlong"]
 DownCases_3 = ["down-xshort", "down-normal", "down-xlong"]
 xDownCases_3 = ["xdown-xshort", "xdown-normal", "xdown-xlong"]
 
@@ -267,11 +271,11 @@ MiddleCases_5 = ["middle-xshort", "middle-short", "middle-normal", "middle-long"
 UpCases_5 = ["up-xshort", "up-short", "up-normal", "up-long", "up-xlong"]
 xUpCases_5 = ["xup-xshort", "xup-short", "xup-normal", "xup-long", "xup-xlong"]
 
-xShortCases_5 = ["xdown-xshort", "down-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
-ShortCases_5 = ["xdown-short", "down-short", "middle-short", "up-short", "xup-short"]
-NormalCases_5 = ["xdown-normal", "down-normal", "middle-normal", "up-normal", "xup-normal"]
-LongCases_5 = ["xdown-long", "down-long", "middle-long", "up-long", "xup-long"]
-xLongCases_5 = ["xdown-xlong", "down-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
+xShortCases_5 = ["xdown-xshort", "down-xshort", "neutral-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
+ShortCases_5 = ["xdown-short", "down-short", "neutral-short", "middle-short", "up-short", "xup-short"]
+NormalCases_5 = ["xdown-normal", "down-normal", "neutral-normal", "middle-normal", "up-normal", "xup-normal"]
+LongCases_5 = ["xdown-long", "down-long", "neutral-long", "middle-long", "up-long", "xup-long"]
+xLongCases_5 = ["xdown-xlong", "down-xlong", "neutral-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
 
 CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
@@ -1815,7 +1819,7 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 # %% Stability ratio
 
 # calcul instability ratio
-for case in Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage:
+for case in Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage:
     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Compression"] = -1 * Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
 
@@ -1841,44 +1845,51 @@ SimulationsLineStyleDictionary_article = {
     "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
     "xdown-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
 
-    # Glen xdown
-    "middle-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
-    "middle-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-    "middle-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
-    "middle-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "middle-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    # Glen neutral
+    "neutral-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
+    "neutral-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "neutral-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
+    "neutral-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "neutral-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
 
-    # Glen xdown
-    "xup-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
-    "xup-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-    "xup-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
-    "xup-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-    "xup-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    # Glen up
+    "up-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
+    "up-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "up-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
+    "up-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "up-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
 }
 define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
+Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
+                               "Neutral inclination": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
+                               "Upward inclination": ["up-xshort", "up-normal", "up-xlong"]
+                               }}
+
 # Article
-PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_Tilt_3_Acromion_3, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], annotation_offset=[1.3, -3], annotation_reference_offset=[1, 1], COP_points_step=30)
+PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center")
 
+grid_steps_y = [50, 25, 50, 50]
+y_lims = {"Total": [0, 500],
+          "AP": [-50, 100],
+          "IS": [-150, 200],
+          "ML": [-500, 0]
+          }
 
-# grid_steps_y = [50, 25, 50, 50]
-# y_lims = {"Total": [0, 500],
-#           "AP": [-50, 100],
-#           "IS": [-150, 200],
-#           "ML": [-500, 0]
-#           }
-
+# # Force de contact composante par compoasante
 # for ind, composante in enumerate(["Total", "AP", "IS", "ML"]):
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Downtilt", composante_y=[composante], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 1})
-#     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Middle tilt", composante_y=[composante], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 2})
+#     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Middle tilt", composante_y=[composante], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Uptilt", composante_y=[composante], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=y_lims[composante], grid_y_step=grid_steps_y[ind])
 
-# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, 3° tilt", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 1})
-# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, 3° tilt", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 2})
-# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, 3° tilt", subplot_title="Compression Force", composante_y=["Compression"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
+# Contact forces for neutral inclination
+graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 1})
+graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
+graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression Force", composante_y=["Compression"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
 
-# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, 3° tilt", subplot_title="Shear forces", composante_y=["Shear"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 2], "number": 1})
-# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, 3° tilt", subplot_title="Compression forces", composante_y=["Compression"], cases_on=["middle-xshort", "middle-normal", "middle-xlong"], subplot={"dimension": [1, 2], "number": 2}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
+# Compression and shear, neutral inclination
+graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Shear forces", composante_y=["Shear"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 1})
+graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression forces", composante_y=["Compression"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 2}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
 
 # instability ratio
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_Tilt_3_Acromion_3, "Abduction", "Instability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True)
