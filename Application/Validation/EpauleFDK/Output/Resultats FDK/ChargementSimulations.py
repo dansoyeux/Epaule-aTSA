@@ -186,7 +186,7 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
 
                           # Force sur la scapula Dans le repère de l'implant (scapula = slave)
                           "ForceContact GlenImplant": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Contact force on the glenoid implant [N]",
-                                                       "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True},
+                                                       "SequenceComposantes": ["AP", "IS", "ML"], "Composantes_Inverse_Direction": [False, False, True], "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True},
 
                           # Force sur l'humerus Dans le repère de la scapula ISB (humerus = master)
                           "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Contact force on the humeral implant [N]",
@@ -414,13 +414,13 @@ En ne prenant pas en compte conflit avec acromion
 Élévation no recentrage
 """
 
-# Elevation_dir = "../SaveData/Elevation_no_recentrage"
-# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+Elevation_dir = "../SaveData/Elevation_no_recentrage"
+Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
 
-# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
 
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
 
 """Elevation no recentrage minmaxstrict"""
 
