@@ -50,8 +50,6 @@ Main = {
   
   #include "Model/BodyModelSettings.any"
   
-  
-  
   //Morphes the scapula to make the acromion longer
   #include "Scaling/ScalingCustom.any"
   
@@ -71,7 +69,6 @@ Main = {
       };
     };
   };
-  
   
   
   AnyFolder Model = {
@@ -108,9 +105,8 @@ Main = {
     AnyFolder &Seg = Model.BodyModel.Right.ShoulderArm.Seg;
     AnyFolder &Mus = Model.BodyModel.Right.ShoulderArm.Mus;
     
-    // File to create a video
+    // File to create a video from a loaded .h5 file
     #include "Output/MyCamera.any"
-    
     
     // Evaluates the arm muscles moment arms
     #include "Model/EvaluateAbductionMomentArm.any"
@@ -123,15 +119,14 @@ Main = {
     //Operation to run
     #include "Output/RunEpauleFDK.any"
     
-    
-    //Replaces the GlenoHumeral BallAndSocket joint with a 5 DOF FDK driven joint
+    // Replaces the GlenoHumeral BallAndSocket joint with a 5 DOF FDK driven joint
     #include "Model/GHJointExchange.any"
     
     #if BallAndSocket == 0    
     //Adds contact between the shoulder implants
     #include "Model/ContactForces.any"
     
-    
+    // FDK parameters   
     InverseDynamics.ForceDepKinOnOff=On;
     InverseDynamics.ForceDepKin.MaxIteration=50;
     
@@ -139,11 +134,6 @@ Main = {
       Val = Main.Study.InverseDynamics.ForceDepKinError;
     };
     #endif
-    
-
-    
-  
-    
     
     #if BallAndSocket == 1
     // Output variables collecting the GH forces in the pertinent coordinate frame
@@ -154,7 +144,7 @@ Main = {
     Gravity = {0.01, -9.81, 0.01};
     
     // Lauranne   
-    tEnd = DesignVar(120.0); // 5;
+    tEnd = DesignVar(120.0);
     
     //   Small abduction (15 deg --> 15.5)
     #if SmallAbductionOn == 1
@@ -162,27 +152,18 @@ Main = {
     
     // Full abduction (15 deg --> 120deg)
     #else
-    // For testing
     nStep = DesignVar(70);
-    // Lauranne
-//                nStep = 60;
-
     #endif
     
-    
-////    Type de recrutement musculaire
+    // Type de recrutement musculaire
     InverseDynamics.Criterion.Type= MuscleRecruitmentType;
     
-    //    Mesure of abduction angle (GH angle mesure is xzy)
+    // Mesure of abduction angle (GH angle mesure is xzy)
     AnyVar rot = Main.HumanModel.BodyModel.Interface.Right.GlenohumeralAbduction.Pos[0]; // Total Abduction angle [rad]
     AnyVar rotD= rot*180/pi; // Total Abduction angle [deg]
-
     
-
-    
-    
-    // Creares the output file name
-    // Check that file does not exist, otherwise makes a sequenced file (i.e. NameFile_#filenumber.txt)
+    // Creates the .txt output file name
+    // Check that file does not exist, otherwise makes a new file with a number at the end of its name (i.e. NameFile_#filenumber.txt)
     #include "Output/Output_CheckName.any"
     AnyString OutputFileName = get_filename({ANYBODY_PATH_OUTPUT + m_ResultFolder + m_ResultFile},{"txt"});
     
@@ -196,7 +177,6 @@ Main = {
     #endif
     #endif
     
-    //    MuscleEliminationTol = 1e-6;
   }; // End of study
   
 }; //Main
