@@ -52,39 +52,6 @@ MuscleDictionary = {"Triceps long head": ["Triceps_LH", "_", [1, 2]],
                     "Coracobrachialis": ["coracobrachialis", "_", [1, 6]]
                     }
 
-MuscleDictionary_MyDeltoideusWrapping = {"Deltoideus lateral": ["My_deltoideus_lateral", "_part_", [1, 4]],
-                                         "Deltoideus posterior": ["My_deltoideus_posterior", "_part_", [1, 4]],
-                                         "Deltoideus anterior": ["deltoideus_anterior", "_part_", [1, 4]],
-                                         "Supraspinatus": ["supraspinatus", "_", [1, 6]],
-                                         "Infraspinatus": ["infraspinatus", "_", [1, 6]],
-                                         "Serratus anterior": ["serratus_anterior", "_", [1, 6]],
-                                         "Lower trapezius": ["trapezius_scapular", "_part_", [1, 3]],
-                                         "Middle trapezius": ["trapezius_scapular", "_part_", [4, 6]],
-                                         "Upper trapezius": ["trapezius_clavicular", "_part_", [1, 6]],
-                                         "Biceps brachii long head": ["biceps_brachii_caput_longum", "", []],
-                                         "Biceps brachii short head": ["biceps_brachii_caput_breve", "", []],
-                                         "Pectoralis minor": ["pectoralis_minor", "_", [1, 4]],
-                                         "Pectoralis major clavicular": ["pectoralis_major_clavicular", "_part_", [1, 5]],
-                                         "Pectoralis major sternal": ["pectoralis_major_thoracic", "_part_", [1, 10]],
-
-                                         "Pectoralis major": [["pectoralis_major_thoracic", "_part_", [1, 10]],
-                                                              ["pectoralis_major_clavicular", "_part_", [1, 5]]
-                                                              ],
-
-                                         "Latissimus dorsi": ["latissimus_dorsi", "_", [1, 11]],
-                                         "Triceps long head": ["Triceps_LH", "_", [1, 2]],
-                                         "Subscapularis": ["subscapularis", "_", [1, 6]],
-                                         "Upper Subscapularis": ["subscapularis", "_", [1, 2]],
-                                         "Downward Subscapularis": ["subscapularis", "_", [3, 6]],
-                                         "Teres minor": ["teres_minor", "_", [1, 6]],
-                                         "Teres major": ["teres_major", "_", [1, 6]],
-                                         "Rhomboideus": ["rhomboideus", "_", [1, 3]],
-                                         "Levator scapulae": ["levator_scapulae", "_", [1, 4]],
-                                         "Sternocleidomastoid clavicular": ["Sternocleidomastoid_caput_clavicular", "", []],
-                                         "Sternocleidomastoid sternum": ["Sternocleidomastoid_caput_Sternum", "", []],
-                                         "Coracobrachialis": ["coracobrachialis", "_", [1, 6]]
-                                         }
-
 MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Muscle force [N]"},
                             # "Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Muscle force [N]"},
                             "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
@@ -244,8 +211,6 @@ FDK_Variables = define_variables_to_load(FDK_VariableDictionary, MuscleDictionar
 
 FDK_Variables_NoMomentArm = define_variables_to_load(FDK_VariableDictionary, MuscleDictionary, MuscleVariableDictionary_NoMomentArm)
 
-FDK_Variables_MyDeltoideusWrapping = define_variables_to_load(FDK_VariableDictionary, MuscleDictionary_MyDeltoideusWrapping, MuscleVariableDictionary, FDK_ConstantsDictionary)
-
 BallAndSocket_Variables = define_variables_to_load(BallAndSocket_VariableDictionary, MuscleDictionary, MuscleVariableDictionary_NoMomentArm, BallAndSocket_ConstantsDictionary)
 
 # %% Nom des cas de simulation
@@ -310,44 +275,29 @@ SaveSimulationsDirectory = "Saved Simulations"
 # aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
 
 """
-Abduction 25 cas
-sans scaling du deltoide postérieur
+Élévation no recentrage
 """
-# no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
-# date = "30-10-"
-# Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
-# Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
+
+# Elevation_dir = "../SaveData/Elevation_no_recentrage"
+# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+
+# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
 
 # # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
 
-"""Abduction 25 cas
-Avec force de recentrage constante
-"""
-# no_recentrage_dir = "../SaveData/Macro_Results_no_recentrage"
-# date = "04-01-"
-# Files = [date + CaseName + description + "-MR_Polynomial-no-recentrage" for CaseName in CaseNames_5]
+"""Elevation no recentrage minmaxstrict"""
 
-# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = load_simulation_cases(no_recentrage_dir, Files, CaseNames_5, FDK_Variables)
+# Elevation_minmax_dir = "../SaveData/Elevation_no_recentrage_MinMaxStrict"
+# Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-Elevation-no-recentrage" for CaseName in CaseNames_5]
+
+# Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage = load_simulation_cases(Elevation_minmax_dir, Files, CaseNames_5, FDK_Variables)
 
 # # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage")
-
-"""
-Results and polynomial recruitment
-Without new wrapping with xshorts
-with 25 cases
-"""
-
-# date = "06-10-"
-# Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in CaseNames_5]
-
-# Results_GlenoidLocalAxis_MR_Polynomial_delt_post_scaling = load_simulation_cases(SaveDataDir, Files, CaseNames_5, FDK_Variables_NoMomentArm)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_delt_post_scaling, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_delt_post_scaling")
+# save_results_to_file(Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
 
 
+# %% Long range
 """
 Results and polynomial recruitment
 Without new wrapping with xshorts
@@ -355,33 +305,32 @@ normal cases with 180 abduction
 
 WITHOUT MOMENT ARM
 """
-Macros_results_dir = r"../SaveData/Macro_Results"
-Macros_results_dir2 = r"../SaveData/Macro_80step_180deg"
-date = "06-10-"
+# Macros_results_dir2 = r"../SaveData/Macro_80step_180deg"
+# date = "06-10-"
 
-# First failed step (lose contact or FDK error over 0.001)
-Failed_180_Simulation = [51, 50, 50, 49, 48,
-                         53, 53, 52, 51, 50,
-                         56, 55, 54, 52, 52,
-                         False, 65, 57, 55, 54,
-                         False, False, 58, 57, 57
-                         ]
+# # First failed step (lose contact or FDK error over 0.001)
+# Failed_180_Simulation = [51, 50, 50, 49, 48,
+#                          53, 53, 52, 51, 50,
+#                          56, 55, 54, 52, 52,
+#                          False, 65, 57, 55, 54,
+#                          False, False, 58, 57, 57
+#                          ]
 
-# En prenant en compte aussi conflit avec acromion (juste la pointe, pas en-dessous)
-Failed_180_Acromion = [51, 50, 50, 49, 48,
-                       53, 53, 52, 51, 50,
-                       56, 55, 54, 52, 52,
-                       60, 57, 55, 53, 52,
-                       54, 58, 51, 50, 50
-                       ]
+# # En prenant en compte aussi conflit avec acromion (juste la pointe, pas en-dessous)
+# Failed_180_Acromion = [51, 50, 50, 49, 48,
+#                        53, 53, 52, 51, 50,
+#                        56, 55, 54, 52, 52,
+#                        60, 57, 55, 53, 52,
+#                        54, 58, 51, 50, 50
+#                        ]
 
-# Avec premier contact avec acromion
-Failed_180 = [51, 50, 50, 49, 48,
-              53, 53, 52, 51, 50,
-              56, 55, 54, 52, 52,
-              36, 34, 31, 28, 27,
-              29, 26, 24, 21, 13
-              ]
+# # Avec premier contact avec acromion
+# Failed_180 = [51, 50, 50, 49, 48,
+#               53, 53, 52, 51, 50,
+#               56, 55, 54, 52, 52,
+#               36, 34, 31, 28, 27,
+#               29, 26, 24, 21, 13
+#               ]
 
 # # Avec premier contact avec acromion
 # Files = [date + CaseName + description + "-MR_Polynomial-180deg" for CaseName in CaseNames_5]
@@ -398,78 +347,6 @@ En ne prenant pas en compte conflit avec acromion
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange")
 
-"""
-Élévation
-"""
-
-# Elevation_dir = "../SaveData/No_delt_post_scaling_Elevation"
-# Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling-Elevation" for CaseName in CaseNames_5]
-
-# Results_GlenoidLocalAxis_MR_Polynomial_Elevation = load_simulation_cases(Elevation_dir, Files, CaseNames_5, FDK_Variables_NoMomentArm)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation")
-
-"""
-Élévation no recentrage
-"""
-
-Elevation_dir = "../SaveData/Elevation_no_recentrage"
-Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
-
-Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
-
-# Sauvegarde de la simulation en .pkl
-save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
-
-"""Elevation no recentrage minmaxstrict"""
-
-# Elevation_minmax_dir = "../SaveData/Elevation_no_recentrage_MinMaxStrict"
-# Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-Elevation-no-recentrage" for CaseName in CaseNames_5]
-
-# Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage = load_simulation_cases(Elevation_minmax_dir, Files, CaseNames_5, FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
-
-"""No recentrage small abduction"""
-# no_delt_post_scaling_dir = r"../SaveData/SmallAbduction_no_recentrage"
-# date = "30-10-"
-# Files = [date + CaseName + description + "-MR_Polynomial-SmallAbduction-no-delt-post-scaling-no-recentrage" for CaseName in CaseNames_5]
-# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage")
-
-"""Fixed Hill muscles parameters"""
-# no_delt_post_scaling_dir = r"../SaveData/Macro_Results_fixed_hill_param"
-# date = "30-10-"
-
-# Files = [date + CaseName + description + "-MR_Polynomial-hill-parameter-middle-normal" for CaseName in CaseNames_3]
-# Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_3, FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill")
-
-"""Better initialpos"""
-# initialpos_dir = "../SaveData/Better_initialpos"
-# date = "04-01-"
-# Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in CaseNames_5]
-# Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos = load_simulation_cases(initialpos_dir, Files, CaseNames_5, FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos")
-
-"""140 deg no recentrage"""
-# long_abduction_dir = "../SaveData/No_recentrage_140deg"
-# date = "04-01-"
-
-# Files = [date + CaseName + description + "-MR_Polynomial-140deg-no-recentrage" for CaseName in CaseNames_3]
-# Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage = load_simulation_cases(long_abduction_dir, Files, CaseNames_3, FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage")
-
 """Elevation minmax"""
 # minmax_dir = "../SaveData/MinMaxStrict"
 # Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-120deg-Elevation-no-recentrage" for CaseName in CaseNames_3]
@@ -478,41 +355,6 @@ save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentr
 
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
-
-# %% autres tests
-# """
-# Normal cases with different recruitment types
-# """
-
-# TypesFiles = ["08-09-middle-normal-GlenoidAxisTilt",
-#               "08-09-middle-normal-GlenoidAxisTilt-MR_Polynomial",
-#               ]
-
-# TypesCases = ["MR_QuadraticAux",
-#               "MR_Polynomial",
-#               ]
-
-# Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types = load_simulation_cases(SaveDataDir, TypesFiles, TypesCases, FDK_Variables)
-# Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types["MR_MinMaxStrict"] = load_simulation(SaveDataDir, "08-09-middle-normal-GlenoidAxisTilt-MR_MinMaxStrict", FDK_Variables, Failed=28)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_New_Wrapping_Rectruitment_types")
-
-# """
-# Results new AMMR
-# """
-# FDK_Files = ["20-09-middle-normal-GlenoidAxisTilt-MR_Polynomial-NEW-AMMR"]
-
-# Results_GlenoidLocalAxis_NewWrapping_NewAMMR = load_simulation_cases(SaveDataDir, FDK_Files, ["middle-normal"], FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_NewWrapping_NewAMMR, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_NewWrapping_NewAMMR")
-
-# """Bigger Range"""
-# Results_GlenoidLocalAxis_NewWrapping_FullRange = load_simulation_cases(SaveDataDir, ["08-09-middle-normal-GlenoidAxisTilt-MR_Polynomial-FullRange"], ["middle-normal"], FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_NewWrapping_FullRange, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_NewWrapping_FullRange")
 
 # %%                                                Résultats Ball and Socket
 """
@@ -551,18 +393,6 @@ Full range Ball And Socket
 # save_results_to_file(Results_BallAndSocket_FullRange, SaveSimulationsDirectory, "Results_BallAndSocket_FullRange")
 
 # """
-# New AMMR
-# """
-
-# BallAndSocket_Files = ["08-09-BallAndSocket-normal-NEW-AMMR"]
-
-# Results_BallAndSocket_NewAMMR = load_simulation_cases(SaveDataDir, BallAndSocket_Files, ["middle-normal"], BallAndSocket_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_BallAndSocket_NewAMMR, SaveSimulationsDirectory, "Results_BallAndSocket_NewAMMR")
-
-
-# """
 # Ball and socket avec full range
 # """
 # Results_BallAndSocket_FullRange = load_simulation_cases(SaveDataDir, ["08-09-BallAndSocket-normal-FullRange"], ["middle-normal"], BallAndSocket_Variables)
@@ -576,9 +406,6 @@ Full range Ball And Socket
 SaveVariablesDirectory = "Saved VariablesDictionary"
 
 save_results_to_file(FDK_Variables, SaveVariablesDirectory, "FDK_Variables")
-
-save_results_to_file(FDK_Variables_MyDeltoideusWrapping, SaveVariablesDirectory, "FDK_Variables_MyDeltoideusWrapping")
-
 
 # %% chargement new littérature depuis excel
 
