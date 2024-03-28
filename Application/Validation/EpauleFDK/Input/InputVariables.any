@@ -40,7 +40,6 @@ AnyFolder InputVariables = {
   #define StrengthFactor 1.0
   
   
-  
   /* --------------------------------------FDK PARAMETERS----------------------------------------
   CustomFDKOn : Off : laisse le modele de Lauranne
   CustomFDKOn : On : Met un modele FDK different
@@ -48,9 +47,9 @@ AnyFolder InputVariables = {
   */  
   
   #ifndef CustomFDKOn
-  #define CustomFDKOn CustomForce
+//  #define CustomFDKOn CustomForce
 //      #define CustomFDKOn Off
-//      #define CustomFDKOn On
+      #define CustomFDKOn On
   #endif
   
   /*--------------------------------------FDK ALGORITHM SETTINGS---------------------------------*/
@@ -95,15 +94,7 @@ AnyFolder InputVariables = {
   -25 deg : old value used without correction  (before 11-07-2023) 
   */
   
-  #define HumExternalRotation -21
-
-  
-  
-  /* Correction de la position de l'implant humerus pour qu'il soit vraiment au bord 
-  */
-  #define CorrectHumImplantPos 1
-  
-  
+  #define HumExternalRotation -21  
   
   /* ACTIVATION DU BRAS GAUCHE OU NON
   */
@@ -119,8 +110,8 @@ AnyFolder InputVariables = {
   //  #define ArmMovement Elevation
  
   #ifndef ArmMovement 
-  #define ArmMovement Abduction
-//  #define ArmMovement Elevation
+//  #define ArmMovement Abduction
+  #define ArmMovement Elevation
   #endif
   /*
   2 : Custom one (15-170deg)
@@ -187,22 +178,22 @@ AnyFolder InputVariables = {
   
   /* -------------------------------------------CSA_Tilt selection------------------------------------*/
   #ifndef CSA_Tilt
-  #define CSA_Tilt "xup"
+  #define CSA_Tilt "middle"
   #endif
   /*
   xdown
   down 
+  neutral
   middle
   up
   xup
-  
-  neutral
+
   */
   
   /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
   
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "xlong"
+  #define CSA_Acromion_Length "long"
   #endif
   /*
   xshort
@@ -230,17 +221,15 @@ AnyFolder InputVariables = {
   #if BallAndSocket == 0 
   
   #ifndef m_ResultFile
-  #define m_ResultFile "26-10-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial" + "-no-delt-post-scaling"
+  #define m_ResultFile "04-01-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial"
   #endif
   
   #else
   #ifndef m_ResultFile
-  #define m_ResultFile "26-10-BallAndSocket-" + CSA_Acromion_Length + "-MR_Polynomial"
+  #define m_ResultFile "04-01-BallAndSocket-" + CSA_Acromion_Length + "-MR_Polynomial"
   #endif
   
   #endif // if BallAndSocket == 0
-  
-  
   
   #ifndef m_ResultFolder
   #define m_ResultFolder "SaveData/Variation_CSA/"
@@ -252,8 +241,8 @@ AnyFolder InputVariables = {
 //  #define m_LoadFile "08-09-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial"
 
   #if BallAndSocket == 0
-  #define m_LoadFile "30-10-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial" + "-no-delt-post-scaling"
-  #define m_LoadFolder "SaveData/Macro_Results_no_delt_post_scaling/"
+  #define m_LoadFile "04-01-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial" + "-Elevation-no-recentrage" 
+  #define m_LoadFolder "SaveData/Elevation_no_recentrage/"
   
   // BallAndSocket activated
   #else 

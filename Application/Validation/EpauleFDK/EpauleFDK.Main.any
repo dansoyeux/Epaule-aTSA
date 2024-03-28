@@ -14,8 +14,6 @@ Main = {
   //Definition of the CSA variation cases (glenoid rotation and acromion length)
   #include "Model/CSAVariation.any"
   
-  
-  
   //Changes the deltoideus definition to add new wrapping cylinders
   #if NewDeltoidWrappingOn == 1
   #include "Model/MyDeltoidDefinition.any"
@@ -35,7 +33,7 @@ Main = {
   // Creates a modified version of the GHReaction forces of the AMMR
   // Changes the force to pull to have the same effect
 //  #if GHReactionsOn==1
-//  
+
 //  // Nodes are around a circle
 //  #if GHReactionsShape == Circle 
 //  #include "Model/MyGHReactions-Circle.any"
@@ -49,9 +47,6 @@ Main = {
 //  #endif // #if GHReactionsOn
   
   #endif // #if BallAndSocket
-  
-  
-//  #include "<ANYBODY_PATH_MODELUTILS>\Operations\RunAppSequence.any"
   
   #include "Model/BodyModelSettings.any"
   
@@ -90,6 +85,7 @@ Main = {
     
     AnyFolder ModelEnvironmentConnection = {
       #include "Model/JointsAndDrivers.any"
+      
       // Additional reactions which are required to run the inverse dynamics analysis with the pelvis-ground interface used
       #include "Model\Reactions.any"
       
@@ -112,7 +108,11 @@ Main = {
     AnyFolder &Seg = Model.BodyModel.Right.ShoulderArm.Seg;
     AnyFolder &Mus = Model.BodyModel.Right.ShoulderArm.Mus;
     
-    // Evaluates the arm muscles moment arms   
+    // File to create a video
+    #include "Output/MyCamera.any"
+    
+    
+    // Evaluates the arm muscles moment arms
     #include "Model/EvaluateAbductionMomentArm.any"
     
     // Script to save the muscle calibration into an .anyset file

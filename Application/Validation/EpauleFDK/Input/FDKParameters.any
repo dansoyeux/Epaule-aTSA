@@ -24,7 +24,7 @@ AnyFolder FDK ={
   #if CustomFDKOn == On
   
   //    From Lauranne's code   
-  AnyFloat k0 = -{-9,-4};   
+  AnyFloat k0 = -{-5.5, 0.5};   
   AnyFloat k1 = -7.787;  
   AnyFloat k2 = 4.391;
   AnyFloat k3 = 0 ;
@@ -53,7 +53,7 @@ AnyFolder FDK ={
   // Case "xdown-xshort"
   #if CSA_Case == "xdown-xshort"
   #if NewDeltoidWrappingOn == 0
-  AnyFloat k0 = -{-13,18.5};
+  AnyFloat k0 = -{-12.2,18.5};
   #endif
   
   #if NewDeltoidWrappingOn == 1
@@ -61,25 +61,25 @@ AnyFolder FDK ={
   #endif
   #endif // xdown-xshort
 
-   // Case "xdown-normal"
+   // Case "xdown-short"
   #if CSA_Case == "xdown-short"
-  AnyFloat k0 = -{-9,10};
+  AnyFloat k0 = -{-8.8,10};
   #endif
   
   // Case "xdown-normal"
   #if CSA_Case == "xdown-normal"
-  AnyFloat k0 = -{-4,0};
+  AnyFloat k0 = -{-4,0.2};
   #endif
 
     // Case "xdown-xlong"
   #if CSA_Case == "xdown-long"
-  AnyFloat k0 = -{2,-9.5};
+  AnyFloat k0 = -{1.8,-9.3};
   #endif
   
 
   // Case "xdown-xlong"
   #if CSA_Case == "xdown-xlong"
-  AnyFloat k0 = -{7,-16.5};
+  AnyFloat k0 = -{6.8,-16.3};
   #endif
   
 /*-------------------------------- DOWN --------------------------------*/
@@ -87,7 +87,7 @@ AnyFolder FDK ={
   // Case "down-xshort"
   #if CSA_Case == "down-xshort"
   #if NewDeltoidWrappingOn == 0
-  AnyFloat k0 = -{-17,19.5};
+  AnyFloat k0 = -{-16,19.5};
   #endif
   
   #if NewDeltoidWrappingOn == 1
@@ -105,7 +105,7 @@ AnyFolder FDK ={
   
   // Case "down-normal"
   #if CSA_Case == "down-normal"
-  AnyFloat k0 = -{-1,-4};
+  AnyFloat k0 = -{-5.5,-3.8};
   #endif
 
   // Case "down-long"
@@ -115,7 +115,7 @@ AnyFolder FDK ={
   
     // Case "down-xlong"
   #if CSA_Case == "down-xlong"
-  AnyFloat k0 = -{7,-22};
+  AnyFloat k0 = -{6.8,-21.8};
   #endif
   
 /*-------------------------------- MIDDLE --------------------------------*/
@@ -123,7 +123,7 @@ AnyFolder FDK ={
   // Case "middle-xshort"
   #if CSA_Case == "middle-xshort"
   #if NewDeltoidWrappingOn == 0
-  AnyFloat k0 = -{-23,28};
+  AnyFloat k0 = -{-22.2,27.2};
   #endif
   
   //  (-14, -1) pour wrapping avec ghProth
@@ -136,13 +136,13 @@ AnyFolder FDK ={
 
   // Case "middle-short"
   #if CSA_Case == "middle-short"
-  AnyFloat k0 = -{-18,16};
+  AnyFloat k0 = -{-18,15};
   #endif
   
   
   // Case "middle-normal"
   #if CSA_Case == "middle-normal"
-  AnyFloat k0 = -{-9,-4};
+  AnyFloat k0 = -{-9,-4.4};
   #endif
   
   
@@ -157,7 +157,7 @@ AnyFolder FDK ={
   
   // Case "middle-xlong"
   #if CSA_Case == "middle-xlong"
-  AnyFloat k0 = -{6,-27.5};
+  AnyFloat k0 = -{6.3,-27.5};
   #endif 
 
 /*-------------------------------- UP --------------------------------*/
@@ -166,7 +166,7 @@ AnyFolder FDK ={
   #if CSA_Case == "up-xshort"
   
   #if NewDeltoidWrappingOn == 0
-  AnyFloat k0 = -{-27,34};
+  AnyFloat k0 = -{-26,32.5};
   #endif
   
   #if NewDeltoidWrappingOn == 1
@@ -177,13 +177,13 @@ AnyFolder FDK ={
   
   // Case "up-short"
   #if CSA_Case == "up-short"
-  AnyFloat k0 = -{-23.5,22};
+  AnyFloat k0 = -{-23.2,21};
   #endif
 
   
   // Case "up-normal"
   #if CSA_Case == "up-normal"
-  AnyFloat k0 = -{-15,1};
+  AnyFloat k0 = -{-15,0.5};
   #endif
 
   // Case "up-long"
@@ -193,7 +193,7 @@ AnyFolder FDK ={
 
   // Case "up-xlong"
   #if CSA_Case == "up-xlong"
-  AnyFloat k0 = -{7,-33};
+  AnyFloat k0 = -{6.7,-33};
   #endif
 
 /*-------------------------------- XUP --------------------------------*/
@@ -203,7 +203,7 @@ AnyFolder FDK ={
   
   // Force pour wrapping = ellipsoides
   #if NewDeltoidWrappingOn == 0
-  AnyFloat k0 = -{-28,34.5};
+  AnyFloat k0 = -{-27.5,32.5};
   #endif
 
   
@@ -217,23 +217,23 @@ AnyFolder FDK ={
   
   // Case "xup-short"
   #if CSA_Case == "xup-short"
-  AnyFloat k0 = -{-26,23};
+  AnyFloat k0 = -{-25,21.5};
   #endif
   
   
   // Case "xup-normal"
   #if CSA_Case == "xup-normal"
-  AnyFloat k0 = -{-22,4};
+  AnyFloat k0 = -{-19.5,3};
   #endif
 
   // Case "xup-long"
   #if CSA_Case == "xup-long"
-  AnyFloat k0 = -{-5,-27};
+  AnyFloat k0 = -{-5,-26.8};
   #endif 
   
   // Case "xup-xlong"
   #if CSA_Case == "xup-xlong"
-  AnyFloat k0 = -{7,-38};
+  AnyFloat k0 = -{6.8,-38};
   #endif 
   
 

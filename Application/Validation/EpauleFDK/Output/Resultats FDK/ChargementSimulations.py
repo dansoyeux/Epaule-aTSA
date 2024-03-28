@@ -85,111 +85,138 @@ MuscleDictionary_MyDeltoideusWrapping = {"Deltoideus lateral": ["My_deltoideus_l
                                          "Coracobrachialis": ["coracobrachialis", "_", [1, 6]]
                                          }
 
-MuscleVariableDictionary = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Force musculaire [Newton]"},
-                            "Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Force musculaire totale [Newton]"},
-                            "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Activité Musculaire [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
+MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Muscle force [N]"},
+                            # "Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Muscle force [N]"},
+                            "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
-                            "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Force Musculaire à l'origine du muscle [N]", "select_matrix_line": 0,
-                                         "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                         "combine_muscle_part_operations": ["total", "mean"]},
+                            # Dans repère scapula
+                            # "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
+                            #              "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #              "combine_muscle_part_operations": ["total", "mean"]},
 
-                            "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction de la force musculaire à l'origine du muscle [N]", "select_matrix_line": 0,
-                                                   "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                   "combine_muscle_part_operations": ["mean"], "vect_dir": True},
+                            # "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the insertion [N]", "select_muscle_RefFrame_output": "insertion",
+                            #                 "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #                 "combine_muscle_part_operations": ["total", "mean"]
+                            #                 },
 
-                            "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Force Musculaire à l'insertion du muscle [N]", "select_muscle_RefFrame_output": "insertion",
-                                            "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                            "combine_muscle_part_operations": ["total", "mean"]
-                                            },
-                            "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction de la force musculaire à l'origine du muscle [N]", "select_muscle_RefFrame_output": "insertion",
-                                                      "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                      "combine_muscle_part_operations": ["mean"], "vect_dir": True},
+                            # "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
+                            #               "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #               "combine_muscle_part_operations": ["total", "mean"]},
 
-                            "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Bras de levier du muscle [mm]",
+                            # "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the insertion [N]", "select_muscle_RefFrame_output": "insertion",
+                            #                 "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #                 "combine_muscle_part_operations": ["total", "mean"]
+                            #                 },
+
+
+                            # "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
+                            #                         "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #                         "combine_muscle_part_operations": ["mean"], "vect_dir": True},
+
+                            # "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
+                            #                           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #                           "combine_muscle_part_operations": ["mean"], "vect_dir": True},
+
+                            "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Lever arm [mm]",
                                           "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
                             }
 
-MuscleVariableDictionary_NoMomentArm = {"Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Force musculaire [Newton]"},
-                                        "Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Force musculaire totale [Newton]"},
-                                        "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Activité Musculaire [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
+MuscleVariableDictionary_NoMomentArm = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Muscle force [N]"},
+                                        # "Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Muscle force [N]"},
+                                        # "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
-                                        "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Force Musculaire à l'origine du muscle [N]", "select_muscle_RefFrame_output": "origin",
-                                                     "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                     "combine_muscle_part_operations": ["total", "mean"]},
+                                        # "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
+                                        #              "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                        #              "combine_muscle_part_operations": ["total", "mean"]},
 
-                                        "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Force Musculaire à l'insertion du muscle [N]", "select_muscle_RefFrame_output": "insertion",
-                                                        "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                        "combine_muscle_part_operations": ["total", "mean"]
-                                                        },
+                                        # "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
+                                        #                        "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                        #                        "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
-                                        "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction de la force musculaire à l'origine du muscle [N]", "select_matrix_line": 0,
-                                                               "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                               "combine_muscle_part_operations": ["mean"], "vect_dir": True},
-
-                                        "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction de la force musculaire à l'origine du muscle [N]", "select_muscle_RefFrame_output": "insertion",
-                                                                  "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                                  "combine_muscle_part_operations": ["mean"], "vect_dir": True},
+                                        # "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the insertion [N]", "select_muscle_RefFrame_output": "insertion",
+                                        #                 "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                        #                 "combine_muscle_part_operations": ["total", "mean"]
+                                        #                 },
+                                        # "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
+                                        #                           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                        #                           "combine_muscle_part_operations": ["mean"], "vect_dir": True}
 
                                         }
 
 # Variables
 FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.InterfaceFolder.ScapulaHumerus.Elevation.Pos",
-                                        "VariableDescription": "Angle d'élévation dans le plan de la scapula [°]", "MultiplyFactor": 180 / np.pi},
-                          "Abduction": {"VariablePath": "Output.rotD", "VariableDescription": "Angle d'abduction [°]"},
+                                        "VariableDescription": "Elevation angle in the scapular plane [°]", "MultiplyFactor": 180 / np.pi},
 
-                          "Temps": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Temps [s]"},
+                          "Abduction": {"VariablePath": "Output.rotD", "VariableDescription": "Abduction angle [°]"},
 
-                          # "ContactArea": {"VariablePath": "Output.Jnt.ProtheseContact.ContactArea", "VariableDescription": "Surface de contact [cm^2]", "MultiplyFactor": 10000},
+                          # "Temps": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Time [s]"},
 
-                          "GHLin ISB": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Déplacement Linéaire (ISB) de l'humérus par rapport au centre de l'implant [mm]", "MultiplyFactor": 1000,
+                          "ContactArea": {"VariablePath": "Output.Jnt.ProtheseContact.ContactArea", "VariableDescription": "Contact area [cm^2]", "MultiplyFactor": 10000},
+
+                          "GHLin ISB": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Linear displacement (ISB) of the humerus [mm]", "MultiplyFactor": 1000,
                                         "SequenceComposantes": ["AP", "IS", "ML"]},
 
-                          "GHLin": {"VariablePath": "Output.Jnt.GHLin.Pos", "VariableDescription": "Déplacement Linéaire de l'humérus par rapport au centre de l'implant [mm]", "MultiplyFactor": 1000,
-                                    "SequenceComposantes": ["AP", "IS", "ML"]},
-
-                          "GHLin Absolute": {"VariablePath": "Output.Jnt.GHLin_Absolute.Pos", "VariableDescription": "Déplacement Linéaire (ISB) de l'humérus par rapport au centre de l'implant [mm]", "MultiplyFactor": 1000,
+                          "GHLin Absolute": {"VariablePath": "Output.Jnt.GHLin_Absolute.Pos", "VariableDescription": "Absolute Linear displacement of the humerus [mm]", "MultiplyFactor": 1000,
                                              "SequenceComposantes": ["ML", "IS", "AP"], "Composantes_Inverse_Direction": [False, False, True]},
 
-                          "GHLin ISB Relative": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Déplacement Linéaire (ISB) de l'humérus par rapport au centre de l'implant [mm]", "MultiplyFactor": 1000,
+                          "GHLin Absolute zero": {"VariablePath": "Output.Jnt.GHLin_Absolute.Pos", "VariableDescription": "Absolute Linear displacement of the humerus [mm]", "MultiplyFactor": 1000,
+                                                  "SequenceComposantes": ["ML", "IS", "AP"], "Composantes_Inverse_Direction": [False, False, True], "offset": [0, 0, 0]},
+
+                          # "GHLin": {"VariablePath": "Output.Jnt.GHLin.Pos", "VariableDescription": "Linear displacement of the humerus [mm]", "MultiplyFactor": 1000,
+                          #           "SequenceComposantes": ["AP", "IS", "ML"]},
+
+
+                          "GHLin ISB Relative": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Relative linear displacement (ISB) of the humerus [mm]", "MultiplyFactor": 1000,
                                                  "SequenceComposantes": ["AP", "IS", "ML"], "offset": [0, 0, 0]},
 
-                          "COP": {"VariablePath": "Output.FileOut.COPlocalImplant", "VariableDescription": "Position du centre de pression", "MultiplyFactor": 1000,
+                          "COP": {"VariablePath": "Output.FileOut.COPlocalImplant", "VariableDescription": "Center of Pressure [mm]", "MultiplyFactor": 1000,
                                   "SequenceComposantes": ["AP", "IS", "ML"]},
 
                           # Dans le repère de l'humérus ISB (pour comparaison avec bergmann)
-                          "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Force de contact sur l'humérus dans le repère de l'humérus [Newton]",
+                          "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Contact force on the humeral implant [N]",
                                            "SequenceComposantes": ["AP", "IS", "ML"]},
 
+                          # Force sur l'humérus Dans le repère de l'implant glene (humerus = master)
+                          "ForceContact HumImplant glene": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Contact force on the humeral implant [N]",
+                                                            "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True},
+
                           # Force sur la scapula Dans le repère de la scapula ISB (scapula = slave)
-                          "ForceContact scapula": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Force de contact sur la scapula dans le repère de la scapula [Newton]",
+                          "ForceContact scapula": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Contact force on the scapula [N]",
                                                    "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
+
+                          # Force sur la scapula Dans le repère de l'implant (scapula = slave)
+                          "ForceContact GlenImplant": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Contact force on the glenoid implant [N]",
+                                                       "SequenceComposantes": ["AP", "IS", "ML"], "Composantes_Inverse_Direction": [False, False, True], "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True},
 
                           # Force sur l'humerus Dans le repère de la scapula ISB (humerus = master)
-                          "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Force de contact sur l'humérus dans le repère de la scapula [Newton]",
+                          "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Contact force on the humeral implant [N]",
                                                    "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
 
-                          "ForceTolError": {"VariablePath": "Output.ForceDepKinError.Val", "VariableDescription": "Erreure de force FDK [Newton]"},
+                          "ForceTolError": {"VariablePath": "Output.ForceDepKinError.Val", "VariableDescription": "FDK force error [N]"},
 
 
                           # Dans le repère ISB de la scapula (inverser la force car appliquée dans sens inverse for some reason)
-                          "SpringForce scapula": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Force de ressort sur la scapula [Newton]", "SequenceComposantes": ["AP", "IS", "ML"],
+                          "SpringForce scapula": {"VariablePath": "Output.Jnt.SpringForce.F", "VariableDescription": "Spring force on the scapula [N]", "SequenceComposantes": ["AP", "IS", "ML"],
                                                   "Composantes_Inverse_Direction": [True, True, True]},
 
                           # Dans le repère ISB de la scapula (for some reason GHLin a premiere ref frame = scapula mais force appliquée sur humérus avec le bon signe)
-                          "SpringForce humerus": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Force de ressort sur l'humérus [Newton]", "SequenceComposantes": ["AP", "IS", "ML"]},
+                          "SpringForce humerus": {"VariablePath": "Output.Jnt.SpringForce.F", "VariableDescription": "Spring force on the l'humérus [N]", "SequenceComposantes": ["AP", "IS", "ML"]},
 
-                          "Scapula position": {"VariablePath": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.r", "VariableDescription": "Déplacement Linéaire de la scapula [mm]", "MultiplyFactor": 1000,
-                                               "SequenceComposantes": ["AP", "IS", "ML"]},
+                          # Dans repère scapula
+                          # # Dans le repère ISB de la scapula (inverser la force car appliquée dans sens inverse for some reason)
+                          # "SpringForce scapula": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Spring force on the scapula [N]", "SequenceComposantes": ["AP", "IS", "ML"],
+                          #                         "Composantes_Inverse_Direction": [True, True, True]},
 
-                          "Scapula position2": {"VariablePath": "Output.Seg.Scapula.I_rhomboideus_1.r", "VariableDescription": "Déplacement Linéaire de la scapula (insertion rhomboide) [mm]", "MultiplyFactor": 1000,
-                                                "SequenceComposantes": ["AP", "IS", "ML"]}
+                          # # Dans le repère ISB de la scapula (for some reason GHLin a premiere ref frame = scapula mais force appliquée sur humérus avec le bon signe)
+                          # "SpringForce humerus": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Spring force on the l'humérus [N]", "SequenceComposantes": ["AP", "IS", "ML"]},
+
 
                           }
 
 
-BallAndSocket_VariableDictionary = {"Abduction": {"VariablePath": "Output.rotD", "VariableDescription": "Angle d'abduction [°]"},
+BallAndSocket_VariableDictionary = {"Abduction": {"VariablePath": "Output.rotD", "VariableDescription": "Abduction angle [°]"},
                                     "Elevation": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.InterfaceFolder.ScapulaHumerus.Elevation.Pos",
-                                                  "VariableDescription": "Angle d'élévation dans le plan de la scapula [°]", "MultiplyFactor": 180 / np.pi}
+                                                  "VariableDescription": "Elevation angle in the scapular plane [°]", "MultiplyFactor": 180 / np.pi}
                                     }
 
 # Constantes
@@ -219,26 +246,9 @@ FDK_Variables_NoMomentArm = define_variables_to_load(FDK_VariableDictionary, Mus
 
 FDK_Variables_MyDeltoideusWrapping = define_variables_to_load(FDK_VariableDictionary, MuscleDictionary_MyDeltoideusWrapping, MuscleVariableDictionary, FDK_ConstantsDictionary)
 
-BallAndSocket_Variables = define_variables_to_load(BallAndSocket_VariableDictionary, MuscleDictionary, MuscleVariableDictionary, BallAndSocket_ConstantsDictionary)
+BallAndSocket_Variables = define_variables_to_load(BallAndSocket_VariableDictionary, MuscleDictionary, MuscleVariableDictionary_NoMomentArm, BallAndSocket_ConstantsDictionary)
 
 # %% Nom des cas de simulation
-
-OldCaseNames = ["middle-normal", "middle-long",
-                "up-normal", "up-short",
-                "down-long"]
-
-# Tilt acromion
-xUpCases = ["xup-xshort", "xup-normal"]
-MiddleCases = ["middle-xshort", "middle-normal", "middle-xlong"]
-DownCases = ["xdown-normal", "xdown-xlong"]
-
-# Longueur d'acromion
-ShortCases = ["middle-xshort", "xup-xshort"]
-NormalCases = ["middle-normal", "xup-normal", "xdown-normal"]
-LongCases = ["xmiddle-xlong", "xdown-xlong"]
-
-CaseNames = [*MiddleCases, *xUpCases, *DownCases]
-UpDownCases = [*xUpCases, *DownCases]
 
 CSA_20_Cases = ["middle-xshort", "xdown-normal"]
 CSA_30_Cases = ["middle-normal", "xup-xshort", "xdown-xlong"]
@@ -258,22 +268,25 @@ CSA_50_Cases = ["xup-xlong"]
 # More cases
 xDownCases_5 = ["xdown-xshort", "xdown-short", "xdown-normal", "xdown-long", "xdown-xlong"]
 DownCases_5 = ["down-xshort", "down-short", "down-normal", "down-long", "down-xlong"]
+NeutralCases_5 = ["neutral-xshort", "neutral-short", "neutral-normal", "neutral-long", "neutral-xlong"]
 MiddleCases_5 = ["middle-xshort", "middle-short", "middle-normal", "middle-long", "middle-xlong"]
 UpCases_5 = ["up-xshort", "up-short", "up-normal", "up-long", "up-xlong"]
 xUpCases_5 = ["xup-xshort", "xup-short", "xup-normal", "xup-long", "xup-xlong"]
 
-xShortCases_5 = ["xdown-xshort", "down-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
-ShortCases_5 = ["xdown-short", "down-short", "middle-short", "up-short", "xup-short"]
-NormalCases_5 = ["xdown-normal", "down-normal", "middle-normal", "up-normal", "xup-normal"]
-LongCases_5 = ["xdown-long", "down-long", "middle-long", "up-long", "xup-long"]
-xLongCases_5 = ["xdown-xlong", "down-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
+xShortCases_5 = ["xdown-xshort", "down-xshort", "neutral-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
+ShortCases_5 = ["xdown-short", "down-short", "neutral-short", "middle-short", "up-short", "xup-short"]
+NormalCases_5 = ["xdown-normal", "down-normal", "neutral-normal", "middle-normal", "up-normal", "xup-normal"]
+LongCases_5 = ["xdown-long", "down-long", "neutral-long", "middle-long", "up-long", "xup-long"]
+xLongCases_5 = ["xdown-xlong", "down-xlong", "neutral-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
 
 CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
+CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
 # Tilt acromion
 xUpCases_3 = ["xup-xshort", "xup-normal", "xup-xlong"]
 UpCases_3 = ["up-xshort", "up-normal", "up-xlong"]
 MiddleCases_3 = ["middle-xshort", "middle-normal", "middle-xlong"]
+NeutralCases_3 = ["neutral-xshort", "neutral-normal", "neutral-xlong"]
 DownCases_3 = ["down-xshort", "down-normal", "down-xlong"]
 xDownCases_3 = ["xdown-xshort", "xdown-normal", "xdown-xlong"]
 
@@ -290,7 +303,7 @@ description = "-GlenoidAxisTilt"
 # Chemin d'accès au dossier dans lequel les fichiers doivent être sauvegardés
 SaveSimulationsDirectory = "Saved Simulations"
 
-# # Pour tests
+"""Pour tests"""
 # date = "06-10-"
 # Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
 
@@ -300,13 +313,25 @@ SaveSimulationsDirectory = "Saved Simulations"
 Abduction 25 cas
 sans scaling du deltoide postérieur
 """
-no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
-date = "30-10-"
-Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
-Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
+# no_delt_post_scaling_dir = "../SaveData/Macro_Results_no_delt_post_scaling"
+# date = "30-10-"
+# Files = [date + CaseName + description + "-MR_Polynomial-no-delt-post-scaling" for CaseName in CaseNames_5]
+# Results_GlenoidLocalAxis_MR_Polynomial = load_simulation_cases(no_delt_post_scaling_dir, Files, CaseNames_5, FDK_Variables)
 
-# Sauvegarde de la simulation en .pkl
-save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial")
+
+"""Abduction 25 cas
+Avec force de recentrage constante
+"""
+# no_recentrage_dir = "../SaveData/Macro_Results_no_recentrage"
+# date = "04-01-"
+# Files = [date + CaseName + description + "-MR_Polynomial-no-recentrage" for CaseName in CaseNames_5]
+
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = load_simulation_cases(no_recentrage_dir, Files, CaseNames_5, FDK_Variables)
+
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage")
 
 """
 Results and polynomial recruitment
@@ -385,6 +410,27 @@ En ne prenant pas en compte conflit avec acromion
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation")
 
+"""
+Élévation no recentrage
+"""
+
+Elevation_dir = "../SaveData/Elevation_no_recentrage"
+Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
+
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+
+"""Elevation no recentrage minmaxstrict"""
+
+# Elevation_minmax_dir = "../SaveData/Elevation_no_recentrage_MinMaxStrict"
+# Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-Elevation-no-recentrage" for CaseName in CaseNames_5]
+
+# Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage = load_simulation_cases(Elevation_minmax_dir, Files, CaseNames_5, FDK_Variables)
+
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
 
 """No recentrage small abduction"""
 # no_delt_post_scaling_dir = r"../SaveData/SmallAbduction_no_recentrage"
@@ -405,6 +451,33 @@ En ne prenant pas en compte conflit avec acromion
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill")
 
+"""Better initialpos"""
+# initialpos_dir = "../SaveData/Better_initialpos"
+# date = "04-01-"
+# Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in CaseNames_5]
+# Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos = load_simulation_cases(initialpos_dir, Files, CaseNames_5, FDK_Variables)
+
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos")
+
+"""140 deg no recentrage"""
+# long_abduction_dir = "../SaveData/No_recentrage_140deg"
+# date = "04-01-"
+
+# Files = [date + CaseName + description + "-MR_Polynomial-140deg-no-recentrage" for CaseName in CaseNames_3]
+# Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage = load_simulation_cases(long_abduction_dir, Files, CaseNames_3, FDK_Variables)
+
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage")
+
+"""Elevation minmax"""
+# minmax_dir = "../SaveData/MinMaxStrict"
+# Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-120deg-Elevation-no-recentrage" for CaseName in CaseNames_3]
+
+# Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage = load_simulation_cases(minmax_dir, Files, CaseNames_3, FDK_Variables)
+
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
 
 # %% autres tests
 # """

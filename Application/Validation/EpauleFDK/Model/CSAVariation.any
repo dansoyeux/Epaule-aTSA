@@ -17,33 +17,17 @@
   CASE xdown-xlong   : CSA = 30 DEG : TILT -7.587 DEG DOWNWARD    AND  ACROMION EXTENDED (+16.95mm)
   */
   
-
 /* -------------------------------------------CSA_Tilt axis selection------------------------------------*/
 
 #if BallAndSocket == 0
 
-#if CSA_Tilt == "neutral"
+#if CSA_Tilt == "original"
 #define INPUTPOS "CeraverT351"
-
 #else
 
-// Global anteroposterior axis
-#if GlenoidTiltAxis==Global
-#define INPUTPOS "CeraverT351 - Glentilt " + CSA_Tilt
-#endif
-
-// Scapula anterioposterior axis
-#if GlenoidTiltAxis==Scapula
-#define INPUTPOS "CeraverT351 - Glentilt " + CSA_Tilt + " - AnteroTilt"
-#endif
-
-
 // Glene implant anteroporterior axis
-#if GlenoidTiltAxis==Glenoid
 #define INPUTPOS "CeraverT351 - Glentilt " + CSA_Tilt + " - Local AnteroTilt"
-#endif
-
-#endif //CSA_Tilt == "neutral"
+#endif //CSA_Tilt == "original"
 
 #endif // BallAndSocket == 0
 

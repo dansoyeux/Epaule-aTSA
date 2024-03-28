@@ -28,12 +28,25 @@ InputVar1={
     // HUMERAL IMPLANT POSITION/ORIENTATION
     // From HumerusBoneGeometryNode to the humeral head component Coordinate System (on 3d model)
     AnyFolder HumPosition = {
-      AnyVec3 Position = 0.001*{ -8.951911, 13.202171, -9.126247};
+      //without offset
+      
+      AnyVec3 Position = 0.001*{-9.9088 , 3.8738 , 0.293217};
       AnyMat33 Rotation = {
-        {-0.342238,	-0.540331,	-0.76871},
-        {-0.171743,	-0.768359,	0.616546},
-        {-0.923784,	0.343026,	0.170163}
+        {-0.198568 , -0.586 , -0.785604},
+        {-0.171743 , -0.768359 , 0.616546},
+        {-0.964922 , 0.257348 , 0.051929}
+        
       };
+      
+      
+      //original code with offset
+//      AnyVec3 Position = 0.001*{ -8.951911, 13.202171, -9.126247};
+//      AnyMat33 Rotation = {
+//        {-0.342238,	-0.540331,	-0.76871},
+//        {-0.171743,	-0.768359,	0.616546},
+//        {-0.923784,	0.343026,	0.170163}
+//      };
+
     };
     
     // GLENOID IMPLANT POSITION/ORIENTATION
@@ -82,10 +95,11 @@ InputVar1={
     
     // To have same position than Lauranne    
     #if HumExternalRotation == -21
-    AnyVar px = -.002 + 0.0005;     //AP : Anterieur = +   
-    AnyVar py = 0.003 - 0.004 ;     //IS : Superieur = +  
-    AnyVar pz = 0.001 - 0.0049;     //ML : Lateral = +
-    #endif
+    AnyVar px = -0.00144;     //AP : Anterieur = +   
+    AnyVar py = 0.00146;     //IS : Superieur = +  
+    AnyVar pz = -0.00173;     //ML : Lateral = +    
+
+#endif
     
   };
 };

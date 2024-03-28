@@ -217,6 +217,9 @@ Function that calculates the CSA based on the acromion Length offset in the x sc
 
 def AcromionOffset2CSA(AcromionOffset: float):
 
+    """
+    Acromion offset in millimeter
+    """
     # Get frontal transform node
     TransformFrontal = slicer.util.getNode("Glene - Rotation plan frontal")
 

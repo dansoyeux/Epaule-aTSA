@@ -77,6 +77,13 @@ SimulationsLineStyleDictionary = {
     "middle-long": {"color": "darkolivegreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
     "middle-xlong": {"color": "darkgreen", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
 
+    # glen neutral
+    "neutral-xshort": {"color": "lightgray", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": None},
+    "neutral-short": {"color": "lightgray", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2.5},
+    "neutral-normal": {"color": "grey", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "neutral-long": {"color": "black", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "neutral-xlong": {"color": "black", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+
     # Glen up
     "up-xshort": {"color": "yellow", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
     "up-short": {"color": "gold", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
@@ -101,11 +108,22 @@ SimulationsLineStyleDictionary = {
     # data de validation
     "Lauranne": {"color": 'hotpink'},
     "Marta": {"color": 'darkturquoise'},
-    "Dal Maso supérieur": {"color": "black", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
-    "Dal Maso inférieur": {"color": "grey", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
-    "Bergmann 2007": {"color": "black"},
-    "Bergmann_2007": {"color": "black"},
-    "Wickham": {"color": "darkorange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3}
+    "Dal Maso superior": {"color": "black", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
+    "Dal Maso inferior": {"color": "grey", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
+    "Bergmann 2007": {"color": "black", "marker": "+", "markersize": 8, "linestyle": "-", "linewidth": 0.3},
+    "Bergmann_2007": {"color": "black", "marker": "+", "markersize": 8, "linestyle": "-", "linewidth": 0.3},
+    "Wickham": {"color": "darkorange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
+
+    "CSA=12°": {"color": 'violet', "linestyle": "--"},
+    "CSA=16°": {"color": 'purple', "linestyle": "--"},
+    "CSA=20°": {"color": 'lightblue', "linestyle": "--"},
+    "CSA=25°": {"color": 'cornflowerblue', "linestyle": "--"},
+    "CSA=30°": {"color": 'greenyellow', "linestyle": "-"},
+    "CSA=35°": {"color": 'mediumseagreen', "linestyle": "-"},
+    "CSA=40°": {"color": 'orange', "linestyle": "-."},
+    "CSA=45°": {"color": 'red', "linestyle": "-."},
+    "CSA=50°": {"color": 'darkred', "linestyle": "-."}
+
 }
 
 SimulationsLineStyleDictionary_Small_abduction = {
@@ -156,53 +174,71 @@ SimulationsLineStyleDictionary_Small_abduction = {
     "Marta": {"color": 'darkturquoise'},
     "Dal Maso supérieur": {"color": "black", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
     "Dal Maso inférieur": {"color": "grey", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
-    "Bergmann 2007": {"color": "black"},
-    "Bergmann_2007": {"color": "black"},
+    "Bergmann 2007": {"color": "black", "marker": "o", "markersize": 8, "linestyle": "-", "linewidth": 0.3},
+    "Bergmann_2007": {"color": "black", "marker": "o", "markersize": 8, "linestyle": "-", "linewidth": 0.3},
     "Wickham": {"color": "darkorange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3}
 }
 
 
 SimulationDescriptionDictionary = {
     # Nom des cas de simulation
-    "xdown-xshort": "CSA = 12° : glene très basse      -  acromion très court",
-    "xdown-short": "CSA = 16° : glene très basse      -  acromion court",
-    "xdown-normal": "CSA = 20° : glene très basse      -  acromion normal",
-    "xdown-long": "CSA = 25° : glene très basse      -  acromion long",
-    "xdown-xlong": "CSA = 30° : glene très basse      -  acromion très long",
+    "xdown-xshort": "CSA = 12° : Large Downtilt      -  Very short acromion",
+    "xdown-short": "CSA = 16° : Large Downtilt      -  Short acromion",
+    "xdown-normal": "CSA = 20° : Large Downtilt      -  Normal acromion",
+    "xdown-long": "CSA = 25° : Large Downtilt      -   Long acromion",
+    "xdown-xlong": "CSA = 30° : Large Downtilt      -  Very long acromion",
 
-    "down-xshort": "CSA = 16° : Glene basse             -  Acromion très court",
-    "down-short": "CSA = 20° : Glene basse             -  Acromion court",
-    "down-normal": "CSA = 25° : Glene basse             -  Acromion normal",
-    "down-long": "CSA = 30° : Glene basse             -  Acromion long",
-    "down-xlong": "CSA = 35° : Glene basse             -  Acromion très long",
+    "down-xshort": "CSA = 16° : Downtilt             -  Very short acromion",
+    "down-short": "CSA = 20° : Downtilt             -  Short acromion",
+    "down-normal": "CSA = 25° : Downtilt             -  Normal acromion",
+    "down-long": "CSA = 30° : Downtilt             -   Long acromion",
+    "down-xlong": "CSA = 35° : Downtilt             -  Very long acromion",
 
-    "middle-xshort": "CSA = 20° : Glene normale         -  Acromion très court",
-    "middle-short": "CSA = 25° : Glene normale         -  Acromion court",
-    "middle-normal": "CSA = 30° : Glene normale         -  Acromion normal",
-    "middle-long": "CSA = 35° : Glene normale         -  Acromion long",
-    "middle-xlong": "CSA = 40° : Glene normale         -  Acromion très long",
+    "middle-xshort": "CSA = 20° : Normal tilt         -  Very short acromion",
+    "middle-short": "CSA = 25° : Normal tilt         -  Short acromion",
+    "middle-normal": "CSA = 30° : Normal tilt         -  Normal acromion",
+    "middle-long": "CSA = 35° : Normal tilt         -   Long acromion",
+    "middle-xlong": "CSA = 40° : Normal tilt         -  Very long acromion",
 
-    "up-xshort": "CSA = 25° : Glene haute             -  Acromion très court",
-    "up-short": "CSA = 30° : Glene haute             -  Acromion court",
-    "up-normal": "CSA = 35° : Glene haute             -  Acromion normal",
-    "up-long": "CSA = 40° : Glene haute             -  Acromion long",
-    "up-xlong": "CSA = 45° : Glene haute             -  Acromion très long",
+    "neutral-xshort": "CSA = 20° : Neutral tilt         -  Very short acromion",
+    "neutral-short": "CSA = 25° : Neutral tilt         -  Short acromion",
+    "neutral-normal": "CSA = 30° : Neutral tilt         -  Normal acromion",
+    "neutral-long": "CSA = 35° : Neutral tilt         -   Long acromion",
+    "neutral-xlong": "CSA = 40° : Neutral tilt         -  Very long acromion",
 
-    "xup-xshort": "CSA = 30° : Glene très haute      -  Acromion très court",
-    "xup-short": "CSA = 35° : Glene très haute      -  Acromion court",
-    "xup-normal": "CSA = 40° : Glene très haute      -  Acromion normal",
-    "xup-long": "CSA = 45° : Glene très haute      -  Acromion long",
-    "xup-xlong": "CSA = 50° : Glene très haute      -  Acromion très long",
+    "up-xshort": "CSA = 25° : Uptilt             -  Very short acromion",
+    "up-short": "CSA = 30° : Uptilt             -  Short acromion",
+    "up-normal": "CSA = 35° : Uptilt             -  Normal acromion",
+    "up-long": "CSA = 40° : Uptilt             -   Long acromion",
+    "up-xlong": "CSA = 45° : Uptilt             -  Very long acromion",
+
+    "xup-xshort": "CSA = 30° : Large uptilt      -  Very short acromion",
+    "xup-short": "CSA = 35° : Large uptilt      -  Short acromion",
+    "xup-normal": "CSA = 40° : Large uptilt      -  Normal acromion",
+    "xup-long": "CSA = 45° : Large uptilt      -   Long acromion",
+    "xup-xlong": "CSA = 50° : Large uptilt      -  Very long acromion",
 
     # Nom des composantes
-    "AP": "Axe antéropostérieur (Antérieur = +)",
-    "IS": "Axe inférosupérieur (Supérieur = +)",
-    "ML": "Axe médiolatéral (Latéral = +)",
+    "AP": "Axe antéropostérieur (Anterior = +)",
+    "IS": "Axe inférosupérieur (Superior = +)",
+    "ML": "Axe médiolatéral (Lateral = +)",
 
     # Nom des datas de validation
     "Wickham": "Wickham et al. 2010, n=24",
     "Bergmann_2007": "Bergmann et al. 2007",
-    "Bergmann 2007": "Bergmann et al. 2007"
+    "Bergmann_2011": "Bergmann et al. 2011",
+
+    # Description des CSA moyens
+    "CSA=12°": "CSA=12° (1 case)",
+    "CSA=16°": "CSA=16° (2 cases)",
+    "CSA=20°": "CSA=20° (3 cases)",
+    "CSA=25°": "CSA=25° (4 cases)",
+    "CSA=30°": "CSA=30° (5 cases)",
+    "CSA=35°": "CSA=35° (4 cases)",
+    "CSA=40°": "CSA=40° (3 cases)",
+    "CSA=45°": "CSA=45° (2 cases)",
+    "CSA=50°": "CSA=50° (1 case)"
+
 }
 
 # Fonctions pour définir les légendes et styles des graphiques en fonction des noms des simulations dans les dictionnaires
@@ -215,14 +251,12 @@ COP_contour = define_COP_contour("GleneContour", "pp")
 
 # %% Nom des cas de simulation
 
-OldCaseNames = ["middle-normal", "middle-long",
-                "up-normal", "up-short",
-                "down-long"]
 
 # Tilt acromion
 xUpCases_3 = ["xup-xshort", "xup-normal", "xup-xlong"]
 UpCases_3 = ["up-xshort", "up-normal", "up-xlong"]
 MiddleCases_3 = ["middle-xshort", "middle-normal", "middle-xlong"]
+NeutralCases_3 = ["neutral-xshort", "neutral-normal", "neutral-xlong"]
 DownCases_3 = ["down-xshort", "down-normal", "down-xlong"]
 xDownCases_3 = ["xdown-xshort", "xdown-normal", "xdown-xlong"]
 
@@ -234,24 +268,22 @@ NormalCases_3 = ["xdown-normal", "middle-normal", "xup-normal"]
 LongCases_3 = ["xdown-long", "middle-long", "xup-long"]
 xLongCases_3 = ["xdown-xlong", "middle-xlong", "xup-xlong"]
 
-CaseNames_3 = [*xDownCases_3, *MiddleCases_3, *xUpCases_3]
-UpDownCases_3 = [*xUpCases_3, *xDownCases_3]
+# Longueur d'acromion
+xShortCases_36 = ["xdown-xshort", "neutral-xshort", "up-xshort"]
+ShortCases_36 = ["xdown-short", "neutral-short", "up-short"]
+NormalCases_36 = ["xdown-normal", "neutral-normal", "up-normal"]
+LongCases_36 = ["xdown-long", "neutral-long", "up-long"]
+xLongCases_36 = ["xdown-xlong", "neutral-xlong", "up-xlong"]
 
-# 9 CSA différents
-CSA_12_Cases = ["xdown-xshort"]
-CSA_16_Cases = ["xdown-short", "down-xshort"]
-CSA_20_Cases = ["xdown-normal", "down-short", "middle-xshort"]
-CSA_25_Cases = ["xdown-long", "down-normal", "middle-short", "up-xshort"]
-CSA_30_Cases = ["xdown-xlong", "down-long", "middle-normal", "up-short", "xup-xshort"]
-CSA_35_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
-CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
-CSA_45_Cases = ["up-xlong", "xup-long"]
-CSA_50_Cases = ["xup-xlong"]
+CaseNames_3 = [*xDownCases_3, *MiddleCases_3, *xUpCases_3]
+CaseNames_36 = [*xDownCases_3, *NeutralCases_3, *UpCases_3]
+UpDownCases_3 = [*xUpCases_3, *xDownCases_3]
 
 # More cases
 xDownCases_5 = ["xdown-xshort", "xdown-short", "xdown-normal", "xdown-long", "xdown-xlong"]
 DownCases_5 = ["down-xshort", "down-short", "down-normal", "down-long", "down-xlong"]
 MiddleCases_5 = ["middle-xshort", "middle-short", "middle-normal", "middle-long", "middle-xlong"]
+NeutralCases_5 = ["neutral-xshort", "neutral-short", "neutral-normal", "neutral-long", "neutral-xlong"]
 UpCases_5 = ["up-xshort", "up-short", "up-normal", "up-long", "up-xlong"]
 xUpCases_5 = ["xup-xshort", "xup-short", "xup-normal", "xup-long", "xup-xlong"]
 
@@ -261,10 +293,16 @@ NormalCases_5 = ["xdown-normal", "down-normal", "middle-normal", "up-normal", "x
 LongCases_5 = ["xdown-long", "down-long", "middle-long", "up-long", "xup-long"]
 xLongCases_5 = ["xdown-xlong", "down-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
 
+xShortCases_6 = ["xdown-xshort", "down-xshort", "neutral-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
+ShortCases_6 = ["xdown-short", "down-short", "neutral-short", "middle-short", "up-short", "xup-short"]
+NormalCases_6 = ["xdown-normal", "down-normal", "neutral-normal", "middle-normal", "up-normal", "xup-normal"]
+LongCases_6 = ["xdown-long", "down-long", "neutral-long", "middle-long", "up-long", "xup-long"]
+xLongCases_6 = ["xdown-xlong", "down-xlong", "neutral-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
+
 CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
+CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
 CaseNames_5_Tilt_3_Acromion = [*xDownCases_3, *DownCases_3, *MiddleCases_3, *UpCases_3, *xUpCases_3]
-
 
 tilt_names_3 = ["xdown", "middle", "xup"]
 tilt_names_5 = ["xdown", "down", "up", "xup"]
@@ -279,28 +317,47 @@ CompWickham_CasesNames_3 = [*CaseNames_3, "Wickham", "Ball And Socket"]
 CaseNames_3_BallAndSocket = [*CaseNames_3, "Ball And Socket"]
 CaseNames_5_BallAndSocket = [*CaseNames_5, "Ball And Socket"]
 
+# 9 CSA différents
+CSA_12_Cases = ["xdown-xshort"]
+CSA_16_Cases = ["xdown-short", "down-xshort"]
+CSA_20_Cases = ["xdown-normal", "down-short", "middle-xshort"]
+CSA_25_Cases = ["xdown-long", "down-normal", "middle-short", "up-xshort"]
+CSA_30_Cases = ["xdown-xlong", "down-long", "middle-normal", "up-short", "xup-xshort"]
+CSA_35_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
+CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
+CSA_45_Cases = ["up-xlong", "xup-long"]
+CSA_50_Cases = ["xup-xlong"]
+
 # %% Catégories de simulation
 
 # With xdown, middle, xup
-CasesVariables_3 = {"Tilt": {"Glene très basse": xDownCases_3, "Glène normale": MiddleCases_3, "Glène très haute": xUpCases_3},
-                    "Acromion": {"Acromion très court": xShortCases_3, "Acromion normal": NormalCases_3, "Acromion très long": xLongCases_3}}
+CasesVariables_3 = {"Tilt": {"Large Downtilt": xDownCases_3, "Normal tilt": MiddleCases_3, "Large Uptilt": xUpCases_3},
+                    "Acromion": {"Very short acromion": xShortCases_3, "Normal acromion": NormalCases_3, "Very long acromion": xLongCases_3}}
+
+CasesVariables_36 = {"Tilt": {"Large Downtilt": xDownCases_3, "Neutral tilt": NeutralCases_3, "Uptilt": UpCases_3},
+                     "Acromion": {"Very short acromion": xShortCases_36, "Normal acromion": NormalCases_36, "Very long acromion": xLongCases_36}}
+
 # With xdown, middle, xup
-CasesVariables_5 = {"Tilt": {"Glene très basse": xDownCases_5, "Glene basse": DownCases_5, "Glène normale": MiddleCases_5, "Glène haute": UpCases_5, "Glène très haute": xUpCases_5},
-                    "Acromion": {"Acromion très court": xShortCases_5, "Acromion court": ShortCases_5, "Acromion normal": NormalCases_5, "Acromion long": LongCases_5, "Acromion très long": xLongCases_5}}
+CasesVariables_5 = {"Tilt": {"Large Downtilt": xDownCases_5, "Downtilt": DownCases_5, "Normal tilt": MiddleCases_5, "Uptilt": UpCases_5, "Large Uptilt": xUpCases_5},
+                    "Acromion": {"Very short acromion": xShortCases_5, "Short acromion": ShortCases_5, "Normal acromion": NormalCases_5, " Long acromion": LongCases_5, "Very long acromion": xLongCases_5}}
+
+# With xdown, middle, xup
+CasesVariables_6 = {"Tilt": {"Large Downtilt": xDownCases_5, "Downtilt": DownCases_5, "Neutral tilt": NeutralCases_5, "Normal tilt": MiddleCases_5, "Uptilt": UpCases_5, "Large Uptilt": xUpCases_5},
+                    "Acromion": {"Very short acromion": xShortCases_6, "Short acromion": ShortCases_6, "Normal acromion": NormalCases_6, " Long acromion": LongCases_6, "Very long acromion": xLongCases_6}}
 
 # Tilt
-CasesVariables_Tilt_5_Acromion_3 = {"Tilt": {"Glene très basse": xDownCases_3, "Glene basse": DownCases_3, "Glène normale": MiddleCases_3, "Glène haute": UpCases_3, "Glène très haute": xUpCases_3}}
-CasesVariables_Tilt_5_Acromion_5 = {"Tilt": {"Glene très basse": xDownCases_5, "Glene basse": DownCases_5, "Glène normale": MiddleCases_5, "Glène haute": UpCases_5, "Glène très haute": xUpCases_5}}
+CasesVariables_Tilt_5_Acromion_3 = {"Tilt": {"Large Downtilt": xDownCases_3, "Downtilt": DownCases_3, "Normal tilt": MiddleCases_3, "Uptilt": UpCases_3, "Large Uptilt": xUpCases_3}}
+CasesVariables_Tilt_5_Acromion_5 = {"Tilt": {"Large Downtilt": xDownCases_5, "Downtilt": DownCases_5, "Normal tilt": MiddleCases_5, "Uptilt": UpCases_5, "Large Uptilt": xUpCases_5}}
 
-CasesVariables_Tilt_3_Acromion_3 = {"Tilt": {"Glene très basse": xDownCases_3, "Glène normale": MiddleCases_3, "Glène très haute": xUpCases_3}}
-CasesVariables_Tilt_3_Acromion_5 = {"Tilt": {"Glene très basse": xDownCases_5, "Glène normale": MiddleCases_5, "Glène très haute": xUpCases_5}}
+CasesVariables_Tilt_3_Acromion_3 = {"Tilt": {"Large Downtilt": xDownCases_3, "Normal tilt": MiddleCases_3, "Large Uptilt": xUpCases_3}}
+CasesVariables_Tilt_3_Acromion_5 = {"Tilt": {"Large Downtilt": xDownCases_5, "Normal tilt": MiddleCases_5, "Large Uptilt": xUpCases_5}}
 
 # Acromion
-CasesVariables_Acromion_5_Tilt_3 = {"Acromion": {"Acromion très court": xShortCases_3, "Acromion court": ShortCases_3, "Acromion normal": NormalCases_3, "Acromion long": LongCases_3, "Acromion très long": xLongCases_3}}
-CasesVariables_Acromion_5_Tilt_5 = {"Acromion": {"Acromion très court": xShortCases_5, "Acromion court": ShortCases_5, "Acromion normal": NormalCases_5, "Acromion long": LongCases_5, "Acromion très long": xLongCases_5}}
+CasesVariables_Acromion_5_Tilt_3 = {"Acromion": {"Very short acromion": xShortCases_3, "Short acromion": ShortCases_3, "Normal acromion": NormalCases_3, " Long acromion": LongCases_3, "Very long acromion": xLongCases_3}}
+CasesVariables_Acromion_5_Tilt_5 = {"Acromion": {"Very short acromion": xShortCases_5, "Short acromion": ShortCases_5, "Normal acromion": NormalCases_5, " Long acromion": LongCases_5, "Very long acromion": xLongCases_5}}
 
-CasesVariables_Acromion_3_Tilt_3 = {"Acromion": {"Acromion très court": xShortCases_3, "Acromion normal": NormalCases_3, "Acromion très long": xLongCases_3}}
-CasesVariables_Acromion_3_Tilt_5 = {"Acromion": {"Acromion très court": xShortCases_5, "Acromion normal": NormalCases_5, "Acromion très long": xLongCases_5}}
+CasesVariables_Acromion_3_Tilt_3 = {"Acromion": {"Very short acromion": xShortCases_3, "Normal acromion": NormalCases_3, "Very long acromion": xLongCases_3}}
+CasesVariables_Acromion_3_Tilt_5 = {"Acromion": {"Very short acromion": xShortCases_5, "Normal acromion": NormalCases_5, "Very long acromion": xLongCases_5}}
 
 # CSA
 CasesVariables_CSA_9 = {"CSA Faible": {"CSA = 12°": CSA_12_Cases, "CSA = 16°": CSA_16_Cases, "CSA = 20°": CSA_20_Cases},
@@ -316,25 +373,24 @@ Avec Bergmann
 """
 
 # With xdown, middle, xup
-CasesVariables_3_Bergmann = {"Tilt": {"Glene très basse": [*xDownCases_3, "Bergmann_2007"], "Glène normale": [*MiddleCases_3, "Bergmann_2007"], "Glène très haute": [*xUpCases_3, "Bergmann_2007"]},
-                             "Acromion": {"Acromion très court": [*xShortCases_3, "Bergmann_2007"], "Acromion normal": [*NormalCases_3, "Bergmann_2007"], "Acromion très long": [*xLongCases_3, "Bergmann_2007"]}}
+CasesVariables_3_Bergmann = {"Tilt": {"Large Downtilt": [*xDownCases_3, "Bergmann_2007"], "Normal tilt": [*MiddleCases_3, "Bergmann_2007"], "Large Uptilt": [*xUpCases_3, "Bergmann_2007"]},
+                             "Acromion": {"Very short acromion": [*xShortCases_3, "Bergmann_2007"], "Normal acromion": [*NormalCases_3, "Bergmann_2007"], "Very long acromion": [*xLongCases_3, "Bergmann_2007"]}}
 # With xdown, middle, xup
-CasesVariables_5_Bergmann = {"Tilt": {"Glene très basse": [*xDownCases_5, "Bergmann_2007"], "Glene basse": [*DownCases_5, "Bergmann_2007"], "Glène normale": [*MiddleCases_5, "Bergmann_2007"], "Glène haute": [*UpCases_5, "Bergmann_2007"], "Glène très haute": [*xUpCases_5, "Bergmann_2007"]},
-                             "Acromion": {"Acromion très court": [*xShortCases_5, "Bergmann_2007"], "Acromion court": [*ShortCases_5, "Bergmann_2007"], "Acromion normal": [*NormalCases_5, "Bergmann_2007"], "Acromion long": [*LongCases_5, "Bergmann_2007"], "Acromion très long": [*xLongCases_5, "Bergmann_2007"]}}
+CasesVariables_5_Bergmann = {"Tilt": {"Large Downtilt": [*xDownCases_5, "Bergmann_2007"], "Downtilt": [*DownCases_5, "Bergmann_2007"], "Normal tilt": [*MiddleCases_5, "Bergmann_2007"], "Uptilt": [*UpCases_5, "Bergmann_2007"], "Large Uptilt": [*xUpCases_5, "Bergmann_2007"]},
+                             "Acromion": {"Very short acromion": [*xShortCases_5, "Bergmann_2007"], "Short acromion": [*ShortCases_5, "Bergmann_2007"], "Normal acromion": [*NormalCases_5, "Bergmann_2007"], " Long acromion": [*LongCases_5, "Bergmann_2007"], "Very long acromion": [*xLongCases_5, "Bergmann_2007"]}}
 # With xdown, middle, xup
-CasesVariables_3_Wickham = {"Tilt": {"Glene très basse": [*xDownCases_3, "Wickham"], "Glène normale": [*MiddleCases_3, "Wickham"], "Glène très haute": [*xUpCases_3, "Wickham"]},
-                            "Acromion": {"Acromion très court": [*xShortCases_3, "Wickham"], "Acromion normal": [*NormalCases_3, "Wickham"], "Acromion très long": [*xLongCases_3, "Wickham"]}}
+CasesVariables_3_Wickham = {"Tilt": {"Large Downtilt": [*xDownCases_3, "Wickham"], "Normal tilt": [*MiddleCases_3, "Wickham"], "Large Uptilt": [*xUpCases_3, "Wickham"]},
+                            "Acromion": {"Very short acromion": [*xShortCases_3, "Wickham"], "Normal acromion": [*NormalCases_3, "Wickham"], "Very long acromion": [*xLongCases_3, "Wickham"]}}
 # With xdown, middle, xup
-CasesVariables_5_Wickham = {"Tilt": {"Glene très basse": [*xDownCases_5, "Wickham"], "Glene basse": [*DownCases_5, "Wickham"], "Glène normale": [*MiddleCases_5, "Wickham"], "Glène haute": [*UpCases_5, "Wickham"], "Glène très haute": [*xUpCases_5, "Wickham"]},
-                            "Acromion": {"Acromion très court": [*xShortCases_5, "Wickham"], "Acromion court": [*ShortCases_5, "Wickham"], "Acromion normal": [*NormalCases_5, "Wickham"], "Acromion long": [*LongCases_5, "Wickham"], "Acromion très long": [*xLongCases_5, "Wickham"]}}
+CasesVariables_5_Wickham = {"Tilt": {"Large Downtilt": [*xDownCases_5, "Wickham"], "Downtilt": [*DownCases_5, "Wickham"], "Normal tilt": [*MiddleCases_5, "Wickham"], "Uptilt": [*UpCases_5, "Wickham"], "Large Uptilt": [*xUpCases_5, "Wickham"]},
+                            "Acromion": {"Very short acromion": [*xShortCases_5, "Wickham"], "Short acromion": [*ShortCases_5, "Wickham"], "Normal acromion": [*NormalCases_5, "Wickham"], " Long acromion": [*LongCases_5, "Wickham"], "Very long acromion": [*xLongCases_5, "Wickham"]}}
 
 # With xdown, middle, xup
-CasesVariables_3_Ball_And_Socket = {"Tilt": {"Glene très basse": [*xDownCases_3, "Ball And Socket"], "Glène normale": [*MiddleCases_3, "Ball And Socket"], "Glène très haute": [*xUpCases_3, "Ball And Socket"]},
-                                    "Acromion": {"Acromion très court": [*xShortCases_3, "Ball And Socket"], "Acromion normal": [*NormalCases_3, "Ball And Socket"], "Acromion très long": [*xLongCases_3, "Ball And Socket"]}}
+CasesVariables_3_Ball_And_Socket = {"Tilt": {"Large Downtilt": [*xDownCases_3, "Ball And Socket"], "Normal tilt": [*MiddleCases_3, "Ball And Socket"], "Large Uptilt": [*xUpCases_3, "Ball And Socket"]},
+                                    "Acromion": {"Very short acromion": [*xShortCases_3, "Ball And Socket"], "Normal acromion": [*NormalCases_3, "Ball And Socket"], "Very long acromion": [*xLongCases_3, "Ball And Socket"]}}
 # With xdown, middle, xup
-CasesVariables_5_Ball_And_Socket = {"Tilt": {"Glene très basse": [*xDownCases_5, "Ball And Socket"], "Glene basse": [*DownCases_5, "Ball And Socket"], "Glène normale": [*MiddleCases_5, "Ball And Socket"], "Glène haute": [*UpCases_5, "Ball And Socket"], "Glène très haute": [*xUpCases_5, "Ball And Socket"]},
-                                    "Acromion": {"Acromion très court": [*xShortCases_5, "Ball And Socket"], "Acromion court": [*ShortCases_5, "Ball And Socket"], "Acromion normal": [*NormalCases_5, "Ball And Socket"], "Acromion long": [*LongCases_5, "Ball And Socket"], "Acromion très long": [*xLongCases_5, "Ball And Socket"]}}
-
+CasesVariables_5_Ball_And_Socket = {"Tilt": {"Large Downtilt": [*xDownCases_5, "Ball And Socket"], "Downtilt": [*DownCases_5, "Ball And Socket"], "Normal tilt": [*MiddleCases_5, "Ball And Socket"], "Uptilt": [*UpCases_5, "Ball And Socket"], "Large Uptilt": [*xUpCases_5, "Ball And Socket"]},
+                                    "Acromion": {"Very short acromion": [*xShortCases_5, "Ball And Socket"], "Short acromion": [*ShortCases_5, "Ball And Socket"], "Normal acromion": [*NormalCases_5, "Ball And Socket"], " Long acromion": [*LongCases_5, "Ball And Socket"], "Very long acromion": [*xLongCases_5, "Ball And Socket"]}}
 
 # %%                                                Chargement des résultats FDK
 
@@ -348,6 +404,16 @@ Results_GlenoidLocalAxis_MR_Polynomial = load_results_from_file(SaveSimulationsD
 Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage")
 
 Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill")
+
+Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos")
+
+Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage")
+
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation")
+
+Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
 
 # Results_GlenoidLocalAxis_MR_Polynomial_180deg = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg")
 
@@ -365,6 +431,8 @@ Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill = load_results_from_file(SaveS
 # Results_GlenoidLocalAxis_NewWrapping_FullRange = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_NewWrapping_FullRange")
 
 # Results_GlenoidLocalAxis_NewWrapping_NoghProth = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_NewWrapping_NoghProth")
+
+Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage")
 
 # %%                                                Chargement des résultats BallAndSocket
 Results_BallAndSocket = load_results_from_file(SaveSimulationsDirectory, "Results_BallAndSocket")
@@ -389,23 +457,6 @@ FDK_Variables = load_results_from_file(SaveVariablesDirectory, "FDK_Variables")
 # FDK Polynomial avec Ball And Socket
 Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket = Results_GlenoidLocalAxis_MR_Polynomial.copy()
 Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket["Ball And Socket"] = Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"]
-
-# %% Moyenne des résultats par CSA
-
-# result_dictionary = {key: result_dictionary[key] for key in CaseNames_3}
-combine_cases = {"CSA=12°": CSA_12_Cases,
-                 "CSA=16°": CSA_16_Cases,
-                 "CSA=20°": CSA_20_Cases,
-                 "CSA=25°": CSA_25_Cases,
-                 "CSA=30°": CSA_30_Cases,
-                 "CSA=35°": CSA_35_Cases,
-                 "CSA=40°": CSA_40_Cases,
-                 "CSA=45°": CSA_45_Cases,
-                 "CSA=50°": CSA_50_Cases
-                 }
-
-Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial, combine_cases, "mean")
-
 
 # %% Liste des catégories de muscles
 
@@ -556,6 +607,7 @@ list_muscles_inactifs = ["Pectoralis major clavicular",
                          "Latissimus dorsi",
                          "Coracobrachialis"
                          ]
+
 # 7 (subscapulaire divisé en 2)
 list_muscle_variation = ["Deltoideus anterior",
                          "Deltoideus lateral",
@@ -582,8 +634,7 @@ list_muscle_variation_faible = ["Pectoralis major clavicular",
 
 """sur la scapula"""
 
-"""LÉGÈRE ERREUR SUR LA SPRING FORCE CAR PAS EXACTEMENT DANS REPÈRE SCAPULA"""
-variables_to_add_scapula = {"ForceContact scapula": ["Total", "AP", "IS", "ML"],
+variables_to_add_scapula = {"ForceContact GlenImplant": ["Total", "AP", "IS", "ML"],
                             "SpringForce scapula": ["Total", "AP", "IS", "ML"]
                             }
 
@@ -615,11 +666,11 @@ muscle_variables_to_add_scapula = {"F insertion": {"component_sum_order": ["Tota
                                                 "muscles_to_add": muscles_to_add_scapula_origin}
                                    }
 
-Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal scapula", ["Total", "AP", "IS", "ML"], "Force totale sur la scapula [N]", variables_to_add_scapula, muscle_variables_to_add_scapula)
+Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal scapula", ["Total", "AP", "IS", "ML"], "Force totale sur la scapula (glene) [N]", variables_to_add_scapula, muscle_variables_to_add_scapula)
 
 
 """sur l'humérus"""
-variables_to_add_humerus = {"ForceContact humerus": ["Total", "AP", "IS", "ML"],
+variables_to_add_humerus = {"ForceContact HumImplant glene": ["Total", "AP", "IS", "ML"],
                             "SpringForce humerus": ["Total", "AP", "IS", "ML"]
                             }
 
@@ -642,41 +693,43 @@ muscle_variables_to_add_humerus = {"F insertion": {"component_sum_order": ["Tota
                                                    "muscles_to_add": muscles_to_add_humerus_insertion}
                                    }
 
-Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal humerus", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus [N]", variables_to_add_humerus, muscle_variables_to_add_humerus)
+Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal humerus", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus (glene)[N]", variables_to_add_humerus, muscle_variables_to_add_humerus)
 
 """Sans forces de contact"""
 variables_to_add_humerus_no_fcontact = {"SpringForce humerus": ["Total", "AP", "IS", "ML"]}
 
-Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal humerus no Fcontact", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no Fcontact [N]", variables_to_add_humerus_no_fcontact, muscle_variables_to_add_humerus)
+Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal humerus no Fcontact", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no Fcontact (glene) [N]", variables_to_add_humerus_no_fcontact, muscle_variables_to_add_humerus)
 
 """Force totale muscles"""
-Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal muscles", ["Total", "AP", "IS", "ML"], "Force totale des muscles sur l'humérus [N]", muscle_variables_to_add=muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal muscles", ["Total", "AP", "IS", "ML"], "Force totale des muscles sur l'humérus (glene) [N]", muscle_variables_to_add=muscle_variables_to_add_humerus)
 
 """Sans springforce"""
-variables_to_add_humerus_no_springforce = {"ForceContact humerus": ["Total", "AP", "IS", "ML"]}
-Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal humerus no SpringForce", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no SpringForce [N]", variables_to_add_humerus_no_springforce, muscle_variables_to_add_humerus)
-
+# variables_to_add_humerus_no_springforce = {"ForceContact humerus": ["Total", "AP", "IS", "ML"]}
+# Results_GlenoidLocalAxis_MR_Polynomial = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial, "FTotal humerus no SpringForce", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no SpringForce (glene) [N]", variables_to_add_humerus_no_springforce, muscle_variables_to_add_humerus)
 
 # %% COP
 
 # # par catégories tilt et acromion
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13])
-
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, {**CasesVariables_Tilt_5_Acromion_3, **CasesVariables_Acromion_5_Tilt_3}, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13])
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="center left", figsize=[14, 13])
 
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="center left", figsize=[14, 13])
+# # 3x3
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="center left", figsize=[15, 13])
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="center left", figsize=[15, 13])
 
-# # Tilt
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_Tilt_5_Acromion_5, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 6])
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_Tilt_5_Acromion_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 6])
+# # COPy et COPx
+# # # 25 cas
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "COP", "COP en AP", composante_y=["AP"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "COP", "COP en IS", composante_y=["IS"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
 
-# # Acromion
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_Acromion_5_Tilt_5, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 6])
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_Acromion_5_Tilt_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 6])
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, "Abduction", "COP", "COP en AP", composante_y=["AP"], legend_position="center left", figsize=[15, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, "Abduction", "COP", "COP en IS", composante_y=["IS"], legend_position="center left", figsize=[15, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
 # # # CSA
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_CSA_9, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[14, 14])
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_CSA_6, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[14, 13])
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_CSA_9, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[15, 14])
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_CSA_6, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[15, 14])
+
+
 # %% GHLin
 """
 Translation dans repère implant, orientation implant
@@ -725,9 +778,14 @@ GHLin ISB Relative
 Translation dans repère implant, orientation implant
 GHLin Absolute
 """
-# par catégories tilt et acromion
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, None, figure_title="Déplacement absolu de la tête humérale (GHLin Absolute)", variable="GHLin Absolute", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13], annotation_offset=[0.8, -2.1], annotation_reference_offset=[0, 7], same_lim=True)
 
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, None, figure_title="Déplacement absolu de la tête humérale (GHLin Absolute)", variable="GHLin Absolute", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, same_lim=True)
+# # mis à zéro
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, None, figure_title="Déplacement absolu de la tête humérale (GHLin Absolute zero)", variable="GHLin Absolute zero", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, same_lim=True)
+
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, None, figure_title="Déplacement absolu de la tête humérale (GHLin Absolute)", variable="GHLin Absolute", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, same_lim=True)
+# # mis à zéro
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, None, figure_title="Déplacement absolu de la tête humérale (GHLin Absolute zero)", variable="GHLin Absolute zero", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, same_lim=True)
 
 # %% Forces dans le repère humérus (pour comparer à Bergmann)
 
@@ -737,16 +795,19 @@ GHLin Absolute
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 2}, subplot_title="Antéropostérieur", composante_y=["AP"])
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 3}, subplot_title="Inférosupérieur", composante_y=["IS"])
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 4}, subplot_title="Médiolatéral", composante_y=["ML"], xlim=[0, 120], grid_x_step=15, grid_y_step=50, same_lim=True, legend_position="center left")
+
 # # sans same_lim
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 1}, subplot_title="Total", composante_y=["Total"])
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 2}, subplot_title="Antéropostérieur", composante_y=["AP"])
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 3}, subplot_title="Inférosupérieur", composante_y=["IS"])
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 4}, subplot_title="Médiolatéral", composante_y=["ML"], xlim=[0, 120], grid_x_step=15, grid_y_step=50, legend_position="center left")
+
 # # 25 cas
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_5, subplot={"dimension": [1, 4], "number": 1}, subplot_title="Total", composante_y=["Total"])
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_5, subplot={"dimension": [1, 4], "number": 2}, subplot_title="Antéropostérieur", composante_y=["AP"])
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_5, subplot={"dimension": [1, 4], "number": 3}, subplot_title="Inférosupérieur", composante_y=["IS"])
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_5, subplot={"dimension": [1, 4], "number": 4}, subplot_title="Médiolatéral", composante_y=["ML"], xlim=[0, 120], grid_x_step=15, grid_y_step=50, same_lim=True, legend_position="center left")
+
 # # sans same_lim
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_5, subplot={"dimension": [1, 4], "number": 1}, subplot_title="Total", composante_y=["Total"])
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact dans le repère de l'humérus", cases_on=CaseNames_5, subplot={"dimension": [1, 4], "number": 2}, subplot_title="Antéropostérieur", composante_y=["AP"])
@@ -783,6 +844,9 @@ GHLin Absolute
 
 
 # # Comparaison avec Bergmann 2007
+# CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial = Results_GlenoidLocalAxis_MR_Polynomial.copy()
+# CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial["Bergmann_2007"] = Results_literature["ForceContact"]["Bergmann 2007"]
+
 # PremadeGraphs.graph_by_case_categories(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3_Bergmann, "Abduction", "ForceContact", "Forces de contact", legend_position="center left", figsize=[14, 13])
 
 # graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=[*CaseNames_3, "Bergmann_2007"], subplot={"dimension": [1, 2], "number": 1}, figsize=[15, 8], subplot_title="Angle d'abduction", xlim=[0, 120], grid_x_step=15, same_lim=True)
@@ -791,13 +855,21 @@ GHLin Absolute
 # graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=[*CaseNames_5, "Bergmann_2007"], subplot={"dimension": [1, 2], "number": 1}, figsize=[15, 8], subplot_title="Angle d'abduction", xlim=[0, 120], grid_x_step=15, same_lim=True)
 # graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Elevation", "ForceContact", "Force de contact", cases_on=CaseNames_5, subplot={"dimension": [1, 2], "number": 2}, subplot_title="Angle d'élévation", xlim=[0, 120], grid_x_step=15, same_lim=True, legend_position="center left")
 
-# graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=[*CaseNames_3, "Bergmann_2007"], subplot={"dimension": [1, 3], "number": 1}, figsize=[15, 8], subplot_title="Médiolatéral", composante_y=["ML"])
-# graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=[*CaseNames_3, "Bergmann_2007"], subplot={"dimension": [1, 3], "number": 2}, subplot_title="Inférosupérieur", composante_y=["IS"])
-# graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=[*CaseNames_3, "Bergmann_2007"], subplot={"dimension": [1, 3], "number": 3}, subplot_title="Antéropostérieur", composante_y=["AP"], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# # 1x3
+# graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Contact Force", cases_on=[*CaseNames_3, "Bergmann_2007"], subplot={"dimension": [1, 3], "number": 1}, figsize=[15, 8], subplot_title="Mediolateral", composante_y=["ML"])
+# graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Contact Force", cases_on=[*CaseNames_3, "Bergmann_2007"], subplot={"dimension": [1, 3], "number": 2}, subplot_title="Inferosuperior", composante_y=["IS"])
+# graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Contact Force", cases_on=[*CaseNames_3, "Bergmann_2007"], subplot={"dimension": [1, 3], "number": 3}, subplot_title="Anteroposterior", composante_y=["AP"], xlim=[0, 120], grid_x_step=15, same_lim=True)
 
 # graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=[*CaseNames_5, "Bergmann_2007"], subplot={"dimension": [1, 3], "number": 1}, subplot_title="Médiolatéral", composante_y=["ML"])
 # graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=[*CaseNames_5, "Bergmann_2007"], subplot={"dimension": [1, 3], "number": 2}, figsize=[15, 8], subplot_title="Inférosupérieur", composante_y=["IS"])
 # graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Force de contact", cases_on=[*CaseNames_5, "Bergmann_2007"], subplot={"dimension": [1, 3], "number": 3}, figsize=[15, 8], subplot_title="Antéropostérieur", composante_y=["AP"], xlim=[0, 120], grid_x_step=15, same_lim=True, legend_position="center left")
+
+# # 2x2
+# graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Contact Force", cases_on=[*CaseNames_3, "Bergmann_2007"], subplot={"dimension": [2, 2], "number": 1}, figsize=[15, 12], subplot_title="Total", composante_y=["Total"])
+# graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Contact Force", cases_on=[*CaseNames_3, "Bergmann_2007"], subplot={"dimension": [2, 2], "number": 2}, subplot_title="Anteroposterior", composante_y=["AP"])
+# graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Contact Force", cases_on=[*CaseNames_3, "Bergmann_2007"], subplot={"dimension": [2, 2], "number": 3}, subplot_title="Inferosuperior", composante_y=["IS"])
+# graph(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact", "Contact Force", cases_on=[*CaseNames_3, "Bergmann_2007"], subplot={"dimension": [2, 2], "number": 4}, subplot_title="Mediolateral", composante_y=["ML"], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
 
 # # par catégorie 3x3
 # PremadeGraphs.graph_by_case_categories(CompBergmann_Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3_Bergmann, "Abduction", "ForceContact", "Forces de contact Totale", legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
@@ -848,6 +920,50 @@ GHLin Absolute
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact scapula", "Force de contact dans le repère de la scapula", cases_on=CaseNames_5, subplot={"dimension": [1, 4], "number": 3}, subplot_title="Inférosupérieur", composante_y=["IS"])
 # graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact scapula", "Force de contact dans le repère de la scapula", cases_on=CaseNames_5, subplot={"dimension": [1, 4], "number": 4}, subplot_title="Médiolatéral", composante_y=["ML"], xlim=[0, 120], grid_x_step=15, grid_y_step=50, legend_position="center left")
 
+
+# %% Force de contact dans le repère de la glène
+
+"""Forces sur l'implant glenoidien"""
+# # Forces par catégories par composantes
+# # 5x5
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact Totale sur l'implant glénoidien dans le repère de la glène", composante_y=["Total"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact AP sur l'implant glénoidien dans le repère de la glène", composante_y=["AP"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact IS sur l'implant glénoidien dans le repère de la glène", composante_y=["IS"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact ML sur l'implant glénoidien dans le repère de la glène", composante_y=["ML"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# # # Forces par catégories par composantes
+# # 3x3
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact GlenImplant", "Forces de contact Totale sur l'implant glénoidien dans le repère de la glène", composante_y=["Total"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact GlenImplant", "Forces de contact AP sur l'implant glénoidien dans le repère de la glène", composante_y=["AP"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact GlenImplant", "Forces de contact IS sur l'implant glénoidien dans le repère de la glène", composante_y=["IS"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact GlenImplant", "Forces de contact ML sur l'implant glénoidien dans le repère de la glène", composante_y=["ML"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# # Graph simple
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact GlenImplant", "Force de contact sur l'implant glénoidien dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 1}, subplot_title="Total", composante_y=["Total"])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact GlenImplant", "Force de contact sur l'implant glénoidien dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 2}, subplot_title="Antéropostérieur", composante_y=["AP"])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact GlenImplant", "Force de contact sur l'implant glénoidien dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 3}, subplot_title="Inférosupérieur", composante_y=["IS"])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact GlenImplant", "Force de contact sur l'implant glénoidien dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 4}, subplot_title="Médiolatéral", composante_y=["ML"], xlim=[0, 120], grid_x_step=15, grid_y_step=50, same_lim=True)
+
+"""Forces sur l'implant huméral"""
+# # Forces par catégories par composantes
+# # 5x5
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact HumImplant glene", "Forces de contact Totale sur l'implant huméral dans le repère de la glène", composante_y=["Total"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact HumImplant glene", "Forces de contact AP sur l'implant huméral dans le repère de la glène", composante_y=["AP"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact HumImplant glene", "Forces de contact IS sur l'implant huméral dans le repère de la glène", composante_y=["IS"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "ForceContact HumImplant glene", "Forces de contact ML sur l'implant huméral dans le repère de la glène", composante_y=["ML"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# # Forces par catégories par composantes
+# # 3x3
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact HumImplant glene", "Forces de contact Totale sur l'implant huméral dans le repère de la glène", composante_y=["Total"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact HumImplant glene", "Forces de contact AP sur l'implant huméral dans le repère de la glène", composante_y=["AP"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact HumImplant glene", "Forces de contact IS sur l'implant huméral dans le repère de la glène", composante_y=["IS"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_3, "Abduction", "ForceContact HumImplant glene", "Forces de contact ML sur l'implant huméral dans le repère de la glène", composante_y=["ML"], legend_position="center left", figsize=[24, 16], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# # Graph simple
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact HumImplant glene", "Force de contact sur l'implant huméral dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 1}, subplot_title="Total", composante_y=["Total"])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact HumImplant glene", "Force de contact sur l'implant huméral dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 2}, subplot_title="Antéropostérieur", composante_y=["AP"])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact HumImplant glene", "Force de contact sur l'implant huméral dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 3}, subplot_title="Inférosupérieur", composante_y=["IS"])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "ForceContact HumImplant glene", "Force de contact sur l'implant huméral dans le repère de la glene", cases_on=CaseNames_3, subplot={"dimension": [1, 4], "number": 4}, subplot_title="Médiolatéral", composante_y=["ML"], xlim=[0, 120], grid_x_step=15, grid_y_step=50, same_lim=True, legend_position="center left")
 
 # %% Muscles Activity
 
@@ -903,6 +1019,11 @@ GHLin Absolute
 # # Muscles qui varient2
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation_faible, [3, 3], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14], same_lim=True)
 # PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_BallAndSocket, list_muscle_variation_faible, [3, 3], "Abduction", "Activity", "Activation influencés par le CSA", composante_y=["Max"], cases_on=CaseNames_3_BallAndSocket, figsize=[14, 14])
+
+# %% Contact area
+
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_5, "Abduction", "ContactArea", "Surface de contact entre les deux implants", legend_position="center left", figsize=[24, 13], xlim=[0, 120], same_lim=True, grid_x_step=15)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_3, "Abduction", "ContactArea", "Surface de contact entre les deux implants", legend_position="center left", figsize=[24, 13], xlim=[0, 120], same_lim=True, grid_x_step=15)
 
 # %% Muscles Ft
 
@@ -1226,9 +1347,8 @@ Muscles
 
 # %% Direction des forces du deltoide
 
-"""Direction des forces"""
-# muscle_name = "Deltoideus lateral"
-# n_part = 4
+muscle_name = "Deltoideus lateral"
+n_part = 4
 
 # # force muscle projetée origine
 # muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F origin direction", f"{muscle_name} Mean : Direction de la force projetée sur l'origine dans le repère scapula", subplot={"dimension": [1, 3], "number": 1}, subplot_title="AP origine", composante_y=["AP"], cases_on=CaseNames_5, legend_position="center left", figsize=[14, 13])
@@ -1248,6 +1368,7 @@ Muscles
 # muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F insertion direction", f"{muscle_name} Total : Direction de la force projetée sur l'insertion dans le repère scapula", subplot={"dimension": [1, 3], "number": 2}, subplot_title="IS insertion", composante_y=["IS"], cases_on=CaseNames_5, legend_position="center left", figsize=[24, 13])
 # muscle_graph(Results_GlenoidLocalAxis_MR_Polynomial, muscle_name, "Abduction", "F insertion direction", f"{muscle_name} Total : Direction de la force projetée sur l'insertion dans le repère scapula", subplot={"dimension": [1, 3], "number": 3}, subplot_title="ML insertion", composante_y=["ML"], cases_on=CaseNames_5, legend_position="center left", figsize=[24, 13], same_lim=True, xlim=[15, 120], grid_x_step=15, ylim=[-1, 1], grid_y_step=0.25)
 
+
 # # parties du muscle
 # for part_number in range(1, n_part + 1):
 #     # force muscle projetée origine
@@ -1257,9 +1378,15 @@ Muscles
 
 # # By category
 # # 5x5
-# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F insertion direction", composante_y_muscle_combined=["AP"], legend_position="center left", figsize=[24, 13])
-# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F insertion direction", composante_y_muscle_combined=["IS"], legend_position="center left", figsize=[24, 13])
-# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F insertion direction", composante_y_muscle_combined=["ML"], legend_position="center left", figsize=[24, 13])
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F insertion direction", composante_y_muscle_combined=["AP"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["AP"])
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F insertion direction", composante_y_muscle_combined=["IS"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["IS"])
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, [muscle_name], "Abduction", "F insertion direction", composante_y_muscle_combined=["ML"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["ML"])
+
+# # By category
+# # 5x5
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_5, [muscle_name], "Abduction", "F origin direction", composante_y_muscle_combined=["AP"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["AP"], xlim=[15, 120], ylim=[-1, 1], grid_x_step=15)
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_5, [muscle_name], "Abduction", "F origin direction", composante_y_muscle_combined=["IS"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["IS"], xlim=[15, 120], ylim=[-1, 1], grid_x_step=15)
+# PremadeGraphs.muscle_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_5, [muscle_name], "Abduction", "F origin direction", composante_y_muscle_combined=["ML"], legend_position="center left", figsize=[24, 13], muscle_part_on=True, composante_y_muscle_part=["ML"], xlim=[15, 120], ylim=[-1, 1], grid_x_step=15)
 
 # %% Moment arm
 
@@ -1389,14 +1516,14 @@ Muscles
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "SpringForce humerus", "Springforce sur l'humérus ML dans le repère de la scapula", composante_y=["ML"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
 # %% Small abduction no recentrage
 
-# Style avec des croix car nstep=1
-define_simulations_line_style(SimulationsLineStyleDictionary_Small_abduction)
+# # Style avec des croix car nstep=1
+# define_simulations_line_style(SimulationsLineStyleDictionary_Small_abduction)
 
-Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus no SpringForce", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no SpringForce [N]", variables_to_add_humerus_no_springforce, muscle_variables_to_add_humerus)
-Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal muscles", ["Total", "AP", "IS", "ML"], "Force totale des muscles sur l'humérus [N]", muscle_variables_to_add=muscle_variables_to_add_humerus)
-Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus no Fcontact", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no Fcontact [N]", variables_to_add_humerus_no_fcontact, muscle_variables_to_add_humerus)
-Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus [N]", variables_to_add_humerus, muscle_variables_to_add_humerus)
-Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal scapula", ["Total", "AP", "IS", "ML"], "Force totale sur la scapula [N]", variables_to_add_scapula, muscle_variables_to_add_scapula)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus no SpringForce", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no SpringForce [N]", variables_to_add_humerus_no_springforce, muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal muscles", ["Total", "AP", "IS", "ML"], "Force totale des muscles sur l'humérus [N]", muscle_variables_to_add=muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus no Fcontact", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus no Fcontact [N]", variables_to_add_humerus_no_fcontact, muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal humerus", ["Total", "AP", "IS", "ML"], "Force totale sur l'humérus [N]", variables_to_add_humerus, muscle_variables_to_add_humerus)
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, "FTotal scapula", ["Total", "AP", "IS", "ML"], "Force totale sur la scapula [N]", variables_to_add_scapula, muscle_variables_to_add_scapula)
 
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, COP_contour, "COP", "COP sans recentrage", composantes=["AP", "IS"], figsize=[24, 13], graph_annotation_on=False)
 
@@ -1432,34 +1559,465 @@ Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage = sum_result_variables(Resu
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce IS", composante_y=["IS"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "FTotal humerus no SpringForce", "Force totale sur l'humérus no SpringForce ML", composante_y=["ML"], legend_position="center left", xlim=[0, 30], same_lim=True, grid_x_step=15, figsize=[26, 16])
 
-define_simulations_line_style(SimulationsLineStyleDictionary)
+# define_simulations_line_style(SimulationsLineStyleDictionary)
+
 # %% Fixed Hill parameters
 
-COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="COP en fixant paramètres de Hill", cases_on="all")
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="COP en fixant paramètres de Hill", cases_on="all")
 
 
-"""
-Warning les cases sont les cas pas extrèmes
-Les changer pour avoir les résultats avec cas extrèmes
-"""
-case_names = ["down-short", "down-normal", "down-long", "middle-short", "middle-normal", "middle-long", "up-short", "up-normal", "up-long"]
+# case_names = ["down-short", "down-normal", "down-long", "middle-short", "middle-normal", "middle-long", "up-short", "up-normal", "up-long"]
 
-comp = {"Normal": Results_GlenoidLocalAxis_MR_Polynomial, "Fixed Hill parameters": Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill}
+# comp = {"Normal": Results_GlenoidLocalAxis_MR_Polynomial, "Fixed Hill parameters": Results_GlenoidLocalAxis_MR_Polynomial_Fixed_Hill}
+
+# # COP
+# for ind, case in enumerate(CaseNames_3):
+#     COP_graph(comp, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
+
+# # Translation
+# for ind, case in enumerate(CaseNames_3):
+#     COP_graph(comp, COP_contour, variable="GHLin ISB", composantes=["AP", "IS"], figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
+
+# # force de contact
+# for ind, case in enumerate(CaseNames_3):
+#     graph(comp, "Abduction", "ForceContact", figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
+
+# # Muscles
+# for ind, case in enumerate(CaseNames_3):
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_actifs, [4, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_inactifs, [3, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+# %% Better initialpos
+
+# comp = {"Normal": Results_GlenoidLocalAxis_MR_Polynomial, "Better initialpos": Results_GlenoidLocalAxis_MR_Polynomial_Better_Initialpos}
 
 # COP
-for ind, case in enumerate(CaseNames_3):
-    COP_graph(comp, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
+# for ind, case in enumerate(CaseNames_3):
+#     COP_graph(comp, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="Better initialpos", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
 
-# Translation
-for ind, case in enumerate(CaseNames_3):
-    COP_graph(comp, COP_contour, variable="GHLin ISB", composantes=["AP", "IS"], figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
+# # Translation
+# for ind, case in enumerate(CaseNames_3):
+#     COP_graph(comp, COP_contour, variable="GHLin ISB", composantes=["AP", "IS"], figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
 
-# force de contact
-for ind, case in enumerate(CaseNames_3):
-    graph(comp, "Abduction", "ForceContact", figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
+# # force de contact
+# for ind, case in enumerate(CaseNames_3):
+#     graph(comp, "Abduction", "ForceContact", figure_title="Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, subplot={"dimension": [3, 3], "number": ind + 1}, figsize=[28, 16], subplot_title=case)
 
 # Muscles
-for ind, case in enumerate(CaseNames_3):
-    PremadeGraphs.muscle_graph_from_list(comp, list_muscles_actifs, [4, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
-    PremadeGraphs.muscle_graph_from_list(comp, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
-    PremadeGraphs.muscle_graph_from_list(comp, list_muscles_inactifs, [3, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+# for ind, case in enumerate(CaseNames_5):
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_actifs, [4, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_inactifs, [3, 3], "Abduction", "Ft", figure_title=f"{case} : Force musculaire : Effet de fixer les paramètres de Hill", cases_on=[case], compare=True, figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+
+# %% Moyenne par CSA
+
+# # result_dictionary = {key: result_dictionary[key] for key in CaseNames_3}
+# combine_cases = {"CSA=12°": CSA_12_Cases,
+#                  "CSA=16°": CSA_16_Cases,
+#                  "CSA=20°": CSA_20_Cases,
+#                  "CSA=25°": CSA_25_Cases,
+#                  "CSA=30°": CSA_30_Cases,
+#                  "CSA=35°": CSA_35_Cases,
+#                  "CSA=40°": CSA_40_Cases,
+#                  "CSA=45°": CSA_45_Cases,
+#                  "CSA=50°": CSA_50_Cases
+#                  }
+
+# Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial, combine_cases, "mean")
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, combine_cases, "mean")
+# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA = {**Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA, **Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage}
+
+list_csa_short = ["CSA=25°",
+                  "CSA=30°",
+                  "CSA=35°",
+                  "CSA=40°"
+                  ]
+
+list_csa_long = ["CSA=20°",
+                  "CSA=25°",
+                  "CSA=30°",
+                  "CSA=35°",
+                  "CSA=40°",
+                  "CSA=45°"
+                  ]
+
+"""Résultats"""
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", figure_title="Force de contact rassemblé par CSA", cases_on=list_csa_long, subplot={"dimension": [1, 2], "number": 1}, subplot_title="Force de contact")
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="COP rassemblés par CSA", cases_on=list_csa_long, subplot={"dimension": [1, 2], "number": 2}, subplot_title="COP")
+
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", figure_title="Force de contact rassemblé par CSA", cases_on="all", subplot={"dimension": [1, 2], "number": 1}, subplot_title="Force de contact")
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, COP_contour, variable="COP", composantes=["AP", "IS"], figure_title="COP rassemblés par CSA", cases_on="all", subplot={"dimension": [1, 2], "number": 2}, subplot_title="COP")
+
+# # ForceContact
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["Total"], figure_title="Forces de contact par CSA", subplot_title="Total", cases_on="all", subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["AP"], figure_title="Forces de contact par CSA", subplot_title="AP", cases_on="all", subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["IS"], figure_title="Forces de contact par CSA", subplot_title="IS", cases_on="all", subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["ML"], figure_title="Forces de contact par CSA", subplot_title="ML", cases_on="all", subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left", errorbar=False, errorevery=14, error_capsize=5)
+
+# # ForceContact dans le repère de la scapula
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact scapula", composante_y=["Total"], figure_title="Forces de contact dans le repère de la scapula par CSA", subplot_title="Total", cases_on="all", subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact scapula", composante_y=["AP"], figure_title="Forces de contact dans le repère de la scapula  par CSA", subplot_title="AP", cases_on="all", subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact scapula", composante_y=["IS"], figure_title="Forces de contact dans le repère de la scapula  par CSA", subplot_title="IS", cases_on="all", subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact scapula", composante_y=["ML"], figure_title="Forces de contact dans le repère de la scapula  par CSA", subplot_title="ML", cases_on="all", subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left", errorbar=False, errorevery=14, error_capsize=5)
+
+# # COP
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["Total"], figure_title="COP par CSA", subplot_title="Total", cases_on="all", subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["AP"], figure_title="COP par CSA", subplot_title="AP", cases_on="all", subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["IS"], figure_title="COP par CSA", subplot_title="IS", cases_on="all", subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15, errorbar=False, errorevery=14, error_capsize=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["ML"], figure_title="COP par CSA", subplot_title="ML", cases_on="all", subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left", errorbar=False, errorevery=14, error_capsize=5)
+
+# # Muscles
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Force musculaire : Muscles actifs (Ft > 10N)", cases_on="all", figsize=[24, 14], xlim=[0, 120], ylim=[0, 200], legend_position="center left", grid_x_step=15)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", cases_on="all", figsize=[24, 14], xlim=[0, 120], ylim=[0, 20], legend_position="center left", grid_x_step=15)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Force musculaire : Muscles inactifs (Ft < 5N)", cases_on="all", figsize=[16, 14], xlim=[0, 120], ylim=[0, 20], legend_position="center left", grid_x_step=15)
+
+# # Muscles sans same_lim
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Force musculaire : Muscles actifs (Ft > 10N)", cases_on="all", figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", cases_on="all", figsize=[24, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Force musculaire : Muscles inactifs (Ft < 5N)", cases_on="all", figsize=[16, 14], xlim=[0, 120], legend_position="center left", grid_x_step=15)
+
+
+"""Ecarts types"""
+# # ForceContact
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["sd_Total"], figure_title="Ecart types des forces de contact par CSA", subplot_title="Total", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["sd_AP"], figure_title="Ecart types des forces de contact par CSA", subplot_title="AP", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["sd_IS"], figure_title="Ecart types des forces de contact par CSA", subplot_title="IS", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["sd_ML"], figure_title="Ecart types des forces de contact par CSA", subplot_title="ML", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left")
+
+# # COP
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["sd_Total"], figure_title="Ecart types COP par CSA", subplot_title="Total", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["sd_AP"], figure_title="Ecart types COP par CSA", subplot_title="AP", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["sd_IS"], figure_title="Ecart types COP par CSA", subplot_title="IS", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["sd_ML"], figure_title="Ecart types COP par CSA", subplot_title="ML", cases_on=list_csa_long, subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left")
+
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles actifs (Ft > 10N)", composante_y=["sd_Total"], cases_on=list_csa_long, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, grid_y_step=5, same_lim=True, ylim=[0, 30])
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", composante_y=["sd_Total"], cases_on=list_csa_long, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles inactifs (Ft < 5N)", composante_y=["sd_Total"], cases_on=list_csa_long, figsize=[16, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True)
+
+"""Valeurs avec errorbars"""
+# # ForceContact
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["Total"], figure_title="Forces de contact par CSA", subplot_title="Total", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15, errorbar=True, errorevery=14, error_capsize=8, error_capthick=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["AP"], figure_title="Forces de contact par CSA", subplot_title="AP", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15, errorbar=True, errorevery=14, error_capsize=8, error_capthick=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["IS"], figure_title="Forces de contact par CSA", subplot_title="IS", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15, errorbar=True, errorevery=14, error_capsize=8, error_capthick=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "ForceContact", composante_y=["ML"], figure_title="Forces de contact par CSA", subplot_title="ML", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left", errorbar=True, errorevery=14, error_capsize=8, error_capthick=5)
+
+# # COP
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["Total"], figure_title="COP par CSA", subplot_title="Total", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 1}, figsize=[16, 20], grid_x_step=15, errorbar=True, errorevery=14, error_capsize=8, error_capthick=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["AP"], figure_title="COP par CSA", subplot_title="AP", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 2}, figsize=[13, 16], grid_x_step=15, errorbar=True, errorevery=14, error_capsize=8, error_capthick=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["IS"], figure_title="COP par CSA", subplot_title="IS", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 3}, figsize=[13, 16], grid_x_step=15, errorbar=True, errorevery=14, error_capsize=8, error_capthick=5)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, "Abduction", "COP", composante_y=["ML"], figure_title="COP par CSA", subplot_title="ML", cases_on=list_csa_short, subplot={"dimension": [2, 2], "number": 4}, figsize=[13, 16], grid_x_step=15, legend_position="center left", errorbar=True, errorevery=14, error_capsize=8, error_capthick=5)
+
+# # Muscles
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles actifs (Ft > 10N)", composante_y=["Total"], cases_on=list_csa_short, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, errorbar=True, errorevery=14, error_capsize=8, error_capthick=5)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles peu actifs (10 N > Ft > 5N)", composante_y=["Total"], cases_on=list_csa_long, figsize=[24, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True, errorbar=True, errorevery=14, error_capsize=8, error_capthick=5)
+# PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Ecarts-types : Force musculaire : Muscles inactifs (Ft < 5N)", composante_y=["Total"], cases_on=list_csa_long, figsize=[16, 14], xlim=[15, 120], legend_position="center left", grid_x_step=15, same_lim=True, errorbar=True, errorevery=14, error_capsize=8, error_capthick=5)
+
+# %% Recentrage force constante
+
+# comp = {"Normal": Results_GlenoidLocalAxis_MR_Polynomial, "no recentrage": Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage}
+
+# for case in CaseNames_3:
+#     graph(comp, "Abduction", "ForceContact GlenImplant", f"{case} : Forces de contact Totale sur l'implant glénoidien", composante_y=["Total"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True, compare=True, cases_on=[case])
+#     PremadeGraphs.muscle_graph_from_list(comp, list_muscles_actifs, [3, 4], "Abduction", "Ft", f"{case}", cases_on=[case], compare=True, figsize=[24, 14])
+
+
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact Totale sur l'implant glénoidien dans le repère de la glène", composante_y=["Total"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact AP sur l'implant glénoidien dans le repère de la glène", composante_y=["AP"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact IS sur l'implant glénoidien dans le repère de la glène", composante_y=["IS"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, "Abduction", "ForceContact GlenImplant", "Forces de contact ML sur l'implant glénoidien dans le repère de la glène", composante_y=["ML"], legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13])
+
+
+# # par catégories tilt et acromion
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, None, figure_title="Déplacement absolu de la tête humérale (GHLin Absolute)", variable="GHLin Absolute", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, xlim=[-2, 5], ylim=[0, 20])
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, None, figure_title="Sans recentrage : Déplacement absolu de la tête humérale (GHLin Absolute)", variable="GHLin Absolute", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, xlim=[-2, 5], ylim=[0, 20])
+
+
+# # no recentrage
+# # Translations absolues
+# # mis à zéro
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, CasesVariables_5, None, figure_title="Sans recentrage : Déplacement absolu de la tête humérale (GHLin Absolute zero)", variable="GHLin Absolute zero", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, xlim=[-2, 5], ylim=[0, 20])
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, None, figure_title="Déplacement absolu de la tête humérale (GHLin Absolute zero)", variable="GHLin Absolute zero", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, xlim=[-2, 5], ylim=[0, 20])
+
+
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, figure_title="Déplacement absolu de la tête humérale (GHLin Absolute zero)", variable_x="Abduction", variable_y="GHLin Absolute zero", composante_y=["IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, same_lim=True)
+
+
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, None, figure_title="Sans recentrage : Déplacement absolu de la tête humérale (GHLin Absolute)", variable="GHLin Absolute", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, same_lim=True)
+# # mis à zéro
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, {**CasesVariables_Tilt_3_Acromion_5, **CasesVariables_Acromion_3_Tilt_5}, None, figure_title="Sans recentrage : Déplacement absolu de la tête humérale (GHLin Absolute zero)", variable="GHLin Absolute zero", composantes=["AP", "IS"], legend_position="center left", figsize=[24, 13], graph_annotation_on=False, same_lim=True)
+
+
+# %% Pénétration maximale des implants
+
+# graph(Results_GlenoidLocalAxis_MR_Polynomial, "Abduction", "MaxPenetration", "MaxPenetration", cases_on=CaseNames_3)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial, CasesVariables_5, "Abduction", "MaxPenetration", "MaxPenetration", legend_position="center left", figsize=[24, 13], xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# %% Save figures
+
+# Parameters of the graphs
+graph_parameters = {"xlim": [0, 120],
+                    "legend_position": "center left",
+                    "grid_x_step": 15,
+
+                    # Catégories de muscles
+                    "list_muscles_actifs": list_muscles_actifs,
+                    "list_muscles_peu_actif": list_muscles_peu_actif,
+                    "list_muscles_inactifs": list_muscles_inactifs,
+
+                    # For graph by categories
+                    "CasesCategories_5": CasesVariables_5,
+                    "CasesCategories_3": CasesVariables_3,
+                    "CaseNames_5": CaseNames_5,
+                    "CaseNames_3": CaseNames_3,
+
+                    # Pour moment arms
+                    "muscle_list_by_categories": list_muscle_variation,
+
+                    # Pour COP
+                    "COP_contour": COP_contour
+                    }
+
+graph_parameters_3 = {"xlim": [0, 120],
+                      "legend_position": "center left",
+                      "grid_x_step": 15,
+
+                      # Catégories de muscles
+                      "list_muscles_actifs": list_muscles_actifs,
+                      "list_muscles_peu_actif": list_muscles_peu_actif,
+                      "list_muscles_inactifs": list_muscles_inactifs,
+
+                      # For graph by categories
+                      "CasesCategories_5": CasesVariables_3,
+                      "CasesCategories_3": CasesVariables_3,
+                      "CaseNames_5": CaseNames_3,
+                      "CaseNames_3": CaseNames_3,
+
+                      # Pour moment arms
+                      "muscle_list_by_categories": list_muscle_variation,
+
+                      # Pour COP
+                      "COP_contour": COP_contour
+                      }
+
+# With neutral
+graph_parameters_6 = {"xlim": [0, 120],
+                      "legend_position": "center left",
+                      "grid_x_step": 15,
+
+                      # Catégories de muscles
+                      "list_muscles_actifs": list_muscles_actifs,
+                      "list_muscles_peu_actif": list_muscles_peu_actif,
+                      "list_muscles_inactifs": list_muscles_inactifs,
+
+                      # For graph by categories
+                      "CasesCategories_5": CasesVariables_6,
+                      "CasesCategories_3": CasesVariables_36,
+                      "CaseNames_5": CaseNames_6,
+                      "CaseNames_3": CaseNames_36,
+
+                      # Pour moment arms
+                      "muscle_list_by_categories": list_muscle_variation,
+
+                      # Pour COP
+                      "COP_contour": COP_contour
+                      }
+
+# Parameters of the graphs
+graph_parameters_par_CSA = {"xlim": [0, 120],
+                            "legend_position": "center left",
+                            "grid_x_step": 15,
+
+                            # Catégories de muscles
+                            "list_muscles_actifs": list_muscles_actifs,
+                            "list_muscles_peu_actif": list_muscles_peu_actif,
+                            "list_muscles_inactifs": list_muscles_inactifs,
+
+                            # For graph by categories
+                            "CasesCategories_5": CasesVariables_CSA_9,
+                            "CasesCategories_3": CasesVariables_CSA_6,
+                            "CaseNames_5": list_csa_long,
+                            "CaseNames_3": list_csa_short,
+
+                            # Pour moment arms
+                            "muscle_list_by_categories": list_muscle_variation,
+
+                            # Pour COP
+                            "COP_contour": COP_contour
+                            }
+"""Normal (done)"""
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "Normal", save_graph=True, composante_on=False, **graph_parameters)
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
+
+"""Par CSA"""
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction/No recentrage", "Par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
+
+"""Elevation (done)"""
+# Recentrage
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Normal", save_graph=True, composante_on=False, **graph_parameters)
+
+# No recentrage
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
+
+# Avec neutral
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage with neutral", save_graph=True, composante_on=False, **graph_parameters_6)
+
+# %% 140 deg no recentrage
+
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, CasesVariables_3, COP_contour, figure_title="Position du centre de pression", variable="COP", composantes=["AP", "IS"], legend_position="lower center", figsize=[24, 13])
+
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, "Abduction", "ForceTolError", cases_on="all")
+# %% Stability ratio
+
+# # calcul instability ratio
+# for case in CaseNames_6:
+#     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
+
+#     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
+#     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"]["Total"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] / abs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"])
+
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_3, "Abduction", "ForceContact GlenImplant", composante_y=["Shear"], figure_title="Shear forces", xlim=[15, 120], same_lim=True)
+
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_3, "Abduction", "Instability Ratio", figure_title="Instability ratio", xlim=[15, 120], same_lim=True)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_5, "Abduction", "Instability Ratio", figure_title="Instability ratio", xlim=[15, 120], same_lim=True, figsize=[24, 14])
+
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "Instability  Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True, figsize=[24, 14], cases_on=CaseNames_3)
+
+# %% Figures article
+
+"""Article"""
+
+SimulationsLineStyleDictionary_article = {
+    # Glen xdown
+    "xdown-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
+    "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "xdown-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
+    "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "xdown-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+
+    # Glen neutral
+    "neutral-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
+    "neutral-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "neutral-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
+    "neutral-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "neutral-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+
+    # Glen up
+    "up-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
+    "up-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "up-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
+    "up-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "up-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+}
+define_simulations_line_style(SimulationsLineStyleDictionary_article)
+
+Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
+                               "Neutral inclination": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
+                               "Upward inclination": ["up-xshort", "up-normal", "up-xlong"]
+                               }}
+
+# Article
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center")
+
+grid_steps_y = [50, 25, 50, 50]
+y_lims = {"Total": [0, 500],
+          "AP": [-50, 100],
+          "IS": [-150, 200],
+          "ML": [-500, 0]
+          }
+
+# # Force de contact composante par compoasante
+# for ind, composante in enumerate(["Total", "AP", "IS", "ML"]):
+#     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Downtilt", composante_y=[composante], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 1})
+#     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Middle tilt", composante_y=[composante], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
+#     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Uptilt", composante_y=[composante], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=y_lims[composante], grid_y_step=grid_steps_y[ind])
+
+# Contact forces for neutral inclination
+graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 1})
+graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
+graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression Force", composante_y=["ML"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 400])
+
+# # Compression and shear, neutral inclination
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Shear forces", composante_y=["Shear"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 1})
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression forces", composante_y=["Compression"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 2}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
+
+# instability ratio
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_Tilt_3_Acromion_3, "Abduction", "Instability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True)
+
+"""Abstract"""
+# SimulationsLineStyleDictionary_abstract = {
+#     # Glen xdown
+#     "xdown-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
+#     "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+#     "xdown-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3.5},
+#     "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+#     "xdown-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4.5},
+
+#     # Glen xdown
+#     "middle-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
+#     "middle-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+#     "middle-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3.5},
+#     "middle-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+#     "middle-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4.5},
+
+#     # Glen xdown
+#     "xup-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
+#     "xup-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+#     "xup-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3.5},
+#     "xup-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+#     "xup-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4.5},
+# }
+
+# define_simulations_line_style(SimulationsLineStyleDictionary_abstract)
+
+# # Abstract
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, figure_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4)
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, figure_title="Uptilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4)
+
+
+"""Presentations powerpoint"""
+# SimulationsLineStyleDictionary_presentation = {
+#     # Glen xdown
+#     "xdown-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
+#     "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+#     "xdown-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3.5},
+#     "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+#     "xdown-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
+
+#     # Glen xdown
+#     "middle-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
+#     "middle-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+#     "middle-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3.5},
+#     "middle-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+#     "middle-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
+
+#     # Glen xdown
+#     "xup-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
+#     "xup-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+#     "xup-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3.5},
+#     "xup-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+#     "xup-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
+# }
+# define_simulations_line_style(SimulationsLineStyleDictionary_presentation)
+
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, COP_contour, figure_title="Centre de pression", cases_on=MiddleCases_3, graph_annotation_on=False, composantes=["AP", "IS"], subplot={"dimension": [1, 2], "number": 1}, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2)
+# COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, COP_contour, figure_title="Centre de pression", cases_on=xUpCases_3, graph_annotation_on=False, composantes=["AP", "IS"], subplot={"dimension": [1, 2], "number": 2}, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2)
+
+
+define_simulations_line_style(SimulationsLineStyleDictionary)
+
+# %% variations forces de contact
+
+# diff_force = {"Higher inclination": {"AP": [], "IS": [], "ML": [], "Abduction": Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["up-normal"]["Abduction"]["Total"]},
+#               "Lower inclination": {"AP": [], "IS": [], "ML": [], "Abduction": Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["up-normal"]["Abduction"]["Total"]}
+#               }
+
+# for composante in ["AP", "IS", "ML"]:
+#     diff_force["Higher inclination"][composante] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["up-normal"]["ForceContact GlenImplant"][composante] - Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["neutral-normal"]["ForceContact GlenImplant"][composante]
+#     diff_force["Lower inclination"][composante] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["xdown-normal"]["ForceContact GlenImplant"][composante] - Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage["neutral-normal"]["ForceContact GlenImplant"][composante]
+
+# composante = "IS"
+# inclination_variation = "Lower inclination"
+# a_avant_90 = np.mean(diff_force[inclination_variation][composante][0:45])
+# a_apres_90 = np.mean(diff_force[inclination_variation][composante][45:-1])
