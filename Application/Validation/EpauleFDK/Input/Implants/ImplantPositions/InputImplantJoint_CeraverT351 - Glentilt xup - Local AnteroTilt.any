@@ -9,8 +9,8 @@ Parameters to set implants and joint parameters:
 - Glenoid implant position: transform matrix Glenoid_CoordinateSystem to GlenImplantPos
 - Glenoid center position to position gh joint node (ghProth) (calculated by fitting a sphere on the glenoid implant surface)
 
-In this configuration, the glenoid implant has been rotated 14.223deg upward (15.9 in 3d slicer) to achieve a 40deg CSA without acromion scaling
-Rotated around an axis passing through the center of the glenoid and parallel to the SCAPULA anteroposterior axis
+In this configuration, the glenoid implant has been rotated 15.165deg upward (-15.8 in 3d slicer) to achieve a 40deg CSA without acromion scaling
+Rotated around an axis passing through the center of the glenoid and parallel to the GLENOID IMPLANT anteroposterior axis
 ----------------------------- */
 AnyFolder &InputVar1=Main.InputVariables;
 
@@ -52,17 +52,17 @@ InputVar1={
     // GLENOID IMPLANT POSITION/ORIENTATION
     // From Scapula to glenoid component Coordinate System (on 3d model)
     AnyFolder GlenPosition = {
-      AnyVar GleneImplantTiltAngle = 14.223;
-      AnyString RotationAxis = "Scapula Anteroposterior Axis";
+      AnyVar GleneImplantTiltAngle = 15.165;
+      AnyString RotationAxis = "Glenoid implant Anteroposterior Axis";
       
       
-      AnyVec3 Position = 0.001*{-26.219218 , -45.500894 , -25.8199};
+      AnyVec3 Position = 0.001*{-25.928136 , -45.408988 , -24.271015};
       AnyMat33 Rotation = {
-        {-0.12391 , -0.145746 , 0.981531},
-        {-0.271199 , 0.956469 , 0.107788},
-        {-0.954514 , -0.252834 , -0.158043}
-        
-      };    
+      {-0.193467 , -0.149501 , 0.969649},
+      {-0.226877 , 0.968351 , 0.104034},
+      {-0.954514 , -0.199864 , -0.221263}
+      
+      };
       
       
       
@@ -74,7 +74,7 @@ InputVar1={
       AnyVec3 Center_Neutral = 0.001*{28.812351 , -48.17918 , -35.305958};
       
       //New Center after glene implant rotation in scapula coordinate system
-      AnyVec3 Center_Absolute = 0.001*{29.084169 , -39.487227 , -35.305958};
+      AnyVec3 Center_Absolute = 0.001*{28.664689 , -39.58081 , -37.319763};
       
     };
     
@@ -93,48 +93,13 @@ InputVar1={
     AnyVar pz = 0.001 - 0.0046;     //ML : Lateral = +
     #endif
     
+    // To have same position than Lauranne    
     #if HumExternalRotation == -21
-    AnyVar px = -.002 + 0.0005;     //AP : Anterieur = +   
-    AnyVar py = 0.003 - 0.004 ;     //IS : Superieur = +  
-    AnyVar pz = 0.001 - 0.0046;     //ML : Lateral = +
-    #endif
-    
-    
-    
-    // Pour que l'angle entre les implants soit similaire  Lauranne    
-    #if HumExternalRotation == -16
-    
-    // Values for case 5 calibration 
-    //    AnyVar px = -.002;     //AP : Anterieur = +   
-    //    AnyVar py = 0.003 -0.003;     //IS : Superieur = +  
-    //    AnyVar pz = 0.001 - 0.0048;     //ML : Lateral = +
-    
-    // Values for case 3 calibration 
-    AnyVar px = -.002;     //AP : Anterieur = +   
-    AnyVar py = 0.003 -0.003;     //IS : Superieur = +  
-    AnyVar pz = 0.001 - 0.0049;     //ML : Lateral = +
-    
-    
-    
-    // test 
-    //    AnyVar px = -.002 -0.001;     //AP : Anterieur = +   
-    //    AnyVar py = 0.003 - 0.004 + 0.003;     //IS : Superieur = +  
-    //    AnyVar pz = 0.001 - 0.0044;     //ML : Lateral = +    
-    #endif
-    
-    // Implants parfaitement en faces
-    #if HumExternalRotation == -10
-    //    AnyVar px = -.002 + 0.0005;     //AP : Anterieur = +   
-    //    AnyVar py = 0.003 - 0.004 ;     //IS : Superieur = +  
-    //    AnyVar pz = 0.001 - 0.0049;     //ML : Lateral = + 
-    
-    
-    //test pi
-    AnyVar px = -.002 -0.001;     //AP : Anterieur = +   
-    AnyVar py = 0.003 - 0.004 + 0.003 ;     //IS : Superieur = +  
-    AnyVar pz = 0.001 - 0.0047;     //ML : Lateral = + 
-    
-    #endif
+    AnyVar px = -0.00142;     //AP : Anterieur = +   
+    AnyVar py = 0.00062;     //IS : Superieur = +  
+    AnyVar pz = -0.0015;     //ML : Lateral = +
+
+#endif
     
   };
 };

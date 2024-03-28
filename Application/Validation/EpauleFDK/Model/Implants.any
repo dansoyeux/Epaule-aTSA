@@ -5,18 +5,8 @@ Call to custom file based on template "InputPosition_ImplantName.any"
 
 
 //Files with the original humeral implant position
-#if CorrectHumImplantPos==0
 #path INPUTPOSFILE "../Input/Implants/ImplantPositions/InputImplantJoint_" + INPUTPOS + ".any"
 #include "<INPUTPOSFILE>" 
-#endif
-
-//Files with the corrected humeral implant position (in another directory)
-#if CorrectHumImplantPos==1
-#path INPUTPOSFILE "../Input/Implants/ImplantPositions/Fix_Humeral_Implant_Position/InputImplantJoint_" + INPUTPOS + ".any"
-#include "<INPUTPOSFILE>" 
-#endif
-
-
 
 /* -------- GLENOID IMPLANT-----------------------------------------------------*/
 Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
@@ -113,16 +103,6 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
 //Enlever cet offset en appliquant cet offset aux coordonnes de base de l'implant humeral
 Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
   
-  #if CorrectHumImplantPos==0
-  AnyVec3 OffSet =-{-0.001379, 0.008999 , -0.009119};
-  #endif
-  
-  #if CorrectHumImplantPos==1
-  AnyVec3 OffSet =-{0, 0 ,0};
-  #endif
-  
-  
-  
   //Displays Humerus.gh node
   gh = {
     AnyDrawRefFrame drw = {
@@ -136,7 +116,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
   
   //  Modele osseux Humerus
   AnyRefNode HumerusBoneGeometryNode={ 
-    sRel=.OffSet*.Mirror;
+    sRel={0, 0 ,0}*.Mirror;
     AnyDrawRefFrame drw = {
       Visible= Off;
       ScaleXYZ={1,1,1}/15;

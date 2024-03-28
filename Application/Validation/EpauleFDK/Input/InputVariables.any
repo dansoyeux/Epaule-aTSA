@@ -94,15 +94,7 @@ AnyFolder InputVariables = {
   -25 deg : old value used without correction  (before 11-07-2023) 
   */
   
-  #define HumExternalRotation -21
-
-  
-  
-  /* Correction de la position de l'implant humerus pour qu'il soit vraiment au bord 
-  */
-  #define CorrectHumImplantPos 1
-  
-  
+  #define HumExternalRotation -21  
   
   /* ACTIVATION DU BRAS GAUCHE OU NON
   */
@@ -186,7 +178,7 @@ AnyFolder InputVariables = {
   
   /* -------------------------------------------CSA_Tilt selection------------------------------------*/
   #ifndef CSA_Tilt
-  #define CSA_Tilt "neutral"
+  #define CSA_Tilt "middle"
   #endif
   /*
   xdown
@@ -195,14 +187,13 @@ AnyFolder InputVariables = {
   middle
   up
   xup
-   
-  original
+
   */
   
   /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
   
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "normal"
+  #define CSA_Acromion_Length "long"
   #endif
   /*
   xshort
