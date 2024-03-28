@@ -247,7 +247,9 @@ define_simulation_description(SimulationDescriptionDictionary)
 
 # Fonction pour définir le contour qui sera dessiné par la fonction COP_graph
 COP_contour = define_COP_contour("GleneContour", "pp")
-
+COP_contour_sym = COP_contour.copy()[::-1]
+COP_contour_sym[:, 0] = COP_contour_sym[:, 0] * -1
+COP_contour = np.concatenate((COP_contour, COP_contour_sym))
 
 # %% Nom des cas de simulation
 
@@ -871,7 +873,7 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
                                }}
 
 # Article
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center")
+PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center")
 
 grid_steps_y = [50, 25, 50, 50]
 y_lims = {"Total": [0, 500],
@@ -898,7 +900,8 @@ y_lims = {"Total": [0, 500],
 # instability ratio
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_Tilt_3_Acromion_3, "Abduction", "Instability Ratio", figure_title="Stability ratio", xlim=[15, 120], same_lim=True)
 
-"""Abstract"""
+# %% Abstract
+
 # SimulationsLineStyleDictionary_abstract = {
 #     # Glen xdown
 #     "xdown-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
@@ -928,8 +931,8 @@ y_lims = {"Total": [0, 500],
 # COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, figure_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4)
 # COP_graph(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, COP_contour, figure_title="Uptilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4)
 
+# %% Présentations powerpoint
 
-"""Presentations powerpoint"""
 # SimulationsLineStyleDictionary_presentation = {
 #     # Glen xdown
 #     "xdown-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
