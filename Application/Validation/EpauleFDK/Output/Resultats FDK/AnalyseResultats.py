@@ -682,19 +682,19 @@ list_muscle_variation_faible = ["Pectoralis major clavicular",
 # %% Moyenne par CSA
 
 # result_dictionary = {key: result_dictionary[key] for key in CaseNames_3}
-combine_cases = {"CSA=12°": CSA_12_Cases,
-                  "CSA=16°": CSA_16_Cases,
-                  "CSA=20°": CSA_20_Cases,
-                  "CSA=25°": CSA_25_Cases,
-                  "CSA=30°": CSA_30_Cases,
-                  "CSA=35°": CSA_35_Cases,
-                  "CSA=40°": CSA_40_Cases,
-                  "CSA=45°": CSA_45_Cases,
-                  "CSA=50°": CSA_50_Cases
-                  }
+# combine_cases = {"CSA=12°": CSA_12_Cases,
+#                   "CSA=16°": CSA_16_Cases,
+#                   "CSA=20°": CSA_20_Cases,
+#                   "CSA=25°": CSA_25_Cases,
+#                   "CSA=30°": CSA_30_Cases,
+#                   "CSA=35°": CSA_35_Cases,
+#                   "CSA=40°": CSA_40_Cases,
+#                   "CSA=45°": CSA_45_Cases,
+#                   "CSA=50°": CSA_50_Cases
+#                   }
 
-Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, combine_cases, "mean")
-Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_Par_CSA = {**Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_Par_CSA, **Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage}
+# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, combine_cases, "mean")
+# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_Par_CSA = {**Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_Par_CSA, **Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage}
 
 list_csa_short = ["CSA=25°",
                   "CSA=30°",
@@ -703,12 +703,12 @@ list_csa_short = ["CSA=25°",
                   ]
 
 list_csa_long = ["CSA=20°",
-                 "CSA=25°",
-                 "CSA=30°",
-                 "CSA=35°",
-                 "CSA=40°",
-                 "CSA=45°"
-                 ]
+                  "CSA=25°",
+                  "CSA=30°",
+                  "CSA=35°",
+                  "CSA=40°",
+                  "CSA=45°"
+                  ]
 
 # %% Save figures
 
@@ -818,7 +818,7 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage with neutral", save_graph=True, composante_on=False, **graph_parameters_6)
 
 """Par CSA Elevation"""
-PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_Par_CSA, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation/No recentrage", "Par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
+# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_Par_CSA, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation/No recentrage", "Par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
 
 # %% 140 deg no recentrage
 
