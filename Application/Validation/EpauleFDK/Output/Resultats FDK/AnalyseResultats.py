@@ -681,21 +681,20 @@ list_muscle_variation_faible = ["Pectoralis major clavicular",
 
 # %% Moyenne par CSA
 
-# # result_dictionary = {key: result_dictionary[key] for key in CaseNames_3}
-# combine_cases = {"CSA=12°": CSA_12_Cases,
-#                  "CSA=16°": CSA_16_Cases,
-#                  "CSA=20°": CSA_20_Cases,
-#                  "CSA=25°": CSA_25_Cases,
-#                  "CSA=30°": CSA_30_Cases,
-#                  "CSA=35°": CSA_35_Cases,
-#                  "CSA=40°": CSA_40_Cases,
-#                  "CSA=45°": CSA_45_Cases,
-#                  "CSA=50°": CSA_50_Cases
-#                  }
+# result_dictionary = {key: result_dictionary[key] for key in CaseNames_3}
+combine_cases = {"CSA=12°": CSA_12_Cases,
+                  "CSA=16°": CSA_16_Cases,
+                  "CSA=20°": CSA_20_Cases,
+                  "CSA=25°": CSA_25_Cases,
+                  "CSA=30°": CSA_30_Cases,
+                  "CSA=35°": CSA_35_Cases,
+                  "CSA=40°": CSA_40_Cases,
+                  "CSA=45°": CSA_45_Cases,
+                  "CSA=50°": CSA_50_Cases
+                  }
 
-# Results_GlenoidLocalAxis_MR_Polynomial_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial, combine_cases, "mean")
-# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, combine_cases, "mean")
-# Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA = {**Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA, **Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage}
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_Par_CSA = combine_simulation_cases(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, combine_cases, "mean")
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_Par_CSA = {**Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_Par_CSA, **Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage}
 
 list_csa_short = ["CSA=25°",
                   "CSA=30°",
@@ -803,12 +802,10 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
                             # Pour COP
                             "COP_contour": COP_contour
                             }
-"""Normal (done)"""
+"""Abduction (done)"""
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "Normal", save_graph=True, composante_on=False, **graph_parameters)
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
 
-"""Par CSA"""
-# PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_no_recentrage_Par_CSA, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Abduction/No recentrage", "Par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
 
 """Elevation (done)"""
 # Recentrage
@@ -819,6 +816,9 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 
 # Avec neutral
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage with neutral", save_graph=True, composante_on=False, **graph_parameters_6)
+
+"""Par CSA Elevation"""
+PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_Par_CSA, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation/No recentrage", "Par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
 
 # %% 140 deg no recentrage
 
@@ -901,7 +901,7 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
 # graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression forces", composante_y=["Compression"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 2}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
 
 # instability ratio
-PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=False)
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=False)
 
 # %% Abstract
 
