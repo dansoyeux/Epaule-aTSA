@@ -80,7 +80,6 @@ CustomFDKOn = "On"
 tilt_list = ["xdown", "down", "neutral", "middle", "up", "xup"]
 acromion_list = ["xshort", "short", "normal", "long", "xlong"]
 
-"""-------------------------------------WARNING NEUTRAL ONLY-------------------------------------"""
 
 # Dossier de résultats
 m_ResultFolder = "SaveData/Elevation_no_recentrage/"
@@ -89,9 +88,14 @@ m_ResultFolder = "SaveData/Elevation_no_recentrage/"
 # tilt_list = ["xdown", "middle", "xup"]
 # acromion_list = ["xshort", "normal", "xlong"]
 
+
+
+
+
+"""-------------------------------------WARNING NEUTRAL ONLY-------------------------------------"""
 # # Cases to run
-# tilt_list = ["down"]
-# acromion_list = ["short"]
+# tilt_list = ["middle"]
+# acromion_list = ["normal"]
 
 # %% Nom du fichier de sortie
 

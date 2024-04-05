@@ -95,11 +95,7 @@ AnyFolder InputVariables = {
   */
   
   #define HumExternalRotation -21  
-  
-  /* ACTIVATION DU BRAS GAUCHE OU NON
-  */
-  #define LeftArmOn 0
-  
+    
    /* ---------------------------------- MOVEMENT PARAMETERS -------------------------------------*/
   
   /* Type of arm movement
@@ -193,7 +189,7 @@ AnyFolder InputVariables = {
   /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
   
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "long"
+  #define CSA_Acromion_Length "normal"
   #endif
   /*
   xshort
@@ -242,7 +238,9 @@ AnyFolder InputVariables = {
 
   #if BallAndSocket == 0
   #define m_LoadFile "04-01-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial" + "-Elevation-no-recentrage" 
-  #define m_LoadFolder "SaveData/Elevation_no_recentrage/"
+//  #define m_LoadFolder "SaveData/Elevation_no_recentrage/"
+  #define m_LoadFolder "SaveData/test/"
+  
   
   // BallAndSocket activated
   #else 

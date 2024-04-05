@@ -7,14 +7,7 @@
 
 #include "<ANYBODY_PATH_MODELUTILS>/Video/CameraClassTemplate.any"
 
-#if LeftArmOn == 0
 #define BM_ARM_LEFT OFF
-#endif
-
-#if LeftArmOn == 1
-#define BM_ARM_LEFT ON
-#endif
-
 
 #define BM_ARM_SHOULDER_RHYTHM ON
 #define BM_ARM_MUSCLES_RIGHT _MUSCLES_3E_HILL_

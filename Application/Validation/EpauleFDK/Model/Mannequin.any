@@ -28,9 +28,10 @@ AnyFolder Mannequin = {
       AnyVar SternoClavicularElevation=11.5;    //This value is not used for initial position
                   
       AnyVar GlenohumeralFlexion = 0; 
-      AnyVar GlenohumeralAbduction = 15; //1 
+      AnyVar GlenohumeralAbduction = 15;
       
-      AnyVar GlenohumeralExternalRotation = HumExternalRotation;
+      // Modified external rotation so that the implants are in front of each other
+      AnyVar GlenohumeralExternalRotation = -21;
       
       
       AnyVar ElbowFlexion = 1; 
