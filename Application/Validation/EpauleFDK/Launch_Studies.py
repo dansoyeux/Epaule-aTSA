@@ -88,10 +88,6 @@ m_ResultFolder = "SaveData/Elevation_no_recentrage/"
 # tilt_list = ["xdown", "middle", "xup"]
 # acromion_list = ["xshort", "normal", "xlong"]
 
-
-
-
-
 """-------------------------------------WARNING NEUTRAL ONLY-------------------------------------"""
 # # Cases to run
 # tilt_list = ["middle"]
