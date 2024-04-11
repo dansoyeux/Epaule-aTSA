@@ -7,6 +7,8 @@ from Anybody_Package.Anybody_LoadOutput.LoadOutput import load_simulation
 from Anybody_Package.Anybody_LoadOutput.LoadOutput import create_compared_simulations
 
 from Anybody_Package.Anybody_LoadOutput.Tools import save_results_to_file
+from Anybody_Package.Anybody_LoadOutput.Tools import load_results_from_file
+from Anybody_Package.Anybody_LoadOutput.Tools import array_to_dictionary
 
 from Anybody_Package.Anybody_LoadOutput.LoadLiterature import load_literature_data
 from Anybody_Package.Anybody_LoadOutput.LoadOutput import combine_simulation_cases
@@ -215,9 +217,70 @@ BallAndSocket_Variables = define_variables_to_load(BallAndSocket_VariableDiction
 
 # %% Nom des cas de simulation
 
-CSA_20_Cases = ["middle-xshort", "xdown-normal"]
-CSA_30_Cases = ["middle-normal", "xup-xshort", "xdown-xlong"]
-CSA_40_Cases = ["middle-xlong", "xup-normal"]
+# Tilt acromion
+xUpCases_3 = ["xup-xshort", "xup-normal", "xup-xlong"]
+UpCases_3 = ["up-xshort", "up-normal", "up-xlong"]
+MiddleCases_3 = ["middle-xshort", "middle-normal", "middle-xlong"]
+NeutralCases_3 = ["neutral-xshort", "neutral-normal", "neutral-xlong"]
+DownCases_3 = ["down-xshort", "down-normal", "down-xlong"]
+xDownCases_3 = ["xdown-xshort", "xdown-normal", "xdown-xlong"]
+
+
+# Longueur d'acromion
+xShortCases_3 = ["xdown-xshort", "middle-xshort", "xup-xshort"]
+ShortCases_3 = ["xdown-short", "middle-short", "xup-short"]
+NormalCases_3 = ["xdown-normal", "middle-normal", "xup-normal"]
+LongCases_3 = ["xdown-long", "middle-long", "xup-long"]
+xLongCases_3 = ["xdown-xlong", "middle-xlong", "xup-xlong"]
+
+# Longueur d'acromion
+xShortCases_36 = ["xdown-xshort", "neutral-xshort", "up-xshort"]
+ShortCases_36 = ["xdown-short", "neutral-short", "up-short"]
+NormalCases_36 = ["xdown-normal", "neutral-normal", "up-normal"]
+LongCases_36 = ["xdown-long", "neutral-long", "up-long"]
+xLongCases_36 = ["xdown-xlong", "neutral-xlong", "up-xlong"]
+
+CaseNames_3 = [*xDownCases_3, *MiddleCases_3, *xUpCases_3]
+CaseNames_36 = [*xDownCases_3, *NeutralCases_3, *UpCases_3]
+UpDownCases_3 = [*xUpCases_3, *xDownCases_3]
+
+# More cases
+xDownCases_5 = ["xdown-xshort", "xdown-short", "xdown-normal", "xdown-long", "xdown-xlong"]
+DownCases_5 = ["down-xshort", "down-short", "down-normal", "down-long", "down-xlong"]
+MiddleCases_5 = ["middle-xshort", "middle-short", "middle-normal", "middle-long", "middle-xlong"]
+NeutralCases_5 = ["neutral-xshort", "neutral-short", "neutral-normal", "neutral-long", "neutral-xlong"]
+UpCases_5 = ["up-xshort", "up-short", "up-normal", "up-long", "up-xlong"]
+xUpCases_5 = ["xup-xshort", "xup-short", "xup-normal", "xup-long", "xup-xlong"]
+
+xShortCases_5 = ["xdown-xshort", "down-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
+ShortCases_5 = ["xdown-short", "down-short", "middle-short", "up-short", "xup-short"]
+NormalCases_5 = ["xdown-normal", "down-normal", "middle-normal", "up-normal", "xup-normal"]
+LongCases_5 = ["xdown-long", "down-long", "middle-long", "up-long", "xup-long"]
+xLongCases_5 = ["xdown-xlong", "down-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
+
+xShortCases_6 = ["xdown-xshort", "down-xshort", "neutral-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
+ShortCases_6 = ["xdown-short", "down-short", "neutral-short", "middle-short", "up-short", "xup-short"]
+NormalCases_6 = ["xdown-normal", "down-normal", "neutral-normal", "middle-normal", "up-normal", "xup-normal"]
+LongCases_6 = ["xdown-long", "down-long", "neutral-long", "middle-long", "up-long", "xup-long"]
+xLongCases_6 = ["xdown-xlong", "down-xlong", "neutral-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
+
+CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
+CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
+
+CaseNames_5_Tilt_3_Acromion = [*xDownCases_3, *DownCases_3, *MiddleCases_3, *UpCases_3, *xUpCases_3]
+
+tilt_names_3 = ["xdown", "middle", "xup"]
+tilt_names_5 = ["xdown", "down", "up", "xup"]
+acromion_names_3 = ["xshort", "normal", "xlong"]
+acromion_names_5 = ["xshort", "short", "normal", "long", "xlong"]
+
+# Pour avoir tri par tilts
+CaseNames_3_Tilt_5_Acromion = [f"{tilt}-{acromion}" for tilt in tilt_names_3 for acromion in acromion_names_5]
+
+CompWickham_CasesNames_3 = [*CaseNames_3, "Wickham", "Ball And Socket"]
+
+CaseNames_3_BallAndSocket = [*CaseNames_3, "Ball And Socket"]
+CaseNames_5_BallAndSocket = [*CaseNames_5, "Ball And Socket"]
 
 # 9 CSA différents
 CSA_12_Cases = ["xdown-xshort"]
@@ -229,34 +292,6 @@ CSA_35_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
 CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
 CSA_45_Cases = ["up-xlong", "xup-long"]
 CSA_50_Cases = ["xup-xlong"]
-
-# More cases
-xDownCases_5 = ["xdown-xshort", "xdown-short", "xdown-normal", "xdown-long", "xdown-xlong"]
-DownCases_5 = ["down-xshort", "down-short", "down-normal", "down-long", "down-xlong"]
-NeutralCases_5 = ["neutral-xshort", "neutral-short", "neutral-normal", "neutral-long", "neutral-xlong"]
-MiddleCases_5 = ["middle-xshort", "middle-short", "middle-normal", "middle-long", "middle-xlong"]
-UpCases_5 = ["up-xshort", "up-short", "up-normal", "up-long", "up-xlong"]
-xUpCases_5 = ["xup-xshort", "xup-short", "xup-normal", "xup-long", "xup-xlong"]
-
-xShortCases_5 = ["xdown-xshort", "down-xshort", "neutral-xshort", "middle-xshort", "up-xshort", "xup-xshort"]
-ShortCases_5 = ["xdown-short", "down-short", "neutral-short", "middle-short", "up-short", "xup-short"]
-NormalCases_5 = ["xdown-normal", "down-normal", "neutral-normal", "middle-normal", "up-normal", "xup-normal"]
-LongCases_5 = ["xdown-long", "down-long", "neutral-long", "middle-long", "up-long", "xup-long"]
-xLongCases_5 = ["xdown-xlong", "down-xlong", "neutral-xlong", "middle-xlong", "up-xlong", "xup-xlong"]
-
-CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
-CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
-
-# Tilt acromion
-xUpCases_3 = ["xup-xshort", "xup-normal", "xup-xlong"]
-UpCases_3 = ["up-xshort", "up-normal", "up-xlong"]
-MiddleCases_3 = ["middle-xshort", "middle-normal", "middle-xlong"]
-NeutralCases_3 = ["neutral-xshort", "neutral-normal", "neutral-xlong"]
-DownCases_3 = ["down-xshort", "down-normal", "down-xlong"]
-xDownCases_3 = ["xdown-xshort", "xdown-normal", "xdown-xlong"]
-
-CaseNames_3 = [*xDownCases_3, *MiddleCases_3, *xUpCases_3]
-UpDownCases_3 = [*xUpCases_3, *xDownCases_3]
 
 
 # %%                                                Résultats FDK
@@ -411,3 +446,86 @@ save_results_to_file(FDK_Variables, SaveVariablesDirectory, "FDK_Variables")
 
 Results_literature = load_literature_data("Template_importation_littérature", "Anybody_Package/Template")
 save_results_to_file(Results_literature, SaveSimulationsDirectory, "Results_literature")
+
+# %% Calculs supplémentaires
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+
+"""Stability ratio"""
+# # calcul instability ratio
+# for case in Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage:
+#     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
+
+#     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
+#     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"]["Total"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] / Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"]
+
+"""Sum of moments"""
+
+
+def score(Results, cases_list):
+    moment_scores = {}
+    shear_scores = {}
+
+    for case in cases_list:
+        # COP in meter
+        COP = np.array([Results[case]["COP"]["AP"],
+                        Results[case]["COP"]["IS"],
+                        Results[case]["COP"]["ML"]]).T / 1000
+
+        # -ML pour remettre compression = négatif
+        ContactForce = np.array([Results[case]["ForceContact GlenImplant"]["AP"],
+                                 Results[case]["ForceContact GlenImplant"]["IS"],
+                                 -Results[case]["ForceContact GlenImplant"]["ML"]]).T
+
+        moment = np.zeros([len(COP), 3])
+
+        # Calcul des scores de shear et de moment
+        for step in range(len(COP)):
+
+            # calculates moments
+            moment[step, 0:2] = np.cross(COP[step, :], ContactForce[step, :])[0:2]
+            # total entre M_AP et M_IS
+            moment[step, 2] = abs(moment[step, 0]) + abs(moment[step, 1])
+
+        # Calcul du score de moment = moment total dans tout le mouvement en valeur absolue
+        score_moment = np.array([sum(abs(moment[:, 0])), sum(abs(moment[:, 1])), sum(moment[:, 2])])
+
+        # abs(ap) + abs(IS)
+        score_shear = np.array([sum(abs(Results[case]["ForceContact GlenImplant"]["AP"])),
+                                sum(abs(Results[case]["ForceContact GlenImplant"]["IS"])),
+                                0])
+
+        # Total shear score
+        score_shear[2] = score_shear[0] + score_shear[1]
+
+        # Save shear scores in the variables and in a new variable named score
+        Results[case]["ForceContact GlenImplant"]["Score"] = score_shear
+        Results[case]["Moment"] = array_to_dictionary(moment, "Moment on the glenoid implant [N.m]", SequenceComposantes=["AP", "IS", "AP+IS"])
+        Results[case]["Moment"]["Score"] = score_moment
+
+        Results[case]["Score"] = {"Shear": score_shear, "Moment": score_moment}
+
+        # Save de dictionnaire contenant tous les scores de chaque cas
+        # shear_scores[case]["AP"] = score_shear[0]
+        # shear_scores[case]["IS"] = score_shear[1]
+        shear_scores[case] = score_shear[2]
+
+        # moment_scores[case]["AP"] = score_moment[0]
+        # moment_scores[case]["IS"] = score_moment[1]
+        moment_scores[case] = score_moment[2]
+
+    # Classe les scores par ordre croissant dans le dictionnaire
+    shear_scores = dict(sorted(shear_scores.items(), key=lambda x: x[1]))
+    moment_scores = dict(sorted(moment_scores.items(), key=lambda x: x[1]))
+
+    return Results, moment_scores, shear_scores
+
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, moment_scores, shear_scores = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_6)
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, moment_scores_36, shear_scores_36 = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_36)
+
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(moment_scores, SaveSimulationsDirectory, "moment_scores")
+save_results_to_file(shear_scores, SaveSimulationsDirectory, "shear_scores")
+save_results_to_file(moment_scores_36, SaveSimulationsDirectory, "moment_scores_36")
+save_results_to_file(shear_scores_36, SaveSimulationsDirectory, "shear_scores_36")

@@ -17,6 +17,7 @@ from Anybody_Package.Anybody_LoadOutput.LoadOutput import sum_result_variables
 
 import numpy as np
 import matplotlib
+import matplotlib.pyplot as plt
 
 # %% taille des textes dans les graphiques
 
@@ -410,6 +411,11 @@ Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_results_fr
 
 Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage")
 
+moment_scores = load_results_from_file(SaveSimulationsDirectory, "moment_scores")
+shear_scores = load_results_from_file(SaveSimulationsDirectory, "shear_scores")
+moment_scores_36 = load_results_from_file(SaveSimulationsDirectory, "moment_scores_36")
+shear_scores_36 = load_results_from_file(SaveSimulationsDirectory, "shear_scores_36")
+
 # %%                                                Chargement des résultats BallAndSocket
 Results_BallAndSocket = load_results_from_file(SaveSimulationsDirectory, "Results_BallAndSocket")
 
@@ -703,12 +709,12 @@ list_csa_short = ["CSA=25°",
                   ]
 
 list_csa_long = ["CSA=20°",
-                  "CSA=25°",
-                  "CSA=30°",
-                  "CSA=35°",
-                  "CSA=40°",
-                  "CSA=45°"
-                  ]
+                 "CSA=25°",
+                 "CSA=30°",
+                 "CSA=35°",
+                 "CSA=40°",
+                 "CSA=45°"
+                 ]
 
 # %% Save figures
 
@@ -827,13 +833,6 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 # graph(Results_GlenoidLocalAxis_MR_Polynomial_140deg_no_recentrage, "Abduction", "ForceTolError", cases_on="all")
 
 # %% Stability ratio
-
-# # calcul instability ratio
-for case in CaseNames_6:
-    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
-
-    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
-    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"]["Total"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] / Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"]
 
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CasesVariables_3, "Abduction", "ForceContact GlenImplant", composante_y=["Shear"], figure_title="Shear forces", xlim=[15, 120], same_lim=True)
 
@@ -980,3 +979,47 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 # inclination_variation = "Lower inclination"
 # a_avant_90 = np.mean(diff_force[inclination_variation][composante][0:45])
 # a_apres_90 = np.mean(diff_force[inclination_variation][composante][45:-1])
+
+# %% Scores
+
+"""CaseNames_36"""
+
+shear_score_total_36 = []
+moment_score_total_36 = []
+for case in moment_scores_36:
+    shear_score_total_36.append(shear_scores_36[case])
+    moment_score_total_36.append(moment_scores_36[case])
+
+plt.subplots(2, 1, figsize=(20, 10))
+
+plt.subplot(2, 1, 1)
+bars = plt.bar(list(shear_scores_36.keys()), shear_score_total_36)
+plt.grid(axis="y")
+plt.title("Scores de shear")
+plt.bar_label(bars)
+
+plt.subplot(2, 1, 2)
+bars = plt.bar(list(moment_scores_36.keys()), moment_score_total_36)
+plt.grid(axis="y")
+plt.title("Scores de moment")
+plt.bar_label(bars)
+
+"""CaseNames_6"""
+shear_score_total = []
+moment_score_total = []
+for case in moment_scores:
+    shear_score_total.append(shear_scores[case])
+    moment_score_total.append(moment_scores[case])
+
+plt.subplots(2, 1, figsize=(70, 10))
+plt.subplot(2, 1, 1)
+bars = plt.bar(list(shear_scores.keys()), shear_score_total)
+plt.grid(axis="y")
+plt.title("Scores de shear")
+plt.bar_label(bars)
+
+plt.subplot(2, 1, 2)
+bars = plt.bar(list(moment_scores.keys()), moment_score_total)
+plt.grid(axis="y")
+plt.title("Scores de moment")
+plt.bar_label(bars)
