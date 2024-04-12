@@ -982,44 +982,33 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 
 # %% Scores
 
-"""CaseNames_36"""
+# """CaseNames_36"""
+# plt.subplots(2, 1, figsize=(20, 10))
+# plt.subplot(2, 1, 1)
+# bars = plt.bar(list(shear_scores_36.keys()), list(shear_scores_36.values()))
+# # plt.grid(axis="y")
+# plt.title("Total shear forces on the glenoid [N]")
+# plt.bar_label(bars)
 
-shear_score_total_36 = []
-moment_score_total_36 = []
-for case in moment_scores_36:
-    shear_score_total_36.append(shear_scores_36[case])
-    moment_score_total_36.append(moment_scores_36[case])
+# plt.subplot(2, 1, 2)
+# bars = plt.bar(list(moment_scores_36.keys()), list(moment_scores_36.values()))
+# # plt.grid(axis="y")
+# plt.title("Total moment on the glenoid [N.m]")
+# plt.bar_label(bars)
 
-plt.subplots(2, 1, figsize=(20, 10))
+# """CaseNames_6"""
+# plt.subplots(2, 1, figsize=(70, 10))
+# plt.subplot(2, 1, 1)
+# bars = plt.bar(list(shear_scores.keys()), list(shear_scores.values()))
+# # plt.grid(axis="y")
+# plt.title("Total shear forces on the glenoid [N]")
+# plt.bar_label(bars)
 
-plt.subplot(2, 1, 1)
-bars = plt.bar(list(shear_scores_36.keys()), shear_score_total_36)
-plt.grid(axis="y")
-plt.title("Scores de shear")
-plt.bar_label(bars)
+# plt.subplot(2, 1, 2)
+# bars = plt.bar(list(moment_scores.keys()), list(moment_scores.values()))
+# # plt.grid(axis="y")
+# plt.title("Total moment on the glenoid [N.m]")
+# plt.bar_label(bars)
 
-plt.subplot(2, 1, 2)
-bars = plt.bar(list(moment_scores_36.keys()), moment_score_total_36)
-plt.grid(axis="y")
-plt.title("Scores de moment")
-plt.bar_label(bars)
-
-"""CaseNames_6"""
-shear_score_total = []
-moment_score_total = []
-for case in moment_scores:
-    shear_score_total.append(shear_scores[case])
-    moment_score_total.append(moment_scores[case])
-
-plt.subplots(2, 1, figsize=(70, 10))
-plt.subplot(2, 1, 1)
-bars = plt.bar(list(shear_scores.keys()), shear_score_total)
-plt.grid(axis="y")
-plt.title("Scores de shear")
-plt.bar_label(bars)
-
-plt.subplot(2, 1, 2)
-bars = plt.bar(list(moment_scores.keys()), moment_score_total)
-plt.grid(axis="y")
-plt.title("Scores de moment")
-plt.bar_label(bars)
+graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "Moment", composante_y=["AP+IS"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 1}, subplot_title="Moments on the glenoid", ylabel_on=False)
+graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", composante_y=["TotalShear"], figure_title="Stability ratio", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 2}, subplot_title="Shear on the glenoid", xlabel_on=False)

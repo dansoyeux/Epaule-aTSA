@@ -313,13 +313,13 @@ SaveSimulationsDirectory = "Saved Simulations"
 Élévation no recentrage
 """
 
-# Elevation_dir = "../SaveData/Elevation_no_recentrage"
-# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+Elevation_dir = "../SaveData/Elevation_no_recentrage"
+Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
 
-# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
 
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
 
 """Elevation no recentrage minmaxstrict"""
 
@@ -490,15 +490,19 @@ def score(Results, cases_list):
         score_moment = np.array([sum(abs(moment[:, 0])), sum(abs(moment[:, 1])), sum(moment[:, 2])])
 
         # abs(ap) + abs(IS)
-        score_shear = np.array([sum(abs(Results[case]["ForceContact GlenImplant"]["AP"])),
-                                sum(abs(Results[case]["ForceContact GlenImplant"]["IS"])),
-                                0])
+        shear = np.array([abs(Results[case]["ForceContact GlenImplant"]["AP"]),
+                          abs(Results[case]["ForceContact GlenImplant"]["IS"]),
+                          np.zeros(len(Results[case]["ForceContact GlenImplant"]["AP"]))]).T
 
-        # Total shear score
-        score_shear[2] = score_shear[0] + score_shear[1]
+        shear[:, 2] = shear[:, 0] + shear[:, 1]
+
+        score_shear = np.array([sum(shear[:, 0]),
+                                sum(shear[:, 1]),
+                                sum(shear[:, 2])])
 
         # Save shear scores in the variables and in a new variable named score
         Results[case]["ForceContact GlenImplant"]["Score"] = score_shear
+        Results[case]["ForceContact GlenImplant"]["TotalShear"] = shear[:, 2]
         Results[case]["Moment"] = array_to_dictionary(moment, "Moment on the glenoid implant [N.m]", SequenceComposantes=["AP", "IS", "AP+IS"])
         Results[case]["Moment"]["Score"] = score_moment
 
@@ -522,7 +526,7 @@ def score(Results, cases_list):
 
 # Calcul des scores pour tous les cas et juste 9 cas avec neutre
 Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, moment_scores, shear_scores = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_6)
-Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, moment_scores_36, shear_scores_36 = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_36)
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_1, moment_scores_36, shear_scores_36 = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_36)
 
 # Sauvegarde de la simulation en .pkl
 save_results_to_file(moment_scores, SaveSimulationsDirectory, "moment_scores")
