@@ -817,10 +817,10 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 # Recentrage
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Normal", save_graph=True, composante_on=False, **graph_parameters)
 
-# No recentrage
+# # No recentrage
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
 
-# Avec neutral
+# # Avec neutral
 # PremadeGraphs.my_graphs(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage with neutral", save_graph=True, composante_on=False, **graph_parameters_6)
 
 """Par CSA Elevation"""
@@ -874,8 +874,8 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
                                "Upward inclination": ["up-xshort", "up-normal", "up-xlong"]
                                }}
 
-# Article
-# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center")
+# # Article
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True)
 
 # grid_steps_y = [50, 25, 50, 50]
 # y_lims = {"Total": [0, 500],
