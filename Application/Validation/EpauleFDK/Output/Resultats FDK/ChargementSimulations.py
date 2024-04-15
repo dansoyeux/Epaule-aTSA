@@ -462,8 +462,8 @@ for case in Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage:
 
 
 def score(Results, cases_list):
-    moment_scores = {}
-    shear_scores = {}
+    moment_scores = {"Total":{}, "AP": {}, "IS":{}}
+    shear_scores = {"Total":{}, "AP": {}, "IS":{}}
 
     for case in cases_list:
         # COP in meter
@@ -509,29 +509,30 @@ def score(Results, cases_list):
         Results[case]["Score"] = {"Shear": score_shear, "Moment": score_moment}
 
         # Save de dictionnaire contenant tous les scores de chaque cas
-        # shear_scores[case]["AP"] = score_shear[0]
-        # shear_scores[case]["IS"] = score_shear[1]
-        shear_scores[case] = score_shear[2]
+        shear_scores["AP"][case] = score_shear[0]
+        shear_scores["IS"][case] = score_shear[1]
+        shear_scores["Total"][case] = score_shear[2]
 
-        # moment_scores[case]["AP"] = score_moment[0]
-        # moment_scores[case]["IS"] = score_moment[1]
-        moment_scores[case] = score_moment[2]
+        moment_scores["AP"][case] = score_moment[0]
+        moment_scores["IS"][case] = score_moment[1]
+        moment_scores["Total"][case] = score_moment[2]
 
-    # Classe les scores par ordre croissant dans le dictionnaire
-    shear_scores = dict(sorted(shear_scores.items(), key=lambda x: x[1]))
-    moment_scores = dict(sorted(moment_scores.items(), key=lambda x: x[1]))
+    for direction in shear_scores:
+        # Classe les scores par ordre croissant dans le dictionnaire
+        shear_scores[direction] = dict(sorted(shear_scores[direction].items(), key=lambda x: x[1]))
+        moment_scores[direction] = dict(sorted(moment_scores[direction].items(), key=lambda x: x[1]))
 
     return Results, moment_scores, shear_scores
 
 
 # # Calcul des scores pour tous les cas et juste 9 cas avec neutre
-# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, moment_scores, shear_scores = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_6)
-# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_1, moment_scores_36, shear_scores_36 = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_36)
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, moment_scores, shear_scores = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_6)
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_1, moment_scores_36, shear_scores_36 = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_36)
 
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(moment_scores, SaveSimulationsDirectory, "moment_scores")
-# save_results_to_file(shear_scores, SaveSimulationsDirectory, "shear_scores")
-# save_results_to_file(moment_scores_36, SaveSimulationsDirectory, "moment_scores_36")
-# save_results_to_file(shear_scores_36, SaveSimulationsDirectory, "shear_scores_36")
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(moment_scores, SaveSimulationsDirectory, "moment_scores")
+save_results_to_file(shear_scores, SaveSimulationsDirectory, "shear_scores")
+save_results_to_file(moment_scores_36, SaveSimulationsDirectory, "moment_scores_36")
+save_results_to_file(shear_scores_36, SaveSimulationsDirectory, "shear_scores_36")
 
 # save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
