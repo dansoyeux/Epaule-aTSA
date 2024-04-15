@@ -129,17 +129,17 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
                                              "SequenceComposantes": ["ML", "IS", "AP"], "Composantes_Inverse_Direction": [False, False, True]},
 
                           "GHLin Absolute zero": {"VariablePath": "Output.Jnt.GHLin_Absolute.Pos", "VariableDescription": "Absolute Linear displacement of the humerus [mm]", "MultiplyFactor": 1000,
-                                                  "SequenceComposantes": ["ML", "IS", "AP"], "Composantes_Inverse_Direction": [False, False, True], "offset": [0, 0, 0]},
+                                                  "SequenceComposantes": ["ML", "IS", "AP"], "Composantes_Inverse_Direction": [False, False, True], "first_value": [0, 0, 0]},
 
                           # "GHLin": {"VariablePath": "Output.Jnt.GHLin.Pos", "VariableDescription": "Linear displacement of the humerus [mm]", "MultiplyFactor": 1000,
                           #           "SequenceComposantes": ["AP", "IS", "ML"]},
 
 
                           "GHLin ISB Relative": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Relative linear displacement (ISB) of the humerus [mm]", "MultiplyFactor": 1000,
-                                                 "SequenceComposantes": ["AP", "IS", "ML"], "offset": [0, 0, 0]},
+                                                 "SequenceComposantes": ["AP", "IS", "ML"], "first_value": [0, 0, 0]},
 
                           "COP": {"VariablePath": "Output.FileOut.COPlocalImplant", "VariableDescription": "Center of Pressure [mm]", "MultiplyFactor": 1000,
-                                  "SequenceComposantes": ["AP", "IS", "ML"]},
+                                  "SequenceComposantes": ["AP", "IS", "ML"], "offset": [0, 0, - 24.5]},
 
                           # Dans le repère de l'humérus ISB (pour comparaison avec bergmann)
                           "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Contact force on the humeral implant [N]",
@@ -313,13 +313,13 @@ SaveSimulationsDirectory = "Saved Simulations"
 Élévation no recentrage
 """
 
-# Elevation_dir = "../SaveData/Elevation_no_recentrage"
-# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+Elevation_dir = "../SaveData/Elevation_no_recentrage"
+Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
 
-# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
+Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
 
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
 
 """Elevation no recentrage minmaxstrict"""
 
@@ -462,8 +462,8 @@ for case in Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage:
 
 
 def score(Results, cases_list):
-    moment_scores = {"Total":{}, "AP": {}, "IS":{}}
-    shear_scores = {"Total":{}, "AP": {}, "IS":{}}
+    moment_scores = {"Total": {}, "AP": {}, "IS": {}}
+    shear_scores = {"Total": {}, "AP": {}, "IS": {}}
 
     for case in cases_list:
         # COP in meter
@@ -525,7 +525,7 @@ def score(Results, cases_list):
     return Results, moment_scores, shear_scores
 
 
-# # Calcul des scores pour tous les cas et juste 9 cas avec neutre
+# Calcul des scores pour tous les cas et juste 9 cas avec neutre
 Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, moment_scores, shear_scores = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_6)
 Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_1, moment_scores_36, shear_scores_36 = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_36)
 
@@ -535,4 +535,4 @@ save_results_to_file(shear_scores, SaveSimulationsDirectory, "shear_scores")
 save_results_to_file(moment_scores_36, SaveSimulationsDirectory, "moment_scores_36")
 save_results_to_file(shear_scores_36, SaveSimulationsDirectory, "shear_scores_36")
 
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")

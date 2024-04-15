@@ -876,6 +876,7 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
 
 # # Article
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True)
+# PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, COP_contour, variable="COP2", composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True)
 
 # grid_steps_y = [50, 25, 50, 50]
 # y_lims = {"Total": [0, 500],
@@ -901,6 +902,8 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
 
 # # instability ratio
 # PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=False, hide_center_axis_labels=True)
+
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, "Abduction", "GHLin Absolute zero", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=False, hide_center_axis_labels=True)
 
 # %% Abstract
 
