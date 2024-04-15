@@ -313,13 +313,13 @@ SaveSimulationsDirectory = "Saved Simulations"
 Élévation no recentrage
 """
 
-Elevation_dir = "../SaveData/Elevation_no_recentrage"
-Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+# Elevation_dir = "../SaveData/Elevation_no_recentrage"
+# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
 
-Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
+# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
 
-# Sauvegarde de la simulation en .pkl
-save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
 
 """Elevation no recentrage minmaxstrict"""
 
@@ -451,12 +451,12 @@ save_results_to_file(Results_literature, SaveSimulationsDirectory, "Results_lite
 Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
 
 """Stability ratio"""
-# # calcul instability ratio
-# for case in Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage:
-#     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
+# calcul instability ratio
+for case in Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage:
+    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
 
-#     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
-#     Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"]["Total"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] / Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"]
+    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
+    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"]["Total"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] / Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"]
 
 """Sum of moments"""
 
@@ -524,14 +524,14 @@ def score(Results, cases_list):
     return Results, moment_scores, shear_scores
 
 
-# Calcul des scores pour tous les cas et juste 9 cas avec neutre
-Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, moment_scores, shear_scores = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_6)
-Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_1, moment_scores_36, shear_scores_36 = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_36)
+# # Calcul des scores pour tous les cas et juste 9 cas avec neutre
+# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, moment_scores, shear_scores = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_6)
+# Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_1, moment_scores_36, shear_scores_36 = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_36)
 
-# Sauvegarde de la simulation en .pkl
-save_results_to_file(moment_scores, SaveSimulationsDirectory, "moment_scores")
-save_results_to_file(shear_scores, SaveSimulationsDirectory, "shear_scores")
-save_results_to_file(moment_scores_36, SaveSimulationsDirectory, "moment_scores_36")
-save_results_to_file(shear_scores_36, SaveSimulationsDirectory, "shear_scores_36")
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(moment_scores, SaveSimulationsDirectory, "moment_scores")
+# save_results_to_file(shear_scores, SaveSimulationsDirectory, "shear_scores")
+# save_results_to_file(moment_scores_36, SaveSimulationsDirectory, "moment_scores_36")
+# save_results_to_file(shear_scores_36, SaveSimulationsDirectory, "shear_scores_36")
 
-save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")

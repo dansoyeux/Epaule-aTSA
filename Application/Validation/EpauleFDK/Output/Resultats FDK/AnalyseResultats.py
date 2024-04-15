@@ -890,17 +890,17 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Middle tilt", composante_y=[composante], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
 #     graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Uptilt", composante_y=[composante], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=y_lims[composante], grid_y_step=grid_steps_y[ind])
 
-# Contact forces for neutral inclination
+# # Contact forces for neutral inclination
 # graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 1})
 # graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
-# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression force", composante_y=["ML"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 400])
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression force", composante_y=["ML"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 400], hide_center_axis_labels=True)
 
 # # Compression and shear, neutral inclination
 # graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Shear forces", composante_y=["Shear"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 1})
 # graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression forces", composante_y=["Compression"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 2}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
 
-# instability ratio
-# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=False)
+# # instability ratio
+# PremadeGraphs.graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=False, hide_center_axis_labels=True)
 
 # %% Abstract
 
@@ -1010,5 +1010,5 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 # plt.title("Total moment on the glenoid [N.m]")
 # plt.bar_label(bars)
 
-graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "Moment", composante_y=["AP+IS"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 1}, subplot_title="Moments on the glenoid", ylabel_on=False)
-graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", composante_y=["TotalShear"], figure_title="Stability ratio", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 2}, subplot_title="Shear on the glenoid", xlabel_on=False)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "Moment", composante_y=["AP+IS"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 1}, subplot_title="Moments on the glenoid", ylabel_on=False)
+# graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", composante_y=["TotalShear"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 2}, subplot_title="Shear on the glenoid", xlabel_on=False)
