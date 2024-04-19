@@ -86,7 +86,7 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             #                           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                             #                           "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
-                            "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Lever arm [mm]",
+                            "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Muscle moment arm [mm]",
                                           "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
                             }
 

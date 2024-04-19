@@ -874,6 +874,16 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
                                "Upward inclination": ["up-xshort", "up-normal", "up-xlong"]
                                }}
 
+# Forces musculaires
+PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces : downward inclination", cases_on=xDownCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12])
+PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces : neutral inclination", cases_on=NeutralCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12])
+PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces : upward inclination", cases_on=UpCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12])
+
+# Forces musculaires
+PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "MomentArm", "Moment arm : downward inclination", cases_on=xDownCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12], composante_y=["Mean"])
+PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "MomentArm", "Moment arm : neutral inclination", cases_on=NeutralCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12], composante_y=["Mean"])
+PremadeGraphs.muscle_graph_from_list(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "MomentArm", "Moment arm : upward inclination", cases_on=UpCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12], composante_y=["Mean"])
+
 # # Article
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True)
 # PremadeGraphs.COP_graph_by_case_categories(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, Categories_Article, COP_contour, variable="COP2", composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True)
@@ -1015,3 +1025,4 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 
 # graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "Moment", composante_y=["AP+IS"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 1}, subplot_title="Moments on the glenoid", ylabel_on=False)
 # graph(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", composante_y=["TotalShear"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 2}, subplot_title="Shear on the glenoid", xlabel_on=False)
+
