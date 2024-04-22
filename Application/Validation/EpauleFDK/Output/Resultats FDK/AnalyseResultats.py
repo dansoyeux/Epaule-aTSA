@@ -18,8 +18,6 @@ from Anybody_Package.Anybody_LoadOutput.LoadOutput import sum_result_variables
 from Anybody_Package.Anybody_LoadOutput.Tools import result_dictionary_to_excel
 
 
-
-
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -1037,10 +1035,3 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 # graph(Results_Elevation_no_recentrage, "Abduction", "Moment", composante_y=["AP+IS"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 1}, subplot_title="Moments on the glenoid", ylabel_on=False)
 # graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", composante_y=["TotalShear"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 2}, subplot_title="Shear on the glenoid", xlabel_on=False)
 
-# %% export to excel
-
-result_dictionary_to_excel(Results_Elevation_no_recentrage_const_speed, "test")
-result_dictionary_to_excel(Results_Elevation_no_recentrage_const_speed["middle-normal"], "test_flat")
-
-comp = {"comp_1": Results_Elevation_no_recentrage_const_speed, "comp_2": Results_Elevation_no_recentrage_const_speed}
-result_dictionary_to_excel(comp, "test_compare")
