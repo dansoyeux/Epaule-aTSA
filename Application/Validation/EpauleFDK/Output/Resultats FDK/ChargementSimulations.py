@@ -209,7 +209,6 @@ BallAndSocket_ConstantsDictionary = {"AnybodyFileOutPath": "Main.Study.FileOut",
                                      "Mannequin": ["GlenohumeralFlexion", "GlenohumeralAbduction", "GlenohumeralExternalRotation"],
                                      }
 
-
 FDK_Variables = define_variables_to_load(FDK_VariableDictionary, MuscleDictionary, MuscleVariableDictionary, FDK_ConstantsDictionary)
 
 FDK_Variables_NoMomentArm = define_variables_to_load(FDK_VariableDictionary, MuscleDictionary, MuscleVariableDictionary_NoMomentArm)
@@ -325,13 +324,13 @@ SaveSimulationsDirectory = "Saved Simulations"
 Élévation no recentrage, constant speed
 """
 
-Elevation_dir_const_speed = "../SaveData/const_speed"
-Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+# Elevation_dir_const_speed = "../SaveData/const_speed"
+# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
 
-Results_Elevation_no_recentrage_const_speed = load_simulation_cases(Elevation_dir_const_speed, Files, CaseNames_6, FDK_Variables)
+# Results_Elevation_no_recentrage_const_speed = load_simulation_cases(Elevation_dir_const_speed, Files, CaseNames_6, FDK_Variables)
 
-# Sauvegarde de la simulation en .pkl
-save_results_to_file(Results_Elevation_no_recentrage_const_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_Elevation_no_recentrage_const_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
 
 """Elevation no recentrage minmaxstrict"""
 
@@ -460,6 +459,7 @@ Results_literature = load_literature_data("Template_importation_littérature", "
 save_results_to_file(Results_literature, SaveSimulationsDirectory, "Results_literature")
 
 # %% Calculs supplémentaires
+
 Results_Elevation_no_recentrage_const_speed = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
 
 """Stability ratio"""
@@ -470,16 +470,41 @@ for case in Results_Elevation_no_recentrage_const_speed:
     Results_Elevation_no_recentrage_const_speed[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
     Results_Elevation_no_recentrage_const_speed[case]["Instability Ratio"]["Total"] = Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["Shear"] / Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["ML"]
 
-"""Sum of moments"""
 
+def score(Results):
+    
+    import pandas as pd
 
-def score(Results, cases_list):
-    moment_scores = {"Total": {}, "AP": {}, "IS": {}}
-    shear_scores = {"Total": {}, "AP": {}, "IS": {}}
+    cases_list = list(Results.keys())
+
+    # list of tilts and acromion lengths
+    tilts = [case.split("-")[0] for case in cases_list]
+    tilts = list(dict.fromkeys(tilts))  # removes duplicates
+
+    acromion = [case.split("-")[1] for case in cases_list]
+    acromion = list(dict.fromkeys(acromion))  # removes duplicates
+
+    # Creates an empty table that will store the scores
+    empty_scores_dataframe = pd.DataFrame(index=tilts, columns=acromion)
+
+    # Creates a dictionary for each scores with empty tables
+    scores_moment = {"Total": empty_scores_dataframe.copy(),
+                     "AP": empty_scores_dataframe.copy(),
+                     "IS": empty_scores_dataframe.copy(),
+                     "ML": empty_scores_dataframe.copy()
+                     }
+
+    scores_shear = {"Total": empty_scores_dataframe.copy(),
+                    "AP": empty_scores_dataframe.copy(),
+                    "IS": empty_scores_dataframe.copy()
+                    }
 
     for case in cases_list:
 
         time = Results[case]["Time"]["Total"]
+
+        current_tilt = case.split("-")[0]
+        current_acromion = case.split("-")[1]
 
         # COP in meter
         COP = np.array([Results[case]["COP"]["AP"],
@@ -491,81 +516,47 @@ def score(Results, cases_list):
                                  Results[case]["ForceContact GlenImplant"]["IS"],
                                  -Results[case]["ForceContact GlenImplant"]["ML"]]).T
 
-        moment = np.zeros([len(COP), 3])
+        moment = np.zeros([len(COP), 4])
 
-        # Calcul des scores de shear et de moment
+        # Calcul des moments et de son score pour chaque pas de temps (COP x Contact force)
         for step in range(len(COP)):
 
             # calculates moments
-            moment[step, 0:2] = np.cross(COP[step, :], ContactForce[step, :])[0:2]
-            # total entre M_AP et M_IS
-            moment[step, 2] = abs(moment[step, 0]) + abs(moment[step, 1])
+            moment[step, 0:3] = np.cross(COP[step, :], ContactForce[step, :])
 
-        # Calcul du score de moment = moment total dans tout le mouvement en valeur absolue
-        # score_moment = np.array([sum(abs(moment[:, 0])),
-        #                          sum(abs(moment[:, 1])),
-        #                          sum(moment[:, 2])
-        #                          ])
+            # Total score = sqrt(moment * moment')
+            moment[step, 3] = np.sqrt(np.dot(moment[step, 0:3], moment[step, 0:3].T))
 
-        # moment score is the integral of the moment vector
-        score_moment = np.array([np.trapz(abs(moment[:, 0]), time),
-                                 np.trapz(abs(moment[:, 1]), time),
-                                 np.trapz(moment[:, 2], time)
-                                 ])
+        # stocke le score de ce cas dans le tableau (intégrale du score)
+        scores_moment["AP"].at[current_tilt, current_acromion] = np.trapz(abs(moment[:, 0]), time)
+        scores_moment["IS"].at[current_tilt, current_acromion] = np.trapz(abs(moment[:, 1]), time)
+        scores_moment["ML"].at[current_tilt, current_acromion] = np.trapz(abs(moment[:, 2]), time)
+        scores_moment["Total"].at[current_tilt, current_acromion] = np.trapz(moment[:, 3], time)
 
-        # abs(AP) + abs(IS)
-        shear = np.array([abs(Results[case]["ForceContact GlenImplant"]["AP"]),
-                          abs(Results[case]["ForceContact GlenImplant"]["IS"]),
+        shear = np.array([Results[case]["ForceContact GlenImplant"]["AP"],
+                          Results[case]["ForceContact GlenImplant"]["IS"],
                           np.zeros(len(Results[case]["ForceContact GlenImplant"]["AP"]))]).T
 
-        # Last column is the sum of the AP and IS direction
-        shear[:, 2] = shear[:, 0] + shear[:, 1]
+        # Last column is the root of the squared sum of AP and IS shear
+        shear[:, 2] = np.sqrt(shear[:, 0]**2 + shear[:, 1]**2)
 
-        # Shear score
-        # score_shear = np.array([sum(shear[:, 0]),
-        #                         sum(shear[:, 1]),
-        #                         sum(shear[:, 2])
-        #                         ])
-
-        # # integral of the shear forces
-        score_shear = np.array([np.trapz(shear[:, 0], time),
-                                np.trapz(shear[:, 1], time),
-                                np.trapz(shear[:, 2], time)
-                                ])
+        # integral of the shear forces
+        scores_shear["AP"].at[current_tilt, current_acromion] = np.trapz(abs(shear[:, 0]), time)
+        scores_shear["IS"].at[current_tilt, current_acromion] = np.trapz(abs(shear[:, 1]), time)
+        scores_shear["Total"].at[current_tilt, current_acromion] = np.trapz(shear[:, 2], time)
 
         # Save shear scores in the variables and in a new variable named score
-        Results[case]["ForceContact GlenImplant"]["Score"] = score_shear
         Results[case]["ForceContact GlenImplant"]["TotalShear"] = shear[:, 2]
         Results[case]["Moment"] = array_to_dictionary(moment, "Moment on the glenoid implant [N.m]", SequenceComposantes=["AP", "IS", "AP+IS"])
-        Results[case]["Moment"]["Score"] = score_moment
 
-        Results[case]["Score"] = {"Shear": score_shear, "Moment": score_moment}
-
-        # Save de dictionnaire contenant tous les scores de chaque cas
-        shear_scores["AP"][case] = score_shear[0]
-        shear_scores["IS"][case] = score_shear[1]
-        shear_scores["Total"][case] = score_shear[2]
-
-        moment_scores["AP"][case] = score_moment[0]
-        moment_scores["IS"][case] = score_moment[1]
-        moment_scores["Total"][case] = score_moment[2]
-
-    for direction in shear_scores:
-        # Classe les scores par ordre croissant dans le dictionnaire
-        shear_scores[direction] = dict(sorted(shear_scores[direction].items(), key=lambda x: x[1]))
-        moment_scores[direction] = dict(sorted(moment_scores[direction].items(), key=lambda x: x[1]))
-
-    return Results, moment_scores, shear_scores
+    return Results, scores_moment, scores_shear
 
 
-# # Calcul des scores pour tous les cas et juste 9 cas avec neutre
-# Results_Elevation_no_recentrage_const_speed, moment_scores, shear_scores = score(Results_Elevation_no_recentrage_const_speed, CaseNames_6)
-# Results_Elevation_no_recentrage_const_speed_1, moment_scores_36, shear_scores_36 = score(Results_Elevation_no_recentrage_const_speed, CaseNames_36)
+# Calcul des scores pour tous les cas et juste 9 cas avec neutre
+Results_Elevation_no_recentrage_const_speed, scores_moment, scores_shear = score(Results_Elevation_no_recentrage_const_speed)
 
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(moment_scores, SaveSimulationsDirectory, "moment_scores")
-# save_results_to_file(shear_scores, SaveSimulationsDirectory, "shear_scores")
-# save_results_to_file(moment_scores_36, SaveSimulationsDirectory, "moment_scores_36")
-# save_results_to_file(shear_scores_36, SaveSimulationsDirectory, "shear_scores_36")
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
+save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
 
-# save_results_to_file(Results_Elevation_no_recentrage_const_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
+save_results_to_file(Results_Elevation_no_recentrage_const_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
