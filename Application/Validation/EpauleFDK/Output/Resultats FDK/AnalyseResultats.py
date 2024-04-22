@@ -15,6 +15,11 @@ from Anybody_Package.Anybody_LoadOutput.LoadLiterature import load_literature_da
 from Anybody_Package.Anybody_LoadOutput.LoadOutput import combine_simulation_cases
 from Anybody_Package.Anybody_LoadOutput.LoadOutput import sum_result_variables
 
+from Anybody_Package.Anybody_LoadOutput.Tools import result_dictionary_to_excel
+
+
+
+
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -1032,23 +1037,10 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 # graph(Results_Elevation_no_recentrage, "Abduction", "Moment", composante_y=["AP+IS"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 1}, subplot_title="Moments on the glenoid", ylabel_on=False)
 # graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", composante_y=["TotalShear"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 2}, subplot_title="Shear on the glenoid", xlabel_on=False)
 
+# %% export to excel
 
-import pandas as pd
+result_dictionary_to_excel(Results_Elevation_no_recentrage_const_speed, "test")
+result_dictionary_to_excel(Results_Elevation_no_recentrage_const_speed["middle-normal"], "test_flat")
 
-Result_case = Results_Elevation_no_recentrage["middle-normal"]
-
-# simplifie les variables de muscles, juste en disant que muscle = 1 composante
-variables = Result_case["Loaded Variables"]["Variables"]
-muscle_variables = Result_case["Loaded Variables"]["MuscleVariables"]
-
-case_data = {}
-
-for variable in variables:
-    if "SequenceComposantes" in variables[variable]:
-        for composante in variables[variable]["SequenceComposantes"]:
-            case_data[variable] = [variable] + [composante] + Result_case[variable][composante].tolist()
-
-    else:
-        case_data[variable] = [variable] + ["Total"] + Result_case[variable]["Total"].tolist()
-
-# convert to dataframe and do the same for muscles
+comp = {"comp_1": Results_Elevation_no_recentrage_const_speed, "comp_2": Results_Elevation_no_recentrage_const_speed}
+result_dictionary_to_excel(comp, "test_compare")

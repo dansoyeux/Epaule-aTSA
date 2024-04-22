@@ -558,14 +558,14 @@ def score(Results, cases_list):
     return Results, moment_scores, shear_scores
 
 
-# Calcul des scores pour tous les cas et juste 9 cas avec neutre
-Results_Elevation_no_recentrage_const_speed, moment_scores, shear_scores = score(Results_Elevation_no_recentrage_const_speed, CaseNames_6)
-Results_Elevation_no_recentrage_const_speed_1, moment_scores_36, shear_scores_36 = score(Results_Elevation_no_recentrage_const_speed, CaseNames_36)
+# # Calcul des scores pour tous les cas et juste 9 cas avec neutre
+# Results_Elevation_no_recentrage_const_speed, moment_scores, shear_scores = score(Results_Elevation_no_recentrage_const_speed, CaseNames_6)
+# Results_Elevation_no_recentrage_const_speed_1, moment_scores_36, shear_scores_36 = score(Results_Elevation_no_recentrage_const_speed, CaseNames_36)
 
-# Sauvegarde de la simulation en .pkl
-save_results_to_file(moment_scores, SaveSimulationsDirectory, "moment_scores")
-save_results_to_file(shear_scores, SaveSimulationsDirectory, "shear_scores")
-save_results_to_file(moment_scores_36, SaveSimulationsDirectory, "moment_scores_36")
-save_results_to_file(shear_scores_36, SaveSimulationsDirectory, "shear_scores_36")
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(moment_scores, SaveSimulationsDirectory, "moment_scores")
+# save_results_to_file(shear_scores, SaveSimulationsDirectory, "shear_scores")
+# save_results_to_file(moment_scores_36, SaveSimulationsDirectory, "moment_scores_36")
+# save_results_to_file(shear_scores_36, SaveSimulationsDirectory, "shear_scores_36")
 
-save_results_to_file(Results_Elevation_no_recentrage_const_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
+# save_results_to_file(Results_Elevation_no_recentrage_const_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
