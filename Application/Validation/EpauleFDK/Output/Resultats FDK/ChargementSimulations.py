@@ -56,7 +56,7 @@ MuscleDictionary = {"Triceps long head": ["Triceps_LH", "_", [1, 2]],
 
 MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Muscle force [N]"},
                             # "Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Muscle force [N]"},
-                            "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
+                            # "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
                             # Dans repère scapula
                             # "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
@@ -77,10 +77,9 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             #                 "combine_muscle_part_operations": ["total", "mean"]
                             #                 },
 
-
-                            # "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
-                            #                         "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                            #                         "combine_muscle_part_operations": ["mean"], "vect_dir": True},
+                            "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
+                                                   "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                                   "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
                             # "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
                             #                           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
@@ -115,6 +114,8 @@ MuscleVariableDictionary_NoMomentArm = {"Ft": {"MuscleFolderPath": "Output.Mus",
 # Variables
 FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.InterfaceFolder.ScapulaHumerus.Elevation.Pos",
                                         "VariableDescription": "Elevation angle in the scapular plane [°]", "MultiplyFactor": 180 / np.pi},
+
+                          "Time": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Time [s]"},
 
                           "Abduction": {"VariablePath": "Output.rotD", "VariableDescription": "Abduction angle [°]"},
 
@@ -293,7 +294,6 @@ CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
 CSA_45_Cases = ["up-xlong", "xup-long"]
 CSA_50_Cases = ["xup-xlong"]
 
-
 # %%                                                Résultats FDK
 
 SaveDataDir = r"../SaveData/Variation_CSA"
@@ -313,23 +313,35 @@ SaveSimulationsDirectory = "Saved Simulations"
 Élévation no recentrage
 """
 
-Elevation_dir = "../SaveData/Elevation_no_recentrage"
+# Elevation_dir = "../SaveData/Elevation_no_recentrage"
+# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+
+# Results_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
+
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
+
+"""
+Élévation no recentrage, constant speed
+"""
+
+Elevation_dir_const_speed = "../SaveData/const_speed"
 Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
 
-Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
+Results_Elevation_no_recentrage_const_speed = load_simulation_cases(Elevation_dir_const_speed, Files, CaseNames_6, FDK_Variables)
 
 # Sauvegarde de la simulation en .pkl
-save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+save_results_to_file(Results_Elevation_no_recentrage_const_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
 
 """Elevation no recentrage minmaxstrict"""
 
 # Elevation_minmax_dir = "../SaveData/Elevation_no_recentrage_MinMaxStrict"
 # Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-Elevation-no-recentrage" for CaseName in CaseNames_5]
 
-# Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage = load_simulation_cases(Elevation_minmax_dir, Files, CaseNames_5, FDK_Variables)
+# Results_MR_MinMaxStrict_Elevation_no_recentrage = load_simulation_cases(Elevation_minmax_dir, Files, CaseNames_5, FDK_Variables)
 
 # # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
+# save_results_to_file(Results_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_MR_MinMaxStrict_Elevation_no_recentrage")
 
 
 # %% Long range
@@ -369,27 +381,27 @@ WITHOUT MOMENT ARM
 
 # # Avec premier contact avec acromion
 # Files = [date + CaseName + description + "-MR_Polynomial-180deg" for CaseName in CaseNames_5]
-# Results_GlenoidLocalAxis_MR_Polynomial_180deg = load_simulation_cases(Macros_results_dir2, Files, CaseNames_5, FDK_Variables_NoMomentArm, Failed=Failed_180)
+# Results_180deg = load_simulation_cases(Macros_results_dir2, Files, CaseNames_5, FDK_Variables_NoMomentArm, Failed=Failed_180)
 
 # # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_180deg, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg")
+# save_results_to_file(Results_180deg, SaveSimulationsDirectory, "Results_180deg")
 
 """
 En ne prenant pas en compte conflit avec acromion
 """
-# Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange = load_simulation_cases(Macros_results_dir2, Files, CaseNames_5, FDK_Variables_NoMomentArm, Failed=Failed_180_Simulation)
+# Results_180deg_FullRange = load_simulation_cases(Macros_results_dir2, Files, CaseNames_5, FDK_Variables_NoMomentArm, Failed=Failed_180_Simulation)
 
 # # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_180deg_FullRange")
+# save_results_to_file(Results_180deg_FullRange, SaveSimulationsDirectory, "Results_180deg_FullRange")
 
 """Elevation minmax"""
 # minmax_dir = "../SaveData/MinMaxStrict"
 # Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-120deg-Elevation-no-recentrage" for CaseName in CaseNames_3]
 
-# Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage = load_simulation_cases(minmax_dir, Files, CaseNames_3, FDK_Variables)
+# Results_MR_MinMaxStrict_Elevation_no_recentrage = load_simulation_cases(minmax_dir, Files, CaseNames_3, FDK_Variables)
 
 # # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
+# save_results_to_file(Results_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_MR_MinMaxStrict_Elevation_no_recentrage")
 
 # %%                                                Résultats Ball and Socket
 """
@@ -448,15 +460,15 @@ Results_literature = load_literature_data("Template_importation_littérature", "
 save_results_to_file(Results_literature, SaveSimulationsDirectory, "Results_literature")
 
 # %% Calculs supplémentaires
-Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+Results_Elevation_no_recentrage_const_speed = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
 
 """Stability ratio"""
 # calcul instability ratio
-for case in Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage:
-    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"] + Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"]
+for case in Results_Elevation_no_recentrage_const_speed:
+    Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["Shear"] = Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["IS"] + Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["AP"]
 
-    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
-    Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["Instability Ratio"]["Total"] = Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] / Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"]
+    Results_Elevation_no_recentrage_const_speed[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
+    Results_Elevation_no_recentrage_const_speed[case]["Instability Ratio"]["Total"] = Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["Shear"] / Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["ML"]
 
 """Sum of moments"""
 
@@ -466,6 +478,9 @@ def score(Results, cases_list):
     shear_scores = {"Total": {}, "AP": {}, "IS": {}}
 
     for case in cases_list:
+
+        time = Results[case]["Time"]["Total"]
+
         # COP in meter
         COP = np.array([Results[case]["COP"]["AP"],
                         Results[case]["COP"]["IS"],
@@ -487,18 +502,30 @@ def score(Results, cases_list):
             moment[step, 2] = abs(moment[step, 0]) + abs(moment[step, 1])
 
         # Calcul du score de moment = moment total dans tout le mouvement en valeur absolue
-        score_moment = np.array([sum(abs(moment[:, 0])), sum(abs(moment[:, 1])), sum(moment[:, 2])])
+        # score_moment = np.array([sum(abs(moment[:, 0])), sum(abs(moment[:, 1])), sum(moment[:, 2])])
+
+        # moment score is the integral of the moment vector
+        score_moment = np.array([np.trapz(abs(moment[:, 0]), time), np.trapz(abs(moment[:, 1]), time), np.trapz(moment[:, 2], time)
+                                 ])
 
         # abs(ap) + abs(IS)
         shear = np.array([abs(Results[case]["ForceContact GlenImplant"]["AP"]),
                           abs(Results[case]["ForceContact GlenImplant"]["IS"]),
                           np.zeros(len(Results[case]["ForceContact GlenImplant"]["AP"]))]).T
 
+        # Last column is the sum of the AP and IS direction
         shear[:, 2] = shear[:, 0] + shear[:, 1]
 
-        score_shear = np.array([sum(shear[:, 0]),
-                                sum(shear[:, 1]),
-                                sum(shear[:, 2])])
+        # Shear score
+        # score_shear = np.array([sum(shear[:, 0]),
+        #                         sum(shear[:, 1]),
+        #                         sum(shear[:, 2])])
+
+        # integral of the shear forces
+        score_shear = np.array([np.trapz(shear[:, 0], time),
+                                np.trapz(shear[:, 1], time),
+                                np.trapz(shear[:, 2], time)
+                                ])
 
         # Save shear scores in the variables and in a new variable named score
         Results[case]["ForceContact GlenImplant"]["Score"] = score_shear
@@ -526,8 +553,8 @@ def score(Results, cases_list):
 
 
 # Calcul des scores pour tous les cas et juste 9 cas avec neutre
-Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, moment_scores, shear_scores = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_6)
-Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage_1, moment_scores_36, shear_scores_36 = score(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, CaseNames_36)
+Results_Elevation_no_recentrage_const_speed, moment_scores, shear_scores = score(Results_Elevation_no_recentrage_const_speed, CaseNames_6)
+Results_Elevation_no_recentrage_const_speed_1, moment_scores_36, shear_scores_36 = score(Results_Elevation_no_recentrage_const_speed, CaseNames_36)
 
 # Sauvegarde de la simulation en .pkl
 save_results_to_file(moment_scores, SaveSimulationsDirectory, "moment_scores")
@@ -535,4 +562,4 @@ save_results_to_file(shear_scores, SaveSimulationsDirectory, "shear_scores")
 save_results_to_file(moment_scores_36, SaveSimulationsDirectory, "moment_scores_36")
 save_results_to_file(shear_scores_36, SaveSimulationsDirectory, "shear_scores_36")
 
-save_results_to_file(Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_Polynomial_Elevation_no_recentrage")
+save_results_to_file(Results_Elevation_no_recentrage_const_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
