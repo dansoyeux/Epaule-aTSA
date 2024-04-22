@@ -502,13 +502,18 @@ def score(Results, cases_list):
             moment[step, 2] = abs(moment[step, 0]) + abs(moment[step, 1])
 
         # Calcul du score de moment = moment total dans tout le mouvement en valeur absolue
-        # score_moment = np.array([sum(abs(moment[:, 0])), sum(abs(moment[:, 1])), sum(moment[:, 2])])
+        # score_moment = np.array([sum(abs(moment[:, 0])),
+        #                          sum(abs(moment[:, 1])),
+        #                          sum(moment[:, 2])
+        #                          ])
 
         # moment score is the integral of the moment vector
-        score_moment = np.array([np.trapz(abs(moment[:, 0]), time), np.trapz(abs(moment[:, 1]), time), np.trapz(moment[:, 2], time)
+        score_moment = np.array([np.trapz(abs(moment[:, 0]), time),
+                                 np.trapz(abs(moment[:, 1]), time),
+                                 np.trapz(moment[:, 2], time)
                                  ])
 
-        # abs(ap) + abs(IS)
+        # abs(AP) + abs(IS)
         shear = np.array([abs(Results[case]["ForceContact GlenImplant"]["AP"]),
                           abs(Results[case]["ForceContact GlenImplant"]["IS"]),
                           np.zeros(len(Results[case]["ForceContact GlenImplant"]["AP"]))]).T
@@ -519,9 +524,10 @@ def score(Results, cases_list):
         # Shear score
         # score_shear = np.array([sum(shear[:, 0]),
         #                         sum(shear[:, 1]),
-        #                         sum(shear[:, 2])])
+        #                         sum(shear[:, 2])
+        #                         ])
 
-        # integral of the shear forces
+        # # integral of the shear forces
         score_shear = np.array([np.trapz(shear[:, 0], time),
                                 np.trapz(shear[:, 1], time),
                                 np.trapz(shear[:, 2], time)
