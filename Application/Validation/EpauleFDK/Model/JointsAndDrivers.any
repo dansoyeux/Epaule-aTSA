@@ -19,16 +19,16 @@ AnyFolder Drivers = {
   */
   
   #if SmallAbductionOn == 0
-//  AnyVar startangle = 1;
-//  AnyVar endangle = 120;
-      AnyVar startangle = DesignVar(15);
+  //  AnyVar startangle = 1;
+  //  AnyVar endangle = 120;
+  AnyVar startangle = DesignVar(15);
   AnyVar endangle = DesignVar(120);
   
   #endif
   
   #if SmallAbductionOn == 1
-//  AnyVar startangle = 1;
-//  AnyVar endangle = 1.1;
+  //  AnyVar startangle = 1;
+  //  AnyVar endangle = 1.1;
   AnyVar startangle = DesignVar(15);
   AnyVar endangle = DesignVar(15.5);
   
@@ -47,19 +47,28 @@ AnyFolder Drivers = {
   */
   
   #if ArmMovement == Elevation
-    
-    
-    AnyKinEqFourierDriver AbductionDriverRight={
-    AnyKinMeasureOrg &ref1 =...BodyModel.Interface.Right.GlenohumeralAbduction;
-    Type = Sin;
-    
-    AnyVar w = pi/Main.Study.tEnd; 
-    Freq = w/(2*pi) ;
-    A = { {(.startangle+.endangle)/2, (.endangle-.startangle)/2}*pi/180 };
-    B = { {pi/2, -pi/2} };
-    Reaction.Type = {Off};    
-  };  
   
+  AnyKinEqSimpleDriver AbductionDriverRight = {
+    
+    AnyKinMeasure& ref1 =...BodyModel.Interface.Right.GlenohumeralAbduction;
+    
+    DriverPos = {.startangle/180*pi};
+    DriverVel = {(.endangle - .startangle)/180*pi /Main.Study.tEnd};
+    Reaction.Type = {Off};
+  };
+  
+  
+  // smooth abduction at the beginning and end of the movement  
+  //    AnyKinEqFourierDriver AbductionDriverRight={
+  //    AnyKinMeasureOrg &ref1 =...BodyModel.Interface.Right.GlenohumeralAbduction;
+  //    Type = Sin;
+  //    
+  //    AnyVar w = pi/Main.Study.tEnd; 
+  //    Freq = w/(2*pi) ;
+  //    A = { {(.startangle+.endangle)/2, (.endangle-.startangle)/2}*pi/180 };
+  //    B = { {pi/2, -pi/2} };
+  //    Reaction.Type = {Off};    
+  //  };  
   
   // Sets the flexion to 0deg
   AnyKinEqSimpleDriver GHFlexion = {
@@ -87,33 +96,33 @@ AnyFolder Drivers = {
   #endif // Elevation
   
   
-   /*----------------------------------------------
+  /*----------------------------------------------
   Drivers for the glenohumeral abduction
   ------------------------------------------------
   */ 
   
   #if ArmMovement == Abduction
   
-//    AnyKinEqSimpleDriver AbductionDriverRight={
-//    
-//    AnyKinMeasure& ref1 =...BodyModel.Interface.Right.GlenohumeralAbduction;   
-//    DriverPos=pi/180*{.startangle};
-//    
-//    DriverVel = pi/180*{(.endangle - .startangle)/Main.Study.tEnd};
-//    Reaction.Type={Off};
-//  };
-  
-  
-  AnyKinEqFourierDriver AbductionDriverRight={
-    AnyKinMeasureOrg &ref1 =...BodyModel.Interface.Right.GlenohumeralAbduction;
-    Type = Sin;
+  AnyKinEqSimpleDriver AbductionDriverRight = {
     
-    AnyVar w = pi/Main.Study.tEnd; 
-    Freq = w/(2*pi) ;
-    A = { {(.startangle+.endangle)/2, (.endangle-.startangle)/2}*pi/180 };
-    B = { {pi/2, -pi/2} };
-    Reaction.Type = {Off};    
-  };  
+    AnyKinMeasure& ref1 =...BodyModel.Interface.Right.GlenohumeralAbduction;
+    
+    DriverPos = {.startangle/180*pi};
+    DriverVel = {(.endangle - .startangle)/180*pi /Main.Study.tEnd};
+    Reaction.Type = {Off};
+  };
+  
+  
+//  AnyKinEqFourierDriver AbductionDriverRight={
+//    AnyKinMeasureOrg &ref1 =...BodyModel.Interface.Right.GlenohumeralAbduction;
+//    Type = Sin;
+//    
+//    AnyVar w = pi/Main.Study.tEnd; 
+//    Freq = w/(2*pi) ;
+//    A = { {(.startangle+.endangle)/2, (.endangle-.startangle)/2}*pi/180 };
+//    B = { {pi/2, -pi/2} };
+//    Reaction.Type = {Off};    
+//  };  
   
   #endif // Abduction
   
@@ -121,6 +130,7 @@ AnyFolder Drivers = {
   
   
 }; // Drivers
+
 
 
 

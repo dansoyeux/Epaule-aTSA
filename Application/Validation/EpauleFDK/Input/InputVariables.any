@@ -238,9 +238,7 @@ AnyFolder InputVariables = {
 
   #if BallAndSocket == 0
   #define m_LoadFile "04-01-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial" + "-Elevation-no-recentrage" 
-//  #define m_LoadFolder "SaveData/Elevation_no_recentrage/"
-  #define m_LoadFolder "SaveData/test/"
-  
+  #define m_LoadFolder "SaveData/Elevation_no_recentrage/"  
   
   // BallAndSocket activated
   #else 
