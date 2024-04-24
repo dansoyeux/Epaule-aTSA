@@ -416,10 +416,8 @@ Results_Elevation_no_recentrage_const_speed = load_results_from_file(SaveSimulat
 
 # Results_140deg_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_140deg_no_recentrage")
 
-moment_scores = load_results_from_file(SaveSimulationsDirectory, "moment_scores")
-shear_scores = load_results_from_file(SaveSimulationsDirectory, "shear_scores")
-moment_scores_36 = load_results_from_file(SaveSimulationsDirectory, "moment_scores_36")
-shear_scores_36 = load_results_from_file(SaveSimulationsDirectory, "shear_scores_36")
+scores_moment = load_results_from_file(SaveSimulationsDirectory, "scores_moment")
+scores_shear = load_results_from_file(SaveSimulationsDirectory, "scores_shear")
 
 # %%                                                Chargement des résultats BallAndSocket
 Results_BallAndSocket = load_results_from_file(SaveSimulationsDirectory, "Results_BallAndSocket")
@@ -921,8 +919,8 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
 # graph(Results_Elevation_no_recentrage_const_speed, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Shear forces", composante_y=["Shear"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 1})
 # graph(Results_Elevation_no_recentrage_const_speed, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression forces", composante_y=["Compression"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 2}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
 
-# # instability ratio
-# PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage_const_speed, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=False, hide_center_axis_labels=True)
+# instability ratio
+PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage_const_speed, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
 
 # %% Abstract
 

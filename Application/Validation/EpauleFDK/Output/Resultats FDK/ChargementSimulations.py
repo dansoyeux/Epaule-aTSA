@@ -465,14 +465,14 @@ Results_Elevation_no_recentrage_const_speed = load_results_from_file(SaveSimulat
 """Stability ratio"""
 # calcul instability ratio
 for case in Results_Elevation_no_recentrage_const_speed:
-    Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["Shear"] = Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["IS"] + Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["AP"]
+    Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["Shear"] = abs(Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["IS"]) + abs(Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["AP"])
 
     Results_Elevation_no_recentrage_const_speed[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
-    Results_Elevation_no_recentrage_const_speed[case]["Instability Ratio"]["Total"] = Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["Shear"] / Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["ML"]
+    Results_Elevation_no_recentrage_const_speed[case]["Instability Ratio"]["Total"] = Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["Shear"] / abs(Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["ML"])
 
 
 def score(Results):
-    
+
     import pandas as pd
 
     cases_list = list(Results.keys())
