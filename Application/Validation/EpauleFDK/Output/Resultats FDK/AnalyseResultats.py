@@ -920,7 +920,7 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
 # graph(Results_Elevation_no_recentrage_const_speed, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression forces", composante_y=["Compression"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 2}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
 
 # instability ratio
-PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage_const_speed, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
+# PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage_const_speed, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
 
 # %% Abstract
 
@@ -1032,3 +1032,35 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 
 # graph(Results_Elevation_no_recentrage, "Abduction", "Moment", composante_y=["AP+IS"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 1}, subplot_title="Moments on the glenoid", ylabel_on=False)
 # graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", composante_y=["TotalShear"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 2}, subplot_title="Shear on the glenoid", xlabel_on=False)
+
+# %% graph surface
+
+
+def score_surface(score_df, title):
+    z = score_df.to_numpy(dtype="float64")
+
+    acromion_x = np.array([-12.1, -6.6, 0, 7.85, 16.95])
+    inclinaison_y = np.array([-8.7, -3.0, 0, 2.9, 9.0, 15.2])
+
+    (x, y) = np.meshgrid(acromion_x, inclinaison_y)
+
+    fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=[12, 10])
+    surf = ax.plot_surface(x, y, z, cmap=matplotlib.colormaps.get_cmap('RdYlGn_r'))
+    ax.tick_params(axis='z', which='major', pad=12)
+    ax.tick_params(axis='x', which='major', pad=9)
+    # ax.tick_params(axis='y', which='major', pad=15)
+
+    ax.set_xlim(-12.1, 16.95)
+    ax.set_ylim(-8.7, 15.2)
+    ax.set_xticks(acromion_x)
+    ax.set_yticks(inclinaison_y)
+
+    ax.set_xlabel("Acromion lengthening [mm]", labelpad=15)
+    ax.set_ylabel("Glenoin inclination [°]", labelpad=15)
+    ax.set_zlabel(title, labelpad=22)
+    ax.set_title(title)
+    fig.colorbar(surf, shrink=0.5, aspect=9, pad=0.1)
+
+
+score_surface(scores_moment["Total"], "Total moment on the glenoid implant [N.m]")
+score_surface(scores_shear["Total"], "Total shear forces on the glenoid implant [N]")
