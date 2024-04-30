@@ -324,13 +324,13 @@ SaveSimulationsDirectory = "Saved Simulations"
 Élévation no recentrage, constant speed
 """
 
-Elevation_dir_const_speed = "../SaveData/const_speed"
-Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+# Elevation_dir_const_speed = "../SaveData/const_speed"
+# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
 
-Results_Elevation_no_recentrage = load_simulation_cases(Elevation_dir_const_speed, Files, CaseNames_6, FDK_Variables)
+# Results_Elevation_no_recentrage = load_simulation_cases(Elevation_dir_const_speed, Files, CaseNames_6, FDK_Variables)
 
-# Sauvegarde de la simulation en .pkl
-save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
 
 """Elevation no recentrage minmaxstrict"""
 
@@ -410,7 +410,7 @@ Résultats sains avec différents scaling acromion
 
 # BallAndSocket_Files = [f"08-09-BallAndSocket-{CaseName}" for CaseName in ["short", "normal", "long"]]
 
-# Results_BallAndSocket = load_simulation_cases(SaveDataDir, BallAndSocket_Files, MiddleCases, BallAndSocket_Variables)
+# Results_BallAndSocket = load_simulation_cases(SaveDataDir, BallAndSocket_Files, MiddleCases_3, BallAndSocket_Variables)
 
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_BallAndSocket, SaveSimulationsDirectory, "Results_BallAndSocket")
@@ -460,7 +460,7 @@ save_results_to_file(Results_literature, SaveSimulationsDirectory, "Results_lite
 
 # %% Calculs supplémentaires
 
-# Results_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
+Results_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
 
 """Stability ratio"""
 # calcul instability ratio
@@ -552,11 +552,11 @@ def score(Results):
     return Results, scores_moment, scores_shear
 
 
-# Calcul des scores pour tous les cas et juste 9 cas avec neutre
-Results_Elevation_no_recentrage, scores_moment, scores_shear = score(Results_Elevation_no_recentrage)
+# # Calcul des scores pour tous les cas et juste 9 cas avec neutre
+# Results_Elevation_no_recentrage, scores_moment, scores_shear = score(Results_Elevation_no_recentrage)
 
-# Sauvegarde de la simulation en .pkl
-save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
-save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
+# save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
 
-save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
+# save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")

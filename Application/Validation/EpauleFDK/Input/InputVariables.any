@@ -174,7 +174,7 @@ AnyFolder InputVariables = {
   
   /* -------------------------------------------CSA_Tilt selection------------------------------------*/
   #ifndef CSA_Tilt
-  #define CSA_Tilt "neutral"
+  #define CSA_Tilt "xup"
   #endif
   /*
   xdown
@@ -189,7 +189,7 @@ AnyFolder InputVariables = {
   /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
   
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "normal"
+  #define CSA_Acromion_Length "xshort"
   #endif
   /*
   xshort

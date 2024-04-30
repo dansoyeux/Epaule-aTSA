@@ -597,6 +597,7 @@ list_muscle_variation = ["Deltoid anterior",
                          "Deltoid lateral",
                          "Deltoid posterior",
                          "Upper Subscapularis",
+                         "Subscapularis",
                          "Downward Subscapularis",
                          "Triceps long head",
                          "Infraspinatus"
@@ -821,21 +822,11 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 
 
 """Elevation (done)"""
-# Recentrage
-# PremadeGraphs.my_graphs(Results_Elevation, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Normal", save_graph=True, composante_on=False, **graph_parameters)
-
 # # No recentrage
 # PremadeGraphs.my_graphs(Results_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
 
 # # Avec neutral
 # PremadeGraphs.my_graphs(Results_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage with neutral", save_graph=True, composante_on=False, **graph_parameters_6)
-
-"""Elevation const speed"""
-# # No recentrage
-# PremadeGraphs.my_graphs(Results_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Const_speed No recentrage", save_graph=True, composante_on=False, **graph_parameters)
-
-# # Avec neutral
-# PremadeGraphs.my_graphs(Results_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Const_speed No recentrage with neutral", save_graph=True, composante_on=False, **graph_parameters_6)
 
 """Par CSA Elevation"""
 # PremadeGraphs.my_graphs(Results_Elevation_no_recentrage_Par_CSA, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation/No recentrage", "Par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
