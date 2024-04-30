@@ -51,7 +51,10 @@ matplotlib.rcParams.update({'xtick.major.size': 6})
 matplotlib.rcParams.update({'ytick.major.size': 6})
 
 # Légende (10)
-matplotlib.rcParams.update({'legend.fontsize': 10})
+matplotlib.rcParams.update({'legend.fontsize': 15})
+
+# Distance between the title of a plot and the plot in points (6)
+matplotlib.rcParams.update({'axes.titlepad': 12})
 
 # %% Setup des couleurs et légendes
 
@@ -186,41 +189,41 @@ SimulationsLineStyleDictionary_Small_abduction = {
 
 SimulationDescriptionDictionary = {
     # Nom des cas de simulation
-    "xdown-xshort": "CSA = 12° : Large Downtilt      -  Very short acromion",
-    "xdown-short": "CSA = 16° : Large Downtilt      -  Short acromion",
-    "xdown-normal": "CSA = 20° : Large Downtilt      -  Normal acromion",
-    "xdown-long": "CSA = 25° : Large Downtilt      -   Long acromion",
-    "xdown-xlong": "CSA = 30° : Large Downtilt      -  Very long acromion",
+    "xdown-xshort": "CSA = 12° : -8.7° inclination    ; -12.1 mm acromion shift",
+    "xdown-short": "CSA = 16° : -8.7° inclination    ; -6.6 mm acromion shift",
+    "xdown-normal": "CSA = 20° : -8.7° inclination    ; +0.0 mm acromion shift",
+    "xdown-long": "CSA = 25° : -8.7° inclination    ;  +7.85 mm acromion shift",
+    "xdown-xlong": "CSA = 30° : -8.7° inclination    ; +16.95 mm acromion shift",
 
-    "down-xshort": "CSA = 16° : Downtilt             -  Very short acromion",
-    "down-short": "CSA = 20° : Downtilt             -  Short acromion",
-    "down-normal": "CSA = 25° : Downtilt             -  Normal acromion",
-    "down-long": "CSA = 30° : Downtilt             -   Long acromion",
-    "down-xlong": "CSA = 35° : Downtilt             -  Very long acromion",
+    "down-xshort": "CSA = 16° : -3.0° inclination    ; -12.1 mm acromion shift",
+    "down-short": "CSA = 20° : -3.0° inclination    ; -6.6 mm acromion shift",
+    "down-normal": "CSA = 25° : -3.0° inclination    ; +0.0 mm acromion shift",
+    "down-long": "CSA = 30° : -3.0° inclination    ;  +7.85 mm acromion shift",
+    "down-xlong": "CSA = 35° : -3.0° inclination    ; +16.95 mm acromion shift",
 
-    "middle-xshort": "CSA = 20° : Normal tilt         -  Very short acromion",
-    "middle-short": "CSA = 25° : Normal tilt         -  Short acromion",
-    "middle-normal": "CSA = 30° : Normal tilt         -  Normal acromion",
-    "middle-long": "CSA = 35° : Normal tilt         -   Long acromion",
-    "middle-xlong": "CSA = 40° : Normal tilt         -  Very long acromion",
+    "middle-xshort": "CSA = 20° : 2.9° inclination     ; -12.1 mm acromion shift",
+    "middle-short": "CSA = 25° : 2.9° inclination     ; -6.6 mm acromion shift",
+    "middle-normal": "CSA = 30° : 2.9° inclination     ; +0.0 mm acromion shift",
+    "middle-long": "CSA = 35° : 2.9° inclination     ;  +7.85 mm acromion shift",
+    "middle-xlong": "CSA = 40° : 2.9° inclination     ; +16.95 mm acromion shift",
 
-    "neutral-xshort": "CSA = 20° : Neutral tilt         -  Very short acromion",
-    "neutral-short": "CSA = 25° : Neutral tilt         -  Short acromion",
-    "neutral-normal": "CSA = 30° : Neutral tilt         -  Normal acromion",
-    "neutral-long": "CSA = 35° : Neutral tilt         -   Long acromion",
-    "neutral-xlong": "CSA = 40° : Neutral tilt         -  Very long acromion",
+    "neutral-xshort": "CSA = 20° : 0.0° inclination     ; -12.1 mm acromion shift",
+    "neutral-short": "CSA = 25° : 0.0° inclination     ; -6.6 mm acromion shift",
+    "neutral-normal": "CSA = 30° : 0.0° inclination     ; +0.0 mm acromion shift",
+    "neutral-long": "CSA = 35° : 0.0° inclination     ;  +7.85 mm acromion shift",
+    "neutral-xlong": "CSA = 40° : 0.0° inclination     ; +16.95 mm acromion shift",
 
-    "up-xshort": "CSA = 25° : Uptilt             -  Very short acromion",
-    "up-short": "CSA = 30° : Uptilt             -  Short acromion",
-    "up-normal": "CSA = 35° : Uptilt             -  Normal acromion",
-    "up-long": "CSA = 40° : Uptilt             -   Long acromion",
-    "up-xlong": "CSA = 45° : Uptilt             -  Very long acromion",
+    "up-xshort": "CSA = 25° : 9.0° inclination     ; -12.1 mm acromion shift",
+    "up-short": "CSA = 30° : 9.0° inclination     ; -6.6 mm acromion shift",
+    "up-normal": "CSA = 35° : 9.0° inclination     ; +0.0 mm acromion shift",
+    "up-long": "CSA = 40° : 9.0° inclination     ; +7.85 mm acromion shift",
+    "up-xlong": "CSA = 45° : 9.0° inclination     ; +16.95 mm acromion shift",
 
-    "xup-xshort": "CSA = 30° : Large uptilt      -  Very short acromion",
-    "xup-short": "CSA = 35° : Large uptilt      -  Short acromion",
-    "xup-normal": "CSA = 40° : Large uptilt      -  Normal acromion",
-    "xup-long": "CSA = 45° : Large uptilt      -   Long acromion",
-    "xup-xlong": "CSA = 50° : Large uptilt      -  Very long acromion",
+    "xup-xshort": "CSA = 30° : 15.2° inclination   ; -12.1 mm acromion shift",
+    "xup-short": "CSA = 35° : 15.2° inclination   ; -6.6 mm acromion shift",
+    "xup-normal": "CSA = 40° : 15.2° inclination   ; +0.0 mm acromion shift",
+    "xup-long": "CSA = 45° : 15.2° inclination   ;  +7.85 mm acromion shift",
+    "xup-xlong": "CSA = 50° : 15.2° inclination   ; +16.95 mm acromion shift",
 
     # Nom des composantes
     "AP": "Axe antéropostérieur (Anterior = +)",
@@ -285,6 +288,7 @@ xLongCases_36 = ["xdown-xlong", "neutral-xlong", "up-xlong"]
 
 CaseNames_3 = [*xDownCases_3, *MiddleCases_3, *xUpCases_3]
 CaseNames_36 = [*xDownCases_3, *NeutralCases_3, *UpCases_3]
+CaseNames_36x = [*xDownCases_3, *NeutralCases_3, *xUpCases_3]
 UpDownCases_3 = [*xUpCases_3, *xDownCases_3]
 
 # More cases
@@ -441,9 +445,9 @@ FDK_Variables = load_results_from_file(SaveVariablesDirectory, "FDK_Variables")
 # %% Liste des catégories de muscles
 
 # 9 muscles --> graphique 3x3
-Muscles_Main = ["Deltoideus anterior",
-                "Deltoideus lateral",
-                "Deltoideus posterior",
+Muscles_Main = ["Deltoid anterior",
+                "Deltoid lateral",
+                "Deltoid posterior",
                 "Lower trapezius",
                 "Middle trapezius",
                 "Upper trapezius",
@@ -476,17 +480,17 @@ Muscles_Extra = ["Sternocleidomastoid sternum",
 
 
 # Muscles qui varient
-Muscles_Variation = ["Deltoideus anterior",
-                     "Deltoideus lateral",
-                     "Deltoideus posterior",
+Muscles_Variation = ["Deltoid anterior",
+                     "Deltoid lateral",
+                     "Deltoid posterior",
                      "Triceps long head"
                      ]
 
 # Muscles for comparison with Wickham et al. data
 # 3x3
-Muscle_Comp_Main = ["Deltoideus anterior",
-                    "Deltoideus lateral",
-                    "Deltoideus posterior",
+Muscle_Comp_Main = ["Deltoid anterior",
+                    "Deltoid lateral",
+                    "Deltoid posterior",
                     "Lower trapezius",
                     "Middle trapezius",
                     "Upper trapezius",
@@ -506,16 +510,16 @@ Muscle_Comp_Aux = ["Pectoralis major",
 
 
 # Muscles qui varient
-Muscles_Comp_Variation = ["Deltoideus anterior",
-                          "Deltoideus lateral",
-                          "Deltoideus posterior"
+Muscles_Comp_Variation = ["Deltoid anterior",
+                          "Deltoid lateral",
+                          "Deltoid posterior"
                           ]
 
 AllMuscles_List = list(FDK_Variables["Muscles"].keys())
 
-Muscles_actifs = ["Deltoideus lateral",
-                  "Deltoideus anterior",
-                  "Deltoideus posterior",
+Muscles_actifs = ["Deltoid lateral",
+                  "Deltoid anterior",
+                  "Deltoid posterior",
                   "Subscapularis",
                   "Serratus anterior",
                   "Triceps long head",
@@ -541,9 +545,9 @@ Muscles_inactifs = ["Pectoralis major clavicular",
                     "Coracobrachialis",
                     ]
 
-Muscles_Comp_actifs = ["Deltoideus anterior",
-                       "Deltoideus lateral",
-                       "Deltoideus posterior",
+Muscles_Comp_actifs = ["Deltoid anterior",
+                       "Deltoid lateral",
+                       "Deltoid posterior",
                        "Lower trapezius",
                        "Middle trapezius",
                        "Upper trapezius",
@@ -556,9 +560,9 @@ Muscles_Comp_actifs = ["Deltoideus anterior",
                        ]
 
 # 12 (Ft > 10 N)
-list_muscles_actifs = ["Deltoideus lateral",
-                       "Deltoideus anterior",
-                       "Deltoideus posterior",
+list_muscles_actifs = ["Deltoid lateral",
+                       "Deltoid anterior",
+                       "Deltoid posterior",
                        "Lower trapezius",
                        "Middle trapezius",
                        "Upper trapezius",
@@ -589,9 +593,9 @@ list_muscles_inactifs = ["Pectoralis major clavicular",
                          ]
 
 # 7 (subscapulaire divisé en 2)
-list_muscle_variation = ["Deltoideus anterior",
-                         "Deltoideus lateral",
-                         "Deltoideus posterior",
+list_muscle_variation = ["Deltoid anterior",
+                         "Deltoid lateral",
+                         "Deltoid posterior",
                          "Upper Subscapularis",
                          "Downward Subscapularis",
                          "Triceps long head",
@@ -619,8 +623,8 @@ list_muscle_variation_faible = ["Pectoralis major clavicular",
 #                             }
 
 
-# muscles_to_add_scapula_origin = ["Deltoideus lateral",
-#                                  "Deltoideus posterior",
+# muscles_to_add_scapula_origin = ["Deltoid lateral",
+#                                  "Deltoid posterior",
 #                                  "Subscapularis",
 #                                  "Infraspinatus",
 #                                  "Supraspinatus",
@@ -654,9 +658,9 @@ list_muscle_variation_faible = ["Pectoralis major clavicular",
 #                             "SpringForce humerus": ["Total", "AP", "IS", "ML"]
 #                             }
 
-# muscles_to_add_humerus_insertion = ["Deltoideus lateral",
-#                                     "Deltoideus posterior",
-#                                     "Deltoideus anterior",
+# muscles_to_add_humerus_insertion = ["Deltoid lateral",
+#                                     "Deltoid posterior",
+#                                     "Deltoid anterior",
 #                                     "Subscapularis",
 #                                     "Infraspinatus",
 #                                     "Supraspinatus",
@@ -922,69 +926,6 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
 # # instability ratio
 # PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
 
-# %% Abstract
-
-# SimulationsLineStyleDictionary_abstract = {
-#     # Glen xdown
-#     "xdown-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
-#     "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-#     "xdown-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3.5},
-#     "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-#     "xdown-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4.5},
-
-#     # Glen xdown
-#     "middle-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
-#     "middle-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-#     "middle-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3.5},
-#     "middle-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-#     "middle-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4.5},
-
-#     # Glen xdown
-#     "xup-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
-#     "xup-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-#     "xup-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3.5},
-#     "xup-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-#     "xup-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4.5},
-# }
-
-# define_simulations_line_style(SimulationsLineStyleDictionary_abstract)
-
-# # Abstract
-# COP_graph(Results_no_recentrage, COP_contour, figure_title="Downtilt", composantes=["AP", "IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4)
-# COP_graph(Results_no_recentrage, COP_contour, figure_title="Uptilt", composantes=["AP", "IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=20, COP_first_point_mew=4)
-
-# %% Présentations powerpoint
-
-# SimulationsLineStyleDictionary_presentation = {
-#     # Glen xdown
-#     "xdown-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
-#     "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-#     "xdown-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3.5},
-#     "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-#     "xdown-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
-
-#     # Glen xdown
-#     "middle-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
-#     "middle-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-#     "middle-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3.5},
-#     "middle-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-#     "middle-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
-
-#     # Glen xdown
-#     "xup-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3.5},
-#     "xup-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-#     "xup-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3.5},
-#     "xup-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
-#     "xup-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
-# }
-# define_simulations_line_style(SimulationsLineStyleDictionary_presentation)
-
-# COP_graph(Results_Elevation_no_recentrage, COP_contour, figure_title="Centre de pression", cases_on=MiddleCases_3, graph_annotation_on=False, composantes=["AP", "IS"], subplot={"dimension": [1, 2], "number": 1}, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2)
-# COP_graph(Results_Elevation_no_recentrage, COP_contour, figure_title="Centre de pression", cases_on=xUpCases_3, graph_annotation_on=False, composantes=["AP", "IS"], subplot={"dimension": [1, 2], "number": 2}, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2)
-
-
-define_simulations_line_style(SimulationsLineStyleDictionary)
-
 # %% variations forces de contact
 
 # diff_force = {"Higher inclination": {"AP": [], "IS": [], "ML": [], "Abduction": Results_Elevation_no_recentrage["up-normal"]["Abduction"]["Total"]},
@@ -999,39 +940,6 @@ define_simulations_line_style(SimulationsLineStyleDictionary)
 # inclination_variation = "Lower inclination"
 # a_avant_90 = np.mean(diff_force[inclination_variation][composante][0:45])
 # a_apres_90 = np.mean(diff_force[inclination_variation][composante][45:-1])
-
-# %% Scores
-
-# """CaseNames_36"""
-# plt.subplots(2, 1, figsize=(20, 10))
-# plt.subplot(2, 1, 1)
-# bars = plt.bar(list(shear_scores_36["Total"].keys()), list(shear_scores_36["Total"].values()))
-# # plt.grid(axis="y")
-# plt.title("Total shear forces on the glenoid [N]")
-# plt.bar_label(bars)
-
-# plt.subplot(2, 1, 2)
-# bars = plt.bar(list(moment_scores_36["Total"].keys()), list(moment_scores_36["Total"].values()))
-# # plt.grid(axis="y")
-# plt.title("Total moment on the glenoid [N.m]")
-# plt.bar_label(bars)
-
-# """CaseNames_6"""
-# plt.subplots(2, 1, figsize=(70, 10))
-# plt.subplot(2, 1, 1)
-# bars = plt.bar(list(shear_scores["Total"].keys()), list(shear_scores["Total"].values()))
-# # plt.grid(axis="y")
-# plt.title("Total shear forces on the glenoid [N]")
-# plt.bar_label(bars)
-
-# plt.subplot(2, 1, 2)
-# bars = plt.bar(list(moment_scores["Total"].keys()), list(moment_scores["Total"].values()))
-# # plt.grid(axis="y")
-# plt.title("Total moment on the glenoid [N.m]")
-# plt.bar_label(bars)
-
-# graph(Results_Elevation_no_recentrage, "Abduction", "Moment", composante_y=["AP+IS"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 1}, subplot_title="Moments on the glenoid", ylabel_on=False)
-# graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", composante_y=["TotalShear"], figure_title="Scores", xlim=[15, 120], figsize=[24, 14], cases_on=CaseNames_36, subplot={"dimension":[1, 2], "number": 2}, subplot_title="Shear on the glenoid", xlabel_on=False)
 
 # %% graph surface
 
@@ -1068,48 +976,43 @@ def score_surface(score_df, title):
 # score_surface(scores_moment["Total"], "Total moment on the glenoid implant [N.m]")
 # score_surface(scores_shear["Total"], "Total shear forces on the glenoid implant [N]")
 
-# %% direction du deltoide latéral
-
-define_simulations_line_style(SimulationsLineStyleDictionary_article)
+# %% angle du deltoide latéral
 
 for case_name, case_data in Results_Elevation_no_recentrage.items():
-    delt_direction_IS_origin = case_data["Muscles"]["Deltoideus lateral"]["Deltoideus lateral"]["F origin direction"]["IS"]
-    delt_direction_ML_origin = case_data["Muscles"]["Deltoideus lateral"]["Deltoideus lateral"]["F origin direction"]["ML"]
+    delt_direction_IS_origin = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F origin direction"]["IS"]
+    delt_direction_ML_origin = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F origin direction"]["ML"]
 
     # Angle par rapport à la verticale
     force_angle_origin = np.arctan2(delt_direction_IS_origin, delt_direction_ML_origin) * 180 / np.pi
 
-    delt_direction_IS_insertion = case_data["Muscles"]["Deltoideus lateral"]["Deltoideus lateral"]["F insertion direction"]["IS"]
-    delt_direction_ML_insertion = case_data["Muscles"]["Deltoideus lateral"]["Deltoideus lateral"]["F insertion direction"]["ML"]
+    delt_direction_IS_insertion = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F insertion direction"]["IS"]
+    delt_direction_ML_insertion = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F insertion direction"]["ML"]
 
     # Angle par rapport à la verticale
     force_angle_insertion = np.arctan2(delt_direction_IS_insertion, delt_direction_ML_insertion) * 180 / np.pi
 
-    case_data["Muscles"]["Deltoideus lateral"]["Deltoideus lateral"]["Force Angle"] = {"Description": "Muscle force angle [°]",
-                                                                                       "SequenceComposantes": ["Insertion", "Origin"],
-                                                                                       "Origin": force_angle_origin,
-                                                                                       "Insertion": force_angle_insertion
-                                                                                       }
+    case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["Force Angle"] = {"Description": "Muscle force angle [°]",
+                                                                                 "SequenceComposantes": ["Insertion", "Origin"],
+                                                                                 "Origin": force_angle_origin,
+                                                                                 "Insertion": force_angle_insertion
+                                                                                 }
 
-# PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, ["Deltoideus lateral"], "Abduction", "Force Angle", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 20], composante_y_muscle_combined=["Origin"])
-# PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, ["Deltoideus lateral"], "Abduction", "Force Angle", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=10, composante_y_muscle_combined=["Insertion"])
-
-# muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "Force Angle", subplot={"dimension": [1, 2], "number": 1}, cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 20], composante_y=["Origin"], title="Origine")
-# muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "MomentArm", subplot={"dimension": [1, 2], "number": 2}, composante_y=["Mean"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=5, ylim=[0, 40])
-
-# muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "Force Angle", subplot={"dimension": [1, 2], "number": 1}, cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, composante_y=["Insertion"], title="Insertion")
-# muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "MomentArm", subplot={"dimension": [1, 2], "number": 2}, composante_y=["Mean"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=5, ylim=[0, 40])
-
-
-muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "Force Angle", subplot={"dimension": [1, 3], "number": 1}, cases_on=NeutralCases_5, subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 20], composante_y=["Origin"])
-muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "MomentArm", subplot={"dimension": [1, 3], "number": 2}, composante_y=["Mean"], cases_on=NeutralCases_5, subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=5, ylim=[0, 40])
-muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "Ft", subplot={"dimension": [1, 3], "number": 3}, composante_y=["Total"], cases_on=NeutralCases_5, subplot_title="Deltoid lateral force", grid_x_step=15, xlim=[15, 120], grid_y_step=25, ylim=[0, 200])
-
-# PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, ["Deltoideus lateral"], "Abduction", "F origin direction", composante_y_muscle_combined=["IS"], same_lim=True)
-# PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, ["Deltoideus lateral"], "Abduction", "F origin direction", composante_y_muscle_combined=["ML"], same_lim=True)
+# define_simulations_line_style(SimulationsLineStyleDictionary_article)
+# muscle_graph(Results_Elevation_no_recentrage, "Deltoid lateral", "Abduction", "Force Angle", subplot={"dimension": [1, 3], "number": 1}, cases_on=NeutralCases_3, subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 20], composante_y=["Origin"])
+# muscle_graph(Results_Elevation_no_recentrage, "Deltoid lateral", "Abduction", "MomentArm", subplot={"dimension": [1, 3], "number": 2}, composante_y=["Mean"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=5, ylim=[0, 40])
+# muscle_graph(Results_Elevation_no_recentrage, "Deltoid lateral", "Abduction", "Ft", subplot={"dimension": [1, 3], "number": 3}, composante_y=["Total"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral force", grid_x_step=15, xlim=[15, 120], grid_y_step=25, ylim=[0, 200])
 
 define_simulations_line_style(SimulationsLineStyleDictionary)
 
-PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, ["Deltoideus lateral"], "Abduction", "Force Angle", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 25], figsize=[25, 15], composante_y_muscle_combined=["Origin"])
-PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, ["Deltoideus lateral"], "Abduction", "MomentArm", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=5, figsize=[25, 15], composante_y_muscle_combined=["Mean"])
-PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, ["Deltoideus lateral"], "Abduction", "Ft", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=25, figsize=[25, 15], composante_y_muscle_combined=["Total"])
+# PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, ["Deltoid lateral"], "Abduction", "Force Angle", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 25], figsize=[25, 15], composante_y_muscle_combined=["Origin"], legend_position="center left")
+# PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, ["Deltoid lateral"], "Abduction", "Force Angle", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=10, figsize=[25, 15], composante_y_muscle_combined=["Insertion"], legend_position="center left")
+# PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, ["Deltoid lateral"], "Abduction", "MomentArm", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=5, figsize=[25, 15], composante_y_muscle_combined=["Mean"], legend_position="center left")
+# PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, ["Deltoid lateral"], "Abduction", "Ft", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=25, figsize=[25, 15], composante_y_muscle_combined=["Total"], legend_position="center left")
+
+# %% graph muscles
+
+# define_simulations_line_style(SimulationsLineStyleDictionary)
+
+# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle Force (Ft > 10N)", cases_on=CaseNames_36x, figsize=[24, 14], ylim=[0, 200], same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120])
+# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage, list_muscles_peu_actif, [1, 3], "Abduction", "Ft", "Muscle Force (10 N > Ft > 5N)", cases_on=CaseNames_36x, figsize=[24, 14], ylim=[0, 20], same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120])
+# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage, list_muscles_inactifs, [3, 3], "Abduction", "Ft", "Muscle Force (Ft < 5N)", cases_on=CaseNames_36x, figsize=[24, 14], ylim=[0, 20], same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120])

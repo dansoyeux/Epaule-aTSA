@@ -21,9 +21,9 @@ import pandas as pd
 
 # Muscles
 MuscleDictionary = {"Triceps long head": ["Triceps_LH", "_", [1, 2]],
-                    "Deltoideus lateral": ["deltoideus_lateral", "_part_", [1, 4]],
-                    "Deltoideus posterior": ["deltoideus_posterior", "_part_", [1, 4]],
-                    "Deltoideus anterior": ["deltoideus_anterior", "_part_", [1, 4]],
+                    "Deltoid lateral": ["deltoideus_lateral", "_part_", [1, 4]],
+                    "Deltoid posterior": ["deltoideus_posterior", "_part_", [1, 4]],
+                    "Deltoid anterior": ["deltoideus_anterior", "_part_", [1, 4]],
                     "Supraspinatus": ["supraspinatus", "_", [1, 6]],
                     "Infraspinatus": ["infraspinatus", "_", [1, 6]],
                     "Serratus anterior": ["serratus_anterior", "_", [1, 6]],
