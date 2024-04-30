@@ -410,9 +410,9 @@ SaveSimulationsDirectory = "Saved Simulations"
 
 # Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
 
-Results_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
+Results_Elevation_no_recentrage_smoothed_speed = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage_smoothed_speed")
 
-Results_Elevation_no_recentrage_const_speed = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
+Results_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
 
 # Results_140deg_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_140deg_no_recentrage")
 
@@ -828,10 +828,10 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 
 """Elevation const speed"""
 # # No recentrage
-# PremadeGraphs.my_graphs(Results_Elevation_no_recentrage_const_speed, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Const_speed No recentrage", save_graph=True, composante_on=False, **graph_parameters)
+# PremadeGraphs.my_graphs(Results_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Const_speed No recentrage", save_graph=True, composante_on=False, **graph_parameters)
 
 # # Avec neutral
-# PremadeGraphs.my_graphs(Results_Elevation_no_recentrage_const_speed, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Const_speed No recentrage with neutral", save_graph=True, composante_on=False, **graph_parameters_6)
+# PremadeGraphs.my_graphs(Results_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "Const_speed No recentrage with neutral", save_graph=True, composante_on=False, **graph_parameters_6)
 
 """Par CSA Elevation"""
 # PremadeGraphs.my_graphs(Results_Elevation_no_recentrage_Par_CSA, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation/No recentrage", "Par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
@@ -858,23 +858,23 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 SimulationsLineStyleDictionary_article = {
     # Glen xdown
     "xdown-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
-    "xdown-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "xdown-short": {"color": "#88CCEE", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
     "xdown-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
-    "xdown-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "xdown-long": {"color": "#DDCC77", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
     "xdown-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
 
     # Glen neutral
     "neutral-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
-    "neutral-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "neutral-short": {"color": "#88CCEE", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
     "neutral-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
-    "neutral-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "neutral-long": {"color": "#DDCC77", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
     "neutral-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
 
     # Glen up
     "up-xshort": {"color": "#332288", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
-    "up-short": {"color": "deepskyblue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "up-short": {"color": "#88CCEE", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 1.5},
     "up-normal": {"color": "#117733", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 1.5},
-    "up-long": {"color": "mediumblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": None},
+    "up-long": {"color": "#DDCC77", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
     "up-xlong": {"color": "#AA4499", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
 }
 define_simulations_line_style(SimulationsLineStyleDictionary_article)
@@ -885,17 +885,17 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
                                }}
 
 # # Forces musculaires
-# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage_const_speed, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces : downward inclination", cases_on=xDownCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12])
-# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage_const_speed, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces : neutral inclination", cases_on=NeutralCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12])
-# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage_const_speed, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces : upward inclination", cases_on=UpCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12])
+# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces : downward inclination", cases_on=xDownCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12])
+# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces : neutral inclination", cases_on=NeutralCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12])
+# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces : upward inclination", cases_on=UpCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12])
 
 # # Moment arm
-# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage_const_speed, list_muscles_actifs, [4, 3], "Abduction", "MomentArm", "Moment arm : downward inclination", cases_on=xDownCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12], composante_y=["Mean"])
-# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage_const_speed, list_muscles_actifs, [4, 3], "Abduction", "MomentArm", "Moment arm : neutral inclination", cases_on=NeutralCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12], composante_y=["Mean"])
-# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage_const_speed, list_muscles_actifs, [4, 3], "Abduction", "MomentArm", "Moment arm : upward inclination", cases_on=UpCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12], composante_y=["Mean"])
+# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "MomentArm", "Moment arm : downward inclination", cases_on=xDownCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12], composante_y=["Mean"])
+# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "MomentArm", "Moment arm : neutral inclination", cases_on=NeutralCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12], composante_y=["Mean"])
+# PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "MomentArm", "Moment arm : upward inclination", cases_on=UpCases_3, hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], figsize=[20, 12], composante_y=["Mean"])
 
 # # COP
-# PremadeGraphs.COP_graph_by_case_categories(Results_Elevation_no_recentrage_const_speed, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True)
+# PremadeGraphs.COP_graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True)
 
 # grid_steps_y = [50, 25, 50, 50]
 # y_lims = {"Total": [0, 500],
@@ -906,21 +906,21 @@ Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-n
 
 # # Force de contact composante par composante
 # for ind, composante in enumerate(["Total", "AP", "IS", "ML"]):
-#     graph(Results_Elevation_no_recentrage_const_speed, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Downtilt", composante_y=[composante], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 1})
-#     graph(Results_Elevation_no_recentrage_const_speed, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Middle tilt", composante_y=[composante], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
-#     graph(Results_Elevation_no_recentrage_const_speed, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Uptilt", composante_y=[composante], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=y_lims[composante], grid_y_step=grid_steps_y[ind])
+#     graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Downtilt", composante_y=[composante], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 1})
+#     graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Middle tilt", composante_y=[composante], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
+#     graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title=f"{composante}", subplot_title="Uptilt", composante_y=[composante], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=y_lims[composante], grid_y_step=grid_steps_y[ind])
 
 # # Contact forces for neutral inclination
-# graph(Results_Elevation_no_recentrage_const_speed, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 1})
-# graph(Results_Elevation_no_recentrage_const_speed, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
-# graph(Results_Elevation_no_recentrage_const_speed, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression force", composante_y=["ML"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 400], hide_center_axis_labels=True)
+# graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 1})
+# graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
+# graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression force", composante_y=["ML"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 400], hide_center_axis_labels=True)
 
 # # Compression and shear, neutral inclination
-# graph(Results_Elevation_no_recentrage_const_speed, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Shear forces", composante_y=["Shear"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 1})
-# graph(Results_Elevation_no_recentrage_const_speed, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression forces", composante_y=["Compression"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 2}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
+# graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Shear forces", composante_y=["Shear"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 1})
+# graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression forces", composante_y=["Compression"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 2], "number": 2}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50)
 
-# instability ratio
-# PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage_const_speed, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
+# # instability ratio
+# PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
 
 # %% Abstract
 
@@ -1045,13 +1045,16 @@ def score_surface(score_df, title):
     (x, y) = np.meshgrid(acromion_x, inclinaison_y)
 
     fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=[12, 10])
-    surf = ax.plot_surface(x, y, z, cmap=matplotlib.colormaps.get_cmap('RdYlGn_r'))
-    ax.tick_params(axis='z', which='major', pad=12)
+    surf = ax.plot_surface(x, y, z, cmap=matplotlib.colormaps.get_cmap('RdYlGn_r'), linewidth=0.4, edgecolor="black")
+    ax.set_proj_type('ortho')
+
     ax.tick_params(axis='x', which='major', pad=9)
-    # ax.tick_params(axis='y', which='major', pad=15)
+    ax.tick_params(axis='y', which='major', pad=8)
+    ax.tick_params(axis='z', which='major', pad=12)
 
     ax.set_xlim(-12.1, 16.95)
     ax.set_ylim(-8.7, 15.2)
+    ax.set_zlim(0, np.max(z))
     ax.set_xticks(acromion_x)
     ax.set_yticks(inclinaison_y)
 
@@ -1062,5 +1065,51 @@ def score_surface(score_df, title):
     fig.colorbar(surf, shrink=0.5, aspect=9, pad=0.1)
 
 
-score_surface(scores_moment["Total"], "Total moment on the glenoid implant [N.m]")
-score_surface(scores_shear["Total"], "Total shear forces on the glenoid implant [N]")
+# score_surface(scores_moment["Total"], "Total moment on the glenoid implant [N.m]")
+# score_surface(scores_shear["Total"], "Total shear forces on the glenoid implant [N]")
+
+# %% direction du deltoide latéral
+
+define_simulations_line_style(SimulationsLineStyleDictionary_article)
+
+for case_name, case_data in Results_Elevation_no_recentrage.items():
+    delt_direction_IS_origin = case_data["Muscles"]["Deltoideus lateral"]["Deltoideus lateral"]["F origin direction"]["IS"]
+    delt_direction_ML_origin = case_data["Muscles"]["Deltoideus lateral"]["Deltoideus lateral"]["F origin direction"]["ML"]
+
+    # Angle par rapport à la verticale
+    force_angle_origin = np.arctan2(delt_direction_IS_origin, delt_direction_ML_origin) * 180 / np.pi
+
+    delt_direction_IS_insertion = case_data["Muscles"]["Deltoideus lateral"]["Deltoideus lateral"]["F insertion direction"]["IS"]
+    delt_direction_ML_insertion = case_data["Muscles"]["Deltoideus lateral"]["Deltoideus lateral"]["F insertion direction"]["ML"]
+
+    # Angle par rapport à la verticale
+    force_angle_insertion = np.arctan2(delt_direction_IS_insertion, delt_direction_ML_insertion) * 180 / np.pi
+
+    case_data["Muscles"]["Deltoideus lateral"]["Deltoideus lateral"]["Force Angle"] = {"Description": "Muscle force angle [°]",
+                                                                                       "SequenceComposantes": ["Insertion", "Origin"],
+                                                                                       "Origin": force_angle_origin,
+                                                                                       "Insertion": force_angle_insertion
+                                                                                       }
+
+# PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, ["Deltoideus lateral"], "Abduction", "Force Angle", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 20], composante_y_muscle_combined=["Origin"])
+# PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, ["Deltoideus lateral"], "Abduction", "Force Angle", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=10, composante_y_muscle_combined=["Insertion"])
+
+# muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "Force Angle", subplot={"dimension": [1, 2], "number": 1}, cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 20], composante_y=["Origin"], title="Origine")
+# muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "MomentArm", subplot={"dimension": [1, 2], "number": 2}, composante_y=["Mean"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=5, ylim=[0, 40])
+
+# muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "Force Angle", subplot={"dimension": [1, 2], "number": 1}, cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, composante_y=["Insertion"], title="Insertion")
+# muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "MomentArm", subplot={"dimension": [1, 2], "number": 2}, composante_y=["Mean"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=5, ylim=[0, 40])
+
+
+muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "Force Angle", subplot={"dimension": [1, 3], "number": 1}, cases_on=NeutralCases_5, subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 20], composante_y=["Origin"])
+muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "MomentArm", subplot={"dimension": [1, 3], "number": 2}, composante_y=["Mean"], cases_on=NeutralCases_5, subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=5, ylim=[0, 40])
+muscle_graph(Results_Elevation_no_recentrage, "Deltoideus lateral", "Abduction", "Ft", subplot={"dimension": [1, 3], "number": 3}, composante_y=["Total"], cases_on=NeutralCases_5, subplot_title="Deltoid lateral force", grid_x_step=15, xlim=[15, 120], grid_y_step=25, ylim=[0, 200])
+
+# PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, ["Deltoideus lateral"], "Abduction", "F origin direction", composante_y_muscle_combined=["IS"], same_lim=True)
+# PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, ["Deltoideus lateral"], "Abduction", "F origin direction", composante_y_muscle_combined=["ML"], same_lim=True)
+
+define_simulations_line_style(SimulationsLineStyleDictionary)
+
+PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, ["Deltoideus lateral"], "Abduction", "Force Angle", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 25], figsize=[25, 15], composante_y_muscle_combined=["Origin"])
+PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, ["Deltoideus lateral"], "Abduction", "MomentArm", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=5, figsize=[25, 15], composante_y_muscle_combined=["Mean"])
+PremadeGraphs.muscle_graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, ["Deltoideus lateral"], "Abduction", "Ft", same_lim=True, hide_center_axis_labels=True, grid_x_step=15, xlim=[15, 120], grid_y_step=25, figsize=[25, 15], composante_y_muscle_combined=["Total"])

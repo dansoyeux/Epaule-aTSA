@@ -81,11 +81,11 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                                                    "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                                                    "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
-                            # "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
-                            #                           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                            #                           "combine_muscle_part_operations": ["mean"], "vect_dir": True},
+                            "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
+                                                      "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                                                      "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
-                            "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Muscle moment arm [mm]",
+                            "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Moment arm [mm]",
                                           "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
                             }
 
@@ -315,22 +315,22 @@ SaveSimulationsDirectory = "Saved Simulations"
 # Elevation_dir = "../SaveData/Elevation_no_recentrage"
 # Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
 
-# Results_Elevation_no_recentrage = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
+# Results_Elevation_no_recentrage_smoothed_speed = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
 
 # # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
+# save_results_to_file(Results_Elevation_no_recentrage_smoothed_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_smoothed_speed")
 
 """
 Élévation no recentrage, constant speed
 """
 
-# Elevation_dir_const_speed = "../SaveData/const_speed"
-# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+Elevation_dir_const_speed = "../SaveData/const_speed"
+Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
 
-# Results_Elevation_no_recentrage_const_speed = load_simulation_cases(Elevation_dir_const_speed, Files, CaseNames_6, FDK_Variables)
+Results_Elevation_no_recentrage = load_simulation_cases(Elevation_dir_const_speed, Files, CaseNames_6, FDK_Variables)
 
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_Elevation_no_recentrage_const_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
 
 """Elevation no recentrage minmaxstrict"""
 
@@ -460,15 +460,15 @@ save_results_to_file(Results_literature, SaveSimulationsDirectory, "Results_lite
 
 # %% Calculs supplémentaires
 
-Results_Elevation_no_recentrage_const_speed = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
+# Results_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
 
 """Stability ratio"""
 # calcul instability ratio
-for case in Results_Elevation_no_recentrage_const_speed:
-    Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["Shear"] = abs(Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["IS"]) + abs(Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["AP"])
+for case in Results_Elevation_no_recentrage:
+    Results_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = abs(Results_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"]) + abs(Results_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"])
 
-    Results_Elevation_no_recentrage_const_speed[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
-    Results_Elevation_no_recentrage_const_speed[case]["Instability Ratio"]["Total"] = Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["Shear"] / abs(Results_Elevation_no_recentrage_const_speed[case]["ForceContact GlenImplant"]["ML"])
+    Results_Elevation_no_recentrage[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
+    Results_Elevation_no_recentrage[case]["Instability Ratio"]["Total"] = Results_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] / abs(Results_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"])
 
 
 def score(Results):
@@ -553,10 +553,10 @@ def score(Results):
 
 
 # Calcul des scores pour tous les cas et juste 9 cas avec neutre
-Results_Elevation_no_recentrage_const_speed, scores_moment, scores_shear = score(Results_Elevation_no_recentrage_const_speed)
+Results_Elevation_no_recentrage, scores_moment, scores_shear = score(Results_Elevation_no_recentrage)
 
 # Sauvegarde de la simulation en .pkl
 save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
 save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
 
-save_results_to_file(Results_Elevation_no_recentrage_const_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
+save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
