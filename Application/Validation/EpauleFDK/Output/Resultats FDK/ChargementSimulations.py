@@ -309,18 +309,6 @@ SaveSimulationsDirectory = "Saved Simulations"
 # aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
 
 """
-Élévation no recentrage
-"""
-
-# Elevation_dir = "../SaveData/Elevation_no_recentrage"
-# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
-
-# Results_Elevation_no_recentrage_smoothed_speed = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_Elevation_no_recentrage_smoothed_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_smoothed_speed")
-
-"""
 Élévation no recentrage, constant speed
 """
 
@@ -331,6 +319,18 @@ SaveSimulationsDirectory = "Saved Simulations"
 
 # # Sauvegarde de la simulation en .pkl
 # save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
+
+"""
+Élévation no recentrage
+"""
+
+# Elevation_dir = "../SaveData/Elevation_no_recentrage"
+# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+
+# Results_Elevation_no_recentrage_smoothed_speed = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
+
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_Elevation_no_recentrage_smoothed_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_smoothed_speed")
 
 """Elevation no recentrage minmaxstrict"""
 
@@ -460,7 +460,7 @@ save_results_to_file(Results_literature, SaveSimulationsDirectory, "Results_lite
 
 # %% Calculs supplémentaires
 
-Results_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage_const_speed")
+Results_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
 
 """Stability ratio"""
 # calcul instability ratio
@@ -547,16 +547,27 @@ def score(Results):
 
         # Save shear scores in the variables and in a new variable named score
         Results[case]["ForceContact GlenImplant"]["TotalShear"] = shear[:, 2]
-        Results[case]["Moment"] = array_to_dictionary(moment, "Moment on the glenoid implant [N.m]", SequenceComposantes=["AP", "IS", "AP+IS"])
+        Results[case]["Moment"] = array_to_dictionary(moment, "Moment on the glenoid implant [N.m]", SequenceComposantes=["AP", "IS", "ML", "Total"])
+
+        # Contribution des forces au moment
+        Results[case]["Moment"]["AP_shearIS"] = abs(ContactForce[:, 1] * COP[:, 2])
+        Results[case]["Moment"]["AP_compression"] = abs(ContactForce[:, 2] * COP[:, 1])
+
+        Results[case]["Moment"]["IS_shearAP"] = abs(ContactForce[:, 0] * COP[:, 2])
+        Results[case]["Moment"]["IS_compression"] = abs(ContactForce[:, 2] * COP[:, 0])
+
+        # ratio contribution shear/totalmoment
+        Results[case]["Moment"]["AP_ratio"] = Results[case]["Moment"]["AP_shearIS"] / abs(moment[:, 0])
+        Results[case]["Moment"]["IS_ratio"] = Results[case]["Moment"]["IS_shearAP"] / abs(moment[:, 1])
 
     return Results, scores_moment, scores_shear
 
 
-# # Calcul des scores pour tous les cas et juste 9 cas avec neutre
-# Results_Elevation_no_recentrage, scores_moment, scores_shear = score(Results_Elevation_no_recentrage)
+# Calcul des scores pour tous les cas et juste 9 cas avec neutre
+Results_Elevation_no_recentrage, scores_moment, scores_shear = score(Results_Elevation_no_recentrage)
 
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
-# save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
+# Sauvegarde des scores en .pkl
+save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
+save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
 
-# save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
+save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
