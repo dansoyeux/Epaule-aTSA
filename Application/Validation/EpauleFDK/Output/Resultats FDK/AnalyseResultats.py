@@ -969,29 +969,29 @@ def score_surface(score_df, title):
 
 # %% angle du deltoide latéral
 
-# for case_name, case_data in Results_Elevation_no_recentrage.items():
-#     delt_direction_IS_origin = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F origin direction"]["IS"]
-#     delt_direction_ML_origin = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F origin direction"]["ML"]
+for case_name, case_data in Results_Elevation_no_recentrage.items():
+    delt_direction_IS_origin = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F origin direction"]["IS"]
+    delt_direction_ML_origin = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F origin direction"]["ML"]
 
-#     # Angle par rapport à la verticale
-#     force_angle_origin = np.arctan2(delt_direction_IS_origin, delt_direction_ML_origin) * 180 / np.pi
+    # Angle par rapport à la verticale
+    force_angle_origin = np.arctan2(delt_direction_IS_origin, delt_direction_ML_origin) * 180 / np.pi
 
-#     delt_direction_IS_insertion = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F insertion direction"]["IS"]
-#     delt_direction_ML_insertion = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F insertion direction"]["ML"]
+    delt_direction_IS_insertion = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F insertion direction"]["IS"]
+    delt_direction_ML_insertion = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F insertion direction"]["ML"]
 
-#     # Angle par rapport à la verticale
-#     force_angle_insertion = np.arctan2(delt_direction_IS_insertion, delt_direction_ML_insertion) * 180 / np.pi
+    # Angle par rapport à la verticale
+    force_angle_insertion = np.arctan2(delt_direction_IS_insertion, delt_direction_ML_insertion) * 180 / np.pi
 
-#     case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["Force Angle"] = {"Description": "Muscle force angle [°]",
-#                                                                                  "SequenceComposantes": ["Insertion", "Origin"],
-#                                                                                  "Origin": force_angle_origin,
-#                                                                                  "Insertion": force_angle_insertion
-#                                                                                  }
+    case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["Force Angle"] = {"Description": "Muscle force angle [°]",
+                                                                                 "SequenceComposantes": ["Insertion", "Origin"],
+                                                                                 "Origin": force_angle_origin,
+                                                                                 "Insertion": force_angle_insertion
+                                                                                 }
 
 # define_simulations_line_style(SimulationsLineStyleDictionary_article)
-# muscle_graph(Results_Elevation_no_recentrage, "Deltoid lateral", "Abduction", "Force Angle", subplot={"dimension": [1, 3], "number": 1}, cases_on=NeutralCases_3, subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 20], composante_y=["Origin"])
-# muscle_graph(Results_Elevation_no_recentrage, "Deltoid lateral", "Abduction", "MomentArm", subplot={"dimension": [1, 3], "number": 2}, composante_y=["Mean"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=5, ylim=[0, 40])
-# muscle_graph(Results_Elevation_no_recentrage, "Deltoid lateral", "Abduction", "Ft", subplot={"dimension": [1, 3], "number": 3}, composante_y=["Total"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral force", grid_x_step=15, xlim=[15, 120], grid_y_step=25, ylim=[0, 200])
+muscle_graph(Results_Elevation_no_recentrage, "Deltoid lateral", "Abduction", "Force Angle", subplot={"dimension": [1, 3], "number": 1}, cases_on=NeutralCases_5, subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 20], composante_y=["Origin"])
+muscle_graph(Results_Elevation_no_recentrage, "Deltoid lateral", "Abduction", "MomentArm", subplot={"dimension": [1, 3], "number": 2}, composante_y=["Mean"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=5, ylim=[0, 40])
+muscle_graph(Results_Elevation_no_recentrage, "Deltoid lateral", "Abduction", "Ft", subplot={"dimension": [1, 3], "number": 3}, composante_y=["Total"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral force", grid_x_step=15, xlim=[15, 120], grid_y_step=25, ylim=[0, 200])
 
 # define_simulations_line_style(SimulationsLineStyleDictionary)
 
@@ -1011,32 +1011,32 @@ def score_surface(score_df, title):
 # %% diff instability ratio
 
 # neutral
-diff_xlong = Results_Elevation_no_recentrage["neutral-xlong"]["Instability Ratio"]["Total"] - Results_Elevation_no_recentrage["neutral-normal"]["Instability Ratio"]["Total"]
-diff_xshort = Results_Elevation_no_recentrage["neutral-xshort"]["Instability Ratio"]["Total"] - Results_Elevation_no_recentrage["neutral-normal"]["Instability Ratio"]["Total"]
+# diff_xlong = Results_Elevation_no_recentrage["neutral-xlong"]["Instability Ratio"]["Total"] - Results_Elevation_no_recentrage["neutral-normal"]["Instability Ratio"]["Total"]
+# diff_xshort = Results_Elevation_no_recentrage["neutral-xshort"]["Instability Ratio"]["Total"] - Results_Elevation_no_recentrage["neutral-normal"]["Instability Ratio"]["Total"]
 
-mean_xlong = np.mean(diff_xlong[0:38])
-mean_xshort = np.mean(diff_xshort[0:38])
+# mean_xlong = np.mean(diff_xlong[0:38])
+# mean_xshort = np.mean(diff_xshort[0:38])
 
 # print(f"mean xlong neutral {mean_xlong}")
 # print(f"mean xshort neutral {mean_xshort}")
 
 # position du max
-max_moment_angle = {}
+# max_moment_angle = {}
 
-for case_name in Results_Elevation_no_recentrage:
+# for case_name in Results_Elevation_no_recentrage:
 
-    abduction = Results_Elevation_no_recentrage[case_name]["Abduction"]["Total"]
+#     abduction = Results_Elevation_no_recentrage[case_name]["Abduction"]["Total"]
 
-    max_moment_angle_pos = np.argmax(Results_Elevation_no_recentrage[case_name]["Moment"]["Total"])
+#     max_moment_angle_pos = np.argmax(Results_Elevation_no_recentrage[case_name]["Moment"]["Total"])
 
-    max_moment_angle[case_name] = abduction[max_moment_angle_pos]
+#     max_moment_angle[case_name] = abduction[max_moment_angle_pos]
 
 # PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Moment", figure_title="Moment", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
 # PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "ForceContact GlenImplant", figure_title="Shear", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, composante_y=["TotalShear"])
 # PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "ForceContact GlenImplant", figure_title="Compression", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, composante_y=["ML"])
 
-PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Moment", figure_title="AP_ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, composante_y=["AP_ratio"])
-PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Moment", figure_title="IS_ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, composante_y=["IS_ratio"])
+# PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Moment", figure_title="AP_ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, composante_y=["AP_ratio"])
+# PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Moment", figure_title="IS_ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, composante_y=["IS_ratio"])
 
 define_simulations_line_style(SimulationsLineStyleDictionary)
 # graph(Results_Elevation_no_recentrage, "Abduction", "Moment", figure_title="Moment", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, cases_on=CaseNames_36)

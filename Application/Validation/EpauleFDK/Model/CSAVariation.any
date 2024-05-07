@@ -41,7 +41,6 @@ AnyVar AcromionOffset = -12.1 / 1000;
 AnyVar AcromionOffset = -6.6 / 1000;
 #endif // CSA_Acromion_Length == "xshort"
 
-
 #if CSA_Acromion_Length == "normal"
 AnyVar AcromionOffset = 0.0;
 #endif // CSA_Acromion_Length == "normal"

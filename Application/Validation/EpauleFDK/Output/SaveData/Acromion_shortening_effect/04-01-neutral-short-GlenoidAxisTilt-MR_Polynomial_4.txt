@@ -1,0 +1,212 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Study
+Operation: Main.Study.InverseDynamics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Study.FileOut.UpdData = 3
+Main.Study.FileOut.FileName = "SaveData\Acromion_shortening_effect\04-01-neutral-short-GlenoidAxisTilt-MR_Polynomial_4.txt"
+Main.Study.FileOut.NumberFormat.Digits = 6
+Main.Study.FileOut.NumberFormat.UpdFormat = 1
+Main.Study.FileOut.NumberFormat.Width = 23
+Main.Study.FileOut.NumberFormat.Style = ScientificNumber
+Main.Study.FileOut.NumberFormat.FormatStr = "%23.6e"
+Main.Study.FileOut.Values = 
+Main.Study.FileOut.Search = {"Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_*.Ft", "Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_*.CorrectedActivity", "Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_*.Ft", "Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_*.CorrectedActivity", "Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_*.Ft", "Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_*.CorrectedActivity", "Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus*.Ft", "Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus*.CorrectedActivity"}
+Main.Study.FileOut.Format = 0
+Main.Study.FileOut.SepSign = ","
+Main.Study.FileOut.SepSpaceAutoOnOff = On
+Main.Study.FileOut.LineSepSign = ""
+Main.Study.FileOut.Header.TitleSectionOnOff = On
+Main.Study.FileOut.Header.ConstSectionOnOff = On
+Main.Study.FileOut.Header.ConstSectionSaveOptionsOnOff = On
+Main.Study.FileOut.Header.VarSectionOnOff = On
+Main.Study.FileOut.Header.ColumnNamesOnOff = On
+Main.Study.FileOut.Header.LinePrefix = ""
+Main.Study.FileOut.Header.ShortenNamesOnOff = Off
+Main.Study.FileOut.Header.ColumnIDString = "col"
+Main.Study.FileOut.ConstSectionSaveOptionsOnOff = On
+Main.Study.FileOut.SuppressTimeColumnOnOff = Off
+Main.Study.FileOut.nStep =            1.000000e+00
+Main.Study.FileOut.tEnd =            1.200000e+02
+Main.Study.FileOut.Movement = "Elevation"
+Main.Study.FileOut.MuscleRecruitment = MR_Polynomial
+Main.Study.FileOut.AuxLinearTerm_Weight =            0.000000e+00
+Main.Study.FileOut.GHReactions = Off
+Main.Study.FileOut.Case = "neutral-short"
+Main.Study.FileOut.k0 = {           5.500000e+00,           -5.000000e-01}
+Main.Study.FileOut.k1 =           -7.787000e+00
+Main.Study.FileOut.k2 =            4.391000e+00
+Main.Study.FileOut.k3 =            0.000000e+00
+Main.Study.FileOut.k4 =           -8.637000e-02
+Main.Study.FileOut.kz =            0.000000e+00
+Main.Study.FileOut.ForceTol =            1.000000e-03
+Main.Study.FileOut.UseAdaptiveForceTolOnOff = Off
+Main.Study.FileOut.MaxIteration =            5.000000e+01
+Main.Study.FileOut.Perturbation =            1.000000e-05
+Main.Study.FileOut.PerturbationSymmetricOnOff = On
+Main.Study.FileOut.LocalSearchOnOff = On
+Main.Study.FileOut.MaxNewtonStep =            1.000000e-03
+Main.Study.FileOut.px =           -1.460000e-03
+Main.Study.FileOut.py =            1.650000e-03
+Main.Study.FileOut.pz =           -1.800000e-03
+Main.Study.FileOut.kd =            1.000000e+10
+Main.Study.FileOut.HumerusName = "TeteCeraver_51"
+Main.Study.FileOut.GlenoidName = "GleneCeraver_T3"
+Main.Study.FileOut.GleneImplantTiltAngle =            0.000000e+00
+Main.Study.FileOut.RotationAxis = "Glenoid implant Anteroposterior Axis"
+Main.Study.FileOut.GlenImplantRotation = {{          -1.934670e-01,            1.118150e-01,            9.747140e-01}, {          -2.268770e-01,            9.614570e-01,           -1.553260e-01}, {          -9.545140e-01,           -2.511900e-01,           -1.606430e-01}}
+Main.Study.FileOut.GlenImplantPosition = {          -2.605223e-02,           -3.905467e-02,           -2.575621e-02}
+Main.Study.FileOut.GlenImplantCenter = {           2.884993e-02,           -4.786265e-02,           -3.538881e-02}
+Main.Study.FileOut.HumImplantPosition = {          -9.908800e-03,            3.873800e-03,            2.932170e-04}
+Main.Study.FileOut.HumImplantRotation = {{          -1.985680e-01,           -5.860000e-01,           -7.856040e-01}, {          -1.717430e-01,           -7.683590e-01,            6.165460e-01}, {          -9.649220e-01,            2.573480e-01,            5.192900e-02}}
+Main.Study.FileOut.AcromionOffset =           -1.060000e-02
+Main.Study.FileOut.GlenohumeralFlexion =            0.000000e+00
+Main.Study.FileOut.GlenohumeralAbduction =            1.500000e+01
+Main.Study.FileOut.GlenohumeralExternalRotation =           -2.100000e+01
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Study.t
+col1  Main.Study.FileOut.rotD
+col2  Main.Study.FileOut.vel
+col3  Main.Study.FileOut.Hum_R_ISB[0][0]
+col4  Main.Study.FileOut.Hum_R_ISB[0][1]
+col5  Main.Study.FileOut.Hum_R_ISB[0][2]
+col6  Main.Study.FileOut.Hum_R_ISB[1][0]
+col7  Main.Study.FileOut.Hum_R_ISB[1][1]
+col8  Main.Study.FileOut.Hum_R_ISB[1][2]
+col9  Main.Study.FileOut.Hum_R_ISB[2][0]
+col10  Main.Study.FileOut.Hum_R_ISB[2][1]
+col11  Main.Study.FileOut.Hum_R_ISB[2][2]
+col12  Main.Study.FileOut.Hum_P_ISB[0]
+col13  Main.Study.FileOut.Hum_P_ISB[1]
+col14  Main.Study.FileOut.Hum_P_ISB[2]
+col15  Main.Study.FileOut.Scap_R[0][0]
+col16  Main.Study.FileOut.Scap_R[0][1]
+col17  Main.Study.FileOut.Scap_R[0][2]
+col18  Main.Study.FileOut.Scap_R[1][0]
+col19  Main.Study.FileOut.Scap_R[1][1]
+col20  Main.Study.FileOut.Scap_R[1][2]
+col21  Main.Study.FileOut.Scap_R[2][0]
+col22  Main.Study.FileOut.Scap_R[2][1]
+col23  Main.Study.FileOut.Scap_R[2][2]
+col24  Main.Study.FileOut.Scap_P[0]
+col25  Main.Study.FileOut.Scap_P[1]
+col26  Main.Study.FileOut.Scap_P[2]
+col27  Main.Study.FileOut.Gh_R[0][0]
+col28  Main.Study.FileOut.Gh_R[0][1]
+col29  Main.Study.FileOut.Gh_R[0][2]
+col30  Main.Study.FileOut.Gh_R[1][0]
+col31  Main.Study.FileOut.Gh_R[1][1]
+col32  Main.Study.FileOut.Gh_R[1][2]
+col33  Main.Study.FileOut.Gh_R[2][0]
+col34  Main.Study.FileOut.Gh_R[2][1]
+col35  Main.Study.FileOut.Gh_R[2][2]
+col36  Main.Study.FileOut.Gh_P[0]
+col37  Main.Study.FileOut.Gh_P[1]
+col38  Main.Study.FileOut.Gh_P[2]
+col39  Main.Study.FileOut.GhProth_R[0][0]
+col40  Main.Study.FileOut.GhProth_R[0][1]
+col41  Main.Study.FileOut.GhProth_R[0][2]
+col42  Main.Study.FileOut.GhProth_R[1][0]
+col43  Main.Study.FileOut.GhProth_R[1][1]
+col44  Main.Study.FileOut.GhProth_R[1][2]
+col45  Main.Study.FileOut.GhProth_R[2][0]
+col46  Main.Study.FileOut.GhProth_R[2][1]
+col47  Main.Study.FileOut.GhProth_R[2][2]
+col48  Main.Study.FileOut.GhProth_P[0]
+col49  Main.Study.FileOut.GhProth_P[1]
+col50  Main.Study.FileOut.GhProth_P[2]
+col51  Main.Study.FileOut.RotG[0][0]
+col52  Main.Study.FileOut.RotG[0][1]
+col53  Main.Study.FileOut.RotG[0][2]
+col54  Main.Study.FileOut.RotG[1][0]
+col55  Main.Study.FileOut.RotG[1][1]
+col56  Main.Study.FileOut.RotG[1][2]
+col57  Main.Study.FileOut.RotG[2][0]
+col58  Main.Study.FileOut.RotG[2][1]
+col59  Main.Study.FileOut.RotG[2][2]
+col60  Main.Study.FileOut.PosG[0]
+col61  Main.Study.FileOut.PosG[1]
+col62  Main.Study.FileOut.PosG[2]
+col63  Main.Study.FileOut.Hum_R[0][0]
+col64  Main.Study.FileOut.Hum_R[0][1]
+col65  Main.Study.FileOut.Hum_R[0][2]
+col66  Main.Study.FileOut.Hum_R[1][0]
+col67  Main.Study.FileOut.Hum_R[1][1]
+col68  Main.Study.FileOut.Hum_R[1][2]
+col69  Main.Study.FileOut.Hum_R[2][0]
+col70  Main.Study.FileOut.Hum_R[2][1]
+col71  Main.Study.FileOut.Hum_R[2][2]
+col72  Main.Study.FileOut.Hum_P[0]
+col73  Main.Study.FileOut.Hum_P[1]
+col74  Main.Study.FileOut.Hum_P[2]
+col75  Main.Study.FileOut.ContactForcelocalimplant[0]
+col76  Main.Study.FileOut.ContactForcelocalimplant[1]
+col77  Main.Study.FileOut.ContactForcelocalimplant[2]
+col78  Main.Study.FileOut.ContactForce[0]
+col79  Main.Study.FileOut.ContactForce[1]
+col80  Main.Study.FileOut.ContactForce[2]
+col81  Main.Study.FileOut.SpringForce[0]
+col82  Main.Study.FileOut.SpringForce[1]
+col83  Main.Study.FileOut.SpringForce[2]
+col84  Main.Study.FileOut.SpringForce_Scapula_ISB[0]
+col85  Main.Study.FileOut.SpringForce_Scapula_ISB[1]
+col86  Main.Study.FileOut.SpringForce_Scapula_ISB[2]
+col87  Main.Study.FileOut.Epsilon[0]
+col88  Main.Study.FileOut.Epsilon[1]
+col89  Main.Study.FileOut.Epsilon[2]
+col90  Main.Study.FileOut.COPGlobal[0]
+col91  Main.Study.FileOut.COPGlobal[1]
+col92  Main.Study.FileOut.COPGlobal[2]
+col93  Main.Study.FileOut.COPlocalGhProth[0]
+col94  Main.Study.FileOut.COPlocalGhProth[1]
+col95  Main.Study.FileOut.COPlocalGhProth[2]
+col96  Main.Study.FileOut.COPlocalImplant[0]
+col97  Main.Study.FileOut.COPlocalImplant[1]
+col98  Main.Study.FileOut.COPlocalImplant[2]
+col99  Main.Study.FileOut.COPlocalHumerusImplant[0]
+col100  Main.Study.FileOut.COPlocalHumerusImplant[1]
+col101  Main.Study.FileOut.COPlocalHumerusImplant[2]
+col102  Main.Study.FileOut.ContactArea
+col103  Main.Study.FileOut.MaxPenetration
+col104  Main.Study.FileOut.MaxMuscleAct
+col105  Main.Study.FileOut.ForceTolError
+col106  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_1.Ft
+col107  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_3.Ft
+col108  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_2.Ft
+col109  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_4.Ft
+col110  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_1.CorrectedActivity
+col111  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_3.CorrectedActivity
+col112  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_2.CorrectedActivity
+col113  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_4.CorrectedActivity
+col114  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_1.Ft
+col115  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_3.Ft
+col116  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_2.Ft
+col117  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_4.Ft
+col118  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_1.CorrectedActivity
+col119  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_3.CorrectedActivity
+col120  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_2.CorrectedActivity
+col121  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_4.CorrectedActivity
+col122  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_1.Ft
+col123  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_2.Ft
+col124  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_3.Ft
+col125  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_4.Ft
+col126  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_1.CorrectedActivity
+col127  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_2.CorrectedActivity
+col128  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_3.CorrectedActivity
+col129  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_4.CorrectedActivity
+col130  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_1.Ft
+col131  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_2.Ft
+col132  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_3.Ft
+col133  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_4.Ft
+col134  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_5.Ft
+col135  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_6.Ft
+col136  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_1.CorrectedActivity
+col137  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_2.CorrectedActivity
+col138  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_3.CorrectedActivity
+col139  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_4.CorrectedActivity
+col140  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_5.CorrectedActivity
+col141  Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_6.CorrectedActivity
+----------------------------------------------------------
+Main.Study.t,Main.Study.FileOut.rotD,Main.Study.FileOut.vel,Main.Study.FileOut.Hum_R_ISB[0][0],Main.Study.FileOut.Hum_R_ISB[0][1],Main.Study.FileOut.Hum_R_ISB[0][2],Main.Study.FileOut.Hum_R_ISB[1][0],Main.Study.FileOut.Hum_R_ISB[1][1],Main.Study.FileOut.Hum_R_ISB[1][2],Main.Study.FileOut.Hum_R_ISB[2][0],Main.Study.FileOut.Hum_R_ISB[2][1],Main.Study.FileOut.Hum_R_ISB[2][2],Main.Study.FileOut.Hum_P_ISB[0],Main.Study.FileOut.Hum_P_ISB[1],Main.Study.FileOut.Hum_P_ISB[2],Main.Study.FileOut.Scap_R[0][0],Main.Study.FileOut.Scap_R[0][1],Main.Study.FileOut.Scap_R[0][2],Main.Study.FileOut.Scap_R[1][0],Main.Study.FileOut.Scap_R[1][1],Main.Study.FileOut.Scap_R[1][2],Main.Study.FileOut.Scap_R[2][0],Main.Study.FileOut.Scap_R[2][1],Main.Study.FileOut.Scap_R[2][2],Main.Study.FileOut.Scap_P[0],Main.Study.FileOut.Scap_P[1],Main.Study.FileOut.Scap_P[2],Main.Study.FileOut.Gh_R[0][0],Main.Study.FileOut.Gh_R[0][1],Main.Study.FileOut.Gh_R[0][2],Main.Study.FileOut.Gh_R[1][0],Main.Study.FileOut.Gh_R[1][1],Main.Study.FileOut.Gh_R[1][2],Main.Study.FileOut.Gh_R[2][0],Main.Study.FileOut.Gh_R[2][1],Main.Study.FileOut.Gh_R[2][2],Main.Study.FileOut.Gh_P[0],Main.Study.FileOut.Gh_P[1],Main.Study.FileOut.Gh_P[2],Main.Study.FileOut.GhProth_R[0][0],Main.Study.FileOut.GhProth_R[0][1],Main.Study.FileOut.GhProth_R[0][2],Main.Study.FileOut.GhProth_R[1][0],Main.Study.FileOut.GhProth_R[1][1],Main.Study.FileOut.GhProth_R[1][2],Main.Study.FileOut.GhProth_R[2][0],Main.Study.FileOut.GhProth_R[2][1],Main.Study.FileOut.GhProth_R[2][2],Main.Study.FileOut.GhProth_P[0],Main.Study.FileOut.GhProth_P[1],Main.Study.FileOut.GhProth_P[2],Main.Study.FileOut.RotG[0][0],Main.Study.FileOut.RotG[0][1],Main.Study.FileOut.RotG[0][2],Main.Study.FileOut.RotG[1][0],Main.Study.FileOut.RotG[1][1],Main.Study.FileOut.RotG[1][2],Main.Study.FileOut.RotG[2][0],Main.Study.FileOut.RotG[2][1],Main.Study.FileOut.RotG[2][2],Main.Study.FileOut.PosG[0],Main.Study.FileOut.PosG[1],Main.Study.FileOut.PosG[2],Main.Study.FileOut.Hum_R[0][0],Main.Study.FileOut.Hum_R[0][1],Main.Study.FileOut.Hum_R[0][2],Main.Study.FileOut.Hum_R[1][0],Main.Study.FileOut.Hum_R[1][1],Main.Study.FileOut.Hum_R[1][2],Main.Study.FileOut.Hum_R[2][0],Main.Study.FileOut.Hum_R[2][1],Main.Study.FileOut.Hum_R[2][2],Main.Study.FileOut.Hum_P[0],Main.Study.FileOut.Hum_P[1],Main.Study.FileOut.Hum_P[2],Main.Study.FileOut.ContactForcelocalimplant[0],Main.Study.FileOut.ContactForcelocalimplant[1],Main.Study.FileOut.ContactForcelocalimplant[2],Main.Study.FileOut.ContactForce[0],Main.Study.FileOut.ContactForce[1],Main.Study.FileOut.ContactForce[2],Main.Study.FileOut.SpringForce[0],Main.Study.FileOut.SpringForce[1],Main.Study.FileOut.SpringForce[2],Main.Study.FileOut.SpringForce_Scapula_ISB[0],Main.Study.FileOut.SpringForce_Scapula_ISB[1],Main.Study.FileOut.SpringForce_Scapula_ISB[2],Main.Study.FileOut.Epsilon[0],Main.Study.FileOut.Epsilon[1],Main.Study.FileOut.Epsilon[2],Main.Study.FileOut.COPGlobal[0],Main.Study.FileOut.COPGlobal[1],Main.Study.FileOut.COPGlobal[2],Main.Study.FileOut.COPlocalGhProth[0],Main.Study.FileOut.COPlocalGhProth[1],Main.Study.FileOut.COPlocalGhProth[2],Main.Study.FileOut.COPlocalImplant[0],Main.Study.FileOut.COPlocalImplant[1],Main.Study.FileOut.COPlocalImplant[2],Main.Study.FileOut.COPlocalHumerusImplant[0],Main.Study.FileOut.COPlocalHumerusImplant[1],Main.Study.FileOut.COPlocalHumerusImplant[2],Main.Study.FileOut.ContactArea,Main.Study.FileOut.MaxPenetration,Main.Study.FileOut.MaxMuscleAct,Main.Study.FileOut.ForceTolError,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_1.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_3.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_2.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_4.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_1.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_3.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_2.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_posterior_part_4.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_1.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_3.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_2.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_4.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_1.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_3.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_2.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_4.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_1.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_2.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_3.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_4.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_1.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_2.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_3.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_anterior_part_4.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_1.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_2.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_3.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_4.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_5.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_6.Ft,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_1.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_2.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_3.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_4.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_5.CorrectedActivity,Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.supraspinatus_6.CorrectedActivity
+           0.000000e+00,           1.500000e+01,           7.272205e-05,           9.157581e-01,          -5.461983e-02,           3.979998e-01,          -5.477749e-02,           9.644839e-01,           2.583993e-01,          -3.979781e-01,          -2.584327e-01,           8.802420e-01,          -8.343635e-02,           4.385526e-01,           1.914883e-01,           4.003468e-01,          -3.331132e-02,          -9.157581e-01,           2.065824e-01,           9.768946e-01,           5.477749e-02,           8.927744e-01,          -2.111095e-01,           3.979781e-01,          -1.272435e-01,           4.803140e-01,           1.707926e-01,           4.003468e-01,          -3.331132e-02,          -9.157581e-01,           2.065824e-01,           9.768946e-01,           5.477749e-02,           8.927744e-01,          -2.111095e-01,           3.979781e-01,          -8.469720e-02,           4.335765e-01,           1.887365e-01,           8.042077e-01,           2.427673e-01,           5.425071e-01,          -3.138877e-01,           9.485821e-01,           4.082198e-02,          -5.047023e-01,          -2.031157e-01,           8.390588e-01,          -8.169157e-02,           4.375786e-01,           1.925693e-01,           8.042077e-01,           2.427673e-01,           5.425071e-01,          -3.138877e-01,           9.485821e-01,           4.082198e-02,          -5.047023e-01,          -2.031157e-01,           8.390588e-01,          -1.127860e-01,           4.353689e-01,           1.455282e-01,           8.139859e-01,          -4.269292e-01,          -3.939015e-01,          -2.698093e-01,          -8.783951e-01,           3.944933e-01,          -5.144219e-01,          -2.148337e-01,          -8.301907e-01,          -8.786016e-02,           4.397445e-01,           1.818818e-01,          -6.042700e+00,          -6.798449e+01,          -9.725285e+01,           1.671532e+01,          -6.686532e+00,           1.174411e+02,          -5.497690e+00,           4.927536e-01,           0.000000e+00,          -5.123847e+00,           1.721061e+00,           1.118719e+00,           2.966984e-04,          -9.300850e-04,          -1.383027e-05,          -9.870633e-02,           4.313489e-01,           1.665319e-01,           1.413190e-03,          -4.751394e-03,          -3.133190e-02,           1.984213e-03,          -4.661389e-03,           2.509753e-02,           1.332876e-03,           1.530283e-02,           1.370367e-02,           1.569153e-04,           1.683365e-04,           7.940697e-02,           9.237496e-04,           1.680854e+00,           1.314937e+00,           1.486411e+00,           2.416252e+00,           5.684278e-13,           9.337772e-13,           7.997870e-13,           2.770281e-02,           1.247114e+01,           1.410008e+01,           1.389198e+01,           1.302649e+01,           7.108997e-02,           7.824549e-02,           7.818973e-02,           7.078716e-02,           5.347952e+00,           7.217849e-01,           6.616138e-01,           6.028276e-01,           4.352928e-02,           2.342362e-12,           2.319688e-12,           2.753460e-12,           2.402232e+00,           2.363347e+00,           2.925983e+00,           2.856934e+00,           2.833459e+00,           2.828322e+00,           3.441636e-02,           3.419834e-02,           4.029042e-02,           3.976833e-02,           3.900739e-02,           3.877173e-02
