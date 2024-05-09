@@ -39,32 +39,22 @@ InputVar1={
         
       };
       
-      
-      //original code with offset
-      //      AnyVec3 Position = 0.001*{ -8.951911, 13.202171, -9.126247};
-      //      AnyMat33 Rotation = {
-      //        {-0.342238,	-0.540331,	-0.76871},
-      //        {-0.171743,	-0.768359,	0.616546},
-      //        {-0.923784,	0.343026,	0.170163}
-      //      };
     };
     
     // GLENOID IMPLANT POSITION/ORIENTATION
     // From Scapula to glenoid component Coordinate System (on 3d model)
     AnyFolder GlenPosition = {
-      AnyVar GleneImplantTiltAngle = 0;
-      AnyString RotationAxis = "Glenoid implant Anteroposterior Axis";
-      
+      AnyVar GleneImplantInclinationAngle = 0;
+      AnyVar GleneImplantVersionAngle = 0;
+      AnyString RotationAxis = "Axe anteroposterieur glenoid implant";     
       
       AnyVec3 Position = 0.001*{-26.052227 , -39.054668 , -25.756212};
-AnyMat33 Rotation = {
-{-0.193467 , 0.111815 , 0.974714},
-{-0.226877 , 0.961457 , -0.155326},
-{-0.954514 , -0.25119 , -0.160643}
-
-};
-      
-      
+      AnyMat33 Rotation = {
+        {-0.193467 , 0.111815 , 0.974714},
+        {-0.226877 , 0.961457 , -0.155326},
+        {-0.954514 , -0.25119 , -0.160643}
+        
+      };
       
       // GLENOID IMPLANT CENTER (CALCULATED BY FITTING A SPHERE ON THE GLENOID SURFACE)
       // In glenoid coordinate system
@@ -85,24 +75,13 @@ AnyMat33 Rotation = {
   
   AnyFolder JointPosition = {
     
-    
-    // For GH ExternalRotation = -25deg
-    #if HumExternalRotation == -25
-    AnyVar px = -.002 + 0.0005;     //AP : Anterieur = +   
-    AnyVar py = 0.003 - 0.004 ;     //IS : Superieur = +  
-    AnyVar pz = 0.001 - 0.0046;     //ML : Lateral = +
-    #endif
-    
-    // To have same position than Lauranne    
-    #if HumExternalRotation == -21
-    
     AnyVar px = -0.00146;     //AP : Anterieur = +   
     AnyVar py = 0.00165;     //IS : Superieur = +  
     AnyVar pz = -0.0018;     //ML : Lateral = +
-    #endif
     
   };
 };
+
 
 
 

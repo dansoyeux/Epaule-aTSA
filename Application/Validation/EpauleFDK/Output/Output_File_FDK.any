@@ -104,7 +104,9 @@ AnyOutputFile FileOut = {
   AnyString HumerusName = Main.InputVariables.ImplantParameters.ImplantNames.HumerusName;
   AnyString GlenoidName = Main.InputVariables.ImplantParameters.ImplantNames.GlenoidName;
   
-  AnyVar GleneImplantTiltAngle = Main.InputVariables.ImplantParameters.GlenPosition.GleneImplantTiltAngle;
+  AnyVar GleneImplantInclinationAngle = Main.InputVariables.ImplantParameters.GlenPosition.GleneImplantInclinationAngle;
+  AnyVar GleneImplantVersionAngle = Main.InputVariables.ImplantParameters.GlenPosition.GleneImplantVersionAngle;
+
   AnyString RotationAxis = Main.InputVariables.ImplantParameters.GlenPosition.RotationAxis;
   
   AnyMatrix GlenImplantRotation = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GlenImplantPos.ARel;

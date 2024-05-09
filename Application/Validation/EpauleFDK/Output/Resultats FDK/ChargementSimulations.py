@@ -199,7 +199,7 @@ FDK_ConstantsDictionary = {"AnybodyFileOutPath": "Main.Study.FileOut",
 
                            "Positions initiales": ["px", "py", "pz"],
 
-                           "Paramètres implants": ["HumerusName", "GlenoidName", "Case", "RotationAxis", "GleneImplantTiltAngle", "GlenImplantRotation",
+                           "Paramètres implants": ["HumerusName", "GlenoidName", "Case", "RotationAxis", "GleneImplantInclinationAngle", "GleneImplantVersionAngle", "GlenImplantRotation",
                                                    "GlenImplantPosition", "GlenImplantCenter", "HumImplantPosition", "HumImplantRotation", "AcromionOffset"],
                            "MyMuscleWrapping": ["WrappingSurfaceShape", "LateralWrapping_RadiusX", "LateralWrapping_Radius", "LateralWrapping_RadiusHeight", "PosteriorWrapping_RadiusX", "PosteriorWrapping_Radius", "PosteriorWrapping_RadiusHeight"]
                            }

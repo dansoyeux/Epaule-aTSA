@@ -25,7 +25,7 @@ InputVar1={
     // HUMERAL IMPLANT POSITION/ORIENTATION
     // From HumerusBoneGeometryNode to the humeral head component Coordinate System (on 3d model)
     AnyFolder HumPosition = {
-
+      
       //without offset
       
       AnyVec3 Position = 0.001*{-9.9088 , 3.8738 , 0.293217};
@@ -35,28 +35,17 @@ InputVar1={
         {-0.964922 , 0.257348 , 0.051929}
         
       };
-      
-      
-      //original code with offset
-      //      AnyVec3 Position = 0.001*{ -8.951911, 13.202171, -9.126247};
-//      AnyMat33 Rotation = {
-//        {-0.342238,	-0.540331,	-0.76871},
-//        {-0.171743,	-0.768359,	0.616546},
-//        {-0.923784,	0.343026,	0.170163}
-//      };
-      
-      // HUMERAL IMPLANT CENTER POSITION 
-      // NO OFFSET BECAUSE THE CENTER OF THE IMPLANT IS AT [0,0,0] IN THE STL
-      
     };
     
     // GLENOID IMPLANT POSITION/ORIENTATION
     // From Scapula to glenoid component Coordinate System (on 3d model)
     AnyFolder GlenPosition = {
       
-      AnyVar GleneImplantTiltAngle = 0;
-      AnyString RotationAxis = "";
+      AnyVar GleneImplantInclinationAngle = 0;
+      AnyVar GleneImplantVersionAngle = 0;
+      AnyString RotationAxis = "Axe anteroposterieur glenoid implant";
 
+      
       
       AnyVec3 Position = 0.001 *{-26.0227, -38.8119,  -25.8199};
       AnyMat33 Rotation = {
@@ -81,32 +70,13 @@ InputVar1={
   // GH JOINT POSITION
   // To adjust to have small contact between humeral head and glenoid components after the "InitialCondition" step
   AnyFolder JointPosition = {
-
-      // Old Lauranne's values before redifining gh to center of glen    
-//    AnyVar px = -.002;     //AP : Anterieur = +   
-//    AnyVar py = 0.003;     //IS : Superieur = +  
-//    AnyVar pz = 0.001;     //ML : Lateral = +
-
-
-      #if HumExternalRotation == -25
-      // For GH ExternalRotation = -25deg
-      AnyVar px = -.002 + 0.00077347 ;     //AP : Anterieur = +   
-      AnyVar py = 0.003 - 0.00346963  ;     //IS : Superieur = +  
-      AnyVar pz = 0.001 - 0.0048 ;     //ML : Lateral = +
-      #endif
-      
-      
-      #if HumExternalRotation == -21
-      // For GH ExternalRotation = -21deg
-      AnyVar px = -.002 + 0.00077347 ;     //AP : Anterieur = +   
-      AnyVar py = 0.003 - 0.00346963  ;     //IS : Superieur = +  
-      AnyVar pz = 0.001 - 0.0024 ;     //ML : Lateral = +
-      #endif
     
-    
-    
-    
-    };
+    AnyVar px = -.002 + 0.00077347 ;     //AP : Anterieur = +   
+    AnyVar py = 0.003 - 0.00346963  ;     //IS : Superieur = +  
+    AnyVar pz = 0.001 - 0.0024 ;     //ML : Lateral = +
+    #endif
+  };
 };
+
 
 

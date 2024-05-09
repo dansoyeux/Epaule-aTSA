@@ -12,20 +12,13 @@ import numpy as np
 import math
 
 """
-Glenoid Tilt angle measure
+Glenoid inclination angle measure
 """
 # AxisNodeNames = ["Scapula - Axe transverse", "Glene - Up/Down Axis"]
 
 # lineNodeNames = ["Scapula - Axe transverse centre Up/Down Axis", "Glene - Up/Down Axis"]
 
-
-# Print angles between slice nodes
-def ShowAngle(axis_1, axis_2, name_angle=""):
-    """
-    prints the angle between 2 axes
-    and prints in front the name of the angle
-    """
-
+def get_angle_between_axes(axis_1, axis_2, name_angle=""):
     AxisNodeNames = [axis_1, axis_2]
     lineDirectionVectors = []
     for lineNodeName in AxisNodeNames:
@@ -38,14 +31,28 @@ def ShowAngle(axis_1, axis_2, name_angle=""):
         lineDirectionVectors.append(lineDirectionVector)
     angleRad = vtk.vtkMath.AngleBetweenVectors(lineDirectionVectors[0], lineDirectionVectors[1])
     angleDeg = vtk.vtkMath.DegreesFromRadians(angleRad)
-    # print("Angle between lines {0} and {1} = {2:0.3f}".format(lineNodeNames[0], lineNodeNames[1], angleDeg-90))
-    # print(f"{name_angle} = {0:0.3f}".format(angleDeg - 90))
-    print(name_angle + " = {0:0.3f}".format(angleDeg - 90))
+
+    return angleDeg
+
+# Print angles between slice nodes
+def ShowAngle(axis_1, axis_2, name_angle=""):
+    """
+    prints the angle between 2 axes
+    and prints in front the name of the angle
+    """
+
+    Angle = get_angle_between_axes(axis_1, axis_2, name_angle)
+
+    print(name_angle + " = {0:0.3f}".format(Angle - 90) + "°")
 
     # Observe line node changes
+    
+    AxisNodeNames = [axis_1, axis_2]
+    
     for lineNodeName in AxisNodeNames:
         lineNode = slicer.util.getFirstNodeByClassByName("vtkMRMLMarkupsLineNode", lineNodeName)
         lineNode.AddObserver(slicer.vtkMRMLMarkupsLineNode.PointModifiedEvent, ShowAngle)
+    
 
 # Print current angle
 # ShowAngle()
@@ -66,11 +73,8 @@ def CSA():
 
     import math
 
-    #AngleNode = slicer.util.getFirstNodeByClassByName("vtkMRMLMarkupsAngleNode", "CSA")
+    ScapulaEnd = slicer.util.getNode("Scapula End")
 
-    # Gets the 3 points coordinates necessary to calculate CSA
-    ScapulaEnd = slicer.util.getNode("New Scapula End")
-    # ScapulaEnd = slicer.util.getNode("Scapula End Copy")
     GleneDown = slicer.util.getNode("Glene Down")
     GleneUp = slicer.util.getNode("Glene Up")
 
@@ -109,42 +113,33 @@ def CSA():
     Angle = math.acos(np.dot(V1.T, V2) / (np.linalg.norm(V1) * np.linalg.norm(V2)))
     Angle = Angle / math.pi * 180
 
-    print("CSA = {0}".format(Angle))
-
-# To remoce the observer
-# AngleNode.RemoveObserver(AngleNode)
+    print("CSA = {0:0.3f}".format(Angle) + "°")
 
 
 """
 CSA variation script
 Rotates the glenoid implant around an axis and calculates the matrix rotation required : Variation CSA - Matrice de rotation glene
-Outputs the tilt angle and the CSA
+Outputs the inclination angle and the CSA
 
 
 In 3d slicer : Modify the IS rotation of the transform : Variation CSA - Rotation glene
 """
-# This markups point list node specifies the center of rotation
-# rotationAxisMarkupsNode = slicer.util.getNode("Variation CSA - Axe GH antéropostérieur")
-# rotationAxisMarkupsNode = slicer.util.getNode("Variation CSA - Axe GHProth Antéropostérieur")
 
-# Antero du corps
-# rotationAxisMarkupsNode = slicer.util.getNode("Variation CSA - Axe Centre Glene Antéropostérieur")
-rotationAxisMarkupsNode = slicer.util.getNode("Variation CSA - Axe Centre Glene Local")
-# rotationAxisMarkupsNode = slicer.util.getNode("Variation CSA - Axe Centre Glene")
-# rotationAxisMarkupsNode = slicer.util.getNode("Variation CSA - Axe centre Up/Down Axis")
-# rotationAxisMarkupsNode = slicer.util.getNode("Variation CSA - Axe centre Up/Down Axis Copy")
-# rotationAxisMarkupsNode = slicer.util.getNode("X Glene")
+GlenRotationAxisName = "Axe anteroposterieur glenoid implant"
+
+# Nom de l'axe de rotation autour duquel tourne l'implant glénoïdien
+rotationAxisMarkupsNode = slicer.util.getNode(GlenRotationAxisName)
 
 # Get frontal transform node
 TransformFrontal = slicer.util.getNode("Glene - Rotation plan frontal")
 
 # This transform can be edited in Transforms module (Edit / Rotation / IS slider)
 rotationTransformNode = slicer.util.getNode("Variation CSA - Rotation glene")
-# This transform has to be applied to the image, model, etc.
 
+# This transform can be edited in Transforms module (Edit / Rotation / LR slider)
+AcromionOffsetTransformNode = slicer.util.getNode("Variation CSA - Acromion Offset")
 
 def CSAVariation(unusedArg1=None, unusedArg2=None, unusedArg3=None):
-
     finalTransformNode = slicer.util.getNode("Variation CSA - Matrice de rotation glene")
 
     # Get inverse transform matrix to frontal plane
@@ -185,15 +180,27 @@ def CSAVariation(unusedArg1=None, unusedArg2=None, unusedArg3=None):
     finalTransform.Concatenate(worldToRotationAxisTransformMatrix)
     finalTransformNode.SetMatrixTransformToParent(finalTransform.GetMatrix())
 
-    # shows the tilt
-    ShowAngle("Scapula - Axe transverse", "Glene - Up/Down Axis", "Tilt")
+    # shows the inclination
+    ShowAngle("Scapula - Axe transverse", "Glene - Up/Down Axis", "Inclination")
 
     # Show version
     ShowAngle("Scapula - Axe transverse", "Glene - Left/Right Axis", "Version")
 
+    # Shows the acromion offset
+    acromion_offset_matrix = vtk.vtkMatrix4x4()
+
+    # Gets the matrix transform of the Acromion Offset transform
+    AcromionOffsetTransformNode.GetMatrixTransformToParent(acromion_offset_matrix)
+
+    # Gets the mediolateral offset
+    acromion_offset = acromion_offset_matrix.GetElement(0, 3)
+
+    print("Acromion Offset = {0:0.3f} mm".format(acromion_offset))
+        
     # Shows CSA
     CSA()
     print("\n")
+    
 
 
 # Manual initial update
@@ -202,10 +209,12 @@ CSAVariation()
 # Automatic update when point is moved or transform is modified
 rotationTransformNodeObserver = rotationTransformNode.AddObserver(slicer.vtkMRMLTransformNode.TransformModifiedEvent, CSAVariation)
 rotationAxisMarkupsNodeObserver = rotationAxisMarkupsNode.AddObserver(slicer.vtkMRMLMarkupsNode.PointModifiedEvent, CSAVariation)
+AcromionOffsetTransformNodeObserver = AcromionOffsetTransformNode.AddObserver(slicer.vtkMRMLMarkupsNode.TransformModifiedEvent, CSAVariation)
 
 # Execute these lines to stop automatic updates:
 # rotationTransformNode.RemoveObserver(rotationTransformNodeObserver)
 # rotationAxisMarkupsNode.RemoveObserver(rotationAxisMarkupsNodeObserver)
+# AcromionOffsetTransformNode.RemoveObserver(AcromionOffsetTransformNodeObserver)
 
 """
 Created on Tue May 23 09:12:43 2023
@@ -226,7 +235,6 @@ def AcromionOffset2CSA(AcromionOffset: float):
     GleneDown = slicer.util.getNode("Glene Down")
     GleneUp = slicer.util.getNode("Glene Up")
     ScapulaEnd = slicer.util.getNode("Scapula End")
-    NewScapulaEnd = slicer.util.getNode("New Scapula End")
 
     P0 = np.zeros(3)
     ScapulaEnd.GetNthControlPointPositionWorld(0, P0)
@@ -290,15 +298,15 @@ def FrontalTransformOn(On=bool):
     AxeTransverse = slicer.util.getNode("Scapula - Axe transverse")
     AxeTransverse2 = slicer.util.getNode("Scapula - Axe transverse centre Up/Down Axis")
     CentreGlene = slicer.util.getNode("Centre Glene Implant")
-    AxeCSA = slicer.util.getNode("Variation CSA - Axe Centre Glene Antéropostérieur")
-    AxeCSA2 = slicer.util.getNode("Variation CSA - Axe GHProth Antéropostérieur")
+    AxeCSA = slicer.util.getNode("Axe anteroposterieur glenoid implant")
+    AxeCSA2 = slicer.util.getNode("Axe GHProth Antéropostérieur")
 
     # repères
     xScapula = slicer.util.getNode("X Scapula")
     yScapula = slicer.util.getNode("Y Scapula")
     zScapula = slicer.util.getNode("Z Scapula")
-    ScapulaEnd = slicer.util.getNode("Scapula End")
-    NewScapulaEnd = slicer.util.getNode("New Scapula End")
+    
+    AcromionOffset = slicer.util.getNode("Variation CSA - Acromion Offset")
 
     # Transform
     TransformScapula = slicer.util.getNode("Scapula - Rotation plan frontal")
@@ -317,8 +325,7 @@ def FrontalTransformOn(On=bool):
         xScapula.SetAndObserveTransformNodeID(TransformScapula.GetID())
         yScapula.SetAndObserveTransformNodeID(TransformScapula.GetID())
         zScapula.SetAndObserveTransformNodeID(TransformScapula.GetID())
-        ScapulaEnd.SetAndObserveTransformNodeID(TransformScapula.GetID())
-        NewScapulaEnd.SetAndObserveTransformNodeID(TransformScapula.GetID())
+        AcromionOffset.SetAndObserveTransformNodeID(TransformScapula.GetID())
 
         GleneNode.SetAndObserveTransformNodeID(TransformGlene.GetID())
         CentreGlene.SetAndObserveTransformNodeID(TransformGlene.GetID())
@@ -337,14 +344,13 @@ def FrontalTransformOn(On=bool):
         xScapula.SetAndObserveTransformNodeID(None)
         yScapula.SetAndObserveTransformNodeID(None)
         zScapula.SetAndObserveTransformNodeID(None)
-        ScapulaEnd.SetAndObserveTransformNodeID(None)
-        NewScapulaEnd.SetAndObserveTransformNodeID(None)
 
         GleneNode.SetAndObserveTransformNodeID(None)
         CentreGlene.SetAndObserveTransformNodeID(None)
 
         HumerusNode.SetAndObserveTransformNodeID(None)
         HumerusImplantNode.SetAndObserveTransformNodeID(None)
+        AcromionOffset.SetAndObserveTransformNodeID(None)
 
 
 """
@@ -413,10 +419,19 @@ def ExportCSA():
 
     ghPosition = np.round(ghPosition, 6)
 
+    inclination_angle = round(get_angle_between_axes("Scapula - Axe transverse", "Glene - Up/Down Axis", "Inclination") - 90, 3)
+    version_angle = round(get_angle_between_axes("Scapula - Axe transverse", "Glene - Left/Right Axis", "Inclination") - 90, 3)
+
+    RotationAxisName = f'AnyString RotationAxis = "{GlenRotationAxisName}";'
+    Inclination = f"AnyVar GleneImplantTiltAngle = {inclination_angle};"
+    Version = f"AnyVar GleneImplantVersionAngle = {version_angle};"
     Rotation = f'AnyMat33 Rotation = {{\n{{{Matrix[0,0]} , {Matrix[0,1]} , {Matrix[0,2]}}},\n{{{Matrix[1,0]} , {Matrix[1,1]} , {Matrix[1,2]}}},\n{{{Matrix[2,0]} , {Matrix[2,1]} , {Matrix[2,2]}}}\n\n}};'
     Translation = f'AnyVec3 Position = 0.001*{{{Matrix[0,3]} , {Matrix[1,3]} , {Matrix[2,3]}}};'
     ghProthLocal = f'\nAnyVec3 Center_Absolute = 0.001*{{{ghPosition[0][0]} , {ghPosition[1][0]} , {ghPosition[2][0]}}};'
 
+    print(RotationAxisName)
+    print(Inclination)
+    print(Version)
     print(Translation)
     print(Rotation)
     print(ghProthLocal)

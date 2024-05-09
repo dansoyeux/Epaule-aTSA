@@ -26,7 +26,7 @@
 #else
 
 // Glene implant anteroporterior axis
-#define INPUTPOS "CeraverT351 - Glentilt " + CSA_Tilt + " - Local AnteroTilt"
+#define INPUTPOS "CeraverT351 - Glentilt " + CSA_Tilt
 #endif //CSA_Tilt == "original"
 
 #endif // BallAndSocket == 0
