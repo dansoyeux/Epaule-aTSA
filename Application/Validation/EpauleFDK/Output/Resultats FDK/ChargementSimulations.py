@@ -473,8 +473,6 @@ for case in Results_Elevation_no_recentrage:
 
 def score(Results):
 
-    import pandas as pd
-
     cases_list = list(Results.keys())
 
     # list of tilts and acromion lengths
