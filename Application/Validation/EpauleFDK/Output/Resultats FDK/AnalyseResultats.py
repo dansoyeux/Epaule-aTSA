@@ -191,25 +191,25 @@ SimulationDescriptionDictionary = {
     "xdown-xshort": "CSA = 12° : -8.7° inclination    ; -12.1 mm acromion shift",
     "xdown-short": "CSA = 16° : -8.7° inclination    ; -6.6 mm acromion shift",
     "xdown-normal": "CSA = 20° : -8.7° inclination    ; +0.0 mm acromion shift",
-    "xdown-long": "CSA = 25° : -8.7° inclination    ;  +7.85 mm acromion shift",
+    "xdown-long": "CSA = 25° : -8.7° inclination    ; +7.85 mm acromion shift",
     "xdown-xlong": "CSA = 30° : -8.7° inclination    ; +16.95 mm acromion shift",
 
     "down-xshort": "CSA = 16° : -3.0° inclination    ; -12.1 mm acromion shift",
     "down-short": "CSA = 20° : -3.0° inclination    ; -6.6 mm acromion shift",
     "down-normal": "CSA = 25° : -3.0° inclination    ; +0.0 mm acromion shift",
-    "down-long": "CSA = 30° : -3.0° inclination    ;  +7.85 mm acromion shift",
+    "down-long": "CSA = 30° : -3.0° inclination    ; +7.85 mm acromion shift",
     "down-xlong": "CSA = 35° : -3.0° inclination    ; +16.95 mm acromion shift",
 
     "middle-xshort": "CSA = 20° : 2.9° inclination     ; -12.1 mm acromion shift",
     "middle-short": "CSA = 25° : 2.9° inclination     ; -6.6 mm acromion shift",
     "middle-normal": "CSA = 30° : 2.9° inclination     ; +0.0 mm acromion shift",
-    "middle-long": "CSA = 35° : 2.9° inclination     ;  +7.85 mm acromion shift",
+    "middle-long": "CSA = 35° : 2.9° inclination     ; +7.85 mm acromion shift",
     "middle-xlong": "CSA = 40° : 2.9° inclination     ; +16.95 mm acromion shift",
 
     "neutral-xshort": "CSA = 20° : 0.0° inclination     ; -12.1 mm acromion shift",
     "neutral-short": "CSA = 25° : 0.0° inclination     ; -6.6 mm acromion shift",
     "neutral-normal": "CSA = 30° : 0.0° inclination     ; +0.0 mm acromion shift",
-    "neutral-long": "CSA = 35° : 0.0° inclination     ;  +7.85 mm acromion shift",
+    "neutral-long": "CSA = 35° : 0.0° inclination     ; +7.85 mm acromion shift",
     "neutral-xlong": "CSA = 40° : 0.0° inclination     ; +16.95 mm acromion shift",
 
     "up-xshort": "CSA = 25° : 9.0° inclination     ; -12.1 mm acromion shift",
@@ -221,7 +221,7 @@ SimulationDescriptionDictionary = {
     "xup-xshort": "CSA = 30° : 15.2° inclination   ; -12.1 mm acromion shift",
     "xup-short": "CSA = 35° : 15.2° inclination   ; -6.6 mm acromion shift",
     "xup-normal": "CSA = 40° : 15.2° inclination   ; +0.0 mm acromion shift",
-    "xup-long": "CSA = 45° : 15.2° inclination   ;  +7.85 mm acromion shift",
+    "xup-long": "CSA = 45° : 15.2° inclination   ; +7.85 mm acromion shift",
     "xup-xlong": "CSA = 50° : 15.2° inclination   ; +16.95 mm acromion shift",
 
     # Nom des composantes
@@ -929,7 +929,6 @@ Categories_Article_6 = {"line": {"Downward inclination": ["xdown-xshort", "xdown
 # PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article_6, "Abduction", "ForceContact GlenImplant", composante_y=["ML"], figure_title="Force de contact ML", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
 # PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article_6, "Abduction", "ForceContact GlenImplant", composante_y=["Shear"], figure_title="Force de contact Shear", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
 
-
 # %% variations forces de contact
 
 # diff_force = {"Higher inclination": {"AP": [], "IS": [], "ML": [], "Abduction": Results_Elevation_no_recentrage["up-normal"]["Abduction"]["Total"]},
@@ -1044,7 +1043,7 @@ for case_name, case_data in Results_Elevation_no_recentrage.items():
 
 #     max_moment_angle[case_name] = abduction[max_moment_angle_pos]
 
-# PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Moment", figure_title="Moment", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
+PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Moment", figure_title="Moment", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
 # PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "ForceContact GlenImplant", figure_title="Shear", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, composante_y=["TotalShear"])
 # PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "ForceContact GlenImplant", figure_title="Compression", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, composante_y=["ML"])
 
@@ -1052,5 +1051,7 @@ for case_name, case_data in Results_Elevation_no_recentrage.items():
 # PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Moment", figure_title="IS_ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, composante_y=["IS_ratio"])
 
 define_simulations_line_style(SimulationsLineStyleDictionary)
+PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, "Abduction", "Moment", figure_title="Moment", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, legend_position="center left")
 # graph(Results_Elevation_no_recentrage, "Abduction", "Moment", figure_title="Moment", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, cases_on=CaseNames_36)
 # graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Shear", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, cases_on=CaseNames_36, composante_y=["TotalShear"])
+

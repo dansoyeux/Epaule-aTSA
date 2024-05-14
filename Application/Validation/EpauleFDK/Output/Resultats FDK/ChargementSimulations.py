@@ -121,7 +121,7 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
 
                           # "Temps": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Time [s]"},
 
-                          "ContactArea": {"VariablePath": "Output.Jnt.ProtheseContact.ContactArea", "VariableDescription": "Contact area [cm^2]", "MultiplyFactor": 10000},
+                          "ContactArea": {"VariablePath": "Output.Jnt.ProtheseContact.ContactArea", "VariableDescription": r'Contact area [$cm^2$]', "MultiplyFactor": 10000},
 
                           "GHLin ISB": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Linear displacement (ISB) of the humerus [mm]", "MultiplyFactor": 1000,
                                         "SequenceComposantes": ["AP", "IS", "ML"]},
@@ -312,13 +312,13 @@ SaveSimulationsDirectory = "Saved Simulations"
 Élévation no recentrage, constant speed
 """
 
-# Elevation_dir_const_speed = "../SaveData/const_speed"
-# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+Elevation_dir_const_speed = "../SaveData/const_speed"
+Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
 
-# Results_Elevation_no_recentrage = load_simulation_cases(Elevation_dir_const_speed, Files, CaseNames_6, FDK_Variables)
+Results_Elevation_no_recentrage = load_simulation_cases(Elevation_dir_const_speed, Files, CaseNames_6, FDK_Variables)
 
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
+# Sauvegarde de la simulation en .pkl
+save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
 
 """
 Élévation no recentrage
