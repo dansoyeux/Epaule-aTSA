@@ -1,53 +1,22 @@
 //Excludes GHReactions.any and it's output 
 //Excludes GlenoHumeralJoint and GHReactions when FDK is activated
 
-#if BallAndSocket == 0 & NewDeltoidWrappingOn == 0
+#if BallAndSocket == 0
 MechObjectExclude = 
 arrcat(ObjSearchRecursive("Main.HumanModel.BodyModel.SelectedOutput.Right.ShoulderArm.JointReactionForce.GlenoHumeral_*","AnyMechObject"),
 ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions","*","AnyMechObject"),
 ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject"));
 #endif
 
-// Also excludes the deltoideus muscles that were redefined for better wrapping
-#if BallAndSocket == 0 & NewDeltoidWrappingOn != 0
-MechObjectExclude = 
-arrcat(ObjSearchRecursive("Main.HumanModel.BodyModel.SelectedOutput.Right.ShoulderArm.JointReactionForce.GlenoHumeral_*","AnyMechObject"),
-ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions","*","AnyMechObject"),
-ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")
-
-
-
-,ObjSearch("Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_*","AnyMechObject"),
-ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Mus","deltoideus_lateral_part_*.*", "AnyMechObject")
-
-
-);
-#endif
-
-
 
 //Excludes the glenohumeral joint aswell when FDK deactivated
-#if BallAndSocket == 1 & NewDeltoidWrappingOn == 0
+#if BallAndSocket == 1
 MechObjectExclude = 
 arrcat(
 ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")
 
 );
 #endif // Ball And Socket == 1
-
-#if BallAndSocket == 1 & NewDeltoidWrappingOn != 0
-MechObjectExclude = 
-arrcat(
-ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")
-
-// Also excludes the deltoideus muscles that were redefined for better wrapping
-,ObjSearch("Main.HumanModel.BodyModel.Right.ShoulderArm.Mus.deltoideus_lateral_part_*","AnyMechObject"),
-ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Mus","deltoideus_lateral_part_*.*", "AnyMechObject")
-);
-#endif // Ball And Socket == 1
-
-
-
 
 //Excludes the old GHJoint for in the calibration sequence 
 //Comment if not using MusclesHill model 
@@ -98,6 +67,11 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GHReactionCenterNodeRota
 Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GHReactionCenterNodeRotated.CavityEdgeNode8.node.Visible = Off;
 #endif
 
+
+/*------------------------------------------------------------------------------
+REDIFINITION OF THE GLENOHUMERAL JOINT WITH NEW NODES ON THE SCAPULA AND HUMERUS
+------------------------------------------------------------------------------*/
+
 //Definition of GH joint Rotation
 Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
   
@@ -108,14 +82,9 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
     #if BallAndSocket == 1  
     AnyRefNode &scapula_gh = ..Seg.Scapula.gh;
     #else
-    
-    
-    //Changed rot node to center of implant too
+   
+    //Changed rot node to center of THE implant SURFACE
     AnyRefNode &scapula_gh = ..Seg.Scapula.ghProth;
-    
-    //Old joint definition
-    //    AnyRefNode &scapula_gh = ..Seg.Scapula.gh;
-    
     #endif
     
     AnyRefNode &humerus_gh = ..Seg.Humerus.gh;

@@ -19,27 +19,17 @@ AnyFolder Drivers = {
   */
   
   #if SmallAbductionOn == 0
-  //  AnyVar startangle = 1;
-  //  AnyVar endangle = 120;
   AnyVar startangle = DesignVar(15);
   AnyVar endangle = DesignVar(120);
   
   #endif
   
   #if SmallAbductionOn == 1
-  //  AnyVar startangle = 1;
-  //  AnyVar endangle = 1.1;
-  AnyVar startangle = DesignVar(15);
-  AnyVar endangle = DesignVar(15.5);
-  
-  #endif
-  
-  
-  #if SmallAbductionOn == 2
   AnyVar startangle = 15;
-  AnyVar endangle = 170;
-  #endif
+  AnyVar endangle = 15.5;
   
+  #endif
+    
   
   /*----------------------------------------------
   Drivers for the arm elevation
@@ -48,6 +38,7 @@ AnyFolder Drivers = {
   
   #if ArmMovement == Elevation
   
+  // Abduction at a constant speed
   AnyKinEqSimpleDriver AbductionDriverRight = {
     
     AnyKinMeasure& ref1 =...BodyModel.Interface.Right.GlenohumeralAbduction;
@@ -112,7 +103,7 @@ AnyFolder Drivers = {
     Reaction.Type = {Off};
   };
   
-  
+// smooth abduction at the beginning and end of the movement  
 //  AnyKinEqFourierDriver AbductionDriverRight={
 //    AnyKinMeasureOrg &ref1 =...BodyModel.Interface.Right.GlenohumeralAbduction;
 //    Type = Sin;
@@ -125,9 +116,6 @@ AnyFolder Drivers = {
 //  };  
   
   #endif // Abduction
-  
-  
-  
   
 }; // Drivers
 

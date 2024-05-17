@@ -58,8 +58,7 @@ AnyFolder Mannequin = {
                   
       AnyVar GlenohumeralFlexion = 0; 
       AnyVar GlenohumeralAbduction = 15; //1 
-      
-      AnyVar GlenohumeralExternalRotation = HumExternalRotation;
+      AnyVar GlenohumeralExternalRotation = -21 ;
       
       
       AnyVar ElbowFlexion = 1; 

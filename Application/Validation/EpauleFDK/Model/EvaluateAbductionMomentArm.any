@@ -12,6 +12,8 @@ AnyFolder EvaluateMomentArms = {
   Mus.name = {AnyVar MomentArm = -1 * LmtDot/..AngularVelocity;}; \
   // Creation d'un dossier qui stocke aussi les MomentArm de chaque muscle
   AnyVar name = -1 * Mus.name.LmtDot/AngularVelocity;
+  
+  // S'assurer que tous les muscles listes existent tous dans cette version de l'AMMR
   #include  "ArmMuscleList.any"
 
 };

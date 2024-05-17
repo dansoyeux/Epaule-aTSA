@@ -13,68 +13,22 @@ Main = {
   //Definition of the CSA variation cases (glenoid rotation and acromion length)
   #include "Model/CSAVariation.any"
   
-  //Changes the deltoideus definition to add new wrapping cylinders
-  #if NewDeltoidWrappingOn == 1
-  #include "Model/MyDeltoidDefinition.any"
-  #include "Model/MyDeltoidWrapping_gh_Proth.any"
-  #endif
-  
-  #if NewDeltoidWrappingOn == 2
-  #include "Model/MyDeltoidDefinition.any"
-  #include "Model/MyDeltoidWrapping_HumContour.any"
-  #endif
-  
-  #if BallAndSocket == 0
-  
   //Places a glenoid and a humeral implant
-  #include "Model/Implants.any"
-  
-  // Creates a modified version of the GHReaction forces of the AMMR
-  // Changes the force to pull to have the same effect
-//  #if GHReactionsOn==1
-
-//  // Nodes are around a circle
-//  #if GHReactionsShape == Circle 
-//  #include "Model/MyGHReactions-Circle.any"
-//  #endif
-//  
-//  // Nodes are on the edges of the glenoid
-//  #if GHReactionsShape == Edge 
-//  #include "Model/MyGHReactions-Edge.any"
-//  #endif
-//  
-//  #endif // #if GHReactionsOn
-  
+  #if BallAndSocket == 0
+  #include "Model/Implants.any"  
   #endif // #if BallAndSocket
   
   #include "Model/BodyModelSettings.any"
   
-  //Morphes the scapula to make the acromion longer
+  // Morphes the scapula to make the acromion longer
   #include "Scaling/ScalingCustom.any"
   
   #include "<ANYBODY_PATH_BODY>/HumanModel.any"    
-  
-  HumanModel = {
-    
-    // Create a node for Bergmann's force reference
-    BodyModel.Right.ShoulderArm.Seg.Humerus.gh = {
-      AnyRefNode Bergmann = {
-        ARel = RotMat(90*pi/180,y);
-        AnyDrawRefFrame drwref = {
-          Visible = Off;
-          RGB = {0,1,0};
-          ScaleXYZ = {1,1,1}/15;
-        };
-      };
-    };
-  };
-  
   
   AnyFolder Model = {
     
     AnyFolder &BodyModel=.HumanModel.BodyModel;
     AnyFolder &MannequinDrivers = .HumanModel.DefaultMannequinDrivers;
-    
     
     // Definition of the model environment
     #include "Model/Environment.any"
@@ -89,12 +43,10 @@ Main = {
     
   }; // Model
   
-  
   // Shortcuts
   AnyFolder &Jnt = Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt;
   AnyFolder &Seg = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg;
   AnyFolder &Mus = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus;
- 
   
   AnyBodyStudy Study = {
     
@@ -110,13 +62,8 @@ Main = {
     // Evaluates the arm muscles moment arms
     #include "Model/EvaluateAbductionMomentArm.any"
     
-    // Script to save the muscle calibration into an .anyset file
-    // And load it at the beginning of a simulation instead of running it each time
-    // There is one file saved for each CSA cases
-    #include "Model/CachedMuscleCalibration.any"
-    
-    //Operation to run
-    #include "Output/RunEpauleFDK.any"
+    // Operation to run
+    #include "Output/RunApplication.any"
     
     // Replaces the GlenoHumeral BallAndSocket joint with a 5 DOF FDK driven joint
     #include "Model/GHJointExchange.any"
@@ -142,16 +89,15 @@ Main = {
     
     Gravity = {0.01, -9.81, 0.01};
     
-    // Lauranne   
     tEnd = DesignVar(120.0);
     
     //   Small abduction (15 deg --> 15.5)
     #if SmallAbductionOn == 1
-    nStep = DesignVar(1);
+    nStep = 1;
     
     // Full abduction (15 deg --> 120deg)
     #else
-    nStep = DesignVar(70);
+    nStep = 70;
     #endif
     
     // Type de recrutement musculaire
@@ -166,9 +112,8 @@ Main = {
     #include "Output/Output_CheckName.any"
     AnyString OutputFileName = get_filename({ANYBODY_PATH_OUTPUT + m_ResultFolder + m_ResultFile},{"txt"});
     
-    
+    // Creates a txt file containing the important variables to save and the input variables
     #if AnyOutputFileOn == 1
-    //Create output file results only when doing the full movement and with the implants
     #if BallAndSocket ==0
     #include "Output/Output_File_FDK.any"
     #else
@@ -179,6 +124,8 @@ Main = {
   }; // End of study
   
 }; //Main
+
+
 
 
 
