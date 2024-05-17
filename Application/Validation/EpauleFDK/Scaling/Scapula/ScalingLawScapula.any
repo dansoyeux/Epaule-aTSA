@@ -1,6 +1,7 @@
 AnyFolder MyScalingLaw = {
   
-  // Scripts that contain source points and target points (where some points on the acromion are offseted) 
+  // Scripts that contain source points and target points (where only the edge of the acromion and the 4 deltoid lateral insertion are offsetted points on the acromion are offseted)
+  // Points coordinates and names generated using the script
   #include "ScapulaSourcePoints.any"
   #include "ScapulaTargetPoints.any"
   
@@ -37,9 +38,7 @@ AnyFolder MyScalingLaw = {
   {
     PreTransforms = {&.RBFTransform};
   };
-  
-  
-  
+    
 };  // MyScalingLaw
 
 
