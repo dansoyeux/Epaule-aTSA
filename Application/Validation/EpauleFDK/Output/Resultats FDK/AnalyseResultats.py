@@ -1043,7 +1043,7 @@ for case_name, case_data in Results_Elevation_no_recentrage.items():
 
 #     max_moment_angle[case_name] = abduction[max_moment_angle_pos]
 
-PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Moment", figure_title="Moment", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
+# PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Moment", figure_title="Moment", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True)
 # PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "ForceContact GlenImplant", figure_title="Shear", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, composante_y=["TotalShear"])
 # PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "ForceContact GlenImplant", figure_title="Compression", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, composante_y=["ML"])
 
@@ -1051,7 +1051,39 @@ PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categori
 # PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Moment", figure_title="IS_ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, composante_y=["IS_ratio"])
 
 define_simulations_line_style(SimulationsLineStyleDictionary)
-PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, "Abduction", "Moment", figure_title="Moment", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, legend_position="center left")
+# PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, CasesVariables_6, "Abduction", "Moment", figure_title="Moment", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, legend_position="center left")
 # graph(Results_Elevation_no_recentrage, "Abduction", "Moment", figure_title="Moment", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, cases_on=CaseNames_36)
 # graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", figure_title="Shear", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, cases_on=CaseNames_36, composante_y=["TotalShear"])
+
+# graph(Results_Elevation_no_recentrage, "Abduction", "ForceContact GlenImplant", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, cases_on=["middle-normal"], composante_y=["Total", "AP", "IS", "ML"])
+
+
+# %% Comparer les cas
+
+# case1 = "neutral-normal"
+case1 = "down-normal"
+# case1 = "neutral-xlong"
+
+# case2 = "up-normal"
+case2 = "up-normal"
+# case2 = "down-normal"
+# case2 = "down-xlong"
+
+# case2 = "neutral-xlong"
+# case2 = "neutral-xshort"
+
+comp = "ML"
+
+# 18 = 42° ; 49 = 90° ; 59 = 105°
+
+# angle = 49
+angle1 = 49
+angle2 = -1
+
+
+aa = Results_Elevation_no_recentrage[case1]["ForceContact GlenImplant"]
+aaa = Results_Elevation_no_recentrage[case2]["ForceContact GlenImplant"]
+
+a1 = aaa[comp][angle1:angle2] - aa[comp][angle1:angle2]
+a = np.mean(a1)
 

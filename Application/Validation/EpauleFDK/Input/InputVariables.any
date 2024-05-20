@@ -68,7 +68,7 @@ AnyFolder InputVariables = {
   /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
   
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "normal"
+  #define CSA_Acromion_Length "xlong"
   #endif
   /*
   xshort
@@ -98,11 +98,41 @@ AnyFolder InputVariables = {
   #define m_ResultFolder "SaveData/Variation_CSA/"
   #endif
 
+<<<<<<< Updated upstream
   #ifndef m_ResultFile
   #define m_ResultFile "Anybody" + CSA_Case 
   #endif
     
   #define m_LoadFile "04-01-BallAndSocket-" + CSA_Acromion_Length + "-MR_Polynomial"
   #define m_LoadFolder "SaveData/Variation_CSA/"  
+=======
+  #if BallAndSocket == 0
+  #define m_LoadFile "04-01-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial" + "-Elevation-no-recentrage" 
+  #define m_LoadFolder "SaveData/const_speed/"  
+  
+  // BallAndSocket activated
+  #else 
+  #define m_LoadFile "08-09-BallAndSocket-" + CSA_Acromion_Length + "-MR_Polynomial-180deg"
+  #define m_LoadFolder "SaveData/Variation_CSA/"
+  #endif // BallAndSocket == 0
+  
+  
+  
+//    #define m_LoadFile "08-09-" + CSA_Case + 
+  
+
+//  #define m_LoadFile "Results-05-09-case1-GlenoidAxisTilt-EnFace-MyMyscleWrapping-Ellipsoid"
+
+
+
+//  #define m_LoadFolder "SaveData/Variation_CSA/"
+  
+//  #define m_LoadFolder "SaveData/Macro_80step_180deg/"
+  
+  
+  // File containing the FDK parameters for the stabilization force  
+  #include "FDKParameters.any"
+  
+>>>>>>> Stashed changes
 
 }; // InputVariables
