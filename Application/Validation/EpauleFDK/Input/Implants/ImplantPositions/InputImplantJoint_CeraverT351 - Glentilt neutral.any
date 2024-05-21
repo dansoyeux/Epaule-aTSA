@@ -45,7 +45,7 @@ InputVar1={
     // From Scapula to glenoid component Coordinate System (on 3d model)
     AnyFolder GlenPosition = {
       AnyVar GleneImplantInclinationAngle = 0;
-      AnyVar GleneImplantVersionAngle = 0;
+      AnyVar GleneImplantVersionAngle = 4.286;
       AnyString RotationAxis = "Axe anteroposterieur glenoid implant";     
       
       AnyVec3 Position = 0.001*{-26.052227 , -39.054668 , -25.756212};

@@ -89,7 +89,7 @@ for tilt in tilt_list:
 
         ])
 
-        macrolist[-1][-1] = OperationRun('Main.Study.RunEpauleFDK')
+        macrolist[-1][-1] = OperationRun('Main.Study.RunApplication')
 
 # %% Launch study without timeout
 # if not endangle == 180:
