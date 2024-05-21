@@ -1,16 +1,7 @@
- 
-//    // Shortcuts
-//    AnyFolder &Jnt = Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt;
-//    AnyFolder &Seg = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg;
-//    AnyFolder &Mus = Main.HumanModel.BodyModel.Right.ShoulderArm.Mus;
+// File that saves the simulation constants to a .txt file that will have the same name as the .anydata.h5 file
 
-
-AnyRefFrame &ForceRefFrame = Seg.Scapula.ghProth;
-
-
-// Save in a *.txt file
 AnyOutputFile FileOut = {
-  FileName = .OutputFileName + ".txt";
+  FileName = .SaveResultsh5.OutputFileName + ".txt";
   
   NumberFormat.Digits = 6;
   
@@ -24,13 +15,16 @@ AnyOutputFile FileOut = {
     ShortenNamesOnOff = Off;
     
   };     
+  // Anybody version
+  AnyString AMMRVersion = AMMR_VERSION;
+  AnyStringVar AnybodyVersion = strval(ANYBODY_V1) + "." + strval(ANYBODY_V2) + "." + strval(ANYBODY_V3) + "." + strval(ANYBODY_V4);
+  
   //-----------------SIMULATIONS PARAMETERS----------------------------
   // Input Values 
   AnyVar nStep = Main.Study.nStep;
   AnyVar tEnd = Main.Study.tEnd;
-
-  // Movement type
   
+  // Movement type
   #if ArmMovement == Abduction
   AnyString Movement = "Abduction";
   #endif
@@ -43,11 +37,11 @@ AnyOutputFile FileOut = {
   // Muscle recruitment type
   AnyEnumMuscleRecruitmentType MuscleRecruitment = Main.Study.InverseDynamics.Criterion.Type;
   AnyFloat AuxLinearTerm_Weight = Main.Study.InverseDynamics.Criterion.AuxLinearTerm.Weight;
-    
+  
   // CSA case 
   AnyString Case = CSA_Case;
   
-  // FDK model values
+  // FDK spring force values
   AnyFloat k0 = Main.InputVariables.FDK.k0;
   AnyFloat k1 = Main.InputVariables.FDK.k1;
   AnyFloat k2 = Main.InputVariables.FDK.k2;
@@ -55,8 +49,8 @@ AnyOutputFile FileOut = {
   AnyFloat k4 = Main.InputVariables.FDK.k4;
   AnyFloat kz = Main.InputVariables.FDK.kz;
   
-  //FDK Algorithm parameters
-  AnyVar ForceTol = Main.Study.InverseDynamics.ForceDepKin.ForceTol;
+  // FDK Algorithm parameters
+  AnyVar ForceTol = Main.Study.InverseDynamics.ForceDepKinError;
   AnySwitch UseAdaptiveForceTolOnOff = Main.Study.InverseDynamics.ForceDepKin.UseAdaptiveForceTolOnOff;
   AnyVar MaxIteration = Main.Study.InverseDynamics.ForceDepKin.MaxIteration;
   AnyVar Perturbation = Main.Study.InverseDynamics.ForceDepKin.Perturbation;
@@ -76,7 +70,7 @@ AnyOutputFile FileOut = {
   
   AnyVar GleneImplantInclinationAngle = Main.InputVariables.ImplantParameters.GlenPosition.GleneImplantInclinationAngle;
   AnyVar GleneImplantVersionAngle = Main.InputVariables.ImplantParameters.GlenPosition.GleneImplantVersionAngle;
-
+  
   AnyString RotationAxis = Main.InputVariables.ImplantParameters.GlenPosition.RotationAxis;
   
   AnyMatrix GlenImplantRotation = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GlenImplantPos.ARel;
@@ -94,80 +88,8 @@ AnyOutputFile FileOut = {
   AnyVar GlenohumeralAbduction = Main.HumanModel.Mannequin.Posture.Right.GlenohumeralAbduction;
   AnyVar GlenohumeralExternalRotation = Main.HumanModel.Mannequin.Posture.Right.GlenohumeralExternalRotation;
   
-  //----------------SIMULATION MEASUREMENTS--------------
-  
-  // KINEMATIC
-  AnyVar rotD= Main.Study.rotD; // Total abduction angle (deg)
-  
-  AnyVar vel = Main.HumanModel.BodyModel.Interface.Right.GlenohumeralAbduction.Vel[0]; // Angular velocity
-  
-  // Humerus ISB CS
-  AnyFloat Hum_R_ISB = .Seg.Humerus.AnatomicalFrame.ISB_Coord.Axes; // Rotation Humerus ISB vs global
-  AnyFloat Hum_P_ISB = .Seg.Humerus.AnatomicalFrame.ISB_Coord.r;    // Position Humerus ISB vs global
-  
-  // Scapula CS
-  AnyFloat Scap_R = .Seg.Scapula.Axes; // Rotation Scapula vs global
-  AnyFloat Scap_P = .Seg.Scapula.r;    // Position Scapula vs global
-  
-  // gh CS
-  AnyFloat Gh_R = .Seg.Scapula.gh.Axes; // Rotation gh vs global
-  AnyFloat Gh_P= .Seg.Scapula.gh.r;     // Position gh vs global
-  
-  // ghProth 
-  AnyFloat GhProth_R = .Seg.Scapula.ghProth.Axes; // Rotation ghProth vs global
-  AnyFloat GhProth_P = .Seg.Scapula.ghProth.r;    // Position ghProth vs global
-  
-  // Glenoid Implant
-  AnyFloat RotG = .Seg.Scapula.GlenImplantPos.Axes; // Rotation glenoid implant vs global
-  AnyFloat PosG = .Seg.Scapula.GlenImplantPos.r;    // Position  glenoid implant vs global
-  
-  // Humeral Head Implant
-  AnyFloat Hum_R = .Seg.Humerus.HumerusBoneGeometryNode.HumImplantPos.Axes; // Rotation Humeral Head implant vs global
-  AnyFloat Hum_P = .Seg.Humerus.HumerusBoneGeometryNode.HumImplantPos.r;    // Position Humeral Head implant vs global
-  
-  //    // GH-JRF if no contact between implants (use of push muscles)
-  //    #if BallAndSocket==1
-  //      AnyFloat ContactForce = .Jnt.GHReactions.ResultanForce.FTotalLocalGhProth;
-  //    #endif
-  
-  // Contact values if contact between STL implant models
-  #if BallAndSocket ==0 
-  // coordinates in the humerus implant reference frame
-  // Matrix rotation on the right and not inverted to do an inverse transform
-  AnyVec3 ContactForcelocalimplant=  (.Jnt.ProtheseContact.Fmaster) * Hum_R ;  
- 
-  // Converts the contact force between the implants from the global reference frame to the ISB humerus reference frame
-  // Matrix rotation on the right and not inverted to do an inverse transform
-  AnyVec3 ContactForce=  (.Jnt.ProtheseContact.Fmaster) * Hum_R_ISB ;
-  
-  AnyFloat SpringForce = .Jnt.SpringForce.F;
-  
-  // Spring force transformed from the implant reference frame to the scapula ISB reference frame
-  // Matrix rotation on the right and not inverted to do an inverse transform
-  // Axes and ARel are matrices to go from local to global
-  // ISB.ARel * (GHProth.Arel * SpringForce) = ISB.ARel' * scapula reference frame = ISB scapula reference frame
-  AnyFloat SpringForce_Scapula_ISB = (.Jnt.SpringForce.F * .Seg.Scapula.ghProth.ARel') * .Seg.Scapula.AnatomicalFrame.ISB_Coord.ARel;
-  
-  AnyFloat Epsilon = .Jnt.SpringForce.Eps;
-  
-  AnyVec3 COPGlobal = .Jnt.ProtheseContact.COP; // Center of Pressure Humeral head on glenoid 
-  AnyVec3 COPlocalGhProth =  (.Jnt.ProtheseContact.COP-GhProth_P) * GhProth_R ; // COP in local ref frame "ghProth"
-  AnyVec3 COPlocalImplant =  (.Jnt.ProtheseContact.COP-PosG )* RotG ;  // COP in local ref frame "GlenImplantPos"
-  
-  AnyVec3 COPlocalHumerusImplant =  (.Jnt.ProtheseContact.COP-Hum_P )* Hum_R ;  // COP in local ref frame "HumImplantPos"
-  
-  AnyVar ContactArea= .Jnt.ProtheseContact.ContactArea; // Contact area 
-  AnyVar MaxPenetration= .Jnt.ProtheseContact.MaxPenetration; // Maximum Penetration of the humeral head implant (metal=non deformable) in the glenoid component (plastic=defromable)
-  #endif
-  
-  // Muscles activities and forces
-  AnyVar MaxMuscleAct = Main.Study.MaxMuscleActivity;
-
-  // Force error at each step 
-  AnyVar ForceTolError = Main.Study.ForceDepKinError.Val;  
-  
-  
 };
+
 
 
 

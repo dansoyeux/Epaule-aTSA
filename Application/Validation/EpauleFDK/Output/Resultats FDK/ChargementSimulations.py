@@ -40,7 +40,7 @@ MuscleDictionary = {"Triceps long head": ["Triceps_LH", "_", [1, 2]],
                                          ["pectoralis_major_clavicular", "_part_", [1, 5]]
                                          ],
 
-                    "Pectoralis minor": ["pectoralis_minor", "_", [1, 4]],
+                    "Pectoralis minor": ["pectoralis_minor", "_", [1, 3]],
                     "Latissimus dorsi": ["latissimus_dorsi", "_", [1, 11]],
                     "Upper Subscapularis": ["subscapularis", "_", [1, 2]],
                     "Downward Subscapularis": ["subscapularis", "_", [3, 6]],
@@ -90,7 +90,10 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             }
 
 MuscleVariableDictionary_NoMomentArm = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Muscle force [N]"},
+
+                                        # Not used when using Hill model
                                         # "Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Muscle force [N]"},
+
                                         # "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
                                         # "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
@@ -117,69 +120,26 @@ FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.
 
                           "Time": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Time [s]"},
 
-                          "Abduction": {"VariablePath": "Output.rotD", "VariableDescription": "Abduction angle [°]"},
+                          "Abduction": {"VariablePath": "Output.Simulation_Outputs.AbductionAngle", "VariableDescription": "Abduction angle [°]"},
 
-                          # "Temps": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Time [s]"},
+                          "ContactArea": {"VariablePath": "Output.Simulation_Outputs.ContactArea", "VariableDescription": r'Contact area [$cm^2$]', "MultiplyFactor": 10000},
 
-                          "ContactArea": {"VariablePath": "Output.Jnt.ProtheseContact.ContactArea", "VariableDescription": r'Contact area [$cm^2$]', "MultiplyFactor": 10000},
+                          "MaxPenetration": {"VariablePath": "Output.Simulation_Outputs.MaxPenetration", "VariableDescription": r'Maximal penetration of the implants [mm]', "MultiplyFactor": 1000},
 
-                          "GHLin ISB": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Linear displacement (ISB) of the humerus [mm]", "MultiplyFactor": 1000,
-                                        "SequenceComposantes": ["AP", "IS", "ML"]},
+                          "COP": {"VariablePath": "Output.Simulation_Outputs.COPlocalImplant", "VariableDescription": "Center of Pressure [mm]", "MultiplyFactor": 1000,
+                                  "SequenceComposantes": ["AP", "IS", "ML"],
+                                  # Offset in mediolateral so that the center of the glenoid implant surface corresponds to (0,0,0) (24.5 for the GleneCeraver_T3)
+                                  "offset": [0, 0, - 24.5]},
 
-                          "GHLin Absolute": {"VariablePath": "Output.Jnt.GHLin_Absolute.Pos", "VariableDescription": "Absolute Linear displacement of the humerus [mm]", "MultiplyFactor": 1000,
-                                             "SequenceComposantes": ["ML", "IS", "AP"], "Composantes_Inverse_Direction": [False, False, True]},
-
-                          "GHLin Absolute zero": {"VariablePath": "Output.Jnt.GHLin_Absolute.Pos", "VariableDescription": "Absolute Linear displacement of the humerus [mm]", "MultiplyFactor": 1000,
-                                                  "SequenceComposantes": ["ML", "IS", "AP"], "Composantes_Inverse_Direction": [False, False, True], "first_value": [0, 0, 0]},
-
-                          # "GHLin": {"VariablePath": "Output.Jnt.GHLin.Pos", "VariableDescription": "Linear displacement of the humerus [mm]", "MultiplyFactor": 1000,
-                          #           "SequenceComposantes": ["AP", "IS", "ML"]},
-
-
-                          "GHLin ISB Relative": {"VariablePath": "Output.Jnt.GHLin_ISB.Pos", "VariableDescription": "Relative linear displacement (ISB) of the humerus [mm]", "MultiplyFactor": 1000,
-                                                 "SequenceComposantes": ["AP", "IS", "ML"], "first_value": [0, 0, 0]},
-
-                          "COP": {"VariablePath": "Output.FileOut.COPlocalImplant", "VariableDescription": "Center of Pressure [mm]", "MultiplyFactor": 1000,
-                                  "SequenceComposantes": ["AP", "IS", "ML"], "offset": [0, 0, - 24.5]},
-
-                          # Dans le repère de l'humérus ISB (pour comparaison avec bergmann)
-                          "ForceContact": {"VariablePath": "Output.FileOut.ContactForce", "VariableDescription": "Contact force on the humeral implant [N]",
-                                           "SequenceComposantes": ["AP", "IS", "ML"]},
-
-                          # Force sur l'humérus Dans le repère de l'implant glene (humerus = master)
-                          "ForceContact HumImplant glene": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Contact force on the humeral implant [N]",
-                                                            "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True},
-
-                          # Force sur la scapula Dans le repère de la scapula ISB (scapula = slave)
-                          "ForceContact scapula": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Contact force on the scapula [N]",
-                                                   "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
-
-                          # Force sur la scapula Dans le repère de l'implant (scapula = slave)
-                          "ForceContact GlenImplant": {"VariablePath": "Output.Jnt.ProtheseContact.Fslave", "VariableDescription": "Contact force on the glenoid implant [N]",
-                                                       "SequenceComposantes": ["AP", "IS", "ML"], "Composantes_Inverse_Direction": [False, False, True], "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True},
+                          # Dans le repère de l'humérus ISB (pour comparaison avec bergmann et al.)
+                          "ContactForce humerus": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": "Contact force on the humeral implant [N]",
+                                                   "SequenceComposantes": ["AP", "IS", "ML"]},
 
                           # Force sur l'humerus Dans le repère de la scapula ISB (humerus = master)
-                          "ForceContact humerus": {"VariablePath": "Output.Jnt.ProtheseContact.Fmaster", "VariableDescription": "Contact force on the humeral implant [N]",
-                                                   "SequenceComposantes": ["AP", "IS", "ML"], "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True},
+                          "ContactForce glenoid": {"VariablePath": "Output.Simulation_Outputs.ContactForce_glenoid", "VariableDescription": "Contact force on the glenoid implant [N]",
+                                                   "SequenceComposantes": ["AP", "IS", "ML"]},
 
-                          "ForceTolError": {"VariablePath": "Output.ForceDepKinError.Val", "VariableDescription": "FDK force error [N]"},
-
-
-                          # Dans le repère ISB de la scapula (inverser la force car appliquée dans sens inverse for some reason)
-                          "SpringForce scapula": {"VariablePath": "Output.Jnt.SpringForce.F", "VariableDescription": "Spring force on the scapula [N]", "SequenceComposantes": ["AP", "IS", "ML"],
-                                                  "Composantes_Inverse_Direction": [True, True, True]},
-
-                          # Dans le repère ISB de la scapula (for some reason GHLin a premiere ref frame = scapula mais force appliquée sur humérus avec le bon signe)
-                          "SpringForce humerus": {"VariablePath": "Output.Jnt.SpringForce.F", "VariableDescription": "Spring force on the l'humérus [N]", "SequenceComposantes": ["AP", "IS", "ML"]},
-
-                          # Dans repère scapula
-                          # # Dans le repère ISB de la scapula (inverser la force car appliquée dans sens inverse for some reason)
-                          # "SpringForce scapula": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Spring force on the scapula [N]", "SequenceComposantes": ["AP", "IS", "ML"],
-                          #                         "Composantes_Inverse_Direction": [True, True, True]},
-
-                          # # Dans le repère ISB de la scapula (for some reason GHLin a premiere ref frame = scapula mais force appliquée sur humérus avec le bon signe)
-                          # "SpringForce humerus": {"VariablePath": "Output.FileOut.SpringForce_Scapula_ISB", "VariableDescription": "Spring force on the l'humérus [N]", "SequenceComposantes": ["AP", "IS", "ML"]},
-
+                          "ForceTolError": {"VariablePath": "Output.Simulation_Outputs.ForceDepKinError", "VariableDescription": "FDK Error [N]"},
 
                           }
 
@@ -191,6 +151,7 @@ BallAndSocket_VariableDictionary = {"Abduction": {"VariablePath": "Output.rotD",
 
 # Constantes
 FDK_ConstantsDictionary = {"AnybodyFileOutPath": "Main.Study.FileOut",
+                           "Anybody version": ["AMMRVersion", "AnybodyVersion"],
                            "Paramètres de simulation": ["Case", "MuscleRecruitment", "nStep", "tEnd", "GHReactions", "Movement"],
                            "Mannequin": ["GlenohumeralFlexion", "GlenohumeralAbduction", "GlenohumeralExternalRotation"],
 
@@ -465,10 +426,10 @@ Results_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirector
 """Stability ratio"""
 # calcul instability ratio
 for case in Results_Elevation_no_recentrage:
-    Results_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] = abs(Results_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["IS"]) + abs(Results_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["AP"])
+    Results_Elevation_no_recentrage[case]["ContactForce glenoid"]["Shear"] = abs(Results_Elevation_no_recentrage[case]["ContactForce glenoid"]["IS"]) + abs(Results_Elevation_no_recentrage[case]["ContactForce glenoid"]["AP"])
 
     Results_Elevation_no_recentrage[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
-    Results_Elevation_no_recentrage[case]["Instability Ratio"]["Total"] = Results_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["Shear"] / abs(Results_Elevation_no_recentrage[case]["ForceContact GlenImplant"]["ML"])
+    Results_Elevation_no_recentrage[case]["Instability Ratio"]["Total"] = Results_Elevation_no_recentrage[case]["ContactForce glenoid"]["Shear"] / abs(Results_Elevation_no_recentrage[case]["ContactForce glenoid"]["ML"])
 
 
 def score(Results):
@@ -510,9 +471,9 @@ def score(Results):
                         Results[case]["COP"]["ML"]]).T / 1000
 
         # -ML pour remettre compression = négatif
-        ContactForce = np.array([Results[case]["ForceContact GlenImplant"]["AP"],
-                                 Results[case]["ForceContact GlenImplant"]["IS"],
-                                 -Results[case]["ForceContact GlenImplant"]["ML"]]).T
+        ContactForce = np.array([Results[case]["ContactForce glenoid"]["AP"],
+                                 Results[case]["ContactForce glenoid"]["IS"],
+                                 -Results[case]["ContactForce glenoid"]["ML"]]).T
 
         moment = np.zeros([len(COP), 4])
 
@@ -522,8 +483,8 @@ def score(Results):
             # calculates moments
             moment[step, 0:3] = np.cross(COP[step, :], ContactForce[step, :])
 
-            # Total score = sqrt(moment * moment')
-            moment[step, 3] = np.sqrt(np.dot(moment[step, 0:3], moment[step, 0:3].T))
+            # Total score = norm(moment)
+            moment[step, 3] = np.linalg.norm(moment[step, 0:3])
 
         # stocke le score de ce cas dans le tableau (intégrale du score)
         scores_moment["AP"].at[current_tilt, current_acromion] = np.trapz(abs(moment[:, 0]), time)
@@ -531,9 +492,9 @@ def score(Results):
         scores_moment["ML"].at[current_tilt, current_acromion] = np.trapz(abs(moment[:, 2]), time)
         scores_moment["Total"].at[current_tilt, current_acromion] = np.trapz(moment[:, 3], time)
 
-        shear = np.array([Results[case]["ForceContact GlenImplant"]["AP"],
-                          Results[case]["ForceContact GlenImplant"]["IS"],
-                          np.zeros(len(Results[case]["ForceContact GlenImplant"]["AP"]))]).T
+        shear = np.array([Results[case]["ContactForce glenoid"]["AP"],
+                          Results[case]["ContactForce glenoid"]["IS"],
+                          np.zeros(len(Results[case]["ContactForce glenoid"]["AP"]))]).T
 
         # Last column is the root of the squared sum of AP and IS shear
         shear[:, 2] = np.sqrt(shear[:, 0]**2 + shear[:, 1]**2)
@@ -544,7 +505,7 @@ def score(Results):
         scores_shear["Total"].at[current_tilt, current_acromion] = np.trapz(shear[:, 2], time)
 
         # Save shear scores in the variables and in a new variable named score
-        Results[case]["ForceContact GlenImplant"]["TotalShear"] = shear[:, 2]
+        Results[case]["ContactForce glenoid"]["TotalShear"] = shear[:, 2]
         Results[case]["Moment"] = array_to_dictionary(moment, "Moment on the glenoid implant [N.m]", SequenceComposantes=["AP", "IS", "ML", "Total"])
 
         # Contribution des forces au moment

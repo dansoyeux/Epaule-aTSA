@@ -1,23 +1,40 @@
 AnyFolder InputVariables = {
   
-  
-  // File containing the FDK parameters for the stabilization force  
-  #include "FDKParameters.any"
-  
   // Activates or not FDK (0 FDK activated)
   #ifndef BallAndSocket
   #define BallAndSocket 0
   #endif
-   
-  /* -------------------------------- MUSCLE RECRUITMENT TYPE -----------------------------------*/
-   #ifndef MuscleRecruitmentType
-   #define MuscleRecruitmentType MR_Polynomial
-   #endif
     
   /*--------------------------------------FDK ALGORITHM SETTINGS---------------------------------*/
   //  Main.Study.InverseDynamics.ForceDepKin.ForceTol = 1;
   //  Main.Study.InverseDynamics.ForceDepKin.UseAdaptiveForceTolOnOff = On;
-      
+  
+  /* ---------------------------- FORCE-DEPENDENT KINEMATICS PARAMETERS ----------------------------*/
+  AnyFolder FDK ={ 
+    
+    /*Stabilisation force :
+    Forces in the IGHL ligament
+    Non-linear model [Bigliani, 1992]:
+    F-anteroposterior = k0[0] + k1*eps + k2*eps^2 + k4*eps^4
+    F-inferiorsuperior = k0[1] + k1*eps + k2*eps^2 + k4*eps^4   
+    */
+    AnyFloat k0 = -{-5.5, 0.5};   
+    AnyFloat k1 = -7.787;  
+    AnyFloat k2 = 4.391;
+    AnyFloat k3 = 0 ;
+    AnyFloat k4 = -0.08637 ; 
+    AnyFloat kz = 0;   //ML (Lat=+). NB: ML managed by contact between prosthetic components 
+    
+    // Volumetric penetration rigidity factor for contact force calculation [N/m^3]
+    AnyFolder Contact ={AnyVar kd =1e10;};
+    
+  }; // FDK  
+
+  /* -------------------------------- MUSCLE RECRUITMENT TYPE -----------------------------------*/
+  #ifndef MuscleRecruitmentType
+  #define MuscleRecruitmentType MR_Polynomial
+  #endif
+  
   /* ---------------------------------- MOVEMENT PARAMETERS -------------------------------------*/
   /* Type of arm movement
   Abduction : Elevation of the shoulder in the frontal plant
@@ -34,105 +51,58 @@ AnyFolder InputVariables = {
   #ifndef SmallAbductionOn
   #define SmallAbductionOn 0
   #endif
-    
-  /* -----------------------------------------CSA VARIATION CASES--------------------------------
-  Case middle-short  : CSA = 20 DEG : TILT 2.229 DEG UPWARD       AND  ACROMION SHORTEN  (-12.13mm)
-  CASE middle-normal : CSA = 30 DEG : TILT 2.229  DEG UPWARD      AND  ACROMION NORMAL  
-  CASE middle-long   : CSA = 40 DEG : TILT 2.229  DEG UPWARD      AND  ACROMION EXTENDED (+16.95mm)
 
-  CASE up-short      : CSA = 30 DEG : TILT 11.435 DEG UPWARD      AND  ACROMION SHORTEN  (-12.13mm)  
-  CASE up-normal     : CSA = 40 DEG : TILT 11.435 DEG UPWARD      AND  ACROMION NORMAL  
-  CASE up-long       : CSA = 50 DEG : TILT 11.435 DEG UPWARD      AND  ACROMION EXTENDED (+16.95mm)
-
-
-  CASE down-short   : CSA = 12 DEG : TILT -7.587 DEG DOWNWARD    AND  ACROMION SHORTEN  (-12.13mm)
-  CASE down-normal   : CSA = 20 DEG : TILT -7.587 DEG DOWNWARD    AND  ACROMION NORMAL
-  CASE down-long     : CSA = 30 DEG : TILT -7.587 DEG DOWNWARD    AND  ACROMION EXTENDED (+16.95mm)
+  /* -------------------------------------------Glenoid inclination selection------------------------------------
+  "xdown"     (-8.7deg) 
+  "down"      (-3deg)
+  "neutral"   (0deg)
+  "middle"    (2.9deg)
+  "up"        (9deg)
+  "xup"       (15.2deg)
   */
-  
-  
-  /* -------------------------------------------CSA_Tilt selection------------------------------------*/
+
   #ifndef CSA_Tilt
   #define CSA_Tilt "middle"
   #endif
-  /*
-  xdown
-  down 
-  neutral
-  middle
-  up
-  xup
-
+  
+  /* -------------------------------------------Acromion lengthening selection------------------------------------
+  xshort     (-12.1mm)
+  short      (-6.6mm)
+  normal     (+0.0mm)
+  long       (+7.85mm)
+  xlong      (+16.95mm)
   */
-  
-  /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
-  
+ 
   #ifndef CSA_Acromion_Length
   #define CSA_Acromion_Length "xlong"
   #endif
-  /*
-  xshort
-  short
-  normal
-  long
-  xlong
-  */
-    
+  
   #define CSA_Case CSA_Tilt + "-" + CSA_Acromion_Length
   
   /* ------------------------- SAVE AND LOAD RESULT FILES/FOLDERS NAMES -------------------------
   Names of files to load or save in the Output folder
-  m_ResultFile :   Name for results file (saved as .txt or .h5)
-  m_ResultFolder : Name for folder results. !!Must be created on computer before!!
-  m_LoadFolder : Name of the folder in which the .h5 file is stored
-  m_LoadFile : Name for the result file to load (.h5)
+  ResultFile :   Name for results file (saved as .txt or .h5)
+  ResultFolder : Name for folder results. !!Must be created on computer before!!
+  LoadFolder : Name of the folder in which the .h5 file is stored
+  LoadFile : Name for the result file to load (.h5)
   */
   
-  // Activates the AnyOutputFile save
-  #ifndef AnyOutputFileOn
-  #define AnyOutputFileOn 1
-  #endif
-  
-  // Result
-  #ifndef m_ResultFolder
-  #define m_ResultFolder "SaveData/Variation_CSA/"
-  #endif
-
-<<<<<<< Updated upstream
-  #ifndef m_ResultFile
-  #define m_ResultFile "Anybody" + CSA_Case 
+  // Activates the Saving of the results after simulation
+  #ifndef AutoSaveOption 
+  #define AutoSaveOption 1
   #endif
     
-  #define m_LoadFile "04-01-BallAndSocket-" + CSA_Acromion_Length + "-MR_Polynomial"
-  #define m_LoadFolder "SaveData/Variation_CSA/"  
-=======
-  #if BallAndSocket == 0
-  #define m_LoadFile "04-01-" + CSA_Case + "-GlenoidAxisTilt" + "-MR_Polynomial" + "-Elevation-no-recentrage" 
-  #define m_LoadFolder "SaveData/const_speed/"  
+  // Result names and folder
+  #ifndef ResultFolder
+  #define ResultFolder "Result Files"
+  #endif
+    
+  #ifndef ResultFile
+  #define ResultFile "Anybody-" + CSA_Case 
+  #endif
   
-  // BallAndSocket activated
-  #else 
-  #define m_LoadFile "08-09-BallAndSocket-" + CSA_Acromion_Length + "-MR_Polynomial-180deg"
-  #define m_LoadFolder "SaveData/Variation_CSA/"
-  #endif // BallAndSocket == 0
+  #define LoadFile "04-01-" + CSA_Case + "-GlenoidAxisTilt-MR_Polynomial-Elevation-no-recentrage"
+  #define LoadFolder "SaveData/Elevation_no_recentrage"  
   
-  
-  
-//    #define m_LoadFile "08-09-" + CSA_Case + 
-  
-
-//  #define m_LoadFile "Results-05-09-case1-GlenoidAxisTilt-EnFace-MyMyscleWrapping-Ellipsoid"
-
-
-
-//  #define m_LoadFolder "SaveData/Variation_CSA/"
-  
-//  #define m_LoadFolder "SaveData/Macro_80step_180deg/"
-  
-  
-  // File containing the FDK parameters for the stabilization force  
-  #include "FDKParameters.any"
-  
->>>>>>> Stashed changes
-
 }; // InputVariables
+

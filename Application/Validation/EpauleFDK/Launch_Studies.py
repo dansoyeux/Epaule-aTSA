@@ -32,9 +32,6 @@ startangle = 15
 
 endangle = 120
 
-"""-------------------------------------On ne peut pas changer le nombre de steps à un nombre différent de celui mis dans anybody sinon bug-------------------------------------"""
-nstep = 70
-
 MuscleRecruitmentType = "MR_Polynomial"
 # MuscleRecruitmentType = "MR_MinMaxStrict"
 
@@ -46,7 +43,7 @@ tilt_list = ["xdown", "down", "neutral", "middle", "up", "xup"]
 acromion_list = ["xshort", "short", "normal", "long", "xlong"]
 
 # Dossier de résultats
-m_ResultFolder = "SaveData/const_speed/"
+ResultFolder = "Result Files"
 
 # 9 Cases to run
 # tilt_list = ["xdown", "xup"]
@@ -55,9 +52,8 @@ m_ResultFolder = "SaveData/const_speed/"
 
 # %% Nom du fichier de sortie
 
-file_date = "04-01"
 
-os.mkdir(f"./Output/{m_ResultFolder}")
+os.mkdir(f"./Output/{ResultFolder}")
 
 # %% Script lancement simulation
 
@@ -77,12 +73,12 @@ for tilt in tilt_list:
         macrolist.append([
             Load('EpauleFDK.Main.any',
                  defs={'CSA_Tilt': f'"{tilt}"',
-                       'AnyOutputFileOn': 1,
+                       'AutoSaveOption': 1,
                        'SmallAbductionOn': SmallAbduction,
                        'ArmMovement': f"{ArmMovement}",
                        'CSA_Acromion_Length': f'"{acromion}"',
-                       "m_ResultFile": file_name,
-                       'm_ResultFolder': f'"{m_ResultFolder}"',
+                       "ResultFile": file_name,
+                       'ResultFolder': f'"{ResultFolder}"',
                        'MuscleRecruitmentType': MuscleRecruitmentType,
                        'BallAndSocket': BallAndSocket,
                        },  # fin defs

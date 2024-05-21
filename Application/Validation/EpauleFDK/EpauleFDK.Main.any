@@ -1,4 +1,4 @@
-#include "../libdef.any"
+#include "libdef.any"
 
 // Find a detailed description of the model here
 
@@ -71,21 +71,10 @@ Main = {
     #if BallAndSocket == 0    
     //Adds contact between the shoulder implants
     #include "Model/ContactForces.any"
-    
     // FDK parameters   
     InverseDynamics.ForceDepKinOnOff=On;
     InverseDynamics.ForceDepKin.MaxIteration=50;
-    
-    AnyOutputFun ForceDepKinError = {
-      Val = Main.Study.InverseDynamics.ForceDepKinError;
-    };
-    #endif
-    
-    #if BallAndSocket == 1
-    // Output variables collecting the GH forces in the pertinent coordinate frame
-    AnyVec3 GHReactionInHumerus = -(Model.BodyModel.Right.ShoulderArm.Seg.Humerus.gh.Bergmann.Axes'
-    *Model.BodyModel.Right.ShoulderArm.Jnt.GHReactions.ResultanForce.FTotalGlobal')';
-    #endif
+    #endif //BallAndSocket == 0 
     
     Gravity = {0.01, -9.81, 0.01};
     
@@ -103,18 +92,12 @@ Main = {
     // Type de recrutement musculaire
     InverseDynamics.Criterion.Type= MuscleRecruitmentType;
     
-    // Mesure of abduction angle (GH angle mesure is xzy)
-    AnyVar rot = Main.HumanModel.BodyModel.Interface.Right.GlenohumeralAbduction.Pos[0]; // Total Abduction angle [rad]
-    AnyVar rotD= rot*180/pi; // Total Abduction angle [deg]
-    
-    // Creates the .txt output file name
-    // Check that file does not exist, otherwise makes a new file with a number at the end of its name (i.e. NameFile_#filenumber.txt)
-    #include "Output/Output_CheckName.any"
-    AnyString OutputFileName = get_filename({ANYBODY_PATH_OUTPUT + m_ResultFolder + m_ResultFile},{"txt"});
-    
+    // Variables to output (calculates COP position, abduction angle...)
+    #include "Output/Simulation_Outputs.any"
+
     // Creates a txt file containing the important variables to save and the input variables
-    #if AnyOutputFileOn == 1
-    #if BallAndSocket ==0
+    #if AutoSaveOption == 1
+    #if BallAndSocket == 0
     #include "Output/Output_File_FDK.any"
     #else
     #include "Output/Output_File_BallAndSocket.any"
@@ -124,6 +107,8 @@ Main = {
   }; // End of study
   
 }; //Main
+
+
 
 
 

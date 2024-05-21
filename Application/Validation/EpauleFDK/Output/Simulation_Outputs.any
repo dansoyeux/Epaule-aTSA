@@ -1,0 +1,49 @@
+//----------------SIMULATION Measurements--------------
+// KINEMATIC
+AnyFolder Simulation_Outputs = {AnyVar AbductionAngle = Main.HumanModel.BodyModel.Interface.Right.GlenohumeralAbduction.Pos[0]/ 180/pi; // Total Abduction angle [deg]
+};
+
+// Calculates more variables when there are implants
+#if BallAndSocket ==0 
+// Outputs the force dependent kinematics error
+AnyOutputFun ForceDepKinError = {
+  Val = Main.Study.InverseDynamics.ForceDepKinError;
+};
+
+Simulation_Outputs = {
+  
+  // Humerus ISB CS
+  AnyFloat Hum_Rot_ISB = ..Seg.Humerus.AnatomicalFrame.ISB_Coord.Axes; // Rotation Humerus ISB vs global
+  AnyFloat Hum_Pos_ISB = ..Seg.Humerus.AnatomicalFrame.ISB_Coord.r;    // Position Humerus ISB vs global
+  
+  // Glenoid Implant
+  AnyFloat GlenImplant_Rot = ..Seg.Scapula.GlenImplantPos.Axes; // Rotation glenoid implant vs global
+  AnyFloat GlenImplant_Pos = ..Seg.Scapula.GlenImplantPos.r;    // Position  glenoid implant vs global
+  
+  // Humeral Head Implant
+  AnyFloat HumImplant_Rot = ..Seg.Humerus.HumerusBoneGeometryNode.HumImplantPos.Axes; // Rotation Humeral Head implant vs global
+  AnyFloat HumImplant_Pos = ..Seg.Humerus.HumerusBoneGeometryNode.HumImplantPos.r;    // Position Humeral Head implant vs global
+  
+  // Contact force on the humerus coordinate system (ISB coordinate system) (to compare to Bergmann et al. data)
+  // (humerus = master)
+  AnyVec3 ContactForce_humerus=  (..Jnt.ProtheseContact.Fmaster) * Hum_Rot_ISB;
+  
+  // Contact force in the glenoid implant coordinate system
+  // (glene=slave)
+  AnyVec3 ContactForce_GlenImplant=  (..Jnt.ProtheseContact.Fslave) * GlenImplant_Rot ;  
+  
+  // COP in the "GlenImplantPos" Node Reference frame
+  AnyVec3 COP_glenoid =  (..Jnt.ProtheseContact.COP-GlenImplant_Pos )* GlenImplant_Rot ;  
+    
+  // COP in the "HumImplantPos" Node Reference frame
+  AnyVec3 COP_humerus =  (..Jnt.ProtheseContact.COP-HumImplant_Pos )* HumImplant_Rot ;  // COP in local ref frame "HumImplantPos"
+    
+  // Contact area between the implants
+  AnyVar ContactArea = ..Jnt.ProtheseContact.ContactArea; // Contact area 
+  AnyVar MaxPenetration = ..Jnt.ProtheseContact.MaxPenetration; // Maximum Penetration of the humeral head implant (metal=non deformable) in the glenoid component (plastic=defromable)
+  
+  AnyFloat ForceDepKinError = .ForceDepKinError.Val;
+  
+};
+#endif // BallAndSocket ==0
+

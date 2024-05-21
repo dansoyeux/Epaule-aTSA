@@ -1,6 +1,0 @@
-AnyDrawRefFrame DrwRef = {
-  Visible=Off;
-  ScaleXYZ={0.3,0.3,0.3};
-  RGB ={0,0,1}  ;
-};
-      

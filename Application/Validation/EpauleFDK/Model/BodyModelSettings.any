@@ -21,11 +21,10 @@
 #define BM_TRUNK_MUSCLES CONST_MUSCLES_NONE
 
 // Settings for mannequin
-
-#path BM_MANNEQUIN_FILE "Mannequin.any"
+#include "Mannequin.any"
 
 //Drawsettings path
-#path BM_DRAWSETTINGS_FILE "<ANYBODY_PATH_MAINFILEDIR>\Model\DrawSettings.any"
+#include "<ANYBODY_PATH_MAINFILEDIR>\Model\DrawSettings.any"
 
 
 // Mannequin Drivers
