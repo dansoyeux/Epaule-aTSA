@@ -18,6 +18,9 @@ AnyFolder InputVariables = {
     F-anteroposterior = k0[0] + k1*eps + k2*eps^2 + k4*eps^4
     F-inferiorsuperior = k0[1] + k1*eps + k2*eps^2 + k4*eps^4   
     */
+    
+    // k0 = Value ajusted so that the case with neutral inclinatin and normal acromion give a centered COP on the glenoid implant on the first step
+    // to ajust it, set SmallAbduction to 1 and ajust k0 to obtain Main.Study.Simulation_Outputs.COP_glenoid = {0,0,xxx}
     AnyFloat k0 = -{-5.5, 0.5};   
     AnyFloat k1 = -7.787;  
     AnyFloat k2 = 4.391;

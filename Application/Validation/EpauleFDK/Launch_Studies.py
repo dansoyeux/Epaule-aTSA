@@ -95,6 +95,6 @@ for tilt in tilt_list:
 # if not endangle == 180:
 app = AnyPyProcess(timeout=3600 * 100, num_processes=num_processes, keep_logfiles=True,
                    warnings_to_include=["OBJ1", "Penetration of surface", "Failed to resolve force-dependent kinematics"],
-                   fatal_warnings=True)
+                   fatal_warnings=True, logfile_prefix=f"Output/{ResultFolder}/logfile")
 
 app.start_macro(macrolist)
