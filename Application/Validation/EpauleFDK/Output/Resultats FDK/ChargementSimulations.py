@@ -94,6 +94,7 @@ MuscleVariableDictionary_NoMomentArm = {"Ft": {"MuscleFolderPath": "Output.Mus",
                                         # Not used when using Hill model
                                         # "Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Muscle force [N]"},
 
+                                        # Muscle Activity for Hill muscles
                                         # "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
                                         # "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
@@ -115,38 +116,32 @@ MuscleVariableDictionary_NoMomentArm = {"Ft": {"MuscleFolderPath": "Output.Mus",
                                         }
 
 # Variables
-FDK_VariableDictionary = {"Elevation": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.InterfaceFolder.ScapulaHumerus.Elevation.Pos",
-                                        "VariableDescription": "Elevation angle in the scapular plane [°]", "MultiplyFactor": 180 / np.pi},
-
-                          "Time": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Time [s]"},
-
-                          "Abduction": {"VariablePath": "Output.Simulation_Outputs.AbductionAngle", "VariableDescription": "Abduction angle [°]"},
+FDK_VariableDictionary = {"Abduction": {"VariablePath": "Output.Simulation_Outputs.AbductionAngle", "VariableDescription": "Abduction angle [°]"},
 
                           "ContactArea": {"VariablePath": "Output.Simulation_Outputs.ContactArea", "VariableDescription": r'Contact area [$cm^2$]', "MultiplyFactor": 10000},
 
-                          "MaxPenetration": {"VariablePath": "Output.Simulation_Outputs.MaxPenetration", "VariableDescription": r'Maximal penetration of the implants [mm]', "MultiplyFactor": 1000},
+                          "Time": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Time", "MultiplyFactor": 10000},
 
-                          "COP": {"VariablePath": "Output.Simulation_Outputs.COPlocalImplant", "VariableDescription": "Center of Pressure [mm]", "MultiplyFactor": 1000,
+                          "MaxPenetration": {"VariablePath": "Output.Simulation_Outputs.MaxPenetration", "VariableDescription": 'Maximal penetration of the implants [mm]', "MultiplyFactor": 1000},
+
+                          # Position of the center of pressure on the glenoid implant
+                          "COP": {"VariablePath": "Output.Simulation_Outputs.COP_glenoid", "VariableDescription": "Center of Pressure [mm]", "MultiplyFactor": 1000,
                                   "SequenceComposantes": ["AP", "IS", "ML"],
                                   # Offset in mediolateral so that the center of the glenoid implant surface corresponds to (0,0,0) (24.5 for the GleneCeraver_T3)
-                                  "offset": [0, 0, - 24.5]},
+                                  "offset": [0, 0, -24.5]},
 
                           # Dans le repère de l'humérus ISB (pour comparaison avec bergmann et al.)
                           "ContactForce humerus": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": "Contact force on the humeral implant [N]",
                                                    "SequenceComposantes": ["AP", "IS", "ML"]},
 
-                          # Force sur l'humerus Dans le repère de la scapula ISB (humerus = master)
-                          "ContactForce glenoid": {"VariablePath": "Output.Simulation_Outputs.ContactForce_glenoid", "VariableDescription": "Contact force on the glenoid implant [N]",
+                          # Force sur l'humerus Dans le repère de l'implant glénoïdien
+                          "ContactForce glenoid": {"VariablePath": "Output.Simulation_Outputs.ContactForce_GlenImplant", "VariableDescription": "Contact force on the glenoid implant [N]",
                                                    "SequenceComposantes": ["AP", "IS", "ML"]},
 
-                          "ForceTolError": {"VariablePath": "Output.Simulation_Outputs.ForceDepKinError", "VariableDescription": "FDK Error [N]"},
-
+                          "ForceTolError": {"VariablePath": "Output.Simulation_Outputs.ForceDepKinError", "VariableDescription": "FDK Error [N]"}
                           }
 
-
-BallAndSocket_VariableDictionary = {"Abduction": {"VariablePath": "Output.rotD", "VariableDescription": "Abduction angle [°]"},
-                                    "Elevation": {"VariablePath": "Output.Model.BodyModel.Right.ShoulderArm.InterfaceFolder.ScapulaHumerus.Elevation.Pos",
-                                                  "VariableDescription": "Elevation angle in the scapular plane [°]", "MultiplyFactor": 180 / np.pi}
+BallAndSocket_VariableDictionary = {"Abduction": {"VariablePath": "Output.Simulation_Outputs.AbductionAngle", "VariableDescription": "Abduction angle [°]"}
                                     }
 
 # Constantes
@@ -263,23 +258,23 @@ description = "-GlenoidAxisTilt"
 # Chemin d'accès au dossier dans lequel les fichiers doivent être sauvegardés
 SaveSimulationsDirectory = "Saved Simulations"
 
-"""Pour tests"""
-# date = "06-10-"
-# Files = [date + CaseName + description + "-MR_Polynomial" for CaseName in ["middle-normal"]]
-
-# aa = load_simulation_cases(SaveDataDir, Files, ["middle-normal"], FDK_Variables_NoMomentArm)
+"""Results"""
+result_dir = "../Result Files"
+files = ["Anybody_" + CaseName for CaseName in CaseNames_6]
+Results = load_simulation_cases(result_dir, files, CaseNames_6, FDK_Variables)
+save_results_to_file(Results, SaveSimulationsDirectory, "Results")
 
 """
 Élévation no recentrage, constant speed
 """
 
-Elevation_dir_const_speed = "../SaveData/const_speed"
-Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
+# Elevation_dir_const_speed = "../SaveData/const_speed"
+# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
 
-Results_Elevation_no_recentrage = load_simulation_cases(Elevation_dir_const_speed, Files, CaseNames_6, FDK_Variables)
+# Results_Elevation_no_recentrage = load_simulation_cases(Elevation_dir_const_speed, Files, CaseNames_6, FDK_Variables)
 
-# Sauvegarde de la simulation en .pkl
-save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
 
 """
 Élévation no recentrage
@@ -421,15 +416,20 @@ save_results_to_file(Results_literature, SaveSimulationsDirectory, "Results_lite
 
 # %% Calculs supplémentaires
 
-Results_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
+Results = load_results_from_file(SaveSimulationsDirectory, "Results")
 
-"""Stability ratio"""
-# calcul instability ratio
-for case in Results_Elevation_no_recentrage:
-    Results_Elevation_no_recentrage[case]["ContactForce glenoid"]["Shear"] = abs(Results_Elevation_no_recentrage[case]["ContactForce glenoid"]["IS"]) + abs(Results_Elevation_no_recentrage[case]["ContactForce glenoid"]["AP"])
 
-    Results_Elevation_no_recentrage[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
-    Results_Elevation_no_recentrage[case]["Instability Ratio"]["Total"] = Results_Elevation_no_recentrage[case]["ContactForce glenoid"]["Shear"] / abs(Results_Elevation_no_recentrage[case]["ContactForce glenoid"]["ML"])
+def instability_ratio(Results):
+    """Function that calculates the instability ratio for each simulation case
+    IR = (|Fx| + |Fy|)/|Fz|
+    """
+
+    for case in Results:
+        Results[case]["ContactForce glenoid"]["Shear"] = abs(Results[case]["ContactForce glenoid"]["IS"]) + abs(Results[case]["ContactForce glenoid"]["AP"])
+        Results[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
+        Results[case]["Instability Ratio"]["Total"] = Results[case]["ContactForce glenoid"]["Shear"] / abs(Results[case]["ContactForce glenoid"]["ML"])
+
+    return Results
 
 
 def score(Results):
@@ -522,11 +522,11 @@ def score(Results):
     return Results, scores_moment, scores_shear
 
 
-# Calcul des scores pour tous les cas et juste 9 cas avec neutre
-Results_Elevation_no_recentrage, scores_moment, scores_shear = score(Results_Elevation_no_recentrage)
+Results = instability_ratio(Results)
+Results, scores_moment, scores_shear = score(Results)
 
 # Sauvegarde des scores en .pkl
 save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
 save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
 
-save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
+save_results_to_file(Results, SaveSimulationsDirectory, "Results")

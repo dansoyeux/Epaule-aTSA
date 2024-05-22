@@ -413,7 +413,7 @@ SaveSimulationsDirectory = "Saved Simulations"
 
 # Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_GlenoidLocalAxis_MR_MinMaxStrict_Elevation_no_recentrage")
 
-Results_Elevation_no_recentrage_smoothed_speed = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage_smoothed_speed")
+Results = load_results_from_file(SaveSimulationsDirectory, "Results")
 
 Results_Elevation_no_recentrage = load_results_from_file(SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
 
@@ -723,7 +723,7 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 
 """Elevation (done)"""
 # # No recentrage
-PremadeGraphs.my_graphs(Results_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
+# PremadeGraphs.my_graphs(Results_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
 
 # # Avec neutral
 # PremadeGraphs.my_graphs(Results_Elevation_no_recentrage, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation", "No recentrage with neutral", save_graph=True, composante_on=False, **graph_parameters_6)
@@ -755,62 +755,65 @@ for case_name, case_data in Results_Elevation_no_recentrage.items():
 # %% Figures article
 
 """Article"""
+def figures_article(Results):
+    SimulationsLineStyleDictionary_article = {
+        # Glen xdown
+        "xdown-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+        "xdown-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+        "xdown-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+        "xdown-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+        "xdown-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    
+        # Glen neutral
+        "neutral-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+        "neutral-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+        "neutral-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+        "neutral-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+        "neutral-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    
+        # Glen up
+        "up-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+        "up-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+        "up-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+        "up-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+        "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    }
+    define_simulations_line_style(SimulationsLineStyleDictionary_article)
+    
+    Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
+                                   "Neutral inclination": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
+                                   "Upward inclination": ["up-xshort", "up-normal", "up-xlong"]
+                                   }}
+    
+    Categories_Article_6 = {"line": {"Downward inclination": ["xdown-xshort", "xdown-short", "xdown-normal", "xdown-long", "xdown-xlong"],
+                                     "Neutral inclination": ["neutral-xshort", "neutral-short", "neutral-normal", "neutral-long", "neutral-xlong"],
+                                     "Upward inclination": ["up-xshort", "up-short", "up-normal", "up-long", "up-xlong"]
+                                     }}
+    
+    
+    # # Muscle Kinematics
+    # muscle_graph(Results, "Deltoid lateral", "Abduction", "Force Angle", subplot={"dimension": [1, 3], "number": 1}, cases_on=NeutralCases_3, subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 20], composante_y=["Origin"])
+    # muscle_graph(Results, "Deltoid lateral", "Abduction", "MomentArm", subplot={"dimension": [1, 3], "number": 2}, composante_y=["Mean"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=5, ylim=[0, 40])
+    # muscle_graph(Results, "Deltoid lateral", "Abduction", "Ft", subplot={"dimension": [1, 3], "number": 3}, composante_y=["Total"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral force", grid_x_step=15, xlim=[15, 120], grid_y_step=25, ylim=[0, 200])
+    
+    
+    # COP
+    PremadeGraphs.COP_graph_by_case_categories(Results, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True)
+    
+    # # Contact forces for neutral inclination
+    # graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 1})
+    # graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
+    # graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression force", composante_y=["ML"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 400], hide_center_axis_labels=True)
+    
+    # # instability ratio
+    # PremadeGraphs.graph_by_case_categories(Results, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, ylim=[0, 0.7])
+    
+    # # Forces des muscles actifs
+    # define_simulations_line_style(SimulationsLineStyleDictionary)
+    # PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces", cases_on=CaseNames_36x, grid_x_step=15, xlim=[15, 120], ylim=[0, 200], hide_center_axis_labels=True, figsize=[24, 14], grid_y_step=50)
 
-SimulationsLineStyleDictionary_article = {
-    # Glen xdown
-    "xdown-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
-    "xdown-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
-    "xdown-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    "xdown-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-    "xdown-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-
-    # Glen neutral
-    "neutral-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
-    "neutral-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
-    "neutral-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    "neutral-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-    "neutral-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-
-    # Glen up
-    "up-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
-    "up-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
-    "up-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
-    "up-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-    "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-}
-define_simulations_line_style(SimulationsLineStyleDictionary_article)
-
-Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
-                               "Neutral inclination": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
-                               "Upward inclination": ["up-xshort", "up-normal", "up-xlong"]
-                               }}
-
-Categories_Article_6 = {"line": {"Downward inclination": ["xdown-xshort", "xdown-short", "xdown-normal", "xdown-long", "xdown-xlong"],
-                                 "Neutral inclination": ["neutral-xshort", "neutral-short", "neutral-normal", "neutral-long", "neutral-xlong"],
-                                 "Upward inclination": ["up-xshort", "up-short", "up-normal", "up-long", "up-xlong"]
-                                 }}
-
-
-# Muscle Kinematics
-muscle_graph(Results_Elevation_no_recentrage, "Deltoid lateral", "Abduction", "Force Angle", subplot={"dimension": [1, 3], "number": 1}, cases_on=NeutralCases_3, subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 20], composante_y=["Origin"])
-muscle_graph(Results_Elevation_no_recentrage, "Deltoid lateral", "Abduction", "MomentArm", subplot={"dimension": [1, 3], "number": 2}, composante_y=["Mean"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=5, ylim=[0, 40])
-muscle_graph(Results_Elevation_no_recentrage, "Deltoid lateral", "Abduction", "Ft", subplot={"dimension": [1, 3], "number": 3}, composante_y=["Total"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral force", grid_x_step=15, xlim=[15, 120], grid_y_step=25, ylim=[0, 200])
-
-
-# COP
-PremadeGraphs.COP_graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True)
-
-# Contact forces for neutral inclination
-graph(Results_Elevation_no_recentrage, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 1})
-graph(Results_Elevation_no_recentrage, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
-graph(Results_Elevation_no_recentrage, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression force", composante_y=["ML"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 400], hide_center_axis_labels=True)
-
-# instability ratio
-PremadeGraphs.graph_by_case_categories(Results_Elevation_no_recentrage, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, ylim=[0, 0.7])
-
-# Forces des muscles actifs
-define_simulations_line_style(SimulationsLineStyleDictionary)
-PremadeGraphs.muscle_graph_from_list(Results_Elevation_no_recentrage, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces", cases_on=CaseNames_36x, grid_x_step=15, xlim=[15, 120], ylim=[0, 200], hide_center_axis_labels=True, figsize=[24, 14], grid_y_step=50)
+figures_article(Results_Elevation_no_recentrage)
+figures_article(Results)
 
 # %% variations forces de contact
 
@@ -885,32 +888,3 @@ def score_surface(score_df, title):
 #     max_moment_angle_pos = np.argmax(Results_Elevation_no_recentrage[case_name]["Moment"]["Total"])
 
 #     max_moment_angle[case_name] = abduction[max_moment_angle_pos]
-
-# %% Comparer les cas
-
-# case1 = "neutral-normal"
-case1 = "down-normal"
-# case1 = "neutral-xlong"
-
-# case2 = "up-normal"
-case2 = "up-normal"
-# case2 = "down-normal"
-# case2 = "down-xlong"
-
-# case2 = "neutral-xlong"
-# case2 = "neutral-xshort"
-
-comp = "ML"
-
-# 18 = 42° ; 49 = 90° ; 59 = 105°
-
-# angle = 49
-angle1 = 49
-angle2 = -1
-
-
-aa = Results_Elevation_no_recentrage[case1]["ContactForce glenoid"]
-aaa = Results_Elevation_no_recentrage[case2]["ContactForce glenoid"]
-
-a1 = aaa[comp][angle1:angle2] - aa[comp][angle1:angle2]
-a = np.mean(a1)
