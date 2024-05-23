@@ -1,0 +1,128 @@
+AnyFolder InputVariables = {
+  
+  // Activates or not FDK (0 FDK activated)
+  #ifndef BallAndSocket
+  #define BallAndSocket 0
+  #endif
+    
+  /*--------------------------------------FDK ALGORITHM SETTINGS---------------------------------*/
+  //  Main.Study.InverseDynamics.ForceDepKin.ForceTol = 1;
+  //  Main.Study.InverseDynamics.ForceDepKin.UseAdaptiveForceTolOnOff = On;
+  
+  /* ---------------------------- FORCE-DEPENDENT KINEMATICS PARAMETERS ----------------------------*/
+  AnyFolder FDK ={ 
+    
+    /*Stabilisation force :
+    Forces in the IGHL ligament
+    Non-linear model [Bigliani, 1992]:
+    F-anteroposterior = k0[0] + k1*eps + k2*eps^2 + k4*eps^4
+    F-inferiorsuperior = k0[1] + k1*eps + k2*eps^2 + k4*eps^4   
+    */
+    
+    // k0 = Value ajusted so that the case with neutral inclinatin and normal acromion give a centered COP on the glenoid implant on the first step
+    // to ajust it, set SmallAbduction to 1 and ajust k0 to obtain Main.Study.Simulation_Outputs.COP_glenoid = {0,0,xxx}
+    AnyFloat k0 = -{-5.5, 0.5};   
+    AnyFloat k1 = -7.787;  
+    AnyFloat k2 = 4.391;
+    AnyFloat k3 = 0 ;
+    AnyFloat k4 = -0.08637 ; 
+    AnyFloat kz = 0;   //ML (Lat=+). NB: ML managed by contact between prosthetic components 
+    
+    // Volumetric penetration rigidity factor for contact force calculation [N/m^3]
+    AnyFolder Contact ={AnyVar kd =1e10;};
+    
+  }; // FDK  
+
+  /* -------------------------------- MUSCLE RECRUITMENT TYPE -----------------------------------*/
+  #ifndef MuscleRecruitmentType
+  #define MuscleRecruitmentType MR_Polynomial
+  #endif
+  
+  /* ---------------------------------- MOVEMENT PARAMETERS -------------------------------------*/
+  /* Type of arm movement
+  Abduction : Elevation of the shoulder in the frontal plant
+  Elevation : Elevation of the shoulder in the scapular plane
+  */
+  #ifndef ArmMovement 
+  #define ArmMovement Elevation
+  #endif
+  
+  /*
+  1 : To make an abduction with only one step (from 15deg to 15.5 deg) 
+  0 : abduction from 15deg to 120deg 
+  */
+  #ifndef SmallAbductionOn
+  #define SmallAbductionOn 0
+  #endif
+
+  /* -------------------------------------------Glenoid inclination selection------------------------------------
+  "xdown"     (-8.7deg) 
+  "down"      (-3deg)
+  "neutral"   (0deg)
+  "middle"    (2.9deg)
+  "up"        (9deg)
+  "xup"       (15.2deg)
+  */
+
+  #ifndef CSA_Tilt
+  #define CSA_Tilt "xdown"
+  #endif
+  
+  /* -------------------------------------------Acromion lengthening selection------------------------------------
+  xshort     (-12.1mm)
+  short      (-6.6mm)
+  normal     (+0.0mm)
+  long       (+7.85mm)
+  xlong      (+16.95mm)
+  */
+ 
+  #ifndef CSA_Acromion_Length
+  #define CSA_Acromion_Length "xlong"
+  #endif
+  
+  #define CSA_Case CSA_Tilt + "-" + CSA_Acromion_Length
+  
+  /* ------------------------- SAVE AND LOAD RESULT FILES/FOLDERS NAMES -------------------------
+  Names of files to load or save in the Output folder
+  ResultFile :   Name for results file (saved as .txt or .h5)
+  ResultFolder : Name for folder results. !!Must be created on computer before!!
+  LoadFolder : Name of the folder in which the .h5 file is stored
+  LoadFile : Name for the result file to load (.h5)
+  
+  ex : to create 
+  */
+  
+  // Activates the Saving of the results after simulation
+  #ifndef AutoSaveOption 
+  #define AutoSaveOption 1
+  #endif
+    
+  // Result names and folder
+  #ifndef ResultFolder
+  #if BallAndSocket == 0
+  #define ResultFolder "Result Files/aTSA"
+  #else
+  #define ResultFolder "Result Files/BallAndSocket"
+  #endif
+  #endif
+    
+  #ifndef ResultFile
+  #if BallAndSocket == 0
+  // Nom des fichiers pour le cas avec implants  
+  #define ResultFile "PJ178_Anybody_aTSA_" + CSA_Case 
+  #else
+  // Nom des fichiers pour le cas sans implant
+  #define ResultFile "PJ178_Anybody_BallAndSocket_" + CSA_Acromion_Length 
+  #endif
+  #endif
+  
+  #define LoadFile "PJ178_Anybody_aTSA_" + CSA_Case
+    
+  #if BallAndSocket == 0
+  #define LoadFolder "Result Files/aTSA"
+  #else
+  #define LoadFolder "Result Files/BallAndSocket"
+  #endif
+  
+}; // InputVariables
+
