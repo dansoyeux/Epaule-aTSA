@@ -17,7 +17,6 @@ from Anybody_Package.Anybody_LoadOutput.LoadOutput import sum_result_variables
 
 from Anybody_Package.Anybody_LoadOutput.Tools import result_dictionary_to_excel
 
-
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
@@ -435,7 +434,6 @@ Results_BallAndSocket_Muscle_Recruitment = load_results_from_file(SaveSimulation
 # Results_BallAndSocket_FullRange = load_results_from_file(SaveSimulationsDirectory, "Results_BallAndSocket_FullRange")
 Results_literature = load_results_from_file(SaveSimulationsDirectory, "Results_literature")
 
-
 # %% Chargement autres variables
 # Chargement des dictionnaires de variable
 SaveVariablesDirectory = "Saved VariablesDictionary"
@@ -731,26 +729,6 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
 """Par CSA Elevation"""
 # PremadeGraphs.my_graphs(Results_Elevation_no_recentrage_Par_CSA, Results_BallAndSocket_Muscle_Recruitment["MR_Polynomial"], Results_literature, "Graphiques/Elevation/No recentrage", "Par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
 
-# %% calcul angle du deltoide latéral
-
-for case_name, case_data in Results_Elevation_no_recentrage.items():
-    delt_direction_IS_origin = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F origin direction"]["IS"]
-    delt_direction_ML_origin = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F origin direction"]["ML"]
-
-    # Angle par rapport à la verticale
-    force_angle_origin = np.arctan2(delt_direction_IS_origin, delt_direction_ML_origin) * 180 / np.pi
-
-    delt_direction_IS_insertion = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F insertion direction"]["IS"]
-    delt_direction_ML_insertion = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F insertion direction"]["ML"]
-
-    # Angle par rapport à la verticale
-    force_angle_insertion = np.arctan2(delt_direction_IS_insertion, delt_direction_ML_insertion) * 180 / np.pi
-
-    case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["Force Angle"] = {"Description": "Muscle force angle [°]",
-                                                                                 "SequenceComposantes": ["Insertion", "Origin"],
-                                                                                 "Origin": force_angle_origin,
-                                                                                 "Insertion": force_angle_insertion
-                                                                                 }
 
 # %% Figures article
 

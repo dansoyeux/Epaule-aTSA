@@ -40,7 +40,7 @@ MuscleDictionary = {"Triceps long head": ["Triceps_LH", "_", [1, 2]],
                                          ["pectoralis_major_clavicular", "_part_", [1, 5]]
                                          ],
 
-                    "Pectoralis minor": ["pectoralis_minor", "_", [1, 3]],
+                    "Pectoralis minor": ["pectoralis_minor", "_", [1, 4]],
                     "Latissimus dorsi": ["latissimus_dorsi", "_", [1, 11]],
                     "Upper Subscapularis": ["subscapularis", "_", [1, 2]],
                     "Downward Subscapularis": ["subscapularis", "_", [3, 6]],
@@ -68,22 +68,13 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             #                 "combine_muscle_part_operations": ["total", "mean"]
                             #                 },
 
-                            # "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
-                            #               "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                            #               "combine_muscle_part_operations": ["total", "mean"]},
+                            # "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
+                            #                        "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #                        "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
-                            # "F insertion": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the insertion [N]", "select_muscle_RefFrame_output": "insertion",
-                            #                 "rotation_matrix_path": "Output.Seg.Scapula.GlenImplantPos.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                            #                 "combine_muscle_part_operations": ["total", "mean"]
-                            #                 },
-
-                            "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
-                                                   "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                   "combine_muscle_part_operations": ["mean"], "vect_dir": True},
-
-                            "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
-                                                      "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
-                                                      "combine_muscle_part_operations": ["mean"], "vect_dir": True},
+                            # "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
+                            #                           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
+                            #                           "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
                             "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Moment arm [mm]",
                                           "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
@@ -138,7 +129,7 @@ FDK_VariableDictionary = {"Abduction": {"VariablePath": "Output.Simulation_Outpu
                           "ContactForce glenoid": {"VariablePath": "Output.Simulation_Outputs.ContactForce_GlenImplant", "VariableDescription": "Contact force on the glenoid implant [N]",
                                                    "SequenceComposantes": ["AP", "IS", "ML"]},
 
-                          "ForceTolError": {"VariablePath": "Output.Simulation_Outputs.ForceDepKinError", "VariableDescription": "FDK Error [N]"}
+                          "ForceDepKinError": {"VariablePath": "Output.Simulation_Outputs.ForceDepKinError", "VariableDescription": "FDK Error [N]"}
                           }
 
 BallAndSocket_VariableDictionary = {"Abduction": {"VariablePath": "Output.Simulation_Outputs.AbductionAngle", "VariableDescription": "Abduction angle [°]"}
@@ -264,101 +255,8 @@ files = ["Anybody_" + CaseName for CaseName in CaseNames_6]
 Results = load_simulation_cases(result_dir, files, CaseNames_6, FDK_Variables)
 save_results_to_file(Results, SaveSimulationsDirectory, "Results")
 
-"""
-Élévation no recentrage, constant speed
-"""
-
-# Elevation_dir_const_speed = "../SaveData/const_speed"
-# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
-
-# Results_Elevation_no_recentrage = load_simulation_cases(Elevation_dir_const_speed, Files, CaseNames_6, FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_Elevation_no_recentrage")
-
-"""
-Élévation no recentrage
-"""
-
-# Elevation_dir = "../SaveData/Elevation_no_recentrage"
-# Files = ["04-01-" + CaseName + description + "-MR_Polynomial-Elevation-no-recentrage" for CaseName in CaseNames_6]
-
-# Results_Elevation_no_recentrage_smoothed_speed = load_simulation_cases(Elevation_dir, Files, CaseNames_6, FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_Elevation_no_recentrage_smoothed_speed, SaveSimulationsDirectory, "Results_Elevation_no_recentrage_smoothed_speed")
-
-"""Elevation no recentrage minmaxstrict"""
-
-# Elevation_minmax_dir = "../SaveData/Elevation_no_recentrage_MinMaxStrict"
-# Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-Elevation-no-recentrage" for CaseName in CaseNames_5]
-
-# Results_MR_MinMaxStrict_Elevation_no_recentrage = load_simulation_cases(Elevation_minmax_dir, Files, CaseNames_5, FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_MR_MinMaxStrict_Elevation_no_recentrage")
-
-
-# %% Long range
-"""
-Results and polynomial recruitment
-Without new wrapping with xshorts
-normal cases with 180 abduction
-
-WITHOUT MOMENT ARM
-"""
-# Macros_results_dir2 = r"../SaveData/Macro_80step_180deg"
-# date = "06-10-"
-
-# # First failed step (lose contact or FDK error over 0.001)
-# Failed_180_Simulation = [51, 50, 50, 49, 48,
-#                          53, 53, 52, 51, 50,
-#                          56, 55, 54, 52, 52,
-#                          False, 65, 57, 55, 54,
-#                          False, False, 58, 57, 57
-#                          ]
-
-# # En prenant en compte aussi conflit avec acromion (juste la pointe, pas en-dessous)
-# Failed_180_Acromion = [51, 50, 50, 49, 48,
-#                        53, 53, 52, 51, 50,
-#                        56, 55, 54, 52, 52,
-#                        60, 57, 55, 53, 52,
-#                        54, 58, 51, 50, 50
-#                        ]
-
-# # Avec premier contact avec acromion
-# Failed_180 = [51, 50, 50, 49, 48,
-#               53, 53, 52, 51, 50,
-#               56, 55, 54, 52, 52,
-#               36, 34, 31, 28, 27,
-#               29, 26, 24, 21, 13
-#               ]
-
-# # Avec premier contact avec acromion
-# Files = [date + CaseName + description + "-MR_Polynomial-180deg" for CaseName in CaseNames_5]
-# Results_180deg = load_simulation_cases(Macros_results_dir2, Files, CaseNames_5, FDK_Variables_NoMomentArm, Failed=Failed_180)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_180deg, SaveSimulationsDirectory, "Results_180deg")
-
-"""
-En ne prenant pas en compte conflit avec acromion
-"""
-# Results_180deg_FullRange = load_simulation_cases(Macros_results_dir2, Files, CaseNames_5, FDK_Variables_NoMomentArm, Failed=Failed_180_Simulation)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_180deg_FullRange, SaveSimulationsDirectory, "Results_180deg_FullRange")
-
-"""Elevation minmax"""
-# minmax_dir = "../SaveData/MinMaxStrict"
-# Files = ["04-01-" + CaseName + description + "-MR_MinMaxStrict-120deg-Elevation-no-recentrage" for CaseName in CaseNames_3]
-
-# Results_MR_MinMaxStrict_Elevation_no_recentrage = load_simulation_cases(minmax_dir, Files, CaseNames_3, FDK_Variables)
-
-# # Sauvegarde de la simulation en .pkl
-# save_results_to_file(Results_MR_MinMaxStrict_Elevation_no_recentrage, SaveSimulationsDirectory, "Results_MR_MinMaxStrict_Elevation_no_recentrage")
-
 # %%                                                Résultats Ball and Socket
+
 """
 Résultats sains avec différents scaling acromion
 120° abduction
@@ -411,12 +309,12 @@ save_results_to_file(FDK_Variables, SaveVariablesDirectory, "FDK_Variables")
 
 # %% chargement new littérature depuis excel
 
-Results_literature = load_literature_data("Template_importation_littérature", "Anybody_Package/Template")
+Results_literature = load_literature_data("data_literature", "")
 save_results_to_file(Results_literature, SaveSimulationsDirectory, "Results_literature")
 
 # %% Calculs supplémentaires
 
-Results = load_results_from_file(SaveSimulationsDirectory, "Results")
+# Results = load_results_from_file(SaveSimulationsDirectory, "Results")
 
 
 def instability_ratio(Results):
@@ -521,12 +419,37 @@ def score(Results):
 
     return Results, scores_moment, scores_shear
 
+# %% calcul angle du deltoide latéral
 
+
+def delt_lateral_angle(Results):
+    """Calculates the direction of the deltoid lateral force on its origin and insertion in the scapula reference frame"""
+    for case_name, case_data in Results.items():
+        delt_direction_IS_origin = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F origin"]["IS"]
+        delt_direction_ML_origin = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F origin"]["ML"]
+
+        # Angle par rapport à la verticale
+        force_angle_origin = np.arctan2(delt_direction_IS_origin, delt_direction_ML_origin) * 180 / np.pi
+
+        delt_direction_IS_insertion = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F insertion"]["IS"]
+        delt_direction_ML_insertion = case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["F insertion"]["ML"]
+
+        # Angle par rapport à la verticale
+        force_angle_insertion = np.arctan2(delt_direction_IS_insertion, delt_direction_ML_insertion) * 180 / np.pi
+
+        case_data["Muscles"]["Deltoid lateral"]["Deltoid lateral"]["Force Angle"] = {"Description": "Muscle force angle [°]",
+                                                                                     "SequenceComposantes": ["Insertion", "Origin"],
+                                                                                     "Origin": force_angle_origin,
+                                                                                     "Insertion": force_angle_insertion
+                                                                                     }
+    return Results
+
+
+Results = delt_lateral_angle(Results)
 Results = instability_ratio(Results)
 Results, scores_moment, scores_shear = score(Results)
 
 # Sauvegarde des scores en .pkl
 save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
 save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
-
 save_results_to_file(Results, SaveSimulationsDirectory, "Results")
