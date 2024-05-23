@@ -1,0 +1,56 @@
+  /* CSA VARIATION VARIABLES
+  GlenoidImplantTilt  : Defines the glenoid implant upward (+) or downward (-) tilt in degree
+  You must create an input file for each tilt by changing the glene rotation, position matrix and with the new position of the center of the sphere fitted to the glenoid implant surface
+    
+  AcromionOffset  : Moves the acromion end in the x direction in the scapula coordinate system
+  */
+  
+  /* -----------------------------------------CSA VARIATION CASES--------------------------------
+  Case middle-xshort : CSA = 20 DEG : TILT 2.229 DEG UPWARD       AND  ACROMION SHORTEN  (-12.1mm)
+  CASE middle-normal : CSA = 30 DEG : TILT 2.229  DEG UPWARD      AND  ACROMION NORMAL  
+  CASE middle-xlong  : CSA = 40 DEG : TILT 2.229  DEG UPWARD      AND  ACROMION EXTENDED (+16.95mm)
+  
+  CASE xup-normal    : CSA = 40 DEG : TILT 11.435 DEG UPWARD      AND  ACROMION NORMAL  
+  CASE xup-xshort    : CSA = 30 DEG : TILT 11.435 DEG UPWARD      AND  ACROMION SHORTEN  (-12.1mm)
+
+  Case xdown-normal  : CAS = 20 DEG : TILT -7.587 DEG DOWNWARD    AND  ACROMION NORMAL
+  CASE xdown-xlong   : CSA = 30 DEG : TILT -7.587 DEG DOWNWARD    AND  ACROMION EXTENDED (+16.95mm)
+  */
+  
+/* -------------------------------------------CSA_Tilt axis selection------------------------------------*/
+
+#if BallAndSocket == 0
+
+#if CSA_Tilt == "original"
+#define INPUTPOS "CeraverT351"
+#else
+
+// Glene implant anteroporterior axis
+#define INPUTPOS "CeraverT351 - Glentilt " + CSA_Tilt
+#endif //CSA_Tilt == "original"
+
+#endif // BallAndSocket == 0
+
+/* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
+AnyFolder AcromionScaling = {
+#if CSA_Acromion_Length == "xshort"
+AnyVar AcromionOffset = -12.1 / 1000;
+#endif // CSA_Acromion_Length == "xshort"
+
+#if CSA_Acromion_Length == "short"
+AnyVar AcromionOffset = -6.6 / 1000;
+#endif // CSA_Acromion_Length == "xshort"
+
+#if CSA_Acromion_Length == "normal"
+AnyVar AcromionOffset = 0.0;
+#endif // CSA_Acromion_Length == "normal"
+
+#if CSA_Acromion_Length == "long"
+AnyVar AcromionOffset = 7.85 / 1000;
+#endif // CSA_Acromion_Length == "long"
+
+#if CSA_Acromion_Length == "xlong"
+AnyVar AcromionOffset = 16.95 / 1000;
+#endif // CSA_Acromion_Length == "xlong"
+
+};

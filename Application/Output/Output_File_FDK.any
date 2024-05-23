@@ -1,0 +1,97 @@
+// File that saves the simulation constants to a .txt file that will have the same name as the .anydata.h5 file
+
+AnyOutputFile FileOut = {
+  FileName = .SaveResultsh5.OutputFileName + ".txt";
+  
+  NumberFormat.Digits = 6;
+  
+  // Header
+  Header = {
+    TitleSectionOnOff = On;
+    ConstSectionOnOff = On;
+    VarSectionOnOff = On;
+    ColumnNamesOnOff = On;  //swicth the column names on/off
+    LinePrefix = "";
+    ShortenNamesOnOff = Off;
+    
+  };     
+  // Anybody version
+  AnyString AMMRVersion = AMMR_VERSION;
+  AnyStringVar AnybodyVersion = strval(ANYBODY_V1) + "." + strval(ANYBODY_V2) + "." + strval(ANYBODY_V3) + "." + strval(ANYBODY_V4);
+  
+  //-----------------SIMULATIONS PARAMETERS----------------------------
+  // Input Values 
+  AnyVar nStep = Main.Study.nStep;
+  AnyVar tEnd = Main.Study.tEnd;
+  
+  // Movement type
+  #if ArmMovement == Abduction
+  AnyString Movement = "Abduction";
+  #endif
+  
+  #if ArmMovement == Elevation
+  AnyString Movement = "Elevation";
+  
+  #endif
+  
+  // Muscle recruitment type
+  AnyEnumMuscleRecruitmentType MuscleRecruitment = Main.Study.InverseDynamics.Criterion.Type;
+  AnyFloat AuxLinearTerm_Weight = Main.Study.InverseDynamics.Criterion.AuxLinearTerm.Weight;
+  
+  // CSA case 
+  AnyString Case = CSA_Case;
+  
+  // FDK spring force values
+  AnyFloat k0 = Main.InputVariables.FDK.k0;
+  AnyFloat k1 = Main.InputVariables.FDK.k1;
+  AnyFloat k2 = Main.InputVariables.FDK.k2;
+  AnyFloat k3 = Main.InputVariables.FDK.k3;
+  AnyFloat k4 = Main.InputVariables.FDK.k4;
+  AnyFloat kz = Main.InputVariables.FDK.kz;
+  
+  // FDK Algorithm parameters
+  AnyVar ForceTol = Main.Study.InverseDynamics.ForceDepKinError;
+  AnySwitch UseAdaptiveForceTolOnOff = Main.Study.InverseDynamics.ForceDepKin.UseAdaptiveForceTolOnOff;
+  AnyVar MaxIteration = Main.Study.InverseDynamics.ForceDepKin.MaxIteration;
+  AnyVar Perturbation = Main.Study.InverseDynamics.ForceDepKin.Perturbation;
+  AnySwitch PerturbationSymmetricOnOff = Main.Study.InverseDynamics.ForceDepKin.PerturbationSymmetricOnOff;
+  AnySwitch LocalSearchOnOff = Main.Study.InverseDynamics.ForceDepKin.LocalSearchOnOff;
+  AnyVar MaxNewtonStep = Main.Study.InverseDynamics.ForceDepKin.MaxNewtonStep;
+  
+  // Implant initial positions
+  AnyVar px = Main.InputVariables.JointPosition.px;
+  AnyVar py = Main.InputVariables.JointPosition.py;
+  AnyVar pz = Main.InputVariables.JointPosition.pz;
+  AnyVar kd = Main.InputVariables.FDK.Contact.kd;
+  
+  // Implant used and local positions  
+  AnyString HumerusName = Main.InputVariables.ImplantParameters.ImplantNames.HumerusName;
+  AnyString GlenoidName = Main.InputVariables.ImplantParameters.ImplantNames.GlenoidName;
+  
+  AnyVar GleneImplantInclinationAngle = Main.InputVariables.ImplantParameters.GlenPosition.GleneImplantInclinationAngle;
+  AnyVar GleneImplantVersionAngle = Main.InputVariables.ImplantParameters.GlenPosition.GleneImplantVersionAngle;
+  
+  AnyString RotationAxis = Main.InputVariables.ImplantParameters.GlenPosition.RotationAxis;
+  
+  AnyMatrix GlenImplantRotation = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GlenImplantPos.ARel;
+  AnyVec3 GlenImplantPosition = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GlenImplantPos.sRel;
+  AnyVec3 GlenImplantCenter = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.ghProth.sRel;
+  
+  AnyVec3 HumImplantPosition = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.HumerusBoneGeometryNode.HumImplantPos.sRel;
+  AnyMatrix HumImplantRotation = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.HumerusBoneGeometryNode.HumImplantPos.ARel;
+  
+  // Acromion Offset    
+  AnyVar AcromionOffset = Main.AcromionScaling.AcromionOffset;
+  
+  // Manequin initial values
+  AnyVar GlenohumeralFlexion = Main.HumanModel.Mannequin.Posture.Right.GlenohumeralFlexion;
+  AnyVar GlenohumeralAbduction = Main.HumanModel.Mannequin.Posture.Right.GlenohumeralAbduction;
+  AnyVar GlenohumeralExternalRotation = Main.HumanModel.Mannequin.Posture.Right.GlenohumeralExternalRotation;
+  
+};
+
+
+
+
+
+

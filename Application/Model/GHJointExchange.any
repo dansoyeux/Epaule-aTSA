@@ -1,0 +1,174 @@
+//Excludes GHReactions.any and it's output 
+//Excludes GlenoHumeralJoint and GHReactions when FDK is activated
+
+#if BallAndSocket == 0
+MechObjectExclude = 
+arrcat(ObjSearchRecursive("Main.HumanModel.BodyModel.SelectedOutput.Right.ShoulderArm.JointReactionForce.GlenoHumeral_*","AnyMechObject"),
+ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions","*","AnyMechObject"),
+ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject"));
+#endif
+
+
+//Excludes the glenohumeral joint aswell when FDK deactivated
+#if BallAndSocket == 1
+MechObjectExclude = 
+arrcat(
+ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")
+
+);
+#endif // Ball And Socket == 1
+
+//Excludes the old GHJoint for in the calibration sequence 
+//Comment if not using MusclesHill model 
+
+Main.HumanModel.Calibration.RightArmCalibration0.ArmCalibrationStudy0.MechObjectExclude =  
+arrcat( 
+ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")); 
+
+Main.HumanModel.Calibration.RightArmCalibration1.ArmCalibrationStudy1.MechObjectExclude =  
+arrcat( 
+ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")); 
+
+Main.HumanModel.Calibration.RightArmCalibration2.ArmCalibrationStudy2.MechObjectExclude =  
+arrcat( 
+ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")); 
+
+Main.HumanModel.Calibration.RightArmCalibration3.ArmCalibrationStudy3.MechObjectExclude =  
+arrcat( 
+ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")); 
+
+Main.HumanModel.Calibration.RightArmCalibration4.ArmCalibrationStudy4.MechObjectExclude =  
+arrcat( 
+ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")); 
+
+Main.HumanModel.Calibration.RightArmCalibration5.ArmCalibrationStudy5.MechObjectExclude =  
+arrcat( 
+ObjSearchRecursive("Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GlenoHumeralJoint","*","AnyMechObject")); 
+
+
+// Hides the old GHReactions lines and nodes
+#if BallAndSocket == 0
+Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions.EdgeLine1.line.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions.EdgeLine2.line.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions.EdgeLine3.line.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions.EdgeLine4.line.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions.EdgeLine5.line.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions.EdgeLine6.line.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions.EdgeLine7.line.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt.GHReactions.EdgeLine8.line.Visible = Off;
+
+Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GHReactionCenterNodeRotated.CavityEdgeNode1.node.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GHReactionCenterNodeRotated.CavityEdgeNode2.node.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GHReactionCenterNodeRotated.CavityEdgeNode3.node.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GHReactionCenterNodeRotated.CavityEdgeNode4.node.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GHReactionCenterNodeRotated.CavityEdgeNode5.node.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GHReactionCenterNodeRotated.CavityEdgeNode6.node.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GHReactionCenterNodeRotated.CavityEdgeNode7.node.Visible = Off;
+Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula.GHReactionCenterNodeRotated.CavityEdgeNode8.node.Visible = Off;
+#endif
+
+
+/*------------------------------------------------------------------------------
+REDIFINITION OF THE GLENOHUMERAL JOINT WITH NEW NODES ON THE SCAPULA AND HUMERUS
+------------------------------------------------------------------------------*/
+
+//Definition of GH joint Rotation
+Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
+  
+  // Not used
+  AnyKinRotational GHRot = {
+    
+    //Ball and socket
+    #if BallAndSocket == 1  
+    AnyRefNode &scapula_gh = ..Seg.Scapula.gh;
+    #else
+   
+    //Changed rot node to center of THE implant SURFACE
+    AnyRefNode &scapula_gh = ..Seg.Scapula.ghProth;
+    #endif
+    
+    AnyRefNode &humerus_gh = ..Seg.Humerus.gh;
+    Type = RotAxesAngles;
+    Axis1 = y;
+    Axis2 = z;
+    Axis3 = y;
+  }; 
+  
+  ///Definition of GH Linear movement relative to the center of the glenoid implant
+  AnyKinLinear GHLin = {
+    
+    
+    
+    #if BallAndSocket == 0
+    //Old joint definition
+    //        AnyRefNode &scapula_gh = ..Seg.Scapula.gh.ghProth;
+    
+    //CENTER OF THE GLENOID SURFACE
+    AnyRefNode &scapula_gh = ..Seg.Scapula.ghProth;
+    
+    #else
+    AnyRefNode &scapula_gh = ..Seg.Scapula.gh;
+    #endif
+    
+    AnyRefNode &humerus_gh = ..Seg.Humerus.gh;
+    Ref=0; //use this for shifting between the two ref systems: scapula=0, humerus=1
+  };
+  
+  
+  // Driver GH
+  AnyKinEqSimpleDriver GHLinCon = {
+    AnyKinMeasure &ref = .GHLin;
+    
+    
+    #if BallAndSocket == 0 
+    //Position initiale (t=0s) = px, py et pz definis dans InputVariables.any;
+    DriverPos = {Main.InputVariables.JointPosition.px,Main.InputVariables.JointPosition.py,Main.InputVariables.JointPosition.pz}; 
+    
+    
+    #endif
+    
+    
+    DriverVel = {0,0,0};
+    
+    #if BallAndSocket==1
+    Reaction.Type={Off,Off,Off};
+    CType = {Soft,Soft,Soft};
+    #endif
+    
+    #if BallAndSocket==0
+    //      Reaction.Type={On, Off,Off};
+    //      CType = {Soft,ForceDep,ForceDep};
+    Reaction.Type={Off, Off,Off};
+    CType = {ForceDep,ForceDep,ForceDep};
+    #endif
+    
+  };
+  
+  #if BallAndSocket==0
+  //  Measure of linear distance between scapula.gh and humerus.gh
+  // Not used as a driver
+  AnyKinLinear GHLin_Absolute = {
+    AnyRefNode &scapula_gh = ..Seg.Scapula.gh;   
+    AnyRefNode &humerus_gh = ..Seg.Humerus.gh;
+    Ref=0; //use this for shifting between the two ref systems: scapula=0, humerus=1
+  };
+  
+  //  Measure of linear distance between scapula.ghProth_ISB and humerus.gh
+  // Not used as a driver
+  // Used to have the translations in the ISB coordinate system
+  AnyKinLinear GHLin_ISB = {
+    AnyRefNode &scapula_gh = ..Seg.Scapula.ghProth_ISB;   
+    AnyRefNode &humerus_gh = ..Seg.Humerus.gh;
+    Ref=0; //use this for shifting between the two ref systems: scapula=0, humerus=1
+  };
+  #endif
+  
+};//Jnt
+
+
+
+
+
+
+
+

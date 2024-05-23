@@ -1,0 +1,115 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Study
+Operation: Main.Study.InverseDynamics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Study.FileOut.UpdData = 3
+Main.Study.FileOut.FileName = "Result Files\PJ178_Anybody_BallAndSocket_long.txt"
+Main.Study.FileOut.NumberFormat.Digits = 6
+Main.Study.FileOut.NumberFormat.UpdFormat = 1
+Main.Study.FileOut.NumberFormat.Width = 23
+Main.Study.FileOut.NumberFormat.Style = ScientificNumber
+Main.Study.FileOut.NumberFormat.FormatStr = "%23.6e"
+Main.Study.FileOut.Values = 
+Main.Study.FileOut.Search = 
+Main.Study.FileOut.Format = 0
+Main.Study.FileOut.SepSign = ","
+Main.Study.FileOut.SepSpaceAutoOnOff = On
+Main.Study.FileOut.LineSepSign = ""
+Main.Study.FileOut.Header.TitleSectionOnOff = On
+Main.Study.FileOut.Header.ConstSectionOnOff = On
+Main.Study.FileOut.Header.ConstSectionSaveOptionsOnOff = On
+Main.Study.FileOut.Header.VarSectionOnOff = On
+Main.Study.FileOut.Header.ColumnNamesOnOff = On
+Main.Study.FileOut.Header.LinePrefix = ""
+Main.Study.FileOut.Header.ShortenNamesOnOff = Off
+Main.Study.FileOut.Header.ColumnIDString = "col"
+Main.Study.FileOut.ConstSectionSaveOptionsOnOff = On
+Main.Study.FileOut.SuppressTimeColumnOnOff = Off
+Main.Study.FileOut.AMMRVersion = "2.4.2"
+Main.Study.FileOut.AnybodyVersion = "8.0.1.11638"
+Main.Study.FileOut.nStep =            7.000000e+01
+Main.Study.FileOut.tEnd =            1.200000e+02
+Main.Study.FileOut.Movement = "Elevation"
+Main.Study.FileOut.MuscleRecruitment = MR_Polynomial
+Main.Study.FileOut.AuxLinearTerm_Weight =            0.000000e+00
+Main.Study.FileOut.Case = "xdown-long"
+Main.Study.FileOut.AcromionOffset =            7.850000e-03
+Main.Study.FileOut.GlenohumeralFlexion =            0.000000e+00
+Main.Study.FileOut.GlenohumeralAbduction =            1.500000e+01
+Main.Study.FileOut.GlenohumeralExternalRotation =           -2.100000e+01
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Study.t
+----------------------------------------------------------
+Main.Study.t
+           0.000000e+00
+           1.739130e+00
+           3.478261e+00
+           5.217391e+00
+           6.956522e+00
+           8.695652e+00
+           1.043478e+01
+           1.217391e+01
+           1.391304e+01
+           1.565217e+01
+           1.739130e+01
+           1.913043e+01
+           2.086957e+01
+           2.260870e+01
+           2.434783e+01
+           2.608696e+01
+           2.782609e+01
+           2.956522e+01
+           3.130435e+01
+           3.304348e+01
+           3.478261e+01
+           3.652174e+01
+           3.826087e+01
+           4.000000e+01
+           4.173913e+01
+           4.347826e+01
+           4.521739e+01
+           4.695652e+01
+           4.869565e+01
+           5.043478e+01
+           5.217391e+01
+           5.391304e+01
+           5.565217e+01
+           5.739130e+01
+           5.913043e+01
+           6.086957e+01
+           6.260870e+01
+           6.434783e+01
+           6.608696e+01
+           6.782609e+01
+           6.956522e+01
+           7.130435e+01
+           7.304348e+01
+           7.478261e+01
+           7.652174e+01
+           7.826087e+01
+           8.000000e+01
+           8.173913e+01
+           8.347826e+01
+           8.521739e+01
+           8.695652e+01
+           8.869565e+01
+           9.043478e+01
+           9.217391e+01
+           9.391304e+01
+           9.565217e+01
+           9.739130e+01
+           9.913043e+01
+           1.008696e+02
+           1.026087e+02
+           1.043478e+02
+           1.060870e+02
+           1.078261e+02
+           1.095652e+02
+           1.113043e+02
+           1.130435e+02
+           1.147826e+02
+           1.165217e+02
+           1.182609e+02
+           1.200000e+02

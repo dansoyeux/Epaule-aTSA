@@ -1,0 +1,57 @@
+// File that saves the simulation constants to a .txt file that will have the same name as the .anydata.h5 file
+
+// Save in a *.txt file
+AnyOutputFile FileOut = {
+  FileName = .SaveResultsh5.OutputFileName + ".txt";
+  
+  NumberFormat.Digits = 6;
+  
+  // Header
+  Header = {
+    TitleSectionOnOff = On;
+    ConstSectionOnOff = On;
+    VarSectionOnOff = On;
+    ColumnNamesOnOff = On;  //swicth the column names on/off
+    LinePrefix = "";
+    ShortenNamesOnOff = Off;
+    
+  };     
+  // Anybody version
+  AnyString AMMRVersion = AMMR_VERSION;
+  AnyStringVar AnybodyVersion = strval(ANYBODY_V1) + "." + strval(ANYBODY_V2) + "." + strval(ANYBODY_V3) + "." + strval(ANYBODY_V4);
+  
+  //-----------------SIMULATIONS PARAMETERS----------------------------
+  // Input Values 
+  AnyVar nStep = Main.Study.nStep;
+  AnyVar tEnd = Main.Study.tEnd;
+  
+  // Movement type
+    #if ArmMovement == Abduction
+  AnyString Movement = "Abduction";
+  #endif
+  
+  #if ArmMovement == Elevation
+  AnyString Movement = "Elevation";
+  
+  #endif
+  
+  // Muscle recruitment type
+  AnyEnumMuscleRecruitmentType MuscleRecruitment = Main.Study.InverseDynamics.Criterion.Type;
+  AnyFloat AuxLinearTerm_Weight = Main.Study.InverseDynamics.Criterion.AuxLinearTerm.Weight; 
+   
+  // CSA case 
+  AnyString Case = CSA_Case;
+  // Acromion Offset    
+  AnyVar AcromionOffset = Main.AcromionScaling.AcromionOffset;
+  
+  // Manequin initial values
+  AnyVar GlenohumeralFlexion = Main.HumanModel.Mannequin.Posture.Right.GlenohumeralFlexion;
+  AnyVar GlenohumeralAbduction = Main.HumanModel.Mannequin.Posture.Right.GlenohumeralAbduction;
+  AnyVar GlenohumeralExternalRotation = Main.HumanModel.Mannequin.Posture.Right.GlenohumeralExternalRotation;
+};
+
+
+
+
+
+
