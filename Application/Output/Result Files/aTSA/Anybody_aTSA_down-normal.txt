@@ -1,0 +1,142 @@
+---- AnyBody Output File ---------------------------------
+Study: Main.Study
+Operation: Main.Study.InverseDynamics
+----------------------------------------------------------
+Constants (Name = Value): 
+Main.Study.FileOut.UpdData = 3
+Main.Study.FileOut.FileName = "Result Files\aTSA\Anybody_aTSA_down-normal.txt"
+Main.Study.FileOut.NumberFormat.Digits = 6
+Main.Study.FileOut.NumberFormat.UpdFormat = 1
+Main.Study.FileOut.NumberFormat.Width = 23
+Main.Study.FileOut.NumberFormat.Style = ScientificNumber
+Main.Study.FileOut.NumberFormat.FormatStr = "%23.6e"
+Main.Study.FileOut.Values = 
+Main.Study.FileOut.Search = 
+Main.Study.FileOut.Format = 0
+Main.Study.FileOut.SepSign = ","
+Main.Study.FileOut.SepSpaceAutoOnOff = On
+Main.Study.FileOut.LineSepSign = ""
+Main.Study.FileOut.Header.TitleSectionOnOff = On
+Main.Study.FileOut.Header.ConstSectionOnOff = On
+Main.Study.FileOut.Header.ConstSectionSaveOptionsOnOff = On
+Main.Study.FileOut.Header.VarSectionOnOff = On
+Main.Study.FileOut.Header.ColumnNamesOnOff = On
+Main.Study.FileOut.Header.LinePrefix = ""
+Main.Study.FileOut.Header.ShortenNamesOnOff = Off
+Main.Study.FileOut.Header.ColumnIDString = "col"
+Main.Study.FileOut.ConstSectionSaveOptionsOnOff = On
+Main.Study.FileOut.SuppressTimeColumnOnOff = Off
+Main.Study.FileOut.AMMRVersion = "2.4.2"
+Main.Study.FileOut.AnybodyVersion = "8.0.1.11638"
+Main.Study.FileOut.nStep =            7.000000e+01
+Main.Study.FileOut.tEnd =            1.200000e+02
+Main.Study.FileOut.Movement = "Elevation"
+Main.Study.FileOut.MuscleRecruitment = MR_Polynomial
+Main.Study.FileOut.AuxLinearTerm_Weight =            0.000000e+00
+Main.Study.FileOut.Case = "down-normal"
+Main.Study.FileOut.k0 = {           5.500000e+00,           -5.000000e-01}
+Main.Study.FileOut.k1 =           -7.787000e+00
+Main.Study.FileOut.k2 =            4.391000e+00
+Main.Study.FileOut.k3 =            0.000000e+00
+Main.Study.FileOut.k4 =           -8.637000e-02
+Main.Study.FileOut.kz =            0.000000e+00
+Main.Study.FileOut.UseAdaptiveForceTolOnOff = Off
+Main.Study.FileOut.MaxIteration =            5.000000e+01
+Main.Study.FileOut.Perturbation =            1.000000e-05
+Main.Study.FileOut.PerturbationSymmetricOnOff = On
+Main.Study.FileOut.LocalSearchOnOff = On
+Main.Study.FileOut.MaxNewtonStep =            1.000000e-03
+Main.Study.FileOut.px =           -1.470000e-03
+Main.Study.FileOut.py =            1.830000e-03
+Main.Study.FileOut.pz =           -1.895000e-03
+Main.Study.FileOut.kd =            1.000000e+10
+Main.Study.FileOut.HumerusName = "TeteCeraver_51"
+Main.Study.FileOut.GlenoidName = "GleneCeraver_T3"
+Main.Study.FileOut.GleneImplantInclinationAngle =           -2.980000e+00
+Main.Study.FileOut.GleneImplantVersionAngle =            4.286000e+00
+Main.Study.FileOut.RotationAxis = "Axe anteroposterieur glenoid implant"
+Main.Study.FileOut.GlenImplantRotation = {{          -1.934670e-01,            1.642110e-01,            9.672670e-01}, {          -2.268770e-01,            9.516830e-01,           -2.069440e-01}, {          -9.545140e-01,           -2.594870e-01,           -1.468640e-01}}
+Main.Study.FileOut.GlenImplantPosition = {          -2.586977e-02,           -3.779003e-02,           -2.609378e-02}
+Main.Study.FileOut.GlenImplantCenter = {           2.861686e-02,           -4.951165e-02,           -3.494962e-02}
+Main.Study.FileOut.HumImplantPosition = {          -9.908800e-03,            3.873800e-03,            2.932170e-04}
+Main.Study.FileOut.HumImplantRotation = {{          -1.985680e-01,           -5.860000e-01,           -7.856040e-01}, {          -1.717430e-01,           -7.683590e-01,            6.165460e-01}, {          -9.649220e-01,            2.573480e-01,            5.192900e-02}}
+Main.Study.FileOut.AcromionOffset =            0.000000e+00
+Main.Study.FileOut.GlenohumeralFlexion =            0.000000e+00
+Main.Study.FileOut.GlenohumeralAbduction =            1.500000e+01
+Main.Study.FileOut.GlenohumeralExternalRotation =           -2.100000e+01
+----------------------------------------------------------
+Variables (Column# Name): 
+col0  Main.Study.t
+col1  Main.Study.FileOut.ForceTol
+----------------------------------------------------------
+Main.Study.t,Main.Study.FileOut.ForceTol
+           0.000000e+00,           7.834444e-04
+           1.739130e+00,           5.879587e-04
+           3.478261e+00,           9.664294e-04
+           5.217391e+00,           9.146634e-04
+           6.956522e+00,           9.552213e-04
+           8.695652e+00,           2.740580e-04
+           1.043478e+01,           3.065291e-04
+           1.217391e+01,           8.307913e-04
+           1.391304e+01,           8.655613e-04
+           1.565217e+01,           8.904481e-04
+           1.739130e+01,           3.885282e-04
+           1.913043e+01,           5.452854e-04
+           2.086957e+01,           9.218955e-04
+           2.260870e+01,           4.334980e-04
+           2.434783e+01,           6.884595e-04
+           2.608696e+01,           7.198238e-04
+           2.782609e+01,           8.926501e-04
+           2.956522e+01,           7.919905e-04
+           3.130435e+01,           2.886300e-04
+           3.304348e+01,           7.849295e-04
+           3.478261e+01,           7.135661e-04
+           3.652174e+01,           8.949884e-04
+           3.826087e+01,           6.904791e-04
+           4.000000e+01,           5.957765e-04
+           4.173913e+01,           8.675137e-04
+           4.347826e+01,           2.667867e-04
+           4.521739e+01,           9.407285e-04
+           4.695652e+01,           9.867404e-04
+           4.869565e+01,           9.307142e-04
+           5.043478e+01,           8.575381e-04
+           5.217391e+01,           7.936937e-04
+           5.391304e+01,           6.554255e-04
+           5.565217e+01,           9.275832e-04
+           5.739130e+01,           8.043887e-04
+           5.913043e+01,           8.213048e-04
+           6.086957e+01,           2.947540e-04
+           6.260870e+01,           2.360072e-04
+           6.434783e+01,           8.297902e-04
+           6.608696e+01,           9.520795e-04
+           6.782609e+01,           9.401117e-04
+           6.956522e+01,           9.084491e-04
+           7.130435e+01,           6.834150e-04
+           7.304348e+01,           6.842566e-04
+           7.478261e+01,           9.743188e-04
+           7.652174e+01,           2.789899e-04
+           7.826087e+01,           8.353302e-04
+           8.000000e+01,           6.170644e-04
+           8.173913e+01,           7.277544e-04
+           8.347826e+01,           6.542968e-04
+           8.521739e+01,           4.723823e-04
+           8.695652e+01,           7.818070e-04
+           8.869565e+01,           7.275903e-04
+           9.043478e+01,           7.283581e-04
+           9.217391e+01,           8.201667e-04
+           9.391304e+01,           5.713102e-04
+           9.565217e+01,           2.975314e-04
+           9.739130e+01,           8.735129e-04
+           9.913043e+01,           9.104607e-04
+           1.008696e+02,           9.369346e-04
+           1.026087e+02,           9.957305e-04
+           1.043478e+02,           9.100116e-04
+           1.060870e+02,           9.881685e-04
+           1.078261e+02,           8.404570e-04
+           1.095652e+02,           7.564423e-04
+           1.113043e+02,           7.812069e-04
+           1.130435e+02,           9.314757e-04
+           1.147826e+02,           8.333619e-04
+           1.165217e+02,           9.480149e-04
+           1.182609e+02,           8.927705e-04
+           1.200000e+02,           9.689832e-04
