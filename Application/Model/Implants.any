@@ -86,17 +86,6 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
 //Enlever cet offset en appliquant cet offset aux coordonnes de base de l'implant humeral
 Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
   
-  //      AnyRefNode ghProth = {
-  //    ARel=.Param.HumPosition.Rotation;
-  //    sRel = ;
-  //    AnyDrawRefFrame drw = {
-  //        Visible = On;
-  //        RGB={1,0,0};        
-  //        ScaleXYZ={1,1,1}*0.06;
-  //        
-  //      };
-  
-  
   //Displays Humerus.gh node
   gh = {
     AnyDrawRefFrame drw = {
@@ -107,14 +96,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
     };
     
   }; //gh humerus
-  
-  //  Modele osseux Humerus
-  AnyRefNode HumerusBoneGeometryNode={ 
-    sRel={0, 0 ,0};
-    AnyDrawRefFrame drw = {
-      Visible= Off;
-      ScaleXYZ={1,1,1}/15;
-    };   
+    
     
     AnyFolder &Param = Main.InputVariables.ImplantParameters;
     
@@ -142,8 +124,8 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
         
       }; // ProtHumSTL    
       
-      AnyRefNode ghProth_local = {
-        sRel={0,0,-7.73512}/1000;
+      AnyRefNode ghProth = {
+        sRel=Main.InputVariables.ImplantParameters.HumPosition.Center_Local;
         
         AnyDrawRefFrame drw = {
           Visible = On;
@@ -151,11 +133,9 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
           ScaleXYZ={1,1,1}*0.06;
           
         };  
-        
-      };
+      }; //ghProth
       
-    }; // HumImplantPos
-  }; // HumerusBoneGeometryNode
+    }; // HumImplantPos 
   
 };//Humerus
 

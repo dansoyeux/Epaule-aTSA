@@ -21,8 +21,8 @@ Simulation_Outputs = {
   AnyFloat GlenImplant_Pos = ..Seg.Scapula.GlenImplantPos.r;    // Position  glenoid implant vs global
   
   // Humeral Head Implant
-  AnyFloat HumImplant_Rot = ..Seg.Humerus.HumerusBoneGeometryNode.HumImplantPos.Axes; // Rotation Humeral Head implant vs global
-  AnyFloat HumImplant_Pos = ..Seg.Humerus.HumerusBoneGeometryNode.HumImplantPos.r;    // Position Humeral Head implant vs global
+  AnyFloat HumImplant_Rot = ..Seg.Humerus.HumImplantPos.Axes; // Rotation Humeral Head implant vs global
+  AnyFloat HumImplant_Pos = ..Seg.Humerus.HumImplantPos.r;    // Position Humeral Head implant vs global
   
   // Contact force on the humerus coordinate system (ISB coordinate system) (to compare to Bergmann et al. data)
   // (humerus = master)

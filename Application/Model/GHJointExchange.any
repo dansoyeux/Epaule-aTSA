@@ -80,12 +80,14 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
     //Ball and socket
     #if BallAndSocket == 1  
     AnyRefNode &scapula_gh = ..Seg.Scapula.gh;
+    AnyRefNode &humerus_gh = ..Seg.Humerus.gh;
     #else
-    //Changed rot node to center of the implant surface
+    //Changed rot node to center of the implant surfaces
     AnyRefNode &scapula_gh = ..Seg.Scapula.ghProth;
+    AnyRefNode &humerus_gh = ..Seg.Humerus.HumImplantPos.ghProth;
     #endif
     
-    AnyRefNode &humerus_gh = ..Seg.Humerus.gh;
+ 
     Type = RotAxesAngles;
     Axis1 = y;
     Axis2 = z;
@@ -96,14 +98,15 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
   AnyKinLinear GHLin = {
     
     #if BallAndSocket == 0   
-    //CENTER OF THE GLENOID SURFACE
+    //Changed lin node to center of the implant surfaces
     AnyRefNode &scapula_gh = ..Seg.Scapula.ghProth;
-    
+    AnyRefNode &humerus_gh = ..Seg.Humerus.HumImplantPos.ghProth;
     #else
     AnyRefNode &scapula_gh = ..Seg.Scapula.gh;
+    AnyRefNode &humerus_gh = ..Seg.Humerus.gh;
     #endif
     
-    AnyRefNode &humerus_gh = ..Seg.Humerus.gh;
+    
     Ref=0; //use this for shifting between the two ref systems: scapula=0, humerus=1
   };
   

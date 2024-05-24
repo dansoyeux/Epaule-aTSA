@@ -123,7 +123,7 @@ FDK_ConstantsDictionary = {"AnybodyFileOutPath": "Main.Study.FileOut",
                            "Positions initiales": ["px", "py", "pz"],
 
                            "Paramètres implants": ["HumerusName", "GlenoidName", "Case", "RotationAxis", "GleneImplantInclinationAngle", "GleneImplantVersionAngle", "GlenImplantRotation",
-                                                   "GlenImplantPosition", "GlenImplantCenter", "HumImplantPosition", "HumImplantRotation", "AcromionOffset"],
+                                                   "GlenImplantPosition", "GlenImplantCenter", "HumImplantPosition", "HumImplantRotation", "HumImplantCenter", "AcromionOffset"],
                            }
 
 BallAndSocket_ConstantsDictionary = {"AnybodyFileOutPath": "Main.Study.FileOut",

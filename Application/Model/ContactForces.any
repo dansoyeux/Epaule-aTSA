@@ -30,7 +30,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
   
   
   AnyForceSurfaceContact ProtheseContact = {
-    AnySurfSTL &master = ..Seg.Humerus.HumerusBoneGeometryNode.HumImplantPos.ProtHumSTL;
+    AnySurfSTL &master = ..Seg.Humerus.HumImplantPos.ProtHumSTL;
     AnySurfSTL &slave = ..Seg.Scapula.GlenImplantPos.GleneSTL;
     PressureModule = Main.InputVariables.FDK.Contact.kd;
     ForceViewOnOff = On;
