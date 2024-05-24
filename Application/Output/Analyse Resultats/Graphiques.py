@@ -598,7 +598,10 @@ graph_parameters = {"xlim": [0, 120],
                     "muscle_list_by_categories": list_muscle_variation,
 
                     # Pour COP
-                    "COP_contour": COP_contour
+                    "COP_contour": COP_contour,
+
+                    "hide_center_axis_labels": True
+
                     }
 
 graph_parameters_3 = {"xlim": [0, 120],
@@ -620,7 +623,9 @@ graph_parameters_3 = {"xlim": [0, 120],
                       "muscle_list_by_categories": list_muscle_variation,
 
                       # Pour COP
-                      "COP_contour": COP_contour
+                      "COP_contour": COP_contour,
+
+                      "hide_center_axis_labels": True
                       }
 
 # With neutral
@@ -643,7 +648,9 @@ graph_parameters_6 = {"xlim": [0, 120],
                       "muscle_list_by_categories": list_muscle_variation,
 
                       # Pour COP
-                      "COP_contour": COP_contour
+                      "COP_contour": COP_contour,
+
+                      "hide_center_axis_labels": True
                       }
 
 # Parameters of the graphs
@@ -666,22 +673,24 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
                             "muscle_list_by_categories": list_muscle_variation,
 
                             # Pour COP
-                            "COP_contour": COP_contour
+                            "COP_contour": COP_contour,
+
+                            "hide_center_axis_labels": True
                             }
 
-"""Elevation (done)"""
-# # No recentrage
-# my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/Elevation", "No recentrage", save_graph=True, composante_on=False, **graph_parameters)
+# Tous les résultats
+# my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Tous les résultats", save_graph=True, composante_on=False, **graph_parameters_6)
 
-# # Avec neutral
-# my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/Elevation", "No recentrage with neutral", save_graph=True, composante_on=False, **graph_parameters_6)
+# %% Résultats classés par CSA
 
-"""Par CSA Elevation"""
-# my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/Elevation/No recentrage", "Par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
+# Combine les résultats par CSA
+
+
+# my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Classé par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
 
 # %% Figures article
 
-my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_36x, True)
+# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_36x, True)
 
 # %% graph surface score
 

@@ -86,7 +86,7 @@ FDK_VariableDictionary = {"Abduction": {"VariablePath": "Output.Simulation_Outpu
 
                           "ContactArea": {"VariablePath": "Output.Simulation_Outputs.ContactArea", "VariableDescription": r'Contact area [$cm^2$]', "MultiplyFactor": 10000},
 
-                          "Time": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Time", "MultiplyFactor": 10000},
+                          "Time": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Time"},
 
                           "MaxPenetration": {"VariablePath": "Output.Simulation_Outputs.MaxPenetration", "VariableDescription": 'Maximal penetration of the implants [mm]', "MultiplyFactor": 1000},
 
@@ -286,28 +286,27 @@ CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *Up
 
 # %%                                                Résultats aTSA
 
-"""Results"""
 # aTSA_dir = "../Result Files/aTSA"
-# files = ["PJ178_Anybody_" + CaseName for CaseName in CaseNames_6]
-# Results = load_simulation_cases(aTSA_dir, files, CaseNames_6, FDK_Variables)
-# Results, scores_moment, scores_shear = additional_calculations(Results)
+# files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in CaseNames_6]
+# Results_aTSA = load_simulation_cases(aTSA_dir, files, CaseNames_6, FDK_Variables)
+# Results_aTSA, scores_moment, scores_shear = additional_calculations(Results_aTSA)
 
 # # Sauvegarde des scores et des résultats en .pkl
 # save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
 # save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
-# save_results_to_file(Results, SaveSimulationsDirectory, "Results_aTSA")
+# save_results_to_file(Results_aTSA, SaveSimulationsDirectory, "Results_aTSA")
 
 # %%                                                Résultats Ball and Socket
 
-BalAndSocket_Cases = ["xshort", "short", "normal", "long", "xlong"]
+# BalAndSocket_Cases = ["xshort", "short", "normal", "long", "xlong"]
 
-BallAndSocket_dir = "../Result Files/BallAndSocket"
-BallAndSocket_Files = [f"PJ178_Anybody_BallAndSocket_{CaseName}" for CaseName in BalAndSocket_Cases]
+# BallAndSocket_dir = "../Result Files/BallAndSocket"
+# BallAndSocket_Files = [f"PJ178_Anybody_BallAndSocket_{CaseName}" for CaseName in BalAndSocket_Cases]
 
-Results_BallAndSocket = load_simulation_cases(BallAndSocket_dir, BallAndSocket_Files, BalAndSocket_Cases, BallAndSocket_Variables)
+# Results_BallAndSocket = load_simulation_cases(BallAndSocket_dir, BallAndSocket_Files, BalAndSocket_Cases, BallAndSocket_Variables)
 
-# Sauvegarde de la simulation en .pkl
-save_results_to_file(Results_BallAndSocket, SaveSimulationsDirectory, "Results_BallAndSocket")
+# # Sauvegarde de la simulation en .pkl
+# save_results_to_file(Results_BallAndSocket, SaveSimulationsDirectory, "Results_BallAndSocket")
 
 # %% chargement données littérature depuis excel
 

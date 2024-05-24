@@ -195,8 +195,8 @@ def all_variables_graphs(data, data_Ball_And_Socket, literature_data, save_folde
         figsize_3 = [14, 13]
         figsize_5 = [24, 14]
 
-        subfolder_name = "By Variables"
-        graph_files_name = "By_Variable"
+        subfolder_name = "By Categories"
+        graph_files_name = "By_Category"
         subfolder_path = f"{folder_path}/{subfolder_name}"
 
         data["Ball And Socket"] = data_Ball_And_Socket
@@ -220,7 +220,7 @@ def all_variables_graphs(data, data_Ball_And_Socket, literature_data, save_folde
         muscle_graph_by_case_categories(data, CasesCategories_5_F, muscle_list_by_categories, "Abduction", "Ft", composante_y_muscle_combined=["Total"], figsize=figsize_5, muscle_part_on=False, same_lim=True, **graph_parameters)
         muscle_graph_by_case_categories(data, CasesCategories_3_F, muscle_list_by_categories, "Abduction", "Ft", composante_y_muscle_combined=["Total"], figsize=figsize_3, muscle_part_on=False, same_lim=True, **graph_parameters)
 
-        # Saves the figures in a sub folder By Variables
+        # Saves the figures in a sub folder By Categories
         if save_graph:
             save_all_active_figures(folder_path, subfolder_name, graph_files_name, save_format)
 
@@ -270,9 +270,7 @@ def all_variables_graphs(data, data_Ball_And_Socket, literature_data, save_folde
         figsize_3 = [14, 13]
         figsize_5 = [24, 14]
 
-        # subfolder_name = "Moment arm"
         graph_files_name = "Moment_arm"
-        # subfolder_path = f"{folder_path}/{subfolder_name}"
 
         figsize = [24, 14]
 
@@ -293,7 +291,7 @@ def all_variables_graphs(data, data_Ball_And_Socket, literature_data, save_folde
         muscle_graph_by_case_categories(data, CasesCategories_3, muscle_list_by_categories, "Abduction", "MomentArm", composante_y_muscle_combined=["Mean"], figsize=figsize_5, muscle_part_on=False, same_lim=True, **graph_parameters)
 
         if save_graph:
-            save_all_active_figures(folder_path, "By Variables", graph_files_name, save_format)
+            save_all_active_figures(folder_path, "By Categories", graph_files_name, save_format)
             print("Moment Arms figures saved\n")
 
     def my_COP_graph(data, folder_path, save_graph=False, save_format="png", CasesCategories_3=None, CasesCategories_5=None, **graph_parameters):
@@ -340,7 +338,7 @@ def all_variables_graphs(data, data_Ball_And_Socket, literature_data, save_folde
         figsize_5 = [24, 14]
 
         data_Bergmann = data.copy()
-        data_Bergmann["Bergmann 2007"] = literature_data["ContactForce"]["Bergmann 2007"]
+        data_Bergmann["Bergmann 2007"] = literature_data["ContactForce humerus"]["Bergmann 2007"]
         CaseNames_3_Bergmann = [*CaseNames_3, "Bergmann 2007"]
 
         CasesCategories_3_Bergmann = {}
@@ -396,14 +394,14 @@ def all_variables_graphs(data, data_Ball_And_Socket, literature_data, save_folde
             print("ContactForce figures saved\n")
 
     def my_FDKForceError(data, folder_path, save_graph=False, save_format="png", CasesCategories_3=None, CasesCategories_5=None, **graph_parameters):
-        subfolder_name = "FDKForceTolError"
-        graph_files_name = "FDKForceTolError"
+        subfolder_name = "ForceDepKinError"
+        graph_files_name = "ForceDepKinError"
         # subfolder_path = f"{folder_path}/{subfolder_name}"
 
         # figsize_3 = [14, 13]
         # figsize_5 = [24, 14]
 
-        graph(data, "Abduction", "ForceTolError", "FDK Force Tolerence error", cases_on="all", composante_y=["Total"], **graph_parameters)
+        graph(data, "Abduction", "ForceDepKinError", "FDK Force Tolerence error", cases_on="all", composante_y=["Total"], **graph_parameters)
 
         if save_graph:
             save_all_active_figures(folder_path, subfolder_name, graph_files_name, save_format)
