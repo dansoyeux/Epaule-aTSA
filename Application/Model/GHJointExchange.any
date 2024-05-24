@@ -106,7 +106,6 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
     AnyRefNode &humerus_gh = ..Seg.Humerus.gh;
     #endif
     
-    
     Ref=0; //use this for shifting between the two ref systems: scapula=0, humerus=1
   };
   

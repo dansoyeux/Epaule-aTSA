@@ -79,7 +79,7 @@ AnyOutputFile FileOut = {
   
   AnyVec3 HumImplantPosition = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.HumImplantPos.sRel;
   AnyMatrix HumImplantRotation = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.HumImplantPos.ARel;
-  AnyVec3 HumImplantCenter = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.ghProth.sRel;
+  AnyVec3 HumImplantCenter = Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus.HumImplantPos.ghProth.sRel;
 
   // Acromion Offset    
   AnyVar AcromionOffset = Main.AcromionScaling.AcromionOffset;

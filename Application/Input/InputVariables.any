@@ -21,7 +21,7 @@ AnyFolder InputVariables = {
     
     // k0 = Value ajusted so that the case with neutral inclinatin and normal acromion give a centered COP on the glenoid implant on the first step
     // to ajust it, set SmallAbduction to 1 and ajust k0 to obtain Main.Study.Simulation_Outputs.COP_glenoid = {0,0,xxx}
-    AnyFloat k0 = -{-5.5, 0.5};   
+    AnyFloat k0 = -{-4.5, -1.5};   
     AnyFloat k1 = -7.787;  
     AnyFloat k2 = 4.391;
     AnyFloat k3 = 0 ;
@@ -52,7 +52,7 @@ AnyFolder InputVariables = {
   0 : abduction from 15deg to 120deg 
   */
   #ifndef SmallAbductionOn
-  #define SmallAbductionOn 0
+  #define SmallAbductionOn 1
   #endif
 
   /* -------------------------------------------Glenoid inclination selection------------------------------------
@@ -65,7 +65,7 @@ AnyFolder InputVariables = {
   */
 
   #ifndef CSA_Tilt
-  #define CSA_Tilt "xdown"
+  #define CSA_Tilt "xup"
   #endif
   
   /* -------------------------------------------Acromion lengthening selection------------------------------------
@@ -77,7 +77,7 @@ AnyFolder InputVariables = {
   */
  
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "xlong"
+  #define CSA_Acromion_Length "normal"
   #endif
   
   #define CSA_Case CSA_Tilt + "-" + CSA_Acromion_Length
@@ -94,7 +94,7 @@ AnyFolder InputVariables = {
   
   // Activates the Saving of the results after simulation
   #ifndef AutoSaveOption 
-  #define AutoSaveOption 1
+  #define AutoSaveOption 0
   #endif
     
   // Result names and folder

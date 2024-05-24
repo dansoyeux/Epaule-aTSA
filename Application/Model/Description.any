@@ -2,51 +2,54 @@
 The AnyEpaule model consists in an inverse dynamic musculoskeletal model of shoulder. 
 This model was developed in the objective to be used for non-conforming total shoulder arthroplasty (NC-TSA) evaluation.
 
-This model is an updated version of the model developed by Lauranne Sins during her PhD.
-It can now be upgraded to newer AMMR versions by changing the libdef.any file
+This model is an updated version of the model developed by Lauranne Sins during her PhD (2015).
+The model is described in an article (DOI : 10.1115/1.4031330)
+
+The model was updated to be usable in any AMMR version and allow to vary the Critical Shoulder Angle (CSA) by Dan Soyeux in the context of his Master degree (2024).
+
+---------------------New Glenohumeral joint with anatomical NC implants---------------------
 
 The simulation variables are controled in the file "Input/InputVariables.any"
 
 A glenoid and a humeral anatomical non-conforming implant are placed on the model (Model/Implants.any) and a contact force between them is introduced (Model/ContactForces.any).
 
-Several model can be inserted (see the folder Input/Implants/ImplantMdels)
+Several model can be inserted (see the folder Input/Implants/ImplantModels) with different sizes of humeral head and different glenoid shapes.
 
 The model excludes the original Ball and Socket glenohumeral joint to introduce glenohumeral translation by using the FDK algorithm (Model/GHJointExchange.any).
 New joint center or rotations are defined as the center of these implants instead of the center of the humeral head and glenoid surface.
 
-The center of rotation of the humeral implant is exactly the position {0, 0, 0} of its STL.
-The center of rotation of the glenoid implant (Scapula.ghProth) is the center of a sphere fitted to the glenoid surface 
-(see the script Input\Implants\ImplantPositions\Glene surface Center Calculator\script.py)
+The center of rotation of the implants (Scapula.ghProth and Humerus.HumImplantPos.ghProth) is the center of a sphere fitted to their articular surface.
+(see the script Input\Implants\ImplantPositions\Glene surface Center Calculator\find_implant_surface_center.py)
 
-A constant stabilisation force is also introduced to center the center of pressure for a neutral glenoid inclination.
+A constant stabilisation force is also applied on the humerus to center the center of pressure for a neutral glenoid inclination and a normal acromion length (Model/ContactForces.any).
 
 ---------------------Critical Shoulder Angle variation---------------------
 
 The critical shoulder angle is an anatomical parameter measure. Anatomically it increases with an upward inclination of the glenoid implant or with a greater acromion length.
 
-Different position and rotation of the glenoid implant are defined (in )
-The model allows to select the  by different names (see CSA_Tilt in InputVariables.any)
+The length of the acromion is augmented or shortened with the Model/ScalingCustom.any.
+This script moves laterally the nodes on the edge of the acromion and the 4 origines of the deltoid lateral that are attached to the acromion.
 
+The model allows to select the glenoid upward/downward inclination (CSA_Tilt in InputVariables.any) and the acromion lengthening (CSA_Acromion_Length) by name.
+These names are correspond to different predefined acromion lengthening and glenoid rotation/position (defined in Model/CSA_Variation.any)
+Depending on the tilt name, a corresponding file that contains the glenoid and humeral position is loaded (in the folder Input/Implants/ImplantPositions)
 
+6 glenoid inclinations and 5 acromion lengths are used to obtain CSAs between 12deg and 50deg
+
+The glenoid implant is rotated using 3d slicer around an axis going through the center of its surface and parrallel to its anterior-posterior axis (see the folder CSA Variation - 3D slicer)
+The new center of rotation of the glenoid implant, the new position and rotation of the implant was calculated for each inclination.
+
+The initial position of the glenohumeral joint was also ajusted so that the initial conditions achieve a centered COP on the glenoid implant to be used in the Hill muscle calibration.
 
 ---------------------Output variables---------------------
-See Output/Simulation_Outputs.any
+An abduction in the scapular plane or in the coronal plane are made (ArmMovement in Input/InputVariables.any).
+The angle of abduction are defined in Model/JointAndDrivers
 
-.anydata.h5 (Results) and .txt (input simulation variables) are saved.
+Several outputs are calculated in Output/Simulation_Outputs.any
+The COP position on the glenoid implant and humeral implant, the contact area, the maximal penetration, the contact force in the humeral reference frame and in the glenoid reference frame.
 
-
-
-
-Satisfied Requirements: 
-R1. AnyEpaule must be a musculoskeletal numerical model of the shoulder joint.
-R2. AnyEpaule must use the AnyBodyTM Modeling System (AnyBody Technologies, Aalborg, Denmark) to provide results, based on inverse dynamic analysis computation.
-R3. AnyEpaule must compute muscular forces and/or joint reaction force and/or pressure parameters (pressure, center of pressure, contact area) and/or articular positions, etc.
-R4. AnyEpaule must be developed in accordance to existing models in the AnyBody Managed Model Repository (AMMR), for which the version will be specified.
-R5. AnyEpaule must be a complete model, i.e. composed of functions:
-      - to model bones (segments), muscles and joints of human upper limb
-      - to simulate arm movements (kinematic drivers)
-      - to compute musculoskeletal analysis, described in R3.
-R6. AnyEpaule must contain 3D models to ensure a sufficient representation (bones, prosthetic components). The 3D models must be readable in the AnyBodyTM software.      
+The results are saved in 2 files :
+.anydata.h5 (variables) and a .txt file (input simulation variables).
 
 Literature used for model validation includes, but is not restricted to, the following papers:
 [1] G. Bergmann, F. Graichen, A. Bender, M. K a ab, A. Rohlmann, P. Westerhoff, and A. Beier. In vivo glenohumeral contact forcesMeasurements in the first patient 7 months postoperatively. Journal of Biomechanics, 40(10):2139-2149, Jan. 2007.
@@ -70,11 +73,9 @@ Literature used for model validation includes, but is not restricted to, the fol
 [19] N. Wuelker, H. Schmotzer, K. Thren, and M. Korell. Translation of the glenohumeral joint with simulated active elevation. (309):193-200, 1994.
 [20] J. Zhang, C. Yongpravat, H. M. Kim, W. N. Levine, L. U. Bigliani, T. R. Gardner, and C. S. Ah- mad. Glenoid articular conformity affects stress distributions in total shoulder arthroplasty. Journal of shoulder and elbow surgery, 22(3):350-356, Mar. 2013.
 
-Author 1: Lauranne Sins, Laboratoire d'Innovation Ouverte en technologies de la sant (LIO, Montreal (QC), Canada)
-Author 2: Dan Soyeux, Laboratoire d'Innovation Ouverte en technologies de la sant (LIO, Montreal (QC), Canada)
+Author 1: Lauranne Sins, Laboratoire d'Innovation Ouverte en technologies de la sante (LIO, Montreal (QC), Canada)
+Author 2: Dan Soyeux, Laboratoire d'Innovation Ouverte en technologies de la sante (LIO, Montreal (QC), Canada)
 
 Version: 2.0
 Date:   05/2024
 ----------------------------------------------------------- */
-
-Main ={};
