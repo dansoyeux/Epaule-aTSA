@@ -1,13 +1,41 @@
-/* ------------------ ANYEPAULE MODEL ------------------ 
+/* --------------------- Epaule-aTSA Model --------------------- 
 The AnyEpaule model consists in an inverse dynamic musculoskeletal model of shoulder. 
 This model was developed in the objective to be used for non-conforming total shoulder arthroplasty (NC-TSA) evaluation.
 
 This model is an updated version of the model developed by Lauranne Sins during her PhD.
 It can now be upgraded to newer AMMR versions by changing the libdef.any file
 
-The model excludes the original Ball and Socket glenohumeral joint to introduce glenohumeral translation by using the FDK algorithm.
-A glenoid and a humeral anatomical non-conforming implant are placed on the model and a contact force between them is introduced.
-New joint center or rotations are defined as the center of these implants
+The simulation variables are controled in the file "Input/InputVariables.any"
+
+A glenoid and a humeral anatomical non-conforming implant are placed on the model (Model/Implants.any) and a contact force between them is introduced (Model/ContactForces.any).
+
+Several model can be inserted (see the folder Input/Implants/ImplantMdels)
+
+The model excludes the original Ball and Socket glenohumeral joint to introduce glenohumeral translation by using the FDK algorithm (Model/GHJointExchange.any).
+New joint center or rotations are defined as the center of these implants instead of the center of the humeral head and glenoid surface.
+
+The center of rotation of the humeral implant is exactly the position {0, 0, 0} of its STL.
+The center of rotation of the glenoid implant (Scapula.ghProth) is the center of a sphere fitted to the glenoid surface 
+(see the script Input\Implants\ImplantPositions\Glene surface Center Calculator\script.py)
+
+A constant stabilisation force is also introduced to center the center of pressure for a neutral glenoid inclination.
+
+---------------------Critical Shoulder Angle variation---------------------
+
+The critical shoulder angle is an anatomical parameter measure. Anatomically it increases with an upward inclination of the glenoid implant or with a greater acromion length.
+
+Different position and rotation of the glenoid implant are defined (in )
+The model allows to select the  by different names (see CSA_Tilt in InputVariables.any)
+
+
+
+---------------------Output variables---------------------
+See Output/Simulation_Outputs.any
+
+.anydata.h5 (Results) and .txt (input simulation variables) are saved.
+
+
+
 
 Satisfied Requirements: 
 R1. AnyEpaule must be a musculoskeletal numerical model of the shoulder joint.

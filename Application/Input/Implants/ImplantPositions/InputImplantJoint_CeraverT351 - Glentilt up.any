@@ -28,7 +28,8 @@ InputVar1={
     // HUMERAL IMPLANT POSITION/ORIENTATION
     // From HumerusBoneGeometryNode to the humeral head component Coordinate System (on 3d model)
     AnyFolder HumPosition = {
-      //without offset
+
+      AnyVec3 Center_Local =  0.001*{0, 0.3068, -7.73512};
       
       AnyVec3 Position = 0.001*{-9.9088 , 3.8738 , 0.293217};
       AnyMat33 Rotation = {

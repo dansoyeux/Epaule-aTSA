@@ -55,9 +55,9 @@ def sphere_fit(point_cloud):
     return(radius, sphere_center)
 
 """create point clouds by inputting radius and center"""
-def draw_sphere(radius, sphere_center):
+def draw_sphere(radius, sphere_center, file_name):
     """
-    inpu
+    input
         radius:radius (scalar)
         sphere_center : xyz of the sphere center (numpy array)
     """
@@ -74,8 +74,8 @@ def draw_sphere(radius, sphere_center):
             # adding a point on the sphere
             point_list.append(point)
 
-    point_list = np.array(point_list)
     # data are stored in numpy array type
-    np.savetxt('sphere.asc', point_list)
+    point_list = np.array(point_list)
     # save as '.asc' file for Meshlab
+    np.savetxt(f'{file_name}.asc', point_list)
     return

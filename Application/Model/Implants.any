@@ -18,12 +18,6 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
     sRel = .Param.GlenPosition.Position*.Mirror;
     ARel = .Param.GlenPosition.Rotation*.Mirror;
     
-    // Center of the GlenImplant
-    AnyRefNode GlenImplantCenter = {
-      sRel = 0.001*{0,0,28.418720};
-    };
-    
-    
     AnyDrawRefFrame drw = {
       Visible= Off;
       ScaleXYZ={1,1,1}/12;
@@ -37,15 +31,15 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
       AnyDrawSurf drw = {
         FileName = .FileName;
         RGB = {1,0.2,0}; // red
-//        RGB = {0, 1, 0}; // green
-//        RGB = {0, 0.2, 1}; // blue
+        //        RGB = {0, 1, 0}; // green
+        //        RGB = {0, 0.2, 1}; // blue
         
         ScaleXYZ = {1,1,1}*0.001;
       };
     };// GleneSTL      
     
   }; // GlenImplantPos
-
+  
   
   gh = {
     
@@ -53,17 +47,6 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
       Visible = Off;
       RGB = {0.5,0.6,0.3};
       ScaleXYZ = {1,1,1}/15;
-    };
-    
-    //Old definition of ghProth (Lauranne)
-    AnyRefNode ghProth = {
-      ARel = ..Param.GlenPosition.Rotation;
-      AnyDrawRefFrame drwref = {
-        Visible = Off;
-        RGB = {1,1,0};
-        ScaleXYZ = {1,1,1}/15;
-      }; 
-      
     };
   };
   
@@ -76,7 +59,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
     AnyDrawRefFrame drwref = {
       Visible = Off;
       RGB = {1,0,0}; // red
-//      RGB = {0,0,1}; // blue
+      //      RGB = {0,0,1}; // blue
       ScaleXYZ = {1,1,1}/15;
     }; 
     
@@ -86,13 +69,13 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
   AnyRefNode ghProth_ISB = {
     sRel = .Param.GlenPosition.Center_Absolute;    
     ARel={{ 0, 0, 1}, { 0, 1,0}, {-1, 0,0}};
-     AnyDrawRefFrame drwref = {
+    AnyDrawRefFrame drwref = {
       Visible = Off;
       RGB = {1,0,0}; // red
-//      RGB = {0,0,1}; // blue
+      //      RGB = {0,0,1}; // blue
       ScaleXYZ = {1,1,1}/15;
     }; 
-
+    
   };
   
   
@@ -103,20 +86,31 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
 //Enlever cet offset en appliquant cet offset aux coordonnes de base de l'implant humeral
 Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
   
+  //      AnyRefNode ghProth = {
+  //    ARel=.Param.HumPosition.Rotation;
+  //    sRel = ;
+  //    AnyDrawRefFrame drw = {
+  //        Visible = On;
+  //        RGB={1,0,0};        
+  //        ScaleXYZ={1,1,1}*0.06;
+  //        
+  //      };
+  
+  
   //Displays Humerus.gh node
   gh = {
     AnyDrawRefFrame drw = {
-      Visible = Off;
+      Visible = On;
       RGB = {0,1,0};
       ScaleXYZ = {1,1,1}/15;
       
     };
-      
+    
   }; //gh humerus
   
   //  Modele osseux Humerus
   AnyRefNode HumerusBoneGeometryNode={ 
-    sRel={0, 0 ,0}*.Mirror;
+    sRel={0, 0 ,0};
     AnyDrawRefFrame drw = {
       Visible= Off;
       ScaleXYZ={1,1,1}/15;
@@ -143,14 +137,28 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
           RGB = {0.2,0.4,0.5};
           ScaleXYZ = {1,1,1}*0.001;
           Opacity = 0.6;
-//          Opacity = 1;
+          //          Opacity = 1;
         };
         
       }; // ProtHumSTL    
+      
+      AnyRefNode ghProth_local = {
+        sRel={0,0,-7.73512}/1000;
+        
+        AnyDrawRefFrame drw = {
+          Visible = On;
+          RGB={0,0,1};        
+          ScaleXYZ={1,1,1}*0.06;
+          
+        };  
+        
+      };
+      
     }; // HumImplantPos
   }; // HumerusBoneGeometryNode
   
 };//Humerus
+
 
 
 

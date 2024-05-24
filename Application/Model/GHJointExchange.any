@@ -75,15 +75,13 @@ REDIFINITION OF THE GLENOHUMERAL JOINT WITH NEW NODES ON THE SCAPULA AND HUMERUS
 //Definition of GH joint Rotation
 Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
   
-  // Not used
   AnyKinRotational GHRot = {
     
     //Ball and socket
     #if BallAndSocket == 1  
     AnyRefNode &scapula_gh = ..Seg.Scapula.gh;
     #else
-   
-    //Changed rot node to center of THE implant SURFACE
+    //Changed rot node to center of the implant surface
     AnyRefNode &scapula_gh = ..Seg.Scapula.ghProth;
     #endif
     
@@ -97,12 +95,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
   ///Definition of GH Linear movement relative to the center of the glenoid implant
   AnyKinLinear GHLin = {
     
-    
-    
-    #if BallAndSocket == 0
-    //Old joint definition
-    //        AnyRefNode &scapula_gh = ..Seg.Scapula.gh.ghProth;
-    
+    #if BallAndSocket == 0   
     //CENTER OF THE GLENOID SURFACE
     AnyRefNode &scapula_gh = ..Seg.Scapula.ghProth;
     
@@ -123,10 +116,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
     #if BallAndSocket == 0 
     //Position initiale (t=0s) = px, py et pz definis dans InputVariables.any;
     DriverPos = {Main.InputVariables.JointPosition.px,Main.InputVariables.JointPosition.py,Main.InputVariables.JointPosition.pz}; 
-    
-    
     #endif
-    
     
     DriverVel = {0,0,0};
     
@@ -136,8 +126,6 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
     #endif
     
     #if BallAndSocket==0
-    //      Reaction.Type={On, Off,Off};
-    //      CType = {Soft,ForceDep,ForceDep};
     Reaction.Type={Off, Off,Off};
     CType = {ForceDep,ForceDep,ForceDep};
     #endif
