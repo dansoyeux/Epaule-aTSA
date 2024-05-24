@@ -1,8 +1,13 @@
 /* ------------------ ANYEPAULE MODEL ------------------ 
 The AnyEpaule model consists in an inverse dynamic musculoskeletal model of shoulder. 
 This model was developed in the objective to be used for non-conforming total shoulder arthroplasty (NC-TSA) evaluation.
-Development, verification and validation of this model was one of the objectives of PhD study.
-Results of development and validation published at Journal of Biomechanical Engineering (Accepted) and Clinical Biomechanics (Accepted).
+
+This model is an updated version of the model developed by Lauranne Sins during her PhD.
+It can now be upgraded to newer AMMR versions by changing the libdef.any file
+
+The model excludes the original Ball and Socket glenohumeral joint to introduce glenohumeral translation by using the FDK algorithm.
+A glenoid and a humeral anatomical non-conforming implant are placed on the model and a contact force between them is introduced.
+New joint center or rotations are defined as the center of these implants
 
 Satisfied Requirements: 
 R1. AnyEpaule must be a musculoskeletal numerical model of the shoulder joint.
@@ -16,7 +21,7 @@ R5. AnyEpaule must be a complete model, i.e. composed of functions:
 R6. AnyEpaule must contain 3D models to ensure a sufficient representation (bones, prosthetic components). The 3D models must be readable in the AnyBodyTM software.      
 
 Literature used for model validation includes, but is not restricted to, the following papers:
-[1] G. Bergmann, F. Graichen, A. Bender, M. K ¨a ¨ab, A. Rohlmann, P. Westerhoff, and A. Beier. In vivo glenohumeral contact forces—Measurements in the first patient 7 months postoperatively. Journal of Biomechanics, 40(10):2139-2149, Jan. 2007.
+[1] G. Bergmann, F. Graichen, A. Bender, M. K a ab, A. Rohlmann, P. Westerhoff, and A. Beier. In vivo glenohumeral contact forcesMeasurements in the first patient 7 months postoperatively. Journal of Biomechanics, 40(10):2139-2149, Jan. 2007.
 [2] G. Bergmann, F. Graichen, A. Bender, A. Rohlmann, A. M. Halder, A. Beier, and P. Westerhoff. In vivo gleno-humeral joint loads during forward flexion and abduction. Journal of Biomechanics, 44(8):1543- 1552, May 2011.
 [3] M. J. Bey, S. K. Kline, R. Zauel, T. R. Lock, and P. a. Kolowich. Measuring dynamic in-vivo gleno- humeral joint kinematics: technique and preliminary results. Journal of Biomechanics, 41(3):711-714, 2008.
 [4] M. J. Bey, C. D. Peltz, K. Ciarelli, S. K. Kline, G. W. Divine, M. van Holsbeeck, S. Muh, P. a. Kolowich, T. R. Lock, and V. Moutzouros. In vivo shoulder function after surgical repair of a torn rotator cuff: glenohumeral joint mechanics, shoulder strength, clinical outcomes, and their interaction. The American journal of sports medicine, 39(10):2117-2129, Oct. 2011.
@@ -37,9 +42,11 @@ Literature used for model validation includes, but is not restricted to, the fol
 [19] N. Wuelker, H. Schmotzer, K. Thren, and M. Korell. Translation of the glenohumeral joint with simulated active elevation. (309):193-200, 1994.
 [20] J. Zhang, C. Yongpravat, H. M. Kim, W. N. Levine, L. U. Bigliani, T. R. Gardner, and C. S. Ah- mad. Glenoid articular conformity affects stress distributions in total shoulder arthroplasty. Journal of shoulder and elbow surgery, 22(3):350-356, Mar. 2013.
 
-Author: Lauranne Sins, Laboratoire de recherche en Imagerie et Orthopdie (LIO, Montreal (QC), Canada)
-Version:1.0
-Date:   02/2015
+Author 1: Lauranne Sins, Laboratoire d'Innovation Ouverte en technologies de la sant (LIO, Montreal (QC), Canada)
+Author 2: Dan Soyeux, Laboratoire d'Innovation Ouverte en technologies de la sant (LIO, Montreal (QC), Canada)
+
+Version: 2.0
+Date:   05/2024
 ----------------------------------------------------------- */
 
 Main ={};

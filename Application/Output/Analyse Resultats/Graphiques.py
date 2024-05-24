@@ -322,7 +322,6 @@ CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCase
 CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
 
-
 # %% Catégories de simulation
 
 # With xdown, middle, xup
@@ -668,7 +667,6 @@ my_graphs.all_variables_graphs(Results_aTSA_CSA, Results_BallAndSocket["normal"]
 # my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_36x, True)
 
 # %% graph surface score
-
 
 def score_surface(score_df, title):
     z = score_df.to_numpy(dtype="float64")
