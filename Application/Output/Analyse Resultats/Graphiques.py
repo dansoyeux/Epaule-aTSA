@@ -321,31 +321,6 @@ xLongCases_6 = ["xdown-xlong", "down-xlong", "neutral-xlong", "middle-xlong", "u
 CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
-CaseNames_5_Tilt_3_Acromion = [*xDownCases_3, *DownCases_3, *MiddleCases_3, *UpCases_3, *xUpCases_3]
-
-tilt_names_3 = ["xdown", "middle", "xup"]
-tilt_names_5 = ["xdown", "down", "up", "xup"]
-acromion_names_3 = ["xshort", "normal", "xlong"]
-acromion_names_5 = ["xshort", "short", "normal", "long", "xlong"]
-
-# Pour avoir tri par tilts
-CaseNames_3_Tilt_5_Acromion = [f"{tilt}-{acromion}" for tilt in tilt_names_3 for acromion in acromion_names_5]
-
-CompWickham_CasesNames_3 = [*CaseNames_3, "Wickham", "Ball And Socket"]
-
-CaseNames_3_BallAndSocket = [*CaseNames_3, "Ball And Socket"]
-CaseNames_5_BallAndSocket = [*CaseNames_5, "Ball And Socket"]
-
-# 9 CSA différents
-CSA_12_Cases = ["xdown-xshort"]
-CSA_16_Cases = ["xdown-short", "down-xshort"]
-CSA_20_Cases = ["xdown-normal", "down-short", "middle-xshort"]
-CSA_25_Cases = ["xdown-long", "down-normal", "middle-short", "up-xshort"]
-CSA_30_Cases = ["xdown-xlong", "down-long", "middle-normal", "up-short", "xup-xshort"]
-CSA_35_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
-CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
-CSA_45_Cases = ["up-xlong", "xup-long"]
-CSA_50_Cases = ["xup-xlong"]
 
 
 # %% Catégories de simulation
@@ -364,32 +339,6 @@ CasesVariables_5 = {"Tilt": {"Large Downtilt": xDownCases_5, "Downtilt": DownCas
 # With xdown, middle, xup
 CasesVariables_6 = {"Tilt": {"Large Downtilt": xDownCases_5, "Downtilt": DownCases_5, "Neutral tilt": NeutralCases_5, "Normal tilt": MiddleCases_5, "Uptilt": UpCases_5, "Large Uptilt": xUpCases_5},
                     "Acromion": {"Very short acromion": xShortCases_6, "Short acromion": ShortCases_6, "Normal acromion": NormalCases_6, " Long acromion": LongCases_6, "Very long acromion": xLongCases_6}}
-
-# Tilt
-CasesVariables_Tilt_5_Acromion_3 = {"Tilt": {"Large Downtilt": xDownCases_3, "Downtilt": DownCases_3, "Normal tilt": MiddleCases_3, "Uptilt": UpCases_3, "Large Uptilt": xUpCases_3}}
-CasesVariables_Tilt_5_Acromion_5 = {"Tilt": {"Large Downtilt": xDownCases_5, "Downtilt": DownCases_5, "Normal tilt": MiddleCases_5, "Uptilt": UpCases_5, "Large Uptilt": xUpCases_5}}
-
-CasesVariables_Tilt_3_Acromion_3 = {"Tilt": {"Large Downtilt": xDownCases_3, "Normal tilt": MiddleCases_3, "Large Uptilt": xUpCases_3}}
-CasesVariables_Tilt_3_Acromion_5 = {"Tilt": {"Large Downtilt": xDownCases_5, "Normal tilt": MiddleCases_5, "Large Uptilt": xUpCases_5}}
-
-# Acromion
-CasesVariables_Acromion_5_Tilt_3 = {"Acromion": {"Very short acromion": xShortCases_3, "Short acromion": ShortCases_3, "Normal acromion": NormalCases_3, " Long acromion": LongCases_3, "Very long acromion": xLongCases_3}}
-CasesVariables_Acromion_5_Tilt_5 = {"Acromion": {"Very short acromion": xShortCases_5, "Short acromion": ShortCases_5, "Normal acromion": NormalCases_5, " Long acromion": LongCases_5, "Very long acromion": xLongCases_5}}
-
-CasesVariables_Acromion_3_Tilt_3 = {"Acromion": {"Very short acromion": xShortCases_3, "Normal acromion": NormalCases_3, "Very long acromion": xLongCases_3}}
-CasesVariables_Acromion_3_Tilt_5 = {"Acromion": {"Very short acromion": xShortCases_5, "Normal acromion": NormalCases_5, "Very long acromion": xLongCases_5}}
-
-# CSA
-CasesVariables_CSA_9 = {"CSA Faible": {"CSA = 12°": CSA_12_Cases, "CSA = 16°": CSA_16_Cases, "CSA = 20°": CSA_20_Cases},
-                        "CSA Moyen": {"CSA = 25°": CSA_25_Cases, "CSA = 30°": CSA_30_Cases, "CSA = 35°": CSA_35_Cases},
-                        "CSA Élevé": {"CSA = 40°": CSA_40_Cases, "CSA = 45°": CSA_45_Cases, "CSA = 50°": CSA_50_Cases}}
-
-# Les 6 qui sont dans la range de CSA
-CasesVariables_CSA_6 = {"CSA Moyen": {"CSA = 20°": CSA_20_Cases, "CSA = 25°": CSA_25_Cases, "CSA = 30°": CSA_30_Cases},
-                        "CSA Élevé": {"CSA = 35°": CSA_35_Cases, "CSA = 40°": CSA_40_Cases, "CSA = 45°": CSA_45_Cases}
-                        }
-
-
 
 # %% Liste des catégories de muscles
 
@@ -562,21 +511,7 @@ list_muscle_variation_faible = ["Pectoralis major clavicular",
                                 "Coracobrachialis",
                                 ]
 
-list_csa_short = ["CSA=25°",
-                  "CSA=30°",
-                  "CSA=35°",
-                  "CSA=40°"
-                  ]
-
-list_csa_long = ["CSA=20°",
-                 "CSA=25°",
-                 "CSA=30°",
-                 "CSA=35°",
-                 "CSA=40°",
-                 "CSA=45°"
-                 ]
-
-# %% Save figures
+# %% Graphiques toutes les variables
 
 # Parameters of the graphs
 graph_parameters = {"xlim": [0, 120],
@@ -653,6 +588,47 @@ graph_parameters_6 = {"xlim": [0, 120],
                       "hide_center_axis_labels": True
                       }
 
+# Tous les résultats
+# my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Tous les résultats", save_graph=True, composante_on=False, **graph_parameters_6)
+
+# %% Résultats classés par CSA et moyennes par CSA
+
+# 9 CSA différents
+CSA_12_Cases = ["xdown-xshort"]
+CSA_16_Cases = ["xdown-short", "down-xshort"]
+CSA_20_Cases = ["xdown-normal", "down-short", "middle-xshort"]
+CSA_25_Cases = ["xdown-long", "down-normal", "middle-short", "up-xshort"]
+CSA_30_Cases = ["xdown-xlong", "down-long", "middle-normal", "up-short", "xup-xshort"]
+CSA_35_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
+CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
+CSA_45_Cases = ["up-xlong", "xup-long"]
+CSA_50_Cases = ["xup-xlong"]
+
+# CSA
+CasesVariables_CSA_9 = {"CSA Faible": {"CSA = 12°": CSA_12_Cases, "CSA = 16°": CSA_16_Cases, "CSA = 20°": CSA_20_Cases},
+                        "CSA Moyen": {"CSA = 25°": CSA_25_Cases, "CSA = 30°": CSA_30_Cases, "CSA = 35°": CSA_35_Cases},
+                        "CSA Élevé": {"CSA = 40°": CSA_40_Cases, "CSA = 45°": CSA_45_Cases, "CSA = 50°": CSA_50_Cases}}
+
+# Les 6 qui sont dans la range de CSA
+CasesVariables_CSA_6 = {"CSA Moyen": {"CSA = 20°": CSA_20_Cases, "CSA = 25°": CSA_25_Cases, "CSA = 30°": CSA_30_Cases},
+                        "CSA Élevé": {"CSA = 35°": CSA_35_Cases, "CSA = 40°": CSA_40_Cases, "CSA = 45°": CSA_45_Cases}
+                        }
+
+# Liste des CSA
+list_csa_short = ["CSA=25°",
+                  "CSA=30°",
+                  "CSA=35°",
+                  "CSA=40°"
+                  ]
+
+list_csa_long = ["CSA=20°",
+                 "CSA=25°",
+                 "CSA=30°",
+                 "CSA=35°",
+                 "CSA=40°",
+                 "CSA=45°"
+                 ]
+
 # Parameters of the graphs
 graph_parameters_par_CSA = {"xlim": [0, 120],
                             "legend_position": "center left",
@@ -678,15 +654,14 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
                             "hide_center_axis_labels": True
                             }
 
-# Tous les résultats
-# my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Tous les résultats", save_graph=True, composante_on=False, **graph_parameters_6)
+combine_CSA = {"CSA=12°": CSA_12_Cases, "CSA=16°": CSA_16_Cases, "CSA=20°": CSA_20_Cases,
+               "CSA=25°": CSA_25_Cases, "CSA=30°": CSA_30_Cases, "CSA=35°": CSA_35_Cases,
+               "CSA=40°": CSA_40_Cases, "CSA=45°": CSA_45_Cases, "CSA=50°": CSA_50_Cases}
 
-# %% Résultats classés par CSA
+# Fait la moyenne de toutes les variables par valeur de CSA
+Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operation="mean"), **Results_aTSA}
 
-# Combine les résultats par CSA
-
-
-# my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Classé par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
+my_graphs.all_variables_graphs(Results_aTSA_CSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Classé par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
 
 # %% Figures article
 

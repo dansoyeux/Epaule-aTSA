@@ -55,7 +55,7 @@ for tilt in tilt_list:
     for acromion in acromion_list:
 
         CSA_case = f"{tilt}-{acromion}"
-        file_name = f'"Anybody_aTSA_{CSA_case}"'
+        file_name = f'"PJ178_Anybody_aTSA_{CSA_case}"'
 
         macrolist.append([
             Load('Epaule-aTSA.Main.any',
