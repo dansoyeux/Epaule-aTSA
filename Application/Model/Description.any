@@ -7,30 +7,44 @@ The model is described in an article (DOI : 10.1115/1.4031330)
 
 The model was updated to be usable in any AMMR version and allow to vary the Critical Shoulder Angle (CSA) by Dan Soyeux in the context of his Master degree (2024).
 
+AMMR used for the study : 2.4.2
+
+---------------------------------Model Files---------------------------------
+
+•	Input/InputVariables.any : controls the simulation parameters
+•	Model/Implants.any : inserts a glenoid and humeral anatomic implant
+•	Model/GHJointExchange.any : Excludes the original BallAndSocket glenohumeral joint (and the GHReactions muscles) 
+                                   and redefines the joint as a joint with 3 translations allowed by the FDK algorithm
+•	Model/ContactForces.any : Introduces a contact force between the implants and a constant stabilisation force 
+•	Model/CSAVariation : Chooses the acromion elongation (mm) and the rotation of the glenoid implant (to vary its inclination) depending on the names entered
+•	Scaling/ScalingCustom.any : Allows to elongates the acromion which moves the deltoid lateral insertions 
+                                 : NOTE : original coordinates of the deltoid lateral insertions entered by hand, they might change with later AMMR versions
+•	Model/EvaluateAbductionMomentArm.any : Evaluates the moment arm of every shouder muscles that were activated
+                                            NOTE : A list of the muscles to evaluate the moment arm is in Model/ArmMuscleList.any. Make sure this list is updated for newer AMMR version 
+•	Output/Simulation_Outputs.any : Calculations and important model outputs
+•	Output/Output_File_FDK.any and Output/Output_File_BallAndSocket.any : Model constants that will be saved in a AnyOutputFile (.txt file)
+ 
 ---------------------New Glenohumeral joint with anatomical NC implants---------------------
-
-The simulation variables are controled in the file "Input/InputVariables.any"
-
-A glenoid and a humeral anatomical non-conforming implant are placed on the model (Model/Implants.any) and a contact force between them is introduced (Model/ContactForces.any).
-
+A glenoid and a humeral anatomical non-conforming implant are placed on the model and a contact force between them is introduced.
 Several model can be inserted (see the folder Input/Implants/ImplantModels) with different sizes of humeral head and different glenoid shapes.
+The models tested are glenoid T3 and humerus 51.
 
-The model excludes the original Ball and Socket glenohumeral joint to introduce glenohumeral translation by using the FDK algorithm (Model/GHJointExchange.any).
+The model excludes the original Ball and Socket glenohumeral joint to introduce glenohumeral translation by using the FDK algorithm.
 New joint center or rotations are defined as the center of these implants instead of the center of the humeral head and glenoid surface.
 
-The center of rotation of the implants (Scapula.ghProth and Humerus.HumImplantPos.ghProth) is the center of a sphere fitted to their articular surface.
+The center of rotation of the implants (Scapula.ghProth and Humerus.HumImplantPos.ghProth) are the coordinate of the center of a sphere fitted to their articular surface.
 (see the script Input\Implants\ImplantPositions\Glene surface Center Calculator\find_implant_surface_center.py)
 
-A constant stabilisation force is also applied on the humerus to center the center of pressure for a neutral glenoid inclination and a normal acromion length (Model/ContactForces.any).
+A constant stabilisation force is also applied on the humerus. Its value was chosen to obtain a centered Center of Pressure for a neutral glenoid inclination and a normal acromion length (Model/ContactForces.any).
 
 ---------------------Critical Shoulder Angle variation---------------------
 
 The critical shoulder angle is an anatomical parameter measure. Anatomically it increases with an upward inclination of the glenoid implant or with a greater acromion length.
 
-The length of the acromion is augmented or shortened with the Model/ScalingCustom.any.
+The length of the acromion is augmented or shortened with bone scaling.
 This script moves laterally the nodes on the edge of the acromion and the 4 origines of the deltoid lateral that are attached to the acromion.
 
-The model allows to select the glenoid upward/downward inclination (CSA_Tilt in InputVariables.any) and the acromion lengthening (CSA_Acromion_Length) by name.
+The model allows to select the glenoid upward/downward inclination (CSA_Tilt in InputVariables.any) and the acromion lengthening (CSA_Acromion_Length) by their name.
 These names are correspond to different predefined acromion lengthening and glenoid rotation/position (defined in Model/CSA_Variation.any)
 Depending on the tilt name, a corresponding file that contains the glenoid and humeral position is loaded (in the folder Input/Implants/ImplantPositions)
 
@@ -51,7 +65,10 @@ The COP position on the glenoid implant and humeral implant, the contact area, t
 The results are saved in 2 files :
 .anydata.h5 (variables) and a .txt file (input simulation variables).
 
+
+---------------------------------Validation---------------------------------
 Literature used for model validation includes, but is not restricted to, the following papers:
+
 [1] G. Bergmann, F. Graichen, A. Bender, M. K a ab, A. Rohlmann, P. Westerhoff, and A. Beier. In vivo glenohumeral contact forcesMeasurements in the first patient 7 months postoperatively. Journal of Biomechanics, 40(10):2139-2149, Jan. 2007.
 [2] G. Bergmann, F. Graichen, A. Bender, A. Rohlmann, A. M. Halder, A. Beier, and P. Westerhoff. In vivo gleno-humeral joint loads during forward flexion and abduction. Journal of Biomechanics, 44(8):1543- 1552, May 2011.
 [3] M. J. Bey, S. K. Kline, R. Zauel, T. R. Lock, and P. a. Kolowich. Measuring dynamic in-vivo gleno- humeral joint kinematics: technique and preliminary results. Journal of Biomechanics, 41(3):711-714, 2008.

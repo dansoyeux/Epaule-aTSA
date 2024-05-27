@@ -2,8 +2,6 @@
 #include "../libdef.any"
 
 // Find a detailed description of the model here
-
-//TO MODIFY
 #include "Model/Description.any"
 
 Main = {

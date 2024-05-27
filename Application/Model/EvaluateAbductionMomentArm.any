@@ -13,7 +13,7 @@ AnyFolder EvaluateMomentArms = {
   // Creation d'un dossier qui stocke aussi les MomentArm de chaque muscle
   AnyVar name = -1 * Mus.name.LmtDot/AngularVelocity;
   
-  // S'assurer que tous les muscles listes existent tous dans cette version de l'AMMR
+  // List of muscles to evaluate the moment arm (the muscles names/numbers might change in later versions of the AMMR)
   #include  "ArmMuscleList.any"
 
 };
