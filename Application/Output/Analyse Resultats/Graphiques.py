@@ -588,7 +588,7 @@ graph_parameters_6 = {"xlim": [0, 120],
                       }
 
 # Tous les résultats
-# my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Tous les résultats", save_graph=True, composante_on=False, **graph_parameters_6)
+my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Tous les résultats", save_graph=True, composante_on=False, **graph_parameters_6)
 
 # %% Résultats classés par CSA et moyennes par CSA
 
@@ -664,7 +664,7 @@ my_graphs.all_variables_graphs(Results_aTSA_CSA, Results_BallAndSocket["normal"]
 
 # %% Figures article
 
-# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_36x, True)
+# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_36x, save_figure=True)
 
 # %% graph surface score
 
