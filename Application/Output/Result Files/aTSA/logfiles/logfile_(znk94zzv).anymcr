@@ -1,5 +1,0 @@
-load "Epaule-aTSA.Main.any" -def ArmMovement="Elevation" -def AutoSaveOption="1" -def BallAndSocket="0" -def CSA_Acromion_Length=---"\"normal\"" -def CSA_Tilt=---"\"up\"" -def MuscleRecruitmentType="MR_Polynomial" -def ResultFile=---"\"Anybody_aTSA_up-normal\"" -def ResultFolder=---"\"Result Files/aTSA\"" -def SmallAbductionOn="0"
-classoperation Main.Model.ModelEnvironmentConnection.Drivers.startangle "Set Value" --value="15"
-operation Main.Study.RunApplication
-run
-exit
