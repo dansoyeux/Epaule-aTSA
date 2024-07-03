@@ -65,7 +65,7 @@ AnyFolder InputVariables = {
   */
 
   #ifndef CSA_Tilt
-  #define CSA_Tilt "xup"
+  #define CSA_Tilt "middle"
   #endif
   
   /* -------------------------------------------Acromion lengthening selection------------------------------------

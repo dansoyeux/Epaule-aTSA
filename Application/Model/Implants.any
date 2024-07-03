@@ -12,8 +12,7 @@ Call to custom file based on template "InputPosition_ImplantName.any"
 Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
   
   AnyFolder &Param = Main.InputVariables.ImplantParameters;
-  
-  
+    
   AnyRefNode GlenImplantPos = {
     sRel = .Param.GlenPosition.Position*.Mirror;
     ARel = .Param.GlenPosition.Rotation*.Mirror;
@@ -89,20 +88,43 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
   //Displays Humerus.gh node
   gh = {
     AnyDrawRefFrame drw = {
-      Visible = On;
+      Visible = Off;
       RGB = {0,1,0};
       ScaleXYZ = {1,1,1}/15;
       
     };
     
   }; //gh humerus
+  
+  
+  AnyFolder &Param = Main.InputVariables.ImplantParameters;
+  
+  AnyRefNode HumImplantPos = {
+    sRel = .Param.HumPosition.Position;
+    ARel = .Param.HumPosition.Rotation;
     
+    AnyDrawRefFrame drw = {
+      Visible = Off;
+      RGB={0,0,1};        
+      ScaleXYZ={1,1,1}*0.06;
+      
+    };  
+    AnySurfSTL ProtHumSTL = {
+      FileName = "../Input/Implants/ImplantModels/" + ..Param.ImplantNames.HumerusName + ".stl";
+      ScaleXYZ = {1,1,1}*0.001;
+      
+      AnyDrawSurf drw= {
+        FileName = .FileName;
+        RGB = {0.2,0.4,0.5};
+        ScaleXYZ = {1,1,1}*0.001;
+        Opacity = 0.6;
+        //          Opacity = 1;
+      };
+      
+    }; // ProtHumSTL    
     
-    AnyFolder &Param = Main.InputVariables.ImplantParameters;
-    
-    AnyRefNode HumImplantPos = {
-      sRel = .Param.HumPosition.Position;
-      ARel = .Param.HumPosition.Rotation;
+    AnyRefNode ghProth = {
+      sRel=Main.InputVariables.ImplantParameters.HumPosition.Center_Local;
       
       AnyDrawRefFrame drw = {
         Visible = Off;
@@ -110,34 +132,12 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
         ScaleXYZ={1,1,1}*0.06;
         
       };  
-      AnySurfSTL ProtHumSTL = {
-        FileName = "../Input/Implants/ImplantModels/" + ..Param.ImplantNames.HumerusName + ".stl";
-        ScaleXYZ = {1,1,1}*0.001;
-        
-        AnyDrawSurf drw= {
-          FileName = .FileName;
-          RGB = {0.2,0.4,0.5};
-          ScaleXYZ = {1,1,1}*0.001;
-          Opacity = 0.6;
-          //          Opacity = 1;
-        };
-        
-      }; // ProtHumSTL    
-      
-      AnyRefNode ghProth = {
-        sRel=Main.InputVariables.ImplantParameters.HumPosition.Center_Local;
-        
-        AnyDrawRefFrame drw = {
-          Visible = On;
-          RGB={0,0,1};        
-          ScaleXYZ={1,1,1}*0.06;
-          
-        };  
-      }; //ghProth
-      
-    }; // HumImplantPos 
+    }; //ghProth
+    
+  }; // HumImplantPos 
   
 };//Humerus
+
 
 
 

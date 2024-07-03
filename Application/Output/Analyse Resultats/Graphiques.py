@@ -76,6 +76,52 @@ matplotlib.rcParams.update({'axes.titlepad': 12})
 # Types de marqueurs : https://matplotlib.org/stable/api/markers_api.html
 # Type de lignes : https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html
 
+SimulationsLineStyleDictionary_article = {
+    # Glen xdown
+    "xdown-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+    "xdown-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+    "xdown-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "xdown-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    "xdown-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+
+    # Glen neutral
+    "neutral-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+    "neutral-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+    "neutral-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "neutral-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    "neutral-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+
+    # Glen up
+    "up-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+    "up-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
+    "up-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
+    "up-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+    "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+}
+
+SimulationsLineStyleDictionary_powerpoint = {
+    # Glen xdown
+    "xdown-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3},
+    "xdown-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3},
+    "xdown-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
+    "xdown-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
+    "xdown-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
+
+    # Glen neutral
+    "neutral-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3},
+    "neutral-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3},
+    "neutral-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
+    "neutral-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
+    "neutral-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
+
+    # Glen up
+    "up-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3},
+    "up-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3},
+    "up-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
+    "up-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
+    "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
+}
+
 SimulationsLineStyleDictionary = {
     # Glen xdown
     "xdown-xshort": {"color": "lightblue", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
@@ -669,7 +715,42 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 
 # %% Figures article
 
-my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=True)
+# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=True)
+
+#%% Présentation orale
+
+# Titre des cases des subplots (12)
+matplotlib.rcParams.update({'axes.titlesize': 22})
+
+# Titre du graphique (12)
+matplotlib.rcParams.update({'figure.titlesize': 22})
+
+# Nom des axes (10)
+matplotlib.rcParams.update({'axes.labelsize': 20})
+
+# Graduations des axes (10)
+matplotlib.rcParams.update({'xtick.labelsize': 18})
+matplotlib.rcParams.update({'ytick.labelsize': 18})
+
+# Taille des graduations (3.5)
+matplotlib.rcParams.update({'xtick.major.size': 10})
+matplotlib.rcParams.update({'ytick.major.size': 10})
+
+# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary_powerpoint, list_muscles_actifs, CaseNames_convergence, save_figure=False)
+
+Categories_powerpoint = {"line": {"Downward inclination": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
+                               "Neutral inclination": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
+                               "Upward inclination": ["up-xshort", "up-normal", "up-xlong"]
+                               }}
+
+
+
+define_simulations_line_style(SimulationsLineStyleDictionary_powerpoint)
+COP_graph(Results_aTSA, COP_contour, figure_title="Center of Pressure", composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True, legend_on=False, cases_on=["neutral-normal"])
+
+PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, Categories_powerpoint, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True, legend_on=False, figsize=[18,10])
+
+
 
 # %% graph surface score
 
