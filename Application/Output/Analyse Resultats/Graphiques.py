@@ -99,28 +99,7 @@ SimulationsLineStyleDictionary_article = {
     "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
 }
 
-SimulationsLineStyleDictionary_powerpoint = {
-    # Glen xdown
-    "xdown-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3},
-    "xdown-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3},
-    "xdown-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
-    "xdown-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
-    "xdown-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
 
-    # Glen neutral
-    "neutral-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3},
-    "neutral-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3},
-    "neutral-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
-    "neutral-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
-    "neutral-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
-
-    # Glen up
-    "up-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3},
-    "up-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 3},
-    "up-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3},
-    "up-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
-    "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 3},
-}
 
 SimulationsLineStyleDictionary = {
     # Glen xdown
@@ -739,16 +718,21 @@ matplotlib.rcParams.update({'ytick.major.size': 10})
 # my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary_powerpoint, list_muscles_actifs, CaseNames_convergence, save_figure=False)
 
 Categories_powerpoint = {"line": {"Downward inclination": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
-                               "Neutral inclination": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
-                               "Upward inclination": ["up-xshort", "up-normal", "up-xlong"]
-                               }}
+                                  "Neutral inclination": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
+                                  "Upward inclination": ["up-xshort", "up-normal", "up-xlong"]
+                                  }}
 
-
+SimulationsLineStyleDictionary_powerpoint = {
+    "neutral-normal": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+    "neutral-long": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+    "xup-long": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+}
 
 define_simulations_line_style(SimulationsLineStyleDictionary_powerpoint)
-COP_graph(Results_aTSA, COP_contour, figure_title="Center of Pressure", composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True, legend_on=False, cases_on=["neutral-normal"])
+COP_graph(Results_aTSA, COP_contour, figure_title="Center of Pressure", composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True, legend_on=False, cases_on=["neutral-normal"])
+COP_graph(Results_aTSA, COP_contour, figure_title="Center of Pressure", composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True, legend_on=True, cases_on=["neutral-normal", "neutral-long", "xup-long"])
 
-PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, Categories_powerpoint, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True, legend_on=False, figsize=[18,10])
+# PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, Categories_powerpoint, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True, legend_on=False, figsize=[18,10])
 
 
 
