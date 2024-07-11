@@ -42,7 +42,7 @@ def figures_article(Results, COP_contour, SimulationsLineStyleDictionary, list_m
         "up-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
         "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
     }
-    
+
     define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
     Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
@@ -70,7 +70,8 @@ def figures_article(Results, COP_contour, SimulationsLineStyleDictionary, list_m
 
     # Forces des muscles actifs
     define_simulations_line_style(SimulationsLineStyleDictionary)
-    muscle_graph_from_list(Results, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces", cases_on=CaseNames, grid_x_step=15, xlim=[15, 120], ylim=[0, 200], hide_center_axis_labels=True, figsize=[24, 14], grid_y_step=50, legend_label_per_column=10)
+    muscle_graph_from_list(Results, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces", cases_on=CaseNames, grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[24, 14], legend_label_per_column=10, ylim=[0, None])
+    muscle_graph_from_list(Results, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces", cases_on=CaseNames, grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[24, 14], legend_label_per_column=10, same_lim=True)
 
     # ajouter save graphiques si activé
     if save_figure:
