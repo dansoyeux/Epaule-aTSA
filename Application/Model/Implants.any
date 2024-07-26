@@ -71,7 +71,6 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
     AnyDrawRefFrame drwref = {
       Visible = Off;
       RGB = {1,0,0}; // red
-      //      RGB = {0,0,1}; // blue
       ScaleXYZ = {1,1,1}/15;
     }; 
     
@@ -117,8 +116,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
         FileName = .FileName;
         RGB = {0.2,0.4,0.5};
         ScaleXYZ = {1,1,1}*0.001;
-        Opacity = 0.6;
-        //          Opacity = 1;
+        Opacity = 0.3;
       };
       
     }; // ProtHumSTL    

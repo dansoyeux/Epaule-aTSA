@@ -47,8 +47,8 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
       p1 =.COP;
       Line = {
         Style = Line3DStyleFull;
-        Thickness = 0.001;
-        RGB = {1, 0, 0};
+        Thickness = 0.005;
+        RGB = {0, 1, 0};
         Start = {
           Style = Line3DCapStyleNone;
           RGB = {1, 0, 0};
@@ -57,9 +57,9 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
         };
         End = {
           Style = Line3DCapStyleArrow;
-          RGB = {1, 0, 0};
-          Thickness = 0.002;
-          Length = 0.002;
+          RGB = {0, 1, 0};
+          Thickness = 0.015;
+          Length = 0.01;
         };
       };
       // Text = "F_contact";
