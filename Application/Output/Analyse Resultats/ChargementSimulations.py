@@ -294,15 +294,15 @@ CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *Up
 
 # %%                                                Résultats aTSA
 
-# aTSA_dir = "../Result Files/aTSA"
-# files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in CaseNames_6]
-# Results_aTSA = load_simulation_cases(aTSA_dir, files, CaseNames_6, FDK_Variables)
-# Results_aTSA, scores_moment, scores_shear = additional_calculations(Results_aTSA)
+aTSA_dir = "../Result Files/aTSA"
+files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in CaseNames_6]
+Results_aTSA = load_simulation_cases(aTSA_dir, files, CaseNames_6, FDK_Variables)
+Results_aTSA, scores_moment, scores_shear = additional_calculations(Results_aTSA)
 
-# # Sauvegarde des scores et des résultats en .pkl
-# save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
-# save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
-# save_results_to_file(Results_aTSA, SaveSimulationsDirectory, "Results_aTSA")
+# Sauvegarde des scores et des résultats en .pkl
+save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
+save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
+save_results_to_file(Results_aTSA, SaveSimulationsDirectory, "Results_aTSA")
 
 # %%                                                Résultats Ball and Socket
 
