@@ -20,8 +20,7 @@ import pandas as pd
 # %% Setup des variables à charger
 
 # Muscles
-MuscleDictionary = {"Triceps long head": ["Triceps_LH", "_", [1, 2]],
-                    "Deltoid lateral": ["deltoideus_lateral", "_part_", [1, 4]],
+MuscleDictionary = {"Deltoid lateral": ["deltoideus_lateral", "_part_", [1, 4]],
                     "Deltoid posterior": ["deltoideus_posterior", "_part_", [1, 4]],
                     "Deltoid anterior": ["deltoideus_anterior", "_part_", [1, 4]],
                     "Supraspinatus": ["supraspinatus", "_", [1, 6]],
@@ -47,6 +46,7 @@ MuscleDictionary = {"Triceps long head": ["Triceps_LH", "_", [1, 2]],
                     "Subscapularis": ["subscapularis", "_", [1, 6]],
                     "Teres minor": ["teres_minor", "_", [1, 6]],
                     "Teres major": ["teres_major", "_", [1, 6]],
+                    "Triceps long head": ["Triceps_LH", "_", [1, 2]],
                     "Rhomboideus": ["rhomboideus", "_", [1, 3]],
                     "Levator scapulae": ["levator_scapulae", "_", [1, 4]],
                     "Sternocleidomastoid clavicular": ["Sternocleidomastoid_caput_clavicular", "", []],
@@ -55,6 +55,7 @@ MuscleDictionary = {"Triceps long head": ["Triceps_LH", "_", [1, 2]],
                     }
 
 MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Muscle force [N]"},
+
                             # "Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Muscle force [N]"},
                             # "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
@@ -68,6 +69,14 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                                             "combine_muscle_part_operations": ["total", "mean"]
                                             },
 
+                            # Dans repère scapula
+                            # "F surface": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force on the muscle wraping surface [N]", "select_muscle_RefFrame_output": "surface",
+                            #               "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"]},
+
+                            # # Dans repère scapula
+                            # "F via": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force on the muscle via point [N]", "select_muscle_RefFrame_output": "via",
+                            #           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"]},
+
                             # "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
                             #                        "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                             #                        "combine_muscle_part_operations": ["mean"], "vect_dir": True},
@@ -76,8 +85,8 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             #                           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                             #                           "combine_muscle_part_operations": ["mean"], "vect_dir": True},
 
-                            "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Moment arm [mm]",
-                                          "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
+                            # "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Moment arm [mm]",
+                            #               "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
                             }
 
 
@@ -285,6 +294,15 @@ xUpCases_5 = ["xup-xshort", "xup-short", "xup-normal", "xup-long", "xup-xlong"]
 CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
 # %%                                                Résultats aTSA
+
+
+
+aTSA_dir = "../Result Files/aTSA"
+CaseTest = ["neutral-normal"]
+files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in CaseTest]
+aa = load_simulation_cases(aTSA_dir, files, CaseTest, FDK_Variables)
+
+
 
 # aTSA_dir = "../Result Files/aTSA"
 # files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in CaseNames_6]
