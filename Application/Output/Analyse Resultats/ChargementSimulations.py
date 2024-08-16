@@ -69,7 +69,6 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                                             "combine_muscle_part_operations": ["total", "mean"]
                                             },
 
-                            # Dans repère scapula
                             # "F surface": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force on the muscle wraping surface [N]", "select_muscle_RefFrame_output": "surface",
                             #               "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"]},
 
@@ -294,15 +293,6 @@ xUpCases_5 = ["xup-xshort", "xup-short", "xup-normal", "xup-long", "xup-xlong"]
 CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
 # %%                                                Résultats aTSA
-
-
-
-aTSA_dir = "../Result Files/aTSA"
-CaseTest = ["neutral-normal"]
-files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in CaseTest]
-aa = load_simulation_cases(aTSA_dir, files, CaseTest, FDK_Variables)
-
-
 
 # aTSA_dir = "../Result Files/aTSA"
 # files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in CaseNames_6]
