@@ -69,12 +69,11 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                                             "combine_muscle_part_operations": ["total", "mean"]
                                             },
 
-                            # "F surface": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force on the muscle wraping surface [N]", "select_muscle_RefFrame_output": "surface",
-                            #               "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"]},
+                            "F surface": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force on the muscle wraping surface [N]", "select_muscle_RefFrame_output": "surface",
+                                          "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"]},
 
-                            # # Dans repère scapula
-                            # "F via": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force on the muscle via point [N]", "select_muscle_RefFrame_output": "via",
-                            #           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"]},
+                            "F via": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force on the muscle via point [N]", "select_muscle_RefFrame_output": "via",
+                                      "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"]},
 
                             # "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
                             #                        "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
@@ -295,14 +294,22 @@ CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *Up
 # %%                                                Résultats aTSA
 
 aTSA_dir = "../Result Files/aTSA"
-files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in CaseNames_6]
-Results_aTSA = load_simulation_cases(aTSA_dir, files, CaseNames_6, FDK_Variables)
-Results_aTSA, scores_moment, scores_shear = additional_calculations(Results_aTSA)
+Casetest = ["middle-normal"]
+files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in Casetest]
+aa = load_simulation_cases(aTSA_dir, files, Casetest, FDK_Variables)
 
-# Sauvegarde des scores et des résultats en .pkl
-save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
-save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
-save_results_to_file(Results_aTSA, SaveSimulationsDirectory, "Results_aTSA")
+
+
+
+# aTSA_dir = "../Result Files/aTSA"
+# files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in CaseNames_6]
+# Results_aTSA = load_simulation_cases(aTSA_dir, files, CaseNames_6, FDK_Variables)
+# Results_aTSA, scores_moment, scores_shear = additional_calculations(Results_aTSA)
+
+# # Sauvegarde des scores et des résultats en .pkl
+# save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
+# save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
+# save_results_to_file(Results_aTSA, SaveSimulationsDirectory, "Results_aTSA")
 
 # %%                                                Résultats Ball and Socket
 

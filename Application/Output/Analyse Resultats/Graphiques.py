@@ -694,7 +694,7 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 
 # %% Figures article
 
-my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=True)
+# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=True)
 
 #%% Présentation orale
 
@@ -770,3 +770,9 @@ def score_surface(score_df, title):
 
 # score_surface(scores_moment["Total"], "Total moment on the glenoid implant [N.m]")
 # score_surface(scores_shear["Total"], "Total shear forces on the glenoid implant [N]")
+
+
+muscle_coiffe = ["Supraspinatus", "Infraspinatus"]
+PremadeGraphs.graph_all_muscle_fibers(Results_aTSA, muscle_coiffe, "Abduction", "F surface", combined_muscle_on=False, cases_on="all", composante_y_muscle_part=["AP"])
+PremadeGraphs.graph_all_muscle_fibers(Results_aTSA, muscle_coiffe, "Abduction", "F surface", combined_muscle_on=False, cases_on="all", composante_y_muscle_part=["IS"])
+PremadeGraphs.graph_all_muscle_fibers(Results_aTSA, muscle_coiffe, "Abduction", "F surface", combined_muscle_on=False, cases_on="all", composante_y_muscle_part=["ML"])
