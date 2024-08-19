@@ -293,12 +293,11 @@ CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *Up
 
 # %%                                                Résultats aTSA
 
-aTSA_dir = "../Result Files/aTSA"
-Casetest = ["middle-normal"]
-files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in Casetest]
-aa = load_simulation_cases(aTSA_dir, files, Casetest, FDK_Variables)
-
-
+# # pour tests
+# aTSA_dir = "../Result Files/aTSA"
+# Casetest = ["middle-normal"]
+# files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in Casetest]
+# aa = load_simulation_cases(aTSA_dir, files, Casetest, FDK_Variables)
 
 
 # aTSA_dir = "../Result Files/aTSA"

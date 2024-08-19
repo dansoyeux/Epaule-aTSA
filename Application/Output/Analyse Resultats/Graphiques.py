@@ -690,11 +690,11 @@ combine_CSA = {"CSA=12°": CSA_12_Cases, "CSA=16°": CSA_16_Cases, "CSA=20°": C
 # Fait la moyenne de toutes les variables par valeur de CSA
 Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operation="mean"), **Results_aTSA}
 
-# my_graphs.all_variables_graphs(Results_aTSA_CSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Classé par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
+my_graphs.all_variables_graphs(Results_aTSA_CSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Classé par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
 
 # %% Figures article
 
-# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=True)
+my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=True)
 
 #%% Présentation orale
 
@@ -734,8 +734,6 @@ define_simulations_line_style(SimulationsLineStyleDictionary_powerpoint)
 
 # PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, Categories_powerpoint, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True, legend_on=False, figsize=[18,10])
 
-
-
 # %% graph surface score
 
 
@@ -770,9 +768,3 @@ def score_surface(score_df, title):
 
 # score_surface(scores_moment["Total"], "Total moment on the glenoid implant [N.m]")
 # score_surface(scores_shear["Total"], "Total shear forces on the glenoid implant [N]")
-
-
-muscle_coiffe = ["Supraspinatus", "Infraspinatus"]
-PremadeGraphs.graph_all_muscle_fibers(Results_aTSA, muscle_coiffe, "Abduction", "F surface", combined_muscle_on=False, cases_on="all", composante_y_muscle_part=["AP"])
-PremadeGraphs.graph_all_muscle_fibers(Results_aTSA, muscle_coiffe, "Abduction", "F surface", combined_muscle_on=False, cases_on="all", composante_y_muscle_part=["IS"])
-PremadeGraphs.graph_all_muscle_fibers(Results_aTSA, muscle_coiffe, "Abduction", "F surface", combined_muscle_on=False, cases_on="all", composante_y_muscle_part=["ML"])
