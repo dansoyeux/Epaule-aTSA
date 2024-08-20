@@ -5,23 +5,30 @@ This model was developed in the objective to be used for non-conforming total sh
 This model is an updated version of the model developed by Lauranne Sins during her PhD (2015).
 The model is described in an article (DOI : 10.1115/1.4031330)
 
-The model was updated to be usable in any AMMR version and allow to vary the Critical Shoulder Angle (CSA) by Dan Soyeux in the context of his Master degree (2024).
+The model was updated to be usable in any AMMR version and allows to vary the Critical Shoulder Angle (CSA) by Dan Soyeux in the context of his Master degree (2024).
 
 AMMR used for the study : 2.4.2
 
 ---------------------------------Model Files---------------------------------
 
 •	Input/InputVariables.any : controls the simulation parameters
+  
 •	Model/Implants.any : inserts a glenoid and humeral anatomic implant
+
 •	Model/GHJointExchange.any : Excludes the original BallAndSocket glenohumeral joint (and the GHReactions muscles) 
                                    and redefines the joint as a joint with 3 translations allowed by the FDK algorithm
-•	Model/ContactForces.any : Introduces a contact force between the implants and a constant stabilisation force 
+•	Model/ContactForces.any : Introduces a contact force between the implants and a constant stabilisation force
+
 •	Model/CSAVariation : Chooses the acromion elongation (mm) and the rotation of the glenoid implant (to vary its inclination) depending on the names entered
+
 •	Scaling/ScalingCustom.any : Allows to elongates the acromion which moves the deltoid lateral insertions 
                                  : NOTE : original coordinates of the deltoid lateral insertions entered by hand, they might change with later AMMR versions
+
 •	Model/EvaluateAbductionMomentArm.any : Evaluates the moment arm of every shouder muscles that were activated
                                             NOTE : A list of the muscles to evaluate the moment arm is in Model/ArmMuscleList.any. Make sure this list is updated for newer AMMR version 
+
 •	Output/Simulation_Outputs.any : Calculations and important model outputs
+
 •	Output/Output_File_FDK.any and Output/Output_File_BallAndSocket.any : Model constants that will be saved in a AnyOutputFile (.txt file)
  
 ---------------------New Glenohumeral joint with anatomical NC implants---------------------
@@ -41,8 +48,8 @@ A constant stabilisation force is also applied on the humerus. Its value was cho
 
 The critical shoulder angle is an anatomical parameter measure. Anatomically it increases with an upward inclination of the glenoid implant or with a greater acromion length.
 
-The length of the acromion is augmented or shortened with bone scaling.
-This script moves laterally the nodes on the edge of the acromion and the 4 origines of the deltoid lateral that are attached to the acromion.
+The length of the acromion is augmented or shortened with the scapula bone scaling.
+This script moves laterally the nodes on the edge of the acromion and the 4 origins of the deltoid lateral that are attached to the acromion.
 
 The model allows to select the glenoid upward/downward inclination (CSA_Tilt in InputVariables.any) and the acromion lengthening (CSA_Acromion_Length) by their name.
 These names are correspond to different predefined acromion lengthening and glenoid rotation/position (defined in Model/CSA_Variation.any)
@@ -64,7 +71,6 @@ The COP position on the glenoid implant and humeral implant, the contact area, t
 
 The results are saved in 2 files :
 .anydata.h5 (variables) and a .txt file (input simulation variables).
-
 
 ---------------------------------Validation---------------------------------
 Literature used for model validation includes, but is not restricted to, the following papers:
@@ -90,8 +96,8 @@ Literature used for model validation includes, but is not restricted to, the fol
 [19] N. Wuelker, H. Schmotzer, K. Thren, and M. Korell. Translation of the glenohumeral joint with simulated active elevation. (309):193-200, 1994.
 [20] J. Zhang, C. Yongpravat, H. M. Kim, W. N. Levine, L. U. Bigliani, T. R. Gardner, and C. S. Ah- mad. Glenoid articular conformity affects stress distributions in total shoulder arthroplasty. Journal of shoulder and elbow surgery, 22(3):350-356, Mar. 2013.
 
-Author 1: Lauranne Sins, Laboratoire d'Innovation Ouverte en technologies de la sante (LIO, Montreal (QC), Canada)
-Author 2: Dan Soyeux, Laboratoire d'Innovation Ouverte en technologies de la sante (LIO, Montreal (QC), Canada)
+Author 1: (Original model) Lauranne Sins, Laboratoire d'Innovation Ouverte en technologies de la sante (LIO, Montreal (QC), Canada)
+Author 2: (Integration of CSA variation) Dan Soyeux, Laboratoire d'Innovation Ouverte en technologies de la sante (LIO, Montreal (QC), Canada)
 
 Version: 2.0
 Date:   05/2024

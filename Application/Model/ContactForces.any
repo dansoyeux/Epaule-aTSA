@@ -1,8 +1,8 @@
 Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = { 
   
-  
+  // /!\/!\ In this case, eps is so small that the force is constant, so only the value of F is defined by k0
   AnyForce SpringForce = {
-    //Eps code lauranne, delta_l not Force/elongation %
+
     AnyFloat Eps = {
       .GHLin.Pos[0]-Main.InputVariables.JointPosition.px,
       .GHLin.Pos[1]-Main.InputVariables.JointPosition.py,

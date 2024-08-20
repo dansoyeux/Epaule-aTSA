@@ -16,10 +16,12 @@ AnyFolder InputVariables = {
     Forces in the IGHL ligament
     Non-linear model [Bigliani, 1992]:
     F-anteroposterior = k0[0] + k1*eps + k2*eps^2 + k4*eps^4
-    F-inferiorsuperior = k0[1] + k1*eps + k2*eps^2 + k4*eps^4   
+    F-inferiorsuperior = k0[1] + k1*eps + k2*eps^2 + k4*eps^4
+    
+    /!\/!\ With the calculation of eps, eps is so small that the force is constant, so only the value of F is defined by k0 /!\/!\
     */
     
-    // k0 = Value ajusted so that the case with neutral inclinatin and normal acromion give a centered COP on the glenoid implant on the first step
+    // k0 = {-4.5, -1.5} : Value ajusted so that the case with neutral inclinatin and normal acromion give a centered COP on the glenoid implant on the first step
     // to ajust it, set SmallAbduction to 1 and ajust k0 to obtain Main.Study.Simulation_Outputs.COP_glenoid = {0,0,xxx}
     AnyFloat k0 = -{-4.5, -1.5};   
     AnyFloat k1 = -7.787;  

@@ -1,4 +1,4 @@
-// Points to the AMMR 2.4.2, change this file to upgrade to a newer AMMR
+// Points to the AMMR 2.4.2, change this file to upgrade to a newer AMMR version
 #include "../libdef.any"
 
 // Find a detailed description of the model here
@@ -71,7 +71,7 @@ Main = {
     #include "Model/GHJointExchange.any"
     
     #if BallAndSocket == 0    
-    // Adds a contact force between the shoulder implants
+    // Adds a contact force between the shoulder implants and a stabilisation force
     #include "Model/ContactForces.any"
     
     // FDK algorithm parameters   
@@ -97,7 +97,7 @@ Main = {
     
     // Variables to output (calculates COP position, abduction angle...)
     #include "Output/Simulation_Outputs.any"
-
+    
     // Creates a .txt file containing the simulation input parameters variables
     #if AutoSaveOption == 1
     #if BallAndSocket == 0
@@ -110,6 +110,7 @@ Main = {
   }; // End of study
   
 }; //Main
+
 
 
 
