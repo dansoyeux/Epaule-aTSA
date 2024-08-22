@@ -710,52 +710,13 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 
 # %% Figures mémoire
 
-define_simulations_line_style(SimulationsLineStyleDictionary_article)
+# define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
-# Activation de la coiffe des rotateurs
-PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["neutral-normal"], label="CSA = 28°")
-PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["up-long"], label="CSA = 45°", add_graph=True, same_lim=True)
-PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe des rotateurs", hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None], cases_on=["normal"], add_graph=True, label="Joint Sphérique")
+# # Activation de la coiffe des rotateurs
+# PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["neutral-normal"], label="CSA = 28°")
+# PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["up-long"], label="CSA = 45°", add_graph=True, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe des rotateurs", hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None], cases_on=["normal"], add_graph=True, label="Joint Sphérique")
 
-
-
-#%% Présentation orale
-
-# Titre des cases des subplots (12)
-matplotlib.rcParams.update({'axes.titlesize': 22})
-
-# Titre du graphique (12)
-matplotlib.rcParams.update({'figure.titlesize': 22})
-
-# Nom des axes (10)
-matplotlib.rcParams.update({'axes.labelsize': 20})
-
-# Graduations des axes (10)
-matplotlib.rcParams.update({'xtick.labelsize': 18})
-matplotlib.rcParams.update({'ytick.labelsize': 18})
-
-# Taille des graduations (3.5)
-matplotlib.rcParams.update({'xtick.major.size': 10})
-matplotlib.rcParams.update({'ytick.major.size': 10})
-
-# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary_powerpoint, list_muscles_actifs, CaseNames_convergence, save_figure=False)
-
-Categories_powerpoint = {"line": {"Downward inclination": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
-                                  "Neutral inclination": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
-                                  "Upward inclination": ["up-xshort", "up-normal", "up-xlong"]
-                                  }}
-
-SimulationsLineStyleDictionary_powerpoint = {
-    "neutral-normal": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
-    "neutral-long": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
-    "xup-long": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
-}
-
-define_simulations_line_style(SimulationsLineStyleDictionary_powerpoint)
-# COP_graph(Results_aTSA, COP_contour, figure_title="Center of Pressure", composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True, legend_on=False, cases_on=["neutral-normal"])
-# COP_graph(Results_aTSA, COP_contour, figure_title="Center of Pressure", composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True, legend_on=True, cases_on=["neutral-normal", "neutral-long", "xup-long"])
-
-# PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, Categories_powerpoint, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True, legend_on=False, figsize=[18,10])
 
 # %% graph surface score
 
