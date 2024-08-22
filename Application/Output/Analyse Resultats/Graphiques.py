@@ -97,8 +97,11 @@ SimulationsLineStyleDictionary_article = {
     "up-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
     "up-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
     "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-}
 
+    "Ball And Socket": {"color": "black", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+    "Joint Sphérique": {"color": "black", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+
+}
 
 
 SimulationsLineStyleDictionary = {
@@ -146,6 +149,7 @@ SimulationsLineStyleDictionary = {
 
     # Type gh joint
     "Ball And Socket": {"color": "black", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+    "Joint Sphérique": {"color": "black", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
 
     # data de validation
     "Dal Maso superior": {"color": "black", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
@@ -396,6 +400,12 @@ Muscles_Aux = ["Pectoralis major clavicular",
                "Biceps brachii short head",
                ]
 
+Muscles_coiffe = ["Subscapularis",
+                  "Infraspinatus",
+                  "Supraspinatus",
+                  "Teres minor"
+                  ]
+
 # 6 muscles --> graphique 2x3
 Muscles_Extra = ["Sternocleidomastoid sternum",
                  "Sternocleidomastoid clavicular",
@@ -617,7 +627,7 @@ graph_parameters_6 = {"xlim": [0, 120],
                       "hide_center_axis_labels": True
                       }
 
-# Tous les résultats
+# Graphiques avec tous les résultats
 # my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Tous les résultats", save_graph=True, composante_on=False, **graph_parameters_6)
 
 # %% Résultats classés par CSA et moyennes par CSA
@@ -690,11 +700,24 @@ combine_CSA = {"CSA=12°": CSA_12_Cases, "CSA=16°": CSA_16_Cases, "CSA=20°": C
 # Fait la moyenne de toutes les variables par valeur de CSA
 Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operation="mean"), **Results_aTSA}
 
-my_graphs.all_variables_graphs(Results_aTSA_CSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Classé par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
+# Graphiques avec tous les résultats classés par CSA
+# my_graphs.all_variables_graphs(Results_aTSA_CSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Classé par CSA", save_graph=True, composante_on=False, **graph_parameters_par_CSA)
 
 # %% Figures article
 
-my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=True)
+# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=True)
+
+
+# %% Figures mémoire
+
+define_simulations_line_style(SimulationsLineStyleDictionary_article)
+
+# Activation de la coiffe des rotateurs
+PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["neutral-normal"], label="CSA = 28°")
+PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["up-long"], label="CSA = 45°", add_graph=True, same_lim=True)
+PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe des rotateurs", hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None], cases_on=["normal"], add_graph=True, label="Joint Sphérique")
+
+
 
 #%% Présentation orale
 
