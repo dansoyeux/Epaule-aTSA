@@ -39,7 +39,7 @@ scores_shear = load_results_from_file(SaveSimulationsDirectory, "scores_shear")
 # %% taille des textes dans les graphiques
 
 # Contrôle de la taille de la police globale
-# matplotlib.rcParams.update({'font.size': 10})
+matplotlib.rcParams.update({'font.size': 13})
 
 # Contrôle des tailles de chaque partie partie du graphique
 # Liste des paramètres que l'on peut changer :
@@ -47,24 +47,24 @@ scores_shear = load_results_from_file(SaveSimulationsDirectory, "scores_shear")
 # Default values available here : https://matplotlib.org/stable/users/explain/customizing.html
 
 # Titre des cases des subplots (12)
-matplotlib.rcParams.update({'axes.titlesize': 18})
+matplotlib.rcParams.update({'axes.titlesize': 20})
 
 # Titre du graphique (12)
-matplotlib.rcParams.update({'figure.titlesize': 18})
+matplotlib.rcParams.update({'figure.titlesize': 20})
 
 # Nom des axes (10)
-matplotlib.rcParams.update({'axes.labelsize': 16})
+matplotlib.rcParams.update({'axes.labelsize': 20})
 
 # Graduations des axes (10)
-matplotlib.rcParams.update({'xtick.labelsize': 14})
-matplotlib.rcParams.update({'ytick.labelsize': 14})
+matplotlib.rcParams.update({'xtick.labelsize': 16})
+matplotlib.rcParams.update({'ytick.labelsize': 16})
 
 # Taille des graduations (3.5)
-matplotlib.rcParams.update({'xtick.major.size': 6})
-matplotlib.rcParams.update({'ytick.major.size': 6})
+matplotlib.rcParams.update({'xtick.major.size': 8})
+matplotlib.rcParams.update({'ytick.major.size': 8})
 
 # Légende (10)
-matplotlib.rcParams.update({'legend.fontsize': 15})
+matplotlib.rcParams.update({'legend.fontsize': 17})
 
 # Distance between the title of a plot and the plot in points (6)
 matplotlib.rcParams.update({'axes.titlepad': 12})
@@ -710,13 +710,25 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 
 # %% Figures mémoire
 
+# Graphique d'exemple du package (Chapitre 4 mémoire)
+
+# PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_Main, [3, 3], "Abduction", "Ft", "Activation des muscles de l'épaule", hide_center_axis_labels=True, cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, figsize=[20, 10])
+
+# PremadeGraphs.graph_all_muscle_fibers(Results_aTSA, ["Deltoid lateral"], "Abduction", "Ft", hide_center_axis_labels=True, cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True)
+
+# muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction de la force du deltoïde latéral", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, subplot={"dimension": [1, 3], "number": 1}, subplot_title="Direction antéropostérieure", composante_y=["Total_AP"], figsize=[18, 10])
+# muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction de la force du deltoïde latéral", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, subplot={"dimension": [1, 3], "number": 2}, subplot_title="Direction inférosupérieure", composante_y=["Total_IS"])
+# muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction de la force du deltoïde latéral", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, subplot={"dimension": [1, 3], "number": 3}, subplot_title="Direction médiolatérale", composante_y=["Total_ML"])
+
+# COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position du centre de pression sur l'implant glénoïdien", cases_on=["xdown-short", "middle-normal", "xup-long"], annotation_offset= [3, -2.1], annotation_reference_offset=[1, 3], graph_annotation_on=True, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10])
+
+# Discussion générale coiffe des rotateurs
 # define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
 # # Activation de la coiffe des rotateurs
 # PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["neutral-normal"], label="CSA = 28°")
 # PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["up-long"], label="CSA = 45°", add_graph=True, same_lim=True)
 # PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe des rotateurs", hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None], cases_on=["normal"], add_graph=True, label="Joint Sphérique")
-
 
 # %% graph surface score
 
@@ -752,3 +764,5 @@ def score_surface(score_df, title):
 
 # score_surface(scores_moment["Total"], "Total moment on the glenoid implant [N.m]")
 # score_surface(scores_shear["Total"], "Total shear forces on the glenoid implant [N]")
+
+

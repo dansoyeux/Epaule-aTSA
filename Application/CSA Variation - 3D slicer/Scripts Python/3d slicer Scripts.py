@@ -66,7 +66,7 @@ def CSA():
 
     import math
 
-    ScapulaEnd = slicer.util.getNode("Scapula End")
+    ScapulaEnd = slicer.util.getNode("Acromion End")
 
     GleneDown = slicer.util.getNode("Glene Down")
     GleneUp = slicer.util.getNode("Glene Up")
@@ -203,12 +203,10 @@ def AcromionOffset2CSA(AcromionOffset: float):
     """
     Acromion offset in millimeter
     """
-    # Get frontal transform node
-    # TransformFrontal = slicer.util.getNode("Glene - Rotation plan frontal")
 
     GleneDown = slicer.util.getNode("Glene Down")
     GleneUp = slicer.util.getNode("Glene Up")
-    ScapulaEnd = slicer.util.getNode("Scapula End")
+    ScapulaEnd = slicer.util.getNode("Acromion End")
 
     P0 = np.zeros(3)
     ScapulaEnd.GetNthControlPointPositionWorld(0, P0)
@@ -219,7 +217,7 @@ def AcromionOffset2CSA(AcromionOffset: float):
     P3 = np.zeros(3)
     GleneUp.GetNthControlPointPositionWorld(0, P3)
 
-    Offset = np.array([[AcromionOffset], [0], [0]])
+    Offset = np.array([AcromionOffset, 0, 0])
     P1 = P0 + Offset
 
     # CSA calculation

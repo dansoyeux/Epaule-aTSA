@@ -38,8 +38,8 @@
             "measurements": [
                 {
                     "name": "length",
-                    "enabled": true,
-                    "value": 27.793734747799956,
+                    "enabled": false,
+                    "value": 27.793734850014054,
                     "units": "mm",
                     "printFormat": "%-#4.4gmm"
                 }
@@ -50,9 +50,9 @@
                 "color": [0.4, 1.0, 1.0],
                 "selectedColor": [1.0, 0.3333333333333333, 1.0],
                 "activeColor": [0.4, 1.0, 0.0],
-                "propertiesLabelVisibility": true,
+                "propertiesLabelVisibility": false,
                 "pointLabelsVisibility": false,
-                "textScale": 3.0,
+                "textScale": 3.1,
                 "glyphType": "Sphere3D",
                 "glyphScale": 3.0,
                 "glyphSize": 5.0,
