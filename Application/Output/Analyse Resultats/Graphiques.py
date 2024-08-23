@@ -720,7 +720,7 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 # muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction de la force du deltoïde latéral", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, subplot={"dimension": [1, 3], "number": 2}, subplot_title="Direction inférosupérieure", composante_y=["Total_IS"])
 # muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction de la force du deltoïde latéral", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, subplot={"dimension": [1, 3], "number": 3}, subplot_title="Direction médiolatérale", composante_y=["Total_ML"])
 
-# COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position du centre de pression sur l'implant glénoïdien", cases_on=["xdown-short", "middle-normal", "xup-long"], annotation_offset= [3, -2.1], annotation_reference_offset=[1, 3], graph_annotation_on=True, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10])
+# COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position du centre de pression sur l'implant glénoïdien", cases_on=["xdown-short", "middle-normal", "xup-long"], annotation_offset= [3, -2.1], annotation_reference_offset=[1, 3], graph_annotation_on=True, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10], draw_COP_points_on=False)
 
 # Discussion générale coiffe des rotateurs
 # define_simulations_line_style(SimulationsLineStyleDictionary_article)
