@@ -1,3 +1,6 @@
 [submodule "Application/Output/Analyse Resultats/Anybody_Package"]
 	path = Application/Output/Analyse Resultats/Anybody_Package
 	url = https://github.com/dansoyeux/Anybody_Package
+[submodule "Application/3D slicer - Variation CSA"]
+	path = Application/3D slicer - Variation CSA
+	url = https://github.com/dansoyeux/3D-slicer---Variation-CSA
