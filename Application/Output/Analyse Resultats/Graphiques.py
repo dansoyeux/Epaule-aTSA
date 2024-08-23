@@ -712,23 +712,23 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 
 # Graphique d'exemple du package (Chapitre 4 mémoire)
 
-# PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_Main, [3, 3], "Abduction", "Ft", "Activation des muscles de l'épaule", hide_center_axis_labels=True, cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, figsize=[20, 10])
+# PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_Main, [3, 3], "Abduction", "Ft", "Muscle forces", hide_center_axis_labels=True, cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, figsize=[20, 10])
 
 # PremadeGraphs.graph_all_muscle_fibers(Results_aTSA, ["Deltoid lateral"], "Abduction", "Ft", hide_center_axis_labels=True, cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True)
 
-# muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction de la force du deltoïde latéral", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, subplot={"dimension": [1, 3], "number": 1}, subplot_title="Direction antéropostérieure", composante_y=["Total_AP"], figsize=[18, 10])
-# muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction de la force du deltoïde latéral", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, subplot={"dimension": [1, 3], "number": 2}, subplot_title="Direction inférosupérieure", composante_y=["Total_IS"])
-# muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction de la force du deltoïde latéral", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, subplot={"dimension": [1, 3], "number": 3}, subplot_title="Direction médiolatérale", composante_y=["Total_ML"])
+# muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction of the deltoid lateral's force", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, subplot={"dimension": [1, 3], "number": 1}, subplot_title="Anterior-posterior axis", composante_y=["Total_AP"], figsize=[18, 10])
+# muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction of the deltoid lateral's force", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, subplot={"dimension": [1, 3], "number": 2}, subplot_title="Inferior-posterior axis", composante_y=["Total_IS"])
+# muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction of the deltoid lateral's force on its insertion", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, subplot={"dimension": [1, 3], "number": 3}, subplot_title="Medial-lateral axis", composante_y=["Total_ML"])
 
-# COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position du centre de pression sur l'implant glénoïdien", cases_on=["xdown-short", "middle-normal", "xup-long"], annotation_offset= [3, -2.1], annotation_reference_offset=[1, 3], graph_annotation_on=True, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10], draw_COP_points_on=False)
+# COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position of the Center of Pressure on the glenoid implant", cases_on=["xdown-short", "middle-normal", "xup-long"], annotation_offset= [3, -2.1], annotation_reference_offset=[1, 3], graph_annotation_on=True, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10], draw_COP_points_on=False)
 
-# Discussion générale coiffe des rotateurs
+# # Discussion générale coiffe des rotateurs
 # define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
 # # Activation de la coiffe des rotateurs
 # PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["neutral-normal"], label="CSA = 28°")
 # PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["up-long"], label="CSA = 45°", add_graph=True, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe des rotateurs", hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None], cases_on=["normal"], add_graph=True, label="Joint Sphérique")
+# PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Force of the Rotator cuff muscles", hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None], cases_on=["normal"], add_graph=True, label="Joint Sphérique")
 
 # %% graph surface score
 
