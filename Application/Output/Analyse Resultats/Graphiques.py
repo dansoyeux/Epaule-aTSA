@@ -766,3 +766,29 @@ def score_surface(score_df, title):
 # score_surface(scores_shear["Total"], "Total shear forces on the glenoid implant [N]")
 
 
+# %% test bar
+
+# import pandas as pd
+
+# import matplotlib.pyplot as plt
+
+"""
+----------------------------------------------------
+REMPLACER DELTOID PAR DELTOIDEUS OU INVERSE
+----------------------------------------------------
+"""
+cases_on = ["middle-normal", "middle-xlong", "middle-xshort"]
+muscle_list = ["Deltoid anterior", "Deltoid lateral", "Deltoid posterior", "Supraspinatus", "Infraspinatus"]
+abduction_angle_index = 0
+variable = "F origin"
+composante = "Total_IS"
+data = Results_aTSA
+figure_title = "Titre"
+stacked = False
+stacked = True
+
+from Anybody_Package.Anybody_Graph.GraphFunctions import muscle_bar_plot
+
+muscle_bar_plot(Results_aTSA, "F origin", "", muscle_list, abduction_angle_index=0, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 20], subplot={"dimension": [3, 1], "number": 1}, subplot_title="15° abduction")
+muscle_bar_plot(Results_aTSA, "F origin", "", muscle_list, abduction_angle_index=49, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 2}, subplot_title="90° abduction")
+muscle_bar_plot(Results_aTSA, "F origin", f"Forces {composante}", muscle_list, abduction_angle_index=69, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="120° abduction", legend_position="center-left")
