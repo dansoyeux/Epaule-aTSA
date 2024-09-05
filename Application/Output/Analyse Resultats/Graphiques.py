@@ -129,7 +129,7 @@ SimulationsLineStyleDictionary = {
     # glen neutral
     "neutral-xshort": {"color": "lightgray", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": None},
     "neutral-short": {"color": "lightgray", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2.5},
-    "neutral-normal": {"color": "grey", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
+    "neutral-normal": {"color": "grey", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
     "neutral-long": {"color": "black", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
     "neutral-xlong": {"color": "black", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 2},
 
@@ -721,6 +721,7 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 # muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction of the deltoid lateral's force on its insertion", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, same_lim=True, subplot={"dimension": [1, 3], "number": 3}, subplot_title="Medial-lateral axis", composante_y=["Total_ML"])
 
 # COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position of the Center of Pressure on the glenoid implant", cases_on=["xdown-short", "middle-normal", "xup-long"], annotation_offset= [3, -2.1], annotation_reference_offset=[1, 3], graph_annotation_on=True, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10], draw_COP_points_on=False)
+# COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position of the Center of Pressure on the glenoid implant", cases_on=["neutral-normal"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10], draw_COP_points_on=False)
 
 # # Discussion générale coiffe des rotateurs
 # define_simulations_line_style(SimulationsLineStyleDictionary_article)
@@ -772,23 +773,29 @@ def score_surface(score_df, title):
 
 # import matplotlib.pyplot as plt
 
-"""
-----------------------------------------------------
-REMPLACER DELTOID PAR DELTOIDEUS OU INVERSE
-----------------------------------------------------
-"""
-cases_on = ["middle-normal", "middle-xlong", "middle-xshort"]
-muscle_list = ["Deltoid anterior", "Deltoid lateral", "Deltoid posterior", "Supraspinatus", "Infraspinatus"]
-abduction_angle_index = 0
-variable = "F origin"
-composante = "Total_IS"
-data = Results_aTSA
-figure_title = "Titre"
-stacked = False
-stacked = True
 
-from Anybody_Package.Anybody_Graph.GraphFunctions import muscle_bar_plot
+# cases_on = ["middle-normal", "middle-xlong", "middle-xshort"]
+# muscle_list = ["Deltoid anterior", "Deltoid lateral", "Deltoid posterior", "Supraspinatus", "Infraspinatus"]
+# abduction_angle_index = 0
+# data = Results_aTSA
+# figure_title = "Titre"
+# stacked = False
 
-muscle_bar_plot(Results_aTSA, "F origin", "", muscle_list, abduction_angle_index=0, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 20], subplot={"dimension": [3, 1], "number": 1}, subplot_title="15° abduction")
-muscle_bar_plot(Results_aTSA, "F origin", "", muscle_list, abduction_angle_index=49, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 2}, subplot_title="90° abduction")
-muscle_bar_plot(Results_aTSA, "F origin", f"Forces {composante}", muscle_list, abduction_angle_index=69, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="120° abduction", legend_position="center-left")
+
+# from Anybody_Package.Anybody_Graph.GraphFunctions import ForceMeasure_bar_plot
+
+# for composante in ["AP", "IS", "ML"]:
+
+#     ForceMeasure_bar_plot(Results_aTSA, "", muscle_list, abduction_angle_index=0, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 20], subplot={"dimension": [3, 1], "number": 1}, subplot_title="15° abduction")
+#     ForceMeasure_bar_plot(Results_aTSA, "", muscle_list, abduction_angle_index=49, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 2}, subplot_title="90° abduction")
+#     ForceMeasure_bar_plot(Results_aTSA, f"Forces {composante}", muscle_list, abduction_angle_index=69, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="120° abduction", legend_position="center left")
+
+
+# muscle_list = ["Deltoid anterior", "Deltoid lateral", "Deltoid posterior", "Supraspinatus", "Infraspinatus"]
+# for composante in ["AP", "IS", "ML"]:
+    
+#     ForceMeasure_bar_plot(Results, "", muscle_list, abduction_angle_index=0, composante=composante, cases_on="all", stacked=False, figsize=[15, 20], subplot={"dimension": [3, 1], "number": 1}, subplot_title="15° abduction")
+#     ForceMeasure_bar_plot(Results, "", muscle_list, abduction_angle_index=49, composante=composante, cases_on="all", stacked=False, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 2}, subplot_title="90° abduction")
+#     ForceMeasure_bar_plot(Results, f"Forces {composante}", muscle_list, abduction_angle_index=69, composante=composante, cases_on="all", stacked=False, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="120° abduction", legend_position="center-left")
+
+

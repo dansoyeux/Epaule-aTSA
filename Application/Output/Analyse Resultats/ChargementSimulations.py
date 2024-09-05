@@ -69,11 +69,11 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                                             "combine_muscle_part_operations": ["total", "mean"]
                                             },
 
-                            "F surface": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force on the muscle wraping surface [N]", "select_muscle_RefFrame_output": "surface",
-                                          "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"]},
+                            # "F surface": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force on the muscle wraping surface [N]", "select_muscle_RefFrame_output": "surface",
+                            #               "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"]},
 
-                            "F via": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force on the muscle via point [N]", "select_muscle_RefFrame_output": "via",
-                                      "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"]},
+                            # "F via": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force on the muscle via point [N]", "select_muscle_RefFrame_output": "via",
+                            #           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"]},
 
                             # "F origin direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the origin", "select_matrix_line": 0,
                             #                        "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
@@ -92,6 +92,29 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
 FDK_VariableDictionary = {"Abduction": {"VariablePath": "Output.Simulation_Outputs.AbductionAngle", "VariableDescription": "Abduction angle [°]"},
 
                           "ContactArea": {"VariablePath": "Output.Simulation_Outputs.ContactArea", "VariableDescription": r'Contact area [$cm^2$]', "MultiplyFactor": 10000},
+                          
+                          
+                          
+                           "ForceMeasure Infraspinatus": {"VariablePath": "Output.Main.Model.ForceMeasure_infra.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                           "ForceMeasure Supraspinatus": {"VariablePath": "Output.Main.Model.ForceMeasure_supra.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                           "ForceMeasure Subscapularis": {"VariablePath": "Output.Main.Model.ForceMeasure_subscap.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                           "ForceMeasure Deltoideus anterior": {"VariablePath": "Output.Main.Model.ForceMeasure_delt_ant.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                           "ForceMeasure Deltoideus posterior": {"VariablePath": "Output.Main.Model.ForceMeasure_delt_post.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                           "ForceMeasure Deltoideus lateral": {"VariablePath": "Output.Main.Model.ForceMeasure_delt_lat.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+
+
+                          # test
+                          "ForceMeasure Infraspinatus": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                          "ForceMeasure Supraspinatus": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                          "ForceMeasure Subscapularis": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                          "ForceMeasure Deltoid anterior": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                          "ForceMeasure Deltoid posterior": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                          "ForceMeasure Deltoid lateral": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+
+
+
+
+
 
                           "Time": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Time"},
 
@@ -300,15 +323,15 @@ CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *Up
 # aa = load_simulation_cases(aTSA_dir, files, Casetest, FDK_Variables)
 
 
-# aTSA_dir = "../Result Files/aTSA"
-# files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in CaseNames_6]
-# Results_aTSA = load_simulation_cases(aTSA_dir, files, CaseNames_6, FDK_Variables)
-# Results_aTSA, scores_moment, scores_shear = additional_calculations(Results_aTSA)
+aTSA_dir = "../Result Files/aTSA"
+files = ["PJ178_Anybody_aTSA_" + CaseName for CaseName in CaseNames_6]
+Results_aTSA = load_simulation_cases(aTSA_dir, files, CaseNames_6, FDK_Variables)
+Results_aTSA, scores_moment, scores_shear = additional_calculations(Results_aTSA)
 
-# # Sauvegarde des scores et des résultats en .pkl
-# save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
-# save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
-# save_results_to_file(Results_aTSA, SaveSimulationsDirectory, "Results_aTSA")
+# Sauvegarde des scores et des résultats en .pkl
+save_results_to_file(scores_moment, SaveSimulationsDirectory, "scores_moment")
+save_results_to_file(scores_shear, SaveSimulationsDirectory, "scores_shear")
+save_results_to_file(Results_aTSA, SaveSimulationsDirectory, "Results_aTSA")
 
 # %%                                                Résultats Ball and Socket
 
