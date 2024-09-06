@@ -776,20 +776,26 @@ figure_title = "Titre"
 stacked = False
 
 
-from Anybody_Package.Anybody_Graph.GraphFunctions import ForceMeasure_bar_plot
+# from Anybody_Package.Anybody_Graph.GraphFunctions import ForceMeasure_bar_plot
 
-for composante in ["AP", "IS", "ML"]:
+# for composante in ["AP", "IS", "ML"]:
 
-    ForceMeasure_bar_plot(Results_aTSA, "", muscle_list, data_index=0, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 20], subplot={"dimension": [3, 1], "number": 1}, subplot_title="15° abduction")
-    ForceMeasure_bar_plot(Results_aTSA, "", muscle_list, data_index=49, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 2}, subplot_title="90° abduction")
-    ForceMeasure_bar_plot(Results_aTSA, f"Forces {composante}", muscle_list, data_index=69, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="120° abduction", legend_position="center left")
+#     ForceMeasure_bar_plot(Results_aTSA, "", muscle_list, data_index=0, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 20], subplot={"dimension": [3, 1], "number": 1}, subplot_title="15° abduction")
+#     ForceMeasure_bar_plot(Results_aTSA, "", muscle_list, data_index=49, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 2}, subplot_title="90° abduction")
+#     ForceMeasure_bar_plot(Results_aTSA, f"Forces {composante}", muscle_list, data_index=69, composante=composante, cases_on=cases_on, stacked=stacked, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="120° abduction", legend_position="center left")
 
 
 # muscle_list = ["Deltoid anterior", "Deltoid lateral", "Deltoid posterior", "Supraspinatus", "Infraspinatus"]
 # for composante in ["AP", "IS", "ML"]:
-    
+
 #     ForceMeasure_bar_plot(Results_aTSA, "", muscle_list, data_index=0, composante=composante, cases_on="all", stacked=False, figsize=[15, 20], subplot={"dimension": [3, 1], "number": 1}, subplot_title="15° abduction")
 #     ForceMeasure_bar_plot(Results_aTSA, "", muscle_list, data_index=49, composante=composante, cases_on="all", stacked=False, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 2}, subplot_title="90° abduction")
 #     ForceMeasure_bar_plot(Results_aTSA, f"Forces {composante}", muscle_list, data_index=69, composante=composante, cases_on="all", stacked=False, figsize=[15, 30], subplot={"dimension": [3, 1], "number": 3}, subplot_title="120° abduction", legend_position="center left")
 
 
+# %% tests
+
+# bug pas de légende des annotations que si dernier graph en a
+# muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction of the deltoid lateral's force on its insertion", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, subplot={"dimension": [1, 3], "number": 1}, subplot_title="Medial-lateral axis", composante_y=["Total_ML"])
+# COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position of the Center of Pressure on the glenoid implant", cases_on=["xdown-short", "middle-normal", "xup-long"], subplot={"dimension": [1, 3], "number": 2}, annotation_offset=[3, -2.1], annotation_reference_offset=[1, 3], graph_annotation_on=True, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10], draw_COP_points_on=False)
+# muscle_graph(Results_aTSA, "Deltoid lateral", "Abduction", "F insertion", "Direction of the deltoid lateral's force on its insertion", cases_on=CaseNames_3, xlim=[0, 120], grid_x_step=15, subplot={"dimension": [1, 3], "number": 3}, subplot_title="Medial-lateral axis", composante_y=["Total_ML"])
