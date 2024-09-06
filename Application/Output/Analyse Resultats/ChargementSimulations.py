@@ -56,7 +56,9 @@ MuscleDictionary = {"Deltoid lateral": ["deltoideus_lateral", "_part_", [1, 4]],
 
 MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Ft", "VariableDescription": "Muscle force [N]"},
 
-                            # "Fm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Fm", "VariableDescription": "Muscle force [N]"},
+                            "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Moment arm [mm]",
+                                          "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000},
+
                             # "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
                             # Dans repère scapula
@@ -82,9 +84,6 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             # "F insertion direction": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Direction of the muscle force at the insertion", "select_muscle_RefFrame_output": "insertion",
                             #                           "rotation_matrix_path": "Output.Seg.Scapula.AnatomicalFrame.ISB_Coord.Axes", "inverse_rotation": True, "SequenceComposantes": ["AP", "IS", "ML"],
                             #                           "combine_muscle_part_operations": ["mean"], "vect_dir": True},
-
-                            # "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Moment arm [mm]",
-                            #               "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000}
                             }
 
 
@@ -95,12 +94,12 @@ FDK_VariableDictionary = {"Abduction": {"VariablePath": "Output.Simulation_Outpu
                           
                           
                           
-                           "ForceMeasure Infraspinatus": {"VariablePath": "Output.Main.Model.ForceMeasure_infra.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                           "ForceMeasure Supraspinatus": {"VariablePath": "Output.Main.Model.ForceMeasure_supra.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                           "ForceMeasure Subscapularis": {"VariablePath": "Output.Main.Model.ForceMeasure_subscap.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                           "ForceMeasure Deltoideus anterior": {"VariablePath": "Output.Main.Model.ForceMeasure_delt_ant.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                           "ForceMeasure Deltoideus posterior": {"VariablePath": "Output.Main.Model.ForceMeasure_delt_post.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                           "ForceMeasure Deltoideus lateral": {"VariablePath": "Output.Main.Model.ForceMeasure_delt_lat.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                           # "ForceMeasure Infraspinatus": {"VariablePath": "Output.Main.Model.ForceMeasure_infra.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                           # "ForceMeasure Supraspinatus": {"VariablePath": "Output.Main.Model.ForceMeasure_supra.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                           # "ForceMeasure Subscapularis": {"VariablePath": "Output.Main.Model.ForceMeasure_subscap.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                           # "ForceMeasure Deltoideus anterior": {"VariablePath": "Output.Main.Model.ForceMeasure_delt_ant.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                           # "ForceMeasure Deltoideus posterior": {"VariablePath": "Output.Main.Model.ForceMeasure_delt_post.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                           # "ForceMeasure Deltoideus lateral": {"VariablePath": "Output.Main.Model.ForceMeasure_delt_lat.F", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
 
 
                           # test
