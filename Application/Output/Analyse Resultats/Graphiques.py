@@ -810,3 +810,24 @@ stacked = False
 # COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position of the Center of Pressure on the glenoid implant", cases_on=["middle-normal"], graph_annotation_on=False, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10], draw_COP_points_on=True, label= "COP_points_size=8; COP_points_step=15", COP_points_size=8, COP_points_step=15)
 # COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position of the Center of Pressure on the glenoid implant", cases_on=["up-long"], graph_annotation_on=False, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10], draw_COP_points_on=True, label= "COP_points_size=8; COP_points_step=30", add_graph=True, COP_points_size=8, COP_points_step=30)
 # COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position of the Center of Pressure on the glenoid implant", cases_on=["xdown-short"], graph_annotation_on=False, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10], draw_COP_points_on=True, label= "COP_points_size=16; COP_points_step=15", add_graph=True, COP_points_size=16, COP_points_step=15)
+
+# graph(Results_aTSA_CSA, "Abduction", "COP", composante_y=["Total"], errorbar=True, subplot={"dimension": [2,2], "number": 1}, cases_on=["CSA=35°"], subplot_title="errorevery=1", xlabel_on=False, ylabel_on=False)
+# graph(Results_aTSA_CSA, "Abduction", "COP", composante_y=["Total"], errorbar=True, subplot={"dimension": [2,2], "number": 2}, cases_on=["CSA=35°"], errorevery=5, subplot_title="errorevery=5", xlabel_on=False, ylabel_on=False)
+# graph(Results_aTSA_CSA, "Abduction", "COP", composante_y=["Total"], errorbar=True, subplot={"dimension": [2,2], "number": 3}, cases_on=["CSA=35°"], errorevery=5, error_capsize=10, subplot_title="error_capsize=10", xlabel_on=False, ylabel_on=False)
+# graph(Results_aTSA_CSA, "Abduction", "COP", composante_y=["Total"], errorbar=True, subplot={"dimension": [2,2], "number": 4}, cases_on=["CSA=35°"], errorevery=5, error_capthick=6, subplot_title="error_capthick=6", xlabel_on=False, ylabel_on=False)
+
+
+# summed_variable_name = "sum_force"
+
+# summed_variable_sequence = ["AP", "IS", "ML", "Total"]
+
+# summed_variable_description = "Forces on the humerus [N]"
+
+# variables_to_add = {"COP": ["AP", "IS", "ML", "Total"]}
+
+# muscle_variables_to_add = {"F origin": ["Total_AP", "Total_IS", "Total_ML", "Total"]}
+
+# muscles_to_add = ["Supraspinatus", "Infraspinatus", "Teres minor", "Subscapularis"]
+
+# # a = sum_result_variables(Results_aTSA, summed_variable_name, summed_variable_sequence, summed_variable_description, variables_to_add, muscle_variables_to_add, muscles_to_add)
+# a = sum_result_variables(Results_aTSA, summed_variable_name, summed_variable_sequence, summed_variable_description, variables_to_add, muscle_variables_to_add, muscles_to_add)
