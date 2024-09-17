@@ -765,11 +765,3 @@ def score_surface(score_df, title):
 
 # score_surface(scores_moment["Total"], "Total moment on the glenoid implant [N.m]")
 # score_surface(scores_shear["Total"], "Total shear forces on the glenoid implant [N]")
-
-muscle_bar_plot(Results_aTSA, "Ft", "", ["Deltoid lateral", "Deltoid anterior"], 0, subplot={"dimension": [1,3], "number": 1}, cases_on=["middle-normal", "up-xlong", "xdown-xshort"])
-muscle_bar_plot(Results_aTSA, "Ft", "", ["Deltoid lateral", "Deltoid anterior"], 20, subplot={"dimension": [1,3], "number": 2}, cases_on=["middle-normal", "up-xlong", "xdown-xshort"])
-muscle_bar_plot(Results_aTSA, "Ft", "", ["Deltoid lateral", "Deltoid anterior"], 60, subplot={"dimension": [1,3], "number": 3}, cases_on=["middle-normal", "up-xlong", "xdown-xshort"])
-
-muscle_bar_plot(Results_aTSA, "Ft", "", ["Deltoid lateral", "Deltoid anterior"], 0, subplot={"dimension": [1,3], "number": 1}, cases_on=["middle-normal", "up-xlong", "xdown-xshort"])
-muscle_bar_plot(Results_aTSA, "Ft", "", ["Deltoid lateral", "Deltoid anterior"], 20, subplot={"dimension": [1,3], "number": 2}, cases_on=["middle-normal", "up-xlong", "xdown-xshort"])
-muscle_bar_plot(Results_aTSA, "Ft", "", ["Deltoid lateral", "Deltoid anterior"], 60, subplot={"dimension": [1,3], "number": 3}, cases_on=["middle-normal", "up-xlong", "xdown-xshort"], same_lim=True)
