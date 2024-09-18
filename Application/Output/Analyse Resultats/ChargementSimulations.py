@@ -103,12 +103,12 @@ FDK_VariableDictionary = {"Abduction": {"VariablePath": "Output.Simulation_Outpu
 
 
                           # test
-                          "ForceMeasure Infraspinatus": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                          "ForceMeasure Supraspinatus": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                          "ForceMeasure Subscapularis": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                          "ForceMeasure Deltoid anterior": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                          "ForceMeasure Deltoid posterior": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
-                          "ForceMeasure Deltoid lateral": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"]},
+                          "ForceMeasure Infraspinatus": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": 3},
+                          "ForceMeasure Supraspinatus": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": 2},
+                          "ForceMeasure Subscapularis": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -3},
+                          "ForceMeasure Deltoid anterior": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": 2},
+                          "ForceMeasure Deltoid posterior": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
+                          "ForceMeasure Deltoid lateral": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": 1},
 
 
 

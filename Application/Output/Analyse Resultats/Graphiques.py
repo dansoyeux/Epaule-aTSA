@@ -765,3 +765,11 @@ def score_surface(score_df, title):
 
 # score_surface(scores_moment["Total"], "Total moment on the glenoid implant [N.m]")
 # score_surface(scores_shear["Total"], "Total shear forces on the glenoid implant [N]")
+
+# %% test
+
+
+from Anybody_Package.Anybody_Graph.GraphFunctions import ForceMeasure_bar_plot_direction
+
+muscle_list = ["Deltoid lateral", "Deltoid anterior", "Deltoid posterior", "Infraspinatus", "Supraspinatus", "Subscapularis"]
+ForceMeasure_bar_plot_direction(Results_aTSA, "Forces", muscle_list, data_index=0, cases_on=xLongCases_3, figsize=[30, 10])
