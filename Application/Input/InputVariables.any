@@ -54,7 +54,7 @@ AnyFolder InputVariables = {
   0 : abduction from 15deg to 120deg 
   */
   #ifndef SmallAbductionOn
-  #define SmallAbductionOn 1
+  #define SmallAbductionOn 0
   #endif
 
   /* -------------------------------------------Glenoid inclination selection------------------------------------
