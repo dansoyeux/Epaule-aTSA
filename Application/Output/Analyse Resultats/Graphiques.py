@@ -733,7 +733,6 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 
 # %% graph surface score
 
-
 def score_surface(score_df, title):
     z = score_df.to_numpy(dtype="float64")
 
