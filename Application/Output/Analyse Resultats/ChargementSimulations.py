@@ -174,13 +174,14 @@ def additional_calculations(Results):
 
     def instability_ratio(Results):
         """Function that calculates the instability ratio for each simulation case
-        IR = (|Fx| + |Fy|)/|Fz|
+        IR = √(F_AP²,F_IS²)/|Fz|
         """
 
         for case in Results:
             Results[case]["ContactForce glenoid"]["Shear"] = abs(Results[case]["ContactForce glenoid"]["IS"]) + abs(Results[case]["ContactForce glenoid"]["AP"])
-            Results[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": "Total"}
-            Results[case]["Instability Ratio"]["Total"] = Results[case]["ContactForce glenoid"]["Shear"] / abs(Results[case]["ContactForce glenoid"]["ML"])
+            Results[case]["Instability Ratio"] = {"Description": "Instability ratio", "SequenceComposantes": ["Total"]}
+
+            Results[case]["Instability Ratio"]["Total"] = np.sqrt((Results[case]["ContactForce glenoid"]["IS"])**2 + (Results[case]["ContactForce glenoid"]["AP"])**2) / abs(Results[case]["ContactForce glenoid"]["ML"])
 
         return Results
 
