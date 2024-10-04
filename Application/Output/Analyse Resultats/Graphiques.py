@@ -706,7 +706,7 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 
 # %% Figures article
 
-my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=True)
+# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=True)
 
 # %% Figures mémoire
 
@@ -764,3 +764,40 @@ def score_surface(score_df, title):
 
 # score_surface(scores_moment["Total"], "Total moment on the glenoid implant [N.m]")
 # score_surface(scores_shear["Total"], "Total shear forces on the glenoid implant [N]")
+
+
+# %%
+
+Results = Results_aTSA
+
+for case in Results:
+    Results[case]["Angular Velocity"] = Results[case]["COP"]
+    
+    
+    # Liste de tous les muscles (combine muscle main et aux)
+    muscle_list = [*Muscles_Main, *Muscles_Aux]
+    
+    for muscle_name in muscle_list:
+    
+        Results[case]["Muscles"][muscle_name][muscle_name]["LmtDot"] = Results[case]["Muscles"][muscle_name][muscle_name]["MomentArm"]
+
+for case in Results:
+
+    # Liste de tous les muscles (combine muscle main et aux)
+    muscle_list = [*Muscles_Main, *Muscles_Aux]
+
+    # Parcours les muscles
+    for muscle_name in muscle_list:
+
+        # Liste des composantes
+        composantes_list = ["AP", "IS", "ML"]
+
+        # Parcours chaque composante
+        for composante in composantes_list:
+
+            # noms : MomentArmAP ; MomentArmIS ; MomentArmML
+            variable_name = "MomentArm" + composante
+
+            Results[case]["Muscles"][muscle_name][muscle_name][variable_name] = {"Description": "Moment arm X", "SequenceComposantes": ["Total"]}
+
+            Results[case]["Muscles"][muscle_name][muscle_name][variable_name]["Total"] = Results[case]["Muscles"][muscle_name][muscle_name]["LmtDot"]["Mean"] / Results[case]["Angular Velocity"][composante]
