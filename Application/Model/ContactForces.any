@@ -59,7 +59,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Jnt = {
           Style = Line3DCapStyleArrow;
           RGB = {0, 1, 0};
           Thickness = 0.015;
-          Length = 0.01;
+          Length = 0.02;
         };
       };
       // Text = "F_contact";

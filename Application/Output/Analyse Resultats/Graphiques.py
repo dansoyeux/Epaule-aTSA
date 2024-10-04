@@ -171,60 +171,6 @@ SimulationsLineStyleDictionary = {
 
 }
 
-SimulationsLineStyleDictionary_Small_abduction = {
-    # Glen xdown
-    "xdown-xshort": {"color": "lightblue", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": 2},
-    "xdown-short": {"color": "deepskyblue", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": None},
-    "xdown-normal": {"color": "cornflowerblue", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": None},
-    "xdown-long": {"color": "mediumblue", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": None},
-    "xdown-xlong": {"color": "midnightblue", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": 2},
-
-    # Glen down
-    "down-xshort": {"color": "violet", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": 2.5},
-    "down-short": {"color": "magenta", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": None},
-    "down-normal": {"color": "mediumorchid", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": None},
-    "down-long": {"color": "blueviolet", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": None},
-    "down-xlong": {"color": "purple", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-.", "linewidth": 2.5},
-
-    # glen normal
-    "middle-xshort": {"color": "lime", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-", "linewidth": None},
-    "middle-short": {"color": "greenyellow", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-", "linewidth": 2.5},
-    "middle-normal": {"color": "mediumseagreen", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-", "linewidth": None},
-    "middle-long": {"color": "darkolivegreen", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-", "linewidth": None},
-    "middle-xlong": {"color": "darkgreen", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "-", "linewidth": 2},
-
-    # Glen up
-    "up-xshort": {"color": "yellow", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 3},
-    "up-short": {"color": "gold", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
-    "up-normal": {"color": "orange", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
-    "up-long": {"color": "salmon", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
-    "up-xlong": {"color": "orangered", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
-
-    # Glen xup
-    "xup-xshort": {"color": "pink", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
-    "xup-short": {"color": "deeppink", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
-    "xup-normal": {"color": "red", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
-    "xup-long": {"color": "indianred", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
-    "xup-xlong": {"color": "darkred", "marker": "+", "markersize": 10, "mew": 2.5, "linestyle": "--", "linewidth": 2},
-
-    # Type gh joint
-    "FDK": {"color": "tab:blue", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-    "FDK Full Range": {"color": "tab:red", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": None},
-    "Ball And Socket": {"color": "black", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
-
-    "Résultats": {"color": "darkorange"},
-
-    # data de validation
-    "Lauranne": {"color": 'hotpink'},
-    "Marta": {"color": 'darkturquoise'},
-    "Dal Maso supérieur": {"color": "black", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
-    "Dal Maso inférieur": {"color": "grey", "marker": "o", "markersize": 5, "linestyle": "-", "linewidth": 1},
-    "Bergmann 2007": {"color": "black", "marker": "o", "markersize": 8, "linestyle": "-", "linewidth": 0.3},
-    "Bergmann_2007": {"color": "black", "marker": "o", "markersize": 8, "linestyle": "-", "linewidth": 0.3},
-    "Wickham": {"color": "darkorange", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 3}
-}
-
-
 SimulationDescriptionDictionary = {
     # Nom des cas de simulation
     "xdown-xshort": "CSA = 12° : -8.7° inclination    ; -12.1 mm acromion shift",
@@ -706,7 +652,53 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 
 # %% Figures article
 
-# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=True)
+# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=False)
+
+
+
+Categories_Article = {"line": {"Inclinaison inférieure": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
+                               "Inclinaison neutre": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
+                               "Inclinaison supérieure": ["up-xshort", "up-normal", "up-xlong"]
+                               }}
+
+SimulationsLineStyleDictionary_presentation = {
+    # Glen xdown
+    "xdown-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+    "xdown-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+    "xdown-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+    "xdown-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+    "xdown-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+
+    # Glen neutral
+    "neutral-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+    "neutral-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+    "neutral-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+    "neutral-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+    "neutral-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+
+    # Glen up
+    "up-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+    "up-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+    "up-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+    "up-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+    "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+}
+
+define_simulations_line_style(SimulationsLineStyleDictionary_presentation)
+
+
+# PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, Categories_Article, COP_contour, composantes=["AP", "IS"], draw_COP_points_on=False, legend_x=["Postérieur", "Antérieur"], legend_y=["Inférieur", "Supérieur"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[20, 9], hide_center_axis_labels=True)
+
+SimulationsLineStyleDictionary_presentation_2 = {
+    "xdown-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+    "neutral-normal": {"color": "k", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+    "neutral-long": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": (0, (3, 3)), "linewidth": 4},
+    "xup-long": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+}
+
+define_simulations_line_style(SimulationsLineStyleDictionary_presentation_2)
+
+COP_graph(Results_aTSA, COP_contour, cases_on=["xdown-xshort","neutral-normal", "neutral-long", "xup-long"], composantes=["AP", "IS"], draw_COP_points_on=False, legend_x=["Postérieur", "Antérieur"], legend_y=["Inférieur", "Supérieur"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[20, 9], hide_center_axis_labels=True)
 
 # %% Figures mémoire
 

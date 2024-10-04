@@ -116,7 +116,7 @@ Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Humerus = {
         FileName = .FileName;
         RGB = {0.2,0.4,0.5};
         ScaleXYZ = {1,1,1}*0.001;
-        Opacity = 0.3;
+        Opacity = 0.7;
       };
       
     }; // ProtHumSTL    
