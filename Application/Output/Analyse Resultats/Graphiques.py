@@ -31,6 +31,7 @@ import matplotlib.pyplot as plt
 SaveSimulationsDirectory = "Saved Simulations"
 
 Results_aTSA = load_results_from_file(SaveSimulationsDirectory, "Results_aTSA")
+Results_aTSA_fr = load_results_from_file(SaveSimulationsDirectory, "Results_aTSA_fr")
 Results_BallAndSocket = load_results_from_file(SaveSimulationsDirectory, "Results_BallAndSocket")
 Results_literature = load_results_from_file(SaveSimulationsDirectory, "Results_literature")
 
@@ -353,6 +354,12 @@ Muscles_coiffe = ["Subscapularis",
                   "Teres minor"
                   ]
 
+Muscles_coiffe_fr = ["Subscapulaire",
+                     "Infraépineux",
+                     "Supraépineux",
+                     "Petit rond"
+                     ]
+
 # 6 muscles --> graphique 2x3
 Muscles_Extra = ["Sternocleidomastoid sternum",
                  "Sternocleidomastoid clavicular",
@@ -654,6 +661,29 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 
 # my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=False)
 
+list_muscles_actifs_fr = ["Deltoid latéral",
+                          "Deltoid antérieur",
+                          "Deltoid postérieur",
+                          "Subscapulaire",
+                          "Dentelé antérieur",
+                          "Triceps long",
+                          "Trapèze inférieur",
+                          "Trapèze moyen",
+                          "Trapèze supérieur",
+                          "Infraépineux",
+                          "Supraépineux",
+                          "Rhomboïde"]
+
+list_muscles_1 = ["Deltoid latéral",
+                  "Deltoid antérieur",
+                  "Deltoid postérieur",
+                  "Rhomboïde",
+                  "Trapèze inférieur",
+                  "Trapèze supérieur",
+                  "Subscapulaire",
+                  "Infraépineux",
+                  "Supraépineux",
+                  ]
 
 
 Categories_Article = {"line": {"Inclinaison inférieure": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
@@ -682,23 +712,38 @@ SimulationsLineStyleDictionary_presentation = {
     "up-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
     "up-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
     "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+
 }
+
 
 define_simulations_line_style(SimulationsLineStyleDictionary_presentation)
 
+# PremadeGraphs.graph_by_case_categories(Results_aTSA_fr, Categories_Article, "Abduction", "Instability Ratio", "Ratio d'instabilité", hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=[0, 0.55], figsize=[20, 9])
 
-# PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, Categories_Article, COP_contour, composantes=["AP", "IS"], draw_COP_points_on=False, legend_x=["Postérieur", "Antérieur"], legend_y=["Inférieur", "Supérieur"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[20, 9], hide_center_axis_labels=True)
+# PremadeGraphs.COP_graph_by_case_categories(Results_aTSA_fr, Categories_Article, COP_contour, composantes=["AP", "IS"], draw_COP_points_on=False, legend_x=["Postérieur", "Antérieur"], legend_y=["Inférieur", "Supérieur"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[20, 9], hide_center_axis_labels=True)
 
 SimulationsLineStyleDictionary_presentation_2 = {
     "xdown-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
     "neutral-normal": {"color": "k", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
     "neutral-long": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": (0, (3, 3)), "linewidth": 4},
     "xup-long": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+    "Joint Sphérique": {"color": "lime", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
 }
 
 define_simulations_line_style(SimulationsLineStyleDictionary_presentation_2)
 
-COP_graph(Results_aTSA, COP_contour, cases_on=["xdown-xshort","neutral-normal", "neutral-long", "xup-long"], composantes=["AP", "IS"], draw_COP_points_on=False, legend_x=["Postérieur", "Antérieur"], legend_y=["Inférieur", "Supérieur"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[20, 9], hide_center_axis_labels=True)
+# COP_graph(Results_aTSA, COP_contour, cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], composantes=["AP", "IS"], draw_COP_points_on=False, legend_x=["Postérieur", "Antérieur"], legend_y=["Inférieur", "Supérieur"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[20, 9], hide_center_axis_labels=True)
+
+# PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, list_muscles_1, [3, 3], "Abduction", "Ft", "", cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], legend_label_per_column=10, same_lim=True, ylim=[0, None], legend_on=False)
+
+# graph(Results_aTSA_fr, "Abduction", "ContactForce glenoid", composante_y=["Shear"], cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], subplot={"dimension": [1, 3], "number": 1}, subplot_title="Cisaillement", ylim=[0, None])
+# graph(Results_aTSA_fr, "Abduction", "ContactForce glenoid", composante_y=["ML"], cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], subplot={"dimension": [1, 3], "number": 2}, subplot_title="Compression", ylim=[0, None])
+# graph(Results_aTSA_fr, "Abduction", "Instability Ratio", cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], subplot={"dimension": [1, 3], "number": 3}, subplot_title="Ratio", ylim=[0, None])
+
+# Activation de la coiffe des rotateurs
+PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Force of the Rotator cuff muscles", hide_center_axis_labels=True, cases_on=["normal"], label="Joint Sphérique")
+PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["xdown-xshort", "neutral-normal", "xup-long"], add_graph=True, same_lim=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None])
+
 
 # %% Figures mémoire
 
@@ -716,12 +761,12 @@ COP_graph(Results_aTSA, COP_contour, cases_on=["xdown-xshort","neutral-normal", 
 # COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position of the Center of Pressure on the glenoid implant", cases_on=["neutral-normal"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10], draw_COP_points_on=False)
 
 # # Discussion générale coiffe des rotateurs
-# define_simulations_line_style(SimulationsLineStyleDictionary_article)
+define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
 # # Activation de la coiffe des rotateurs
-# PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["neutral-normal"], label="CSA = 28°")
-# PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["up-long"], label="CSA = 45°", add_graph=True, same_lim=True)
-# PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Force of the Rotator cuff muscles", hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None], cases_on=["normal"], add_graph=True, label="Joint Sphérique")
+# PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["neutral-normal"], label="CSA = 28°")
+# PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["up-long"], label="CSA = 45°", add_graph=True, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Force of the Rotator cuff muscles", hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None], cases_on=["normal"], add_graph=True, label="Joint Sphérique")
 
 # %% graph surface score
 
