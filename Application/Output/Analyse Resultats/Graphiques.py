@@ -741,8 +741,8 @@ define_simulations_line_style(SimulationsLineStyleDictionary_presentation_2)
 # graph(Results_aTSA_fr, "Abduction", "Instability Ratio", cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], subplot={"dimension": [1, 3], "number": 3}, subplot_title="Ratio", ylim=[0, None])
 
 # Activation de la coiffe des rotateurs
-PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Force of the Rotator cuff muscles", hide_center_axis_labels=True, cases_on=["normal"], label="Joint Sphérique")
-PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["xdown-xshort", "neutral-normal", "xup-long"], add_graph=True, same_lim=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None])
+# PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Force of the Rotator cuff muscles", hide_center_axis_labels=True, cases_on=["normal"], label="Joint Sphérique")
+# PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["xdown-xshort", "neutral-normal", "xup-long"], add_graph=True, same_lim=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None])
 
 
 # %% Figures mémoire
@@ -763,10 +763,53 @@ PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, Muscles_coiffe_fr, [2, 2],
 # # Discussion générale coiffe des rotateurs
 define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
+
+# 12 (Ft > 10 N)
+list_muscles_actifs_fr = ["Deltoid latéral",
+                          "Deltoid antérieur",
+                          "Deltoid postérieur",
+                          "Trapèze inférieur",
+                          "Trapèze moyen",
+                          "Trapèze supérieur",
+                          "Dentelé antérieur",
+                          "Subscapulaire",
+                          "Triceps long",
+                          "Rhomboïde",
+                          "Supraépineux",
+                          "Infraépineux",
+                          ]
+
+# 3 (10 N > Ft > 5N)
+list_muscles_peu_actif_fr = ["Biceps brachial long",
+                             "Biceps brachial court",
+                             "Levator scapulae"
+                             ]
+
+# 9 (Ft < 5N)
+list_muscles_inactifs_fr = ["Grand pectoral claviculaire",
+                            "Grand pectoral sternal",
+                            "Petit pectoral",
+                            "Grand rond",
+                            "Petit rond",
+                            "Sternocleidomastoid sternum",
+                            "Sternocleidomastoid claviculaire",
+                            "Grand dorsal",
+                            "Coracobrachialis"
+                            ]
+
+
 # # Activation de la coiffe des rotateurs
 # PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["neutral-normal"], label="CSA = 28°")
 # PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["up-long"], label="CSA = 45°", add_graph=True, same_lim=True)
 # PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Force of the Rotator cuff muscles", hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None], cases_on=["normal"], add_graph=True, label="Joint Sphérique")
+
+define_simulations_line_style(SimulationsLineStyleDictionary)
+
+PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, list_muscles_actifs_fr, [4, 3], "Abduction", "Ft", "Muscles actifs (Ft > 10N)", cases_on=CaseNames_36, figsize=[24, 14], ylim=[0, 200], hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15)
+PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, list_muscles_peu_actif_fr, [1, 3], "Abduction", "Ft", "Muscles peu actifs (10 N > Ft > 5N)", cases_on=CaseNames_36, figsize=[24, 14], ylim=[0, 20], hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15)
+PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, list_muscles_inactifs_fr, [3, 3], "Abduction", "Ft", "Muscles inactifs (Ft < 5N)", cases_on=CaseNames_36, figsize=[24, 14], ylim=[0, 20], hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15)
+
+
 
 # %% graph surface score
 
