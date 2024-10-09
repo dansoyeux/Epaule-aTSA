@@ -7,12 +7,12 @@ VideoLookAtCamera  MyCamera (UP_DIRECTION=y, CREATE_GIF=1) =
 CameraLookAtPoint = {-0.1170158, 0.4774368, 0.1765395};
        
        // The vertical field of view in meters
-       CameraFieldOfView  = 0.27;
+       CameraFieldOfView  = 0.7;
        
        // The direction in which the camera is placed. In global 
        // coordinate with respect to the LookAtPoint. 
        // (Can also be a time varying vector)
-       CameraDirection  = {1, 0, 0.4};
+       CameraDirection  = {1, 0, 0.0};
       
        
        // The background color used for the video

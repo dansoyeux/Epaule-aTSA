@@ -4,7 +4,11 @@ AnyFolder InputVariables = {
   #ifndef BallAndSocket
   #define BallAndSocket 0
   #endif
-    
+  
+  // Argument to highlight the acromion in red (1 : Highlighted ; 0 : Not Highlighted)
+  #define HighlightAcromion 1
+  AnyFloat HighlightAcromion_color = {1, 0, 0};
+  
   /*--------------------------------------FDK ALGORITHM SETTINGS---------------------------------*/
   //  Main.Study.InverseDynamics.ForceDepKin.ForceTol = 1;
   //  Main.Study.InverseDynamics.ForceDepKin.UseAdaptiveForceTolOnOff = On;
