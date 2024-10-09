@@ -1,0 +1,25 @@
+
+Main.HumanModel.BodyModel.Right.ShoulderArm.Seg.Scapula = {
+
+// Hides the scapula
+DrwSurf.Visible = Off;
+
+AnySurfSTL scapula_without_acromion = {
+  FileName = "../Input/Bones/scapula_without_acromion" + ".stl";
+  AnyFunTransform3D &ScaleFunction = Main.HumanModel.Scaling.GeometricalScaling.Right.Scapula.ScaleFunction ;
+  AnyDrawSurf drw = {
+    FileName = .FileName;
+    RGB = Main.DrawSettings.Colors.Segments; // Bones color        
+  };
+};// scapula_without_acromion   
+
+AnySurfSTL Acromion_bone = {
+  FileName = "../Input/Bones/Acromion_bone" + ".stl";
+  AnyFunTransform3D &ScaleFunction = Main.HumanModel.Scaling.GeometricalScaling.Right.Scapula.ScaleFunction ;
+  AnyDrawSurf drw = {
+    FileName = .FileName;
+    RGB = Main.InputVariables.HighlightAcromion_color;         
+  };
+};// Acromion_bone 
+
+}; // Scapula

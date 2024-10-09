@@ -16,12 +16,17 @@ Main = {
   #if BallAndSocket == 0
   #include "Model/Implants.any"  
   #endif // #if BallAndSocket
-  
+    
   // Configures the model
   #include "Model/BodyModelSettings.any"
   
   // Morphes the scapula to make the acromion longer
   #include "Scaling/ScalingCustom.any"
+ 
+  // Hides the scapula and shows the acromion in a different color that will also be scaled
+  #if HighlightAcromion == 1
+  #include "Model/HighlightAcromion.any"
+  #endif // HighlightAcromion
   
   #include "<ANYBODY_PATH_BODY>/HumanModel.any"    
   
