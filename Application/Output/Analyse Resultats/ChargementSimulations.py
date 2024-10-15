@@ -92,19 +92,6 @@ FDK_VariableDictionary = {"Abduction": {"VariablePath": "Output.Simulation_Outpu
 
                           "ContactArea": {"VariablePath": "Output.Simulation_Outputs.ContactArea", "VariableDescription": r'Contact area [$cm^2$]', "MultiplyFactor": 10000},
 
-                          # test
-                          "ForceMeasure Infraspinatus": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": 3},
-                          "ForceMeasure Supraspinatus": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": 2},
-                          "ForceMeasure Subscapularis": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -3},
-                          "ForceMeasure Deltoid anterior": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": 2},
-                          "ForceMeasure Deltoid posterior": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": -1},
-                          "ForceMeasure Deltoid lateral": {"VariablePath": "Output.Simulation_Outputs.ContactForce_humerus", "VariableDescription": 'Force [N]', "SequenceComposantes": ["AP", "IS", "ML"], "MultiplyFactor": 1},
-
-
-
-
-
-
                           "Time": {"VariablePath": "Output.Abscissa.t", "VariableDescription": "Time"},
 
                           "MaxPenetration": {"VariablePath": "Output.Simulation_Outputs.MaxPenetration", "VariableDescription": 'Maximal penetration of the implants [mm]', "MultiplyFactor": 1000},
