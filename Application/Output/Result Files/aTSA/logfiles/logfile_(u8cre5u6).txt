@@ -1,594 +1,0 @@
-########### MACRO #############
-load "Epaule-aTSA.Main.any" -def ArmMovement="Elevation" -def AutoSaveOption="1" -def BallAndSocket="0" -def CSA_Acromion_Length=---"\"xshort\"" -def CSA_Tilt=---"\"xdown\"" -def MuscleRecruitmentType="MR_Polynomial" -def ResultFile=---"\"PJ178_Anybody_aTSA_xdown-xshort\"" -def ResultFolder=---"\"Result Files/aTSA\"" -def SmallAbductionOn="0"
-classoperation Main.Model.ModelEnvironmentConnection.Drivers.startangle "Set Value" --value="15"
-operation Main.Study.RunApplication
-run
-
-######### OUTPUT LOG ##########
-
-AnyBody Console Application
-AnyBodyCon.exe version : 8. 0. 1. 11638 (64-bit version) 
-Build : 19802.46560
-Copyright (c) 1999 - 2024 AnyBody Technology A/S
-
-Current path: C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Application
-#### Macro command > load "Epaule-aTSA.Main.any" -def ArmMovement="Elevation" -def AutoSaveOption="1" -def BallAndSocket="0" -def CSA_Acromion_Length=---"\"xshort\"" -def CSA_Tilt=---"\"xdown\"" -def MuscleRecruitmentType="MR_Polynomial" -def ResultFile=---"\"PJ178_Anybody_aTSA_xdown-xshort\"" -def ResultFolder=---"\"Result Files/aTSA\"" -def SmallAbductionOn="0"
-Loading  Main  :  "C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Application\Epaule-aTSA.Main.any"
-Scanning...
-AMMR version detected :  2.4.2
-'System.Compatibility.AnyBody75_AMMR24_CompatibilityOnOff' set to :On'
-WARNING(SYS7) :     :   'AnyBody75_AMMR24_CompatibilityOnOff'  :  Compatibility mode auto-detected :  AMMR 2.4.x or earlier has been detected and associated compatibility setting has been turned 'On'
- - AnyMuscle::MuscleModel is renamed to '_MuscleModel' to avoid conflict with AMMR definitions.
-It is recommended to update to a newer AMMR, or set this compatibility-mode to 'Off' and fix conflicts in your own version.
-Parsing...
-Constructing model tree...
-WARNING(OBJ.MODELDEF1) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Scaling\ScalingCustom.any(143)  :   'Scapula.scaling_message_Right_Scapula'  :  Custom scaling for 'Scapula' segment is used! Please specify a scaling law should an 'Unresolved object' error occur
-Linking identifiers...
-NOTICE(SYS3) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Tools\ModelUtilities\Diagnostics/DiagnosticMuscle2.any(13)  :   'PosMuscle'  :  'AnyGeneralMuscle'  :  Deprecated class  :  The 'AnyGeneralMuscle' class is deprecated and will eventually be removed. Please consider replacing it by 'AnyMuscleGeneric' or 'AnyRecruitedActuator'.
-NOTICE(SYS3) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Tools\ModelUtilities\Diagnostics/DiagnosticMuscle2.any(21)  :   'NegMuscle'  :  'AnyGeneralMuscle'  :  Deprecated class  :  The 'AnyGeneralMuscle' class is deprecated and will eventually be removed. Please consider replacing it by 'AnyMuscleGeneric' or 'AnyRecruitedActuator'.
-NOTICE(SYS3) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Tools\ModelUtilities\Diagnostics/DiagnosticMuscle2.any(13)  :   'PosMuscle'  :  'AnyGeneralMuscle'  :  Deprecated class  :  The 'AnyGeneralMuscle' class is deprecated and will eventually be removed. Please consider replacing it by 'AnyMuscleGeneric' or 'AnyRecruitedActuator'.
-NOTICE(SYS3) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Tools\ModelUtilities\Diagnostics/DiagnosticMuscle2.any(21)  :   'NegMuscle'  :  'AnyGeneralMuscle'  :  Deprecated class  :  The 'AnyGeneralMuscle' class is deprecated and will eventually be removed. Please consider replacing it by 'AnyMuscleGeneric' or 'AnyRecruitedActuator'.
-NOTICE(SYS3) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Tools\ModelUtilities\Diagnostics/DiagnosticMuscle2.any(13)  :   'PosMuscle'  :  'AnyGeneralMuscle'  :  Deprecated class  :  The 'AnyGeneralMuscle' class is deprecated and will eventually be removed. Please consider replacing it by 'AnyMuscleGeneric' or 'AnyRecruitedActuator'.
-NOTICE(SYS3) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Tools\ModelUtilities\Diagnostics/DiagnosticMuscle2.any(21)  :   'NegMuscle'  :  'AnyGeneralMuscle'  :  Deprecated class  :  The 'AnyGeneralMuscle' class is deprecated and will eventually be removed. Please consider replacing it by 'AnyMuscleGeneric' or 'AnyRecruitedActuator'.
-NOTICE(SYS3) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Tools\ModelUtilities\Diagnostics/DiagnosticMuscle2.any(13)  :   'PosMuscle'  :  'AnyGeneralMuscle'  :  Deprecated class  :  The 'AnyGeneralMuscle' class is deprecated and will eventually be removed. Please consider replacing it by 'AnyMuscleGeneric' or 'AnyRecruitedActuator'.
-NOTICE(SYS3) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Tools\ModelUtilities\Diagnostics/DiagnosticMuscle2.any(21)  :   'NegMuscle'  :  'AnyGeneralMuscle'  :  Deprecated class  :  The 'AnyGeneralMuscle' class is deprecated and will eventually be removed. Please consider replacing it by 'AnyMuscleGeneric' or 'AnyRecruitedActuator'.
-NOTICE(SYS3) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Tools\ModelUtilities\Diagnostics/DiagnosticMuscle2.any(13)  :   'PosMuscle'  :  'AnyGeneralMuscle'  :  Deprecated class  :  The 'AnyGeneralMuscle' class is deprecated and will eventually be removed. Please consider replacing it by 'AnyMuscleGeneric' or 'AnyRecruitedActuator'.
-NOTICE(SYS3) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Tools\ModelUtilities\Diagnostics/DiagnosticMuscle2.any(21)  :   'NegMuscle'  :  'AnyGeneralMuscle'  :  Deprecated class  :  The 'AnyGeneralMuscle' class is deprecated and will eventually be removed. Please consider replacing it by 'AnyMuscleGeneric' or 'AnyRecruitedActuator'.
-WARNING(SYS4) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Jnt.any(225)  :   'Measure1.NormedMeasureOnOff'  :  Deprecated object/member
-  'NormedMeasureOnOff', 'Base', and 'Exponent' are deprecated. It is recommended to use class 'AnyKinMeasureExpComb' to combine distances measured by AnyKinPointSurface thereby replacing previously built-in combination for 'NormedMeasureOnOff'=On
-WARNING(SYS4) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Jnt.any(388)  :   'ScapulaTSThoraxMeasure.NormedMeasureOnOff'  :  Deprecated object/member
-  'NormedMeasureOnOff', 'Base', and 'Exponent' are deprecated. It is recommended to use class 'AnyKinMeasureExpComb' to combine distances measured by AnyKinPointSurface thereby replacing previously built-in combination for 'NormedMeasureOnOff'=On
-Evaluating constants...
-Configuring model...
-Evaluating model...
-Loaded successfully.
-Elapsed Time : 9.954000
-#### Macro command > classoperation Main.Model.ModelEnvironmentConnection.Drivers.startangle "Set Value" --value="15"
-#### Macro command > operation Main.Study.RunApplication
-#### Macro command > run
-
-***************************************************************************************
-0) Operation Sequence: (Operation: Main.Study.RunApplication): 
-0.0) InitialConditions (Operation: Main.Study.InitialConditions): 
-0.0) ...Design variables have been updated.
-0.1) ...Load-time positions have been re-established.
-0.2) ...Kinematic analysis completed.
-0.3) ...Dependent variables are fully updated.
-1.0) Operation Sequence: (Operation: Main.HumanModel.Calibration.CalibrationSequence): 
-1.0.0) Dummy operation: (Operation: Main.HumanModel.Calibration.CalibrationSequence.PlaceHolderOpr): 
-1.1.0) TendonLengthAdjustment (Operation: Main.HumanModel.Calibration.RightArmCalibration0.ArmCalibrationStudy0.TendonLengthAdjustment): 
-1.1.0.0) PreOperation (Operation: Main.HumanModel.Calibration.RightArmCalibration0.ArmCalibrationStudy0.TendonLengthAdjustment.PreOperation): 
-1.1.0.0.0) Kinematics (Operation: Main.HumanModel.Calibration.RightArmCalibration0.ArmCalibrationStudy0.Kinematics): 
-1.1.0.0.0.0) PreOperation (Operation: Main.HumanModel.Calibration.RightArmCalibration0.ArmCalibrationStudy0.Kinematics.PreOperation): 
-1.1.0.0.0.0.0) InitialConditions (Operation: Main.HumanModel.Calibration.RightArmCalibration0.ArmCalibrationStudy0.InitialConditions): 
-1.1.0.0.0.0.0) ...Design variables have been updated.
-1.1.0.0.0.0.1) ...Load-time positions have been re-established.
-1.1.0.0.0.0.2) ...Kinematic analysis completed.
-1.1.0.0.0.0.3) ...Dependent variables are fully updated.
-1.1.0.0.0) Kinematic analysis...
-1.1.0.0.0) ...Kinematic analysis completed
-1.1.0) Muscle Tendon Length Adjustment...
-NOTICE(OBJ.MCH.MUS6) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Muscle.any(1496)  :   'trapezius_scapular_part_4'  :  Muscle calibration :  Insufficient room for the tendon of muscle. The muscle fiber length has been automatically reduced.
-NOTICE(OBJ.MCH.MUS6) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Muscle.any(1486)  :   'trapezius_scapular_part_3'  :  Muscle calibration :  Insufficient room for the tendon of muscle. The muscle fiber length has been automatically reduced.
-NOTICE(OBJ.MCH.MUS6) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Muscle.any(1588)  :   'Brachialis_2'  :  Muscle calibration :  Insufficient room for the tendon of muscle. The muscle fiber length has been automatically reduced.
-WARNING(OBJ.MCH.MUS6) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Calibration\ArmCal0.any(239)  :   'ArmCalibrationStudy0'  :  Muscle calibration :  'MuscleArr' :  The tendon/fiber length was calibrated but with issues.
-    Related muscles: 'trapezius_scapular_part_4', 'trapezius_scapular_part_3', 'Brachialis_2', 
-WARNING(OBJ.MCH.MUS6) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Calibration\ArmCal0.any(239)  :   'ArmCalibrationStudy0'  :  Muscle calibration :  'MuscleArr' :  Muscle type not supported by this calibration operation.
-    Related muscles: 'Sternocleidomastoid_caput_clavicular', 'Sternocleidomastoid_caput_Sternum', 
-1.1.0) ...Tendon Length Adjustment finished.
-1.1.1) ...Design variables of the calibration model have been updated.
-1.2.0) TendonLengthAdjustment (Operation: Main.HumanModel.Calibration.RightArmCalibration1.ArmCalibrationStudy1.TendonLengthAdjustment): 
-1.2.0.0) PreOperation (Operation: Main.HumanModel.Calibration.RightArmCalibration1.ArmCalibrationStudy1.TendonLengthAdjustment.PreOperation): 
-1.2.0.0.0) Kinematics (Operation: Main.HumanModel.Calibration.RightArmCalibration1.ArmCalibrationStudy1.Kinematics): 
-1.2.0.0.0.0) PreOperation (Operation: Main.HumanModel.Calibration.RightArmCalibration1.ArmCalibrationStudy1.Kinematics.PreOperation): 
-1.2.0.0.0.0.0) InitialConditions (Operation: Main.HumanModel.Calibration.RightArmCalibration1.ArmCalibrationStudy1.InitialConditions): 
-1.2.0.0.0.0.0) ...Design variables have been updated.
-1.2.0.0.0.0.1) ...Load-time positions have been re-established.
-1.2.0.0.0.0.2) ...Kinematic analysis completed.
-1.2.0.0.0.0.3) ...Dependent variables are fully updated.
-1.2.0.0.0) Kinematic analysis...
-1.2.0.0.0) ...Kinematic analysis completed
-1.2.0) Muscle Tendon Length Adjustment...
-WARNING(OBJ.MCH.MUS6) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Calibration\ArmCal1.any(253)  :   'ArmCalibrationStudy1'  :  Muscle calibration :  'MuscleArr' :  Muscle type not supported by this calibration operation.
-    Related muscles: 'EdgeMuscle1', 'EdgeMuscle2', 'EdgeMuscle3', 'EdgeMuscle4', 'EdgeMuscle5', 'EdgeMuscle6', 'EdgeMuscle7', 'EdgeMuscle8', 'ConoidLigamentReaction', 'TrapezoidLigamentReaction', 
-1.2.0) ...Tendon Length Adjustment finished.
-1.2.1) ...Design variables of the calibration model have been updated.
-1.3.0) TendonLengthAdjustment (Operation: Main.HumanModel.Calibration.RightArmCalibration2.ArmCalibrationStudy2.TendonLengthAdjustment): 
-1.3.0.0) PreOperation (Operation: Main.HumanModel.Calibration.RightArmCalibration2.ArmCalibrationStudy2.TendonLengthAdjustment.PreOperation): 
-1.3.0.0.0) Kinematics (Operation: Main.HumanModel.Calibration.RightArmCalibration2.ArmCalibrationStudy2.Kinematics): 
-1.3.0.0.0.0) PreOperation (Operation: Main.HumanModel.Calibration.RightArmCalibration2.ArmCalibrationStudy2.Kinematics.PreOperation): 
-1.3.0.0.0.0.0) InitialConditions (Operation: Main.HumanModel.Calibration.RightArmCalibration2.ArmCalibrationStudy2.InitialConditions): 
-1.3.0.0.0.0.0) ...Design variables have been updated.
-1.3.0.0.0.0.1) ...Load-time positions have been re-established.
-1.3.0.0.0.0.2) ...Kinematic analysis completed.
-1.3.0.0.0.0.3) ...Dependent variables are fully updated.
-1.3.0.0.0) Kinematic analysis...
-1.3.0.0.0) ...Kinematic analysis completed
-1.3.0) Muscle Tendon Length Adjustment...
-NOTICE(OBJ.MCH.MUS6) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Calibration\ArmCal2.any(249)  :   'ArmCalibrationStudy2'  :  Muscle calibration :  'MuscleArr' :  The tendon/fiber length was calibrated successfully.
-1.3.0) ...Tendon Length Adjustment finished.
-1.3.1) ...Design variables of the calibration model have been updated.
-1.4.0) TendonLengthAdjustment (Operation: Main.HumanModel.Calibration.RightArmCalibration3.ArmCalibrationStudy3.TendonLengthAdjustment): 
-1.4.0.0) PreOperation (Operation: Main.HumanModel.Calibration.RightArmCalibration3.ArmCalibrationStudy3.TendonLengthAdjustment.PreOperation): 
-1.4.0.0.0) Kinematics (Operation: Main.HumanModel.Calibration.RightArmCalibration3.ArmCalibrationStudy3.Kinematics): 
-1.4.0.0.0.0) PreOperation (Operation: Main.HumanModel.Calibration.RightArmCalibration3.ArmCalibrationStudy3.Kinematics.PreOperation): 
-1.4.0.0.0.0.0) InitialConditions (Operation: Main.HumanModel.Calibration.RightArmCalibration3.ArmCalibrationStudy3.InitialConditions): 
-1.4.0.0.0.0.0) ...Design variables have been updated.
-1.4.0.0.0.0.1) ...Load-time positions have been re-established.
-1.4.0.0.0.0.2) ...Kinematic analysis completed.
-1.4.0.0.0.0.3) ...Dependent variables are fully updated.
-1.4.0.0.0) Kinematic analysis...
-1.4.0.0.0) ...Kinematic analysis completed
-1.4.0) Muscle Tendon Length Adjustment...
-NOTICE(OBJ.MCH.MUS6) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Calibration\ArmCal3.any(260)  :   'ArmCalibrationStudy3'  :  Muscle calibration :  'MuscleArr' :  The tendon/fiber length was calibrated successfully.
-1.4.0) ...Tendon Length Adjustment finished.
-1.4.1) ...Design variables of the calibration model have been updated.
-1.5.0) TendonLengthAdjustment (Operation: Main.HumanModel.Calibration.RightArmCalibration4.ArmCalibrationStudy4.TendonLengthAdjustment): 
-1.5.0.0) PreOperation (Operation: Main.HumanModel.Calibration.RightArmCalibration4.ArmCalibrationStudy4.TendonLengthAdjustment.PreOperation): 
-1.5.0.0.0) Kinematics (Operation: Main.HumanModel.Calibration.RightArmCalibration4.ArmCalibrationStudy4.Kinematics): 
-1.5.0.0.0.0) PreOperation (Operation: Main.HumanModel.Calibration.RightArmCalibration4.ArmCalibrationStudy4.Kinematics.PreOperation): 
-1.5.0.0.0.0.0) InitialConditions (Operation: Main.HumanModel.Calibration.RightArmCalibration4.ArmCalibrationStudy4.InitialConditions): 
-1.5.0.0.0.0.0) ...Design variables have been updated.
-1.5.0.0.0.0.1) ...Load-time positions have been re-established.
-WARNING(OBJ.MCH.KIN6) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Interface.any(215)  :   'GHRot'  :  Close to singular position  :  Orientation close to Gimbal Lock, i.e., first and third axis of rotation being parallel
-1.5.0.0.0.0.2) ...Kinematic analysis completed.
-1.5.0.0.0.0.3) ...Dependent variables are fully updated.
-1.5.0.0.0) Kinematic analysis...
-1.5.0.0.0) ...Kinematic analysis completed
-1.5.0) Muscle Tendon Length Adjustment...
-NOTICE(OBJ.MCH.MUS6) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Calibration\ArmCal4.any(248)  :   'ArmCalibrationStudy4'  :  Muscle calibration :  'MuscleArr' :  The tendon/fiber length was calibrated successfully.
-1.5.0) ...Tendon Length Adjustment finished.
-1.5.1) ...Design variables of the calibration model have been updated.
-1.6.0) TendonLengthAdjustment (Operation: Main.HumanModel.Calibration.RightArmCalibration5.ArmCalibrationStudy5.TendonLengthAdjustment): 
-1.6.0.0) PreOperation (Operation: Main.HumanModel.Calibration.RightArmCalibration5.ArmCalibrationStudy5.TendonLengthAdjustment.PreOperation): 
-1.6.0.0.0) Kinematics (Operation: Main.HumanModel.Calibration.RightArmCalibration5.ArmCalibrationStudy5.Kinematics): 
-1.6.0.0.0.0) PreOperation (Operation: Main.HumanModel.Calibration.RightArmCalibration5.ArmCalibrationStudy5.Kinematics.PreOperation): 
-1.6.0.0.0.0.0) InitialConditions (Operation: Main.HumanModel.Calibration.RightArmCalibration5.ArmCalibrationStudy5.InitialConditions): 
-1.6.0.0.0.0.0) ...Design variables have been updated.
-1.6.0.0.0.0.1) ...Load-time positions have been re-established.
-1.6.0.0.0.0.2) ...Kinematic analysis completed.
-1.6.0.0.0.0.3) ...Dependent variables are fully updated.
-1.6.0.0.0) Kinematic analysis...
-1.6.0.0.0) ...Kinematic analysis completed
-1.6.0) Muscle Tendon Length Adjustment...
-NOTICE(OBJ.MCH.MUS6) :   C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Body\AAUHuman\Arm\Calibration\ArmCal5.any(254)  :   'ArmCalibrationStudy5'  :  Muscle calibration :  'MuscleArr' :  The tendon/fiber length was calibrated successfully.
-1.6.0) ...Tendon Length Adjustment finished.
-1.6.1) ...Design variables of the calibration model have been updated.
-2.0) InverseDynamics (Operation: Main.Study.InverseDynamics): 
-2.0.0) PreOperation (Operation: Main.Study.InverseDynamics.PreOperation): 
-2.0.0.0) InitialConditions (Operation: Main.Study.InitialConditions): 
-2.0.0.0) ...Design variables have been updated.
-2.0.0.1) ...Load-time positions have been re-established.
-2.0.0.2) ...Kinematic analysis completed.
-2.0.0.3) ...Dependent variables are fully updated.
-2.0) Inverse dynamic analysis...
-FDK finished with maxError = 0.000519369
-ForceErrors = -0.000105564;0.000519369;0.000253739
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000416965
-ForceErrors = -0.000277482;-8.09839e-05;0.000416965
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000681603
-ForceErrors = -0.000170289;5.54346e-05;-0.000681603
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000745278
-ForceErrors = 0.000178898;1.59125e-05;0.000745278
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000710231
-ForceErrors = -0.000102146;-0.000225091;-0.000710231
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000642505
-ForceErrors = 6.18982e-05;-4.85444e-06;0.000642505
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000653991
-ForceErrors = -0.000653991;8.08199e-05;-6.96414e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000992764
-ForceErrors = -0.000992764;0.000610177;-0.000639917
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000762069
-ForceErrors = -0.000639491;0.000287817;-0.000762069
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000651057
-ForceErrors = 2.93934e-05;-1.63818e-05;0.000651057
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000927279
-ForceErrors = -0.000313869;-0.000365175;0.000927279
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.00090356
-ForceErrors = 0.000274046;-5.88911e-05;0.00090356
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000231023
-ForceErrors = -0.000231023;-8.7548e-05;2.27679e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000780981
-ForceErrors = -7.49226e-05;-0.000780981;0.000293832
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000299251
-ForceErrors = -0.000180468;-8.14349e-06;-0.000299251
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000987139
-ForceErrors = -0.000250197;-0.000430674;0.000987139
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.00052387
-ForceErrors = -0.000320331;0.00052387;-1.81427e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000696612
-ForceErrors = -0.000385288;-0.000280131;0.000696612
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000311885
-ForceErrors = 0.000266024;0.000311885;0.000253956
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000869808
-ForceErrors = 1.63128e-05;4.50429e-05;0.000869808
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000664397
-ForceErrors = -0.000120815;0.000664397;-6.79415e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000872983
-ForceErrors = 0.000872983;-7.3966e-05;0.000607164
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000264871
-ForceErrors = -0.000264871;8.16471e-06;5.39423e-07
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000263877
-ForceErrors = 0.000263877;-3.20435e-05;4.06833e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000541563
-ForceErrors = -0.00028328;-0.000541563;0.000213373
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000338077
-ForceErrors = -0.000338077;4.40007e-05;1.69061e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000923222
-ForceErrors = 0.000923222;0.000459499;8.08477e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000801514
-ForceErrors = 0.000487958;0.000801514;-0.000178083
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000910496
-ForceErrors = 0.000125288;0.000910496;-4.13554e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000980144
-ForceErrors = -0.000980144;0.000353865;6.41623e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000934161
-ForceErrors = -0.000934161;-0.00018722;8.25305e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000423514
-ForceErrors = 0.000423514;-0.000413076;-5.08065e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000936361
-ForceErrors = 0.000936361;-0.000101448;2.74512e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000755208
-ForceErrors = -0.000755208;0.000301326;-0.000297191
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000296079
-ForceErrors = -0.000296079;-9.147e-05;2.72482e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000981421
-ForceErrors = -0.000981421;0.000366234;5.22106e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000756399
-ForceErrors = -2.1929e-05;0.000102642;-0.000756399
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000729667
-ForceErrors = -0.000152267;8.03216e-06;-0.000729667
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000636697
-ForceErrors = -0.000636697;0.000294741;-7.33021e-06
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000902882
-ForceErrors = 5.11398e-06;0.00014581;-0.000902882
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000752059
-ForceErrors = 0.000163083;-4.93684e-06;-0.000752059
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000662413
-ForceErrors = -5.70843e-05;-5.07959e-06;-0.000662413
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000660799
-ForceErrors = -2.03783e-05;8.32085e-06;-0.000660799
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000701547
-ForceErrors = -0.000310063;0.000701547;3.80942e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000854613
-ForceErrors = 0.00012771;-0.000854613;-0.000105072
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000939862
-ForceErrors = -0.000198899;0.000939862;-7.02247e-05
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000372377
-ForceErrors = -9.16688e-06;-2.10305e-05;-0.000372377
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000339755
-ForceErrors = -0.00028559;3.89625e-05;-0.000339755
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000828915
-ForceErrors = 2.49765e-05;0.000749308;-0.000828915
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000267052
-ForceErrors = -0.000109782;6.02092e-06;-0.000267052
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000665998
-ForceErrors = 0.00040724;-0.000665998;0.000316813
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000303048
-ForceErrors = -7.5004e-05;-3.14417e-06;-0.000303048
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000277259
-ForceErrors = 0.000277259;1.09192e-06;0.000184734
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000793002
-ForceErrors = -0.000764602;0.000793002;1.4624e-06
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000300264
-ForceErrors = -1.34927e-05;7.07755e-05;-0.000300264
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000676922
-ForceErrors = 0.000305508;-0.000676922;-0.00050934
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000751224
-ForceErrors = -0.000439564;0.000751224;0.000698236
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000825785
-ForceErrors = -0.000532941;0.000825785;-0.000421069
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000808384
-ForceErrors = 0.000698344;-0.000808384;0.000147112
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000864648
-ForceErrors = 0.000184158;-0.000641016;-0.000864648
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000818147
-ForceErrors = 0.000731934;-0.000818147;-9.29389e-06
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.00082971
-ForceErrors = 0.000353419;-0.00082971;0.000556728
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000878787
-ForceErrors = -0.000878787;-0.000276817;-0.000740173
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000361438
-ForceErrors = -5.74005e-05;-2.2689e-05;-0.000361438
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000617871
-ForceErrors = 0.000384732;-0.000617871;0.000289976
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000601587
-ForceErrors = 0.000443856;-0.000601587;0.000139115
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000914597
-ForceErrors = 0.000914597;-0.00080144;8.25026e-06
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000651739
-ForceErrors = 0.000651739;-0.000645111;0.000184705
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-FDK finished with maxError = 0.000918764
-ForceErrors = 0.000599922;-0.000284238;-0.000918764
-Acceptance tolerances = 0.001;0.001;0.001
-Acceptance criterion: 
-  ForceTol = 0.001;0.001;0.001
-  UseAdaptiveForceTolOnOff = Off
-2.69) ...Inverse dynamic analysis completed
-3.0) Operation Sequence: (Operation: Main.Study.SaveResultsh5): 
-3.0.0) SaveResultsh5 (Operation: Main.Study.SaveResultsh5.SaveResultsh5): 
-#### Macro command : SaveResultsh5(1:1)> classoperation Main.Study.Output "Save data" --type=Deep --file="C:\Users\Dan\Documents\Gitkraken\EpauleFDK\Application/Output/Result Files/aTSA\PJ178_Anybody_aTSA_xdown-xshort.anydata.h5"
-Main.Study.Output :  Saving output data file...
-||==============================Saving================================
-0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99%100%100%...saving succeed.
-Elapsed Time :3.515
-
-***************************************************************************************
-#### Macro command > exit
-
-Closing model...
-Saving modified values...
-Deleting loaded model...
-...Model deleted.
