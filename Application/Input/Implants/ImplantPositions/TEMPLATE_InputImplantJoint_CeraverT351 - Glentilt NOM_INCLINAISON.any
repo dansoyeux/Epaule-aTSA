@@ -45,11 +45,14 @@ InputVar1={
     // From Scapula to glenoid component Coordinate System (on 3d model)
     AnyFolder GlenPosition = {
 
+      AnyVar GleneImplantRotation3DSlicer = 0;
+      
       /*-------------------INFORMATION FROM ExportCSA()-------------------
       Rotation and position of the glenoid implant and the position of the center of rotation, the text is to be copied from the 3D slicer model
       after entering : ExportCSA()
       --------------------------------------------------------------------
      */
+       
       AnyVar GleneImplantInclinationAngle = 0;
       AnyVar GleneImplantVersionAngle = 0;
       AnyString RotationAxis = "Axe anteroposterieur glenoid implant";

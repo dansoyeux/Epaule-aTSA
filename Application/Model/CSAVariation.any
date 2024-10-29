@@ -34,11 +34,11 @@
 /* -------------------------------------------CSA_Acromion_Length selection------------------------------------*/
 AnyFolder AcromionScaling = {
 #if CSA_Acromion_Length == "xshort"
-AnyVar AcromionOffset = -12.1 / 1000;
+AnyVar AcromionOffset = -10.842 / 1000;
 #endif // CSA_Acromion_Length == "xshort"
 
 #if CSA_Acromion_Length == "short"
-AnyVar AcromionOffset = -6.6 / 1000;
+AnyVar AcromionOffset = -5.677 / 1000;
 #endif // CSA_Acromion_Length == "xshort"
 
 #if CSA_Acromion_Length == "normal"
@@ -46,11 +46,11 @@ AnyVar AcromionOffset = 0.0;
 #endif // CSA_Acromion_Length == "normal"
 
 #if CSA_Acromion_Length == "long"
-AnyVar AcromionOffset = 7.85 / 1000;
+AnyVar AcromionOffset = 6.628 / 1000;
 #endif // CSA_Acromion_Length == "long"
 
 #if CSA_Acromion_Length == "xlong"
-AnyVar AcromionOffset = 16.95 / 1000;
+AnyVar AcromionOffset = 13.37 / 1000;
 #endif // CSA_Acromion_Length == "xlong"
 
 };

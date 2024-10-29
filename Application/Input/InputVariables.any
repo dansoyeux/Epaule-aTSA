@@ -2,11 +2,11 @@ AnyFolder InputVariables = {
   
   // Activates or not FDK (0 FDK activated)
   #ifndef BallAndSocket
-  #define BallAndSocket 1
+  #define BallAndSocket 0
   #endif
   
   // Highlights the acromion (1 : Highlighted ; 0 : Not Highlighted)
-  #define HighlightAcromion 1
+  #define HighlightAcromion 0
   AnyFloat HighlightAcromion_color = {16, 132, 244} / 255; // magenta
 // {16, 132, 244} / 255; // light blue
 // {221, 48, 131} / 255; // magenta
@@ -64,28 +64,28 @@ AnyFolder InputVariables = {
   #endif
 
   /* -------------------------------------------Glenoid inclination selection------------------------------------
-  "xdown"     (-8.7deg) 
-  "down"      (-3deg)
+  "xdown"     (-10 deg) 
+  "down"      (-5deg)
   "neutral"   (0deg)
-  "middle"    (2.9deg)
-  "up"        (9deg)
-  "xup"       (15.2deg)
+  "middle"    (5deg)
+  "up"        (9.9deg)
+  "xup"       (14.8deg)
   */
 
   #ifndef CSA_Tilt
-  #define CSA_Tilt "middle"
+  #define CSA_Tilt "neutral"
   #endif
   
   /* -------------------------------------------Acromion lengthening selection------------------------------------
-  xshort     (-12.1mm)
-  short      (-6.6mm)
+  xshort     (-10.842mm)
+  short      (-5.677mm)
   normal     (+0.0mm)
-  long       (+7.85mm)
-  xlong      (+16.95mm)
+  long       (+6.628mm)
+  xlong      (+13.37mm)
   */
  
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "short"
+  #define CSA_Acromion_Length "normal"
   #endif
   
   #define CSA_Case CSA_Tilt + "-" + CSA_Acromion_Length
@@ -102,7 +102,7 @@ AnyFolder InputVariables = {
   
   // Activates the Saving of the results after simulation
   #ifndef AutoSaveOption 
-  #define AutoSaveOption 0
+  #define AutoSaveOption 1
   #endif
     
   // Result names and folder

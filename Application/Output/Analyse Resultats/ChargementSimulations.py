@@ -133,7 +133,7 @@ FDK_ConstantsDictionary = {"AnybodyFileOutPath": "Main.Study.FileOut",
                            }
 
 BallAndSocket_ConstantsDictionary = {"AnybodyFileOutPath": "Main.Study.FileOut",
-                                     "Anybody version": ["AMMRVersion", "AnybodyVersion"],
+                                     "Anybody version": ["AMMRVersion", "AnybodyVersion", ""],
                                      "Paramètres de simulation": ["Case", "MuscleRecruitment", "nstep", "GHReactions", "Movement"],
                                      "Mannequin": ["GlenohumeralFlexion", "GlenohumeralAbduction", "GlenohumeralExternalRotation"],
                                      }
