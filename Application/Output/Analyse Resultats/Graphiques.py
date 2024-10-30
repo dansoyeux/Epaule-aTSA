@@ -981,3 +981,5 @@ graph(Results_aTSA, "Abduction", "ForceDepKinError", cases_on="all", legend_posi
 PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_6, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
 PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_36, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
 PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_5, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
+
+PremadeGraphs.muscle_graph_from_list(Results_aTSA, list_muscles_actifs, [3, 4], "Abduction", "Ft", "muscles actifs", cases_on="all")
