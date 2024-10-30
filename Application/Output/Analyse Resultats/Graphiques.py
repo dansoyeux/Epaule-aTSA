@@ -36,7 +36,6 @@ Results_BallAndSocket = load_results_from_file(SaveSimulationsDirectory, "Result
 Results_literature = load_results_from_file(SaveSimulationsDirectory, "Results_literature")
 
 scores_moment = load_results_from_file(SaveSimulationsDirectory, "scores_moment")
-scores_moment2 = load_results_from_file(SaveSimulationsDirectory, "scores_moment2")
 scores_shear = load_results_from_file(SaveSimulationsDirectory, "scores_shear")
 
 # %% taille des textes dans les graphiques
@@ -883,96 +882,102 @@ def score_surface(score_df, title):
 
 #             Results[case]["Muscles"][muscle_name][muscle_name][variable_name]["Total"] = Results[case]["Muscles"][muscle_name][muscle_name]["LmtDot"]["Mean"] / Results[case]["Angular Velocity"][composante]
 
+# %% graphique en bar pour powerpoint soutenance
+
+# import pandas as pd
+
+# import numpy as np
+
+# moment_CSA_20 = [None, 85, 139, 152, None]
+# moment_CSA_25 = [None, 96, 146, 172, 200]
+# moment_CSA_30 = [136, 142, 183, 194, 220]
+# moment_CSA_35 = [None, 139, 167, 205, 213]
+# moment_CSA_40 = [None, 165, 247, 274, None]
+
+
+# min_moment = np.array([85, 96, 136, 139, 165])
+# max_moment = np.array([152, 200, 220, 213, 274])
+
+# variation = np.round((max_moment - min_moment) / min_moment * 100)
+# print(f"moment : {variation}")
+
+# cat_1 = [moment_CSA_20[0], moment_CSA_30[0], moment_CSA_40[0]]
+# cat_2 = [moment_CSA_20[1], moment_CSA_30[1], moment_CSA_40[1]]
+# cat_3 = [moment_CSA_20[2], moment_CSA_30[2], moment_CSA_40[2]]
+# cat_4 = [moment_CSA_20[3], moment_CSA_30[3], moment_CSA_40[3]]
+# cat_5 = [moment_CSA_20[4], moment_CSA_30[4], moment_CSA_40[4]]
+
+# cat_1 = [moment_CSA_20[0], moment_CSA_25[0], moment_CSA_30[0], moment_CSA_35[0], moment_CSA_40[0]]
+# cat_2 = [moment_CSA_20[1], moment_CSA_25[1], moment_CSA_30[1], moment_CSA_35[1], moment_CSA_40[1]]
+# cat_3 = [moment_CSA_20[2], moment_CSA_25[2], moment_CSA_30[2], moment_CSA_35[2], moment_CSA_40[2]]
+# cat_4 = [moment_CSA_20[3], moment_CSA_25[3], moment_CSA_30[3], moment_CSA_35[3], moment_CSA_40[3]]
+# cat_5 = [moment_CSA_20[4], moment_CSA_25[4], moment_CSA_30[4], moment_CSA_35[4], moment_CSA_40[4]]
+
+# index = ["CSA = 20°", "CSA = 30°", "CSA = 40°"]
+# index = ["CSA = 20°", "CSA = 25°", "CSA = 30°", "CSA = 35°", "CSA = 40°"]
+# df = pd.DataFrame({"1": cat_1,
+#                    "2": cat_2,
+#                    "3": cat_3,
+#                    "4": cat_4,
+#                    "5": cat_5,
+#                    }, index=index)
+
+# ax = df.plot.bar(rot=45, legend=False, title="Moment", ylim=[0, 350])
+
+# CSA_20_Cases = ["xdown-normal", "down-short", "middle-xshort"]
+# CSA_25_Cases = ["xdown-long", "down-normal", "middle-short", "up-xshort"]
+# CSA_30_Cases = ["xdown-xlong", "down-long", "middle-normal", "up-short", "xup-xshort"]
+# CSA_35_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
+# CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
+
+# # shear_CSA_20 = [4300, 2413, None, None, 4502]
+# # shear_CSA_30 = [5669, 5951, 4258, 3997, 6632]
+# # shear_CSA_40 = [7487, 8331, None, None, 4882]
+
+# shear_CSA_20 = [None, 2413, 4300, 4502, None]
+# shear_CSA_25 = [None, 2713, 4437, 5319, 5989]
+# shear_CSA_30 = [3997, 4258, 5669, 5951, 6632]
+# shear_CSA_35 = [None, 4094, 4989, 6270, 7103]
+# shear_CSA_40 = [None, 4882, 7487, 8331, None]
+
+
+# min_shear = np.array([2413, 2717, 3997, 4094, 4882])
+# max_shear = np.array([4502, 5989, 6632, 7103, 8331])
+
+# variation = np.round((max_shear - min_shear) / min_shear * 100)
+# print(f"shear : {variation}")
+
+# cat_1 = [shear_CSA_20[0], shear_CSA_30[0], shear_CSA_40[0]]
+# cat_2 = [shear_CSA_20[1], shear_CSA_30[1], shear_CSA_40[1]]
+# cat_3 = [shear_CSA_20[2], shear_CSA_30[2], shear_CSA_40[2]]
+# cat_4 = [shear_CSA_20[3], shear_CSA_30[3], shear_CSA_40[3]]
+# cat_5 = [shear_CSA_20[4], shear_CSA_30[4], shear_CSA_40[4]]
+
+# cat_1 = [shear_CSA_20[0], shear_CSA_25[0], shear_CSA_30[0], shear_CSA_35[0], shear_CSA_40[0]]
+# cat_2 = [shear_CSA_20[1], shear_CSA_25[1], shear_CSA_30[1], shear_CSA_35[1], shear_CSA_40[1]]
+# cat_3 = [shear_CSA_20[2], shear_CSA_25[2], shear_CSA_30[2], shear_CSA_35[2], shear_CSA_40[2]]
+# cat_4 = [shear_CSA_20[3], shear_CSA_25[3], shear_CSA_30[3], shear_CSA_35[3], shear_CSA_40[3]]
+# cat_5 = [shear_CSA_20[4], shear_CSA_25[4], shear_CSA_30[4], shear_CSA_35[4], shear_CSA_40[4]]
+
+# # min_shear = [min(shear_CSA_20), min(shear_CSA_30), min(shear_CSA_40)]
+# # max_shear = [max(shear_CSA_20), max(shear_CSA_30), max(shear_CSA_40)]
+
+# index = ["CSA = 20°", "CSA = 30°", "CSA = 40°"]
+# index = ["CSA = 20°", "CSA = 25°", "CSA = 30°", "CSA = 25°", "CSA = 40°"]
+# df = pd.DataFrame({"1": cat_1,
+#                    "2": cat_2,
+#                    "3": cat_3,
+#                    "4": cat_4,
+#                    "5": cat_5,
+#                    }, index=index)
+
+# ax = df.plot.bar(rot=45, legend=False, title="Cisaillement", ylim=[0, 10000])
+
+
 # %%
 
-import pandas as pd
+graph(Results_aTSA, "Abduction", "ForceDepKinError", cases_on="all", legend_position="center left", figsize=[24, 14])
 
-import numpy as np
-
-moment_CSA_20 = [None, 85, 139, 152, None]
-moment_CSA_25 = [None, 96, 146, 172, 200]
-moment_CSA_30 = [136, 142, 183, 194, 220]
-moment_CSA_35 = [None, 139, 167, 205, 213]
-moment_CSA_40 = [None, 165, 247, 274, None]
-
-
-min_moment = np.array([85, 96, 136, 139, 165])
-max_moment = np.array([152, 200, 220, 213, 274])
-
-variation = np.round((max_moment - min_moment) / min_moment * 100)
-print(f"moment : {variation}")
-
-cat_1 = [moment_CSA_20[0], moment_CSA_30[0], moment_CSA_40[0]]
-cat_2 = [moment_CSA_20[1], moment_CSA_30[1], moment_CSA_40[1]]
-cat_3 = [moment_CSA_20[2], moment_CSA_30[2], moment_CSA_40[2]]
-cat_4 = [moment_CSA_20[3], moment_CSA_30[3], moment_CSA_40[3]]
-cat_5 = [moment_CSA_20[4], moment_CSA_30[4], moment_CSA_40[4]]
-
-cat_1 = [moment_CSA_20[0], moment_CSA_25[0], moment_CSA_30[0], moment_CSA_35[0], moment_CSA_40[0]]
-cat_2 = [moment_CSA_20[1], moment_CSA_25[1], moment_CSA_30[1], moment_CSA_35[1], moment_CSA_40[1]]
-cat_3 = [moment_CSA_20[2], moment_CSA_25[2], moment_CSA_30[2], moment_CSA_35[2], moment_CSA_40[2]]
-cat_4 = [moment_CSA_20[3], moment_CSA_25[3], moment_CSA_30[3], moment_CSA_35[3], moment_CSA_40[3]]
-cat_5 = [moment_CSA_20[4], moment_CSA_25[4], moment_CSA_30[4], moment_CSA_35[4], moment_CSA_40[4]]
-
-index = ["CSA = 20°", "CSA = 30°", "CSA = 40°"]
-index = ["CSA = 20°", "CSA = 25°", "CSA = 30°", "CSA = 35°", "CSA = 40°"]
-df = pd.DataFrame({"1": cat_1,
-                   "2": cat_2,
-                   "3": cat_3,
-                   "4": cat_4,
-                   "5": cat_5,
-                   }, index=index)
-
-ax = df.plot.bar(rot=45, legend=False, title="Moment", ylim=[0, 350])
-
-CSA_20_Cases = ["xdown-normal", "down-short", "middle-xshort"]
-CSA_25_Cases = ["xdown-long", "down-normal", "middle-short", "up-xshort"]
-CSA_30_Cases = ["xdown-xlong", "down-long", "middle-normal", "up-short", "xup-xshort"]
-CSA_35_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
-CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
-
-# shear_CSA_20 = [4300, 2413, None, None, 4502]
-# shear_CSA_30 = [5669, 5951, 4258, 3997, 6632]
-# shear_CSA_40 = [7487, 8331, None, None, 4882]
-
-shear_CSA_20 = [None, 2413, 4300, 4502, None]
-shear_CSA_25 = [None, 2713, 4437, 5319, 5989]
-shear_CSA_30 = [3997, 4258, 5669, 5951, 6632]
-shear_CSA_35 = [None, 4094, 4989, 6270, 7103]
-shear_CSA_40 = [None, 4882, 7487, 8331, None]
-
-
-min_shear = np.array([2413, 2717, 3997, 4094, 4882])
-max_shear = np.array([4502, 5989, 6632, 7103, 8331])
-
-variation = np.round((max_shear - min_shear) / min_shear * 100)
-print(f"shear : {variation}")
-
-
-
-cat_1 = [shear_CSA_20[0], shear_CSA_30[0], shear_CSA_40[0]]
-cat_2 = [shear_CSA_20[1], shear_CSA_30[1], shear_CSA_40[1]]
-cat_3 = [shear_CSA_20[2], shear_CSA_30[2], shear_CSA_40[2]]
-cat_4 = [shear_CSA_20[3], shear_CSA_30[3], shear_CSA_40[3]]
-cat_5 = [shear_CSA_20[4], shear_CSA_30[4], shear_CSA_40[4]]
-
-cat_1 = [shear_CSA_20[0], shear_CSA_25[0], shear_CSA_30[0], shear_CSA_35[0], shear_CSA_40[0]]
-cat_2 = [shear_CSA_20[1], shear_CSA_25[1], shear_CSA_30[1], shear_CSA_35[1], shear_CSA_40[1]]
-cat_3 = [shear_CSA_20[2], shear_CSA_25[2], shear_CSA_30[2], shear_CSA_35[2], shear_CSA_40[2]]
-cat_4 = [shear_CSA_20[3], shear_CSA_25[3], shear_CSA_30[3], shear_CSA_35[3], shear_CSA_40[3]]
-cat_5 = [shear_CSA_20[4], shear_CSA_25[4], shear_CSA_30[4], shear_CSA_35[4], shear_CSA_40[4]]
-
-# min_shear = [min(shear_CSA_20), min(shear_CSA_30), min(shear_CSA_40)]
-# max_shear = [max(shear_CSA_20), max(shear_CSA_30), max(shear_CSA_40)]
-
-index = ["CSA = 20°", "CSA = 30°", "CSA = 40°"]
-index = ["CSA = 20°", "CSA = 25°", "CSA = 30°", "CSA = 25°", "CSA = 40°"]
-df = pd.DataFrame({"1": cat_1,
-                   "2": cat_2,
-                   "3": cat_3,
-                   "4": cat_4,
-                   "5": cat_5,
-                   }, index=index)
-
-ax = df.plot.bar(rot=45, legend=False, title="Cisaillement", ylim=[0, 10000])
-
+PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_6, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
+PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_36, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
+PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_5, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
