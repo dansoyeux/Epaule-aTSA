@@ -163,52 +163,52 @@ SimulationsLineStyleDictionary = {
     "CSA=12°": {"color": 'violet', "linestyle": "--"},
     "CSA=16°": {"color": 'purple', "linestyle": "--"},
     "CSA=20°": {"color": 'lightblue', "linestyle": "--"},
-    "CSA=25°": {"color": 'cornflowerblue', "linestyle": "--"},
-    "CSA=30°": {"color": 'greenyellow', "linestyle": "-"},
-    "CSA=35°": {"color": 'mediumseagreen', "linestyle": "-"},
+    "CSA=23°": {"color": 'cornflowerblue', "linestyle": "--"},
+    "CSA=31°": {"color": 'greenyellow', "linestyle": "-"},
+    "CSA=36°": {"color": 'mediumseagreen', "linestyle": "-"},
     "CSA=40°": {"color": 'orange', "linestyle": "-."},
-    "CSA=45°": {"color": 'red', "linestyle": "-."},
-    "CSA=50°": {"color": 'darkred', "linestyle": "-."}
+    "CSA=44°": {"color": 'red', "linestyle": "-."},
+    "CSA=48°": {"color": 'darkred', "linestyle": "-."}
 
 }
 
 SimulationDescriptionDictionary = {
     # Nom des cas de simulation
-    "xdown-xshort": "CSA = 12° : -8.7° inclination    ; -12.1 mm acromion shift",
-    "xdown-short": "CSA = 16° : -8.7° inclination    ; -6.6 mm acromion shift",
-    "xdown-normal": "CSA = 20° : -8.7° inclination    ; +0.0 mm acromion shift",
-    "xdown-long": "CSA = 25° : -8.7° inclination    ; +7.85 mm acromion shift",
-    "xdown-xlong": "CSA = 30° : -8.7° inclination    ; +16.95 mm acromion shift",
+    "xdown-xshort": "CSA = 12° : -10° inclination    ; -10.8 mm acromion shift",
+    "xdown-short": "CSA = 16° : -10° inclination    ; -5.7 mm acromion shift",
+    "xdown-normal": "CSA = 20° : -10° inclination    ; +0.0 mm acromion shift",
+    "xdown-long": "CSA = 23° : -10° inclination    ; +6.6 mm acromion shift",
+    "xdown-xlong": "CSA = 31° : -10° inclination    ; +13.4 mm acromion shift",
 
-    "down-xshort": "CSA = 16° : -3.0° inclination    ; -12.1 mm acromion shift",
-    "down-short": "CSA = 20° : -3.0° inclination    ; -6.6 mm acromion shift",
-    "down-normal": "CSA = 25° : -3.0° inclination    ; +0.0 mm acromion shift",
-    "down-long": "CSA = 30° : -3.0° inclination    ; +7.85 mm acromion shift",
-    "down-xlong": "CSA = 35° : -3.0° inclination    ; +16.95 mm acromion shift",
+    "down-xshort": "CSA = 16° : -5° inclination    ; -10.8 mm acromion shift",
+    "down-short": "CSA = 20° : -5° inclination    ; -5.7 mm acromion shift",
+    "down-normal": "CSA = 23° : -5° inclination    ; +0.0 mm acromion shift",
+    "down-long": "CSA = 31° : -5° inclination    ; +6.6 mm acromion shift",
+    "down-xlong": "CSA = 36° : -5° inclination    ; +13.4 mm acromion shift",
 
-    "middle-xshort": "CSA = 20° : 2.9° inclination     ; -12.1 mm acromion shift",
-    "middle-short": "CSA = 25° : 2.9° inclination     ; -6.6 mm acromion shift",
-    "middle-normal": "CSA = 30° : 2.9° inclination     ; +0.0 mm acromion shift",
-    "middle-long": "CSA = 35° : 2.9° inclination     ; +7.85 mm acromion shift",
-    "middle-xlong": "CSA = 40° : 2.9° inclination     ; +16.95 mm acromion shift",
+    "middle-xshort": "CSA = 20° : 5° inclination     ; -10.8 mm acromion shift",
+    "middle-short": "CSA = 23° : 5° inclination     ; -5.7 mm acromion shift",
+    "middle-normal": "CSA = 31° : 5° inclination     ; +0.0 mm acromion shift",
+    "middle-long": "CSA = 36° : 5° inclination     ; +6.6 mm acromion shift",
+    "middle-xlong": "CSA = 40° : 5° inclination     ; +13.4 mm acromion shift",
 
-    "neutral-xshort": "CSA = 20° : 0.0° inclination     ; -12.1 mm acromion shift",
-    "neutral-short": "CSA = 25° : 0.0° inclination     ; -6.6 mm acromion shift",
-    "neutral-normal": "CSA = 30° : 0.0° inclination     ; +0.0 mm acromion shift",
-    "neutral-long": "CSA = 35° : 0.0° inclination     ; +7.85 mm acromion shift",
-    "neutral-xlong": "CSA = 40° : 0.0° inclination     ; +16.95 mm acromion shift",
+    "neutral-xshort": "CSA = 20° : 0.0° inclination     ; -10.8 mm acromion shift",
+    "neutral-short": "CSA = 23° : 0.0° inclination     ; -5.7 mm acromion shift",
+    "neutral-normal": "CSA = 31° : 0.0° inclination     ; +0.0 mm acromion shift",
+    "neutral-long": "CSA = 36° : 0.0° inclination     ; +6.6 mm acromion shift",
+    "neutral-xlong": "CSA = 40° : 0.0° inclination     ; +13.4 mm acromion shift",
 
-    "up-xshort": "CSA = 25° : 9.0° inclination     ; -12.1 mm acromion shift",
-    "up-short": "CSA = 30° : 9.0° inclination     ; -6.6 mm acromion shift",
-    "up-normal": "CSA = 35° : 9.0° inclination     ; +0.0 mm acromion shift",
-    "up-long": "CSA = 40° : 9.0° inclination     ; +7.85 mm acromion shift",
-    "up-xlong": "CSA = 45° : 9.0° inclination     ; +16.95 mm acromion shift",
+    "up-xshort": "CSA = 23° : 10° inclination     ; -10.8 mm acromion shift",
+    "up-short": "CSA = 31° : 10° inclination     ; -5.7 mm acromion shift",
+    "up-normal": "CSA = 36° : 10° inclination     ; +0.0 mm acromion shift",
+    "up-long": "CSA = 40° : 10° inclination     ; +6.6 mm acromion shift",
+    "up-xlong": "CSA = 46° : 10° inclination     ; +13.4 mm acromion shift",
 
-    "xup-xshort": "CSA = 30° : 15.2° inclination   ; -12.1 mm acromion shift",
-    "xup-short": "CSA = 35° : 15.2° inclination   ; -6.6 mm acromion shift",
-    "xup-normal": "CSA = 40° : 15.2° inclination   ; +0.0 mm acromion shift",
-    "xup-long": "CSA = 45° : 15.2° inclination   ; +7.85 mm acromion shift",
-    "xup-xlong": "CSA = 50° : 15.2° inclination   ; +16.95 mm acromion shift",
+    "xup-xshort": "CSA = 31° : 15° inclination   ; -10.8 mm acromion shift",
+    "xup-short": "CSA = 36° : 15° inclination   ; -5.7 mm acromion shift",
+    "xup-normal": "CSA = 40° : 15° inclination   ; +0.0 mm acromion shift",
+    "xup-long": "CSA = 46° : 15° inclination   ; +6.6 mm acromion shift",
+    "xup-xlong": "CSA = 48° : 15° inclination   ; +13.4 mm acromion shift",
 
     # Nom des composantes
     "AP": "Axe antéropostérieur (Anterior = +)",
@@ -224,12 +224,13 @@ SimulationDescriptionDictionary = {
     "CSA=12°": "CSA=12° (1 case)",
     "CSA=16°": "CSA=16° (2 cases)",
     "CSA=20°": "CSA=20° (3 cases)",
-    "CSA=25°": "CSA=25° (4 cases)",
-    "CSA=30°": "CSA=30° (5 cases)",
-    "CSA=35°": "CSA=35° (4 cases)",
+    "CSA=25°": "CSA=23° (4 cases)",
+    "CSA=27°": "CSA=27° (5 cases)",
+    "CSA=30°": "CSA=31° (5 cases)",
+    "CSA=35°": "CSA=36° (4 cases)",
     "CSA=40°": "CSA=40° (3 cases)",
-    "CSA=45°": "CSA=45° (2 cases)",
-    "CSA=50°": "CSA=50° (1 case)"
+    "CSA=45°": "CSA=44° (2 cases)",
+    "CSA=50°": "CSA=48° (1 case)"
 
 }
 
@@ -589,37 +590,38 @@ graph_parameters_6 = {"xlim": [0, 120],
 # 9 CSA différents
 CSA_12_Cases = ["xdown-xshort"]
 CSA_16_Cases = ["xdown-short", "down-xshort"]
-CSA_20_Cases = ["xdown-normal", "down-short", "middle-xshort"]
-CSA_25_Cases = ["xdown-long", "down-normal", "middle-short", "up-xshort"]
-CSA_30_Cases = ["xdown-xlong", "down-long", "middle-normal", "up-short", "xup-xshort"]
-CSA_35_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
+CSA_20_Cases = ["xdown-normal", "down-short", "neutral-xshort"]
+CSA_23_Cases = ["xdown-long", "down-normal", "neutral-short", "middle-xshort"]
+CSA_27_Cases = ["xdown-xlong", "down-long", "neutral-normal", "middle-short", "up-xshort"]
+CSA_31_Cases = ["down-xlong", "neutral-long", "middle-normal", "up-short", "xup-xshort"]
+CSA_36_Cases = ["neutral-xlong", "middle-long", "up-normal", "xup-short"]
 CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
-CSA_45_Cases = ["up-xlong", "xup-long"]
-CSA_50_Cases = ["xup-xlong"]
+CSA_44_Cases = ["up-xlong", "xup-long"]
+CSA_48_Cases = ["xup-xlong"]
 
 # CSA
 CasesVariables_CSA_9 = {"CSA Faible": {"CSA = 12°": CSA_12_Cases, "CSA = 16°": CSA_16_Cases, "CSA = 20°": CSA_20_Cases},
-                        "CSA Moyen": {"CSA = 25°": CSA_25_Cases, "CSA = 30°": CSA_30_Cases, "CSA = 35°": CSA_35_Cases},
-                        "CSA Élevé": {"CSA = 40°": CSA_40_Cases, "CSA = 45°": CSA_45_Cases, "CSA = 50°": CSA_50_Cases}}
+                        "CSA Moyen": {"CSA = 23°": CSA_23_Cases, "CSA = 31°": CSA_31_Cases, "CSA = 36°": CSA_36_Cases},
+                        "CSA Élevé": {"CSA = 40°": CSA_40_Cases, "CSA = 44°": CSA_44_Cases, "CSA = 48°": CSA_48_Cases}}
 
 # Les 6 qui sont dans la range de CSA
-CasesVariables_CSA_6 = {"CSA Moyen": {"CSA = 20°": CSA_20_Cases, "CSA = 25°": CSA_25_Cases, "CSA = 30°": CSA_30_Cases},
-                        "CSA Élevé": {"CSA = 35°": CSA_35_Cases, "CSA = 40°": CSA_40_Cases, "CSA = 45°": CSA_45_Cases}
+CasesVariables_CSA_6 = {"CSA Moyen": {"CSA = 23°": CSA_23_Cases, "CSA = 31°": CSA_31_Cases, "CSA = 36°": CSA_36_Cases},
+                        "CSA Élevé": {"CSA = 40°": CSA_40_Cases, "CSA = 44°": CSA_44_Cases, "CSA = 48°": CSA_48_Cases}
                         }
 
 # Liste des CSA
-list_csa_short = ["CSA=25°",
-                  "CSA=30°",
-                  "CSA=35°",
+list_csa_short = ["CSA=23°",
+                  "CSA=31°",
+                  "CSA=36°",
                   "CSA=40°"
                   ]
 
 list_csa_long = ["CSA=20°",
-                 "CSA=25°",
-                 "CSA=30°",
-                 "CSA=35°",
+                 "CSA=23°",
+                 "CSA=31°",
+                 "CSA=36°",
                  "CSA=40°",
-                 "CSA=45°"
+                 "CSA=44°"
                  ]
 
 # Parameters of the graphs
@@ -648,8 +650,8 @@ graph_parameters_par_CSA = {"xlim": [0, 120],
                             }
 
 combine_CSA = {"CSA=12°": CSA_12_Cases, "CSA=16°": CSA_16_Cases, "CSA=20°": CSA_20_Cases,
-               "CSA=25°": CSA_25_Cases, "CSA=30°": CSA_30_Cases, "CSA=35°": CSA_35_Cases,
-               "CSA=40°": CSA_40_Cases, "CSA=45°": CSA_45_Cases, "CSA=50°": CSA_50_Cases}
+               "CSA=23°": CSA_23_Cases, "CSA=31°": CSA_31_Cases, "CSA=36°": CSA_36_Cases,
+               "CSA=40°": CSA_40_Cases, "CSA=44°": CSA_44_Cases, "CSA=50°": CSA_48_Cases}
 
 # Fait la moyenne de toutes les variables par valeur de CSA
 Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operation="mean"), **Results_aTSA}
@@ -659,91 +661,7 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 
 # %% Figures article
 
-# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=False)
-
-list_muscles_actifs_fr = ["Deltoid latéral",
-                          "Deltoid antérieur",
-                          "Deltoid postérieur",
-                          "Subscapulaire",
-                          "Dentelé antérieur",
-                          "Triceps long",
-                          "Trapèze inférieur",
-                          "Trapèze moyen",
-                          "Trapèze supérieur",
-                          "Infraépineux",
-                          "Supraépineux",
-                          "Rhomboïde"]
-
-list_muscles_1 = ["Deltoid latéral",
-                  "Deltoid antérieur",
-                  "Deltoid postérieur",
-                  "Rhomboïde",
-                  "Trapèze inférieur",
-                  "Trapèze supérieur",
-                  "Subscapulaire",
-                  "Infraépineux",
-                  "Supraépineux",
-                  ]
-
-
-Categories_Article = {"line": {"Inclinaison inférieure": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
-                               "Inclinaison neutre": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
-                               "Inclinaison supérieure": ["up-xshort", "up-normal", "up-xlong"]
-                               }}
-
-SimulationsLineStyleDictionary_presentation = {
-    # Glen xdown
-    "xdown-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
-    "xdown-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
-    "xdown-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
-    "xdown-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
-    "xdown-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
-
-    # Glen neutral
-    "neutral-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
-    "neutral-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
-    "neutral-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
-    "neutral-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
-    "neutral-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
-
-    # Glen up
-    "up-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
-    "up-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
-    "up-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
-    "up-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
-    "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
-
-}
-
-
-define_simulations_line_style(SimulationsLineStyleDictionary_presentation)
-
-# PremadeGraphs.graph_by_case_categories(Results_aTSA_fr, Categories_Article, "Abduction", "Instability Ratio", "Ratio d'instabilité", hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=[0, 0.55], figsize=[20, 9])
-
-# PremadeGraphs.COP_graph_by_case_categories(Results_aTSA_fr, Categories_Article, COP_contour, composantes=["AP", "IS"], draw_COP_points_on=False, legend_x=["Postérieur", "Antérieur"], legend_y=["Inférieur", "Supérieur"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[20, 9], hide_center_axis_labels=True)
-
-SimulationsLineStyleDictionary_presentation_2 = {
-    "xdown-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
-    "neutral-normal": {"color": "k", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
-    "neutral-long": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": (0, (3, 3)), "linewidth": 4},
-    "xup-long": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
-    "Joint Sphérique": {"color": "lime", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
-}
-
-define_simulations_line_style(SimulationsLineStyleDictionary_presentation_2)
-
-# COP_graph(Results_aTSA, COP_contour, cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], composantes=["AP", "IS"], draw_COP_points_on=False, legend_x=["Postérieur", "Antérieur"], legend_y=["Inférieur", "Supérieur"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[20, 9], hide_center_axis_labels=True)
-
-# PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, list_muscles_1, [3, 3], "Abduction", "Ft", "", cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], legend_label_per_column=10, same_lim=True, ylim=[0, None], legend_on=False)
-
-# graph(Results_aTSA_fr, "Abduction", "ContactForce glenoid", composante_y=["Shear"], cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], subplot={"dimension": [1, 3], "number": 1}, subplot_title="Cisaillement", ylim=[0, None])
-# graph(Results_aTSA_fr, "Abduction", "ContactForce glenoid", composante_y=["ML"], cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], subplot={"dimension": [1, 3], "number": 2}, subplot_title="Compression", ylim=[0, None])
-# graph(Results_aTSA_fr, "Abduction", "Instability Ratio", cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], subplot={"dimension": [1, 3], "number": 3}, subplot_title="Ratio", ylim=[0, None])
-
-# Activation de la coiffe des rotateurs
-# PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Force of the Rotator cuff muscles", hide_center_axis_labels=True, cases_on=["normal"], label="Joint Sphérique")
-# PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["xdown-xshort", "neutral-normal", "xup-long"], add_graph=True, same_lim=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None])
-
+my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=False)
 
 # %% Figures mémoire
 
@@ -761,63 +679,61 @@ define_simulations_line_style(SimulationsLineStyleDictionary_presentation_2)
 # COP_graph(Results_aTSA, COP_contour, composantes=["AP", "IS"], figure_title="Position of the Center of Pressure on the glenoid implant", cases_on=["neutral-normal"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[18, 10], draw_COP_points_on=False)
 
 # # Discussion générale coiffe des rotateurs
-define_simulations_line_style(SimulationsLineStyleDictionary_article)
+# define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
 
 # 12 (Ft > 10 N)
-list_muscles_actifs_fr = ["Deltoid latéral",
-                          "Deltoid antérieur",
-                          "Deltoid postérieur",
-                          "Trapèze inférieur",
-                          "Trapèze moyen",
-                          "Trapèze supérieur",
-                          "Dentelé antérieur",
-                          "Subscapulaire",
-                          "Triceps long",
-                          "Rhomboïde",
-                          "Supraépineux",
-                          "Infraépineux",
-                          ]
+# list_muscles_actifs_fr = ["Deltoid latéral",
+#                           "Deltoid antérieur",
+#                           "Deltoid postérieur",
+#                           "Trapèze inférieur",
+#                           "Trapèze moyen",
+#                           "Trapèze supérieur",
+#                           "Dentelé antérieur",
+#                           "Subscapulaire",
+#                           "Triceps long",
+#                           "Rhomboïde",
+#                           "Supraépineux",
+#                           "Infraépineux",
+#                           ]
 
-# 3 (10 N > Ft > 5N)
-list_muscles_peu_actif_fr = ["Biceps brachial long",
-                             "Biceps brachial court",
-                             "Levator scapulae"
-                             ]
+# # 3 (10 N > Ft > 5N)
+# list_muscles_peu_actif_fr = ["Biceps brachial long",
+#                              "Biceps brachial court",
+#                              "Levator scapulae"
+#                              ]
 
-# 9 (Ft < 5N)
-list_muscles_inactifs_fr = ["Grand pectoral claviculaire",
-                            "Grand pectoral sternal",
-                            "Petit pectoral",
-                            "Grand rond",
-                            "Petit rond",
-                            "Sternocleidomastoid sternum",
-                            "Sternocleidomastoid claviculaire",
-                            "Grand dorsal",
-                            "Coracobrachialis"
-                            ]
+# # 9 (Ft < 5N)
+# list_muscles_inactifs_fr = ["Grand pectoral claviculaire",
+#                             "Grand pectoral sternal",
+#                             "Petit pectoral",
+#                             "Grand rond",
+#                             "Petit rond",
+#                             "Sternocleidomastoid sternum",
+#                             "Sternocleidomastoid claviculaire",
+#                             "Grand dorsal",
+#                             "Coracobrachialis"
+#                             ]
 
 
 # # Activation de la coiffe des rotateurs
 # PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["neutral-normal"], label="CSA = 28°")
-# PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["up-long"], label="CSA = 45°", add_graph=True, same_lim=True)
+# PremadeGraphs.muscle_graph_from_list(Results_aTSA, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["up-long"], label="CSA = 46°", add_graph=True, same_lim=True)
 # PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Force of the Rotator cuff muscles", hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None], cases_on=["normal"], add_graph=True, label="Joint Sphérique")
 
-define_simulations_line_style(SimulationsLineStyleDictionary)
+# define_simulations_line_style(SimulationsLineStyleDictionary)
 
 # PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, list_muscles_actifs_fr, [4, 3], "Abduction", "Ft", "Muscles actifs (Ft > 10N)", cases_on=CaseNames_36, figsize=[24, 14], ylim=[0, 200], hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15)
 # PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, list_muscles_peu_actif_fr, [1, 3], "Abduction", "Ft", "Muscles peu actifs (10 N > Ft > 5N)", cases_on=CaseNames_36, figsize=[24, 14], ylim=[0, 20], hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15)
 # PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, list_muscles_inactifs_fr, [3, 3], "Abduction", "Ft", "Muscles inactifs (Ft < 5N)", cases_on=CaseNames_36, figsize=[24, 14], ylim=[0, 20], hide_center_axis_labels=True, xlim=[0, 120], grid_x_step=15)
-
-
 
 # %% graph surface score
 
 def score_surface(score_df, title):
     z = score_df.to_numpy(dtype="float64")
 
-    acromion_x = np.array([-12.1, -6.6, 0, 7.85, 16.95])
-    inclinaison_y = np.array([-8.7, -3.0, 0, 2.9, 9.0, 15.2])
+    acromion_x = np.array([-10.8, -5.7, 0, 7.85, 13.4])
+    inclinaison_y = np.array([-10, -5, 0, 5, 10, 15])
 
     (x, y) = np.meshgrid(acromion_x, inclinaison_y)
 
@@ -829,8 +745,8 @@ def score_surface(score_df, title):
     ax.tick_params(axis='y', which='major', pad=8)
     ax.tick_params(axis='z', which='major', pad=12)
 
-    ax.set_xlim(-12.1, 16.95)
-    ax.set_ylim(-8.7, 15.2)
+    ax.set_xlim(-10.8, 13.4)
+    ax.set_ylim(-10, 15)
     ax.set_zlim(0, np.max(z))
     ax.set_xticks(acromion_x)
     ax.set_yticks(inclinaison_y)
@@ -882,7 +798,92 @@ def score_surface(score_df, title):
 
 #             Results[case]["Muscles"][muscle_name][muscle_name][variable_name]["Total"] = Results[case]["Muscles"][muscle_name][muscle_name]["LmtDot"]["Mean"] / Results[case]["Angular Velocity"][composante]
 
-# %% graphique en bar pour powerpoint soutenance
+# %% graphique soutenance
+
+# list_muscles_actifs_fr = ["Deltoid latéral",
+#                           "Deltoid antérieur",
+#                           "Deltoid postérieur",
+#                           "Subscapulaire",
+#                           "Dentelé antérieur",
+#                           "Triceps long",
+#                           "Trapèze inférieur",
+#                           "Trapèze moyen",
+#                           "Trapèze supérieur",
+#                           "Infraépineux",
+#                           "Supraépineux",
+#                           "Rhomboïde"]
+
+# list_muscles_1 = ["Deltoid latéral",
+#                   "Deltoid antérieur",
+#                   "Deltoid postérieur",
+#                   "Rhomboïde",
+#                   "Trapèze inférieur",
+#                   "Trapèze supérieur",
+#                   "Subscapulaire",
+#                   "Infraépineux",
+#                   "Supraépineux",
+#                   ]
+
+
+# Categories_Article = {"line": {"Inclinaison inférieure": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
+#                                 "Inclinaison neutre": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
+#                                 "Inclinaison supérieure": ["up-xshort", "up-normal", "up-xlong"]
+#                                 }}
+
+
+# PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, list_muscles_1, [3, 3], "Abduction", "Ft", "", cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], legend_label_per_column=10, same_lim=True, ylim=[0, None], legend_on=False)
+
+# graph(Results_aTSA_fr, "Abduction", "ContactForce glenoid", composante_y=["Shear"], cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], subplot={"dimension": [1, 3], "number": 1}, subplot_title="Cisaillement", ylim=[0, None])
+# graph(Results_aTSA_fr, "Abduction", "ContactForce glenoid", composante_y=["ML"], cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], subplot={"dimension": [1, 3], "number": 2}, subplot_title="Compression", ylim=[0, None])
+# graph(Results_aTSA_fr, "Abduction", "Instability Ratio", cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[18, 14], subplot={"dimension": [1, 3], "number": 3}, subplot_title="Ratio", ylim=[0, None])
+
+# # Activation de la coiffe des rotateurs
+# PremadeGraphs.muscle_graph_from_list(Results_BallAndSocket, Muscles_coiffe, [2, 2], "Abduction", "Ft", "Force of the Rotator cuff muscles", hide_center_axis_labels=True, cases_on=["normal"], label="Joint Sphérique")
+# PremadeGraphs.muscle_graph_from_list(Results_aTSA_fr, Muscles_coiffe_fr, [2, 2], "Abduction", "Ft", "Activation de la coiffe", hide_center_axis_labels=True, cases_on=["xdown-xshort", "neutral-normal", "xup-long"], add_graph=True, same_lim=True, xlim=[0, 120], grid_x_step=15, ylim=[0, None])
+
+# SimulationsLineStyleDictionary_presentation = {
+#     # Glen xdown
+#     "xdown-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+#     "xdown-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+#     "xdown-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+#     "xdown-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+#     "xdown-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+
+#     # Glen neutral
+#     "neutral-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+#     "neutral-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+#     "neutral-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+#     "neutral-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+#     "neutral-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+
+#     # Glen up
+#     "up-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": ".-", "linewidth": 4},
+#     "up-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": ".-", "linewidth": 4},
+#     "up-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+#     "up-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+#     "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+
+# }
+
+
+# define_simulations_line_style(SimulationsLineStyleDictionary_presentation)
+
+# PremadeGraphs.graph_by_case_categories(Results_aTSA_fr, Categories_Article, "Abduction", "Instability Ratio", "Ratio d'instabilité", hide_center_axis_labels=True, same_lim=True, grid_x_step=15, xlim=[15, 120], ylim=[0, 0.55], figsize=[20, 9])
+
+# PremadeGraphs.COP_graph_by_case_categories(Results_aTSA_fr, Categories_Article, COP_contour, composantes=["AP", "IS"], draw_COP_points_on=False, legend_x=["Postérieur", "Antérieur"], legend_y=["Inférieur", "Supérieur"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[20, 9], hide_center_axis_labels=True)
+
+# SimulationsLineStyleDictionary_presentation_2 = {
+#     "xdown-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 4},
+#     "neutral-normal": {"color": "k", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 4},
+#     "neutral-long": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": (0, (3, 3)), "linewidth": 4},
+#     "xup-long": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+#     "Joint Sphérique": {"color": "lime", "marker": "", "markersize": 1, "linestyle": "--", "linewidth": 4},
+# }
+
+# define_simulations_line_style(SimulationsLineStyleDictionary_presentation_2)
+
+# COP_graph(Results_aTSA, COP_contour, cases_on=["xdown-xshort", "neutral-normal", "neutral-long", "xup-long"], composantes=["AP", "IS"], draw_COP_points_on=False, legend_x=["Postérieur", "Antérieur"], legend_y=["Inférieur", "Supérieur"], graph_annotation_on=False, COP_first_point_size=15, COP_first_point_mew=4, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, figsize=[20, 9], hide_center_axis_labels=True)
+
 
 # import pandas as pd
 
@@ -913,8 +914,8 @@ def score_surface(score_df, title):
 # cat_4 = [moment_CSA_20[3], moment_CSA_25[3], moment_CSA_30[3], moment_CSA_35[3], moment_CSA_40[3]]
 # cat_5 = [moment_CSA_20[4], moment_CSA_25[4], moment_CSA_30[4], moment_CSA_35[4], moment_CSA_40[4]]
 
-# index = ["CSA = 20°", "CSA = 30°", "CSA = 40°"]
-# index = ["CSA = 20°", "CSA = 25°", "CSA = 30°", "CSA = 35°", "CSA = 40°"]
+# index = ["CSA = 20°", "CSA = 31°", "CSA = 40°"]
+# index = ["CSA = 20°", "CSA = 23°", "CSA = 31°", "CSA = 36°", "CSA = 40°"]
 # df = pd.DataFrame({"1": cat_1,
 #                    "2": cat_2,
 #                    "3": cat_3,
@@ -925,9 +926,9 @@ def score_surface(score_df, title):
 # ax = df.plot.bar(rot=45, legend=False, title="Moment", ylim=[0, 350])
 
 # CSA_20_Cases = ["xdown-normal", "down-short", "middle-xshort"]
-# CSA_25_Cases = ["xdown-long", "down-normal", "middle-short", "up-xshort"]
-# CSA_30_Cases = ["xdown-xlong", "down-long", "middle-normal", "up-short", "xup-xshort"]
-# CSA_35_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
+# CSA_23_Cases = ["xdown-long", "down-normal", "middle-short", "up-xshort"]
+# CSA_31_Cases = ["xdown-xlong", "down-long", "middle-normal", "up-short", "xup-xshort"]
+# CSA_36_Cases = ["down-xlong", "middle-long", "up-normal", "xup-short"]
 # CSA_40_Cases = ["middle-xlong", "up-long", "xup-normal"]
 
 # # shear_CSA_20 = [4300, 2413, None, None, 4502]
@@ -962,8 +963,8 @@ def score_surface(score_df, title):
 # # min_shear = [min(shear_CSA_20), min(shear_CSA_30), min(shear_CSA_40)]
 # # max_shear = [max(shear_CSA_20), max(shear_CSA_30), max(shear_CSA_40)]
 
-# index = ["CSA = 20°", "CSA = 30°", "CSA = 40°"]
-# index = ["CSA = 20°", "CSA = 25°", "CSA = 30°", "CSA = 25°", "CSA = 40°"]
+# index = ["CSA = 20°", "CSA = 31°", "CSA = 40°"]
+# index = ["CSA = 20°", "CSA = 23°", "CSA = 31°", "CSA = 23°", "CSA = 40°"]
 # df = pd.DataFrame({"1": cat_1,
 #                    "2": cat_2,
 #                    "3": cat_3,
@@ -976,10 +977,10 @@ def score_surface(score_df, title):
 
 # %%
 
-graph(Results_aTSA, "Abduction", "ForceDepKinError", cases_on="all", legend_position="center left", figsize=[24, 14])
+# graph(Results_aTSA, "Abduction", "ForceDepKinError", cases_on="all", legend_position="center left", figsize=[24, 14])
 
-PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_6, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
-PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_36, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
-PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_5, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
+# PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_6, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
+# PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_36, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
+# PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_5, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
 
-PremadeGraphs.muscle_graph_from_list(Results_aTSA, list_muscles_actifs, [3, 4], "Abduction", "Ft", "muscles actifs", cases_on="all", legend_position="center left", figsize=[24, 14], legend_on=False)
+# PremadeGraphs.muscle_graph_from_list(Results_aTSA, list_muscles_actifs, [3, 4], "Abduction", "Ft", "muscles actifs", cases_on="all", legend_position="center left", figsize=[24, 14], legend_on=False)

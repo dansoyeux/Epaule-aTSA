@@ -6,8 +6,9 @@ AnyFolder InputVariables = {
   #endif
   
   // Highlights the acromion (1 : Highlighted ; 0 : Not Highlighted)
-  #define HighlightAcromion 0
-  AnyFloat HighlightAcromion_color = {16, 132, 244} / 255; // magenta
+  #define HighlightAcromion 1
+  AnyFloat HighlightAcromion_color = {1, 0, 0};
+//  {16, 132, 244} / 255; // magenta
 // {16, 132, 244} / 255; // light blue
 // {221, 48, 131} / 255; // magenta
   
@@ -85,7 +86,7 @@ AnyFolder InputVariables = {
   */
  
   #ifndef CSA_Acromion_Length
-  #define CSA_Acromion_Length "normal"
+  #define CSA_Acromion_Length "xlong"
   #endif
   
   #define CSA_Case CSA_Tilt + "-" + CSA_Acromion_Length
