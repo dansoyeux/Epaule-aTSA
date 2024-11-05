@@ -300,10 +300,10 @@ xLongCases_6 = ["xdown-xlong", "down-xlong", "neutral-xlong", "middle-xlong", "u
 CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
-# Case names with only the cases that converged (without cup/xup xlong)
+# Case names with only the cases that converged (without up/xup xlong)
 CaseNames_convergence = CaseNames_6
-CaseNames_convergence.remove("xup-xlong")
-CaseNames_convergence.remove("up-xlong")
+# CaseNames_convergence.remove("xup-xlong")
+# CaseNames_convergence.remove("up-xlong")
 
 # %% Catégories de simulation
 
@@ -768,13 +768,13 @@ def score_surface(score_df, title):
 
 # for case in Results:
 #     Results[case]["Angular Velocity"] = Results[case]["COP"]
-    
-    
+
+
 #     # Liste de tous les muscles (combine muscle main et aux)
 #     muscle_list = [*Muscles_Main, *Muscles_Aux]
-    
+
 #     for muscle_name in muscle_list:
-    
+
 #         Results[case]["Muscles"][muscle_name][muscle_name]["LmtDot"] = Results[case]["Muscles"][muscle_name][muscle_name]["MomentArm"]
 
 # for case in Results:

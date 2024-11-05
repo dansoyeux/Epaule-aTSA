@@ -36,68 +36,79 @@ def figures_article(Results, COP_contour, SimulationsLineStyleDictionary, list_m
         "neutral-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-", "linewidth": 2},
 
         # Glen up
-        "up-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-        "up-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-        "up-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-        "up-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
-        "up-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+        "xup-xshort": {"color": "#648FFF", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+        "xup-short": {"color": "#785EF0", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+        "xup-normal": {"color": "#DC267F", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+        "xup-long": {"color": "#FE6100", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
+        "xup-xlong": {"color": "#FFB000", "marker": "", "markersize": 1, "linestyle": "-.", "linewidth": 2},
     }
 
     define_simulations_line_style(SimulationsLineStyleDictionary_article)
 
-    Categories_Article = {"line": {"Downward inclination": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
-                                   "Neutral inclination": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
-                                   "Upward inclination": ["up-xshort", "up-normal", "up-xlong"]
+    Categories_Article = {"line": {"-10° Downward inclination": ["xdown-xshort", "xdown-normal", "xdown-xlong"],
+                                   "0° inclination": ["neutral-xshort", "neutral-normal", "neutral-xlong"],
+                                   "15° Upward inclination": ["xup-xshort", "xup-normal", "xup-xlong"]
                                    }}
 
     NeutralCases_3 = ["neutral-xshort", "neutral-normal", "neutral-xlong"]
+    NormalCases_3 = ["xdown-normal", "neutral-normal", "xup-normal"]
 
     # Muscle Kinematics
-    muscle_graph(Results, "Deltoid lateral", "Abduction", "Force Angle", subplot={"dimension": [1, 3], "number": 1}, cases_on=NeutralCases_3, subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-80, 20], composante_y=["Origin"])
-    muscle_graph(Results, "Deltoid lateral", "Abduction", "MomentArm", subplot={"dimension": [1, 3], "number": 2}, composante_y=["Mean"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=5, ylim=[0, 40])
-    muscle_graph(Results, "Deltoid lateral", "Abduction", "Ft", subplot={"dimension": [1, 3], "number": 3}, composante_y=["Total"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral force", grid_x_step=15, xlim=[15, 120], grid_y_step=25, ylim=[0, 200])
+    muscle_graph(Results, "Deltoid lateral", "Abduction", "Force Angle", subplot={"dimension": [2, 3], "number": 1}, cases_on=NeutralCases_3, subplot_title="Deltoid lateral force angle", grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-70, 4], composante_y=["Origin"], figsize=[20, 10], xlabel_on=False)
+    muscle_graph(Results, "Deltoid lateral", "Abduction", "MomentArm", subplot={"dimension": [2, 3], "number": 2}, composante_y=["Mean"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral moment arm", grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[0, 40], xlabel_on=False)
+    muscle_graph(Results, "Deltoid lateral", "Abduction", "Ft", subplot={"dimension": [2, 3], "number": 3}, composante_y=["Total"], cases_on=NeutralCases_3, subplot_title="Deltoid lateral force", grid_x_step=15, xlim=[15, 120], grid_y_step=25, ylim=[0, 200], xlabel_on=False)
+
+    # Muscle Kinematics Normal cases
+    muscle_graph(Results, "Deltoid lateral", "Abduction", "Force Angle", subplot={"dimension": [2, 3], "number": 4}, cases_on=NormalCases_3, grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[-70, 4], composante_y=["Origin"])
+    muscle_graph(Results, "Deltoid lateral", "Abduction", "MomentArm", subplot={"dimension": [2, 3], "number": 5}, composante_y=["Mean"], cases_on=NormalCases_3, grid_x_step=15, xlim=[15, 120], grid_y_step=10, ylim=[0, 40])
+    muscle_graph(Results, "Deltoid lateral", "Abduction", "Ft", subplot={"dimension": [2, 3], "number": 6}, composante_y=["Total"], cases_on=NormalCases_3, grid_x_step=15, xlim=[15, 120], grid_y_step=25, ylim=[0, 200], legend_on=False)
 
     # COP
     COP_graph_by_case_categories(Results, Categories_Article, COP_contour, composantes=["AP", "IS"], graph_annotation_on=False, draw_COP_points_on=False, COP_first_point_size=10, COP_first_point_mew=2, xlim=[-17, 17], ylim=[-19, 22], grid_x_step=5, legend_position="lower center", hide_center_axis_labels=True, figsize=[20, 9])
 
-    # Contact forces for xdown inclination
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, inferior inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 1})
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, inferior inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 2})
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, inferior inclination", subplot_title="Compression force", composante_y=["ML"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 450], hide_center_axis_labels=True)
+    # # Contact forces for xdown inclination
+    # graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, inferior inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 1})
+    # graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, inferior inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 2})
+    # graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, inferior inclination", subplot_title="Compression force", composante_y=["ML"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 450], hide_center_axis_labels=True)
 
-    # Contact forces for neutral inclination
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 1})
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression force", composante_y=["ML"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 450], hide_center_axis_labels=True)
+    # # Contact forces for neutral inclination
+    # graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 1})
+    # graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 2})
+    # graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, neutral inclination", subplot_title="Compression force", composante_y=["ML"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 450], hide_center_axis_labels=True)
 
-    # Contact forces for upward inclination
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, upward inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["up-xshort", "up-normal", "up-xlong"], subplot={"dimension": [1, 3], "number": 1})
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, upward inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["up-xshort", "up-normal", "up-xlong"], subplot={"dimension": [1, 3], "number": 2})
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, upward inclination", subplot_title="Compression force", composante_y=["ML"], cases_on=["up-xshort", "up-normal", "up-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=100, ylim=[-100, 450], hide_center_axis_labels=True)
+    # # Contact forces for upward inclination
+    # graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, upward inclination", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 1})
+    # graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, upward inclination", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 2})
+    # graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant, upward inclination", subplot_title="Compression force", composante_y=["ML"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [1, 3], "number": 3}, same_lim=True, grid_x_step=15, xlim=[15, 120], grid_y_step=100, ylim=[-100, 450], hide_center_axis_labels=True)
 
     # autres limites
     # Contact forces for xdown inclination
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [3, 3], "number": 1}, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 140], figsize=[15, 10], ylabel_on=False)
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [3, 3], "number": 2}, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 140])
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="Compression force", composante_y=["ML"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [3, 3], "number": 3}, same_lim=False, grid_x_step=15, xlim=[15, 120], grid_y_step=100, ylim=[0, 450], hide_center_axis_labels=True)
+    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="Posterior-anterior shear", composante_y=["AP"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [3, 3], "number": 1}, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 100], figsize=[15, 10], ylabel_on=False)
+    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="Inferior-superior shear", composante_y=["IS"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [3, 3], "number": 2}, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 150])
+    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="Compression force", composante_y=["ML"], cases_on=["xdown-xshort", "xdown-normal", "xdown-xlong"], subplot={"dimension": [3, 3], "number": 3}, same_lim=False, grid_x_step=15, xlim=[15, 120], grid_y_step=100, ylim=[0, 500], hide_center_axis_labels=True)
 
     # Contact forces for neutral inclination
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="", composante_y=["AP"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [3, 3], "number": 4}, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 140])
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="", composante_y=["IS"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [3, 3], "number": 5}, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 140])
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="", composante_y=["ML"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [3, 3], "number": 6}, same_lim=False, grid_x_step=15, xlim=[15, 120], grid_y_step=100, ylim=[0, 450], hide_center_axis_labels=True)
+    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="", composante_y=["AP"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [3, 3], "number": 4}, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 100])
+    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="", composante_y=["IS"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [3, 3], "number": 5}, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 150])
+    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="", composante_y=["ML"], cases_on=["neutral-xshort", "neutral-normal", "neutral-xlong"], subplot={"dimension": [3, 3], "number": 6}, same_lim=False, grid_x_step=15, xlim=[15, 120], grid_y_step=100, ylim=[0, 500], hide_center_axis_labels=True)
 
     # Contact forces for upward inclination
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="", composante_y=["AP"], cases_on=["up-xshort", "up-normal", "up-xlong"], subplot={"dimension": [3, 3], "number": 7}, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 140], ylabel_on=False)
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="", composante_y=["IS"], cases_on=["up-xshort", "up-normal", "up-xlong"], subplot={"dimension": [3, 3], "number": 8}, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 140])
-    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="", composante_y=["ML"], cases_on=["up-xshort", "up-normal", "up-xlong"], subplot={"dimension": [3, 3], "number": 9}, same_lim=False, grid_x_step=15, xlim=[15, 120], grid_y_step=100, ylim=[0, 450], hide_center_axis_labels=True, legend_on=False)
+    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="", composante_y=["AP"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [3, 3], "number": 7}, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 140], ylabel_on=False)
+    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="", composante_y=["IS"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [3, 3], "number": 8}, grid_x_step=15, xlim=[15, 120], grid_y_step=50, ylim=[-100, 150])
+    graph(Results, "Abduction", "ContactForce glenoid", figure_title="Contact Forces on the glenoid implant", subplot_title="", composante_y=["ML"], cases_on=["xup-xshort", "xup-normal", "xup-xlong"], subplot={"dimension": [3, 3], "number": 9}, same_lim=False, grid_x_step=15, xlim=[15, 120], grid_y_step=100, ylim=[0, 500], hide_center_axis_labels=True, legend_on=False)
 
     # instability ratio
-    graph_by_case_categories(Results, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, ylim=[0, 0.7])
+    graph_by_case_categories(Results, Categories_Article, "Abduction", "Instability Ratio", figure_title="Instability ratio", grid_x_step=15, xlim=[15, 120], same_lim=True, legend_on=True, hide_center_axis_labels=True, ylim=[0, 0.6])
 
     # Forces des muscles actifs
     define_simulations_line_style(SimulationsLineStyleDictionary)
     muscle_graph_from_list(Results, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces", cases_on=CaseNames, grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[24, 14], legend_label_per_column=10, ylim=[0, None])
-    muscle_graph_from_list(Results, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces", cases_on=CaseNames, grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[24, 14], legend_label_per_column=10, same_lim=True)
+    # muscle_graph_from_list(Results, list_muscles_actifs, [4, 3], "Abduction", "Ft", "Muscle forces", cases_on=CaseNames, grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[24, 14], legend_label_per_column=10, same_lim=True)
+
+    # # Activity des muscles actifs
+    # define_simulations_line_style(SimulationsLineStyleDictionary)
+    # muscle_graph_from_list(Results, list_muscles_actifs, [4, 3], "Abduction", "Activity", "Muscle activity", composante_y=["Max"], cases_on=CaseNames, grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[24, 14], legend_label_per_column=10, ylim=[0, None])
+    # muscle_graph_from_list(Results, list_muscles_actifs, [4, 3], "Abduction", "Activity", "Muscle activity", composante_y=["Max"], cases_on=CaseNames, grid_x_step=15, xlim=[15, 120], hide_center_axis_labels=True, figsize=[24, 14], legend_label_per_column=10, same_lim=True)
 
     # ajouter save graphiques si activé
     if save_figure:

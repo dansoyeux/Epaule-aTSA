@@ -59,7 +59,7 @@ MuscleVariableDictionary = {"Ft": {"MuscleFolderPath": "Output.Mus", "AnybodyVar
                             "MomentArm": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "MomentArm", "VariableDescription": "Moment arm [mm]",
                                           "combine_muscle_part_operations": ["mean"], "MultiplyFactor": 1000},
 
-                            # "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "CorrectedActivity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
+                            "Activity": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "Activity", "VariableDescription": "Muscle activity [%]", "MultiplyFactor": 100, "combine_muscle_part_operations": ["max", "mean"]},
 
                             # Dans repère scapula
                             "F origin": {"MuscleFolderPath": "Output.Mus", "AnybodyVariableName": "RefFrameOutput.F", "VariableDescription": "Muscle force at the origin [N]", "select_matrix_line": 0,
