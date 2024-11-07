@@ -66,7 +66,7 @@ matplotlib.rcParams.update({'xtick.major.size': 8})
 matplotlib.rcParams.update({'ytick.major.size': 8})
 
 # Légende (10)
-matplotlib.rcParams.update({'legend.fontsize': 17})
+matplotlib.rcParams.update({'legend.fontsize': 18})
 
 # Distance between the title of a plot and the plot in points (6)
 matplotlib.rcParams.update({'axes.titlepad': 12})
@@ -174,41 +174,78 @@ SimulationsLineStyleDictionary = {
 
 SimulationDescriptionDictionary = {
     # Nom des cas de simulation
-    "xdown-xshort": "CSA = 12° : -10° inclination    ; -10.8 mm acromion shift",
-    "xdown-short": "CSA = 16° : -10° inclination    ; -5.7 mm acromion shift",
-    "xdown-normal": "CSA = 20° : -10° inclination    ; +0.0 mm acromion shift",
-    "xdown-long": "CSA = 23° : -10° inclination    ; +6.6 mm acromion shift",
-    "xdown-xlong": "CSA = 31° : -10° inclination    ; +13.4 mm acromion shift",
+    "xdown-xshort": "-10° inclination    ; -10.8 mm acromion shift",
+    "xdown-short": "-10° inclination    ; -5.7 mm acromion shift",
+    "xdown-normal": "-10° inclination    ; +0.0 mm acromion shift",
+    "xdown-long": "-10° inclination    ; +6.6 mm acromion shift",
+    "xdown-xlong": "-10° inclination    ; +13.4 mm acromion shift",
 
-    "down-xshort": "CSA = 16° : -5° inclination    ; -10.8 mm acromion shift",
-    "down-short": "CSA = 20° : -5° inclination    ; -5.7 mm acromion shift",
-    "down-normal": "CSA = 23° : -5° inclination    ; +0.0 mm acromion shift",
-    "down-long": "CSA = 31° : -5° inclination    ; +6.6 mm acromion shift",
-    "down-xlong": "CSA = 36° : -5° inclination    ; +13.4 mm acromion shift",
+    "down-xshort": "-5° inclination    ; -10.8 mm acromion shift",
+    "down-short": "-5° inclination    ; -5.7 mm acromion shift",
+    "down-normal": "-5° inclination    ; +0.0 mm acromion shift",
+    "down-long": "-5° inclination    ; +6.6 mm acromion shift",
+    "down-xlong": "-5° inclination    ; +13.4 mm acromion shift",
 
-    "middle-xshort": "CSA = 20° : 5° inclination     ; -10.8 mm acromion shift",
-    "middle-short": "CSA = 23° : 5° inclination     ; -5.7 mm acromion shift",
-    "middle-normal": "CSA = 31° : 5° inclination     ; +0.0 mm acromion shift",
-    "middle-long": "CSA = 36° : 5° inclination     ; +6.6 mm acromion shift",
-    "middle-xlong": "CSA = 40° : 5° inclination     ; +13.4 mm acromion shift",
+    "middle-xshort": "5° inclination     ; -10.8 mm acromion shift",
+    "middle-short": "5° inclination     ; -5.7 mm acromion shift",
+    "middle-normal": "5° inclination     ; +0.0 mm acromion shift",
+    "middle-long": "5° inclination     ; +6.6 mm acromion shift",
+    "middle-xlong": "5° inclination     ; +13.4 mm acromion shift",
 
-    "neutral-xshort": "CSA = 20° : 0.0° inclination     ; -10.8 mm acromion shift",
-    "neutral-short": "CSA = 23° : 0.0° inclination     ; -5.7 mm acromion shift",
-    "neutral-normal": "CSA = 31° : 0.0° inclination     ; +0.0 mm acromion shift",
-    "neutral-long": "CSA = 36° : 0.0° inclination     ; +6.6 mm acromion shift",
-    "neutral-xlong": "CSA = 40° : 0.0° inclination     ; +13.4 mm acromion shift",
+    "neutral-xshort": "  0°  inclination    ; -10.8 mm acromion shift",
+    "neutral-short": "  0°  inclination    ; -5.7 mm acromion shift",
+    "neutral-normal": "  0°  inclination    ; +0.0 mm acromion shift",
+    "neutral-long": "  0°  inclination    ; +6.6 mm acromion shift",
+    "neutral-xlong": "  0°  inclination    ; +13.4 mm acromion shift",
 
-    "up-xshort": "CSA = 23° : 10° inclination     ; -10.8 mm acromion shift",
-    "up-short": "CSA = 31° : 10° inclination     ; -5.7 mm acromion shift",
-    "up-normal": "CSA = 36° : 10° inclination     ; +0.0 mm acromion shift",
-    "up-long": "CSA = 40° : 10° inclination     ; +6.6 mm acromion shift",
-    "up-xlong": "CSA = 46° : 10° inclination     ; +13.4 mm acromion shift",
+    "up-xshort": "10° inclination     ; -10.8 mm acromion shift",
+    "up-short": "10° inclination     ; -5.7 mm acromion shift",
+    "up-normal": "10° inclination     ; +0.0 mm acromion shift",
+    "up-long": "10° inclination     ; +6.6 mm acromion shift",
+    "up-xlong": "10° inclination     ; +13.4 mm acromion shift",
 
-    "xup-xshort": "CSA = 31° : 15° inclination   ; -10.8 mm acromion shift",
-    "xup-short": "CSA = 36° : 15° inclination   ; -5.7 mm acromion shift",
-    "xup-normal": "CSA = 40° : 15° inclination   ; +0.0 mm acromion shift",
-    "xup-long": "CSA = 46° : 15° inclination   ; +6.6 mm acromion shift",
-    "xup-xlong": "CSA = 48° : 15° inclination   ; +13.4 mm acromion shift",
+    "xup-xshort": "15°  inclination    ; -10.8 mm acromion shift",
+    "xup-short": "15°  inclination    ; -5.7 mm acromion shift",
+    "xup-normal": "15°  inclination    ; +0.0 mm acromion shift",
+    "xup-long": "15°  inclination    ; +6.6 mm acromion shift",
+    "xup-xlong": "15°  inclination    ; +13.4 mm acromion shift",
+
+    # # Nom des cas de simulation
+    # "xdown-xshort": "CSA = 12° : -10° inclination    ; -10.8 mm acromion shift",
+    # "xdown-short": "CSA = 16° : -10° inclination    ; -5.7 mm acromion shift",
+    # "xdown-normal": "CSA = 20° : -10° inclination    ; +0.0 mm acromion shift",
+    # "xdown-long": "CSA = 23° : -10° inclination    ; +6.6 mm acromion shift",
+    # "xdown-xlong": "CSA = 31° : -10° inclination    ; +13.4 mm acromion shift",
+
+    # "down-xshort": "CSA = 16° : -5° inclination    ; -10.8 mm acromion shift",
+    # "down-short": "CSA = 20° : -5° inclination    ; -5.7 mm acromion shift",
+    # "down-normal": "CSA = 23° : -5° inclination    ; +0.0 mm acromion shift",
+    # "down-long": "CSA = 31° : -5° inclination    ; +6.6 mm acromion shift",
+    # "down-xlong": "CSA = 36° : -5° inclination    ; +13.4 mm acromion shift",
+
+    # "middle-xshort": "CSA = 20° : 5° inclination     ; -10.8 mm acromion shift",
+    # "middle-short": "CSA = 23° : 5° inclination     ; -5.7 mm acromion shift",
+    # "middle-normal": "CSA = 31° : 5° inclination     ; +0.0 mm acromion shift",
+    # "middle-long": "CSA = 36° : 5° inclination     ; +6.6 mm acromion shift",
+    # "middle-xlong": "CSA = 40° : 5° inclination     ; +13.4 mm acromion shift",
+
+    # "neutral-xshort": "CSA = 20° : 0.0° inclination    ; -10.8 mm acromion shift",
+    # "neutral-short": "CSA = 23° : 0.0° inclination    ; -5.7 mm acromion shift",
+    # "neutral-normal": "CSA = 31° : 0.0° inclination    ; +0.0 mm acromion shift",
+    # "neutral-long": "CSA = 36° : 0.0° inclination    ; +6.6 mm acromion shift",
+    # "neutral-xlong": "CSA = 40° : 0.0° inclination    ; +13.4 mm acromion shift",
+
+    # "up-xshort": "CSA = 23° : 10° inclination     ; -10.8 mm acromion shift",
+    # "up-short": "CSA = 31° : 10° inclination     ; -5.7 mm acromion shift",
+    # "up-normal": "CSA = 36° : 10° inclination     ; +0.0 mm acromion shift",
+    # "up-long": "CSA = 40° : 10° inclination     ; +6.6 mm acromion shift",
+    # "up-xlong": "CSA = 46° : 10° inclination     ; +13.4 mm acromion shift",
+
+    # "xup-xshort": "CSA = 31° : 15° inclination     ; -10.8 mm acromion shift",
+    # "xup-short": "CSA = 36° : 15° inclination     ; -5.7 mm acromion shift",
+    # "xup-normal": "CSA = 40° : 15° inclination     ; +0.0 mm acromion shift",
+    # "xup-long": "CSA = 46° : 15° inclination     ; +6.6 mm acromion shift",
+    # "xup-xlong": "CSA = 48° : 15° inclination     ; +13.4 mm acromion shift",
 
     # Nom des composantes
     "AP": "Axe antéropostérieur (Anterior = +)",
@@ -266,11 +303,11 @@ LongCases_3 = ["xdown-long", "middle-long", "xup-long"]
 xLongCases_3 = ["xdown-xlong", "middle-xlong", "xup-xlong"]
 
 # Longueur d'acromion
-xShortCases_36 = ["xdown-xshort", "neutral-xshort", "up-xshort"]
-ShortCases_36 = ["xdown-short", "neutral-short", "up-short"]
-NormalCases_36 = ["xdown-normal", "neutral-normal", "up-normal"]
-LongCases_36 = ["xdown-long", "neutral-long", "up-long"]
-xLongCases_36 = ["xdown-xlong", "neutral-xlong", "up-xlong"]
+xShortCases_36 = ["xdown-xshort", "neutral-xshort", "xup-xshort"]
+ShortCases_36 = ["xdown-short", "neutral-short", "xup-short"]
+NormalCases_36 = ["xdown-normal", "neutral-normal", "xup-normal"]
+LongCases_36 = ["xdown-long", "neutral-long", "xup-long"]
+xLongCases_36 = ["xdown-xlong", "neutral-xlong", "xup-xlong"]
 
 CaseNames_3 = [*xDownCases_3, *MiddleCases_3, *xUpCases_3]
 CaseNames_36 = [*xDownCases_3, *NeutralCases_3, *UpCases_3]
@@ -300,22 +337,17 @@ xLongCases_6 = ["xdown-xlong", "down-xlong", "neutral-xlong", "middle-xlong", "u
 CaseNames_5 = [*xDownCases_5, *DownCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 CaseNames_6 = [*xDownCases_5, *DownCases_5, *NeutralCases_5, *MiddleCases_5, *UpCases_5, *xUpCases_5]
 
-# Case names with only the cases that converged (without up/xup xlong)
-CaseNames_convergence = CaseNames_6
-# CaseNames_convergence.remove("xup-xlong")
-# CaseNames_convergence.remove("up-xlong")
-
 # %% Catégories de simulation
 
 # With xdown, middle, xup
 CasesVariables_3 = {"Tilt": {"Large Downtilt": xDownCases_3, "Normal tilt": MiddleCases_3, "Large Uptilt": xUpCases_3},
                     "Acromion": {"Very short acromion": xShortCases_3, "Normal acromion": NormalCases_3, "Very long acromion": xLongCases_3}}
 
-CasesVariables_36 = {"Tilt": {"Large Downtilt": xDownCases_3, "Neutral tilt": NeutralCases_3, "Uptilt": UpCases_3},
+CasesVariables_36 = {"Tilt": {"Large Downtilt": xDownCases_3, "Neutral tilt": NeutralCases_3, "xUptilt": xUpCases_3},
                      "Acromion": {"Very short acromion": xShortCases_36, "Normal acromion": NormalCases_36, "Very long acromion": xLongCases_36}}
 
 # With xdown, middle, xup
-CasesVariables_5 = {"Tilt": {"Large Downtilt": xDownCases_5, "Downtilt": DownCases_5, "Normal tilt": MiddleCases_5, "Uptilt": UpCases_5, "Large Uptilt": xUpCases_5},
+CasesVariables_5 = {"Tilt": {"Large Downtilt": xDownCases_5, "Downtilt": DownCases_5, "Normal tilt": MiddleCases_5, "xUptilt": xUpCases_5, "Large Uptilt": xUpCases_5},
                     "Acromion": {"Very short acromion": xShortCases_5, "Short acromion": ShortCases_5, "Normal acromion": NormalCases_5, " Long acromion": LongCases_5, "Very long acromion": xLongCases_5}}
 
 # With xdown, middle, xup
@@ -543,7 +575,7 @@ graph_parameters_3 = {"xlim": [0, 120],
                       "list_muscles_inactifs": list_muscles_inactifs,
 
                       # For graph by categories
-                      "CasesCategories_5": CasesVariables_3,
+                      "CasesCategories_5": CasesVariables_5,
                       "CasesCategories_3": CasesVariables_3,
                       "CaseNames_5": CaseNames_3,
                       "CaseNames_3": CaseNames_3,
@@ -661,7 +693,7 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 
 # %% Figures article
 
-my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_convergence, save_figure=False)
+my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_6, save_figure=True)
 
 # %% Figures mémoire
 
