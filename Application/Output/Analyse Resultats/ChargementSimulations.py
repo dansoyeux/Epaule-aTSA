@@ -118,8 +118,7 @@ BallAndSocket_VariableDictionary = {"Abduction": {"VariablePath": "Output.Simula
                                     }
 
 # Constantes
-FDK_ConstantsDictionary = {"AnybodyFileOutPath": "Main.Study.FileOut",
-                           "Anybody version": ["AMMRVersion", "AnybodyVersion"],
+FDK_ConstantsDictionary = {"Anybody version": ["AMMRVersion", "AnybodyVersion"],
                            "Paramètres de simulation": ["Case", "MuscleRecruitment", "nStep", "tEnd", "GHReactions", "Movement"],
                            "Mannequin": ["GlenohumeralFlexion", "GlenohumeralAbduction", "GlenohumeralExternalRotation"],
 
@@ -132,8 +131,7 @@ FDK_ConstantsDictionary = {"AnybodyFileOutPath": "Main.Study.FileOut",
                                                    "GlenImplantPosition", "GlenImplantCenter", "HumImplantPosition", "HumImplantRotation", "HumImplantCenter", "AcromionOffset"],
                            }
 
-BallAndSocket_ConstantsDictionary = {"AnybodyFileOutPath": "Main.Study.FileOut",
-                                     "Anybody version": ["AMMRVersion", "AnybodyVersion"],
+BallAndSocket_ConstantsDictionary = {"Anybody version": ["AMMRVersion", "AnybodyVersion"],
                                      "Paramètres de simulation": ["Case", "MuscleRecruitment", "nstep", "GHReactions", "Movement"],
                                      "Mannequin": ["GlenohumeralFlexion", "GlenohumeralAbduction", "GlenohumeralExternalRotation"],
                                      }
