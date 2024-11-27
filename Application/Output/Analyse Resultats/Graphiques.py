@@ -615,7 +615,7 @@ graph_parameters_6 = {"xlim": [0, 120],
                       }
 
 # Graphiques avec tous les résultats
-# my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Tous les résultats", save_graph=True, composante_on=False, **graph_parameters_6)
+my_graphs.all_variables_graphs(Results_aTSA, Results_BallAndSocket["normal"], Results_literature, "Graphiques/aTSA", "Tous les résultats", save_graph=True, composante_on=False, **graph_parameters_6)
 
 # %% Résultats classés par CSA et moyennes par CSA
 
@@ -693,7 +693,7 @@ Results_aTSA_CSA = {**combine_simulation_cases(Results_aTSA, combine_CSA, operat
 
 # %% Figures article
 
-my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_6, save_figure=False)
+# my_graphs.figures_article(Results_aTSA, COP_contour, SimulationsLineStyleDictionary, list_muscles_actifs, CaseNames_6, save_figure=False)
 
 # %% Figures mémoire
 
@@ -1008,8 +1008,6 @@ def score_surface(score_df, title):
 
 
 # %%
-
-# graph(Results_aTSA, "Abduction", "ForceDepKinError", cases_on="all", legend_position="center left", figsize=[24, 14])
 
 # PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_6, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
 # PremadeGraphs.COP_graph_by_case_categories(Results_aTSA, CasesVariables_36, COP_contour, composantes=["AP", "IS"], legend_position="center left", figsize=[24, 14], legend_on=False, graph_annotation_on=False)
