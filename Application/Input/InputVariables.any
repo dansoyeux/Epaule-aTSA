@@ -97,8 +97,6 @@ AnyFolder InputVariables = {
   ResultFolder : Name for folder results. !!Must be created on computer before!!
   LoadFolder : Name of the folder in which the .h5 file is stored
   LoadFile : Name for the result file to load (.h5)
-  
-  ex : to create 
   */
   
   // Activates the Saving of the results after simulation
